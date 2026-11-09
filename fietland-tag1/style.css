@@ -1,0 +1,139 @@
+:root {
+  --navy: #1B2547;
+  --ink: #1B1530;
+  --yellow: #FFC83A;
+  --sea: #1F9BEA;
+  --red: #FF4B5C;
+  --green: #2DBE60;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #000; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #6FB8F2; }
+.layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+#globe { display: none; }
+#vignette { background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(10,15,40,.28) 100%); pointer-events: none; }
+#dim { background: rgba(12, 18, 45, .5); opacity: 0; }
+#caps text { font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 84px; letter-spacing: 1px;
+  paint-order: stroke fill; stroke: var(--ink); stroke-width: 17px; stroke-linejoin: round; fill: #fff; }
+#caps { filter: drop-shadow(0 7px 0 rgba(20, 15, 45, .45)); }
+
+.ui { position: absolute; transform-origin: 50% 50%; will-change: transform; }
+.emo { font-family: 'Noto Color Emoji'; font-weight: 400; }
+
+/* TAG-1-Badge */
+.badge { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--navy); background: var(--yellow);
+  border: 7px solid #fff; border-radius: 26px; box-shadow: 0 0 0 6px var(--navy), 0 12px 0 6px rgba(20,20,50,.3);
+  padding: 4px 30px 8px; line-height: 1; white-space: nowrap; }
+#badge { left: 56px; top: 150px; font-size: 64px; transform-origin: 0 0; }
+#title { left: 540px; top: 640px; font-size: 190px; padding: 14px 70px 26px; border-width: 12px; border-radius: 56px;
+  box-shadow: 0 0 0 10px var(--navy), 0 22px 0 10px rgba(20,20,50,.3); }
+
+/* Chips */
+.chip { left: 540px; top: 278px; white-space: nowrap; font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 42px;
+  line-height: 1; padding: 16px 30px 19px; border-radius: 999px; background: #fff; color: var(--navy);
+  border: 6px solid var(--navy); box-shadow: 0 8px 0 rgba(20,20,50,.3); }
+.chip.yellow { background: var(--yellow); }
+.chip.red { background: var(--red); color: #fff; }
+.chip.blue { background: var(--sea); color: #fff; }
+.chip.green { background: var(--green); color: #fff; }
+.chip.dark { background: #15151C; color: #fff; border-color: #15151C; }
+.chip.small { font-size: 34px; padding: 12px 22px 15px; }
+
+/* Stempel */
+#stamp { left: 540px; top: 300px; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 104px; color: #fff;
+  background: var(--red); padding: 8px 40px 18px; border: 9px solid #fff; border-radius: 22px;
+  box-shadow: 0 0 0 7px var(--navy), 0 14px 0 7px rgba(20,20,50,.3); white-space: nowrap; }
+#stamp .emo { font-size: 86px; margin-right: 10px; }
+
+/* Banner */
+#banner { left: 540px; top: 270px; width: 860px; text-align: center; font-family: 'Fredoka', sans-serif; font-weight: 700;
+  color: var(--navy); background: var(--yellow); border: 7px solid var(--navy); border-radius: 18px;
+  padding: 14px 20px 22px; box-shadow: 0 12px 0 rgba(20,20,50,.3); }
+#banner span { display: block; font-size: 46px; letter-spacing: 3px; }
+#banner b { display: block; font-size: 112px; line-height: .95; letter-spacing: 2px; }
+#banner:before, #banner:after { content: ""; position: absolute; top: 34px; width: 90px; height: 110px; background: #E8A51E;
+  border: 7px solid var(--navy); z-index: -1; }
+#banner:before { left: -62px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 30% 50%); }
+#banner:after { right: -62px; clip-path: polygon(0 0, 100% 0, 70% 50%, 100% 100%, 0 100%); }
+
+/* Profil-Karte */
+#profile { left: 540px; top: 290px; width: 880px; background: rgba(18, 18, 26, .96); border-radius: 34px; padding: 34px 40px 30px;
+  color: #fff; font-family: 'Nunito', 'Noto Color Emoji'; box-shadow: 0 16px 0 rgba(0,0,0,.28); border: 3px solid rgba(255,255,255,.08); }
+#profile .top { display: flex; align-items: center; justify-content: space-between; }
+#profile .name { font-weight: 900; font-size: 56px; line-height: 1.05; }
+#profile .handle { font-weight: 800; font-size: 32px; color: #9AA0B4; margin-top: 4px; }
+#profile .avatar { width: 132px; height: 132px; border-radius: 50%; padding: 7px;
+  background: conic-gradient(#25F4EE, #FE2C55, #FFC83A, #25F4EE); }
+#profile .avatar div { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 50% 70%, #F3D9A0 0 34%, #2E9CD6 35%);
+  display: flex; align-items: center; justify-content: center; font-size: 64px; }
+#profile .stats { display: flex; gap: 60px; margin: 26px 0 26px; }
+#profile .stats div { text-align: left; }
+#profile .stats b { display: block; font-weight: 900; font-size: 50px; }
+#profile .stats span { font-weight: 800; font-size: 28px; color: #9AA0B4; }
+#profile .btns { display: flex; gap: 22px; }
+#profile .btn { flex: 1; text-align: center; font-weight: 900; font-size: 40px; padding: 22px 0 24px; border-radius: 16px; background: #2A2A35; }
+#profile .btn.follow { background: #FE2C55; }
+#profile .btn.follow.done { background: #2A2A35; }
+#profile .foot { text-align: center; font-weight: 900; font-size: 36px; color: var(--yellow); margin-top: 22px; }
+#hand { left: 0; top: 0; font-size: 130px; transform-origin: 30% 10%; }
+
+/* Kommentar */
+#comment { left: 540px; top: 290px; width: 880px; background: #fff; border-radius: 30px; padding: 26px 30px 30px; display: flex; gap: 24px;
+  font-family: 'Nunito', 'Noto Color Emoji'; color: #161823; box-shadow: 0 0 0 6px var(--navy), 0 14px 0 6px rgba(20,20,50,.3); }
+#comment .av { flex: 0 0 96px; height: 96px; border-radius: 50%; background: var(--sea); color: #fff; font-weight: 900; font-size: 52px;
+  display: flex; align-items: center; justify-content: center; }
+#comment .meta { font-weight: 800; font-size: 30px; color: #8A8B91; }
+#comment .meta b { color: #161823; font-weight: 900; }
+#comment .meta i { font-style: normal; background: var(--red); color: #fff; font-weight: 900; font-size: 24px; border-radius: 8px; padding: 2px 10px; margin-left: 8px; }
+#comment .txt { font-weight: 900; font-size: 46px; margin-top: 6px; }
+#comment .heart { margin-left: auto; font-size: 46px; align-self: center; color: #8A8B91; }
+
+/* Reisepass */
+#passport { left: 540px; top: 250px; width: 620px; height: 760px; border-radius: 28px; background: linear-gradient(160deg, #8C2546, #5E1530);
+  border: 8px solid var(--navy); box-shadow: 0 18px 0 rgba(10,10,30,.35), inset 0 0 0 14px rgba(255,214,120,.25);
+  color: #F6CF6B; font-family: 'Fredoka', sans-serif; text-align: center; padding-top: 52px; }
+#passport .l1 { font-weight: 600; font-size: 40px; letter-spacing: 10px; }
+#passport .l2 { font-weight: 700; font-size: 92px; line-height: 1; letter-spacing: 3px; margin-top: 4px; }
+#passport svg { margin: 26px auto 12px; display: block; }
+#passport .l3 { font-weight: 700; font-size: 48px; letter-spacing: 2px; }
+#passport .l4 { font-family: 'Nunito'; font-weight: 900; font-size: 34px; color: #FCE7B0; margin-top: 18px; }
+#passport .l5 { font-family: 'Nunito'; font-weight: 800; font-size: 28px; color: #E7B9C6; margin-top: 8px; }
+#pstamp { left: 790px; top: 850px; font-family: 'Fredoka', sans-serif; font-weight: 700; color: #E8243B; font-size: 58px; line-height: 1.05;
+  border: 10px solid #E8243B; border-radius: 18px; padding: 10px 26px 14px; text-align: center; background: rgba(255,255,255,.88);
+  mix-blend-mode: normal; }
+
+/* Einwohnerliste */
+#list { left: 540px; top: 250px; width: 680px; height: 820px; background: #B9814A; border: 8px solid var(--navy); border-radius: 30px;
+  box-shadow: 0 18px 0 rgba(10,10,30,.35); padding: 70px 34px 34px; }
+#list .clip { position: absolute; left: 50%; top: -34px; transform: translateX(-50%); width: 230px; height: 80px; background: #C9CED8;
+  border: 7px solid var(--navy); border-radius: 18px; }
+#list .paper { background: #FFFDF6; height: 100%; border-radius: 14px; padding: 34px 40px; font-family: 'Nunito', 'Noto Color Emoji'; color: var(--navy);
+  border: 5px solid var(--navy); }
+#list h3 { margin: 0 0 18px; font-family: 'Fredoka'; font-weight: 700; font-size: 58px; text-align: center; letter-spacing: 1px; }
+#list .row { position: relative; font-weight: 900; font-size: 56px; padding: 14px 10px; border-bottom: 4px dashed #C7CBD6; }
+#list .row.first { font-size: 76px; }
+#list .mark { position: absolute; left: 0; top: 16px; height: 76px; background: #FFE066; border-radius: 10px; z-index: 0; }
+#list .row span { position: relative; z-index: 1; }
+#list .row.empty { color: #B7BCCB; }
+
+/* Kasse */
+#kasse { left: 540px; top: 260px; min-width: 420px; text-align: center; background: var(--green); border: 8px solid var(--navy); border-radius: 30px;
+  color: #fff; box-shadow: 0 14px 0 rgba(20,20,50,.3); padding: 12px 40px 22px; font-family: 'Nunito'; }
+#kasse small { display: block; font-weight: 900; font-size: 38px; letter-spacing: 4px; color: #D9FFE5; }
+#kasse b { display: block; font-weight: 900; font-size: 150px; line-height: 1; }
+
+/* Abstimmungskarten */
+.card { top: 250px; width: 280px; height: 380px; background: #fff; border: 7px solid var(--navy); border-radius: 30px;
+  box-shadow: 0 14px 0 rgba(20,20,50,.3); text-align: center; font-family: 'Nunito', 'Noto Color Emoji'; color: var(--navy);
+  padding-top: 18px; }
+.card .letter { width: 76px; height: 76px; border-radius: 50%; margin: 0 auto; border: 6px solid var(--navy); font-family: 'Fredoka';
+  font-weight: 700; font-size: 48px; line-height: 62px; color: var(--navy); }
+.card svg { display: block; margin: 8px auto 0; }
+.card .lab { font-weight: 900; font-size: 34px; line-height: 1.05; margin-top: 6px; height: 74px; display: flex; align-items: center; justify-content: center; }
+.card .likes { font-weight: 900; font-size: 38px; color: var(--red); margin-top: 6px; }
+#votePill { left: 540px; top: 670px; }
+
+.floater { left: 0; top: 0; white-space: nowrap; }
+.bubble { font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 38px; background: #fff; color: var(--navy);
+  padding: 14px 24px 16px; border-radius: 26px; border: 5px solid var(--navy); box-shadow: 0 7px 0 rgba(20,20,50,.25); }
+.heartf { font-family: 'Noto Color Emoji'; font-size: 84px; }

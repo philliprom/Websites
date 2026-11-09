@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Fietland – Tag 1</title>
+<link rel="stylesheet" href="node_modules/@fontsource/nunito/800.css">
+<link rel="stylesheet" href="node_modules/@fontsource/nunito/900.css">
+<link rel="stylesheet" href="node_modules/@fontsource/fredoka/600.css">
+<link rel="stylesheet" href="node_modules/@fontsource/fredoka/700.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <svg id="world" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"><g id="cam"></g></svg>
+  <svg id="globe" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="vignette" class="layer"></div>
+  <div id="dim" class="layer"></div>
+  <svg id="fx" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="ui" class="layer"></div>
+  <svg id="caps" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="cap1" x="540" y="1390" text-anchor="middle"></text>
+    <text id="cap2" x="540" y="1480" text-anchor="middle"></text>
+  </svg>
+</div>
+<script src="build/timeline.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>
