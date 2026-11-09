@@ -522,6 +522,9 @@
     for (const st of document.querySelectorAll('.star')) st.setAttribute('opacity', 0.35 + 0.65 * Math.abs(Math.sin(t * 1.5 + +st.dataset.p)));
   }
 
+  // Figuren-Grafik für Profilbild & Co. (engine/render_avatar.cjs)
+  window.ART = { kalleMarkup, bertaMarkup, ballMarkup, OUT };
+
   Engine.start({
     world, alt, shots, drawWorld, drawAlt,
     baseState: base,
