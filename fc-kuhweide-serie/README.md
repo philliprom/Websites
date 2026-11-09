@@ -100,10 +100,10 @@ Fan Nr. 1 @juliusc1904.
 
 ## Stand Tag 2 (vorbereitet am 09.11. abends)
 
-Entwurf komplett gebaut in [`../fc-kuhweide-tag2/`](../fc-kuhweide-tag2/README.md): Video 29,9 s, Titelbild, Beschreibung,
+Entwurf komplett gebaut in [`../fc-kuhweide-tag2/`](../fc-kuhweide-tag2/README.md). Neue, dichtere Fassung vom 09.11. ca. 23 Uhr: Video 35 s, Titelbild, Beschreibung,
 Stimme B. Datenstand: Kommentare bis 09.11. ca. 17 Uhr, 36 Fans, Netz 89 € → Kasse 411 €, 15 Spieler-Wünsche.
 Gesprochene Sätze liegen im Satz-Cache (`fc-kuhweide-tag2/tts_cache/`). Am Morgen werden nur geänderte Sätze neu gesprochen,
-meist nur Satz 1 (Spielerzahl) und Satz 4 (Fanzahl). Ist der Container neu: `bash engine/setup_voxcpm.sh <ziel>`.
+meist nur „Heute: X!“ (Fanzahl) und „X von euch wollen spielen“. Ist der Container neu: `bash engine/setup_voxcpm.sh <ziel>`.
 
 ## Vor dem Posten von Tag 2 erledigen
 
@@ -184,6 +184,32 @@ Konto seit 03.11., 10.479 Follower, 7 Videos. Bio: „1 Follower = 1 Kamerad �
 - **Mehrere Posts pro Tag, solange es läuft** (am 08.11. drei Videos).
 - **Steigerung und Cliffhanger:** Angriff, Funkspruch, Gefangener. Dazu eine Follow-Aufforderung in der Geschichte („Er hat jedes
   Video gesehen. Aber er ist nie gefolgt.“). Für uns: jede Folge mit einem Teaser enden lassen, z. B. „Morgen meldet sich FC Asche …“.
+
+## Weiteres Beispiel: FC Kaiser 09 (@fckaiser09), Stand 09.11. abends
+
+4.317 Follower, 5 Videos (03.–08.11.). Lange Videos (56–104 s), Draufsicht im Pixel-Look, ganze Spiele mit Anzeigetafel.
+
+| Datum | Aufrufe | Likes | Kommentare |
+|---|---|---|---|
+| 03.11. | 5.229 | 295 | 33 |
+| 04.11. | 58.700 | 2.463 | 349 |
+| 05.11. | 57.600 | 3.243 | 338 |
+| 06.11. | 7.731 | 518 | 127 |
+| 08.11. | 3.636 | 209 | 44 |
+
+## Was die erfolgreichen Videos gemeinsam haben (Bildvergleich am 09.11.)
+
+- **2D oder 3D ist nicht entscheidend.** Rekrut Schulz ist flach gezeichnet wie wir und hatte 82.000 Aufrufe.
+- **Action mit Spannung:** Spiel mit Anzeigetafel, Spielminute, „TOOOR!“, Ausgleich in der 87. Minute (FC Kaiser, FC Asche).
+- **Kommentar → Umsetzung im Bild:** Der echte Kommentar erscheint als Karte („Will Ultra werden!“), danach sieht man das
+  Ergebnis. FC Asche macht das ebenfalls mit echten Usern (Fanshop-Verkäufer, Ultra mit Trompete).
+- **Fortschritt in Zahlen gleich zu Beginn:** „Gestern: 0 Fans → Heute: 90“. Dazu Kassenstand und Stadionausbau.
+- **Viele Schauplätze und kurze Etiketten im Klebeband-Stil.** Dazu Stimmung durch Regen und Flutlicht.
+- **Dichte schlägt Kürze:** Erfolgreiche Folgen sind 40–95 s lang, aber jede Sekunde passiert etwas.
+
+**Umgesetzt in Tag 2 (neue Fassung):** Haken „Gestern 0 → Heute X Fans“, echte Kommentar-Karten mit sichtbarer Umsetzung
+(Netz, Ultra-Block), Elfmeter-Test als Action, Taktiktafel, Dauerkarte, Abstimmung BERTA/FLO, Cliffhanger „Post vom größten
+Kreisligaverein der Welt“, Wisch-Übergänge zwischen den Schnitten.
 
 ## Regeln für die Serie
 

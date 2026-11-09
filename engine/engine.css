@@ -110,6 +110,7 @@ html, body { margin: 0; padding: 0; background: #000; }
 #big { left: 540px; top: 330px; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 260px; line-height: 1; color: #fff;
   -webkit-text-stroke: 14px var(--navy); paint-order: stroke fill; text-shadow: 0 16px 0 rgba(20,20,50,.3); white-space: nowrap; }
 #big.red { color: var(--red); }
+#big.mid { font-size: 168px; -webkit-text-stroke: 12px var(--navy); }
 
 /* Kasse */
 #kasse { left: 540px; top: 260px; min-width: 420px; text-align: center; background: var(--green); border: 8px solid var(--navy); border-radius: 30px;
@@ -132,3 +133,25 @@ html, body { margin: 0; padding: 0; background: #000; }
 .bubble { font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 38px; background: #fff; color: var(--navy);
   padding: 14px 24px 16px; border-radius: 26px; border: 5px solid var(--navy); box-shadow: 0 7px 0 rgba(20,20,50,.25); }
 .heartf { font-family: 'Noto Color Emoji'; font-size: 84px; }
+
+/* Großer Zähler (z. B. GESTERN / HEUTE · FANS) */
+#counter { left: 540px; top: 300px; min-width: 520px; text-align: center; background: #fff; border: 8px solid var(--navy); border-radius: 34px;
+  box-shadow: 0 16px 0 rgba(20,20,50,.3); padding: 18px 40px 16px; color: var(--navy); font-family: 'Nunito'; }
+#counter .lbl { display: inline-block; font-weight: 900; font-size: 40px; letter-spacing: 4px; color: #fff; background: #8A90A6;
+  border-radius: 14px; padding: 4px 22px 8px; }
+#counter.today .lbl { background: var(--green); }
+#counter .unit { font-weight: 900; font-size: 44px; letter-spacing: 6px; margin-top: 8px; }
+#counter .val { font-family: 'Fredoka'; font-weight: 700; font-size: 210px; line-height: .95; }
+#counter.today .val { color: var(--green); }
+#counter.zero .val { color: var(--red); }
+
+/* Kommentar-Karten (echte Kommentare, die umgesetzt werden) */
+.ccard { width: 820px; background: #fff; border-radius: 28px; padding: 18px 22px 20px; display: flex; gap: 18px; align-items: center;
+  box-shadow: 0 0 0 5px var(--navy), 0 12px 0 5px rgba(20,20,50,.3); font-family: 'Nunito', 'Noto Color Emoji'; color: #161823; transform-origin: 30% 50%; }
+.ccard .av { flex: 0 0 74px; height: 74px; border-radius: 50%; color: #fff; font-weight: 900; font-size: 38px; display: flex; align-items: center; justify-content: center; }
+.ccard .body { flex: 1; min-width: 0; }
+.ccard .who { font-weight: 800; font-size: 26px; color: #8A8B91; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ccard .who b { color: #161823; font-weight: 900; }
+.ccard .txt { font-weight: 900; font-size: 38px; line-height: 1.15; }
+.ccard .heart { font-size: 34px; color: #8A8B91; text-align: center; font-weight: 900; line-height: 1; }
+.ccard .heart small { display: block; font-size: 20px; }

@@ -162,5 +162,62 @@
       "handle": "@flo49472",
       "spielt": true
     }
-  ]
+  ],
+  "ultra": {
+    "name": "Joel",
+    "handle": "@joelski74"
+  },
+  "neuner": {
+    "handle": "@ljl1407",
+    "num": "9"
+  },
+  "kommentare": {
+    "netz": {
+      "handle": "@luca_mgd15",
+      "text": "… würde vor schlagen netz fürs Tor zu kaufen",
+      "color": "#2DBE60"
+    },
+    "ultra": {
+      "handle": "@joelski74",
+      "text": "Kann ich Ultra",
+      "color": "#8C5FD9"
+    },
+    "tor": {
+      "handle": "@flo49472",
+      "text": "darf ich Torwart sein bitte",
+      "color": "#FF8A2B"
+    },
+    "burst": [
+      {
+        "handle": "@mali1650",
+        "text": "Kann ich bitte Abwehr sein",
+        "color": "#5CC8FF"
+      },
+      {
+        "handle": "@ljl1407",
+        "text": "kann ich auf die 9? Ich Schieß uns zum Aufstieg",
+        "color": "#E23A4E"
+      },
+      {
+        "handle": "@elyassopicasso",
+        "text": "kann ich linker flügel nr 10 sein?",
+        "color": "#FFC83A"
+      },
+      {
+        "handle": "@georggruber1",
+        "text": "kann ich 6er werden??",
+        "color": "#2DBE60"
+      },
+      {
+        "handle": "@l.e.o.46",
+        "text": "Kann ich IV sein?",
+        "color": "#8C5FD9"
+      },
+      {
+        "handle": "YG 🇹🇷",
+        "text": "Stürmer das ist meine Karte",
+        "color": "#FF8A2B"
+      }
+    ]
+  }
 }

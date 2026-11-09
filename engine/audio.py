@@ -411,6 +411,16 @@ def sfx_crickets():
             y[st: st + len(b)] += b
     return y
 
+
+def sfx_drum():
+    y = np.zeros(int(0.7 * SR))
+    for st, f0, amp in [(0.0, 150, 0.9), (0.18, 120, 0.8), (0.36, 150, 1.0)]:
+        sw_, t = sweep(f0, f0 * 0.55, 0.22)
+        hit = sw_ * np.exp(-t * 14) * amp * 0.6 + onepole_lp(rs.randn(len(t)), 900) * np.exp(-t * 40) * amp * 0.5
+        i = int(st * SR)
+        y[i: i + len(hit)] += hit
+    return y
+
 SFX = {name[4:]: fn for name, fn in globals().items() if name.startswith("sfx_")}
 SFX_GAIN = {"whoosh": 0.55, "waves": 0.9, "horn": 1.0, "confetti": 0.8, "cheer": 1.0, "rocket": 0.9}
 

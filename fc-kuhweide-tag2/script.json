@@ -1,7 +1,7 @@
 {
   "title": "FC Kuhweide – Tag 2: Der Kader",
   "voice": "voxcpm2",
-  "lead_in": 0.15,
+  "lead_in": 0.1,
   "tail": 1.0,
   "default_gap": 0.1,
   "tts": {
@@ -62,10 +62,9 @@
   "segments": [
     {
       "id": "s01",
-      "say": "15 von euch wollen bei uns spielen.",
+      "say": "Gestern: null Fans.",
       "caps": [
-        "^15 VON EUCH",
-        "WOLLEN BEI UNS ^SPIELEN."
+        "GESTERN: !0 FANS."
       ],
       "gap": 0.0,
       "sfx": [
@@ -75,82 +74,73 @@
         ],
         [
           "pop",
-          0.1
-        ]
-      ]
-    },
-    {
-      "id": "s02",
-      "say": "Ist dein Name dabei?",
-      "caps": [
-        "IST ^DEIN ^NAME DABEI?"
-      ],
-      "gap": 0.08,
-      "sfx": [
-        [
-          "blip",
           0.05
         ]
       ]
     },
     {
-      "id": "s03",
-      "say": "Aber erst: Berta gibt ihr Tor nicht her.",
+      "id": "s02",
+      "say": "Heute: 36!",
       "caps": [
-        "ABER ERST:",
-        "^BERTA GIBT IHR",
-        "TOR !NICHT HER."
+        "HEUTE: ^36!"
       ],
-      "gap": 0.1,
+      "gap": 0.05,
       "sfx": [
-        [
-          "whoosh",
-          -0.05
-        ],
-        [
-          "pop",
-          0.1
-        ],
-        [
-          "moo",
-          "e-0.2"
-        ]
-      ]
-    },
-    {
-      "id": "s04",
-      "say": "36 Fans – und immer noch eine Bierbank.",
-      "caps": [
-        "^36 ^FANS –",
-        "UND IMMER NOCH",
-        "EINE !BIERBANK."
-      ],
-      "gap": 0.1,
-      "sfx": [
-        [
-          "whoosh",
-          -0.05
-        ],
         [
           "cheer",
           0.0
         ],
         [
-          "coo",
-          "e-0.6"
+          "confetti",
+          0.1
         ],
         [
           "flap",
-          "e-0.5"
+          "e-0.1"
         ]
       ]
     },
     {
-      "id": "s05",
-      "say": "Abgestimmt hat übrigens nur Luca.",
+      "id": "s03",
+      "say": "Und 15 von euch wollen bei uns spielen.",
       "caps": [
-        "ABGESTIMMT HAT",
-        "ÜBRIGENS NUR ^LUCA."
+        "UND ^15 VON EUCH",
+        "WOLLEN BEI UNS ^SPIELEN."
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          0.3
+        ],
+        [
+          "blip",
+          0.55
+        ],
+        [
+          "blip",
+          0.8
+        ],
+        [
+          "blip",
+          1.05
+        ],
+        [
+          "blip",
+          1.3
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Luca wollte ein Netz.",
+      "caps": [
+        "^LUCA WOLLTE",
+        "EIN ^NETZ."
       ],
       "gap": 0.15,
       "sfx": [
@@ -159,41 +149,159 @@
           -0.05
         ],
         [
+          "blip",
+          0.05
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Gekauft!",
+      "caps": [
+        "^GEKAUFT!"
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
           "pop",
-          0.1
+          0.0
+        ],
+        [
+          "kaching",
+          0.15
         ]
       ]
     },
     {
       "id": "s06",
-      "say": "Also: Netz gekauft!",
+      "say": "Joel wollte Ultra werden.",
       "caps": [
-        "ALSO: ^NETZ ^GEKAUFT!"
+        "^JOEL WOLLTE",
+        "^ULTRA WERDEN."
       ],
-      "gap": 0.08,
+      "gap": 0.15,
       "sfx": [
         [
           "whoosh",
           -0.05
         ],
         [
-          "pop",
-          0.15
-        ],
-        [
-          "kaching",
-          0.5
+          "blip",
+          0.05
         ]
       ]
     },
     {
       "id": "s07",
+      "say": "Bitte sehr: unser Ultra-Block.",
+      "caps": [
+        "BITTE SEHR:",
+        "UNSER ^ULTRA-BLOCK."
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "drum",
+          0.05
+        ],
+        [
+          "drum",
+          "e-0.5"
+        ],
+        [
+          "cheer",
+          "e-0.4"
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Und Flo will ins Tor.",
+      "caps": [
+        "UND ^FLO",
+        "WILL INS ^TOR."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ]
+      ]
+    },
+    {
+      "id": "s09",
+      "say": "Aber Berta gibt ihren Platz nicht her.",
+      "caps": [
+        "ABER ^BERTA GIBT",
+        "IHREN PLATZ",
+        "!NICHT HER."
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "moo",
+          "e-0.3"
+        ]
+      ]
+    },
+    {
+      "id": "s10",
+      "say": "Also: Elfmeter-Test! Unser Neuner schießt …",
+      "caps": [
+        "ALSO:",
+        "^ELFMETER-TEST!",
+        "UNSER ^NEUNER",
+        "SCHIESST …"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "whistle",
+          0.05
+        ],
+        [
+          "kick_ball",
+          "e-0.05"
+        ]
+      ]
+    },
+    {
+      "id": "s11",
+      "say": "… und Berta hält. Mal wieder aus Versehen.",
+      "caps": [
+        "… UND BERTA ^HÄLT.",
+        "MAL WIEDER",
+        "AUS !VERSEHEN."
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "boing",
+          0.05
+        ],
+        [
+          "cheer",
+          0.3
+        ]
+      ]
+    },
+    {
+      "id": "s12",
       "say": "Und hier ist euer Kader!",
       "caps": [
         "UND HIER IST",
         "EUER ^KADER!"
       ],
-      "gap": 0.12,
+      "gap": 0.15,
       "sfx": [
         [
           "whoosh",
@@ -206,12 +314,13 @@
       ]
     },
     {
-      "id": "s08",
-      "say": "Mit Sturm-Duo, zwei Co-Trainern und unserem ersten Ultra.",
+      "id": "s13",
+      "say": "Mit Sturm-Duo, zwei Co-Trainern und einem Duell rechts hinten.",
       "caps": [
         "MIT ^STURM-DUO,",
         "ZWEI ^CO-TRAINERN",
-        "UND UNSEREM ERSTEN ^ULTRA."
+        "UND EINEM !DUELL",
+        "RECHTS HINTEN."
       ],
       "gap": 0.05,
       "sfx": [
@@ -221,27 +330,7 @@
         ],
         [
           "pop",
-          "e-1.4"
-        ],
-        [
-          "pop",
-          "e-0.6"
-        ]
-      ]
-    },
-    {
-      "id": "s09",
-      "say": "Rechts hinten gibt's ein Duell: Levin gegen Bruno.",
-      "caps": [
-        "RECHTS HINTEN",
-        "GIBT'S EIN !DUELL:",
-        "^LEVIN GEGEN BRUNO."
-      ],
-      "gap": 0.1,
-      "sfx": [
-        [
-          "pop",
-          0.1
+          "e-2.3"
         ],
         [
           "boing",
@@ -250,14 +339,14 @@
       ]
     },
     {
-      "id": "s10",
-      "say": "Und die Dauerkarte Nummer eins geht an: Julius!",
+      "id": "s14",
+      "say": "Die Dauerkarte Nummer eins geht an: Julius!",
       "caps": [
-        "UND DIE DAUERKARTE",
+        "DIE DAUERKARTE",
         "NR. 1 GEHT AN:",
         "^JULIUS!"
       ],
-      "gap": 0.12,
+      "gap": 0.15,
       "sfx": [
         [
           "whoosh",
@@ -278,12 +367,12 @@
       ]
     },
     {
-      "id": "s11",
-      "say": "Bleibt nur eine Frage: Wer geht ins Tor?",
+      "id": "s15",
+      "say": "Und jetzt ihr: Wer geht ins Tor? Berta oder Flo?",
       "caps": [
-        "BLEIBT NUR",
-        "EINE FRAGE:",
-        "WER GEHT INS ~TOR?"
+        "UND JETZT IHR:",
+        "WER GEHT INS ~TOR?",
+        "^BERTA ODER ^FLO?"
       ],
       "gap": 0.15,
       "sfx": [
@@ -292,56 +381,60 @@
           -0.05
         ],
         [
-          "pop",
-          0.1
+          "card",
+          "e-1.5"
+        ],
+        [
+          "card",
+          "e-0.8"
         ]
       ]
     },
     {
-      "id": "s12",
-      "say": "Berta oder Flo? Schreibt's in die Kommentare!",
+      "id": "s16",
+      "say": "Schreibt's in die Kommentare!",
       "caps": [
-        "^BERTA ODER ^FLO?",
         "SCHREIBT'S IN DIE",
         "^KOMMENTARE!"
       ],
-      "gap": 0.1,
+      "gap": 0.05,
       "sfx": [
         [
-          "card",
+          "pop",
           0.05
         ],
         [
-          "card",
-          0.45
-        ],
-        [
-          "pop",
-          "e-1.0"
+          "hearts",
+          0.2
         ]
       ]
     },
     {
-      "id": "s13",
-      "say": "Und markiert den Kumpel, der bei uns auf die Bank muss.",
+      "id": "s17",
+      "say": "Und morgen kommt Post. Vom größten Kreisligaverein der Welt.",
       "caps": [
-        "UND MARKIERT DEN",
-        "^KUMPEL, DER BEI UNS",
-        "AUF DIE ^BANK MUSS."
+        "UND MORGEN",
+        "KOMMT ^POST.",
+        "VOM !GRÖSSTEN",
+        "KREISLIGAVEREIN DER WELT."
       ],
-      "gap": 0.12,
+      "gap": 0.2,
       "sfx": [
         [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.6
+        ],
+        [
           "pop",
-          0.1
+          0.65
         ],
         [
-          "hearts",
-          0.4
-        ],
-        [
-          "whistle",
-          "e-0.1"
+          "riser",
+          "e-1.2"
         ]
       ]
     }

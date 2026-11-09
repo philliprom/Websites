@@ -1,8 +1,16 @@
 # FC Kuhweide – Tag 2: Der Kader
 
-Folge 2 der Serie (siehe [`../fc-kuhweide-serie/README.md`](../fc-kuhweide-serie/README.md)). Ziel: Die Leute aus den Tag-1-Kommentaren
-landen auf der Taktiktafel. Dazu kommen das Torwart-Duell Berta gegen Flo und eine Aufforderung zum Teilen. Nach den Studio-Daten
-von Tag 1 ist das Video kürzer (~30 s) und beginnt sofort mit dem Haken („15 von euch wollen bei uns spielen. Ist dein Name dabei?“).
+Folge 2 der Serie (siehe [`../fc-kuhweide-serie/README.md`](../fc-kuhweide-serie/README.md)). Neue Fassung nach dem Vergleich mit
+FC Asche, FC Kaiser 09 und Rekrut Schulz (ca. 35 s, dicht erzählt):
+
+1. Haken: „Gestern: 0 Fans. Heute: X!“, die Bank füllt sich, Konfetti
+2. Echte Kommentare fliegen als Karten ins Bild („X von euch wollen spielen“)
+3. Kommentar wird umgesetzt: Luca wollte ein Netz → gekauft (Kasse 500 → 411 €). Joel wollte Ultra werden → Ultra-Block
+   mit Megafon und Trommel.
+4. Flo will ins Tor, Berta weigert sich → Elfmeter-Test: der Neuner schießt, Berta hält aus Versehen
+5. Taktiktafel mit dem Kader, Dauerkarte Nr. 001 für Julius
+6. Abstimmung „BERTA oder FLO?“ und die Aufforderung, Kumpels zu markieren
+7. Cliffhanger: „Morgen kommt Post. Vom größten Kreisligaverein der Welt.“
 
 **Ausgabe:** `out/fc-kuhweide_tag2.mp4` · `out/titelbild.png` · `out/beschreibung.txt`
 

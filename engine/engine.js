@@ -147,6 +147,9 @@ window.Engine = (() => {
     <div id="big" class="ui"></div>
     ${cards}
     <div id="votePill" class="ui chip red">💬 STIMM IN DEN KOMMENTAREN AB!</div>
+    <div id="counter" class="ui"><div class="lbl" id="counterLbl"></div><div class="unit" id="counterUnit"></div><div class="val" id="counterVal">0</div></div>
+    <div id="ccards">${(C.ccards || []).map((c, i) => `<div class="ui ccard" id="cc${i}"><div class="av" style="background:${c.color || '#5CC8FF'}">${(c.handle || '?').replace('@', '').charAt(0).toUpperCase()}</div>
+      <div class="body"><div class="who"><b>${c.handle}</b> · gerade eben</div><div class="txt">${c.text}</div></div><div class="heart">♡<small>${c.likes || ''}</small></div></div>`).join('')}</div>
     <div id="floaters"></div>`;
   }
 
@@ -270,6 +273,27 @@ window.Engine = (() => {
         $(`likes${i}`).textContent = fmt((U.likes || [0, 0, 0])[i]);
       });
       uiPop($('votePill'), t, U.vote, { rot: -1.5 });
+      const cn = $('counter');
+      if (U.counter) {
+        uiPop(cn, t, U.counter.t0, { rot: U.counter.rot || -2 });
+        cn.className = `ui ${U.counter.cls || ''}`;
+        $('counterLbl').textContent = U.counter.label || '';
+        $('counterUnit').textContent = U.counter.unit || '';
+        $('counterVal').textContent = fmt(U.counter.value);
+        cn.style.top = (U.counter.top || 300) + 'px';
+      } else cn.style.display = 'none';
+      (P.ui.ccards || []).forEach((c, i) => {
+        const el = $(`cc${i}`);
+        const st = (U.ccards || []).find((x) => x.i === i);
+        if (!st || t < st.t0) { el.style.display = 'none'; return; }
+        const k = popS(t, st.t0, 0.28);
+        const fly = 1 - E.out(prog(t, st.t0, 0.3));
+        el.style.display = '';
+        el.style.left = `${st.x ?? 130}px`;
+        el.style.top = `${(st.y ?? 300) + fly * 260}px`;
+        el.style.opacity = clamp(k * 3);
+        el.style.transform = `rotate(${st.rot || 0}deg) scale(${Math.max(0.001, k * (st.s || 1))})`;
+      });
       floaters.forEach((el, i) => {
         const t0 = S.floatBubbles ? S.floatBubbles[i] : null;
         if (t0 === null || t0 === undefined || t < t0) { el.style.display = 'none'; return; }
@@ -331,6 +355,13 @@ window.Engine = (() => {
         const sh = S.shake ? [Math.sin(t * 90) * 14 * S.shake, Math.cos(t * 77) * 10 * S.shake] : [0, 0];
         setT($('cam'), `translate(${540 + sh[0]},${960 + sh[1]}) scale(${z}) translate(${-cx},${-cy})`);
         P.drawWorld(S, t);
+      }
+      if (P.whip) {
+        const k = seg.id !== SEGS[0].id && !shotId ? 1 - clamp((t - seg.start) / 0.14) : 0;
+        const dir = (SEGS.indexOf(seg) % 2) ? -1 : 1;
+        const tr = k > 0 ? `translateX(${dir * k * k * 140}px)` : '';
+        $(alt ? 'alt' : 'world').style.transform = tr;
+        $(alt ? 'alt' : 'world').style.filter = k > 0.02 ? `blur(${(k * 7).toFixed(1)}px)` : '';
       }
       $('dim').style.opacity = S.dim;
       drawFx(S, t);
