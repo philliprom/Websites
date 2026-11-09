@@ -1,0 +1,349 @@
+{
+  "title": "FC Kuhweide – Tag 2: Der Kader",
+  "voice": "voxcpm2",
+  "lead_in": 0.15,
+  "tail": 1.0,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "voxcpm",
+    "voice": "../fc-kuhweide-tag1/voice/kalle_ref.wav",
+    "voice_text": "../fc-kuhweide-tag1/voice/kalle_ref.txt",
+    "cfg": 2.0,
+    "steps": 10
+  },
+  "music": {
+    "bpm": 126,
+    "inst": "pluck",
+    "clap": 1.7,
+    "ambience": 0.2,
+    "chords": [
+      [
+        67,
+        71,
+        74,
+        79
+      ],
+      [
+        66,
+        69,
+        74,
+        78
+      ],
+      [
+        64,
+        67,
+        71,
+        76
+      ],
+      [
+        64,
+        67,
+        72,
+        76
+      ]
+    ],
+    "roots": [
+      43,
+      50,
+      40,
+      48
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      1,
+      2
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "15 von euch wollen bei uns spielen.",
+      "caps": [
+        "^15 VON EUCH",
+        "WOLLEN BEI UNS ^SPIELEN."
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "whistle",
+          0.0
+        ],
+        [
+          "pop",
+          0.1
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Ist dein Name dabei?",
+      "caps": [
+        "IST ^DEIN ^NAME DABEI?"
+      ],
+      "gap": 0.08,
+      "sfx": [
+        [
+          "blip",
+          0.05
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Aber erst: Berta gibt ihr Tor nicht her.",
+      "caps": [
+        "ABER ERST:",
+        "^BERTA GIBT IHR",
+        "TOR !NICHT HER."
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.1
+        ],
+        [
+          "moo",
+          "e-0.2"
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "36 Fans – und immer noch eine Bierbank.",
+      "caps": [
+        "^36 ^FANS –",
+        "UND IMMER NOCH",
+        "EINE !BIERBANK."
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "cheer",
+          0.0
+        ],
+        [
+          "coo",
+          "e-0.6"
+        ],
+        [
+          "flap",
+          "e-0.5"
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Abgestimmt hat übrigens nur Luca.",
+      "caps": [
+        "ABGESTIMMT HAT",
+        "ÜBRIGENS NUR ^LUCA."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.1
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Also: Netz gekauft!",
+      "caps": [
+        "ALSO: ^NETZ ^GEKAUFT!"
+      ],
+      "gap": 0.08,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.15
+        ],
+        [
+          "kaching",
+          0.5
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Und hier ist euer Kader!",
+      "caps": [
+        "UND HIER IST",
+        "EUER ^KADER!"
+      ],
+      "gap": 0.12,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pins",
+          0.25
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Mit Sturm-Duo, zwei Co-Trainern und unserem ersten Ultra.",
+      "caps": [
+        "MIT ^STURM-DUO,",
+        "ZWEI ^CO-TRAINERN",
+        "UND UNSEREM ERSTEN ^ULTRA."
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "pop",
+          0.05
+        ],
+        [
+          "pop",
+          "e-1.4"
+        ],
+        [
+          "pop",
+          "e-0.6"
+        ]
+      ]
+    },
+    {
+      "id": "s09",
+      "say": "Rechts hinten gibt's ein Duell: Levin gegen Bruno.",
+      "caps": [
+        "RECHTS HINTEN",
+        "GIBT'S EIN !DUELL:",
+        "^LEVIN GEGEN BRUNO."
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "pop",
+          0.1
+        ],
+        [
+          "boing",
+          "e-1.0"
+        ]
+      ]
+    },
+    {
+      "id": "s10",
+      "say": "Und die Dauerkarte Nummer eins geht an: Julius!",
+      "caps": [
+        "UND DIE DAUERKARTE",
+        "NR. 1 GEHT AN:",
+        "^JULIUS!"
+      ],
+      "gap": 0.12,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.05
+        ],
+        [
+          "stamp",
+          "e-0.35"
+        ],
+        [
+          "confetti",
+          "e-0.3"
+        ]
+      ]
+    },
+    {
+      "id": "s11",
+      "say": "Bleibt nur eine Frage: Wer geht ins Tor?",
+      "caps": [
+        "BLEIBT NUR",
+        "EINE FRAGE:",
+        "WER GEHT INS ~TOR?"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.1
+        ]
+      ]
+    },
+    {
+      "id": "s12",
+      "say": "Berta oder Flo? Schreibt's in die Kommentare!",
+      "caps": [
+        "^BERTA ODER ^FLO?",
+        "SCHREIBT'S IN DIE",
+        "^KOMMENTARE!"
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "card",
+          0.05
+        ],
+        [
+          "card",
+          0.45
+        ],
+        [
+          "pop",
+          "e-1.0"
+        ]
+      ]
+    },
+    {
+      "id": "s13",
+      "say": "Und markiert den Kumpel, der bei uns auf die Bank muss.",
+      "caps": [
+        "UND MARKIERT DEN",
+        "^KUMPEL, DER BEI UNS",
+        "AUF DIE ^BANK MUSS."
+      ],
+      "gap": 0.12,
+      "sfx": [
+        [
+          "pop",
+          0.1
+        ],
+        [
+          "hearts",
+          0.4
+        ],
+        [
+          "whistle",
+          "e-0.1"
+        ]
+      ]
+    }
+  ]
+}

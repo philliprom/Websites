@@ -51,7 +51,7 @@ def sf_read(path):
 
 def sf_write(path, a, sr):
     import soundfile as sf
-    sf.write(path, a, sr, subtype="FLOAT")
+    sf.write(path, a, sr, subtype="PCM_24" if path.endswith(".flac") else "FLOAT")
 
 
 def build_voxcpm(script, model_dir):
@@ -82,7 +82,12 @@ def build_voxcpm(script, model_dir):
         style = segs[g[0]].get("style") or tts.get("style")
         best = None
         key = cache_key(text, style, ref, tts)
-        cpath = os.path.join(BUILD, "tts_cache", key + ".wav")
+        # Satz-Cache liegt im Projekt (wird mit eingecheckt), alte Ablage in build/ wird weiter gelesen
+        cpath = os.path.join(HERE, "tts_cache", key + ".flac")
+        old = os.path.join(BUILD, "tts_cache", key + ".wav")
+        if not os.path.exists(cpath) and os.path.exists(old):
+            os.makedirs(os.path.dirname(cpath), exist_ok=True)
+            sf_write(cpath, sf_read(old), sr)
         if os.path.exists(cpath):
             wav = sf_read(cpath)
             words, hyp = V.asr_words(wav, sr)

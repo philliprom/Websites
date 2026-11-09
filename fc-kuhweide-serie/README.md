@@ -98,7 +98,14 @@ Vorschlag Aufstellung (4-3-3): TW Berta (Duell offen) · LV @luca_mgd15 · IV @l
 RF @oskarfrings/@fokus.salkin. Bank/Staff: Co-Trainer @75sandro10, Co-Trainerin @lillyfriedrich242, Ultra @joelski74,
 Fan Nr. 1 @juliusc1904.
 
-## Vor dem Bauen von Tag 2 erledigen
+## Stand Tag 2 (vorbereitet am 09.11. abends)
+
+Entwurf komplett gebaut in [`../fc-kuhweide-tag2/`](../fc-kuhweide-tag2/README.md): Video 29,9 s, Titelbild, Beschreibung,
+Stimme B. Datenstand: Kommentare bis 09.11. ca. 17 Uhr, 36 Fans, Netz 89 € → Kasse 411 €, 15 Spieler-Wünsche.
+Gesprochene Sätze liegen im Satz-Cache (`fc-kuhweide-tag2/tts_cache/`). Am Morgen werden nur geänderte Sätze neu gesprochen,
+meist nur Satz 1 (Spielerzahl) und Satz 4 (Fanzahl). Ist der Container neu: `bash engine/setup_voxcpm.sh <ziel>`.
+
+## Vor dem Posten von Tag 2 erledigen
 
 - [ ] Kommentare neu abrufen: Nachzügler aufnehmen, YG-Benutzername klären, Antworten von Lilly („Deal?“) und Florian (Seite) prüfen
 - [ ] Aktuelle Follower-Zahl übernehmen

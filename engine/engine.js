@@ -125,8 +125,8 @@ window.Engine = (() => {
   function uiMarkup(C) {
     const cards = C.cards.map((c, i) => `<div id="card${i}" class="ui card"><div class="letter" style="background:${c.color}">${'ABC'[i]}</div>${c.icon}<div class="lab">${c.label}</div><div class="likes">❤️ <span id="likes${i}">0</span></div></div>`).join('');
     return `
-    <div id="title" class="ui badge">TAG 1</div>
-    <div id="badge" class="ui badge">TAG 1</div>
+    <div id="title" class="ui badge">${C.day || 'TAG 1'}</div>
+    <div id="badge" class="ui badge">${C.day || 'TAG 1'}</div>
     <div id="chip" class="ui chip"></div>
     <div id="chip2" class="ui chip"></div>
     <div id="zirp" class="ui chip green small">${C.zirp || 'zirp …'}</div>
@@ -206,7 +206,7 @@ window.Engine = (() => {
     function drawUI(S, t, seg) {
       const U = S.ui;
       uiPop($('title'), t, U.title, { d: 0.4 });
-      if (seg.id === 's01') $('badge').style.display = 'none';
+      if (seg.id === 's01' && U.title !== undefined && U.title !== null) $('badge').style.display = 'none';
       else { const b = $('badge'); b.style.display = ''; b.style.opacity = 1; b.style.transform = `rotate(-3deg) scale(${1 + 0.04 * Math.sin(t * 4)})`; }
       for (const key of ['chip', 'chip2']) {
         const el = $(key), c = U[key];
@@ -261,9 +261,10 @@ window.Engine = (() => {
         big.className = `ui ${U.big.cls || ''}`;
         uiPop(big, t, U.big.t0, { rot: U.big.rot || 0, d: 0.22 });
       } else big.style.display = 'none';
+      const nCards = U.cards ? U.cards.filter((x) => x !== null && x !== undefined).length : 3;
       [0, 1, 2].forEach((i) => {
         const el = $(`card${i}`);
-        el.style.left = `${100 + i * 300}px`;
+        el.style.left = nCards === 2 ? `${230 + i * 340}px` : `${100 + i * 300}px`;
         if (U.cards) uiPop(el, t, U.cards[i], { center: false, rot: [-4, 0, 4][i], extra: `translateY(${i === 1 ? -10 : 0}px)` });
         else el.style.display = 'none';
         $(`likes${i}`).textContent = fmt((U.likes || [0, 0, 0])[i]);

@@ -1,0 +1,166 @@
+{
+  "_hinweis": "Vor dem Bauen aktualisieren: Kommentare neu abrufen, Follower-Zahl, YG-Benutzername. Danach: python3 fc-kuhweide-tag2/make_script.py",
+  "fans": 36,
+  "kasse_start": 500,
+  "netz_preis": 89,
+  "netz_stimmen": 1,
+  "netz_waehler": "Luca",
+  "torwart_herausforderer": {
+    "name": "Flo",
+    "handle": "@flo49472"
+  },
+  "dauerkarte_001": {
+    "name": "Julius",
+    "handle": "@juliusc1904"
+  },
+  "rv_duell": {
+    "namen": "Levin gegen Bruno"
+  },
+  "aufstellung": [
+    {
+      "pos": "TW",
+      "x": 0.5,
+      "y": 0.8,
+      "num": "1",
+      "names": [
+        "Berta 🐄"
+      ],
+      "note": "verteidigt ihr Tor"
+    },
+    {
+      "pos": "LV",
+      "x": 0.13,
+      "y": 0.58,
+      "num": "3",
+      "names": [
+        "@luca_mgd15"
+      ]
+    },
+    {
+      "pos": "IV",
+      "x": 0.37,
+      "y": 0.62,
+      "num": "4",
+      "names": [
+        "@l.e.o.46"
+      ]
+    },
+    {
+      "pos": "IV",
+      "x": 0.63,
+      "y": 0.62,
+      "num": "5",
+      "names": [
+        "@mali1650"
+      ]
+    },
+    {
+      "pos": "RV",
+      "x": 0.87,
+      "y": 0.58,
+      "num": "2",
+      "names": [
+        "@l3vinln1",
+        "@bruno.0555"
+      ],
+      "duel": true
+    },
+    {
+      "pos": "LM",
+      "x": 0.18,
+      "y": 0.36,
+      "num": "11",
+      "names": [
+        "@florian.gnther26"
+      ]
+    },
+    {
+      "pos": "6er",
+      "x": 0.5,
+      "y": 0.43,
+      "num": "6",
+      "names": [
+        "@georggruber1"
+      ]
+    },
+    {
+      "pos": "ZM",
+      "x": 0.82,
+      "y": 0.36,
+      "num": "8",
+      "names": [
+        "@jxmie2skibidi"
+      ],
+      "note": "Joker"
+    },
+    {
+      "pos": "LF",
+      "x": 0.16,
+      "y": 0.16,
+      "num": "10",
+      "names": [
+        "@elyassopicasso"
+      ]
+    },
+    {
+      "pos": "ST",
+      "x": 0.5,
+      "y": 0.08,
+      "num": "9",
+      "names": [
+        "@ljl1407",
+        "YG 🇹🇷"
+      ],
+      "duo": true
+    },
+    {
+      "pos": "RF",
+      "x": 0.84,
+      "y": 0.16,
+      "num": "7",
+      "names": [
+        "@oskarfrings",
+        "@fokus.salkin"
+      ],
+      "duel": true
+    }
+  ],
+  "staff": [
+    {
+      "rolle": "Co-Trainer",
+      "emo": "📋",
+      "handle": "@75sandro10",
+      "spielt": false
+    },
+    {
+      "rolle": "Co-Trainerin",
+      "emo": "📋",
+      "handle": "@lillyfriedrich242",
+      "spielt": false
+    },
+    {
+      "rolle": "Allrounderin (Profi)",
+      "emo": "⭐",
+      "handle": "@sarahhauswirth123123",
+      "spielt": true
+    },
+    {
+      "rolle": "Erster Ultra",
+      "emo": "📣",
+      "handle": "@joelski74",
+      "spielt": false
+    },
+    {
+      "rolle": "Fan Nr. 1",
+      "emo": "🎟️",
+      "handle": "@juliusc1904",
+      "spielt": false
+    },
+    {
+      "rolle": "Torwart-Herausforderer",
+      "emo": "🧤",
+      "handle": "@flo49472",
+      "spielt": true
+    }
+  ]
+}

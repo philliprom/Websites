@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>FC Kuhweide – Tag 2: Der Kader</title>
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/nunito/800.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/nunito/900.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/600.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/700.css">
+<link rel="stylesheet" href="../engine/engine.css">
+<style>
+  :root {
+    --navy: #1F2A44; --badge-bg: #E23A4E; --badge-fg: #fff; --banner-bg: #E23A4E; --banner-fg: #fff; --banner-tail: #B52738;
+    --banner-size: 104px; --stage-bg: #9BD3F5; --avatar-bg: radial-gradient(circle at 50% 50%, #7CC456, #3E8E36);
+    --ticket-accent: #E23A4E; --ticket-kicker: #E23A4E;
+  }
+  #badge, #title { color: #fff; }
+  .card .likes { display: none; }
+  .card .lab { font-size: 46px; height: 120px; flex-direction: column; }
+  .card .lab small { font-size: 24px; color: #7A8199; margin-top: 6px; }
+  .card .icon { font-family: 'Noto Color Emoji'; font-size: 128px; line-height: 150px; height: 150px; }
+  /* Taktiktafel */
+  #board { position: absolute; left: 60px; top: 230px; width: 960px; height: 1080px; background: #1F2A44; border-radius: 36px;
+    border: 7px solid #fff; box-shadow: 0 0 0 6px #1F2A44, 0 18px 0 6px rgba(10,10,30,.35); transform-origin: 50% 40%; }
+  #board .head { position: absolute; left: 0; right: 0; top: 14px; text-align: center; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700;
+    font-size: 46px; color: #fff; letter-spacing: 2px; }
+  #board .pitch { position: absolute; left: 22px; top: 82px; width: 902px; height: 740px; border-radius: 18px; overflow: hidden;
+    background: repeating-linear-gradient(0deg, #6DB549 0 74px, #78C152 74px 148px); }
+  #board .pitch svg { position: absolute; inset: 0; }
+  #board .pos { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  #board .jersey { width: 70px; height: 70px; border-radius: 50%; background: #E23A4E; border: 5px solid #fff; box-shadow: 0 0 0 4px #1F2A44;
+    color: #fff; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 34px; display: flex; align-items: center; justify-content: center; }
+  #board .jersey.gk { background: #FFC83A; color: #1F2A44; font-size: 38px; }
+  #board .names { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  #board .nm { background: #fff; color: #1F2A44; font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 25px; padding: 3px 12px 5px;
+    border-radius: 12px; border: 3px solid #1F2A44; white-space: nowrap; }
+  #board .tagline { font-family: 'Nunito'; font-weight: 900; font-size: 20px; color: #fff; background: #E23A4E; border-radius: 8px; padding: 1px 8px 3px; }
+  #board .tagline.duo { background: #2DBE60; }
+  #board .tagline.joker { background: #8C5FD9; }
+  #board .staff { position: absolute; left: 22px; right: 22px; top: 836px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  #board .st { background: #2A3760; border-radius: 14px; padding: 8px 12px 10px; color: #fff; font-family: 'Nunito', 'Noto Color Emoji';
+    font-weight: 900; font-size: 22px; line-height: 1.15; }
+  #board .st b { display: block; font-size: 25px; color: #FFD43B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #board .glow { box-shadow: 0 0 0 5px #FFD43B, 0 0 30px 10px rgba(255, 212, 59, .8) !important; }
+  #board.blurred .nm, #board.blurred .st b { filter: blur(9px); }
+  #lupe { position: absolute; font-family: 'Noto Color Emoji'; font-size: 190px; left: 0; top: 0; transform-origin: 40% 40%; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="world" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"><g id="cam"></g></svg>
+  <svg id="alt" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="vignette" class="layer"></div>
+  <div id="dim" class="layer"></div>
+  <svg id="fx" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="ui" class="layer"></div>
+  <svg id="caps" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="cap1" x="540" y="1390" text-anchor="middle"></text>
+    <text id="cap2" x="540" y="1480" text-anchor="middle"></text>
+  </svg>
+</div>
+<script src="build/timeline.js"></script>
+<script src="../engine/engine.js"></script>
+<script src="kader.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>
