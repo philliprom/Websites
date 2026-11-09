@@ -2,7 +2,7 @@
 
 Idee 3 für das „Tag 1 / 1 Follower = 1 X / ihr entscheidet“-Format. Das Video ist vertikal (1080×1920, 30 fps, ca. 43 s).
 
-**Fertiges Video:** [`out/fc-kuhweide_tag1.mp4`](out/fc-kuhweide_tag1.mp4) · **Cover:** [`out/cover.png`](out/cover.png)
+**Fertiges Video:** [`out/fc-kuhweide_tag1.mp4`](out/fc-kuhweide_tag1.mp4) · **Titelbild:** [`out/titelbild.png`](out/titelbild.png) · **Texte zum Posten:** [`out/beschreibung.txt`](out/beschreibung.txt)
 
 ## Die Idee
 
@@ -31,9 +31,8 @@ Soll Kalle anders klingen, tausche einfach `voice/kalle_ref.wav` und `voice/kall
 
 ## Posting-Text
 
-```
-Tag 1: Ich habe einen Fußballverein gegründet ⚽ Jeder Follower = 1 Fan auf der Tribüne. Flutlicht, Netz fürs Tor oder was ganz anderes? Ihr entscheidet 👇 #fckuhweide #tag1 #fußball #kreisliga #fyp
-```
+Beschreibung, angepinnter Kommentar, Profil-Bio und Hinweise zum Titelbild stehen in [`out/beschreibung.txt`](out/beschreibung.txt).
+Das Titelbild erzeugt `node engine/render_cover.cjs fc-kuhweide-tag1` aus der Szene und [`cover.html`](cover.html).
 
 ## Serien-Ideen
 - **Tag 2:** Abstimmungsergebnis umsetzen. Die ersten Fan-Namen stehen auf der Bierbank.

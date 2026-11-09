@@ -42,14 +42,15 @@ window.Engine = (() => {
   const sw = `stroke="${OUT}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"`;
 
   // ---------------------------------------------------------------- Menschliche Figuren (gemeinsames Rig)
+  // Elemente werden erst beim ersten Zugriff gesucht – die Szene darf humanEls() also aufrufen,
+  // bevor Engine.start() die Grafik ins Dokument schreibt.
   const humanEls = (p, shoulder = 50) => {
-    const q = (s) => document.getElementById(`${p}-${s}`);
-    return {
-      shoulder, root: document.getElementById(p), bob: q('bob'), armL: q('armL'), armR: q('armR'), head: q('head'),
-      eyes: q('eyes'), eyeL: q('eyeL'), eyeR: q('eyeR'), pupL: q('pupL'), pupR: q('pupR'), happy: q('happy'),
-      browL: q('browL'), browR: q('browR'), mSmile: q('mSmile'), mFrown: q('mFrown'), mOpen: q('mOpen'), mO: q('mO'),
-      cap: q('cap'), hairTop: q('hairTop'), fingerL: q('fingerL'), fingerR: q('fingerR'), extra: q('extra'),
-    };
+    const parts = ['bob', 'armL', 'armR', 'head', 'eyes', 'eyeL', 'eyeR', 'pupL', 'pupR', 'happy', 'browL', 'browR',
+      'mSmile', 'mFrown', 'mOpen', 'mO', 'cap', 'hairTop', 'fingerL', 'fingerR', 'extra'];
+    const o = { shoulder }, cache = {};
+    Object.defineProperty(o, 'root', { get: () => document.getElementById(p) });
+    for (const k of parts) Object.defineProperty(o, k, { get: () => cache[k] || (cache[k] = document.getElementById(`${p}-${k}`)) });
+    return o;
   };
   const humanDefaults = () => ({ armL: 9, armR: -9, expr: 'smile', look: [0, 0], tilt: 0, fingerR: false, cap: true, talk: true, bounce: false });
 
@@ -316,8 +317,8 @@ window.Engine = (() => {
       setT(c2, `translate(540,${y0}) scale(${sc}) translate(-540,${-y0})`);
     }
 
-    window.renderAt = (t) => {
-      const seg = segAt(t);
+    window.renderAt = (t, shotId) => {
+      const seg = shotId ? { id: shotId, start: t, end: t + 1, speechEnd: t, caps: [], sfx: [] } : segAt(t);
       const S = Object.assign({ layer: 'world', cam: [1200, 1150, 1], dim: 0, shake: 0, ui: {} }, P.baseState());
       P.shots[seg.id](S, t, seg, t - seg.start, seg.end - seg.start);
       const alt = S.layer === 'alt';

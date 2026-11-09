@@ -408,6 +408,14 @@
       S.hearts = cues('s32', 'hearts');
     },
   };
+  // Titelbild (nicht Teil des Videos): Kalle groß im Vordergrund, Berta im Tor
+  shots.cover = (S, t) => {
+    S.cam = [1450, 1180, 1.0];
+    S.kal = Object.assign(S.kal, { x: 1150, y: 1560, s: 1.75, armL: 155, armR: -100, fingerR: true, expr: 'happy', look: [6, -2], talk: false });
+    S.ball = { x: 1330, y: 1545, r: 20 };
+    S.berta = B({ grass: true, chew: false });
+  };
+
   function cardsShot(S, t) {
     const a = byId.s29.start;
     S.cam = camLerp([1420, 1100, 0.95], [1420, 1090, 1.04], clamp((t - a) / (TL.duration - a)));
