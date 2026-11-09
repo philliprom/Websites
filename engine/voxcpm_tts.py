@@ -92,6 +92,8 @@ def _norm(s):
     s = unicodedata.normalize("NFKC", s)
     s = re.sub(r"\d+", lambda m: _NUM.get(m.group(0), m.group(0)), s)
     s = re.sub(r"[^a-zäöü ]+", " ", s)
+    # stummes Dehnungs-h nach Vokal ignorieren (Kuhweide = Kuweide), sonst gelten Homophone als Fehler
+    s = re.sub(r"([aeiouäöü])h(?=[^aeiouäöü]|$)", r"\1", s)
     return s.split()
 
 

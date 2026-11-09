@@ -24,8 +24,9 @@ und die Tribüne ist eine einzelne Bierbank. **Jeder Follower wird ein Fan und b
 ## Stimme
 
 Kalle spricht mit einer KI-Stimme aus **VoxCPM2** (Apache-2.0, kommerziell nutzbar). Die Stimme wurde per Stimm-Design entworfen:
-„Mann in den Vierzigern, tiefe, leicht raue Stimme, lebhaft und humorvoll“. Gespeichert ist sie in `voice/kalle_ref.wav`,
-damit sie in jeder Folge gleich klingt. Hörproben von drei Kandidaten liegen in `voice/kandidaten/` (A ist die aktuelle).
+„Mann mittleren Alters, tiefe, warme, leicht heisere Stimme, fröhlich und energisch“ (Kandidat **B**, kräftig und authentisch).
+Gespeichert ist sie in `voice/kalle_ref.wav`, damit sie in jeder Folge gleich klingt. Hörproben aller drei Kandidaten liegen in
+`voice/kandidaten/`.
 Soll Kalle anders klingen, tausche einfach `voice/kalle_ref.wav` und `voice/kalle_ref.txt` aus und baue neu.
 
 ## Posting-Text
