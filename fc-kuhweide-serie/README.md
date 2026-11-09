@@ -112,6 +112,29 @@ meist nur Satz 1 (Spielerzahl) und Satz 4 (Fanzahl). Ist der Container neu: `bas
 - [ ] Netz-Preis festlegen
 - [ ] Wiedergabedauer aus TikTok Studio (vom Kanalinhaber)
 
+## Konkurrenz: FC Asche (@asche348), Stand 09.11. abends
+
+Konto seit 25.10., erstes Video am 01.11., 57.017 Follower, 145.062 Likes. Bio: „1 Follower = 1 Fan ⚽️🏟️“. Fast dasselbe Konzept:
+Kreisliga, Bierbank, Fans 0, Vereinskasse 500 €, OG-Dauerkarte Nr. 001, Abstimmung per Top-Kommentar. Optik: 3D, Regen, Aschenplatz,
+Gründer mit orangem Schal und Pfeife. Das Badge „TAG 1“ und die UI-Elemente sehen aus wie beim Döner-Vorbild, vermutlich eine
+gemeinsame Vorlage oder ein Trend-Format. Videolänge 41–69 s, Postzeit wechselnd zwischen 10 und 20 Uhr.
+
+| Folge | Datum | Aufrufe | Likes | Kommentare | Shares | Gespeichert |
+|---|---|---|---|---|---|---|
+| Tag 1 | 01.11. | 301.800 | 21.500 | 5.047 | 542 | 2.087 |
+| Tag 2 | 03.11. | 296.500 | 22.500 | 1.487 | 286 | 1.855 |
+| Tag 3 | 04.11. | 306.100 | 27.400 | 2.715 | 222 | 1.858 |
+| Tag 4 | 05.11. | 217.600 | 19.600 | 3.134 | 240 | 1.198 |
+| Tag 5 | 05.11. | 201.800 | 18.700 | 3.240 | 236 | 1.074 |
+| Tag 6 | 06.11. | 171.000 | 16.000 | 2.295 | 222 | 944 |
+| Tag 7 | 07.11. | 63.100 | 7.116 | 1.329 | 87 | 372 |
+| Tag 8 | 08.11. | 84.900 | 8.447 | 1.172 | 93 | 414 |
+
+Beobachtungen: Der Start war genauso langsam wie bei uns („Tag 1:“ mit Totale), hat aber trotzdem gezündet. Sie setzen stark auf
+Figuren-Comedy (Opa Heinz, 78, im Tor, Dieter mit Bierbauch im Sturm, einer in Badelatschen). Die Reichweite fällt seit Tag 6
+deutlich, das Format nutzt sich ab. Ihre Spieler sind erfunden. Bei uns stehen echte Kommentierende im Kader, das ist unser
+Unterschied.
+
 ## Regeln für die Serie
 
 - Was in Antworten zugesagt wird, wird in der nächsten Folge eingelöst.
