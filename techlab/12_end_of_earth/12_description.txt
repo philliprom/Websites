@@ -1,0 +1,30 @@
+#12 – The Sun will swallow Earth: every sound is a formula
+==========================================================
+
+TIKTOK CAPTION (copy & paste)
+-----------------------------
+The Sun will swallow the Earth – and every sound you hear is one of the formulas on screen 🌍☀️🔊 The kick is one day, and the days get longer. The rumble gets brighter with the Sun. The acid line falls with the CO2 until the forests go silent. The oceans boil into bubbles, the water escapes into space, the last microbes fade… then Earth's orbit and the Sun's edge become one tone. 7.6 billion years in 65 seconds. Which layer did you hear first? 🎧
+
+#physics #space #earth #sun #math #hardtechno #techno #sciencetok
+
+
+PINNED COMMENT (post a few hours after upload)
+----------------------------------------------
+The science 🧠 The Sun gets about 10% brighter every billion years (L = L☉ / (1 − 0.4 τ/t☉)). In ~600 million years CO2 drops below 150 ppm and most plants can't photosynthesize anymore. In ~1–1.5 billion years the oceans start to boil away, the water vapor splits and the hydrogen escapes to space. Microbes deep underground hold out the longest. In ~5 billion years the Sun becomes a red giant, and around 7.6 billion years from now it grows about 250x wider and swallows the Earth. What's left is a white dwarf: about the size of Earth, but so dense that one cm³ weighs about a ton.
+
+
+Deutsche Übersetzung (nur zur Info)
+-----------------------------------
+Die Sonne wird die Erde verschlucken – und jeder Sound, den du hörst, ist eine der Formeln auf dem Bildschirm 🌍☀️🔊 Die Kick ist ein Tag, und die Tage werden länger. Der Rumble wird mit der Sonne heller. Die Acid-Linie fällt mit dem CO2, bis die Wälder verstummen. Die Ozeane kochen zu Blasen, das Wasser entweicht ins All, die letzten Mikroben verblassen … dann werden die Erdbahn und der Rand der Sonne zu einem einzigen Ton. 7,6 Milliarden Jahre in 65 Sekunden. Welche Spur hast du zuerst gehört? 🎧
+
+Angepinnter Kommentar: Die Wissenschaft dahinter 🧠 Die Sonne wird pro Milliarde Jahre etwa 10 % heller (L = L☉ / (1 − 0,4 τ/t☉)). In etwa 600 Millionen Jahren fällt das CO2 unter 150 ppm, und die meisten Pflanzen können keine Photosynthese mehr betreiben. In etwa 1–1,5 Milliarden Jahren verdampfen die Ozeane, der Wasserdampf wird gespalten und der Wasserstoff entweicht ins All. Mikroben tief im Untergrund halten am längsten durch. In etwa 5 Milliarden Jahren wird die Sonne zum Roten Riesen, und in rund 7,6 Milliarden Jahren ist sie etwa 250-mal breiter und verschluckt die Erde. Übrig bleibt ein Weißer Zwerg: etwa so groß wie die Erde, aber so dicht, dass ein Kubikzentimeter rund eine Tonne wiegt.
+
+
+Video-Infos
+-----------
+Länge 65,6 s · 1080×1920 · 60 fps · Musik: selbst erzeugter Hard Techno, 150 BPM, f-Moll, ab dem ersten Frame.
+Konzept nach der Referenz von @sound.labs8 („jeder Sound ist eine Gleichung“, Ende der Erde in Kapiteln) – eigene Grafik, eigene Texte, eigener Hard-Techno-Track, kein 1:1-Nachbau.
+8 Spuren = 8 Formeln: TAG (Kick, ihr Nachklang wird mit der Gezeitenbremsung länger) · SONNE (rollender Rumble, Filter öffnet sich mit der Leuchtkraft) · CO2 (Acid-Linie, Tonhöhe fällt mit dem CO2, unter 150 ppm Stille) · OZEAN (Blasen-Hats: aufsteigende Chirps f = f0·e^(t/τ)) · ESCAPE (Sweeps, die steigen und verblassen) · LEBEN (verblassende Blips, N0·e^(−λt)) · CLASH (Erdbahn-Ton gegen Sonnenrand-Ton, Schwebung 8 → 4 → 2 → 1 pro Takt, dann Unisono = Drop) · ZWERG (ein kalter Ping, der abkühlt).
+Ablauf: 0 s heute → 6,4 s Sonne wird heller → 12,8 s Tage werden länger → 19,2 s Wälder verstummen → 25,6 s Ozeane kochen (Drop 1) → 32 s Erde wird zur Venus → 38,4 s das letzte Leben (Breakdown) → 44,8 s Sonne bläht sich auf (Aufbau) → 51,2 s Sonne verschluckt die Erde (Drop 2) → 57,6 s Weißer Zwerg → 64 s Ende.
+Werte: Leuchtkraft nach Gough (1981), CO2-Grenzen 150 ppm (C3) / 10 ppm (C4), Erdverschluckung nach ca. 7,59 Mrd. Jahren (Schröder & Smith 2008), Weißer Zwerg ≈ Erdgröße, ≈ 10⁹ kg/m³. Tageslänge, Mondabstand und Oberflächentemperatur sind grobe Hochrechnungen (mit ≈ markiert).
+Titelbild: 12_cover.png (bzw. 12_cover.jpg), Text mittig für das 3:4-Profilraster.

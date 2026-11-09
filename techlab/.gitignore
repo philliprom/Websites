@@ -1,0 +1,5 @@
+# Render-Zwischenstände und große Dateien nicht einchecken
+*.mp4
+*.wav
+pv_*.png
+__pycache__/

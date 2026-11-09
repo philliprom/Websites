@@ -1,0 +1,149 @@
+TECH LAB – PLAYBOOK
+===================
+Physik & Mathe zum Hören: jede Folge ist eine echte Simulation/Formel, vertont als Hard Techno.
+Kanal: "Tech Lab" (TikTok). Bio: "🧪 Physics & math you can hear 🔊 Every sound is a formula ⚡ Hard techno"
+Dieser Ordner enthält das Projekt der letzten fertigen Folge (#12) als Vorlage plus das gemeinsame Werkzeug kit.py.
+
+
+1. ORDNER UND WERKZEUGE
+-----------------------
+techlab/
+  kit.py                     Grafik-Bausteine (Fonts, Farben, paint(), formula() via matplotlib-mathtext,
+                             callout() mit getippter Hinweislinie, readout(), chip(), phase_circle(), dust() ...)
+  PLAYBOOK.txt               diese Datei
+  12_end_of_earth/
+    12_script.py             komplette Folge: Physik + Musik (numpy) + Bild (skia) in EINER Datei
+    12_cover.py              Titelbild aus einem Frame des Skripts
+    12_description.txt       Caption, angepinnter Kommentar, Übersetzung, Video-Infos
+    12_cover.png / .jpg      fertiges Titelbild
+    stems.npz                Zeitdaten aus der Audio-Erzeugung (Kicks, Spur-Pegel) – wird von "audio" neu erzeugt
+
+Jede Folge liegt in einem eigenen Ordner NN_name/ direkt neben kit.py (das Skript importiert kit aus dem
+Elternordner). Eine neue Folge entsteht, indem man das letzte Skript kopiert und Physik, Szene und Sounds tauscht.
+
+Voraussetzungen: Python 3 mit numpy, skia-python, matplotlib, Pillow; ffmpeg/ffprobe; libegl1 (für skia).
+Schriften (Systempfade im Skript): Inter Display Black, Inter SemiBold (/usr/share/fonts/opentype/inter/),
+JetBrains Mono Bold (/usr/share/fonts/truetype/jetbrains-mono/).
+
+
+2. FORMAT
+---------
+Video:   1080×1920, 60 fps, H.264 (libx264, crf 18, yuv420p, high), AAC 256 kbit/s, +faststart.
+Länge:   mindestens 60 s, üblich 65–68 s (41–45 Takte bei 150–160 BPM).
+Nummer:  jede Folge NN, geliefert als NN_video.mp4 + NN_cover.png/.jpg + NN_description.txt.
+
+Aufbau (Dramaturgie, Beispiel #12 bei 150 BPM, 1 Takt = 1,6 s, 1 Kapitel = 4 Takte = 6,4 s):
+  0 s      Hook: Titel-Frage + erste Caption, Beat ab dem ersten Frame
+  0–25 s   Aufbau in Kapiteln, Caption-Wechsel alle 2 Takte (3,2 s), Formel-Wechsel pro Kapitel
+  ~25 s    Drop 1 (Flash, Kamerawackler, Crash + Boom)
+  ~38 s    Breakdown (Kick gefiltert weiter, nie ganz leer)
+  ~45 s    Aufbau 2: Snare-Roll, Kick-Roll (8tel → 16tel, steigend), Sirene, 1 Beat Stille vor dem Drop
+  ~51 s    Drop 2 = Höhepunkt/Auflösung, härter als Drop 1
+  ~64 s    Outro mit Aufforderung ("which layer did you hear first?", "comment …")
+
+Layout (y in Pixeln, x meist 60..1020):
+  0–215      FREI lassen (TikTok-Leiste "Folge ich | Für dich")
+  300 / 366  Titel 2 Zeilen: Inter Display Black 66–70 px, auf max. 960 px eingepasst, mit Glow
+  440        Caption-Pille: Inter SemiBold 40 px (max. 900 px), dunkle Pille, Rand in Kapitelfarbe
+  488–1000   Hauptszene (abgerundet 22–24 px), oben links Zähler, oben rechts Countdown
+  1012–1252  Diagramme / Oszilloskop (Funktion der aktuellen Spur, scrollend)
+  1236–1318  Formel-Band: Papierstreifen (255,198,96) mit Zickzack-Rand, Formel als mathtext 34 px dunkelbraun
+  ~1312–1340 Unterzeile zur Formel: JetBrains Mono 18 px in Kapitelfarbe
+  1326–1600  HUD: Messwerte (Schlüssel dünn, Wert fett), Pegel/Mischpult, Sequencer, Gauges
+  Rechts ab y≈900 liegen TikToks Buttons, unten ab y≈1500 die Caption → dort nur Zusatz-Details.
+
+HUD-Bausteine: Live-Zahlen (Jahre, BPM, Hz, kV …), Countdown, Hinweislinien-Callouts (kit.callout, 2,5–3 s),
+Pegelmeter pro Tonspur, Phasenkreis, Step-Sequencer, kleine Live-Diagramme. Jede Zahl folgt der echten Simulation.
+
+Farben/Stil ("CSS" der Videos, alles in skia):
+  PINK (255,80,170) · CYAN (80,220,255) · AMBER (255,176,60) · VIOLET (160,110,255) · GREEN (70,240,150)
+  RED (255,64,84) · WHITE (235,240,255) · jede Kapitel/Section hat eine eigene Akzentfarbe
+  Hintergrund: Radialverlauf (≈22,16,40 → 6,6,14) + 46-px-Raster mit Alpha 7
+  Panels: (8,9,20) Alpha 235, Radius 16–26, Rand 1,6–2,5 px in Akzentfarbe
+  Leuchten: Blur-MaskFilter + Plus-Blend, vorgerenderte Glow-Sprites; Flash/Wackler nur an Drops
+
+
+3. TON
+------
+Hard Techno 150–160 BPM, Tonart pro Folge wechseln. Alles wird in numpy bei 48 kHz synthetisiert.
+Grundgerüst:
+  Kick: harter Pitch-Drop in einen auf den Grundton gestimmten Ausklang, übersteuert + geclippt,
+        Mitten-"Knock" (110–420 Hz) + Klick → drückt auch auf Handy-Lautsprechern
+  Rollender Rumble-Bass: 3 verzerrte, gestimmte Schläge zwischen jeder Kick, Sidechain
+  Hats (Offbeat offen + 16tel), Ride/Schranz-Percussion, Industrial-Snare auf 2 und 4 mit Hall
+  Pro Folge eigene Signatur-Sounds (Beispiele): Acid-Linie mit Resonanzfilter (TPT-SVF), singende Teslaspule,
+  Hoover, Rave-Stabs, Gated-Supersaw, Reese-Bass, Glas-Percussion, Blasen-Chirps, Physik-Töne (Schwebung,
+  Shepard-Ton, Risset-Rhythmus …). Der Sound soll die Physik hörbar machen.
+Abwechslung: Kick-Rolls, 1 Beat Stille vor dem Drop, Tape-Stop, Fills, Shouts, Halftime, 3/16 gegen 4/4.
+Mix/Master:
+  Sidechain-Ducking an den Kicks · Rumble = Kick → Hall → Lowpass → tanh
+  Tiefbass < 45 Hz um 35 % absenken · Bass < 120 Hz mono + sanft sättigen · Master tanh(1,9)
+  Arrangement-Dynamik: Intro/Aufbau ~0,8–0,86, Drops 1,0 (Drops ≈ −7,5 LUFS kurzzeitig, Intro ≈ −9)
+  Lautheit: ffmpeg loudnorm misst → EINE lineare Verstärkung auf −8 LUFS
+  Vor dem Video: lowpass 16,5 kHz + alimiter 0,6 → True Peak nach AAC ≤ −1 dBTP (Ziel −1,5 … −3)
+
+
+4. TITELBILD (COVER)
+--------------------
+Ein Frame aus draw_frame() ohne Flash, ohne Captions/HUD/Callouts/Formelband, mit dunklem Verlaufsband.
+Tag-Pille "#NN  THEMA" bei y 300–368; drei Hook-Zeilen bei ~1200 / 1335 / 1440 (Inter Display Black,
+weiß / Akzentfarbe groß / Amber klein); Fußzeile "SOUND ON · …" bei ~1612. Alles mittig, damit es im
+3:4-Profilraster (Ausschnitt y 240–1680) lesbar bleibt. PNG + JPG (Qualität 92). Bei Rätseln keine Lösung zeigen.
+
+
+5. RENDER-BEFEHLE
+-----------------
+cd techlab/12_end_of_earth
+python3 -I 12_script.py audio            # audio_raw.wav → audio.wav (−8 LUFS) + stems.npz
+python3 -I 12_script.py preview [t ...]  # pv_<t>.png Standbilder zum Prüfen (Standard: 10 Zeitpunkte)
+ffmpeg -y -i audio.wav -af "lowpass=f=16500,alimiter=limit=0.6:attack=0.5:release=30:level=0" -ar 48000 audio_lim.wav
+cp audio.wav audio_nolim.wav && cp audio_lim.wav audio.wav
+python3 -I 12_script.py video            # 12_video.mp4 (nimmt audio.wav, ~2–3 min)
+python3 -I 12_cover.py [t]               # 12_cover.png + 12_cover.jpg (Standard t = 48,5 s)
+Prüfen:
+ffprobe -v error -show_entries format=duration:stream=width,height,r_frame_rate -of compact 12_video.mp4
+ffmpeg -i 12_video.mp4 -af ebur128=peak=true -f null - 2>&1 | grep -A14 Summary   # I ≈ −8…−9 LUFS, Peak ≤ −1
+("full" = audio + video in einem Rutsch, aber ohne den Limiter-Schritt dazwischen.)
+Lange Renders im Hintergrund mit "set -o pipefail" starten; das Skript bricht ab, wenn ffmpeg fehlschlägt.
+Vor jedem Render prüft check_formulas() alle Formeln (mathtext kennt z. B. \big und \text nicht).
+
+
+6. LEHREN AUS DEM FEEDBACK
+--------------------------
+- Techno ab dem ersten Frame – die Leute bleiben wegen des Beats (#03 wurde dafür neu gemacht).
+- Viele Details wie in den Referenzen: echte Formeln, Hinweislinien, Live-Werte, Mini-Diagramme.
+- Titel nie unter der TikTok-Leiste: Oberkante ab ~250 px.
+- Mindestens 1 Minute pro Video.
+- Verbesserungen gelten nur für die neueste Folge, alte Videos nicht neu ausgeben (außer ausdrücklich gewünscht).
+- Beat: erst "kreativer", dann "kräftiger, nicht langweilig, jedes Mal anders" (nach #10), dann "noch mehr
+  Hard Techno" (#11 überarbeitet: geclippte Kick, rollender Rumble, Schranz, Hoover, Rave-Stabs, Sirenen).
+  Drops müssen klar härter sein als der Aufbau; Breakdowns nie in ein Loch fallen lassen.
+- #01 (Such-Rätsel) hatte die meisten Aufrufe – eine fast gleiche Wiederholung (#12 alt, 169 Kreispendel)
+  gefiel aber nicht: neue Konzepte statt Varianten alter Folgen.
+- Referenz-Nachbauten: Prinzip, Aufbau und Detailgrad übernehmen, aber eigene Grafik, eigene Texte, eigener
+  Hard-Techno-Track (#12 neu nach @sound.labs8: "jeder Sound ist eine Formel").
+- Technik: Formeln vorab prüfen; Callouts innerhalb der Szene halten; Lautheit pro Abschnitt messen;
+  True Peak nach der AAC-Kodierung kontrollieren.
+- Verbrauch (siehe NUTZUNG im alten Projekt): ein Video kostet ca. 8–17 % eines 5-Stunden-Fensters, im
+  schlechtesten Fall ~35 %. Teuer machen: lange Pausen (>1 h → der Chat wird komplett neu geladen),
+  Korrekturrunden, ein sehr langer Chat. Besser: neue Folgen in einer frischen Sitzung mit diesem Playbook
+  starten, Wünsche gebündelt schicken, Bestätigungskarten zügig bestätigen.
+- Referenzen laden: Cloud-Umgebung "TikTok-Recherche" erlaubt www.tiktok.com, vm.tiktok.com, die tiktokcdn-us-
+  Hosts und v16/v19-webapp-prime.us.tiktok.com (Video-Downloads).
+
+
+7. ALLE FOLGEN
+--------------
+#01  One of these 100 is out of sync
+#02  100 metronomes on one moving board
+#03  100 washing machines on one wobbly shelf
+#04  Why sirens give you chills
+#05  Two black holes collide (as hard techno)
+#06  A star's last 7 million years, as one techno track
+#07  1000 pendulums, 0.000001° apart
+#08  Breaking the sound barrier, as hard techno
+#09  The beat that speeds up forever (Risset rhythm + Shepard tone)
+#10  Can a techno beat shatter a wine glass? (Resonance)
+#11  This beat is played by 1,000,000 volts (singing Tesla coil vs. lightning)
+#12  The Sun will swallow Earth: every sound is a formula
+     (ersetzt "One of these 169 is out of sync" mit Kreispendeln – verworfen, zu nah an #01)
