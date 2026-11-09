@@ -112,6 +112,32 @@ meist nur Satz 1 (Spielerzahl) und Satz 4 (Fanzahl). Ist der Container neu: `bas
 - [ ] Netz-Preis festlegen
 - [ ] Wiedergabedauer aus TikTok Studio (vom Kanalinhaber)
 
+## Fahrplan (festgelegt am 09.11. abends)
+
+**Tagesablauf**
+- Morgens: Kanalinhaber meldet sich. Kommentare abrufen, `kader.json` aktualisieren, Folge bauen (30–45 min). Video,
+  Titelbild und Texte schicken.
+- Ca. 12:00: posten, Kommentar anpinnen. In der ersten Stunde auf jeden Kommentar antworten und ihn liken.
+- Abends (4–5 h nach dem Post): Screenshot aus TikTok Studio (Ø Wiedergabedauer, „Ganzes Video angesehen“, Absprungstelle)
+  plus Kommentar-Auswertung. Daraus wird die nächste Folge geplant.
+
+**Bausteine jeder Folge:** Haken in Sekunde 1, ≤ 30 s, echte @-Namen aus den Kommentaren, Abstimmung mit 2 Optionen,
+Aufforderung zum Teilen, Ende passt zum Anfang (für Wiederholungen).
+
+**Zielwerte pro Folge** (eigene Richtwerte, keine offiziellen Zahlen): Ø Wiedergabedauer ≥ 50 % der Länge,
+„Ganzes Video angesehen“ ≥ 15 %, Shares ≥ 1 % der Aufrufe.
+
+**Geschichten der nächsten Tage**
+- Tag 2 (Di): Der Kader (fertig vorbereitet)
+- Tag 3 (Mi): Ergebnis Torwart-Duell Berta vs. Flo und **Herausforderung an FC Asche** (kleinster gegen größten Kreisligaverein).
+  Abstimmung: „Wer gewinnt?“
+- Tag 4 (Do): Erstes Training mit dem Kader. Trikotfarbe aus den Kommentaren wählen.
+- Tag 5 (Fr): Erstes Spiel gegen SV Matschbach. Die Torschützen sind Leute aus dem Kader.
+- Danach: Meilensteine nach Fanzahl (z. B. 100 Fans = zweite Bierbank), Transfers aus den Kommentaren.
+
+**Zusätzlich:** Jedes Video auch als Instagram Reel und YouTube Short posten (gleiche Datei, Texte aus `beschreibung.txt`).
+Unter neuen FC-Asche-Videos höchstens einmal freundlich und witzig kommentieren, kein Spam.
+
 ## Konkurrenz: FC Asche (@asche348), Stand 09.11. abends
 
 Konto seit 25.10., erstes Video am 01.11., 57.017 Follower, 145.062 Likes. Bio: „1 Follower = 1 Fan ⚽️🏟️“. Fast dasselbe Konzept:
