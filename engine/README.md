@@ -11,6 +11,31 @@ gleiche Technik in einer früheren, nicht ausgelagerten Fassung.
 | `audio.py` | Synthetische Musik (Preset im `music`-Block der `script.json`: `bpm`, `inst` = marimba/vibes/pluck, Akkorde) und Soundeffekte, Mix mit Ducking auf −14 LUFS |
 | `render.cjs` | rendert mit Chromium/Playwright Frame für Frame zu H.264 |
 
+## Stimmen
+
+Zwei Sprach-Engines sind eingebaut. Welche genutzt wird, steht in `script.json` unter `tts`:
+
+| Engine | Klang | Lizenz | Einsatz |
+|---|---|---|---|
+| **VoxCPM2** (`"tts": {"engine": "voxcpm", ...}`) | sehr natürlich, 48 kHz, Stimm-Design und Klonen | Apache-2.0 (kommerziell nutzbar) | FC Kuhweide |
+| Piper „Thorsten“ (Standard ohne `tts`-Block) | robuster, aber hörbar synthetisch | Stimme CC0 | Fietland, Mondmission |
+
+VoxCPM2 ist eine der Engines, die auch [VoiceStudio](https://github.com/debpalash/VoiceStudio) anbietet. Die dortige Standard-Engine
+OmniVoice wird hier bewusst nicht genutzt, weil ihre Gewichte nur nicht-kommerziell lizenziert sind (CC-BY-NC).
+
+**So bleibt die Stimme in jeder Folge gleich:** Die Figur bekommt einmalig eine Referenzaufnahme (`voice/kalle_ref.wav` und
+`voice/kalle_ref.txt`), die per Stimm-Design entworfen wurde (`engine/voxcpm_tts.py design …`). Jede Folge klont dann genau
+diese Referenz. Erzeugt wird jeweils ein ganzer Satz am Stück, damit die Betonung natürlich bleibt. Danach schneidet das Skript
+den Satz über Whisper-Wort-Zeitstempel in die Bild-Segmente. Jeder Satz wird per Whisper zurückgehört. Weicht er vom Skript ab
+(Wortfehlerrate > 8 %), wird er neu erzeugt. Das Protokoll steht in `build/tts_qa.txt`.
+
+```bash
+python -m venv vx && vx/bin/pip install "voxcpm>=2.0.3" soundfile faster-whisper
+# Modelle: openbmb/VoxCPM2 (~5 GB), Systran/faster-whisper-small (~0,5 GB) von Hugging Face
+QA_WHISPER=<pfad>/whisper-small vx/bin/python engine/build_timeline.py fc-kuhweide-tag1 <pfad>/VoxCPM2
+```
+Auf einer CPU mit 4 Kernen dauert ein 45-Sekunden-Video etwa 20 Minuten Sprachsynthese, mit GPU wenige Sekunden.
+
 Ein Projekt besteht aus `script.json` (Text, Untertitel, Cues, Musik), `index.html` (Theme-Farben) und `scene.js`
 (Welt-Grafik, Figuren, eine Funktion pro Schnitt).
 

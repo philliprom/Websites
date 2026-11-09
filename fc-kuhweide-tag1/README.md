@@ -21,6 +21,13 @@ und die Tribüne ist eine einzelne Bierbank. **Jeder Follower wird ein Fan und b
 - Fans identifizieren sich stark mit „ihrem“ Verein, und die Dauerkarte Nr. 001 ist ein starker Kommentar-Anreiz.
 - Später möglich: echte Spieltage, Trikot-Abstimmungen, Gegner aus den Kommentaren.
 
+## Stimme
+
+Kalle spricht mit einer KI-Stimme aus **VoxCPM2** (Apache-2.0, kommerziell nutzbar). Die Stimme wurde per Stimm-Design entworfen:
+„Mann in den Vierzigern, tiefe, leicht raue Stimme, lebhaft und humorvoll“. Gespeichert ist sie in `voice/kalle_ref.wav`,
+damit sie in jeder Folge gleich klingt. Hörproben von drei Kandidaten liegen in `voice/kandidaten/` (A ist die aktuelle).
+Soll Kalle anders klingen, tausche einfach `voice/kalle_ref.wav` und `voice/kalle_ref.txt` aus und baue neu.
+
 ## Posting-Text
 
 ```
