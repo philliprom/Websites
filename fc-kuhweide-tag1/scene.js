@@ -532,7 +532,7 @@
     confettiColors: ['#E23A4E', '#fff', '#FFC83A', '#2DBE60', '#5CC8FF', '#fff'],
     preload: '📣⚽🏟️🕳️🥅🪑📋🧤💰📅👀🐦⏰🗳️💡😂🐄',
     ui: {
-      profile: { name: 'FC Kuhweide', handle: '@fc.kuhweide', avatar: '⚽', stat: 'Fans', foot: '1 Follower = 1 Fan ⚽' },
+      profile: { name: 'FC Kuhweide', handle: '@fc.kuhweide', avatar: '⚽', avatarImg: 'out/profilbild_kalle.png', stat: 'Fans', foot: '1 Follower = 1 Fan ⚽' },
       comment: 'Ich bin Fan Nr. 1! ⚽❤️',
       banner: { small: 'WILLKOMMEN BEIM', big: 'FC KUHWEIDE' },
       stamp: { emo: '⚽', text: 'GEGRÜNDET!' },

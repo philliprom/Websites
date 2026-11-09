@@ -134,7 +134,7 @@ window.Engine = (() => {
     <div id="stamp" class="ui"><span class="emo">${C.stamp.emo}</span>${C.stamp.text}</div>
     <div id="banner" class="ui"><span>${C.banner.small}</span><b>${C.banner.big}</b></div>
     <div id="profile" class="ui">
-      <div class="top"><div><div class="name">${C.profile.name}</div><div class="handle">${C.profile.handle}</div></div><div class="avatar"><div>${C.profile.avatar}</div></div></div>
+      <div class="top"><div><div class="name">${C.profile.name}</div><div class="handle">${C.profile.handle}</div></div><div class="avatar">${C.profile.avatarImg ? `<img src="${C.profile.avatarImg}" style="width:100%;height:100%;border-radius:50%;display:block">` : `<div>${C.profile.avatar}</div>`}</div></div>
       <div class="stats"><div><b id="stF">0</b><span>Follower</span></div><div><b id="stE">0</b><span>${C.profile.stat}</span></div><div><b id="stL">0</b><span>Likes</span></div></div>
       <div class="btns"><div id="btnFollow" class="btn follow">Folgen</div><div class="btn">Nachricht</div></div>
       <div class="foot">${C.profile.foot}</div>

@@ -16,8 +16,8 @@ Falls deine App-Version nur Bilder aus dem Video anbietet: das Bild bei etwa 3 S
 
 KANAL / PROFIL
 ==============
-Profilbild:   profilbild_wappen.png  (Empfehlung, Vereinswappen mit Berta)
-              profilbild_kalle.png   (Alternative mit Trainer Kalle)
+Profilbild:   profilbild_kalle.png   (gewählt – wird auch in den Videos auf der Profil-Karte gezeigt)
+              profilbild_wappen.png  (Alternative mit Berta)
 Name:         FC Kuhweide ⚽
 Benutzername: @fc.kuhweide   (in der App prüfen, ob frei – Alternativen: @fckuhweide, @fc_kuhweide, @kuhweide.fc)
 

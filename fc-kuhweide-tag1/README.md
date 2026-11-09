@@ -32,7 +32,7 @@ Soll Kalle anders klingen, tausche einfach `voice/kalle_ref.wav` und `voice/kall
 ## Posting-Text
 
 Beschreibung, angepinnter Kommentar, Kanal-Name, Bio-Varianten und Hinweise zum Titelbild stehen in [`out/beschreibung.txt`](out/beschreibung.txt).
-Profilbilder: [`out/profilbild_wappen.png`](out/profilbild_wappen.png) (Empfehlung) und [`out/profilbild_kalle.png`](out/profilbild_kalle.png), erzeugt mit `node engine/render_avatar.cjs fc-kuhweide-tag1 wappen kalle` aus [`avatar.js`](avatar.js).
+Profilbild: [`out/profilbild_kalle.png`](out/profilbild_kalle.png) (gewählt, erscheint ab Tag 2 auch auf der Profil-Karte im Video), Alternative [`out/profilbild_wappen.png`](out/profilbild_wappen.png), erzeugt mit `node engine/render_avatar.cjs fc-kuhweide-tag1 wappen kalle` aus [`avatar.js`](avatar.js).
 Das Titelbild erzeugt `node engine/render_cover.cjs fc-kuhweide-tag1` aus der Szene und [`cover.html`](cover.html).
 
 ## Serien-Ideen
