@@ -161,6 +161,30 @@ Figuren-Comedy (Opa Heinz, 78, im Tor, Dieter mit Bierbauch im Sturm, einer in B
 deutlich, das Format nutzt sich ab. Ihre Spieler sind erfunden. Bei uns stehen echte Kommentierende im Kader, das ist unser
 Unterschied.
 
+## Weiteres Beispiel: @vyral696 „Rekrut Schulz“, Stand 09.11. abends
+
+Konto seit 03.11., 10.479 Follower, 7 Videos. Bio: „1 Follower = 1 Kamerad 🪖 Jeden Tag“.
+
+| Datum | Folge | Aufrufe | Likes | Kommentare | Shares |
+|---|---|---|---|---|---|
+| 06.11. 20:20 | Kreuzfahrt „MS Luftmatratze“ Tag 1 | 5.679 | 193 | 149 | 1 |
+| 07.11. 09:55 | Kreuzfahrt Tag 2 | 1.327 | 86 | 29 | 1 |
+| 07.11. 15:57 | **Neues Konzept:** „Tag 1 als Rekrut“ | **82.300** | 7.239 | 1.404 | 178 |
+| 08.11. 08:37 | „Gestern allein, heute 1.841“ | 18.400 | 1.598 | 565 | 16 |
+| 08.11. 14:16 | „Um 14:12 Uhr sind wir 3.577“ | 48.200 | 3.799 | 1.174 | 43 |
+| 08.11. 19:49 | „Wir werden angegriffen“ (Cliffhanger) | 54.800 | 4.514 | 725 | 42 |
+| 09.11. 14:28 | „Die Nacht, in der wir angegriffen wurden“ | 10.600 | 1.273 | 395 | 12 |
+
+**Was wir daraus lernen:**
+- **Schnell wechseln ist normal.** Das erste Konzept floppte nach 2 Videos, das zweite zündete sofort. Zündet FC Kuhweide nach ca.
+  5 Folgen nicht, testen wir eine neue Idee (Mondmission und Fietland liegen fertig bereit).
+- **Ein-Wort-Aufforderung zum Kommentieren:** „Schreib ‚Marke‘ für deine Erkennungsmarke“. Das ist eine niedrige Hürde und
+  bringt viele Kommentare. Bei uns: „Schreib ‚BERTA‘ oder ‚FLO‘“, „Schreib ‚Dauerkarte‘“.
+- **Live-Zahlen als Fortschritt:** „Gestern allein, heute 1.841“. Unsere echten Fanzahlen kommen in Hook und Caption.
+- **Mehrere Posts pro Tag, solange es läuft** (am 08.11. drei Videos).
+- **Steigerung und Cliffhanger:** Angriff, Funkspruch, Gefangener. Dazu eine Follow-Aufforderung in der Geschichte („Er hat jedes
+  Video gesehen. Aber er ist nie gefolgt.“). Für uns: jede Folge mit einem Teaser enden lassen, z. B. „Morgen meldet sich FC Asche …“.
+
 ## Regeln für die Serie
 
 - Was in Antworten zugesagt wird, wird in der nächsten Folge eingelöst.
