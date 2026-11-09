@@ -19,8 +19,11 @@ wird diese Datei gelesen und danach aktualisiert.
 |---|---|---|---|---|---|---|---|---|---|
 | Tag 1 | 09.11. 11:58 | [vm.tiktok.com/ZGdXUnaG2](https://vm.tiktok.com/ZGdXUnaG2/) (Video-ID 7706124461619105057) | 09.11. 16:41 | 988 | 54 | 24 | 0 | 4 | 35 |
 | Tag 1 | | | 09.11. 16:55 | 1.015 | 55 | 40 | 2 | 4 | 35 |
+| Tag 1 | | | 09.11. 16:57 (Studio) | ~1.000 | | | | | 36 neu |
 
-Wiedergabedauer und Absprungstelle stehen nur in TikTok Studio. Die Werte bitte vom Kanalinhaber nachtragen lassen.
+**TikTok Studio, Tag 1 (Stand 09.11. 16:57, ca. 5 h nach Upload):** ca. 1.000 Aufrufe · Gesamtabspielzeit 2 h 07 min 30 s ·
+**Ø Wiedergabedauer 8,5 s (19 % des 45-s-Videos)** · **ganzes Video angesehen: 3,91 %** · 36 neue Follower ·
+die meisten Zuschauer sind **bei 0:01** ausgestiegen. Aufrufkurve: Spitze in Stunde 1–2 (ca. 380/h), danach ca. 100/h.
 
 ## Erkenntnisse aus Tag 1
 
@@ -29,6 +32,9 @@ Wiedergabedauer und Absprungstelle stehen nur in TikTok Studio. Die Werte bitte 
   wollen Teil des Vereins sein, nicht nur zuschauen.
 - Like-Rate ca. 5,5 %, Kommentar-Rate ca. 2,4 % (sehr hoch), Follow-Rate ca. 3,5 %. Shares zuerst 0, später 2. Shares bleiben
   die Schwachstelle.
+- **Halten der Zuschauer ist das Hauptproblem:** Die meisten springen in der ersten Sekunde ab, im Schnitt wird nur 8,5 s geschaut.
+  Wer dranbleibt, ist dafür sehr aktiv (viele Kommentare und Follows). Das Konzept funktioniert, nur der Einstieg nicht.
+  Das langsame „Tag eins.“ mit Totale erklärt in Sekunde 1 nicht, worum es geht.
 - Folgerung: Mitmach-Mechanik auf „du kommst in den Kader“ umstellen. Abstimmungen nur noch mit 2 Optionen. Aufforderung zum
   Teilen einbauen („Markier deinen Kumpel …“).
 
@@ -55,9 +61,26 @@ Alles, was in den Antworten versprochen wurde. Antwort-Texte stehen so auf TikTo
 | **Die 9** | @ljl1407 | „Ich Schieß uns zum Aufstieg“ | „Die 9 gehört dir – Aufstieg ist ab jetzt Pflicht 😄“ |
 | Flügel (Seite offen) | @florian.gnther26 | „Darf ich Flügel spieler sein“ | Rückfrage „Links oder rechts?“ (Antwort abwarten) |
 | 6er | @georggruber1 | „kann ich 6er werden??“ | „Du räumst das Mittelfeld auf 💪“ |
-| Stürmer | YG🇹🇷 (Benutzername noch prüfen) | „Stürmer das ist meine Karte“ | Vorschlag: Sturm-Duo oder Duell mit @ljl1407 |
+| Stürmer – **Sturm-Duo mit @ljl1407** | YG🇹🇷 (Benutzername noch prüfen) | „Stürmer das ist meine Karte“ | „Sturm-Duo oder Duell mit @ljl1407?“ → YG hat mit **„Duo“** geantwortet |
 
 ## Plan Tag 2: „Der Kader“
+
+**Neue Regeln wegen der Zuschauer-Daten:**
+- In Sekunde 1 sofort Bewegung und Konflikt statt Titelkarte. Kein gesprochenes „Tag zwei.“ am Anfang, „TAG 2“ steht nur als Badge im Bild.
+- Die Neugier gleich vorne öffnen und erst am Ende auflösen: „Ist dein Name dabei? 👀“. Wer kommentiert hat, schaut bis zum Ende.
+- Kürzer: Ziel 25–30 s statt 45 s, kürzere Pausen, ein Gedanke pro Schnitt.
+- Ein Ende, das zum Neustart passt, damit das Video in Schleife geschaut wird.
+
+**Ablauf (ca. 30 s):**
+- 0–2 s: Taktiktafel mit unscharfen Namen. Kalle: „18 von euch wollen bei uns spielen. Ist dein Name dabei?“
+- 2–5 s: „Aber erst: Berta gibt ihren Platz im Tor nicht her.“
+- 5–8 s: echte Fanzahl auf einer einzigen Bierbank
+- 8–11 s: „Luca hat abgestimmt – Netz gekauft.“ Kasse 500 € → Rest
+- 11–22 s: Aufdecken des Kaders, Position für Position, die Namen ploppen auf. Sturm-Duo, Staff, Ultra, Dauerkarte 001 an Julius.
+- 22–27 s: Torwart-Abstimmung „Berta oder Flo?“
+- 27–30 s: Aufforderung zum Teilen „Markier den Kumpel, der auf die Bank muss“ und Teaser „Morgen: erstes Training“
+
+**Inhaltliche Punkte (aus dem ersten Plan):**
 
 1. **Hook:** „Tag 2: 14 von euch wollen bei uns spielen. Aber wir haben ein Problem: Berta.“ (Zahl beim Bauen aktualisieren)
 2. **Tribüne:** Die echte Follower-Zahl quetscht sich auf die eine Bierbank, die Taube muss weichen.
@@ -71,7 +94,7 @@ Alles, was in den Antworten versprochen wurde. Antwort-Texte stehen so auf TikTo
 7. **Aufforderung zum Teilen:** „Markier den Kumpel, der bei uns auf die Bank muss“.
 
 Vorschlag Aufstellung (4-3-3): TW Berta (Duell offen) · LV @luca_mgd15 · IV @l.e.o.46 · IV @mali1650 · RV @l3vinln1/@bruno.0555 ·
-6er @georggruber1 · 10er @elyassopicasso · ZM/Joker @jxmie2skibidi · LF @florian.gnther26 (Seite klären) · ST @ljl1407 (+ YG) ·
+6er @georggruber1 · 10er @elyassopicasso · ZM/Joker @jxmie2skibidi · LF @florian.gnther26 (Seite klären) · ST-Duo @ljl1407 + YG ·
 RF @oskarfrings/@fokus.salkin. Bank/Staff: Co-Trainer @75sandro10, Co-Trainerin @lillyfriedrich242, Ultra @joelski74,
 Fan Nr. 1 @juliusc1904.
 
