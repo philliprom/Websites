@@ -421,7 +421,31 @@ def sfx_drum():
         y[i: i + len(hit)] += hit
     return y
 
+def sfx_sting():
+    """Dramatischer Dreiklang „dam – dam – DAAM“ (tief, blechern)."""
+    y = np.zeros(int(2.2 * SR))
+    for st, m, dur, amp in [(0.0, 43, 0.22, 0.7), (0.26, 43, 0.22, 0.7), (0.52, 42, 1.6, 1.0)]:
+        t = tt(dur)
+        f = midi(m)
+        tone = sum(np.sign(np.sin(2 * np.pi * f * k * t)) / k for k in (1, 2, 3)) + np.sin(2 * np.pi * f / 2 * t) * 1.2
+        tone = onepole_lp(tone, 1400) * att(t, 0.01) * np.exp(-t * (1.2 if dur > 1 else 6)) * amp * 0.35
+        i = int(st * SR)
+        y[i: i + len(tone)] += tone
+    y[int(0.52 * SR):int(0.52 * SR) + len(kick())] += kick(0.8)
+    return y
+
+
+def sfx_scratch():
+    """Plattenkratzer: Musik bricht ab."""
+    t = tt(0.32)
+    f = 900 * (1 - t / t[-1]) ** 1.5 + 120
+    y = onepole_lp(rs.randn(len(t)), 2600) * (0.6 + 0.4 * np.sin(2 * np.pi * np.cumsum(f) / SR * 3))
+    return y * np.sin(np.pi * t / t[-1]) * 0.5
+
+
 SFX = {name[4:]: fn for name, fn in globals().items() if name.startswith("sfx_")}
+# Steuer-Marken ohne Klang: Musik aus ("mstop") und wieder an ("mgo")
+MUSIC_MARKS = ("mstop", "mgo")
 SFX_GAIN = {"whoosh": 0.55, "waves": 0.9, "horn": 1.0, "confetti": 0.8, "cheer": 1.0, "rocket": 0.9}
 
 
@@ -512,11 +536,26 @@ def main():
     mus[:, 0] += amb
     mus[:, 1] += amb
     mus /= np.max(np.abs(mus)) + 1e-9
+    marks = sorted((t, name) for seg in tl["segments"] for name, t in seg["sfx"] if name in MUSIC_MARKS)
+    if marks:
+        gain = np.ones(len(mus))
+        on, last = 1.0, 0
+        for t, name in marks:
+            i = min(len(mus), max(0, int(t * SR)))
+            gain[last:i] = on
+            fl = min(len(mus) - i, int(0.06 * SR))
+            new = 0.0 if name == "mstop" else 1.0
+            gain[i:i + fl] = np.linspace(on, new, fl)
+            on, last = new, i + fl
+        gain[last:] = on
+        mus *= gain[:, None]
     write_wav(os.path.join(BUILD, "music.wav"), mus * 0.8)
 
     fx = np.zeros(int((dur + 2) * SR))
     for seg in tl["segments"]:
         for name, t in seg["sfx"]:
+            if name in MUSIC_MARKS:
+                continue
             sig = SFX[name]() * SFX_GAIN.get(name, 1.0)
             i = max(0, int(t * SR))
             fx[i: i + len(sig)] += sig[: len(fx) - i]

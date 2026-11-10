@@ -1,16 +1,18 @@
 # FC Kuhweide – Tag 2: Der Kader
 
 Folge 2 der Serie (siehe [`../fc-kuhweide-serie/README.md`](../fc-kuhweide-serie/README.md)). Neue Fassung nach dem Vergleich mit
-FC Asche, FC Kaiser 09 und Rekrut Schulz (ca. 49 s: dicht erzählt, aber mit Lesepausen für die Kommentare, Ultra-Block und Taktiktafel):
+FC Asche, FC Kaiser 09 und Rekrut Schulz (dicht erzählt, mit kurzen Lesepausen für Kommentare, Ultra-Block und Taktiktafel):
 
 1. Haken: „Gestern: 0 Fans. Heute: X!“, die Bank füllt sich, Konfetti
 2. Echte Kommentare fliegen als Karten ins Bild („X von euch wollen spielen“)
-3. Kommentar wird umgesetzt: Luca wollte ein Netz → gekauft (Kasse 500 → 411 €). Joel wollte Ultra werden → Ultra-Block
-   mit Megafon und Trommel.
+3. Kommentar wird umgesetzt: Luca wollte ein Netz → gekauft (Kasse 500 → 411 €). Joel, Leo und Peatoo wollten Ultras werden →
+   eigener Ultra-Block neben der Tribüne mit Zaunfahne, Megafon und Trommel.
 4. Flo will ins Tor, Berta weigert sich → Elfmeter-Test: der Neuner schießt, Berta hält aus Versehen
 5. Taktiktafel mit dem Kader, Dauerkarte Nr. 001 für Julius
 6. Abstimmung „BERTA oder FLO?“ und die Aufforderung, Kumpels zu markieren
-7. Cliffhanger: „Morgen kommt Post. Vom größten Kreisligaverein der Welt.“
+7. Cliffhanger: Die Taube bringt die Herausforderung weg und ist „10 Sekunden später“ mit einem roten Antwortbrief zurück.
+   Fast alles geschwärzt, lesbar: „Wir nehmen an! Samstag … Wenn ihr verliert … BERTA!“ → „Ratet mal, wer das geschrieben hat!
+   Auflösung morgen um zwölf.“ Abschlusskarte „TEIL 3 · MORGEN 12 UHR“ mit Folgen-Knopf.
 
 **Ausgabe:** `out/fc-kuhweide_tag2.mp4` · `out/titelbild.png` · `out/beschreibung.txt`
 

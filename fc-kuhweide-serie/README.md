@@ -122,7 +122,7 @@ Fan Nr. 1 @juliusc1904.
 
 ## Stand Tag 2 (vorbereitet am 09.11. abends)
 
-Entwurf komplett gebaut in [`../fc-kuhweide-tag2/`](../fc-kuhweide-tag2/README.md). Neue, dichtere Fassung vom 09.11. ca. 23 Uhr: Video 35 s (am 10.11. mit Lesepausen auf 49 s verlängert), Titelbild, Beschreibung,
+Entwurf komplett gebaut in [`../fc-kuhweide-tag2/`](../fc-kuhweide-tag2/README.md). Neue, dichtere Fassung vom 09.11. ca. 23 Uhr: Video 35 s (am 10.11. mit Lesepausen, allen drei Ultras im Ton und neuem Schluss mit Antwortbrief überarbeitet), Titelbild, Beschreibung,
 Stimme B. Datenstand: Kommentare bis 09.11. ca. 17 Uhr, 36 Fans, Netz 89 € → Kasse 411 €, 15 Spieler-Wünsche.
 Gesprochene Sätze liegen im Satz-Cache (`fc-kuhweide-tag2/tts_cache/`). Am Morgen werden nur geänderte Sätze neu gesprochen,
 meist nur „Heute: X!“ (Fanzahl) und „X von euch wollen spielen“. Ist der Container neu: `bash engine/setup_voxcpm.sh <ziel>`.
@@ -150,11 +150,18 @@ Aufforderung zum Teilen, Ende passt zum Anfang (für Wiederholungen).
 „Ganzes Video angesehen“ ≥ 15 %, Shares ≥ 1 % der Aufrufe.
 
 **Geschichten der nächsten Tage**
-- Tag 2 (Di): Der Kader (fertig vorbereitet)
-- Tag 3 (Mi): Ergebnis Torwart-Duell Berta vs. Flo und **Herausforderung an FC Asche** (kleinster gegen größten Kreisligaverein).
-  Abstimmung: „Wer gewinnt?“
-- Tag 4 (Do): Erstes Training mit dem Kader. Trikotfarbe aus den Kommentaren wählen.
-- Tag 5 (Fr): Erstes Spiel gegen SV Matschbach. Die Torschützen sind Leute aus dem Kader.
+- Tag 2 (Di): Der Kader. **Neuer Schluss (10.11.):** Die Taube bringt unsere Herausforderung an den „größten
+  Kreisligaverein der Welt“ und ist nach „10 Sekunden später …“ mit einem roten Antwortbrief zurück. Im Brief ist fast alles
+  geschwärzt, lesbar sind nur: „Wir nehmen an! Samstag, ██ Uhr … Wenn ihr verliert, ██ ██ BERTA!“. Absender geschwärzt.
+  Kalle: „Oh nein … die wollen Berta!“ – „Ratet mal, wer das geschrieben hat! Auflösung morgen um zwölf.“
+- Tag 3 (Mi): **Auflösung des Briefs (verbindlich, weil im Video angekündigt).** Die Taube hat sich verflogen: Die Antwort
+  kommt nicht vom angeschriebenen Verein, sondern vom **SV Matschbach** (erfundener Erzrivale). Matschbach nimmt an:
+  Spiel am **Samstag (14.11.)**. Einsatz: Verliert Kuhweide, muss Berta nach Matschbach. Dazu das Ergebnis Torwart-Duell
+  BERTA vs. FLO (wird durch den Einsatz wichtig). Wer in den Kommentaren richtig geraten hat, wird im Video genannt.
+  Abstimmung z. B. „Wer rettet Berta?“. Reagiert der „größte Kreisligaverein“ doch noch, wird das ein eigener Brief später.
+- Tag 4 (Do): Training „Rettet Berta“ mit dem Kader. Trikotfarbe aus den Kommentaren wählen.
+- Tag 5 (Fr): Abschlusstraining, Startelf und Sponsor.
+- Tag 6 (Sa): Spieltag gegen SV Matschbach. Die Torschützen sind Leute aus dem Kader. Es geht um Berta.
 - Danach: Meilensteine nach Fanzahl (z. B. 100 Fans = zweite Bierbank), Transfers aus den Kommentaren.
 
 **Zusätzlich:** Jedes Video auch als Instagram Reel und YouTube Short posten (gleiche Datei, Texte aus `beschreibung.txt`).
@@ -243,6 +250,10 @@ Kreisligaverein der Welt“, Wisch-Übergänge zwischen den Schnitten.
 - **Lesepausen (Wunsch vom 10.11.):** Kommentar-Karten kommen im Abstand von ca. 0,4–0,5 s rein, und die letzte Karte
   bleibt nach dem Satz noch ca. 2 s stehen. Taktiktafel und Ultra-Block bekommen ebenfalls 2–3 s Pause. Die Leute wollen ihren
   Namen finden. Das Sprechtempo bleibt dabei unverändert. Einstellbar oben in `make_script.py` (`LESEN_…`).
+- **Schluss mit offener Frage (Wunsch vom 10.11.):** Eine Ankündigung allein („Morgen schicken wir Post“) reicht nicht. Das
+  Ende braucht ein Ereignis im Bild, eine Bedrohung für eine beliebte Figur (Berta) und eine Frage zum Mitraten in den
+  Kommentaren. Danach eine Abschlusskarte „TEIL X · MORGEN 12 UHR“ mit Folgen-Knopf.
+- Wer in der Folge einen Wunsch erfüllt bekommt, wird auch **genannt**, nicht nur gezeigt (z. B. alle drei Ultras).
 
 ## Technik
 

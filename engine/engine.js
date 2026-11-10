@@ -357,7 +357,7 @@ window.Engine = (() => {
         P.drawWorld(S, t);
       }
       if (P.whip) {
-        const k = seg.id !== SEGS[0].id && !shotId ? 1 - clamp((t - seg.start) / 0.14) : 0;
+        const k = seg.id !== SEGS[0].id && !shotId && !(P.whip.skip || []).includes(seg.id) ? 1 - clamp((t - seg.start) / 0.14) : 0;
         const dir = (SEGS.indexOf(seg) % 2) ? -1 : 1;
         const tr = k > 0 ? `translateX(${dir * k * k * 140}px)` : '';
         $(alt ? 'alt' : 'world').style.transform = tr;
@@ -366,7 +366,7 @@ window.Engine = (() => {
       $('dim').style.opacity = S.dim;
       drawFx(S, t);
       drawUI(S, t, seg);
-      drawCaption(t, seg);
+      if (S.noCap) { $('cap1').textContent = ''; $('cap2').textContent = ''; } else drawCaption(t, seg);
     };
 
     const allText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜabcdefghijklmnopqrstuvwxyzäöüß0123456789 .,:!?·€✓✨…→⬇️👋📍💬❤️🩷👆♡' + (P.preload || '');

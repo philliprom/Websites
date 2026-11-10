@@ -96,7 +96,10 @@
     <path d="M-4 -40 Q16 -30 30 -20" stroke="#7C8798" stroke-width="7" fill="none" stroke-linecap="round"/>
     <g id="pgHead"><ellipse cx="-24" cy="-44" rx="16" ry="14" fill="#8FA0B5" ${sw}/><path d="M-34 -36 Q-26 -28 -14 -34" stroke="#6FB59A" stroke-width="6" fill="none"/>
       <path d="M-38 -46 L-50 -42 L-38 -40 Z" fill="#F2C14E" stroke="${OUT}" stroke-width="2.5"/><circle cx="-28" cy="-48" r="4" fill="#FF8A2B" stroke="${OUT}" stroke-width="2"/></g>
-    <path d="M-6 -4 L-8 4 M6 -4 L8 4" stroke="#F58FA8" stroke-width="4" stroke-linecap="round"/>`;
+    <path d="M-6 -4 L-8 4 M6 -4 L8 4" stroke="#F58FA8" stroke-width="4" stroke-linecap="round"/>
+    <g id="pgLetter" style="display:none" transform="translate(-60,-36) rotate(-14)">
+      <rect id="pgLetterBody" x="-24" y="-16" width="48" height="32" rx="4" fill="#FFF6E2" stroke="${OUT}" stroke-width="3.5"/>
+      <path d="M-24 -16 L0 3 L24 -16" stroke="${OUT}" stroke-width="3" fill="none"/></g>`;
   const bucketMarkup = () => `
     <path d="M-30 -60 L-20 -120 M-10 -64 L0 -128 M10 -62 L22 -122 M24 -60 L36 -112 M-22 -62 L-38 -110" stroke="#3FAE5A" stroke-width="7" stroke-linecap="round"/>
     <path d="M-44 -66 L44 -66 L36 0 L-36 0 Z" fill="#B7C0CC" ${sw}/><path d="M-40 -40 H40" stroke="#8E99AA" stroke-width="5"/>
@@ -214,6 +217,11 @@
     <g id="bench"><rect x="640" y="1262" width="390" height="22" rx="6" fill="#C08A52" ${sw}/>
       <path d="M670 1284 L660 1330 M700 1284 L710 1330 M970 1284 L960 1330 M1000 1284 L1010 1330" stroke="#8C5A30" stroke-width="10" stroke-linecap="round"/></g>
     <g id="crowdFront"></g>
+    <g id="ultraBanner" style="display:none">
+      <path d="M-236 0 V-336 M236 0 V-336" stroke="#8C5A30" stroke-width="11" stroke-linecap="round"/>
+      <rect x="-250" y="-340" width="500" height="92" rx="8" fill="#E23A4E" ${sw}/>
+      <path d="M-250 -326 H250 M-250 -262 H250" stroke="#fff" stroke-width="7" stroke-dasharray="22 14"/>
+      <text x="0" y="-279" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="48" fill="#fff" stroke="${OUT}" stroke-width="4" paint-order="stroke">ULTRAS · KUHWEIDE</text></g>
     <g id="ultra2" style="display:none">${ultraMini('u2', '#E23A4E')}</g>
     <g id="ultra3" style="display:none">${ultraMini('u3', '#2F80D1')}</g>
     <g id="ultra" style="display:none">${ultraMarkup()}</g>
@@ -298,12 +306,15 @@
   const base = () => ({
     kal: Object.assign(humanDefaults(), { x: 1180, y: 1350, s: 1 }),
     berta: null, ball: { x: 1290, y: 1336, r: 0 }, hills: 1, mole: null, ghost: null, pigeon: null, bucket: null, box: null,
-    net: null, netTag: null, qmarks: null, crowd: null, board: null,
+    net: null, netTag: null, qmarks: null, crowd: null, board: null, post: null, reply: null, timecard: null, endcard: null, noCap: false,
   });
   const B = (o) => Object.assign({ x: 1850, y: 1302, s: 1, chew: true, moo: false, grass: false, bill: false, hop: false }, o);
   const keyOf = (pred) => KD.aufstellung.findIndex(pred);
   const PINS = () => cue('s07', 'pins');
 
+  const ULTRA_X = { u2: 1185, main: 1310, u3: 1562, banner: 1372 };
+  const HEAD = 1027;  // Kalles Scheitel (Taube landet dort)
+  const UIDS = ['s06', ...(KD.ultra.weitere || []).map((_, i) => 's06' + 'bcdefg'[i])];
   const CC = { netz: 0, ultra: 1, tor: 2, burst: 3, ultraMehr: 3 + window.KADER.kommentare.burst.length };
   const BURST = [[70, 235, -4], [190, 385, 3], [80, 535, -2], [180, 685, 4], [70, 835, -3], [180, 985, 2], [90, 1135, -2]];
   function ballFlight(t, k) {
@@ -343,14 +354,8 @@
       const k = cue('s05', 'kaching');
       S.ui.kasse = { t0: s.start, value: lerp(KD.kasse_start, KD.kasse_rest, E.out(prog(t, k, 0.5))) };
     },
-    s06(S, t, s, lt, d) {
-      S.cam = camLerp([860, 1180, 1.6], [860, 1180, 1.68], lt / d); S.crowd = { t0: -10 };
-      const ub = cues('s06', 'blip');
-      S.ui.ccards = [{ i: CC.ultra, t0: ub[0], x: 130, y: 290, rot: 2 },
-        { i: CC.ultraMehr, t0: ub[1] ?? ub[0], x: 200, y: 440, rot: -3 }, { i: CC.ultraMehr + 1, t0: ub[2] ?? ub[0], x: 110, y: 590, rot: 2 }];
-    },
     s07(S, t, s, lt, d) {
-      S.cam = camLerp([930, 1150, 1.9], [930, 1150, 2.0], lt / d); S.crowd = { t0: -10 }; S.kal.x = 1400;
+      S.cam = camLerp([1345, 1120, 1.72], [1345, 1120, 1.84], lt / d); S.crowd = { t0: -10 }; S.kal.x = 1900;
       S.ultra = { t0: s.start, drums: cues('s07', 'drum') };
       S.ui.chip = { t0: s.start + 0.05, text: KD.ultra.chip || `📣 ULTRA-BLOCK · ${KD.ultra.handle}`, cls: 'red' };
     },
@@ -419,12 +424,81 @@
       S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16;
     },
     s17(S, t, s, lt, d) {
-      S.cam = camLerp([1180, 1060, 2.3], [1180, 1060, 2.45], lt / d);
+      S.cam = camLerp([1180, 1060, 2.3], [1180, 1060, 2.4], lt / d);
       S.kal.expr = t > cue('s17', 'pop') ? 'happy' : 'smile'; S.kal.look = [0, -8]; S.kal.armR = -150; S.kal.fingerR = true;
       S.post = { t0: cue('s17', 'pop') };
       S.dim = clamp((t - cue('s17', 'pop')) / 0.25) * 0.35;
     },
+    s18(S, t, s, lt, d) {
+      S.cam = [1180, 1060, 2.4];
+      const arr = cue('s18', 'flap'), grab = cue('s18', 'card'), go = cue('s18', 'whoosh'), tick = cue('s18', 'tick');
+      let x = 1215, y = 1000, rot = 0;
+      if (t < grab) { const p = E.out(prog(t, arr, Math.max(0.2, grab - arr))); x = lerp(1560, 1215, p); y = lerp(760, 1000, p); rot = lerp(-12, 0, p); }
+      else if (t >= go) { const p = E.in(prog(t, go, 0.8)); x = lerp(1215, 760, p); y = lerp(1000, 560, p); rot = 16; }
+      S.pigeon = { mode: 'free', x, y, rot, flap: true, s: 1.25, letter: t >= grab + 0.2 ? 'cream' : null };
+      S.kal.expr = 'happy'; S.kal.armR = -150; S.kal.fingerR = true; S.kal.look = t < go ? [3, -9] : [-9, -9];
+      // Brief schrumpft in den Schnabel der Taube
+      const lx = 1215 - 60 * 1.25, ly = 1000 - 36 * 1.25;
+      S.post = { t0: cue('s17', 'pop'), out: grab, tx: 540 + (lx - 1180) * 2.4, ty: 960 + (ly - 1060) * 2.4 };
+      S.dim = 0.35 * (1 - clamp((t - grab) / 0.3));
+      S.timecard = tick;
+      if (t >= tick) S.noCap = true;
+    },
+    s19(S, t, s, lt, d) {
+      S.cam = camLerp([1180, 1075, 2.1], [1180, 1070, 2.2], lt / d);
+      const a = cue('s19', 'flap'), land = cue('s19', 'boing'), pop = cue('s19', 'pop');
+      let x = 1175, y = HEAD, rot = 0, flap = false;
+      if (t < land) { const p = E.out(prog(t, a, Math.max(0.2, land - a))); x = lerp(700, 1175, p); y = lerp(600, HEAD, p); rot = lerp(14, 0, p); flap = true; }
+      S.pigeon = { mode: 'free', x, y, rot, flap, s: 1.25, sx: -1, letter: t < pop ? 'red' : null };
+      S.kal.expr = 'o'; S.kal.look = [0, -10];
+      S.reply = { t0: pop };
+      S.dim = clamp((t - pop) / 0.25) * 0.35;
+    },
+    s20(S, t, s, lt, d) { ohNein(S, t); },
+    s21(S, t, s, lt, d) {
+      ohNein(S, t);
+      if (t >= s.start + 0.25) S.reply.hl = true;
+      const m = cue('s21', 'moo');
+      if (t >= m) {
+        S.cam = camLerp([1760, 1160, 2.3], [1760, 1160, 2.45], E.out(prog(t, m, 0.8)));
+        S.berta = B({ moo: t < m + 0.9, chew: false }); S.pigeon = null; S.reply = null; S.dim = 0;
+        S.ui.chip2 = { t0: m, text: '🐄 MUUUH?!', cls: 'red', top: 300 };
+        S.shake = Math.max(0, 0.5 - (t - m) / 0.4);
+      }
+    },
+    s22(S, t, s, lt, d) {
+      S.cam = camLerp([1180, 1060, 2.3], [1180, 1060, 2.4], lt / d);
+      S.kal.expr = 'smile'; S.kal.look = [7, -3]; S.kal.armR = -100; S.kal.fingerR = true;
+      S.pigeon = { mode: 'free', x: 1175, y: HEAD, s: 1.25, sx: -1 };
+      S.reply = { t0: cue('s22', 'pop'), who: true };
+      S.dim = 0.35;
+      S.ui.chip = { t0: cue('s22', 'pop') + 0.45, text: '✍️ TIPPT IN DIE KOMMENTARE!', cls: 'green', top: 1560 };
+    },
+    s23(S, t, s, lt, d) {
+      S.cam = camLerp([1180, 1060, 2.4], [1180, 1060, 2.5], lt / d);
+      S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16;
+      S.pigeon = { mode: 'free', x: 1175, y: HEAD, s: 1.25, sx: -1 };
+      S.dim = 0.55;
+      S.endcard = { t0: cue('s23', 'pop'), tap: cue('s23', 'tap') };
+      S.confetti = cue('s23', 'confetti');
+    },
   };
+  function ultraAsk(S, t) {
+    S.cam = [860, 1180, 1.64]; S.crowd = { t0: -10 };
+    const pos = [[130, 290, 2], [200, 440, -3], [110, 590, 2]];
+    S.ui.ccards = UIDS.map((id, i) => ({ i: i === 0 ? CC.ultra : CC.ultraMehr + i - 1, t0: cue(id, 'blip'), x: pos[i % 3][0], y: pos[i % 3][1], rot: pos[i % 3][2] }));
+  }
+  UIDS.forEach((id) => { shots[id] = ultraAsk; });
+  function ohNein(S, t) {
+    const st = cue('s20', 'sting');
+    S.cam = camLerp([1180, 1075, 2.2], [1180, 1108, 2.7], E.out(prog(t, st, 0.45)));
+    S.kal.expr = 'worried'; S.kal.look = [0, 7];
+    S.pigeon = { mode: 'free', x: 1175, y: HEAD, s: 1.25, sx: -1 };
+    S.reply = { t0: cue('s19', 'pop'), open: cue('s20', 'card') };
+    S.dim = 0.35;
+    const hit = st + 0.52;
+    S.shake = t >= hit ? Math.max(0, 0.6 - (t - hit) / 0.4) : 0;
+  }
   function boardShot(S, t) { S.cam = [1250, 1150, 1.04]; S.berta = B({}); S.crowd = { t0: -10 }; S.dim = 0.55; S.net = true; }
 
   // Titelbild: Taktiktafel mit Kalle
@@ -548,9 +622,67 @@
   function drawPost(S, t) {
     if (!postEl) return;
     if (!S.post || t < S.post.t0) { postEl.style.display = 'none'; return; }
+    if (S.post.out !== undefined && t >= S.post.out + 0.32) { postEl.style.display = 'none'; return; }
     const k = popS(t, S.post.t0, 0.35);
+    let mv = '', sc = 1;
+    if (S.post.out !== undefined && t >= S.post.out) {
+      const p = E.inOut(prog(t, S.post.out, 0.3));
+      mv = `translate(${(S.post.tx - 540) * p}px,${(S.post.ty - 535) * p}px) `; sc = 1 - 0.9 * p;
+    }
     postEl.style.display = '';
-    postEl.style.transform = `translateX(-50%) translateY(${(1 - E.out(prog(t, S.post.t0, 0.35))) * 400}px) rotate(${-6 + Math.sin(t * 8) * 2}deg) scale(${k})`;
+    postEl.style.transform = `translateX(-50%) ${mv}translateY(${(1 - E.out(prog(t, S.post.t0, 0.35))) * 400}px) rotate(${-6 + Math.sin(t * 8) * 2}deg) scale(${k * sc})`;
+  }
+
+  let replyEl = null, timeEl = null, endEl = null, endHand = null;
+  const bar = (w) => `<span class="bar" style="width:${w}px"></span>`;
+  function buildOverlays() {
+    replyEl = document.createElement('div'); replyEl.id = 'reply'; replyEl.className = 'ui';
+    replyEl.innerHTML = `<div class="renv"><div class="flap"></div><div class="tag">ANTWORT</div>
+        <div class="addr"><small>AN</small><b>FC KUHWEIDE</b><small>VON</small><b class="who">${bar(330)}</b></div><div class="q">?</div></div>
+      <div class="letter"><p>Liebe Kuhweide,</p><p>wir nehmen an! ⚽</p><p><b>Samstag</b>, ${bar(64)} Uhr, ${bar(210)}.</p>
+        <p>Wenn ihr verliert, ${bar(120)} ${bar(70)}</p><p>${bar(90)} <b class="hit">BERTA</b>! 🐄</p><p class="sig">– ${bar(300)}</p></div>`;
+    timeEl = document.createElement('div'); timeEl.id = 'timecard'; timeEl.className = 'ui';
+    timeEl.innerHTML = `<div class="clk">⏱️</div><div class="txt">10 SEKUNDEN<br>SPÄTER …</div>`;
+    endEl = document.createElement('div'); endEl.id = 'endcard'; endEl.className = 'ui';
+    endEl.innerHTML = `<div class="av"><img src="../fc-kuhweide-tag1/out/profilbild_kalle.png"></div><div class="k">FORTSETZUNG</div>
+      <div class="big">TEIL 3</div><div class="when">MORGEN · 12 UHR</div><div class="btn" id="endBtn">＋ Folgen</div>`;
+    endHand = document.createElement('div'); endHand.id = 'endHand'; endHand.className = 'ui'; endHand.textContent = '👆';
+    for (const el of [replyEl, timeEl, endEl, endHand]) $('ui').appendChild(el);
+  }
+  function drawOverlays(S, t) {
+    const R = S.reply;
+    if (R && t >= R.t0) {
+      replyEl.style.display = '';
+      const open = R.open !== undefined && t >= R.open;
+      replyEl.classList.toggle('open', open);
+      replyEl.classList.toggle('who', !!R.who && Math.sin(t * 9) > -0.4);
+      replyEl.classList.toggle('hl', !!R.hl);
+      const k = popS(t, R.t0, 0.35), ko = open ? popS(t, R.open, 0.3) : 1;
+      replyEl.style.transform = `translateX(-50%) translateY(${(1 - E.out(prog(t, R.t0, 0.35))) * 400}px) rotate(${(open ? 1.5 : -5) + Math.sin(t * 7) * 1.2}deg) scale(${k * (open ? lerp(0.8, 1, ko) : 1)})`;
+    } else replyEl.style.display = 'none';
+    if (S.timecard !== null && t >= S.timecard) {
+      timeEl.style.display = '';
+      const p = E.out(prog(t, S.timecard, 0.2));
+      timeEl.style.opacity = p;
+      timeEl.style.transform = `scale(${lerp(1.25, 1, p)})`;
+      timeEl.querySelector('.clk').style.transform = `rotate(${Math.sin(t * 20) * 8}deg)`;
+    } else timeEl.style.display = 'none';
+    const C = S.endcard;
+    if (C && t >= C.t0) {
+      endEl.style.display = '';
+      endEl.style.transform = `translateX(-50%) rotate(-2deg) scale(${popS(t, C.t0, 0.35)})`;
+      const done = t >= C.tap, btn = $('endBtn');
+      btn.className = 'btn' + (done ? ' done' : '');
+      btn.textContent = done ? '✓ Gefolgt' : '＋ Folgen';
+      btn.style.transform = `scale(${done ? 1 : 1 + 0.05 * Math.max(0, Math.sin(t * 10))})`;
+      if (t < C.tap + 0.7) {
+        const r = btn.getBoundingClientRect();
+        const p = E.inOut(prog(t, C.t0 + 0.25, Math.max(0.2, C.tap - C.t0 - 0.3)));
+        const x = lerp(860, r.left + r.width * 0.55, p), y = lerp(1250, r.top + r.height * 0.5, p);
+        const tap = t > C.tap - 0.06 && t < C.tap + 0.12 ? 0.85 : 1;
+        endHand.style.display = ''; endHand.style.left = (x - 30) + 'px'; endHand.style.top = (y - 8) + 'px'; endHand.style.transform = `scale(${tap})`;
+      } else endHand.style.display = 'none';
+    } else { endEl.style.display = 'none'; endHand.style.display = 'none'; }
   }
 
   // ---------------------------------------------------------------- Zeichnen
@@ -594,6 +726,10 @@
       disp(pg, true);
       let x = 1030, y = 1262, rot = 0, sx = 1, sy = 1;
       if (S.pigeon.mode === 'bar') { x = 1995; y = 1066; }
+      else if (S.pigeon.mode === 'free') {
+        x = S.pigeon.x; y = S.pigeon.y; rot = S.pigeon.rot || 0; sx = (S.pigeon.sx || 1) * (S.pigeon.s || 1); sy = S.pigeon.s || 1;
+        if (S.pigeon.flap) sy *= 0.6 + 0.4 * Math.abs(Math.sin(t * 30));
+      }
       else if (S.pigeon.mode === 'fly' && t >= S.pigeon.flyAt) {
         const p = prog(t, S.pigeon.flyAt, 0.9);
         x = lerp(1030, 1360, p); y = lerp(1262, 960, E.out(p)); rot = 12; sx = -1; sy = 0.6 + 0.4 * Math.abs(Math.sin(t * 30));
@@ -601,6 +737,8 @@
       setT(pg, `translate(${x},${y}) rotate(${rot}) scale(${sx},${sy})`);
       const coo = S.pigeon.coo && t > S.pigeon.coo && t < S.pigeon.coo + 0.7;
       setT($('pgHead'), `translate(${coo ? Math.sin(t * 30) * 3 : 0},${coo ? -4 : 0})`);
+      disp($('pgLetter'), !!S.pigeon.letter);
+      if (S.pigeon.letter) $('pgLetterBody').setAttribute('fill', S.pigeon.letter === 'red' ? '#E8243B' : '#FFF6E2');
     } else disp(pg, false);
     // Netz (erscheint mit Plopp)
     const gn = $('goalNet');
@@ -624,13 +762,15 @@
     const ul = $('ultra');
     if (S.ultra) {
       disp(ul, true);
-      setT(ul, `translate(980,1262) scale(${1.55 * popS(t, S.ultra.t0, 0.3)})`);
+      setT(ul, `translate(${ULTRA_X.main},1262) scale(${1.55 * popS(t, S.ultra.t0, 0.3)})`);
       setT($('mega'), `translate(20,-112) rotate(${-28 + Math.sin(t * 10) * 6})`);
       const hit = (S.ultra.drums || []).some((x) => t > x && t < x + 0.12);
       setT($('drumSkin'), `translate(0,${hit ? 4 : 0}) scale(1,${hit ? 0.7 : 1})`);
       setT($('ultraBody'), `translate(0,${-Math.abs(Math.sin(t * 7)) * 8})`);
     } else disp(ul, false);
-    [['ultra2', 870, 0.12], ['ultra3', 1175, 0.24]].forEach(([id, x, dl]) => {
+    const ub = $('ultraBanner');
+    if (S.ultra) { disp(ub, true); setT(ub, `translate(${ULTRA_X.banner},1262) scale(1,${popS(t, S.ultra.t0 + 0.3, 0.35)})`); } else disp(ub, false);
+    [['ultra2', ULTRA_X.u2, 0.12], ['ultra3', ULTRA_X.u3, 0.24]].forEach(([id, x, dl]) => {
       const el = $(id);
       if (S.ultra) {
         disp(el, true);
@@ -639,6 +779,7 @@
       } else disp(el, false);
     });
     drawPost(S, t);
+    drawOverlays(S, t);
     drawBoard(S, t);
     // Kasse
     const bx = $('cashbox');
@@ -704,9 +845,9 @@
     world, alt, shots, drawWorld, drawAlt,
     baseState: base,
     highlight: '#FFD43B',
-    whip: true,
+    whip: { skip: [...UIDS.slice(1), 's18', 's21'] },
     confettiColors: ['#E23A4E', '#fff', '#FFC83A', '#2DBE60', '#5CC8FF', '#fff'],
-    preload: '📣⚽🏟️🥅📋🧤💰👀🐦🗳️🐄🔍⭐🎟️🏷️🃏🇹🇷',
+    preload: '📣⚽🏟️🥅📋🧤💰👀🐦🗳️🐄🔍⭐🎟️🏷️🃏🇹🇷⏱️✍️👆🦅🇩🇪＋✓',
     ui: {
       day: 'TAG 2',
       profile: { name: 'FC Kuhweide', handle: '@fc.kuhweide', avatar: '⚽', avatarImg: '../fc-kuhweide-tag1/out/profilbild_kalle.png', stat: 'Fans', foot: '1 Follower = 1 Fan ⚽' },
@@ -729,4 +870,5 @@
   });
   buildBoard();
   buildPost();
+  buildOverlays();
 })();

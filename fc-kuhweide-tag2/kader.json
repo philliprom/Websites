@@ -196,7 +196,17 @@
   "ultra": {
     "name": "Joel",
     "handle": "@joelski74",
-    "chip": "📣 ULTRA-BLOCK: 3 MANN"
+    "chip": "📣 ULTRA-BLOCK: 3 MANN",
+    "weitere": [
+      {
+        "name": "Leo",
+        "sprich": "Leo"
+      },
+      {
+        "name": "Peatoo",
+        "sprich": "Pietu"
+      }
+    ]
   },
   "neuner": {
     "handle": "@ljl1407",

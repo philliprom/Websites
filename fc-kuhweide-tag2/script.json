@@ -2,7 +2,7 @@
   "title": "FC Kuhweide – Tag 2: Der Kader",
   "voice": "voxcpm2",
   "lead_in": 0.1,
-  "tail": 1.8,
+  "tail": 2.0,
   "default_gap": 0.1,
   "tts": {
     "engine": "voxcpm",
@@ -115,27 +115,27 @@
         ],
         [
           "blip",
-          0.47
+          0.41
         ],
         [
           "blip",
-          0.89
+          0.77
         ],
         [
           "blip",
-          1.31
+          1.1300000000000001
         ],
         [
           "blip",
-          1.73
+          1.49
         ],
         [
           "blip",
-          2.15
+          1.8499999999999999
         ],
         [
           "blip",
-          2.57
+          2.21
         ]
       ]
     },
@@ -146,7 +146,7 @@
         "^LUCA WOLLTE",
         "EIN ^NETZ."
       ],
-      "gap": 3.0,
+      "gap": 2.2,
       "sfx": [
         [
           "whoosh",
@@ -164,7 +164,7 @@
       "caps": [
         "^GEKAUFT!"
       ],
-      "gap": 1.0,
+      "gap": 0.7,
       "sfx": [
         [
           "pop",
@@ -178,10 +178,9 @@
     },
     {
       "id": "s06",
-      "say": "Joel wollte Ultra werden.",
+      "say": "Joel,",
       "caps": [
-        "^JOEL WOLLTE",
-        "^ULTRA WERDEN."
+        "^JOEL,"
       ],
       "gap": 0.15,
       "sfx": [
@@ -191,15 +190,36 @@
         ],
         [
           "blip",
-          0.05
-        ],
+          0.02
+        ]
+      ]
+    },
+    {
+      "id": "s06b",
+      "say": "Leo",
+      "caps": [
+        "^LEO"
+      ],
+      "gap": 0.15,
+      "sfx": [
         [
           "blip",
-          0.6
-        ],
+          0.02
+        ]
+      ]
+    },
+    {
+      "id": "s06c",
+      "say": "und Pietu wollten Ultras werden.",
+      "caps": [
+        "UND ^PEATOO",
+        "WOLLTEN ^ULTRAS WERDEN."
+      ],
+      "gap": 0.15,
+      "sfx": [
         [
           "blip",
-          1.15
+          0.12
         ]
       ]
     },
@@ -210,7 +230,7 @@
         "BITTE SEHR:",
         "UNSER ^ULTRA-BLOCK."
       ],
-      "gap": 2.3,
+      "gap": 1.3,
       "sfx": [
         [
           "drum",
@@ -233,7 +253,7 @@
         "UND ^FLO",
         "WILL INS ^TOR."
       ],
-      "gap": 0.7,
+      "gap": 0.5,
       "sfx": [
         [
           "whoosh",
@@ -253,7 +273,7 @@
         "IHREN PLATZ",
         "!NICHT HER."
       ],
-      "gap": 1.0,
+      "gap": 0.7,
       "sfx": [
         [
           "moo",
@@ -270,7 +290,7 @@
         "UNSER ^NEUNER",
         "SCHIESST …"
       ],
-      "gap": 0.7,
+      "gap": 0.5,
       "sfx": [
         [
           "whoosh",
@@ -313,7 +333,7 @@
         "UND HIER IST",
         "EUER ^KADER!"
       ],
-      "gap": 0.5,
+      "gap": 0.35,
       "sfx": [
         [
           "whoosh",
@@ -334,7 +354,7 @@
         "UND EINEM !DUELL",
         "RECHTS HINTEN."
       ],
-      "gap": 0.9,
+      "gap": 0.6,
       "sfx": [
         [
           "pop",
@@ -358,7 +378,7 @@
         "NR. 1 GEHT AN:",
         "^JULIUS!"
       ],
-      "gap": 2.6,
+      "gap": 1.9,
       "sfx": [
         [
           "whoosh",
@@ -386,7 +406,7 @@
         "WER GEHT INS ~TOR?",
         "^BERTA ODER ^FLO?"
       ],
-      "gap": 0.8,
+      "gap": 0.55,
       "sfx": [
         [
           "whoosh",
@@ -409,7 +429,7 @@
         "SCHREIBT'S IN DIE",
         "^KOMMENTARE!"
       ],
-      "gap": 0.35,
+      "gap": 0.25,
       "sfx": [
         [
           "pop",
@@ -423,30 +443,188 @@
     },
     {
       "id": "s17",
-      "say": "Und morgen schicken wir Post. An den größten Kreisligaverein der Welt.",
+      "say": "Unsere Herausforderung an den größten Kreisligaverein der Welt …",
       "caps": [
-        "UND MORGEN",
-        "SCHICKEN WIR ^POST.",
+        "UNSERE ^HERAUSFORDERUNG",
         "AN DEN !GRÖSSTEN",
-        "KREISLIGAVEREIN DER WELT."
+        "KREISLIGAVEREIN DER WELT …"
       ],
-      "gap": 0.6,
+      "gap": 0.45,
       "sfx": [
         [
           "whoosh",
           -0.05
         ],
         [
-          "blip",
+          "pop",
+          0.1
+        ]
+      ]
+    },
+    {
+      "id": "s18",
+      "say": "… bringt die Taube hin!",
+      "caps": [
+        "… BRINGT DIE ^TAUBE HIN!"
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "flap",
+          -0.05
+        ],
+        [
+          "coo",
+          0.3
+        ],
+        [
+          "card",
+          0.4
+        ],
+        [
+          "whoosh",
           0.6
         ],
         [
-          "pop",
+          "flap",
           0.65
         ],
         [
-          "riser",
-          "e-1.2"
+          "tick",
+          "e+0.55"
+        ],
+        [
+          "tick",
+          "e+0.85"
+        ],
+        [
+          "tick",
+          "e+1.15"
+        ],
+        [
+          "tick",
+          "e+1.45"
+        ]
+      ]
+    },
+    {
+      "id": "s19",
+      "say": "Schon zurück? Mit einer Antwort?",
+      "caps": [
+        "SCHON ^ZURÜCK?",
+        "MIT EINER ^ANTWORT?"
+      ],
+      "gap": 2.0,
+      "sfx": [
+        [
+          "whoosh",
+          -0.25
+        ],
+        [
+          "flap",
+          -0.2
+        ],
+        [
+          "boing",
+          0.2
+        ],
+        [
+          "pop",
+          "e-0.55"
+        ]
+      ]
+    },
+    {
+      "id": "s20",
+      "say": "Oh nein …",
+      "caps": [
+        "!OH NEIN …"
+      ],
+      "gap": 0.45,
+      "sfx": [
+        [
+          "card",
+          -0.3
+        ],
+        [
+          "scratch",
+          -0.12
+        ],
+        [
+          "mstop",
+          -0.1
+        ],
+        [
+          "sting",
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "s21",
+      "say": "… die wollen Berta!",
+      "caps": [
+        "… DIE WOLLEN ^BERTA!"
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "moo",
+          "e+0.15"
+        ]
+      ]
+    },
+    {
+      "id": "s22",
+      "say": "Ratet mal, wer das geschrieben hat!",
+      "caps": [
+        "RATET MAL, WER DAS",
+        "^GESCHRIEBEN HAT!"
+      ],
+      "gap": 1.0,
+      "sfx": [
+        [
+          "mgo",
+          -0.1
+        ],
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.05
+        ]
+      ]
+    },
+    {
+      "id": "s23",
+      "say": "Auflösung morgen um zwölf!",
+      "caps": [
+        "^AUFLÖSUNG:",
+        "MORGEN UM ^12!"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.05
+        ],
+        [
+          "tap",
+          "e+0.35"
+        ],
+        [
+          "ding",
+          "e+0.4"
+        ],
+        [
+          "confetti",
+          "e+0.4"
         ]
       ]
     }
