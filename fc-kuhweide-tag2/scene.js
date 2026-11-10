@@ -122,7 +122,7 @@
       <path d="M-30 -132 L-54 -88 M30 -132 L54 -88" stroke="#F1C6A0" stroke-width="14" stroke-linecap="round"/>
       <rect x="-34" y="-146" width="68" height="82" rx="22" fill="#E23A4E" ${sw}/>
       <path d="M-34 -120 L34 -120" stroke="#fff" stroke-width="6"/>
-      <text x="0" y="-80" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="#fff" stroke="${OUT}" stroke-width="3" paint-order="stroke">9</text>
+      <text x="0" y="-80" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="#fff" stroke="${OUT}" stroke-width="3" paint-order="stroke">${window.KADER.neuner.num}</text>
       <circle cx="0" cy="-184" r="40" fill="#F1C6A0" ${sw}/>
       <path d="M-41 -190 Q-38 -230 0 -228 Q38 -230 41 -190 Q20 -206 0 -201 Q-20 -206 -41 -190 Z" fill="#3A2A1E" ${sw}/>
       <circle cx="-14" cy="-184" r="6.5" fill="${OUT}"/><circle cx="14" cy="-184" r="6.5" fill="${OUT}"/>
@@ -294,7 +294,7 @@
   const PINS = () => cue('s07', 'pins');
 
   const CC = { netz: 0, ultra: 1, tor: 2, burst: 3 };
-  const BURST = [[60, 250, -4], [200, 420, 3], [90, 590, -2], [180, 760, 4], [70, 930, -3], [190, 1100, 2]];
+  const BURST = [[70, 235, -4], [190, 385, 3], [80, 535, -2], [180, 685, 4], [70, 835, -3], [180, 985, 2], [90, 1135, -2]];
   function ballFlight(t, k) {
     const h = Math.max(cue('s11', 'boing'), k + 0.25);
     if (t < k) return { x: 1520, y: 1345, r: 0 };
@@ -319,7 +319,7 @@
     s03(S, t, s, lt, d) {
       S.cam = [1100, 1170, 1.0]; S.crowd = { t0: -10 }; S.berta = B({}); S.dim = 0.55;
       const b = cues('s03', 'blip');
-      S.ui.ccards = BURST.map(([x, y, rot], i) => ({ i: CC.burst + i, t0: b[i] ?? b[b.length - 1], x, y, rot, s: 0.95 }));
+      S.ui.ccards = BURST.map(([x, y, rot], i) => ({ i: CC.burst + i, t0: b[i] ?? b[b.length - 1], x, y, rot, s: 0.88 }));
     },
     s04(S, t, s, lt, d) {
       S.cam = camLerp([1850, 1160, 1.45], [1850, 1160, 1.52], lt / d);
@@ -339,7 +339,7 @@
     s07(S, t, s, lt, d) {
       S.cam = camLerp([930, 1150, 1.9], [930, 1150, 2.0], lt / d); S.crowd = { t0: -10 }; S.kal.x = 1400;
       S.ultra = { t0: s.start, drums: cues('s07', 'drum') };
-      S.ui.chip = { t0: s.start + 0.05, text: `📣 ULTRA-BLOCK · ${KD.ultra.handle}`, cls: 'red' };
+      S.ui.chip = { t0: s.start + 0.05, text: KD.ultra.chip || `📣 ULTRA-BLOCK · ${KD.ultra.handle}`, cls: 'red' };
     },
     s08(S, t, s, lt, d) {
       S.cam = camLerp([1800, 1140, 1.6], [1800, 1140, 1.68], lt / d);
@@ -407,7 +407,7 @@
     },
     s17(S, t, s, lt, d) {
       S.cam = camLerp([1180, 1060, 2.3], [1180, 1060, 2.45], lt / d);
-      S.kal.expr = t > cue('s17', 'pop') ? 'o' : 'smile'; S.kal.look = [0, -8]; S.kal.armL = 40;
+      S.kal.expr = t > cue('s17', 'pop') ? 'happy' : 'smile'; S.kal.look = [0, -8]; S.kal.armR = -150; S.kal.fingerR = true;
       S.post = { t0: cue('s17', 'pop') };
       S.dim = clamp((t - cue('s17', 'pop')) / 0.25) * 0.35;
     },
@@ -528,8 +528,8 @@
   function buildPost() {
     postEl = document.createElement('div');
     postEl.id = 'post'; postEl.className = 'ui';
-    postEl.innerHTML = `<div class="env"><div class="flap"></div><div class="addr"><small>AN</small><b>FC KUHWEIDE</b><small>ABSENDER</small><b>???</b></div>
-      <div class="stampbox">⚽</div><div class="seal">?</div></div>`;
+    postEl.innerHTML = `<div class="env"><div class="flap"></div><div class="addr"><small>AN</small><b class="to">Den größten Kreisligaverein<br>der Welt</b><small>VON</small><b>FC KUHWEIDE</b></div>
+      <div class="stampbox">🐄</div><div class="seal">!</div><div class="chall">HERAUSFORDERUNG</div></div>`;
     $('ui').appendChild(postEl);
   }
   function drawPost(S, t) {

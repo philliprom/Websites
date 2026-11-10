@@ -23,7 +23,7 @@ segments = [
     {"id": "s02", "say": f"Heute: {fans}!", "caps": [f"HEUTE: ^{fans}!"], "gap": 0.05,
      "sfx": [["cheer", 0.0], ["confetti", 0.1], ["flap", "e-0.1"]]},
     {"id": "s03", "say": f"Und {spieler} von euch wollen bei uns spielen.", "caps": [f"UND ^{spieler} VON EUCH", "WOLLEN BEI UNS ^SPIELEN."], "gap": 0.1,
-     "sfx": [["blip", 0.05], ["blip", 0.3], ["blip", 0.55], ["blip", 0.8], ["blip", 1.05], ["blip", 1.3]]},
+     "sfx": [["blip", 0.05], ["blip", 0.27], ["blip", 0.49], ["blip", 0.71], ["blip", 0.93], ["blip", 1.15], ["blip", 1.37]]},
     {"id": "s04", "say": f"{K['netz_waehler']} wollte ein Netz.", "caps": [f"^{K['netz_waehler'].upper()} WOLLTE", "EIN ^NETZ."], "gap": 0.15,
      "sfx": [["whoosh", -0.05], ["blip", 0.05]]},
     {"id": "s05", "say": "Gekauft!", "caps": ["^GEKAUFT!"], "gap": 0.05,
@@ -50,7 +50,7 @@ segments = [
      "sfx": [["whoosh", -0.05], ["card", "e-1.5"], ["card", "e-0.8"]]},
     {"id": "s16", "say": "Schreibt's in die Kommentare!", "caps": ["SCHREIBT'S IN DIE", "^KOMMENTARE!"], "gap": 0.05,
      "sfx": [["pop", 0.05], ["hearts", 0.2]]},
-    {"id": "s17", "say": "Und morgen kommt Post. Vom größten Kreisligaverein der Welt.", "caps": ["UND MORGEN", "KOMMT ^POST.", "VOM !GRÖSSTEN", "KREISLIGAVEREIN DER WELT."], "gap": 0.2,
+    {"id": "s17", "say": "Und morgen schicken wir Post. An den größten Kreisligaverein der Welt.", "caps": ["UND MORGEN", "SCHICKEN WIR ^POST.", "AN DEN !GRÖSSTEN", "KREISLIGAVEREIN DER WELT."], "gap": 0.2,
      "sfx": [["whoosh", -0.05], ["blip", 0.6], ["pop", 0.65], ["riser", "e-1.2"]]},
 ]
 
@@ -71,7 +71,7 @@ open(os.path.join(HERE, "script.json"), "w", encoding="utf-8").write(json.dumps(
 cap = (f"Tag 2: Gestern 0 Fans, heute {fans} ⚽🐄 {spieler} von euch wollen bei uns spielen – ist dein Name im Kader? 👀 "
        f"Wer geht ins Tor: BERTA oder {flo.upper()}? Schreibt's in die Kommentare 👇 #fckuhweide #tag2 #fußball #kreisliga #amateurfußball")
 pin = (f"📌 TORWART-DUELL: Schreibt BERTA 🐄 oder {flo.upper()} 🧤! Und wer noch in den Kader will: Position in die Kommentare ✍️ "
-       f"Morgen kommt Post vom größten Kreisligaverein der Welt 👀")
+       f"Morgen geht unsere Post raus – an den größten Kreisligaverein der Welt 👀✉️")
 os.makedirs(os.path.join(HERE, "out"), exist_ok=True)
 open(os.path.join(HERE, "out", "beschreibung.txt"), "w", encoding="utf-8").write(f"""FC KUHWEIDE – TAG 2 · TEXTE ZUM POSTEN
 =======================================

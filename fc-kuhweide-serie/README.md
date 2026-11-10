@@ -20,6 +20,7 @@ wird diese Datei gelesen und danach aktualisiert.
 | Tag 1 | 09.11. 11:58 | [vm.tiktok.com/ZGdXUnaG2](https://vm.tiktok.com/ZGdXUnaG2/) (Video-ID 7706124461619105057) | 09.11. 16:41 | 988 | 54 | 24 | 0 | 4 | 35 |
 | Tag 1 | | | 09.11. 16:55 | 1.015 | 55 | 40 | 2 | 4 | 35 |
 | Tag 1 | | | 09.11. 16:57 (Studio) | ~1.000 | | | | | 36 neu |
+| Tag 1 | | | 10.11. 08:55 | 1.440 | 70 | 57 | 2 | 4 | 45 |
 
 **TikTok Studio, Tag 1 (Stand 09.11. 16:57, ca. 5 h nach Upload):** ca. 1.000 Aufrufe · Gesamtabspielzeit 2 h 07 min 30 s ·
 **Ø Wiedergabedauer 8,5 s (19 % des 45-s-Videos)** · **ganzes Video angesehen: 3,91 %** · 36 neue Follower ·
@@ -62,6 +63,26 @@ Alles, was in den Antworten versprochen wurde. Antwort-Texte stehen so auf TikTo
 | Flügel (Seite offen) | @florian.gnther26 | „Darf ich Flügel spieler sein“ | Rückfrage „Links oder rechts?“ (Antwort abwarten) |
 | 6er | @georggruber1 | „kann ich 6er werden??“ | „Du räumst das Mittelfeld auf 💪“ |
 | Stürmer – **Sturm-Duo mit @ljl1407** | YG🇹🇷 (Benutzername noch prüfen) | „Stürmer das ist meine Karte“ | „Sturm-Duo oder Duell mit @ljl1407?“ → YG hat mit **„Duo“** geantwortet |
+
+### Neue Zusagen vom 10.11. morgens (Antworten in `fc-kuhweide-tag2/out/antworten_tag1.txt`)
+
+| Wer | Wunsch | Zusage |
+|---|---|---|
+| @besijan14 | „die nr 10 im mittelfeld“ | Die 10 ist vergeben → **die 8 im Mittelfeld** |
+| @miaa16120 | die 7, Kapitänin, Startelf | **die 7** (RM). Kapitänin entscheiden die Fans → Abstimmung in einer späteren Folge |
+| @bvb.forever86 | ZOM, sonst Co-Trainer | **ZOM** (Nr. 20) |
+| @leolausemaus703 | Trainer, sonst Ultra | **Ultra Nr. 2** |
+| @mxik.1965 | Trikotsponsor „Futterkiste“ | „Wir melden uns“. **Markenname nicht ungeprüft ins Video**, als Sponsor-Anfrage geführt |
+| @ljl1407 | Trikotnummer 40 | **die 40** (Position ST bleibt) |
+| @lillyfriedrich242 | „Deal“ | **Co-Trainerin bestätigt** |
+| @l.e.o.46 | „jeder Like = 100 € für den Rasen“ | Rasen-Spendenaktion als Running Gag (Tag 3+) |
+| @flo49472 | „mach part 2“ | Hauptrolle im Torwart-Duell |
+| @sarahhauswirth123123 | Ex-Profi, spielt jede Position | Allrounderin (Ex-Profi) |
+
+**Entscheidung FC Asche (10.11.):** Keine Reaktion. Wir warten nicht auf sie, sondern schicken **inoffiziell unsere eigene
+Herausforderung** („Morgen schicken wir Post. An den größten Kreisligaverein der Welt.“). Der Name FC Asche fällt im Video nicht,
+nur ihre Selbstbezeichnung. Bleibt die Antwort aus, wird daraus ein freundlicher Running Gag („Noch keine Antwort … 👀“).
+Kein Spam unter ihren Videos.
 
 ## Plan Tag 2: „Der Kader“
 

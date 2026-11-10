@@ -20,11 +20,11 @@
   .card .lab small { font-size: 24px; color: #7A8199; margin-top: 6px; }
   .card .icon { font-family: 'Noto Color Emoji'; font-size: 128px; line-height: 150px; height: 150px; }
   /* Taktiktafel */
-  #board { position: absolute; left: 60px; top: 230px; width: 960px; height: 1080px; background: #1F2A44; border-radius: 36px;
+  #board { position: absolute; left: 60px; top: 220px; width: 960px; height: 1120px; background: #1F2A44; border-radius: 36px;
     border: 7px solid #fff; box-shadow: 0 0 0 6px #1F2A44, 0 18px 0 6px rgba(10,10,30,.35); transform-origin: 50% 40%; }
   #board .head { position: absolute; left: 0; right: 0; top: 14px; text-align: center; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700;
     font-size: 46px; color: #fff; letter-spacing: 2px; }
-  #board .pitch { position: absolute; left: 22px; top: 82px; width: 902px; height: 740px; border-radius: 18px; overflow: hidden;
+  #board .pitch { position: absolute; left: 22px; top: 80px; width: 902px; height: 720px; border-radius: 18px; overflow: hidden;
     background: repeating-linear-gradient(0deg, #6DB549 0 74px, #78C152 74px 148px); }
   #board .pitch svg { position: absolute; inset: 0; }
   #board .pos { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px; }
@@ -37,10 +37,10 @@
   #board .tagline { font-family: 'Nunito'; font-weight: 900; font-size: 20px; color: #fff; background: #E23A4E; border-radius: 8px; padding: 1px 8px 3px; }
   #board .tagline.duo { background: #2DBE60; }
   #board .tagline.joker { background: #8C5FD9; }
-  #board .staff { position: absolute; left: 22px; right: 22px; top: 836px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
-  #board .st { background: #2A3760; border-radius: 14px; padding: 8px 12px 10px; color: #fff; font-family: 'Nunito', 'Noto Color Emoji';
-    font-weight: 900; font-size: 22px; line-height: 1.15; }
-  #board .st b { display: block; font-size: 25px; color: #FFD43B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #board .staff { position: absolute; left: 22px; right: 22px; top: 812px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; }
+  #board .st { background: #2A3760; border-radius: 14px; padding: 6px 12px 8px; color: #fff; font-family: 'Nunito', 'Noto Color Emoji';
+    font-weight: 900; font-size: 20px; line-height: 1.12; }
+  #board .st b { display: block; font-size: 23px; color: #FFD43B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   #board .glow { box-shadow: 0 0 0 5px #FFD43B, 0 0 30px 10px rgba(255, 212, 59, .8) !important; }
   #board.blurred .nm, #board.blurred .st b { filter: blur(9px); }
   /* Briefumschlag */
@@ -53,10 +53,13 @@
     clip-path: polygon(0 0, 100% 0, 50% 100%); border-bottom: 4px solid #1F2A44; }
   #post .addr { position: absolute; left: 60px; bottom: 50px; font-family: 'Nunito'; color: #1F2A44; }
   #post .addr small { display: block; font-weight: 900; font-size: 24px; letter-spacing: 4px; color: #8A90A6; }
-  #post .addr b { display: block; font-family: 'Fredoka'; font-weight: 700; font-size: 52px; line-height: 1.05; margin-bottom: 8px; }
+  #post .addr b { display: block; font-family: 'Fredoka'; font-weight: 700; font-size: 46px; line-height: 1.05; margin-bottom: 8px; }
+  #post .addr b.to { font-size: 36px; }
+  #post .chall { position: absolute; right: 40px; top: 40px; transform: rotate(8deg); font-family: 'Fredoka'; font-weight: 700; font-size: 34px; color: #E8243B;
+    border: 6px solid #E8243B; border-radius: 10px; padding: 4px 14px 6px; background: rgba(255,255,255,.85); }
   #post .stampbox { position: absolute; right: 56px; bottom: 60px; width: 110px; height: 130px; border: 5px dashed #1F2A44; border-radius: 8px;
     background: #FFD43B; font-family: 'Noto Color Emoji'; font-size: 64px; display: flex; align-items: center; justify-content: center; }
-  #post .seal { position: absolute; left: 50%; top: 170px; transform: translateX(-50%); width: 120px; height: 120px; border-radius: 50%;
+  #post .seal { position: absolute; left: 50%; top: 70px; transform: translateX(-50%); width: 110px; height: 110px; border-radius: 50%;
     background: #C8202E; border: 6px solid #1F2A44; color: #fff; font-family: 'Fredoka'; font-weight: 700; font-size: 84px;
     display: flex; align-items: center; justify-content: center; }
   #lupe { position: absolute; font-family: 'Noto Color Emoji'; font-size: 190px; left: 0; top: 0; transform-origin: 40% 40%; }
