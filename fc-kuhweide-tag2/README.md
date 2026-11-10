@@ -1,7 +1,7 @@
 # FC Kuhweide – Tag 2: Der Kader
 
 Folge 2 der Serie (siehe [`../fc-kuhweide-serie/README.md`](../fc-kuhweide-serie/README.md)). Neue Fassung nach dem Vergleich mit
-FC Asche, FC Kaiser 09 und Rekrut Schulz (ca. 35 s, dicht erzählt):
+FC Asche, FC Kaiser 09 und Rekrut Schulz (ca. 49 s: dicht erzählt, aber mit Lesepausen für die Kommentare, Ultra-Block und Taktiktafel):
 
 1. Haken: „Gestern: 0 Fans. Heute: X!“, die Bank füllt sich, Konfetti
 2. Echte Kommentare fliegen als Karten ins Bild („X von euch wollen spielen“)

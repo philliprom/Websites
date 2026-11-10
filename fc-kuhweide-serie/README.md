@@ -122,7 +122,7 @@ Fan Nr. 1 @juliusc1904.
 
 ## Stand Tag 2 (vorbereitet am 09.11. abends)
 
-Entwurf komplett gebaut in [`../fc-kuhweide-tag2/`](../fc-kuhweide-tag2/README.md). Neue, dichtere Fassung vom 09.11. ca. 23 Uhr: Video 35 s, Titelbild, Beschreibung,
+Entwurf komplett gebaut in [`../fc-kuhweide-tag2/`](../fc-kuhweide-tag2/README.md). Neue, dichtere Fassung vom 09.11. ca. 23 Uhr: Video 35 s (am 10.11. mit Lesepausen auf 49 s verlängert), Titelbild, Beschreibung,
 Stimme B. Datenstand: Kommentare bis 09.11. ca. 17 Uhr, 36 Fans, Netz 89 € → Kasse 411 €, 15 Spieler-Wünsche.
 Gesprochene Sätze liegen im Satz-Cache (`fc-kuhweide-tag2/tts_cache/`). Am Morgen werden nur geänderte Sätze neu gesprochen,
 meist nur „Heute: X!“ (Fanzahl) und „X von euch wollen spielen“. Ist der Container neu: `bash engine/setup_voxcpm.sh <ziel>`.
@@ -240,6 +240,9 @@ Kreisligaverein der Welt“, Wisch-Übergänge zwischen den Schnitten.
 - Antworten immer leicht unterschiedlich formulieren, damit TikTok sie nicht als Spam wertet.
 - Jede Folge enthält eine feste Postzeit, eine Mitmach-Aufforderung („Schreib deine Position“), eine Abstimmung mit 2 Optionen
   und eine Aufforderung zum Teilen.
+- **Lesepausen (Wunsch vom 10.11.):** Kommentar-Karten kommen im Abstand von ca. 0,4–0,5 s rein, und die letzte Karte
+  bleibt nach dem Satz noch ca. 2 s stehen. Taktiktafel und Ultra-Block bekommen ebenfalls 2–3 s Pause. Die Leute wollen ihren
+  Namen finden. Das Sprechtempo bleibt dabei unverändert. Einstellbar oben in `make_script.py` (`LESEN_…`).
 
 ## Technik
 
