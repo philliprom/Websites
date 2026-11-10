@@ -67,7 +67,7 @@
     },
     {
       "pos": "LM",
-      "x": 0.13,
+      "x": 0.145,
       "y": 0.43,
       "num": "16",
       "names": [
@@ -95,7 +95,7 @@
     {
       "pos": "RM",
       "x": 0.87,
-      "y": 0.43,
+      "y": 0.44,
       "num": "7",
       "names": [
         "@miaa16120"
@@ -113,7 +113,7 @@
     {
       "pos": "LF",
       "x": 0.15,
-      "y": 0.17,
+      "y": 0.15,
       "num": "10",
       "names": [
         "@elyassopicasso"
@@ -133,7 +133,7 @@
     {
       "pos": "RF",
       "x": 0.85,
-      "y": 0.17,
+      "y": 0.15,
       "num": "11",
       "names": [
         "@oskarfrings",
@@ -168,29 +168,30 @@
       "spielt": true
     },
     {
-      "rolle": "Ultras (3)",
-      "emo": "📣",
-      "handle": "@joelski74 · @leolausemaus703 · Peatoo 🇩🇪🦅",
-      "spielt": false,
-      "wide": true
-    },
-    {
       "rolle": "Fan Nr. 1",
       "emo": "🎟️",
       "handle": "@juliusc1904",
       "spielt": false
     },
     {
-      "rolle": "Torwart-Herausforderer",
-      "emo": "🧤",
-      "handle": "@flo49472",
-      "spielt": true
-    },
-    {
       "rolle": "Sponsor-Anfrage",
       "emo": "🤝",
       "handle": "@mxik.1965",
       "spielt": false
+    },
+    {
+      "rolle": "Torwart-Herausforderer",
+      "emo": "🧤",
+      "handle": "@flo49472",
+      "spielt": true,
+      "wide": true
+    },
+    {
+      "rolle": "Ultras (3)",
+      "emo": "📣",
+      "handle": "@joelski74 · @leolausemaus703 · Peatoo 🇩🇪🦅",
+      "spielt": false,
+      "wide": true
     }
   ],
   "ultra": {
