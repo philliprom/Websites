@@ -72,6 +72,7 @@ Alles, was in den Antworten versprochen wurde. Antwort-Texte stehen so auf TikTo
 | @miaa16120 | die 7, Kapitänin, Startelf | **die 7** (RM). Kapitänin entscheiden die Fans → Abstimmung in einer späteren Folge |
 | @bvb.forever86 | ZOM, sonst Co-Trainer | **ZOM** (Nr. 20) |
 | @leolausemaus703 | Trainer, sonst Ultra | **Ultra Nr. 2** |
+| ¹⁹𝕻𝖊𝖆𝖙𝖔𝖔🇩🇪🦅⁰⁹ (Anzeigename, @-Name noch prüfen) | „kann ich BITTE ein ultra sein“ | **Ultra Nr. 3** – im Tag-2-Video als dritte Ultra-Karte und dritte Figur im Ultra-Block |
 | @mxik.1965 | Trikotsponsor „Futterkiste“ | „Wir melden uns“. **Markenname nicht ungeprüft ins Video**, als Sponsor-Anfrage geführt |
 | @ljl1407 | Trikotnummer 40 | **die 40** (Position ST bleibt) |
 | @lillyfriedrich242 | „Deal“ | **Co-Trainerin bestätigt** |
