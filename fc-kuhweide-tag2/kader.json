@@ -168,10 +168,11 @@
       "spielt": true
     },
     {
-      "rolle": "Ultras",
+      "rolle": "Ultras (3)",
       "emo": "📣",
-      "handle": "@joelski74 · @leolausemaus703",
-      "spielt": false
+      "handle": "@joelski74 · @leolausemaus703 · Peatoo 🇩🇪🦅",
+      "spielt": false,
+      "wide": true
     },
     {
       "rolle": "Fan Nr. 1",
@@ -195,7 +196,7 @@
   "ultra": {
     "name": "Joel",
     "handle": "@joelski74",
-    "chip": "📣 ULTRAS: @joelski74 & @leolausemaus703"
+    "chip": "📣 ULTRA-BLOCK: 3 MANN"
   },
   "neuner": {
     "handle": "@ljl1407",
@@ -252,6 +253,18 @@
         "handle": "YG 🇹🇷",
         "text": "Stürmer das ist meine Karte",
         "color": "#FF8A2B"
+      }
+    ],
+    "ultra_mehr": [
+      {
+        "handle": "@leolausemaus703",
+        "text": "Kann ich Trainer sein? Wenn nicht dann Ultra",
+        "color": "#2DBE60"
+      },
+      {
+        "handle": "Peatoo 🇩🇪🦅",
+        "text": "kann ich BITTE ein ultra sein",
+        "color": "#E23A4E"
       }
     ]
   },

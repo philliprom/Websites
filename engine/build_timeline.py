@@ -61,8 +61,7 @@ def build_voxcpm(script, model_dir):
     import re as _re
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import voxcpm_tts as V
-    V.load(model_dir)
-    sr = V.sample_rate()
+    sr = None  # wird aus dem Cache gelesen oder nach dem Laden des Modells gesetzt (Modell nur bei Bedarf laden)
     tts = script["tts"]
     ref = os.path.join(HERE, tts["voice"])
     ref_text = open(os.path.join(HERE, tts["voice_text"]), encoding="utf-8").read().strip()
@@ -89,11 +88,15 @@ def build_voxcpm(script, model_dir):
             os.makedirs(os.path.dirname(cpath), exist_ok=True)
             sf_write(cpath, sf_read(old), sr)
         if os.path.exists(cpath):
-            wav = sf_read(cpath)
+            import soundfile as _sf
+            wav, sr = _sf.read(cpath, dtype="float32")
             words, hyp = V.asr_words(wav, sr)
             best = (V.wer(text, hyp), wav, words, hyp)
             print(f"  Satz {gi + 1}/{len(groups)} aus Cache: WER {best[0]:.2f} | {hyp}", flush=True)
         for attempt in range(0 if best else tts.get("tries", 4)):
+            if attempt == 0:
+                V.load(model_dir)
+                sr = V.sample_rate()
             wav = V.clone(text, ref, ref_text, seed=tts.get("seed", 7) + 1000 * gi + attempt,
                           cfg=tts.get("cfg", 2.0), steps=tts.get("steps", 10), style=style)
             wav = trim(np.asarray(wav, dtype=np.float32), sr)

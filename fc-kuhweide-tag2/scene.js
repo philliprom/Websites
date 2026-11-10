@@ -129,6 +129,15 @@
       <path id="plMouth" d="M-12 -166 Q0 -156 12 -166" stroke="${OUT}" stroke-width="4" fill="none" stroke-linecap="round"/>
       <path id="plSad" d="M-12 -160 Q0 -170 12 -160" stroke="${OUT}" stroke-width="4" fill="none" stroke-linecap="round" style="display:none"/>
     </g>`;
+  const ultraMini = (id, scarf) => `<g id="${id}"><g class="umb">
+      <path d="M-14 -60 L-30 -104" stroke="#E0A57E" stroke-width="11" stroke-linecap="round"/>
+      <rect x="-22" y="-70" width="44" height="70" rx="17" fill="#1F2A44" ${sw}/>
+      <path d="M-20 -62 L22 -40" stroke="${scarf}" stroke-width="11"/><path d="M-20 -62 L22 -40" stroke="#fff" stroke-width="11" stroke-dasharray="8 8"/>
+      <circle cx="0" cy="-92" r="22" fill="#F1C6A0" ${sw}/>
+      <path d="M-22 -97 Q0 -126 22 -97 Z" fill="${scarf}" ${sw}/>
+      <circle cx="-7" cy="-92" r="3" fill="${OUT}"/><circle cx="7" cy="-92" r="3" fill="${OUT}"/>
+      <ellipse cx="0" cy="-80" rx="7" ry="5" fill="#7A2633" ${sw}/>
+      <circle cx="-32" cy="-108" r="9" fill="#E0A57E" ${sw}/></g></g>`;
   const ultraMarkup = () => `
     <g id="drum" transform="translate(78,0)">
       <rect x="-36" y="-62" width="72" height="62" rx="10" fill="#E23A4E" ${sw}/>
@@ -205,6 +214,8 @@
     <g id="bench"><rect x="640" y="1262" width="390" height="22" rx="6" fill="#C08A52" ${sw}/>
       <path d="M670 1284 L660 1330 M700 1284 L710 1330 M970 1284 L960 1330 M1000 1284 L1010 1330" stroke="#8C5A30" stroke-width="10" stroke-linecap="round"/></g>
     <g id="crowdFront"></g>
+    <g id="ultra2" style="display:none">${ultraMini('u2', '#E23A4E')}</g>
+    <g id="ultra3" style="display:none">${ultraMini('u3', '#2F80D1')}</g>
     <g id="ultra" style="display:none">${ultraMarkup()}</g>
     <g id="ghost" transform="translate(830,1262)" style="display:none">
       <ellipse cx="0" cy="2" rx="62" ry="14" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="12 10"/>
@@ -293,7 +304,7 @@
   const keyOf = (pred) => KD.aufstellung.findIndex(pred);
   const PINS = () => cue('s07', 'pins');
 
-  const CC = { netz: 0, ultra: 1, tor: 2, burst: 3 };
+  const CC = { netz: 0, ultra: 1, tor: 2, burst: 3, ultraMehr: 3 + window.KADER.kommentare.burst.length };
   const BURST = [[70, 235, -4], [190, 385, 3], [80, 535, -2], [180, 685, 4], [70, 835, -3], [180, 985, 2], [90, 1135, -2]];
   function ballFlight(t, k) {
     const h = Math.max(cue('s11', 'boing'), k + 0.25);
@@ -334,7 +345,9 @@
     },
     s06(S, t, s, lt, d) {
       S.cam = camLerp([860, 1180, 1.6], [860, 1180, 1.68], lt / d); S.crowd = { t0: -10 };
-      S.ui.ccards = [{ i: CC.ultra, t0: cue('s06', 'blip'), x: 130, y: 290, rot: 2 }];
+      const ub = cues('s06', 'blip');
+      S.ui.ccards = [{ i: CC.ultra, t0: ub[0], x: 130, y: 290, rot: 2 },
+        { i: CC.ultraMehr, t0: ub[1] ?? ub[0], x: 200, y: 440, rot: -3 }, { i: CC.ultraMehr + 1, t0: ub[2] ?? ub[0], x: 110, y: 590, rot: 2 }];
     },
     s07(S, t, s, lt, d) {
       S.cam = camLerp([930, 1150, 1.9], [930, 1150, 2.0], lt / d); S.crowd = { t0: -10 }; S.kal.x = 1400;
@@ -480,7 +493,7 @@
       <rect x="${W * 0.22}" y="${H * 0.80}" width="${W * 0.56}" height="${H * 0.2 - 10}"/>
       <rect x="${W * 0.38}" y="${H * 0.92}" width="${W * 0.24}" height="${H * 0.08 - 10}"/>
       <path d="M${W * 0.40} ${H * 0.80} A80 80 0 0 1 ${W * 0.60} ${H * 0.80}"/></svg>`;
-    const staff = KD.staff.map((s, i) => `<div class="st" data-k="st:${i}">${s.emo} ${s.rolle}<b>${s.handle}</b></div>`).join('');
+    const staff = KD.staff.map((s, i) => `<div class="st${s.wide ? ' wide' : ''}" data-k="st:${i}">${s.emo} ${s.rolle}<b>${s.handle}</b></div>`).join('');
     const el = document.createElement('div');
     el.id = 'board'; el.className = 'ui';
     el.innerHTML = `<div class="head">📋 KADER · FC KUHWEIDE</div><div class="pitch">${lines}${pos}</div><div class="staff">${staff}</div>`;
@@ -617,6 +630,14 @@
       setT($('drumSkin'), `translate(0,${hit ? 4 : 0}) scale(1,${hit ? 0.7 : 1})`);
       setT($('ultraBody'), `translate(0,${-Math.abs(Math.sin(t * 7)) * 8})`);
     } else disp(ul, false);
+    [['ultra2', 870, 0.12], ['ultra3', 1175, 0.24]].forEach(([id, x, dl]) => {
+      const el = $(id);
+      if (S.ultra) {
+        disp(el, true);
+        setT(el, `translate(${x},1262) scale(${1.35 * popS(t, S.ultra.t0 + dl, 0.3)})`);
+        el.querySelector('.umb').setAttribute('transform', `translate(0,${-Math.abs(Math.sin(t * 7 + dl * 9)) * 9})`);
+      } else disp(el, false);
+    });
     drawPost(S, t);
     drawBoard(S, t);
     // Kasse
@@ -703,7 +724,7 @@
         { color: '#FF8A94', icon: '', label: '' },
       ],
       floats: [],
-      ccards: [KD.kommentare.netz, KD.kommentare.ultra, KD.kommentare.tor, ...KD.kommentare.burst],
+      ccards: [KD.kommentare.netz, KD.kommentare.ultra, KD.kommentare.tor, ...KD.kommentare.burst, ...(KD.kommentare.ultra_mehr || [])],
     },
   });
   buildBoard();

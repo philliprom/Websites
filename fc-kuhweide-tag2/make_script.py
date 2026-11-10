@@ -29,7 +29,7 @@ segments = [
     {"id": "s05", "say": "Gekauft!", "caps": ["^GEKAUFT!"], "gap": 0.05,
      "sfx": [["pop", 0.0], ["kaching", 0.15]]},
     {"id": "s06", "say": f"{ultra} wollte Ultra werden.", "caps": [f"^{ultra.upper()} WOLLTE", "^ULTRA WERDEN."], "gap": 0.15,
-     "sfx": [["whoosh", -0.05], ["blip", 0.05]]},
+     "sfx": [["whoosh", -0.05], ["blip", 0.05], ["blip", 0.4], ["blip", 0.75]]},
     {"id": "s07", "say": "Bitte sehr: unser Ultra-Block.", "caps": ["BITTE SEHR:", "UNSER ^ULTRA-BLOCK."], "gap": 0.05,
      "sfx": [["drum", 0.05], ["drum", "e-0.5"], ["cheer", "e-0.4"]]},
     {"id": "s08", "say": f"Und {flo} will ins Tor.", "caps": [f"UND ^{flo.upper()}", "WILL INS ^TOR."], "gap": 0.15,
