@@ -323,13 +323,25 @@ window.Engine = (() => {
       for (const c of seg.caps) if (t >= c.start - 0.02) chunk = c;
       if (!chunk) { c1.textContent = ''; c2.textContent = ''; return; }
       const col = { w: '#fff', g: P.highlight || '#FFD43B', r: '#FF5A64', y: '#5CCBFF' };
-      const build = (el, words) => { el.innerHTML = words.map(([w, s]) => `<tspan fill="${col[s]}">${w}</tspan>`).join(' '); };
+      // P.karaoke: noch nicht gesprochene Wörter sind blass, das aktuelle Wort leuchtet auf
+      let spoken = 1e9;
+      if (P.karaoke) {
+        const ci = seg.caps.indexOf(chunk);
+        const end = seg.caps[ci + 1] ? seg.caps[ci + 1].start : Math.max(seg.speechEnd || 0, chunk.start + 0.3);
+        const lens = chunk.words.map(([w]) => w.length + 1.5), tot = lens.reduce((x, y) => x + y, 0);
+        const pr = clamp((t - chunk.start) / Math.max(0.1, end - chunk.start)) * tot;
+        let acc = 0; spoken = 0;
+        for (let i = 0; i < lens.length; i++) { if (pr >= acc) spoken = i; acc += lens[i]; }
+      }
+      let wi = 0;
+      const build = (el, words) => { el.innerHTML = words.map(([w, s]) => { const k = wi++; return `<tspan fill="${col[s]}"${k > spoken ? ' fill-opacity=".4" stroke-opacity=".55"' : ''}>${w}</tspan>`; }).join(' '); };
       const sc = lerp(0.82, 1, popS(t, chunk.start, 0.16));
       build(c1, chunk.words);
       c1.setAttribute('font-size', 84); c2.textContent = '';
       let lines = 1;
       if (c1.getComputedTextLength() > 900 && chunk.words.length > 1) {
         const mid = Math.ceil(chunk.words.length / 2);
+        wi = 0;
         build(c1, chunk.words.slice(0, mid)); build(c2, chunk.words.slice(mid));
         lines = 2;
       }
@@ -351,7 +363,10 @@ window.Engine = (() => {
       $('alt').style.display = alt ? 'block' : 'none';
       if (alt) P.drawAlt(S, t);
       else {
-        const [cx, cy, z] = S.cam;
+        let [cx, cy, z] = S.cam;
+        if (P.punch && !shotId && seg.id !== SEGS[0].id && !((P.whip && P.whip.skip) || []).includes(seg.id)) {
+          const pk = 1 - clamp((t - seg.start) / 0.3); z *= 1 + P.punch * pk * pk;
+        }
         const sh = S.shake ? [Math.sin(t * 90) * 14 * S.shake, Math.cos(t * 77) * 10 * S.shake] : [0, 0];
         setT($('cam'), `translate(${540 + sh[0]},${960 + sh[1]}) scale(${z}) translate(${-cx},${-cy})`);
         P.drawWorld(S, t);

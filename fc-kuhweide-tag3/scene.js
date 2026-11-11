@@ -125,7 +125,7 @@
       <path d="M-30 -132 L-54 -88 M30 -132 L54 -88" stroke="#F1C6A0" stroke-width="14" stroke-linecap="round"/>
       <rect x="-34" y="-146" width="68" height="82" rx="22" fill="#E23A4E" ${sw}/>
       <path d="M-34 -120 L34 -120" stroke="#fff" stroke-width="6"/>
-      <text x="0" y="-80" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="#fff" stroke="${OUT}" stroke-width="3" paint-order="stroke">?</text>
+      <text x="0" y="-80" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="#fff" stroke="${OUT}" stroke-width="3" paint-order="stroke">1</text>
       <circle cx="0" cy="-184" r="40" fill="#F1C6A0" ${sw}/>
       <path d="M-41 -190 Q-38 -230 0 -228 Q38 -230 41 -190 Q20 -206 0 -201 Q-20 -206 -41 -190 Z" fill="#3A2A1E" ${sw}/>
       <circle cx="-14" cy="-184" r="6.5" fill="${OUT}"/><circle cx="14" cy="-184" r="6.5" fill="${OUT}"/>
@@ -167,42 +167,80 @@
   const HILLS = [[30, 1190], [220, 1250], [420, 1180], [600, 1400], [1050, 1430], [1400, 1210], [1500, 1480], [480, 1520], [2000, 1420], [2250, 1220], [-150, 1350], [1250, 1600], [760, 1700], [1800, 1650]];
   function world() {
     const r = rng(12);
-    const clouds = [[200, 300, 1.1], [850, 200, 0.9], [1500, 360, 1.3], [2200, 240, 1.0], [-400, 260, 1.1]].map(([x, y, s], i) =>
-      `<g id="cloud${i}" data-x="${x}" data-y="${y}" data-s="${s}"><g fill="#fff" opacity=".93"><ellipse rx="120" ry="40"/><circle cx="-50" cy="-20" r="46"/><circle cx="20" cy="-40" r="58"/><circle cx="74" cy="-12" r="40"/></g></g>`).join('');
+    const clouds = [[200, 300, 1.1], [850, 200, 0.9], [1500, 360, 1.3], [2200, 240, 1.0], [-400, 260, 1.1], [2900, 330, 1.2]].map(([x, y, s], i) =>
+      `<g id="cloud${i}" data-x="${x}" data-y="${y}" data-s="${s}"><g fill="#DCEEFB"><ellipse cy="10" rx="124" ry="40"/><circle cx="74" cy="0" r="40"/></g>
+        <g fill="#fff"><ellipse rx="118" ry="36"/><circle cx="-50" cy="-20" r="46"/><circle cx="20" cy="-40" r="58"/><circle cx="74" cy="-14" r="38"/></g></g>`).join('');
     let trees = '';
     for (let i = 0; i < 12; i++) {
       const x = -400 + i * 300 + r() * 100, s = 0.6 + r() * 0.5;
       if (x > 200 && x < 700) continue;
-      trees += `<g transform="translate(${x},990) scale(${s})"><rect x="-10" y="-60" width="20" height="60" fill="#6B4A2E"/><circle cx="0" cy="-120" r="74" fill="#5FA548"/><circle cx="-46" cy="-80" r="46" fill="#5FA548"/><circle cx="48" cy="-84" r="50" fill="#5FA548"/></g>`;
+      trees += `<g transform="translate(${x},990) scale(${s})"><ellipse cx="14" cy="2" rx="80" ry="12" fill="#2F6B2A" opacity=".25"/>
+        <rect x="-10" y="-60" width="20" height="60" fill="#6B4A2E"/><rect x="2" y="-60" width="8" height="60" fill="#55381F"/>
+        <g class="tree" data-p="${(r() * 6).toFixed(2)}"><circle cx="0" cy="-120" r="74" fill="#5FA548"/><circle cx="-46" cy="-80" r="46" fill="#5FA548"/><circle cx="48" cy="-84" r="50" fill="#4E933C"/>
+          <circle cx="22" cy="-100" r="52" fill="#4E933C"/><circle cx="-6" cy="-124" r="60" fill="#5FA548"/><circle cx="-26" cy="-146" r="26" fill="#78BE5C"/><circle cx="-52" cy="-96" r="16" fill="#78BE5C"/></g></g>`;
     }
+    // Wiese: Grasbüschel und Blumen (werden nach hinten kleiner)
+    let deco = '';
+    for (let i = 0; i < 90; i++) {
+      const x = -300 + r() * 3000, y = 1125 + Math.pow(r(), 1.4) * 780, k = 0.5 + (y - 1100) / 700;
+      if (y < 1320 && x > 500 && x < 2150) continue;  // Spielfeld und Tribüne frei lassen
+      deco += `<path transform="translate(${x.toFixed(0)},${y.toFixed(0)}) scale(${k.toFixed(2)})" d="M-8 0 Q-10 -14 -14 -20 M0 0 Q0 -18 2 -26 M8 0 Q10 -12 15 -18" stroke="#4E9A3A" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+    }
+    for (let i = 0; i < 46; i++) {
+      const x = -300 + r() * 3000, y = 1130 + Math.pow(r(), 1.2) * 760, k = 0.5 + (y - 1100) / 650, c = ['#fff', '#FFE14D', '#fff', '#FFB3C7'][i % 4];
+      if (y < 1340 && x > 480 && x < 2180) continue;
+      deco += `<g transform="translate(${x.toFixed(0)},${y.toFixed(0)}) scale(${k.toFixed(2)})"><path d="M0 0 V-14" stroke="#4E9A3A" stroke-width="3"/><circle cx="0" cy="-18" r="7" fill="${c}"/><circle cx="0" cy="-18" r="3" fill="#F2A81E"/></g>`;
+    }
+    const houses = [[-520, 0.9, '#F4EFE6', '#B5523B'], [-380, 0.7, '#EBD9B8', '#8E4A3A'], [1880, 0.8, '#F4EFE6', '#B5523B'], [2010, 1.0, '#EBD9B8', '#8E4A3A'], [2320, 0.75, '#F4EFE6', '#B5523B'], [2440, 0.9, '#E9E2D2', '#8E4A3A'], [3050, 0.8, '#F4EFE6', '#B5523B']]
+      .map(([x, k, w, rf]) => `<g transform="translate(${x},972) scale(${k})"><rect x="-44" y="-60" width="88" height="60" fill="${w}"/><path d="M-54 -58 L0 -108 L54 -58 Z" fill="${rf}"/><rect x="-12" y="-36" width="22" height="36" fill="#8A6A4A"/><rect x="18" y="-44" width="16" height="16" fill="#9AD0F0"/></g>`).join('');
     let stripes = '';
     let y = 1060;
-    for (let i = 0; i < 16; i++) { const h = 40 + i * 22; stripes += `<rect x="-1500" y="${y}" width="5200" height="${h}" fill="${i % 2 ? '#78C152' : '#6DB549'}"/>`; y += h; }
+    for (let i = 0; i < 16; i++) { const h = 40 + i * 22; stripes += `<rect x="-2500" y="${y}" width="7200" height="${h}" fill="${i % 2 ? '#78C152' : '#6DB549'}"/>`; y += h; }
     const hills = HILLS.map(([x, yy], i) => `<g id="hill${i}" transform="translate(${x},${yy})"><path d="M-44 0 Q-36 -30 0 -32 Q36 -30 44 0 Z" fill="#8A5A36" ${sw}/><path d="M-18 -18 Q0 -26 16 -18" stroke="#A9744A" stroke-width="5" fill="none" stroke-linecap="round"/></g>`).join('');
     return `
     <defs>
-      <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5BB3F0"/><stop offset="1" stop-color="#CDEBFF"/></linearGradient>
+      <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F8FE6"/><stop offset=".72" stop-color="#8FD0F7"/><stop offset=".9" stop-color="#D6F0FF"/><stop offset="1" stop-color="#FFF4D8"/></linearGradient>
+      <radialGradient id="gSun"><stop offset="0" stop-color="#FFFBE0"/><stop offset=".25" stop-color="#FFF0A0" stop-opacity=".85"/><stop offset=".6" stop-color="#FFE680" stop-opacity=".25"/><stop offset="1" stop-color="#FFE680" stop-opacity="0"/></radialGradient>
+      <linearGradient id="gGrass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBC4" stop-opacity=".30"/><stop offset=".35" stop-color="#FFFBC4" stop-opacity="0"/><stop offset="1" stop-color="#0B4A1E" stop-opacity=".30"/></linearGradient>
+      <linearGradient id="gHaze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".55"/></linearGradient>
       <pattern id="netPat" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 0 L22 22 M22 0 L0 22" stroke="#fff" stroke-width="2"/></pattern>
     </defs>
-    <rect x="-1500" y="-2600" width="5200" height="3700" fill="url(#gSky)"/>
-    <g id="clouds">${clouds}</g>
-    <path d="M-1500 1000 Q-900 820 -300 960 Q300 840 900 960 Q1500 830 2100 950 Q2700 860 3700 980 L3700 1100 L-1500 1100 Z" fill="#9CD27A"/>
-    <path d="M-1500 1040 Q-700 900 0 1010 Q800 920 1600 1010 Q2400 930 3700 1030 L3700 1100 L-1500 1100 Z" fill="#86C566"/>
-    <g transform="translate(2150,960)"><rect x="-26" y="-140" width="52" height="140" fill="#F4EFE6"/><path d="M-30 -140 L0 -250 L30 -140 Z" fill="#5A6577"/><rect x="-10" y="-110" width="20" height="30" rx="10" fill="#5A6577"/></g>
+    <rect x="-2500" y="-2600" width="7200" height="3700" fill="url(#gSky)"/>
+    <g id="pxSky">
+      <g transform="translate(1640,470)"><g id="sunRays" opacity=".5">${Array.from({ length: 10 }, (_, i) => `<path transform="rotate(${i * 36})" d="M0 0 L-46 -760 L46 -760 Z" fill="#FFF6C8" opacity="${i % 2 ? 0.35 : 0.6}"/>`).join('')}</g>
+        <circle r="520" fill="url(#gSun)"/><circle r="96" fill="#FFF7C7"/><circle r="80" fill="#FFEB8A"/></g>
+      <g id="clouds">${clouds}</g>
+      <g id="birds">${[0, 1, 2].map((i) => `<path id="bird${i}" stroke="#3B4A66" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`).join('')}</g>
+    </g>
+    <g id="pxFar">
+      <path d="M-2500 1010 L-1900 800 L-1500 900 L-1050 720 L-700 880 L-250 760 L150 900 L600 730 L1000 880 L1450 770 L1850 900 L2300 740 L2750 880 L3200 780 L3700 900 L4700 1010 L4700 1100 L-2500 1100 Z" fill="#9CC9E4"/>
+      <path d="M-1050 720 L-960 772 L-1010 790 L-1100 760 Z M600 730 L690 786 L630 800 L540 768 Z M2300 740 L2390 792 L2330 806 L2240 774 Z" fill="#EAF6FF"/>
+      <rect x="-2500" y="780" width="7200" height="320" fill="url(#gHaze)"/>
+    </g>
+    <g id="pxMid">
+      <path d="M-2500 1000 Q-1500 820 -300 960 Q300 840 900 960 Q1500 830 2100 950 Q2700 860 3700 980 L4700 980 L4700 1100 L-2500 1100 Z" fill="#A6D987"/>
+      ${houses}
+      <g transform="translate(2150,960)"><rect x="-26" y="-140" width="52" height="140" fill="#F4EFE6"/><rect x="6" y="-140" width="20" height="140" fill="#DDD5C6"/><path d="M-30 -140 L0 -250 L30 -140 Z" fill="#5A6577"/><rect x="-10" y="-110" width="20" height="30" rx="10" fill="#5A6577"/><circle cx="0" cy="-60" r="9" fill="#FFD43B"/></g>
+    </g>
+    <path d="M-2500 1040 Q-700 900 0 1010 Q800 920 1600 1010 Q2400 930 3700 1030 L4700 1030 L4700 1100 L-2500 1100 Z" fill="#86C566"/>
     ${trees}
     <g id="barn" transform="translate(440,1010)">
       <rect x="-200" y="-220" width="400" height="220" fill="#C8443A" ${sw}/>
+      <rect x="110" y="-216" width="86" height="212" fill="#A8352E"/>
       <path d="M-226 -210 L-120 -330 L120 -330 L226 -210 Z" fill="#6A4A3A" ${sw}/>
+      <path d="M-206 -222 L-116 -322 L-40 -322 L-130 -222 Z" fill="#7D5A47"/>
       <rect x="-70" y="-150" width="140" height="150" fill="#fff" ${sw}/>
       <path d="M-70 -150 L70 0 M70 -150 L-70 0" stroke="#C8443A" stroke-width="12"/>
       <rect x="-30" y="-290" width="60" height="50" fill="#fff" ${sw}/>
     </g>
     ${stripes}
+    <rect x="-2500" y="1060" width="7200" height="1900" fill="url(#gGrass)"/>
+    <g id="deco">${deco}</g>
     <g id="fence">${Array.from({ length: 40 }, (_, i) => `<rect x="${-1200 + i * 130}" y="1010" width="14" height="70" fill="#B98048"/>`).join('')}
       <rect x="-1300" y="1022" width="5000" height="12" fill="#D9A066"/><rect x="-1300" y="1052" width="5000" height="12" fill="#D9A066"/></g>
     <g id="flagBanner" transform="translate(820,1004) rotate(-1.5)">
       <rect x="-280" y="-40" width="560" height="78" rx="6" fill="#fff" ${sw}/>
-      <text x="0" y="10" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="#E23A4E">FC KUHWEIDE · GEGR. HEUTE</text>
+      <text x="0" y="10" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="33" fill="#E23A4E">FC KUHWEIDE · GEGR. VORGESTERN</text>
     </g>
     <g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".92">
       <path d="M-1400 1110 Q-400 1104 600 1114 Q1600 1120 3600 1108"/>
@@ -222,7 +260,7 @@
       <rect x="-250" y="-340" width="500" height="92" rx="8" fill="#E23A4E" ${sw}/>
       <path d="M-250 -326 H250 M-250 -262 H250" stroke="#fff" stroke-width="7" stroke-dasharray="22 14"/>
       <text x="0" y="-279" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="48" fill="#fff" stroke="${OUT}" stroke-width="4" paint-order="stroke">ULTRAS · KUHWEIDE</text></g>
-    ${[4, 5, 6, 7, 8].map((n, i) => `<g id="ultra${n}" style="display:none">${ultraMini('u' + n, ['#2DBE60', '#FFC83A', '#E23A4E', '#8C5FD9', '#2F80D1'][i])}</g>`).join('')}
+    ${[4, 5, 6, 7, 8, 9].map((n, i) => `<g id="ultra${n}" style="display:none">${ultraMini('u' + n, ['#2DBE60', '#FFC83A', '#E23A4E', '#8C5FD9', '#2F80D1', '#FF8A2B'][i])}</g>`).join('')}
     <g id="ultra2" style="display:none">${ultraMini('u2', '#E23A4E')}</g>
     <g id="ultra3" style="display:none">${ultraMini('u3', '#2F80D1')}</g>
     <g id="ultra" style="display:none">${ultraMarkup()}</g>
@@ -250,6 +288,7 @@
       <g id="tcWheelF" transform="translate(50,-30)"><circle r="40" fill="#333" ${sw}/><circle r="16" fill="#FFC83A" ${sw}/></g>
     </g>
     <g id="pigeon" style="display:none">${pigeonMarkup()}</g>
+    ${[0, 1].map((i) => `<g id="bfly${i}"><g class="w"><path d="M0 0 Q-22 -26 -26 -6 Q-24 10 0 0 Z M0 0 Q22 -26 26 -6 Q24 10 0 0 Z" fill="${['#FFB3C7', '#FFE14D'][i]}" stroke="${OUT}" stroke-width="2.5"/></g><path d="M0 -6 V8" stroke="${OUT}" stroke-width="4" stroke-linecap="round"/></g>`).join('')}
     <g id="cashbox" transform="translate(760,1262)" style="display:none">${boxMarkup()}</g>
     <g id="goal">
       <rect id="goalNet" x="1650" y="1090" width="400" height="210" fill="url(#netPat)" opacity=".7" style="display:none"/>
@@ -321,14 +360,15 @@
   const base = () => ({
     kal: Object.assign(humanDefaults(), { x: 1180, y: 1350, s: 1 }),
     berta: null, ball: { x: 1290, y: 1336, r: 0 }, hills: 1, mole: null, ghost: null, pigeon: null, bucket: null, box: null,
-    net: null, netTag: null, qmarks: null, crowd: null, board: null, post: null, tractor: null, crest: null, reply: null, timecard: null, endcard: null, noCap: false,
+    net: null, netTag: null, qmarks: null, crowd: null, board: null, post: null, tractor: null, crest: null, stamps: null, reply: null, timecard: null, endcard: null, noCap: false,
   });
   const B = (o) => Object.assign({ x: 1850, y: 1302, s: 1, chew: true, moo: false, grass: false, bill: false, hop: false }, o);
 
   const ULTRA_X = { u2: 1185, main: 1310, u3: 1562, banner: 1372 };
   const HEAD = 1027;  // Kalles Scheitel (Taube landet dort)
   const KC = KD.kommentare;
-  const CC = { capo: 0, ultras: 1, bus: 1 + KC.ultras.length, physio: 2 + KC.ultras.length, sprecher: 3 + KC.ultras.length, maskottchen: 4 + KC.ultras.length };
+  const CLIST = [KC.capo, KC.trommler, ...KC.ultras, KC.bus, KC.physio, KC.sprecher, KC.maskottchen, KC.frage, KC.elfer, KC.stimme];
+  const CI = (c) => CLIST.indexOf(c);
   function ballFlight(t, k) {
     const h = Math.max(cue('s11', 'boing'), k + 0.25);
     if (t < k) return { x: 1520, y: 1345, r: 0 };
@@ -338,7 +378,16 @@
   }
 
   const kalShot = (S, z = 2.3, cy = 1060) => { S.cam = [1180, cy, z]; S.pigeon = { mode: 'free', x: 1175, y: HEAD, s: 1.25, sx: -1 }; };
-  const cardsAt = (list) => list.map(([i, t0], k) => ({ i, t0, x: [130, 200, 110, 200, 110][k % 5], y: 250 + k * 140, rot: [2, -3, 2, -2, 3][k % 5], s: 0.9 }));
+  // Kommentar-Karten untereinander, optional mit Stempel „✓ ROLLE“
+  const cardsAt = (S, list, y0 = 250, dy = 150) => {
+    S.ui.ccards = list.map(([c, t0], k) => ({ i: CI(c), t0, x: [120, 190, 110, 190, 110, 180][k % 6], y: y0 + k * dy, rot: [2, -3, 2, -2, 3, -2][k % 6], s: 0.9 }));
+    S.stamps = list.map(([c, t0, st], k) => st ? { t0: t0 + 0.45, text: '✓ ' + st, x: [120, 190, 110, 190, 110, 180][k % 6] + 728, y: y0 + k * dy + 84, rot: [-7, 6, -5, 7, -6, 5][k % 6] } : null).filter(Boolean);
+  };
+  const goalScene = (S, t, floIn) => {
+    S.net = true; S.pigeon = { mode: 'bar' };
+    S.shooter = { x: floIn === true ? 1850 : lerp(1440, 1850, E.inOut(prog(t, floIn, 1.0))), kickAt: floIn === true || t > floIn + 1.0 ? -10 : 1e9 };
+    S.berta = B({ x: floIn === true ? 2210 : lerp(1850, 2210, E.inOut(prog(t, floIn - 0.1, 0.9))), flip: floIn === true || t > floIn + 0.5, chew: false });
+  };
   const shots = {
     s01(S, t, s, lt, d) {
       kalShot(S, lerp(2.2, 2.35, lt / d)); S.kal.expr = 'o'; S.kal.look = [0, -6];
@@ -347,113 +396,127 @@
     s02(S, t, s, lt, d) {
       kalShot(S, 2.35); S.kal.expr = 'worried'; S.kal.look = [0, -6];
       const st = cue('s02', 'stamp'); S.dim = 0.5;
-      S.crest = { t0: st }; S.shake = Math.max(0, 0.5 - (t - st) / 0.4);
+      if (t < st) S.reply = { t0: s.start - 3, who: true };
+      S.crest = { t0: st }; S.shake = t >= st ? Math.max(0, 0.5 - (t - st) / 0.4) : 0;
     },
     s03(S, t, s, lt, d) {
       kalShot(S, lerp(2.5, 2.65, lt / d), 1010); S.kal.expr = 'worried'; S.kal.look = [0, -10];
-      const c = cue('s03', 'coo');
-      S.pigeon.rot = -12; S.pigeon.coo = c; S.pigeon.sx = 1;
+      S.pigeon.rot = -12; S.pigeon.coo = cue('s03', 'coo'); S.pigeon.sx = 1;
       S.ui.chip2 = { t0: s.start + 1.0, text: '🐦 FALSCHE ADRESSE!', cls: 'red', top: 300 };
     },
     s04(S, t, s, lt, d) {
-      kalShot(S, 2.3); S.kal.expr = 'o'; S.kal.look = [0, -6]; S.dim = 0.35;
-      S.reply = { t0: s.start - 0.05, open: s.start - 0.05 };
-      S.ui.chip = { t0: cue('s04', 'pop') + 0.3, text: `📅 ${KD.spiel.toUpperCase()} · AUSWÄRTS`, cls: 'yellow', top: 1560 };
+      kalShot(S, lerp(2.0, 2.1, lt / d), 1080); S.kal.expr = 'smile'; S.kal.look = [-4, -8]; S.dim = 0.3;
+      cardsAt(S, [[KC.frage, cue('s04', 'blip')]], 300);
     },
     s05(S, t, s, lt, d) {
-      kalShot(S, 2.3); S.kal.expr = 'worried'; S.kal.look = [0, 6]; S.dim = 0.35;
-      S.reply = { t0: s.start - 0.4, open: s.start - 0.4, hl: t > s.start + 0.8 };
-      const st = cue('s05', 'sting');
+      kalShot(S, lerp(2.25, 2.35, lt / d)); S.kal.expr = 'happy'; S.kal.armR = -150; S.kal.fingerR = true; S.dim = 0.35;
+      S.reply = { t0: s.start - 0.05, open: s.start - 0.05, date: true };
+      S.ui.chip = { t0: cue('s05', 'pop') + 0.3, text: `📅 ${KD.spiel.toUpperCase()} · AUSWÄRTS`, cls: 'yellow', top: 1560 };
+    },
+    s06(S, t, s, lt, d) {
+      kalShot(S, lerp(2.35, 2.5, lt / d)); S.kal.expr = 'worried'; S.kal.look = [0, 6]; S.dim = 0.35;
+      S.reply = { t0: s.start - 3, open: s.start - 3, hl: t > s.start + 0.9 };
+      const st = cue('s06', 'sting');
       if (t >= st) {
-        S.cam = camLerp([1760, 1160, 2.2], [1760, 1160, 2.45], E.out(prog(t, st, 0.8)));
-        S.berta = B({ chew: false }); S.pigeon = null; S.reply = null; S.dim = 0; S.net = true;
+        const m = cue('s06', 'moo');
+        S.cam = camLerp([1760, 1160, 2.2], [1760, 1160, 2.5], E.out(prog(t, st, 1.2)));
+        S.berta = B({ chew: false, moo: t > m && t < m + 0.9 }); S.pigeon = null; S.reply = null; S.dim = 0; S.net = true;
         S.ui.chip2 = { t0: st, text: '😱 BERTA NACH MATSCHBACH?!', cls: 'red', top: 300 };
         S.shake = Math.max(0, 0.5 - (t - st) / 0.4);
       }
     },
-    s06(S, t, s, lt, d) {
-      kalShot(S, lerp(1.9, 2.05, lt / d), 1090); S.kal.expr = 'happy'; S.kal.armR = -160; S.kal.look = [0, -4];
-      S.ui.chip = { t0: cue('s06', 'pop') + 0.6, text: '💪 OPERATION: RETTET BERTA', cls: 'green', top: 300 };
-    },
     s07(S, t, s, lt, d) {
-      S.cam = camLerp([850, 1175, 1.85], [850, 1175, 1.7], E.out(clamp(lt / d)));
-      S.crowd = { t0: -10 }; S.pigeon = { mode: 'bench' };
-      const h = s.start + 1.3;
-      S.ui.counter = t < h ? { t0: s.start - 0.05, label: 'GESTERN', unit: 'FANS', value: KD.fans_gestern, cls: 'zero', top: 300 }
-        : { t0: h, label: 'HEUTE', unit: 'FANS', value: lerp(KD.fans_gestern, KD.fans, E.out(prog(t, h, 0.7))), cls: 'today', top: 300 };
-      S.confetti = cue('s07', 'confetti');
+      kalShot(S, lerp(1.9, 2.05, lt / d), 1090); S.kal.expr = 'happy'; S.kal.armR = -160 + Math.sin(t * 14) * 8; S.kal.look = [0, -4];
+      S.ui.chip = { t0: cue('s07', 'pop') + 0.6, text: '💪 OPERATION: RETTET BERTA', cls: 'green', top: 300 };
     },
     s08(S, t, s, lt, d) {
-      const b = cues('s08', 'blip'), dr = cue('s08', 'drum');
-      if (t < dr - 0.1) {
-        S.cam = [1100, 1170, 1.0]; S.crowd = { t0: -10 }; S.berta = B({}); S.dim = 0.55;
-        S.ui.ccards = cardsAt([[CC.capo, b[0]], ...KC.ultras.map((_, i) => [CC.ultras + i, b[1 + i] ?? b[b.length - 1]])]);
-      } else {
-        S.cam = camLerp([1345, 1105, 1.72], [1345, 1105, 1.82], prog(t, dr, 2)); S.crowd = { t0: -10 }; S.kal.x = 1900;
-        S.ultra = { t0: dr - 0.1, big: true, drums: [dr, dr + 0.9] };
-        S.ui.chip = { t0: dr, text: `📣 ULTRA-BLOCK: ${KD.ultras.length} MANN · CAPO ${KD.capo.handle}`, cls: 'red' };
-      }
+      S.cam = camLerp([850, 1195, 1.75], [850, 1195, 1.6], E.out(clamp(lt / d)));
+      S.crowd = { t0: -10 }; S.pigeon = { mode: 'bench' };
+      const h = s.start + (d - 1.2) * 0.52;
+      S.ui.counter = t < h ? { t0: s.start - 0.05, label: 'GESTERN', unit: 'FANS', value: KD.fans_gestern, cls: 'zero', top: 300 }
+        : { t0: h, label: 'HEUTE', unit: 'FANS', value: lerp(KD.fans_gestern, KD.fans, E.out(prog(t, h, 0.7))), cls: 'today', top: 300 };
+      S.confetti = cue('s08', 'confetti');
     },
     s09(S, t, s, lt, d) {
-      S.cam = [1500, 1150, 1.25]; S.berta = B({}); S.net = true; S.kal.x = 1150;
-      S.ui.ccards = cardsAt([[CC.bus, cue('s09', 'blip')]]);
-      S.tractor = { x: lerp(2700, 1700, E.out(prog(t, s.start + 0.4, 1.5))) };
-      S.kal.look = [8, 0];
-    },
-    s10(S, t, s, lt, d) {
-      S.cam = camLerp([1640, 1170, 1.7], [1640, 1170, 1.8], lt / d); S.berta = null; S.kal.x = 1150;
-      S.tractor = { x: 1700 };
-      S.ui.chip2 = { t0: s.start + 0.5, text: `🚜 FAHRER: ${KD.bus.handle}`, cls: '', top: 300 };
-    },
-    s11(S, t, s, lt, d) {
-      S.cam = [1100, 1170, 1.0]; S.crowd = { t0: -10 }; S.berta = B({}); S.dim = 0.55; S.tractor = { x: 2300 };
-      const b = cues('s11', 'blip');
-      S.ui.ccards = cardsAt([[CC.physio, b[0]], [CC.sprecher, b[1]], [CC.maskottchen, b[2]]]);
-    },
-    s12(S, t, s, lt, d) {
-      S.cam = camLerp([1800, 1150, 1.5], [1800, 1150, 1.6], lt / d);
-      const m = cue('s12', 'moo');
-      S.berta = B({ moo: t > m && t < m + 0.8, chew: t < m }); S.net = true; S.pigeon = { mode: 'bar' };
-      S.ui.chip = { t0: s.start + 0.2, text: '🧤 TOR: BERTA', cls: 'yellow' };
-      S.ui.chip2 = { t0: s.start + 1.3, text: `🔁 ERSATZ: ${KD.torwart.ersatz.toUpperCase()}`, cls: '', top: 390 };
-    },
-    s13(S, t, s, lt, d) {
-      S.cam = camLerp([1560, 1150, 1.0], [1560, 1145, 1.05], lt / d);
-      S.berta = B({ hop: true, chew: false }); S.net = true; S.pigeon = { mode: 'bar' };
-      const c = cues('s13', 'card'); S.ui.cards = [c[0], c[1], null];
-      S.kal.look = [6, -2]; S.kal.armR = -100; S.kal.fingerR = true;
-    },
-    s14(S, t, s, lt, d) {
-      S.cam = camLerp([1560, 1145, 1.05], [1560, 1140, 1.08], lt / d);
-      S.berta = B({ hop: true, chew: false }); S.net = true; S.pigeon = { mode: 'bar' };
-      const c = cues('s13', 'card'); S.ui.cards = [c[0], c[1], null];
-      S.ui.vote = cue('s14', 'pop');
-      S.ui.chip = { t0: cue('s14', 'pop') + 0.3, text: '🏷️ MARKIER DEINEN KUMPEL!', cls: 'green', top: 1180 };
-      const h = cue('s14', 'hearts'); S.hearts = [h, h + 0.5];
-      S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16;
-    },
-    s15(S, t, s, lt, d) {
-      kalShot(S, lerp(2.3, 2.4, lt / d)); S.kal.expr = 'smile'; S.kal.look = [0, 6]; S.dim = 0.35;
-      S.reply = { t0: s.start - 0.05, open: s.start - 0.05, ps: cue('s15', 'card') };
-    },
-    s16(S, t, s, lt, d) {
-      const sil = s.start + 1.5;
-      if (t < sil) {
-        kalShot(S, lerp(2.4, 2.8, E.out(prog(t, s.start, 0.5))), lerp(1060, 1100, E.out(prog(t, s.start, 0.5))));
-        S.kal.expr = 'worried'; S.kal.look = [0, 6]; S.dim = 0.35;
-        S.reply = { t0: s.start - 1, open: s.start - 1, ps: s.start - 1 };
+      const b = cues('s09', 'blip'), dr = cue('s09', 'drum');
+      if (t < dr - 0.1) {
+        S.cam = [1100, 1170, 1.0]; S.crowd = { t0: -10 }; S.berta = B({}); S.dim = 0.55;
+        cardsAt(S, [[KC.capo, b[0], 'CAPO'], [KC.trommler, b[1], 'TROMMLER'], ...KC.ultras.map((c, i) => [c, b[2 + i] ?? b[b.length - 1], 'ULTRA'])], 235, 152);
       } else {
-        S.cam = camLerp([1420, 1180, 1.9], [1420, 1180, 2.1], prog(t, sil, 2.5));
-        S.shooter = { x: 1420, kickAt: 1e9, dark: true }; S.kal.x = 1900; S.dim = 0.15;
-        S.ui.big = { t0: sil + 0.15, text: '?', cls: 'mid', rot: -6 };
-        S.ui.chip2 = { t0: sil + 0.4, text: '⚽ EX-PROFI · STÜRMER · SV MATSCHBACH', cls: 'red', top: 300 };
+        S.cam = camLerp([1372, 1100, 1.62], [1372, 1100, 1.74], prog(t, dr, 2.2)); S.crowd = { t0: -10 }; S.kal.x = 1950;
+        S.ultra = { t0: dr - 0.1, big: true, drums: cues('s09', 'drum') };
+        S.ui.chip = { t0: dr, text: `📣 ULTRA-BLOCK: ${KD.ultras.length} MANN`, cls: 'red' };
+        S.ui.chip2 = { t0: dr + 0.35, text: `CAPO ${KD.capo.handle} · 🥁 ${KD.trommler.handle}`, cls: '', top: 392 };
       }
     },
+    s10(S, t, s, lt, d) {
+      S.cam = camLerp([1440, 1150, 1.2], [1420, 1150, 1.27], lt / d); S.net = true; S.kal.x = 500;
+      S.berta = B({}); S.pigeon = { mode: 'bar' };
+      cardsAt(S, [[KC.bus, cue('s10', 'blip'), 'BUSFAHRER']], 270);
+      S.tractor = { x: lerp(2900, 1500, E.out(prog(t, s.start + 0.5, 1.7))) };
+    },
+    s11(S, t, s, lt, d) {
+      S.cam = camLerp([1335, 1185, 1.66], [1335, 1185, 1.78], lt / d); S.kal.x = 500; S.net = true;
+      S.tractor = { x: 1500 };
+      S.ui.chip2 = { t0: s.start + 0.5, text: `🚜 FAHRER: ${KD.bus.handle}`, cls: '', top: 300 };
+    },
+    s12(S, t, s, lt, d) {
+      S.cam = camLerp([1080, 1170, 1.0], [1120, 1170, 1.04], lt / d); S.crowd = { t0: -10 }; S.berta = B({}); S.net = true; S.dim = 0.55;
+      const b = cues('s12', 'blip');
+      cardsAt(S, [[KC.physio, b[0], 'PHYSIO'], [KC.sprecher, b[1], 'STADIONSPRECHER'], [KC.maskottchen, b[2], 'MASKOTTCHEN']], 270, 190);
+    },
+    s13(S, t, s, lt, d) {
+      S.cam = camLerp([1830, 1150, 1.45], [1850, 1150, 1.55], lt / d);
+      const st = cue('s13', 'stamp');
+      goalScene(S, t, st); S.dim = t < st ? 0.3 : 0.3 * (1 - clamp((t - st) / 0.3));
+      if (t < st + 0.2) cardsAt(S, [[KC.elfer, s.start + 0.15], [KC.stimme, cue('s13', 'blip')]], 250, 170);
+      S.ui.chip = { t0: st, text: `🧤 ${KD.torwart.sieger.toUpperCase()} ${KD.torwart.stimmen[0]} : ${KD.torwart.stimmen[1]} ${KD.torwart.ersatz.toUpperCase()}`, cls: 'yellow' };
+    },
+    s14(S, t, s, lt, d) {
+      S.cam = camLerp([2230, 1165, 1.7], [2250, 1165, 1.85], lt / d);
+      goalScene(S, t, true);
+      const m = cue('s14', 'moo'); S.berta.moo = t > m && t < m + 0.8;
+      S.ui.chip2 = { t0: cue('s14', 'blip'), text: '😤 BELEIDIGT', cls: 'red', top: 300 };
+    },
+    s15(S, t, s, lt, d) {
+      S.cam = camLerp([1560, 1150, 1.0], [1560, 1145, 1.05], lt / d);
+      goalScene(S, t, true);
+      const c = cues('s15', 'card'); S.ui.cards = [c[0], c[1], null];
+      S.kal.look = [6, -2]; S.kal.armR = -100; S.kal.fingerR = true;
+    },
+    s16(S, t, s, lt, d) {
+      S.cam = camLerp([1560, 1145, 1.05], [1560, 1140, 1.08], lt / d);
+      goalScene(S, t, true);
+      const c = cues('s15', 'card'); S.ui.cards = [c[0], c[1], null];
+      S.ui.vote = cue('s16', 'pop');
+      S.ui.chip = { t0: cue('s16', 'pop') + 0.3, text: '🏷️ MARKIER DEINEN KUMPEL!', cls: 'green', top: 1180 };
+      const h = cue('s16', 'hearts'); S.hearts = [h, h + 0.5];
+      S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16;
+    },
     s17(S, t, s, lt, d) {
+      kalShot(S, lerp(2.3, 2.4, lt / d)); S.kal.expr = 'smile'; S.kal.look = [0, 6]; S.dim = 0.35;
+      S.reply = { t0: s.start - 0.05, open: s.start - 0.05, ps: cue('s17', 'card') };
+    },
+    s18(S, t, s, lt, d) {
+      const sil = s.start + (d - 0.6) * 0.42;
+      if (t < sil) {
+        const p = E.out(prog(t, s.start, 0.5));
+        kalShot(S, lerp(2.4, 2.75, p), lerp(1060, 1100, p));
+        S.kal.expr = 'worried'; S.kal.look = [0, 6]; S.dim = 0.35;
+        S.reply = { t0: s.start - 3, open: s.start - 3, ps: s.start - 3 };
+      } else {
+        S.cam = camLerp([1420, 1215, 2.5], [1420, 1205, 2.95], E.out(prog(t, sil, 2.5)));
+        S.shooter = { x: 1420, kickAt: -10, dark: true }; S.kal.x = 2300; S.dim = 0.25; S.ball = { x: 1490, y: 1345, r: 0 };
+        S.ui.big = { t0: sil + 0.15, text: '???', cls: 'mid', rot: -6 };
+        S.ui.chip2 = { t0: sil + 0.4, text: '⚽ EX-PROFI · STÜRMER · SV MATSCHBACH', cls: 'red', top: 1560 };
+        S.shake = Math.max(0, 0.5 - (t - sil) / 0.4);
+      }
+    },
+    s19(S, t, s, lt, d) {
       kalShot(S, lerp(2.4, 2.5, lt / d)); S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16;
       S.dim = 0.55;
-      S.endcard = { t0: cue('s17', 'pop'), tap: cue('s17', 'tap') };
-      S.confetti = cue('s17', 'confetti');
+      S.endcard = { t0: cue('s19', 'pop'), tap: cue('s19', 'tap') };
+      S.confetti = cue('s19', 'confetti');
     },
   };
   function boardShot(S, t) { S.cam = [1250, 1150, 1.04]; S.berta = B({}); S.crowd = { t0: -10 }; S.dim = 0.55; S.net = true; }
@@ -472,17 +535,22 @@
       { y: 1236, x0: 630, x1: 1040, n: 13, back: true },   // stehen dahinter
       { y: 1196, x0: 650, x1: 1010, n: 10, back: true },   // auf Schultern
       { y: 1300, x0: 520, x1: 600, n: 3, back: false },
+      { y: 1380, x0: 570, x1: 1095, n: 14, back: false },   // zweite Reihe vorn
+      { y: 1160, x0: 680, x1: 990, n: 9, back: true },     // ganz hinten
     ];
     for (const row of rows) for (let i = 0; i < row.n; i++) {
       out.push({ x: row.x0 + (row.x1 - row.x0) * (i + 0.5) / row.n + (r() - 0.5) * 10, y: row.y + (r() - 0.5) * 6, back: row.back,
-        c: shirts[Math.floor(r() * shirts.length)], skin: skins[Math.floor(r() * skins.length)], ph: r() * 6, sc: 0.95 + r() * 0.15 });
+        c: shirts[Math.floor(r() * shirts.length)], skin: skins[Math.floor(r() * skins.length)], ph: r() * 6, sc: 0.95 + r() * 0.15, flag: r() < 0.13 });
     }
     return out;
   })();
   const fanSvg = (f, t, s) => {
     const yy = f.y - Math.abs(Math.sin(t * 8 + f.ph)) * 6;
     const a = Math.sin(t * 9 + f.ph) * 5;
-    return `<g transform="translate(${f.x.toFixed(1)},${yy.toFixed(1)}) scale(${(f.sc * s).toFixed(3)})">
+    const w = Math.sin(t * 6 + f.ph) * 8;
+    const flag = f.flag ? `<path d="M${18 - a} -66 L${26 - a} -128" stroke="#8C5A30" stroke-width="4" stroke-linecap="round"/>
+      <path d="M${26 - a} -128 Q${48 - a} ${-138 + w} ${70 - a} ${-126 - w} L${66 - a} ${-100 - w} Q${46 - a} ${-110 + w} ${23 - a} -104 Z" fill="${f.ph > 3 ? '#E23A4E' : '#fff'}" stroke="${OUT}" stroke-width="3"/>` : '';
+    return `<g transform="translate(${f.x.toFixed(1)},${yy.toFixed(1)}) scale(${(f.sc * s).toFixed(3)})">${flag}
       <path d="M-9 -38 L${-18 + a} -66 M9 -38 L${18 - a} -66" stroke="${f.skin}" stroke-width="8" stroke-linecap="round"/>
       <path d="M-9 -38 L${-18 + a} -66 M9 -38 L${18 - a} -66" stroke="${OUT}" stroke-width="2" stroke-linecap="round" opacity=".5"/>
       <rect x="-15" y="-46" width="30" height="46" rx="12" fill="${f.c}" stroke="${OUT}" stroke-width="3.5"/>
@@ -590,7 +658,7 @@
     postEl.style.transform = `translateX(-50%) ${mv}translateY(${(1 - E.out(prog(t, S.post.t0, 0.35))) * 400}px) rotate(${-6 + Math.sin(t * 8) * 2}deg) scale(${k * sc})`;
   }
 
-  let crestEl = null, replyEl = null, timeEl = null, endEl = null, endHand = null;
+  let stampEls = [], crestEl = null, replyEl = null, timeEl = null, endEl = null, endHand = null;
   const bar = (w) => `<span class="bar" style="width:${w}px"></span>`;
   function buildOverlays() {
     replyEl = document.createElement('div'); replyEl.id = 'reply'; replyEl.className = 'ui';
@@ -599,6 +667,7 @@
       <div class="letter front"><p>Liebe Kuhweide,</p><p>wir nehmen an! ⚽</p><p><b>${KD.spiel.replace(' · ', ', ')}</b>, bei uns.</p>
         <p>Wenn ihr verliert, gehört</p><p>eure Kuh <b class="hit">BERTA</b> uns! 🐄</p><p class="sig">– ${KD.gegner}</p></div>
       <div class="letter back"><p><b>P.S.</b></p><p>Wir haben einen neuen</p><p><b>Stürmer</b>. Er war mal</p><p><b class="hit">PROFI</b>. 😈</p></div>`;
+    for (let i = 0; i < 7; i++) { const e = document.createElement('div'); e.className = 'ui rstamp'; $('ui').appendChild(e); stampEls.push(e); }
     crestEl = document.createElement('div'); crestEl.id = 'crest'; crestEl.className = 'ui';
     crestEl.innerHTML = `<div class="sh"><div class="sv">SV</div><div class="nm">MATSCH<br>BACH</div><div class="yr">GEGR. 1923</div></div><div class="stamp">ERZRIVALE!</div>`;
     $('ui').appendChild(crestEl);
@@ -619,9 +688,18 @@
       replyEl.classList.toggle('ps', R.ps !== undefined && t >= R.ps);
       replyEl.classList.toggle('who', !!R.who && Math.sin(t * 9) > -0.4);
       replyEl.classList.toggle('hl', !!R.hl);
+      replyEl.classList.toggle('date', !!R.date);
       const k = popS(t, R.t0, 0.35), ko = open ? popS(t, R.open, 0.3) : 1;
       replyEl.style.transform = `translateX(-50%) translateY(${(1 - E.out(prog(t, R.t0, 0.35))) * 400}px) rotate(${(open ? 1.5 : -5) + Math.sin(t * 7) * 1.2}deg) scale(${k * (open ? lerp(0.8, 1, ko) : 1)})`;
     } else replyEl.style.display = 'none';
+    stampEls.forEach((e, i) => {
+      const st = (S.stamps || [])[i];
+      if (!st || t < st.t0) { e.style.display = 'none'; return; }
+      if (e.dataset.text !== st.text) { e.textContent = st.text; e.dataset.text = st.text; }
+      e.style.display = ''; e.style.left = st.x + 'px'; e.style.top = st.y + 'px';
+      e.style.opacity = clamp((t - st.t0) / 0.08);
+      e.style.transform = `translateX(-100%) rotate(${st.rot || -7}deg) scale(${lerp(2.4, 1, E.out(prog(t, st.t0, 0.16)))})`;
+    });
     if (S.crest && t >= S.crest.t0) {
       crestEl.style.display = '';
       crestEl.style.transform = `translateX(-50%) rotate(${-3 + Math.sin(t * 6) * 1.5}deg) scale(${popS(t, S.crest.t0, 0.35)})`;
@@ -665,7 +743,31 @@
   }
 
   function drawWorld(S, t) {
-    for (let i = 0; i < 5; i++) {
+    const [pcx, pcy] = S.cam;
+    setT($('pxSky'), `translate(${(pcx - 1200) * 0.7},${(pcy - 1150) * 0.7})`);
+    setT($('pxFar'), `translate(${(pcx - 1200) * 0.45},${(pcy - 1150) * 0.3})`);
+    setT($('pxMid'), `translate(${(pcx - 1200) * 0.2},${(pcy - 1150) * 0.12})`);
+    setT($('sunRays'), `rotate(${t * 3})`);
+    for (let i = 0; i < 3; i++) {
+      const bx = ((t * (26 + i * 7) + i * 900) % 3400) - 500, by = 560 + i * 70 + Math.sin(t * 0.7 + i) * 20, fl = Math.sin(t * 9 + i * 2) * 9;
+      $(`bird${i}`).setAttribute('d', `M${bx - 18} ${by - fl} Q${bx - 8} ${by - 8} ${bx} ${by} Q${bx + 8} ${by - 8} ${bx + 18} ${by - fl}`);
+    }
+    document.querySelectorAll('.tree').forEach((el) => setT(el, `rotate(${Math.sin(t * 1.3 + +el.dataset.p) * 1.6} 0 -60)`));
+    [[1420, 1250, 0], [760, 1470, 2.1]].forEach(([bx, by, ph], i) => {
+      const el = $(`bfly${i}`);
+      setT(el, `translate(${bx + Math.sin(t * 0.7 + ph) * 150 + Math.sin(t * 2.3 + ph) * 20},${by + Math.sin(t * 1.1 + ph * 2) * 50 + Math.sin(t * 3.1) * 10}) rotate(${Math.sin(t * 0.7 + ph) * 20})`);
+      setT(el.querySelector('.w'), `scale(${0.25 + 0.75 * Math.abs(Math.sin(t * 16 + ph))},1)`);
+    });
+    const mo = $('motes');
+    if (mo) {
+      let d = '';
+      for (let i = 0; i < 16; i++) {
+        const mx = (i * 173 + t * (9 + (i % 5) * 4) + Math.sin(t * 0.6 + i) * 30) % 1080, my = 1920 - ((i * 331 + t * (22 + (i % 4) * 9)) % 1920);
+        d += `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="${3 + (i % 3) * 2}" fill="#FFFBE0" opacity="${(0.16 + 0.16 * Math.sin(t * 1.3 + i)).toFixed(2)}"/>`;
+      }
+      mo.innerHTML = d;
+    }
+    for (let i = 0; i < 6; i++) {
       const c = $(`cloud${i}`);
       setT(c, `translate(${+c.dataset.x + t * 12 * c.dataset.s},${+c.dataset.y}) scale(${c.dataset.s})`);
     }
@@ -738,7 +840,7 @@
     const ub = $('ultraBanner');
     if (S.ultra) { disp(ub, true); setT(ub, `translate(${ULTRA_X.banner},1262) scale(1,${popS(t, S.ultra.t0 + 0.3, 0.35)})`); } else disp(ub, false);
     [['ultra2', ULTRA_X.u2, 0.12, 1262, 1.35], ['ultra3', ULTRA_X.u3, 0.24, 1262, 1.35],
-     ...[1125, 1245, 1385, 1505, 1620].map((x, i) => ['ultra' + (4 + i), x, 0.35 + i * 0.1, 1212, 1.2])].forEach(([id, x, dl, yy, sc]) => {
+     ...[1120, 1222, 1330, 1445, 1545, 1628].map((x, i) => ['ultra' + (4 + i), x, 0.35 + i * 0.08, 1212, 1.2])].forEach(([id, x, dl, yy, sc]) => {
       const el = $(id);
       if (S.ultra && (yy === 1262 || S.ultra.big)) {
         disp(el, true);
@@ -797,7 +899,7 @@
     poseHuman(K1, k, t);
     // Berta
     const bw = $('bertaW');
-    if (S.berta) { disp(bw, true); setT(bw, `translate(${S.berta.x},${S.berta.y}) scale(${S.berta.s})`); poseBerta(S.berta, t); }
+    if (S.berta) { disp(bw, true); setT(bw, `translate(${S.berta.x},${S.berta.y}) scale(${S.berta.flip ? -S.berta.s : S.berta.s},${S.berta.s})`); poseBerta(S.berta, t); }
     else disp(bw, false);
   }
 
@@ -824,8 +926,10 @@
     baseState: base,
     highlight: '#FFD43B',
     whip: { skip: ['s02'] },
+    karaoke: true,
+    punch: 0.07,
     confettiColors: ['#E23A4E', '#fff', '#FFC83A', '#2DBE60', '#5CC8FF', '#fff'],
-    preload: '📣⚽🏟️🥅📋🧤💰👀🐦🗳️🐄🔍⭐🎟️🏷️🃏🇹🇷⏱️✍️👆🦅🇩🇪＋✓',
+    preload: '📅💪🚜😤😱🥁🔁✓📣⚽🏟️🥅📋🧤💰👀🐦🗳️🐄🔍⭐🎟️🏷️🃏🇹🇷⏱️✍️👆🦅🇩🇪＋✓',
     ui: {
       day: 'TAG 3',
       profile: { name: 'FC Kuhweide', handle: '@fc.kuhweide', avatar: '⚽', avatarImg: '../fc-kuhweide-tag1/out/profilbild_kalle.png', stat: 'Fans', foot: '1 Follower = 1 Fan ⚽' },
@@ -839,7 +943,7 @@
         { color: '#FFC83A', icon: '', label: '' },
       ],
       floats: [],
-      ccards: [KC.capo, ...KC.ultras, KC.bus, KC.physio, KC.sprecher, KC.maskottchen],
+      ccards: CLIST,
     },
   });
   buildPost();

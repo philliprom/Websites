@@ -116,6 +116,11 @@
   #endcard .btn { margin: 34px auto 0; width: 560px; font-weight: 900; font-size: 52px; padding: 22px 0 26px; border-radius: 20px; background: #FE2C55; }
   #endcard .btn.done { background: #2A2A35; }
   #endHand { left: 0; top: 0; font-family: 'Noto Color Emoji'; font-size: 130px; transform-origin: 30% 10%; }
+  .rstamp { background: #2DBE60; color: #fff; font-family: 'Fredoka'; font-weight: 700; font-size: 36px; line-height: 1; padding: 8px 18px 10px;
+    border-radius: 14px; border: 5px solid #1F2A44; box-shadow: 0 7px 0 rgba(10, 10, 30, .3); white-space: nowrap; letter-spacing: 1px; }
+  #reply.date .letter b:first-child { background: #FFE14D; border-radius: 10px; padding: 0 8px; }
+  #light { background: radial-gradient(circle at 92% 2%, rgba(255, 246, 200, .50) 0, rgba(255, 232, 150, .20) 20%, rgba(255, 232, 150, 0) 46%),
+    linear-gradient(to top, rgba(8, 40, 18, .30) 0, rgba(8, 40, 18, 0) 26%); pointer-events: none; }
   #lupe { position: absolute; font-family: 'Noto Color Emoji'; font-size: 190px; left: 0; top: 0; transform-origin: 40% 40%; }
 </style>
 </head>
@@ -123,6 +128,8 @@
 <div id="stage">
   <svg id="world" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"><g id="cam"></g></svg>
   <svg id="alt" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="light" class="layer"></div>
+  <svg id="motes" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
   <div id="vignette" class="layer"></div>
   <div id="dim" class="layer"></div>
   <svg id="fx" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>

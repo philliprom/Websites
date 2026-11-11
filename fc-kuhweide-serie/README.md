@@ -21,6 +21,7 @@ wird diese Datei gelesen und danach aktualisiert.
 | Tag 1 | | | 09.11. 16:55 | 1.015 | 55 | 40 | 2 | 4 | 35 |
 | Tag 1 | | | 09.11. 16:57 (Studio) | ~1.000 | | | | | 36 neu |
 | Tag 1 | | | 10.11. 08:55 | 1.440 | 70 | 57 | 2 | 4 | 45 |
+| Tag 2 | 10.11. 11:45 | Video-ID 7706492096898665760 | 11.11. morgens | 1.409 | 72 | 28 | 6 | 7 | 75 |
 
 **TikTok Studio, Tag 1 (Stand 09.11. 16:57, ca. 5 h nach Upload):** ca. 1.000 Aufrufe · Gesamtabspielzeit 2 h 07 min 30 s ·
 **Ø Wiedergabedauer 8,5 s (19 % des 45-s-Videos)** · **ganzes Video angesehen: 3,91 %** · 36 neue Follower ·
@@ -84,6 +85,35 @@ Alles, was in den Antworten versprochen wurde. Antwort-Texte stehen so auf TikTo
 Herausforderung** („Morgen schicken wir Post. An den größten Kreisligaverein der Welt.“). Der Name FC Asche fällt im Video nicht,
 nur ihre Selbstbezeichnung. Bleibt die Antwort aus, wird daraus ein freundlicher Running Gag („Noch keine Antwort … 👀“).
 Kein Spam unter ihren Videos.
+
+### Kommentare unter Tag 2 (abgerufen 11.11. morgens, 22 von 28 sichtbar)
+
+Ohne Login liefert TikTok die Kommentare nur seitenweise mit `count=20` vollständig (mit `count=50` kam nur die Hälfte).
+Eigene Kommentare des Kanals erscheinen in dieser Ansicht nicht, das erklärt die Differenz zu 28.
+
+| Wer | Wunsch | Umsetzung in Tag 3 |
+|---|---|---|
+| @j.weber.21 | Capo der Ultras | **Capo**, im Ton genannt („Weber“), Karte + Stempel |
+| @til.com | Capo oder Trommler | **Trommler** (Capo war vergeben), im Ton genannt („Til“) |
+| @filip212343, @dami12213443, @fynn17134, @jannick_gsv7 | Ultra („Hooligan oder Suptra“, „spende 5.000“) | Ultra-Block wächst auf **9 Mann**, alle vier Karten im Bild |
+| @leutiben | Busfahrer | **fährt den Mannschaftsbus** (ein Traktor mit Anhänger) |
+| @leonardo.mika7 | Physio | **Physio**, im Ton („Leo“) |
+| @loki.lauri6 | Stadionsprecher | **Stadionsprecher**, im Ton („Loki“) |
+| @21elias_h10 | Maskottchen | **Maskottchen**, im Ton („Elias“) |
+| @georggruber1 | „wann ist 1. spiel?“ | Frage als Karte, Antwort: Samstag, 15 Uhr, in Matschbach |
+| @useruzi2kb3ese | „flo wer sonst“ (einzige Stimme im Torwart-Duell), IV-Auswechsler | **Flo gewinnt 1:0**, steht im Tor; Berta ist beleidigt. IV-Joker auf der Bank (Tag 4) |
+| @ljl1407 | „wie kann Berta meinen elfmeter halten? 🤯“ | Karte im Bild; Revanche im Training möglich (Tag 4) |
+| @yunusks11 (= YG) | Kapitän | **Abstimmung YG oder MIA** (Mia wollte schon an Tag 1 Kapitänin werden) |
+| @l.e.o.46 | Spendenaktion, Dauerkarten für Freunde | nur Antwort (2 Likes = 200 €), Dauerkarten: ja |
+| @felix62629t3 | Stürmer, Dauerkarte | Bank + Dauerkarte Nr. 002 (noch nicht im Bild) |
+| @fokus.salkin | „Ey bitte“ (will RF) | Duell gegen @oskarfrings entscheidet sich im Training (Tag 4) |
+| @bvb.forever86 | ZOM mit der 17 | Nummer ab Tag 4 ändern |
+| @elyassopicasso | bedankt sich (die 10 wegen El Mala) | nur Antwort |
+
+Niemand hat geraten, von wem der Brief ist. Antworten liegen in `fc-kuhweide-tag3/out/antworten_tag2.txt`.
+
+**Verbindlich für Tag 4 (im Video angekündigt):** Wer ist der neue Stürmer von Matschbach, der „mal Profi war“? Dazu Ergebnis
+der Kapitänswahl YG/MIA, Training „Rettet Berta“ (RF-Duell, Elfmeter-Revanche Luca gegen Berta, Bank: Felix, IV-Joker).
 
 ## Plan Tag 2: „Der Kader“
 
@@ -159,7 +189,7 @@ Aufforderung zum Teilen, Ende passt zum Anfang (für Wiederholungen).
   Spiel am **Samstag (14.11.)**. Einsatz: Verliert Kuhweide, muss Berta nach Matschbach. Dazu das Ergebnis Torwart-Duell
   BERTA vs. FLO (wird durch den Einsatz wichtig). Wer in den Kommentaren richtig geraten hat, wird im Video genannt.
   Abstimmung z. B. „Wer rettet Berta?“. Reagiert der „größte Kreisligaverein“ doch noch, wird das ein eigener Brief später.
-- Tag 4 (Do): Training „Rettet Berta“ mit dem Kader. Trikotfarbe aus den Kommentaren wählen.
+- Tag 4 (Do): Auflösung „Ex-Profi“ von Matschbach, Kapitänswahl-Ergebnis, Training „Rettet Berta“ mit dem Kader.
 - Tag 5 (Fr): Abschlusstraining, Startelf und Sponsor.
 - Tag 6 (Sa): Spieltag gegen SV Matschbach. Die Torschützen sind Leute aus dem Kader. Es geht um Berta.
 - Danach: Meilensteine nach Fanzahl (z. B. 100 Fans = zweite Bierbank), Transfers aus den Kommentaren.
@@ -254,6 +284,10 @@ Kreisligaverein der Welt“, Wisch-Übergänge zwischen den Schnitten.
   Ende braucht ein Ereignis im Bild, eine Bedrohung für eine beliebte Figur (Berta) und eine Frage zum Mitraten in den
   Kommentaren. Danach eine Abschlusskarte „TEIL X · MORGEN 12 UHR“ mit Folgen-Knopf.
 - Wer in der Folge einen Wunsch erfüllt bekommt, wird auch **genannt**, nicht nur gezeigt (z. B. alle drei Ultras).
+- **Optik ab Tag 3:** Hintergrund mit Tiefe (Berge, Dorf, Sonne, Blumen, Schmetterlinge, Vögel), Lichtschein von oben rechts,
+  Untertitel Wort für Wort (`karaoke`), kurzer Zoom-Impuls bei jedem Schnitt (`punch`), Zuschauer mit Fahnen, grüner Stempel
+  „✓ ROLLE“ an jeder erfüllten Kommentar-Karte.
+- Abstimmungen ehrlich auswerten: Im Torwart-Duell gab es genau eine sichtbare Stimme (für Flo), also „1 : 0“.
 
 ## Technik
 
