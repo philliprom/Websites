@@ -364,7 +364,7 @@
   });
   const B = (o) => Object.assign({ x: 1850, y: 1302, s: 1, chew: true, moo: false, grass: false, bill: false, hop: false }, o);
 
-  const ULTRA_X = { u2: 1185, main: 1310, u3: 1562, banner: 1372 };
+  const ULTRA_X = { u2: 1185, main: 1310, u3: 1540, banner: 1348 };
   const HEAD = 1027;  // Kalles Scheitel (Taube landet dort)
   const KC = KD.kommentare;
   const CLIST = [KC.capo, KC.trommler, ...KC.ultras, KC.bus, KC.physio, KC.sprecher, KC.maskottchen, KC.frage, KC.elfer, KC.stimme];
@@ -432,7 +432,7 @@
     s08(S, t, s, lt, d) {
       S.cam = camLerp([850, 1195, 1.75], [850, 1195, 1.6], E.out(clamp(lt / d)));
       S.crowd = { t0: -10 }; S.pigeon = { mode: 'bench' };
-      const h = s.start + (d - 1.2) * 0.52;
+      const h = s.start + 1.85;
       S.ui.counter = t < h ? { t0: s.start - 0.05, label: 'GESTERN', unit: 'FANS', value: KD.fans_gestern, cls: 'zero', top: 300 }
         : { t0: h, label: 'HEUTE', unit: 'FANS', value: lerp(KD.fans_gestern, KD.fans, E.out(prog(t, h, 0.7))), cls: 'today', top: 300 };
       S.confetti = cue('s08', 'confetti');
@@ -443,7 +443,7 @@
         S.cam = [1100, 1170, 1.0]; S.crowd = { t0: -10 }; S.berta = B({}); S.dim = 0.55;
         cardsAt(S, [[KC.capo, b[0], 'CAPO'], [KC.trommler, b[1], 'TROMMLER'], ...KC.ultras.map((c, i) => [c, b[2 + i] ?? b[b.length - 1], 'ULTRA'])], 235, 152);
       } else {
-        S.cam = camLerp([1372, 1100, 1.62], [1372, 1100, 1.74], prog(t, dr, 2.2)); S.crowd = { t0: -10 }; S.kal.x = 1950;
+        S.cam = camLerp([1320, 1100, 1.78], [1320, 1100, 1.85], prog(t, dr, 2.2)); S.crowd = { t0: -10 }; S.kal.x = 1950;
         S.ultra = { t0: dr - 0.1, big: true, drums: cues('s09', 'drum') };
         S.ui.chip = { t0: dr, text: `📣 ULTRA-BLOCK: ${KD.ultras.length} MANN`, cls: 'red' };
         S.ui.chip2 = { t0: dr + 0.35, text: `CAPO ${KD.capo.handle} · 🥁 ${KD.trommler.handle}`, cls: '', top: 392 };
@@ -840,7 +840,7 @@
     const ub = $('ultraBanner');
     if (S.ultra) { disp(ub, true); setT(ub, `translate(${ULTRA_X.banner},1262) scale(1,${popS(t, S.ultra.t0 + 0.3, 0.35)})`); } else disp(ub, false);
     [['ultra2', ULTRA_X.u2, 0.12, 1262, 1.35], ['ultra3', ULTRA_X.u3, 0.24, 1262, 1.35],
-     ...[1120, 1222, 1330, 1445, 1545, 1628].map((x, i) => ['ultra' + (4 + i), x, 0.35 + i * 0.08, 1212, 1.2])].forEach(([id, x, dl, yy, sc]) => {
+     ...[1120, 1212, 1304, 1396, 1488, 1575].map((x, i) => ['ultra' + (4 + i), x, 0.35 + i * 0.08, 1212, 1.2])].forEach(([id, x, dl, yy, sc]) => {
       const el = $(id);
       if (S.ultra && (yy === 1262 || S.ultra.big)) {
         disp(el, true);
