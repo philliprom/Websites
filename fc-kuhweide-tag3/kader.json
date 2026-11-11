@@ -1,0 +1,35 @@
+{
+  "_stand": "11.11. morgens – Kommentare unter Tag 2 bis 10.11. 22:20 eingearbeitet",
+  "fans_gestern": 45,
+  "fans": 75,
+  "gegner": "SV Matschbach",
+  "spiel": "Samstag · 15 Uhr",
+  "capo": {"name": "Weber", "handle": "@j.weber.21"},
+  "ultras": ["@joelski74", "@leolausemaus703", "Peatoo 🇩🇪🦅", "@j.weber.21", "@filip212343", "@dami12213443", "@fynn17134", "@jannick_gsv7"],
+  "bus": {"name": "Ben", "handle": "@leutiben"},
+  "physio": {"name": "Leo", "handle": "@leonardo.mika7"},
+  "sprecher": {"name": "Loki", "handle": "@loki.lauri6"},
+  "maskottchen": {"name": "Elias", "handle": "@21elias_h10"},
+  "kapitaen": [{"name": "YG", "handle": "@yunusks11", "emo": "🇹🇷"}, {"name": "Mia", "handle": "@miaa16120", "emo": "⚽"}],
+  "torwart": {"ersatz": "Flo"},
+  "kommentare": {
+    "capo": {"handle": "@j.weber.21", "text": "Ich werde Capo von den Ultras💪🏼", "color": "#E23A4E"},
+    "ultras": [
+      {"handle": "@filip212343", "text": "Darf ich ultra sein?", "color": "#2F80D1"},
+      {"handle": "@dami12213443", "text": "Kann ich bitte Ultra", "color": "#2DBE60"},
+      {"handle": "@fynn17134", "text": "bitte ultra ich Spende 5.000", "color": "#FFC83A"},
+      {"handle": "@jannick_gsv7", "text": "Ich wäre gerne ein Hooligan oder Suptra 💪", "color": "#8C5FD9"}
+    ],
+    "bus": {"handle": "@leutiben", "text": "Ich will Bussfahrer werden", "color": "#FF8A2B"},
+    "physio": {"handle": "@leonardo.mika7", "text": "Kann ich physio?", "color": "#5CC8FF"},
+    "sprecher": {"handle": "@loki.lauri6", "text": "darf ich stadion spcher sein", "color": "#2DBE60"},
+    "maskottchen": {"handle": "@21elias_h10", "text": "Kann ich bitte das maskottchen werden", "color": "#FF8A94"},
+    "kapitaen": {"handle": "@yunusks11", "text": "Bekomm ich Kapitän", "color": "#E23A4E"}
+  },
+  "nebenbei": {
+    "@useruzi2kb3ese": "IV-Auswechselspieler → Bank (Tag 4)",
+    "@l.e.o.46": "Spendenaktion läuft weiter, Dauerkarten für Freunde: ja",
+    "@felix62629t3": "Dauerkarte Nr. 002",
+    "@bvb.forever86": "ZOM bekommt die 17 statt der 20"
+  }
+}

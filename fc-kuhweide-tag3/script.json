@@ -1,0 +1,457 @@
+{
+  "title": "FC Kuhweide – Tag 3: Der Brief",
+  "voice": "voxcpm2",
+  "lead_in": 0.1,
+  "tail": 2.0,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "voxcpm",
+    "voice": "../fc-kuhweide-tag1/voice/kalle_ref.wav",
+    "voice_text": "../fc-kuhweide-tag1/voice/kalle_ref.txt",
+    "cfg": 2.0,
+    "steps": 10
+  },
+  "music": {
+    "bpm": 124,
+    "inst": "pluck",
+    "clap": 1.7,
+    "ambience": 0.2,
+    "chords": [
+      [
+        64,
+        67,
+        71,
+        76
+      ],
+      [
+        65,
+        69,
+        72,
+        77
+      ],
+      [
+        67,
+        71,
+        74,
+        79
+      ],
+      [
+        64,
+        67,
+        72,
+        76
+      ]
+    ],
+    "roots": [
+      40,
+      41,
+      43,
+      48
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      1,
+      3,
+      2,
+      1,
+      2
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Der Brief ist von …",
+      "caps": [
+        "DER BRIEF",
+        "IST VON …"
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "whoosh",
+          0.0
+        ],
+        [
+          "drum",
+          0.2
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "… dem SV Matschbach!",
+      "caps": [
+        "… DEM ^SV MATSCHBACH!"
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "stamp",
+          0.05
+        ],
+        [
+          "horn",
+          0.25
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Unserem Erzrivalen. Die Taube hat sich verflogen.",
+      "caps": [
+        "UNSEREM !ERZRIVALEN.",
+        "DIE TAUBE HAT",
+        "SICH ^VERFLOGEN."
+      ],
+      "gap": 0.6,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "coo",
+          "e-0.6"
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Samstag um drei ist das Spiel.",
+      "caps": [
+        "^SAMSTAG UM 3",
+        "IST DAS ^SPIEL."
+      ],
+      "gap": 0.35,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.05
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Und wenn wir verlieren, muss Berta nach Matschbach.",
+      "caps": [
+        "UND WENN WIR !VERLIEREN,",
+        "MUSS ^BERTA",
+        "NACH MATSCHBACH."
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "scratch",
+          "e-1.0"
+        ],
+        [
+          "mstop",
+          "e-0.95"
+        ],
+        [
+          "sting",
+          "e-0.9"
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Niemals! Wir brauchen Verstärkung.",
+      "caps": [
+        "^NIEMALS!",
+        "WIR BRAUCHEN",
+        "^VERSTÄRKUNG."
+      ],
+      "gap": 0.9,
+      "sfx": [
+        [
+          "mgo",
+          -0.1
+        ],
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.05
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Gestern: 45 Fans. Heute: 75!",
+      "caps": [
+        "GESTERN: 45 FANS.",
+        "HEUTE: ^75!"
+      ],
+      "gap": 0.3,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "cheer",
+          "e-0.6"
+        ],
+        [
+          "confetti",
+          "e-0.5"
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Weber wird Capo. Und der Ultra-Block hat jetzt acht Mann!",
+      "caps": [
+        "^WEBER WIRD ^CAPO.",
+        "DER ULTRA-BLOCK HAT",
+        "JETZT ^8 MANN!"
+      ],
+      "gap": 0.35,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          1.3
+        ],
+        [
+          "blip",
+          1.65
+        ],
+        [
+          "blip",
+          2.0
+        ],
+        [
+          "blip",
+          2.35
+        ],
+        [
+          "drum",
+          "e-0.4"
+        ]
+      ]
+    },
+    {
+      "id": "s09",
+      "say": "Ben fährt den Mannschaftsbus.",
+      "caps": [
+        "^BEN FÄHRT DEN",
+        "^MANNSCHAFTSBUS."
+      ],
+      "gap": 1.1,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "horn",
+          "e-0.2"
+        ]
+      ]
+    },
+    {
+      "id": "s10",
+      "say": "Okay … es ist ein Traktor.",
+      "caps": [
+        "OKAY …",
+        "ES IST EIN ^TRAKTOR."
+      ],
+      "gap": 0.4,
+      "sfx": [
+        [
+          "boing",
+          "e+0.05"
+        ]
+      ]
+    },
+    {
+      "id": "s11",
+      "say": "Leo wird Physio, Loki Stadionsprecher und Elias unser Maskottchen.",
+      "caps": [
+        "^LEO WIRD ^PHYSIO,",
+        "^LOKI ^STADIONSPRECHER",
+        "UND ^ELIAS UNSER ^MASKOTTCHEN."
+      ],
+      "gap": 0.5,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          1.3
+        ],
+        [
+          "blip",
+          2.6
+        ]
+      ]
+    },
+    {
+      "id": "s12",
+      "say": "Im Tor steht Berta. Flo ist ihr Ersatz.",
+      "caps": [
+        "IM TOR STEHT ^BERTA.",
+        "^FLO IST IHR ERSATZ."
+      ],
+      "gap": 1.1,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "moo",
+          0.9
+        ]
+      ]
+    },
+    {
+      "id": "s13",
+      "say": "Und wer wird Kapitän? YG oder Mia?",
+      "caps": [
+        "UND WER WIRD ~KAPITÄN?",
+        "^YG ODER ^MIA?"
+      ],
+      "gap": 0.4,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "card",
+          "e-1.3"
+        ],
+        [
+          "card",
+          "e-0.7"
+        ]
+      ]
+    },
+    {
+      "id": "s14",
+      "say": "Schreibt's in die Kommentare!",
+      "caps": [
+        "SCHREIBT'S IN DIE",
+        "^KOMMENTARE!"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "pop",
+          0.05
+        ],
+        [
+          "hearts",
+          0.2
+        ]
+      ]
+    },
+    {
+      "id": "s15",
+      "say": "Ach ja … auf der Rückseite steht noch was.",
+      "caps": [
+        "ACH JA …",
+        "AUF DER ^RÜCKSEITE",
+        "STEHT NOCH WAS."
+      ],
+      "gap": 0.5,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "card",
+          "e-0.5"
+        ]
+      ]
+    },
+    {
+      "id": "s16",
+      "say": "„Wir haben einen neuen Stürmer. Er war mal Profi.“",
+      "caps": [
+        "„WIR HABEN EINEN",
+        "NEUEN ^STÜRMER.",
+        "ER WAR MAL !PROFI.“"
+      ],
+      "gap": 0.6,
+      "sfx": [
+        [
+          "mstop",
+          -0.1
+        ],
+        [
+          "sting",
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "s17",
+      "say": "Wer das ist? Morgen um zwölf.",
+      "caps": [
+        "WER DAS IST?",
+        "MORGEN UM ^12."
+      ],
+      "gap": 1.0,
+      "sfx": [
+        [
+          "mgo",
+          -0.1
+        ],
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.05
+        ],
+        [
+          "tap",
+          "e+0.3"
+        ],
+        [
+          "ding",
+          "e+0.35"
+        ],
+        [
+          "confetti",
+          "e+0.35"
+        ]
+      ]
+    }
+  ]
+}
