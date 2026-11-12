@@ -183,6 +183,28 @@ Aufrufkurve: Spitze in Stunde 1–3 (Tag 2 ca. 280/h, Tag 3 ca. 340/h), nach 6�
 - Noch anzuschauen (Screenshots erbeten): Kurve „Zuschauerbindung“ (wo genau abgesprungen wird) und Traffic-Quellen
   („Für dich“ gegenüber Profil und Folge ich).
 
+### TikTok Studio, Tag 2: Haltekurve, Traffic-Quellen, Zuschauer (Screenshots vom 12.11. 09:53)
+
+**Haltekurve** (57-s-Video; Werte außer Sekunde 1 aus dem Diagramm abgelesen, ca. ± 3 Prozentpunkte):
+
+| Sekunde | 1 | 4 | 8 | 14 | 18 | 26 | 35 | 43 | 57 |
+|---|---|---|---|---|---|---|---|---|---|
+| noch dabei | 72 % | 37 % | 24 % | 20 % | 17 % | 14 % | 11 % | 4 % | 1–3 % |
+
+**Traffic-Quellen:** Für dich 89,8 % · Persönliches Profil 7,0 % · Direktnachrichten 2,3 % · Andere 0,7 % · Suche 0,2 % · Gefolgt 0 %.
+**Zuschauer:** 1.200 insgesamt, 89 % neu (11 % wiederkehrend), 89 % keine Follower. Geschlecht 49 % männlich, 51 % weiblich.
+
+**Was das heißt:**
+- TikTok zeigt uns sehr wohl fremden Leuten (90 % über „Für dich“). Am Verteilen liegt es nicht.
+- **Das Problem sind die ersten 4 Sekunden:** 28 % sind nach 1 s weg, fast zwei Drittel nach 4 s. Wer 8 s schafft, bleibt
+  überwiegend lange dabei (die Kurve wird danach flach) und wird oft Fan.
+- Fast alle Zuschauer sind neu → jede Folge muss in Sekunde 1 ohne Vorwissen funktionieren. Die Serie selbst sieht kaum jemand
+  am Stück.
+- 2,3 % kamen über Direktnachrichten, also durch Teilen. Die Aufforderung „Markier deinen Kumpel“ lohnt sich.
+- **Umgesetzt am 12.11.:** Tag 4 startet mit dem Vermisst-Plakat, das im ersten Bild „aufknallt“ (Zoom-Stoß, Wackler, Stempel-Ton).
+  Tag 4b zeigt das Prinzip in der ersten Sekunde: drei Kommentare bekommen im Takt den Stempel „AUFGENOMMEN“ (vorher erst nach 1,25 s).
+- **Messlatte für Tag 4:** Bei Sekunde 4 sollen deutlich mehr als 37 % dabei sein.
+
 ### Korrektur Kapitänswahl (mit den Sticker-Kommentaren, 12.11. 09:00)
 
 YG 3 (YG selbst, @lamine.yamal7498, Gabriel ッ) : MIA 3 (Mia selbst, @elias.fcs, @crakez23) → **Unentschieden**.

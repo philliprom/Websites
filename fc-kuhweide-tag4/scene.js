@@ -440,6 +440,7 @@
     s01(S, t, s, lt, d) {
       S.cam = [1850, 1160, 1.55]; emptyGoal(S); S.dim = 0.4;
       S.poster = { t0: -1, zoom: true };
+      S.shake = Math.max(0, 0.45 - t / 0.35);
     },
     s02(S, t, s, lt, d) {
       S.cam = camLerp([1850, 1150, 2.1], [1850, 1150, 2.25], lt / d); emptyGoal(S);
@@ -711,7 +712,7 @@
     if (P && t >= P.t0) {
       posterEl.style.display = '';
       const k = P.t0 < 0 ? 1 : popS(t, P.t0, 0.3);
-      posterEl.style.transform = `translateX(-50%) rotate(${-2 + Math.sin(t * 2) * 0.6}deg) scale(${k * (P.s || 1) * (P.zoom ? lerp(1, 1.04, clamp(t / 2.5)) : 1)})`;
+      posterEl.style.transform = `translateX(-50%) rotate(${-2 + Math.sin(t * 2) * 0.6}deg) scale(${k * (P.s || 1) * (P.zoom ? lerp(1, 1.04, clamp(t / 2.5)) * lerp(1.07, 1, E.out(clamp(t / 0.2))) : 1)})`;
     } else posterEl.style.display = 'none';
     const PC = S.pcard;
     if (PC && t >= PC.t0) {

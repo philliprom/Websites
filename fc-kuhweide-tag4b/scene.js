@@ -446,7 +446,9 @@
   const shots = {
     s01(S, t, s, lt, d) {
       kalShot(S, lerp(2.0, 2.1, lt / d), 1110); S.kal.expr = 'happy'; S.kal.armR = -150; S.kal.fingerR = true; S.kal.look = [0, -6]; S.dim = 0.4;
-      cardsAt(S, [[GS.stab[0], -1, 'AUFGENOMMEN', cue('s01', 'stamp')]], 330, 150, 1.0);
+      const st = cues('s01', 'stamp');
+      cardsAt(S, [[GS.stab[0], -1, 'AUFGENOMMEN', st[0]], [GS.ultras[0], st[0] + 0.12, 'AUFGENOMMEN', st[1]], [GS.spieler[3], st[1] + 0.12, 'AUFGENOMMEN', st[2]]], 290, 160, 0.95);
+      S.shake = Math.max(0, ...st.map((x) => (t >= x ? 0.3 - (t - x) / 0.25 : 0)));
     },
     s02(S, t, s, lt, d) {
       S.cam = camLerp([850, 1195, 1.75], [850, 1195, 1.6], E.out(clamp(lt / d))); S.crowd = { t0: -10 }; S.pigeon = { mode: 'bench' }; S.dim = 0.2;

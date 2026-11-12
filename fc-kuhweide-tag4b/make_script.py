@@ -15,7 +15,7 @@ blips = lambda n, a=0.1, step=0.45: [["blip", round(a + i * step, 2)] for i in r
 
 segments = [
     {"id": "s01", "say": "Ihr kommentiert, ich nehme euch in den Verein auf.", "caps": ["IHR ^KOMMENTIERT,", "ICH NEHME EUCH", "IN DEN ^VEREIN AUF."], "gap": 0.0,
-     "sfx": [["blip", 0.05], ["stamp", 1.25]]},
+     "sfx": [["stamp", 0.3], ["stamp", 0.75], ["stamp", 1.2]]},
     {"id": "s02", "say": "Das sind die Neuzugänge von heute!", "caps": ["DAS SIND DIE", "^NEUZUGÄNGE VON HEUTE!"], "gap": 0.3,
      "sfx": [["whoosh", -0.05], ["pop", 0.1], ["confetti", 0.2]]},
     {"id": "s03", "say": f"{st[0]['name']} wird Mannschaftsarzt, {st[1]['name']} Torwarttrainer und {st[2]['name']} Standard-Trainer.",
