@@ -48,3 +48,27 @@ python3 engine/audio.py $P
 node engine/render.cjs $P                 # oder: --sheet / --stills 1.5,10
 ffmpeg -i $P/build/video_noaudio.mp4 -i $P/build/mix.wav -c:v libx264 -crf 19 -pix_fmt yuv420p -c:a aac -b:a 192k -shortest -movflags +faststart $P/out/video.mp4
 ```
+
+## Neuere Bausteine (Stand 12.11.2026, FC Kuhweide Tag 4)
+
+| Datei / Option | Zweck |
+|---|---|
+| `setup_voxcpm.sh <ziel>` | Sprachumgebung in neuem Container aufsetzen. Platzbedarf ca. 14 GB (venv 7,3 GB, VoxCPM2 4,7 GB, Whisper medium 1,5 GB, small 0,5 GB). |
+| `provisional_timeline.py <projekt>` | Vorläufige Zeitleiste ohne Stimme, um Standbilder zu prüfen, während die Stimme noch läuft |
+| `render_cover.cjs <projekt>` | Titelbild aus `shots.cover` + `<projekt>/cover.html` → `out/titelbild.png` |
+| `render_avatar.cjs <projekt> <variante>` | Profilbild aus `<projekt>/avatar.js` (Beispiel: `fc-kuhweide-tag1/avatar.js`) |
+| `tiktok.py profil <nutzer>` / `tiktok.py kommentare <nutzer> <video_id>` | Kanal-Zahlen und Kommentare ohne Login (Grenzen im Dateikopf) |
+| `Engine.start({ whip: true \| { skip: ['s09'] } })` | Wisch-Übergang bei jedem Schnitt, für einzelne Schnitte abschaltbar |
+| `Engine.start({ punch: 0.07 })` | kurzer Zoom-Stoß bei jedem Schnitt |
+| `Engine.start({ karaoke: true })` | Untertitel Wort für Wort (noch nicht gesprochene Wörter blass) |
+| `S.noCap = true` (im Schnitt) | Untertitel für Zwischentitel ausblenden |
+| Effekt-Marken `mstop` / `mgo` | Musik an dieser Stelle aus- bzw. wieder einblenden (kein Klang) |
+
+**Klänge in `sfx`:** pop whoosh ding title stamp confetti sparkle splash waves flap squawk gulp poof riser pins horn squeak tap
+blip tick card kaching hearts bark moo whistle rocket boing kick_ball coo cheer beep bigbeep crunch crickets drum sting scratch
+
+**Sprachausgabe (VoxCPM2):** Jeder Satz liegt danach im Satz-Cache `<projekt>/tts_cache/` (mit einchecken). Das Modell wird nur
+geladen, wenn ein Satz neu gesprochen werden muss. Großgeschriebene Wörter („BERTA“) buchstabiert die Stimme: im `say` normal
+schreiben, nur in `caps` groß. Bindestrich-Wörter, die Whisper getrennt schreibt („Metzger Manni“), werden für die Schnittpunkte
+trotzdem gefunden. Zahlen im `say` ausschreiben. Abweichungen wie „Mike“ statt „Maik“ oder „12“ statt „zwölf“ in `build/tts_qa.txt`
+sind nur Schreibweisen der Spracherkennung.
