@@ -163,6 +163,33 @@ dann zusammenführen. @useruzi2kb3ese heißt jetzt **@crakez23**.
 **Kapitänswahl (sichtbare Stimmen):** MIA 2 (@elias.fcs, @crakez23 mit Wahlkampfrede) : 1 YG (@lamine.yamal7498).
 **Für Berta im Tor:** @elias.fcs („für berta“), @ljl1407 („#freeBerta“). Niemand hat geraten, wer der Ex-Profi ist.
 
+### TikTok Studio, Tag 2 und Tag 3 (Screenshots vom 12.11. 08:58)
+
+| Folge | Länge | Stand | Aufrufe | Abspielzeit gesamt | Ø Wiedergabe | Anteil der Länge | Ganz angesehen | Neue Follower | Follow-Rate |
+|---|---|---|---|---|---|---|---|---|---|
+| Tag 1 | 45 s | nach 5 h | ca. 1.000 | 2 h 07 min | 8,5 s | 19 % | 3,91 % | 36 | ca. 3,6 % |
+| Tag 2 | 57 s | nach 46 h | 1.548 | 5 h 07 min | 11,4 s | 20 % | 2,84 % | 34 | 2,2 % |
+| Tag 3 | 56 s | nach 21 h | 1.042 | 4 h 14 min | 14,1 s | 25 % | 5,64 % | 26 | 2,5 % |
+
+Aufrufkurve: Spitze in Stunde 1–3 (Tag 2 ca. 280/h, Tag 3 ca. 340/h), nach 6–10 Stunden fast null, danach nur noch Einzelaufrufe.
+
+**Auswertung:**
+- Die Zuschauer bleiben von Folge zu Folge länger (8,5 → 11,4 → 14,1 s) und Tag 3 wurde doppelt so oft ganz angesehen wie Tag 2.
+  Das spricht für die neue Optik und den stärkeren Einstieg.
+- Trotzdem sehen die Leute im Schnitt nur 20–25 % des Videos. TikTok testet jedes Video bei ca. 1.000 Leuten und spielt es danach
+  nicht weiter aus. Für die nächste Stufe braucht es (Faustregel, keine offizielle Zahl) deutlich mehr als die Hälfte der Länge.
+- Wer bleibt, wird Fan: 2–3,6 % der Zuschauer folgen, dazu sehr viele Kommentare. Das Konzept funktioniert, nur zu wenige sehen es zu Ende.
+- Die Ø-Wiedergabe liegt unabhängig von der Länge bei ca. 11–14 s. Ein 23-s-Video käme damit auf über 50 %. Tag 4 testet genau das.
+- Noch anzuschauen (Screenshots erbeten): Kurve „Zuschauerbindung“ (wo genau abgesprungen wird) und Traffic-Quellen
+  („Für dich“ gegenüber Profil und Folge ich).
+
+### Korrektur Kapitänswahl (mit den Sticker-Kommentaren, 12.11. 09:00)
+
+YG 3 (YG selbst, @lamine.yamal7498, Gabriel ッ) : MIA 3 (Mia selbst, @elias.fcs, @crakez23) → **Unentschieden**.
+Tag 4 wurde vor dem Posten geändert: „Kapitänswahl: drei zu drei! Mia und Yunus führen den Suchtrupp gemeinsam an.“ (Doppelspitze).
+Weitere Sticker-Kommentare: Luca (@luca_mgd15) will Kapitän werden → Abwehrchef; 🐊 will vom Co-Trainer zum Trainer → Taktik-Auftrag
+für Samstag; @j.weber.21 postet ein Pyro-Bild → nur Wunderkerzen; mali freut sich aufs Spiel.
+
 ## Zwischenstand nach 3 Folgen (12.11.)
 
 - Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.

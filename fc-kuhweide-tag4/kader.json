@@ -1,13 +1,63 @@
 {
-  "_stand": "12.11. morgens – Kommentare unter Tag 3 bis 12.11. 06:30",
+  "_stand": "12.11. 09:00 – alle 32 Kommentare unter Tag 3 (25 per Abruf + Sticker-Kommentare aus Screenshots)",
   "fans": 101,
   "gegner": "SV Matschbach",
   "spiel": "Samstag · 15 Uhr",
-  "manni": {"name": "Metzger-Manni", "wertung": 87, "pos": "ST", "werte": [["TOR", 312], ["SCH", 91], ["TEM", 12], ["WUR", 99]]},
-  "kapitaen": {"name": "Mia", "handle": "@miaa16120", "stimmen": [2, 1], "gegen": "YG"},
-  "meter": {"schritte": 100},
+  "manni": {
+    "name": "Metzger-Manni",
+    "wertung": 87,
+    "pos": "ST",
+    "werte": [
+      [
+        "TOR",
+        312
+      ],
+      [
+        "SCH",
+        91
+      ],
+      [
+        "TEM",
+        12
+      ],
+      [
+        "WUR",
+        99
+      ]
+    ]
+  },
+  "kapitaen": {
+    "wahl": [
+      {
+        "name": "YG",
+        "sprich": "Yunus",
+        "handle": "@yunusks11",
+        "emo": "🇹🇷",
+        "stimmen": 3
+      },
+      {
+        "name": "Mia",
+        "sprich": "Mia",
+        "handle": "@miaa16120",
+        "emo": "⚽",
+        "stimmen": 3
+      }
+    ],
+    "ergebnis": "Doppelspitze"
+  },
+  "meter": {
+    "schritte": 100
+  },
   "kommentare": {
-    "freeberta": {"handle": "@ljl1407", "text": "#freeBerta", "color": "#E23A4E"},
-    "mia": {"handle": "@crakez23", "text": "Wir müssen ein zeichen setzen! Mia ran an den Spielfeldrand …", "color": "#5CC8FF"}
+    "freeberta": {
+      "handle": "@ljl1407",
+      "text": "#freeBerta",
+      "color": "#E23A4E"
+    },
+    "mia": {
+      "handle": "@crakez23",
+      "text": "Wir müssen ein zeichen setzen! Mia ran an den Spielfeldrand …",
+      "color": "#5CC8FF"
+    }
   }
 }

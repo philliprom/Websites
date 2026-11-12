@@ -7,7 +7,8 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 K = json.load(open(os.path.join(HERE, "kader.json"), encoding="utf-8"))
-mia = K["kapitaen"]
+yg, mia = K["kapitaen"]["wahl"]
+zw = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"]
 
 segments = [
     {"id": "s01", "say": "Unsere Kuh ist weg.", "caps": ["UNSERE ^KUH", "IST !WEG."], "gap": 0.0,
@@ -28,8 +29,9 @@ segments = [
      "sfx": [["whoosh", -0.05], ["blip", 0.1], ["pop", 0.9]]},
     {"id": "s09", "say": "Jeder Kommentar holt sie einen Schritt zurück.", "caps": ["JEDER KOMMENTAR", "HOLT SIE EINEN", "^SCHRITT ZURÜCK."], "gap": 0.05,
      "sfx": [["tap", 0.7], ["tap", 1.1], ["tap", 1.5]]},
-    {"id": "s10", "say": f"Und Kapitänin {mia['name']} führt den Suchtrupp an!", "caps": [f"UND ^KAPITÄNIN {mia['name'].upper()}", "FÜHRT DEN ^SUCHTRUPP AN!"], "gap": 0.45,
-     "sfx": [["whoosh", -0.05], ["blip", 0.1], ["stamp", 1.0], ["cheer", 1.1]]},
+    {"id": "s10", "say": f"Kapitänswahl: {zw[yg['stimmen']]} zu {zw[mia['stimmen']]}! {mia['sprich']} und {yg['sprich']} führen den Suchtrupp gemeinsam an.",
+     "caps": ["KAPITÄNSWAHL:", f"^{yg['stimmen']} : {mia['stimmen']}!", f"^{mia['name'].upper()} UND ^{yg['name'].upper()} FÜHREN", "DEN SUCHTRUPP ^GEMEINSAM AN!"], "gap": 0.45,
+     "sfx": [["whoosh", -0.05], ["card", 0.15], ["card", 0.45], ["stamp", 1.25], ["confetti", 1.3], ["cheer", 1.35], ["pop", 2.2]]},
     {"id": "s11", "say": "Finden wir sie bis Samstag?", "caps": ["FINDEN WIR SIE", "BIS ^SAMSTAG?"], "gap": 0.5,
      "sfx": [["whoosh", -0.05], ["pop", 0.05], ["tap", "e+0.3"], ["ding", "e+0.35"]]},
 ]
@@ -47,7 +49,7 @@ open(os.path.join(HERE, "script.json"), "w", encoding="utf-8").write(json.dumps(
 cap = ("Tag 4: Berta ist weg 😱 Samstag spielen wir um sie – und Metzger-Manni freut sich schon 🌭 "
        "Schreibt BERTA 👇 Jeder Kommentar holt sie einen Schritt zurück! #fckuhweide #tag4 #freeberta #fußball #kreisliga")
 pin = (f"📌 Schreib BERTA 🐄 – jeder Kommentar = 1 Schritt zurück nach Kuhweide! Morgen zählen wir nach 👣 "
-       f"Neue Kapitänin: {mia['name'].upper()} ({mia['stimmen'][0]}:{mia['stimmen'][1]}) 👑")
+       f"Kapitänswahl {yg['stimmen']}:{mia['stimmen']} – {mia['name'].upper()} & {yg['name']} führen gemeinsam 👑")
 os.makedirs(os.path.join(HERE, "out"), exist_ok=True)
 open(os.path.join(HERE, "out", "beschreibung.txt"), "w", encoding="utf-8").write(f"""FC KUHWEIDE – TAG 4 · TEXTE ZUM POSTEN
 =======================================

@@ -485,10 +485,12 @@
       S.meter = { t0: s.start - 3, back: true, taps: cues('s09', 'tap') };
     },
     s10(S, t, s, lt, d) {
-      S.cam = camLerp([850, 1195, 1.6], [870, 1195, 1.68], lt / d); S.crowd = { t0: -10 }; S.dim = 0.45; S.pigeon = { mode: 'bench' };
-      cardsAt(S, [[KC.mia, cue('s10', 'blip'), `GEWÄHLT ${KD.kapitaen.stimmen[0]}:${KD.kapitaen.stimmen[1]}`, cue('s10', 'stamp')]], 280);
-      S.ui.chip = { t0: cue('s10', 'stamp') + 0.25, text: `👑 KAPITÄNIN ${KD.kapitaen.handle}`, cls: 'yellow', top: 490 };
-      S.confetti = cue('s10', 'stamp');
+      const [yg, mia] = KD.kapitaen.wahl, c = cues('s10', 'card'), st = cue('s10', 'stamp');
+      S.cam = camLerp([850, 1195, 1.6], [870, 1195, 1.68], lt / d); S.crowd = { t0: -10 }; S.dim = 0.4; S.pigeon = { mode: 'bench' };
+      S.ui.cards = [c[0], c[1], null];
+      S.ui.chip = { t0: st, text: `⚖️ ${yg.stimmen} : ${mia.stimmen} – UNENTSCHIEDEN!`, cls: 'yellow', top: 690 };
+      S.ui.chip2 = { t0: cue('s10', 'pop'), text: `👑 DOPPELSPITZE: ${mia.handle} & ${yg.handle}`, cls: 'red', top: 800 };
+      S.confetti = cue('s10', 'confetti');
     },
     s11(S, t, s, lt, d) {
       kalShot(S, lerp(2.4, 2.5, lt / d)); S.kal.expr = 'smile'; S.kal.look = [6, -2]; S.kal.armR = -100; S.kal.fingerR = true;
@@ -964,7 +966,7 @@
     karaoke: true,
     punch: 0.07,
     confettiColors: ['#E23A4E', '#fff', '#FFC83A', '#2DBE60', '#5CC8FF', '#fff'],
-    preload: '🌭👣👑🏟️📅💪🚜😤😱🥁🔁✓📣⚽🏟️🥅📋🧤💰👀🐦🗳️🐄🔍⭐🎟️🏷️🃏🇹🇷⏱️✍️👆🦅🇩🇪＋✓',
+    preload: '⚖️🌭👣👑🏟️📅💪🚜😤😱🥁🔁✓📣⚽🏟️🥅📋🧤💰👀🐦🗳️🐄🔍⭐🎟️🏷️🃏🇹🇷⏱️✍️👆🦅🇩🇪＋✓',
     ui: {
       day: 'TAG 4',
       profile: { name: 'FC Kuhweide', handle: '@fc.kuhweide', avatar: '⚽', avatarImg: '../fc-kuhweide-tag1/out/profilbild_kalle.png', stat: 'Fans', foot: '1 Follower = 1 Fan ⚽' },
@@ -973,8 +975,8 @@
       tstamp: '✓ FAN<br>NR. 1',
       kasse: 'VEREINSKASSE',
       cards: [
-        { color: '#E23A4E', icon: emoIcon('🇹🇷'), label: 'YG<small>schreib „YG“</small>' },
-        { color: '#FF8A94', icon: emoIcon('⚽'), label: 'MIA<small>schreib „MIA“</small>' },
+        { color: '#E23A4E', icon: emoIcon('🇹🇷'), label: `YG<small>${KD.kapitaen.wahl[0].stimmen} Stimmen</small>` },
+        { color: '#FF8A94', icon: emoIcon('⚽'), label: `MIA<small>${KD.kapitaen.wahl[1].stimmen} Stimmen</small>` },
         { color: '#FFC83A', icon: '', label: '' },
       ],
       floats: [],

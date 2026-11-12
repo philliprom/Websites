@@ -256,10 +256,12 @@
     },
     {
       "id": "s10",
-      "say": "Und Kapitänin Mia führt den Suchtrupp an!",
+      "say": "Kapitänswahl: drei zu drei! Mia und Yunus führen den Suchtrupp gemeinsam an.",
       "caps": [
-        "UND ^KAPITÄNIN MIA",
-        "FÜHRT DEN ^SUCHTRUPP AN!"
+        "KAPITÄNSWAHL:",
+        "^3 : 3!",
+        "^MIA UND ^YG FÜHREN",
+        "DEN SUCHTRUPP ^GEMEINSAM AN!"
       ],
       "gap": 0.45,
       "sfx": [
@@ -268,16 +270,28 @@
           -0.05
         ],
         [
-          "blip",
-          0.1
+          "card",
+          0.15
+        ],
+        [
+          "card",
+          0.45
         ],
         [
           "stamp",
-          1.0
+          1.25
+        ],
+        [
+          "confetti",
+          1.3
         ],
         [
           "cheer",
-          1.1
+          1.35
+        ],
+        [
+          "pop",
+          2.2
         ]
       ]
     },
