@@ -24,7 +24,7 @@ segments = [
      "sfx": [["whoosh", -0.05], ["boing", 0.45], ["moo", "e-1.1"], ["whoosh", "e-0.7"]]},
     {"id": "s07", "say": "Ausgerechnet Richtung Matschbach!", "caps": ["AUSGERECHNET", "RICHTUNG !MATSCHBACH!"], "gap": 0.35,
      "sfx": [["whoosh", -0.05], ["pop", 0.2]]},
-    {"id": "s08", "say": "Schreibt BERTA in die Kommentare!", "caps": ["SCHREIBT ~BERTA", "IN DIE ^KOMMENTARE!"], "gap": 0.45,
+    {"id": "s08", "say": "Schreibt Berta in die Kommentare!", "caps": ["SCHREIBT ~BERTA", "IN DIE ^KOMMENTARE!"], "gap": 0.45,
      "sfx": [["whoosh", -0.05], ["blip", 0.1], ["pop", 0.9]]},
     {"id": "s09", "say": "Jeder Kommentar holt sie einen Schritt zurück.", "caps": ["JEDER KOMMENTAR", "HOLT SIE EINEN", "^SCHRITT ZURÜCK."], "gap": 0.05,
      "sfx": [["tap", 0.7], ["tap", 1.1], ["tap", 1.5]]},

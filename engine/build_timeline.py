@@ -129,6 +129,16 @@ def build_voxcpm(script, model_dir):
         for blk in sm.get_matching_blocks():
             for j in range(blk.size):
                 mapping[blk.a + j] = blk.b + j
+        # Bindestrich-Wörter, die Whisper getrennt schreibt („Metzger Manni“ statt „Metzger-Manni“), nachträglich zuordnen
+        used = set(mapping.values())
+        for ri, tok in enumerate(ref_tok):
+            if ri in mapping:
+                continue
+            for j in range(len(hyp_tok) - 1):
+                if j not in used and hyp_tok[j] + hyp_tok[j + 1] == tok:
+                    mapping[ri] = j
+                    used.add(j)
+                    break
         starts = [0.0]
         chars = [len(segs[i]["say"]) for i in g]
         for k in range(1, len(g)):
