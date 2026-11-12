@@ -22,6 +22,12 @@ wird diese Datei gelesen und danach aktualisiert.
 | Tag 1 | | | 09.11. 16:57 (Studio) | ~1.000 | | | | | 36 neu |
 | Tag 1 | | | 10.11. 08:55 | 1.440 | 70 | 57 | 2 | 4 | 45 |
 | Tag 2 | 10.11. 11:45 | Video-ID 7706492096898665760 | 11.11. morgens | 1.409 | 72 | 28 | 6 | 7 | 75 |
+| Tag 1 | | | 12.11. morgens | 1.553 | 74 | 74 | 2 | 5 | 101 |
+| Tag 2 | | | 12.11. morgens | 1.548 | 76 | 62 | 6 | 8 | 101 |
+| Tag 3 | 11.11. 12:39 | Video-ID 7706877052686765344 | 12.11. morgens (ca. 20 h) | 1.042 | 66 | 32 | 7 | 7 | 101 |
+
+Die Kommentarzahlen enthalten die eigenen Antworten des Kanals. Tag 3 wurde in der 57-s-Fassung ohne die sechs
+Sticker-Kommentare gepostet (siehe unten).
 
 **TikTok Studio, Tag 1 (Stand 09.11. 16:57, ca. 5 h nach Upload):** ca. 1.000 Aufrufe · Gesamtabspielzeit 2 h 07 min 30 s ·
 **Ø Wiedergabedauer 8,5 s (19 % des 45-s-Videos)** · **ganzes Video angesehen: 3,91 %** · 36 neue Follower ·
@@ -114,6 +120,69 @@ Niemand hat geraten, von wem der Brief ist. Antworten liegen in `fc-kuhweide-tag
 
 **Verbindlich für Tag 4 (im Video angekündigt):** Wer ist der neue Stürmer von Matschbach, der „mal Profi war“? Dazu Ergebnis
 der Kapitänswahl YG/MIA, Training „Rettet Berta“ (RF-Duell, Elfmeter-Revanche Luca gegen Berta, Bank: Felix, IV-Joker).
+
+### Sticker-Kommentare unter Tag 2 (per Screenshot am 11.11., NICHT im Tag-3-Video, offen für Tag 4)
+
+Kommentare mit Sticker oder Bild liefert TikTok ohne Login gar nicht aus. Sie kommen nur per Screenshot vom Kanalinhaber.
+
+| Wer | Wunsch | Zusage (Antwort vorbereitet) |
+|---|---|---|
+| Michi_mgd 🚀 (@-Name unbekannt) | Capo | **Vize-Capo** |
+| Makek 🐼 (@-Name unbekannt) | Stadionsprecher | **zweiter Stadionsprecher** (Tor-Ansagen), Loki sagt die Aufstellung an |
+| Julian (= @nixzuwissen1) | Trainer („ich kenne jede Taktik“) | siehe Tag 3: Mannschaftsarzt |
+| linnert.spinnat | Bankwärmer | **Bankwärmer** |
+| Luca_mgd (@luca_mgd15) | „Flo“ | zweite Stimme im Torwart-Duell → eigentlich **2 : 0 für Flo** |
+| jxmie2skibidi | „Joker“ | bestätigt |
+
+### Kommentare unter Tag 3 (abgerufen 12.11. morgens, 25 von 32 sichtbar)
+
+Antworten liegen in `fc-kuhweide-tag4/out/antworten_tag3.txt`. Abruf: `count=20` mit mehreren Startwerten (`cursor` 0, 10, 20, 30),
+dann zusammenführen. @useruzi2kb3ese heißt jetzt **@crakez23**.
+
+| Wer | Wunsch | Zusage |
+|---|---|---|
+| @nixzuwissen1 (Julian, 4 Likes, Top-Kommentar) | „dann wenigstens Arzt“ | **Mannschaftsarzt** |
+| @mamas.kleiner.pri (Kian) | Co-Trainer | **Torwart-Trainer** (Co-Trainer sind voll) |
+| @jxst_elias2 | Co-Trainer | **Standard-Trainer** (Ecken, Freistöße) |
+| @l.e.o.46 | Kapitän | **Schatzmeister** (Spendenaktion), Kapitänswahl läuft |
+| @mxik.1965 (Maik) | „Wann kommt mein Sponsoring?“ | **Bande „MAIK – offizieller Sponsor“** im nächsten Video. Markenname „Futterkiste“ bleibt draußen |
+| @njfootbol | Transferberater | **Transferberater**, erster Auftrag: den Ex-Profi enttarnen |
+| @landi12345676 | Fan Nr. 1 | **Fanclub-Präsident** (001 hat Julius) |
+| @fynn17134 | Bratwurst fürs Stadion, zahlt neuen Mannschaftsbus | **neuer Bus + Bratwurststand** „diese Woche“ |
+| @flori6140 | „irgendwas“ | **Eckfahnen-Beauftragter** |
+| @2022lennie, @linus726, @elias.fcs | Spieler, Position egal | Kader (Allrounder) |
+| @noel63501 | Mittelfeld mit der 7 | Mittelfeld mit der **77** (die 7 hat Mia) |
+| @paul.price68 | linker Flügel | Flügel-Herausforderer (LF ist @elyassopicasso) |
+| @kilian93907 | Ersatz-Stürmer | Bank, Ersatz-Stürmer |
+| @aaronistog | „mit Zehner“ | zweiter Zehner, Duell mit @bvb.forever86 im Training |
+| @ben433836 | Ultra mit Pyro und Sturmhaube | Ultra, aber **Wunderkerze und Pudelmütze** statt Pyro |
+| @jfcgera (Willy) | Ultra | Ultra |
+| @ljl1407 | „#freeBerta“ | Bewegung aufgreifen |
+| @jxmie2skibidi | „Stolzer Joker“ | – |
+
+**Kapitänswahl (sichtbare Stimmen):** MIA 2 (@elias.fcs, @crakez23 mit Wahlkampfrede) : 1 YG (@lamine.yamal7498).
+**Für Berta im Tor:** @elias.fcs („für berta“), @ljl1407 („#freeBerta“). Niemand hat geraten, wer der Ex-Profi ist.
+
+## Zwischenstand nach 3 Folgen (12.11.)
+
+- Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.
+- Die Gemeinschaft ist klein, aber sehr aktiv: Likes 5–6 % der Aufrufe, über 20 echte Kommentare pro Folge, 35 → 45 → 75 → 101 Follower.
+- Vermutete Ursache (noch ohne Studio-Zahlen für Tag 2 und 3 belegt): Fremde Zuschauer bleiben nicht dran. Die Folgen sind
+  57 s lang, setzen die Vorgeschichte voraus („Der Brief ist von …“) und bestehen zu großen Teilen aus Namenslisten.
+- **Folgerung für Tag 4 bis Samstag:** Hauptfolge höchstens 30 s, ein einziger Erzählstrang, in Sekunde 1 allein verständlich.
+  Die vielen Namen und Rollen kommen in ein zweites, eigenes Video („Neuzugänge“) oder in Videoantworten auf Kommentare.
+- **Entscheidungspunkt:** Samstag ist das Spiel um Berta (Action mit Anzeigetafel, bei anderen Kanälen der stärkste Folgentyp).
+  Zündet auch das nicht deutlich, testen wir ab Sonntag ein neues Konzept (Regel vom 09.11.: nach ca. 5 Folgen wechseln).
+
+### Ideen für Tag 4 (Do, 12.11.), noch nicht entschieden
+
+1. **„Berta ist weg“ (Empfehlung):** Haken: leeres Tor, Zettel „Bin beleidigt“. Rückblende: Der Ex-Profi von Matschbach wird
+   enthüllt (Variante A „Metzger-Manni“, Variante B „Rodeo-Rudi“), Berta hört das und haut ab. Aufruf: „Schreib BERTA, jeder
+   Kommentar holt sie einen Schritt zurück.“ Lucas „#freeBerta“ als Karte. Kapitänin Mia (2 : 1) führt den Suchtrupp.
+2. **Zweites Video „Neuzugänge“:** alle neuen Namen und Rollen mit Karte und Stempel (Arzt, Trainer, Transferberater, Sponsor-Bande,
+   Fanclub-Präsident, Spieler, Ultras, dazu die offenen Sticker-Kommentare von Tag 2).
+3. **Freitag:** Suche und Rückkehr von Berta, neuer Mannschaftsbus (Fynn), Startelf.
+4. **Samstag:** Spieltag in zwei Teilen (1. Halbzeit mittags, 2. Halbzeit abends), Kommentare beeinflussen die zweite Halbzeit.
 
 ## Plan Tag 2: „Der Kader“
 
