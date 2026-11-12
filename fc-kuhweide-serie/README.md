@@ -187,6 +187,10 @@ Aufrufkurve: Spitze in Stunde 1–3 (Tag 2 ca. 280/h, Tag 3 ca. 340/h), nach 6�
 
 YG 3 (YG selbst, @lamine.yamal7498, Gabriel ッ) : MIA 3 (Mia selbst, @elias.fcs, @crakez23) → **Unentschieden**.
 Tag 4 wurde vor dem Posten geändert: „Kapitänswahl: drei zu drei! Mia und Yunus führen den Suchtrupp gemeinsam an.“ (Doppelspitze).
+Nachgeprüft am 12.11. ca. 10 Uhr (Screenshots + neuer Abruf, keine neuen Stimmen): @miaa16120 heißt öffentlich „mia“, @yunusks11 „YG🇹🇷“ –
+die Kommentare „bitte wählt für Mia!!“/„bitte wählt miaaa“ und „Bin für YG“ stammen also von den Kandidaten selbst. Ohne diese
+Selbststimmen stünde es 2 : 2, mit ihnen 3 : 3 – in beiden Fällen unentschieden. Nicht gezählt: Luca und Leo (eigene Bewerbung),
+„für berta“ (andere Frage). Likes zählen nicht, weil die Likes des Kanals beim Beantworten mitgezählt werden.
 Weitere Sticker-Kommentare: Luca (@luca_mgd15) will Kapitän werden → Abwehrchef; 🐊 will vom Co-Trainer zum Trainer → Taktik-Auftrag
 für Samstag; @j.weber.21 postet ein Pyro-Bild → nur Wunderkerzen; mali freut sich aufs Spiel.
 
@@ -401,6 +405,9 @@ Kreisligaverein der Welt“, Wisch-Übergänge zwischen den Schnitten.
   Untertitel Wort für Wort (`karaoke`), kurzer Zoom-Impuls bei jedem Schnitt (`punch`), Zuschauer mit Fahnen, grüner Stempel
   „✓ ROLLE“ an jeder erfüllten Kommentar-Karte.
 - Abstimmungen ehrlich auswerten: Im Torwart-Duell gab es genau eine sichtbare Stimme (für Flo), also „1 : 0“.
+- **Zählweise bei Abstimmungen:** eine Stimme pro Person (mehrere Kommentare derselben Person zählen einmal), Stimmen der
+  Kandidaten für sich selbst zählen, Likes zählen nicht. Sticker-Kommentare und Antworten unter dem angepinnten Kommentar sind per
+  Abruf unsichtbar – vor dem Auswerten Screenshots vom Kanalinhaber holen.
 
 ## Technik
 
