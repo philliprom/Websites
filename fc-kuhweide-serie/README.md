@@ -174,7 +174,15 @@ dann zusammenführen. @useruzi2kb3ese heißt jetzt **@crakez23**.
 - **Entscheidungspunkt:** Samstag ist das Spiel um Berta (Action mit Anzeigetafel, bei anderen Kanälen der stärkste Folgentyp).
   Zündet auch das nicht deutlich, testen wir ab Sonntag ein neues Konzept (Regel vom 09.11.: nach ca. 5 Folgen wechseln).
 
-### Ideen für Tag 4 (Do, 12.11.), noch nicht entschieden
+### Entscheidungen vom 12.11. morgens (Kanalinhaber)
+
+- Der Ex-Profi von Matschbach ist **Metzger-Manni** (Variante A): Stürmer, Dorfmetzger, Wurstkette, Spielerkarte
+  87 ST mit TOR 312 · SCH 91 · TEM 12 · WUR 99. Keine Messer, kein Blut, nur angedeutet („freut sich auf Berta“).
+- **Ab heute zwei Videos pro Tag:** Hauptfolge (≤ 30 s, Geschichte) und ein Neuzugänge-Video (Namen und Rollen).
+- **Mitmach-Mechanik „Bertas Heimweg“:** Jeder Kommentar mit „BERTA“ = 1 Schritt zurück, sie ist 100 Schritte weg.
+  Am nächsten Morgen werden die BERTA-Kommentare ehrlich gezählt und in Folge 5 gezeigt.
+
+### Ideen für Tag 4 (Do, 12.11.), Stand vor der Entscheidung
 
 1. **„Berta ist weg“ (Empfehlung):** Haken: leeres Tor, Zettel „Bin beleidigt“. Rückblende: Der Ex-Profi von Matschbach wird
    enthüllt (Variante A „Metzger-Manni“, Variante B „Rodeo-Rudi“), Berta hört das und haut ab. Aufruf: „Schreib BERTA, jeder
