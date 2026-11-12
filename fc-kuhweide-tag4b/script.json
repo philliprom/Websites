@@ -1,0 +1,359 @@
+{
+  "title": "FC Kuhweide – Tag 4: Die Neuzugänge",
+  "voice": "voxcpm2",
+  "lead_in": 0.1,
+  "tail": 1.8,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "voxcpm",
+    "voice": "../fc-kuhweide-tag1/voice/kalle_ref.wav",
+    "voice_text": "../fc-kuhweide-tag1/voice/kalle_ref.txt",
+    "cfg": 2.0,
+    "steps": 10
+  },
+  "music": {
+    "bpm": 128,
+    "inst": "marimba",
+    "clap": 1.8,
+    "ambience": 0.2,
+    "chords": [
+      [
+        67,
+        71,
+        74,
+        79
+      ],
+      [
+        64,
+        67,
+        71,
+        76
+      ],
+      [
+        65,
+        69,
+        72,
+        77
+      ],
+      [
+        62,
+        67,
+        71,
+        74
+      ]
+    ],
+    "roots": [
+      43,
+      40,
+      41,
+      43
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1,
+      2,
+      3
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Ihr kommentiert, ich nehme euch in den Verein auf.",
+      "caps": [
+        "IHR ^KOMMENTIERT,",
+        "ICH NEHME EUCH",
+        "IN DEN ^VEREIN AUF."
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "stamp",
+          1.25
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Das sind die Neuzugänge von heute!",
+      "caps": [
+        "DAS SIND DIE",
+        "^NEUZUGÄNGE VON HEUTE!"
+      ],
+      "gap": 0.3,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.1
+        ],
+        [
+          "confetti",
+          0.2
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Julian wird Mannschaftsarzt, Kian Torwarttrainer und Elias Standard-Trainer.",
+      "caps": [
+        "^JULIAN WIRD ^MANNSCHAFTSARZT,",
+        "^KIAN ^TORWARTTRAINER",
+        "UND ^ELIAS ^STANDARD-TRAINER."
+      ],
+      "gap": 0.35,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          1.5
+        ],
+        [
+          "blip",
+          2.6
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Leo verwaltet die Kasse, Flori die Eckfahnen. Und wir haben einen Transferberater!",
+      "caps": [
+        "^LEO VERWALTET DIE ^KASSE,",
+        "^FLORI DIE ^ECKFAHNEN.",
+        "UND WIR HABEN EINEN",
+        "^TRANSFERBERATER!"
+      ],
+      "gap": 1.3,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          1.4
+        ],
+        [
+          "blip",
+          2.6
+        ],
+        [
+          "blip",
+          3.0
+        ],
+        [
+          "blip",
+          3.4
+        ],
+        [
+          "blip",
+          3.8
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Maik kriegt endlich seine Bande!",
+      "caps": [
+        "^MAIK KRIEGT ENDLICH",
+        "SEINE ^BANDE!"
+      ],
+      "gap": 1.6,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "stamp",
+          "e-0.4"
+        ],
+        [
+          "cheer",
+          "e-0.3"
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Ben wollte Pyro. Er kriegt eine Wunderkerze.",
+      "caps": [
+        "^BEN WOLLTE !PYRO.",
+        "ER KRIEGT EINE",
+        "^WUNDERKERZE."
+      ],
+      "gap": 0.6,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          0.5
+        ],
+        [
+          "blip",
+          0.95
+        ],
+        [
+          "sparkle",
+          "e-1.0"
+        ],
+        [
+          "drum",
+          "e-0.2"
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Und sieben neue Spieler!",
+      "caps": [
+        "UND ^7 NEUE",
+        "^SPIELER!"
+      ],
+      "gap": 1.0,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          0.35
+        ],
+        [
+          "blip",
+          0.65
+        ],
+        [
+          "blip",
+          0.95
+        ],
+        [
+          "blip",
+          1.25
+        ],
+        [
+          "blip",
+          1.55
+        ],
+        [
+          "blip",
+          1.85
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Du willst auch rein? Schreib deine Position in die Kommentare!",
+      "caps": [
+        "DU WILLST AUCH ~REIN?",
+        "SCHREIB DEINE ^POSITION",
+        "IN DIE ^KOMMENTARE!"
+      ],
+      "gap": 2.0,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          1.0
+        ],
+        [
+          "tap",
+          1.3
+        ],
+        [
+          "tap",
+          1.45
+        ],
+        [
+          "tap",
+          1.6
+        ],
+        [
+          "tap",
+          1.75
+        ],
+        [
+          "tap",
+          1.9
+        ],
+        [
+          "ding",
+          "e-0.2"
+        ]
+      ]
+    },
+    {
+      "id": "s09",
+      "say": "Und was mit unserer Kuh los ist, siehst du im letzten Video.",
+      "caps": [
+        "UND WAS MIT UNSERER",
+        "^KUH LOS IST,",
+        "SIEHST DU IM",
+        "^LETZTEN VIDEO."
+      ],
+      "gap": 1.3,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "stamp",
+          0.4
+        ],
+        [
+          "pop",
+          "e+0.2"
+        ],
+        [
+          "tap",
+          "e+0.6"
+        ],
+        [
+          "ding",
+          "e+0.65"
+        ]
+      ]
+    }
+  ]
+}

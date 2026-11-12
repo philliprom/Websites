@@ -1,0 +1,18 @@
+<!-- Titelbild-Overlay für FC Kuhweide – Tag 4b. Wird von engine/render_cover.cjs über die Szene gelegt. -->
+<style>
+  #cover { position: absolute; inset: 0; pointer-events: none; }
+  #cover .tag { position: absolute; left: 540px; top: 96px; transform: translateX(-50%) rotate(-4deg); font-size: 112px;
+    padding: 6px 54px 16px; border-width: 10px; box-shadow: 0 0 0 9px var(--navy), 0 18px 0 9px rgba(20,20,50,.3); }
+  #cover svg.head { position: absolute; left: 0; top: 0; filter: drop-shadow(0 10px 0 rgba(20, 15, 45, .45)); }
+  #cover svg.head text { font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; paint-order: stroke fill; stroke: var(--navy);
+    stroke-width: 20px; stroke-linejoin: round; fill: #fff; }
+  #cover .pill { position: absolute; left: 540px; top: 1505px; transform: translateX(-50%) rotate(-2deg); font-size: 52px; padding: 18px 36px 22px; }
+</style>
+<div id="cover">
+  <div class="ui badge tag">TAG 4</div>
+  <svg class="head" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="h1" x="540" y="1318" text-anchor="middle" font-size="96">DIE NEUZUGÄNGE ⚽</text>
+    <text id="h2" x="540" y="1420" text-anchor="middle" font-size="76" style="fill:#FFD43B">IST DEIN NAME DABEI? 👀</text>
+  </svg>
+  <div class="ui chip red pill">✍️ SCHREIB DEINE POSITION</div>
+</div>

@@ -182,6 +182,15 @@ dann zusammenführen. @useruzi2kb3ese heißt jetzt **@crakez23**.
 - **Mitmach-Mechanik „Bertas Heimweg“:** Jeder Kommentar mit „BERTA“ = 1 Schritt zurück, sie ist 100 Schritte weg.
   Am nächsten Morgen werden die BERTA-Kommentare ehrlich gezählt und in Folge 5 gezeigt.
 
+### Gebaut am 12.11.
+
+- **Tag 4 „Berta ist weg“** (23 s, `fc-kuhweide-tag4/`): Posten gegen 12:00.
+- **Tag 4b „Die Neuzugänge“** (34 s, `fc-kuhweide-tag4b/`): Posten frühestens 4 h später (z. B. 17:30). Optional als zweiten
+  Kommentar alle Neuzugänge markieren (Liste in `beschreibung.txt`).
+- Zusagen aus den Antworten (Arzt, Torwart-Trainer, Standard-Trainer, Schatzmeister, Bande für Maik, Wunderkerze für Ben,
+  Vize-Capo Michi, Tor-Ansagen Makek, Bankwärmer Linnert, Spieler) sind damit eingelöst. Offen: Fynns Bratwurst und neuer Bus.
+- Offen vom Kanalinhaber: Screenshots der Sticker-Kommentare unter Tag 3, Studio-Zahlen von Tag 2 und 3.
+
 ### Ideen für Tag 4 (Do, 12.11.), Stand vor der Entscheidung
 
 1. **„Berta ist weg“ (Empfehlung):** Haken: leeres Tor, Zettel „Bin beleidigt“. Rückblende: Der Ex-Profi von Matschbach wird
