@@ -233,7 +233,8 @@ für Samstag; @j.weber.21 postet ein Pyro-Bild → nur Wunderkerzen; mali freut 
   87 ST mit TOR 312 · SCH 91 · TEM 12 · WUR 99. Keine Messer, kein Blut, nur angedeutet („freut sich auf Berta“).
 - **Ab heute zwei Videos pro Tag:** Hauptfolge (≤ 30 s, Geschichte) und ein Neuzugänge-Video (Namen und Rollen).
 - **Mitmach-Mechanik „Bertas Heimweg“:** Jeder Kommentar mit „BERTA“ = 1 Schritt zurück, sie ist 100 Schritte weg.
-  Am nächsten Morgen werden die BERTA-Kommentare ehrlich gezählt und in Folge 5 gezeigt.
+  Am nächsten Morgen werden die BERTA-Kommentare ehrlich gezählt und in Folge 5 gezeigt – unter **beiden** Videos vom 12.11.
+  (Tag 4 und Tag 4b), so steht es im angepinnten Kommentar von Teil 2.
 
 ### Gebaut am 12.11.
 

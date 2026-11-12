@@ -47,10 +47,11 @@ script = {
 }
 open(os.path.join(HERE, "script.json"), "w", encoding="utf-8").write(json.dumps(script, ensure_ascii=False, indent=2) + "\n")
 alle = [x["handle"] for grp in (st, ve, [sp], ul, pl) for x in grp if x["handle"].startswith("@")]
-cap = (f"Die Neuzugänge von heute ⚽ Ist dein Name dabei? 👀 Du willst auch in den Verein? Schreib deine Position in die Kommentare 👇 "
-       f"#fckuhweide #neuzugänge #fußball #kreisliga #amateurfußball")
-pin = ("📌 So kommst du in den Verein: Schreib deine Wunschposition oder Wunschrolle in die Kommentare ✍️ "
-       "Wer kommentiert, wird eingestellt – versprochen 🤝 Und: Schreib BERTA, damit unsere Kuh zurückkommt 🐄")
+cap = (f"Tag 4, Teil 2: Die Neuzugänge ⚽ Mannschaftsarzt, Torwarttrainer, Sponsor und {len(pl)} neue Spieler – ist dein Name dabei? 👀 "
+       f"Du willst auch rein? Schreib deine Position in die Kommentare 👇 #fckuhweide #tag4 #neuzugänge #fußball #kreisliga")
+pin = ("📌 So kommst du in den Verein: Schreib deine Wunschposition oder Wunschrolle in die Kommentare ✍️ Die Neuen stehen im nächsten Video 🤝 "
+       "Und: Jedes BERTA (hier oder unter Teil 1) holt unsere Kuh einen Schritt zurück 🐄")
+gruppen = [" ".join(alle[i:i + 5]) for i in range(0, len(alle), 5)]
 os.makedirs(os.path.join(HERE, "out"), exist_ok=True)
 open(os.path.join(HERE, "out", "beschreibung.txt"), "w", encoding="utf-8").write(f"""FC KUHWEIDE – TAG 4b „DIE NEUZUGÄNGE“ · TEXTE ZUM POSTEN
 ==========================================================
@@ -65,11 +66,11 @@ TITELBILD
 Datei: titelbild.png
 
 POSTZEIT
-Am Nachmittag oder frühen Abend, mindestens 4 Stunden nach der Hauptfolge (z. B. 17:30 Uhr).
+Frühestens 4 Stunden nach Teil 1 („Berta ist weg“), z. B. gegen 17:30 Uhr.
 
-Optional als ZWEITEN Kommentar die Neuzugänge markieren (TikTok benachrichtigt sie, viele schauen dann rein):
-{' '.join(alle[:12])}
-{' '.join(alle[12:])}
+OPTIONAL: NEUZUGÄNGE MARKIEREN (TikTok benachrichtigt sie, viele schauen dann rein)
+Höchstens 5 Namen pro Kommentar, damit es nicht wie Spam wirkt. Einfach nacheinander als eigene Kommentare posten:
+{chr(10).join(gruppen)}
 """)
 open(os.path.join(HERE, "kader.js"), "w", encoding="utf-8").write("window.KADER = " + json.dumps(K, ensure_ascii=False) + ";\n")
 print(f"Tag 4b: {len(segments)} Sätze, {len(alle)} markierbare Neuzugänge")

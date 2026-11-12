@@ -496,7 +496,8 @@
   function boardShot(S, t) { S.cam = [1250, 1150, 1.04]; S.berta = B({}); S.crowd = { t0: -10 }; S.dim = 0.55; S.net = true; }
 
   // Titelbild: Taktiktafel mit Kalle
-  shots.cover = (S, t) => { S.cam = [1560, 1150, 1.0]; S.net = true; S.pigeon = { mode: 'bar' }; S.dim = 0.5; cardsAt(S, grp(GS.spieler, [-1]), 300, 128, 0.82); };
+  shots.cover = (S, t) => { S.cam = [1560, 1150, 1.0]; S.net = true; S.pigeon = { mode: 'bar' }; S.dim = 0.5;
+    cardsAt(S, grp([GS.stab[0], GS.ultras[0], GS.sponsor[0], GS.stab[1], GS.spieler[3], GS.spieler[0]], [-1]), 290, 156, 0.84); };
 
   // ---------------------------------------------------------------- Fan-Menge
   const SLOTS = (() => {
