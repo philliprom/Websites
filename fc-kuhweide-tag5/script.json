@@ -1,0 +1,308 @@
+{
+  "title": "FC Kuhweide – Tag 5: Unsere Torhüterin ist eine Kuh",
+  "voice": "voxcpm2",
+  "lead_in": 0.1,
+  "tail": 1.6,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "voxcpm",
+    "voice": "../fc-kuhweide-tag1/voice/kalle_ref.wav",
+    "voice_text": "../fc-kuhweide-tag1/voice/kalle_ref.txt",
+    "cfg": 2.0,
+    "steps": 10
+  },
+  "music": {
+    "bpm": 128,
+    "inst": "pluck",
+    "clap": 1.8,
+    "ambience": 0.25,
+    "chords": [
+      [
+        67,
+        71,
+        74,
+        79
+      ],
+      [
+        64,
+        67,
+        71,
+        76
+      ],
+      [
+        60,
+        64,
+        67,
+        72
+      ],
+      [
+        62,
+        66,
+        69,
+        74
+      ]
+    ],
+    "roots": [
+      43,
+      40,
+      48,
+      50
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1,
+      2,
+      3
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Unsere Torhüterin ist eine Kuh.",
+      "caps": [
+        "UNSERE TORHÜTERIN",
+        "IST EINE ^KUH."
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "kick_ball",
+          0.0
+        ],
+        [
+          "boing",
+          0.12
+        ],
+        [
+          "cheer",
+          0.3
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Und morgen spielt sie gegen den Metzger.",
+      "caps": [
+        "UND MORGEN SPIELT SIE",
+        "GEGEN DEN !METZGER."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          1.0
+        ],
+        [
+          "sting",
+          "e-0.25"
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Gestern ist sie noch abgehauen.",
+      "caps": [
+        "GESTERN IST SIE",
+        "NOCH !ABGEHAUEN."
+      ],
+      "gap": 0.55,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "stamp",
+          0.05
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Aber ihr habt neunmal Berta gerufen …",
+      "caps": [
+        "ABER IHR HABT",
+        "^9× BERTA GERUFEN …"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.1
+        ],
+        [
+          "blip",
+          0.3
+        ],
+        [
+          "blip",
+          0.5
+        ],
+        [
+          "blip",
+          0.7
+        ],
+        [
+          "blip",
+          0.9
+        ],
+        [
+          "blip",
+          1.1
+        ],
+        [
+          "blip",
+          1.3
+        ],
+        [
+          "blip",
+          1.5
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "… und sie ist zurück!",
+      "caps": [
+        "… UND SIE IST ^ZURÜCK!"
+      ],
+      "gap": 0.05,
+      "sfx": [
+        [
+          "whoosh",
+          0.0
+        ],
+        [
+          "cheer",
+          0.35
+        ],
+        [
+          "confetti",
+          0.4
+        ],
+        [
+          "moo",
+          "e+0.1"
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Für morgen brauchen wir noch Verstärkung.",
+      "caps": [
+        "FÜR MORGEN BRAUCHEN WIR",
+        "NOCH ^VERSTÄRKUNG."
+      ],
+      "gap": 0.8,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.2
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Wer heute seine Position kommentiert, spielt morgen mit!",
+      "caps": [
+        "WER HEUTE SEINE ^POSITION",
+        "KOMMENTIERT,",
+        "SPIELT ^MORGEN MIT!"
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.1
+        ],
+        [
+          "blip",
+          0.27
+        ],
+        [
+          "blip",
+          0.44
+        ],
+        [
+          "blip",
+          0.61
+        ],
+        [
+          "blip",
+          0.78
+        ],
+        [
+          "blip",
+          0.95
+        ],
+        [
+          "blip",
+          1.12
+        ],
+        [
+          "blip",
+          1.29
+        ],
+        [
+          "blip",
+          1.46
+        ],
+        [
+          "blip",
+          1.63
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Morgen um drei ist Anpfiff: Kuh gegen Metzger!",
+      "caps": [
+        "MORGEN UM 3 IST ^ANPFIFF:",
+        "^KUH GEGEN !METZGER!"
+      ],
+      "gap": 1.1,
+      "sfx": [
+        [
+          "whistle",
+          -0.1
+        ],
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          "e+0.15"
+        ],
+        [
+          "tap",
+          "e+0.6"
+        ],
+        [
+          "ding",
+          "e+0.65"
+        ]
+      ]
+    }
+  ]
+}

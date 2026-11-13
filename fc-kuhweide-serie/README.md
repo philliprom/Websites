@@ -246,6 +246,17 @@ abflauende Welle gestartet – das erklärt einen großen Teil der niedrigen Rei
 **BERTA-Zählung für Folge 5:** 9 Kommentare mit „Berta“ unter Teil 1 (8 Personen: @crakez23, @mali1650, @2022lennie, @luca_mgd15,
 @ludwig4365, @mxik.1965 ×2, @kilian93907, @ljl1407), 0 unter Teil 2. Sticker-Kommentare noch nicht geprüft → 9 Schritte.
 
+## Entscheidungen 13.11. morgens
+
+- Postzeit bleibt mittags (Wunsch des Kanalinhabers). Ausnahme: das Spiel am Samstag um 15 Uhr, weil im Video „Anpfiff 15 Uhr“ steht.
+- Ein Video pro Tag statt zwei (Neuzugänge stecken in der Hauptfolge).
+- **Jede Folge beginnt mit einem Einstieg für Fremde:** absurdes Bild + Satz, der ohne Vorwissen funktioniert
+  (Tag 5: Zeitlupen-Parade, „Unsere Torhüterin ist eine Kuh. Und morgen spielt sie gegen den Metzger.“).
+- Mitmach-Versprechen in jeder Folge („Wer heute kommentiert, spielt morgen mit“), weil das die Follower bringt.
+- Optik aufgewertet (siehe `fc-kuhweide-tag5/README.md`).
+- **Samstag = großer Versuch:** Spiel um Berta mit Anzeigetafel, Spielminute, Zeitlupen-Paraden, Kommentierenden als Spielern.
+  Danach entscheiden, wie es mit FC Kuhweide weitergeht (Maßstab: deutlich über 2.000 Aufrufe).
+
 ## Zwischenstand nach 3 Folgen (12.11.)
 
 - Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.
