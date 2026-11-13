@@ -216,6 +216,36 @@ Selbststimmen stünde es 2 : 2, mit ihnen 3 : 3 – in beiden Fällen unentschie
 Weitere Sticker-Kommentare: Luca (@luca_mgd15) will Kapitän werden → Abwehrchef; 🐊 will vom Co-Trainer zum Trainer → Taktik-Auftrag
 für Samstag; @j.weber.21 postet ein Pyro-Bild → nur Wunderkerzen; mali freut sich aufs Spiel.
 
+## Auswertung Tag 4 (13.11. morgens, Studio-Screenshots + Abruf)
+
+| Video | Länge | Aufrufe | Ø Wiedergabe | Anteil | ganz angesehen | neue Follower | Kommentare (Fans) |
+|---|---|---|---|---|---|---|---|
+| Tag 3 (zum Vergleich) | 56 s | 1.128 | 14,1 s | 25 % | 5,6 % | 26 | ca. 25 |
+| Tag 4 Teil 1 „Berta ist weg“ (11:47) | 26 s | 800 | 9,8 s | **38 %** | **11,8 %** | **1** | 11 (9× Berta) |
+| Tag 4 Teil 2 „Neuzugänge“ (15:02) | 34 s | 775 | 6,0 s | 18 % | 3,3 % | **7** | 15 (10 neue Bewerbungen) |
+
+Bei beiden Videos sind die meisten Zuschauer laut Studio bei 0:01 ausgestiegen. Kanal: 111 Follower.
+
+**Was wir daraus lernen:**
+- Kurz wirkt beim Halten: Teil 1 wurde anteilig so lange geschaut wie nie (38 %) und dreimal so oft ganz wie Tag 2.
+- **Gefolgt wird für das Mitmach-Versprechen, nicht für die Geschichte.** Teil 1 (reine Geschichte, Aufruf „Schreibt Berta“) brachte
+  1 Follower, Teil 2 („Ihr kommentiert, ich nehme euch in den Verein auf“) brachte 7 Follower und 10 neue Bewerbungen.
+- Die erste Sekunde bleibt das Hauptproblem, mit beiden Einstiegen (Plakat, Stempel).
+- Gepostet wurde mittags. Die Kommentierenden wirken überwiegend jung (Schule bis nachmittags), Vorbilder posten meist 17–20 Uhr.
+
+**Die Nische ist gesättigt (Abruf 13.11. früh):**
+| Kanal | Follower 09.11. → 13.11. | Aufrufe der neuesten Folgen |
+|---|---|---|
+| FC Asche | 57.017 → 57.700 (+700) | Tag 4: 233.000 → Tag 8: 103.000 → Tag 10: 68.000 → Tag 11: 36.000 |
+| Rekrut Schulz | 10.479 → 13.400 | 6.500–30.000 (vorher bis 82.000) |
+| FC Kaiser 09 | 4.317 → 4.329 | postet seit 08.11. nicht mehr |
+
+Der Trend hatte seine Welle Anfang November. Selbst der Marktführer gewinnt kaum noch Follower. FC Kuhweide ist am 09.11. in eine
+abflauende Welle gestartet – das erklärt einen großen Teil der niedrigen Reichweite.
+
+**BERTA-Zählung für Folge 5:** 9 Kommentare mit „Berta“ unter Teil 1 (8 Personen: @crakez23, @mali1650, @2022lennie, @luca_mgd15,
+@ludwig4365, @mxik.1965 ×2, @kilian93907, @ljl1407), 0 unter Teil 2. Sticker-Kommentare noch nicht geprüft → 9 Schritte.
+
 ## Zwischenstand nach 3 Folgen (12.11.)
 
 - Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.
