@@ -445,6 +445,10 @@ Kreisligaverein der Welt“, Wisch-Übergänge zwischen den Schnitten.
 - Was in Antworten zugesagt wird, wird in der nächsten Folge eingelöst.
 - Im Video nur öffentliche @-Namen zeigen, keine Profilbilder und keine Klarnamen.
 - Antworten immer leicht unterschiedlich formulieren, damit TikTok sie nicht als Spam wertet.
+- **Kommentar-Routine ab 13.11. (max. 5 Minuten):** Alle Kommentare liken. Nur antworten auf direkte Fragen, den Top-Kommentar,
+  Streit/Witz mit Story-Potenzial und eine Sammelantwort für alle Bewerbungen („Alle stehen im nächsten Video ✅“). Rollenwünsche
+  nicht einzeln beantworten – die Antwort ist die Karte mit Stempel im nächsten Video. Hintergrund: Trotz fast vollständiger Antworten
+  an Tag 1–3 blieb die Reichweite bei ca. 1.000–1.500; sie entscheidet sich in den ersten Sekunden, nicht in den Kommentaren.
 - Jede Folge enthält eine feste Postzeit, eine Mitmach-Aufforderung („Schreib deine Position“), eine Abstimmung mit 2 Optionen
   und eine Aufforderung zum Teilen.
 - **Lesepausen (Wunsch vom 10.11.):** Kommentar-Karten kommen im Abstand von ca. 0,4–0,5 s rein, und die letzte Karte

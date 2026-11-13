@@ -96,7 +96,8 @@ Ausführliches Gedächtnis von FC Kuhweide (Zusagen, Regeln, alle Auswertungen):
 - [ ] Nur öffentliche @-Namen zeigen, keine Profilbilder, keine Klarnamen. Ungeprüfte Markennamen nicht ins Video.
 - [ ] Familienfreundlich: Bedrohungen nur andeuten, Gefährliches nicht verherrlichen (Pyro-Wunsch → Wunderkerze).
 - [ ] Konkurrenz nie im Video nennen, kein Spam unter fremden Videos.
-- [ ] Antworten auf Kommentare immer etwas anders formulieren (Spam-Filter), jeden beantworteten Kommentar liken.
+- [ ] Kommentare: alle liken, aber nur wenige beantworten (Fragen, Top-Kommentar, Story-Potenzial, eine Sammelantwort für alle
+      Bewerbungen). Die eigentliche Antwort ist der Auftritt im nächsten Video. Antworten immer etwas anders formulieren.
 - [ ] **Wechselregel:** Zündet ein Konzept nach ca. 5 Folgen nicht (Ø-Wiedergabe unter 50 %, Aufrufe nicht über ca. 2.000), neues Konzept testen.
 
 **Bildaufbau (1080 × 1920):** Unten ca. 350 px und rechts ca. 150 px verdeckt die TikTok-Oberfläche. Wichtiges zwischen y 200 und
@@ -110,8 +111,8 @@ Ausführliches Gedächtnis von FC Kuhweide (Zusagen, Regeln, alle Auswertungen):
 |---|---|---|
 | morgens | Kanalinhaber | meldet sich, schickt Screenshots: Sticker-Kommentare, TikTok Studio (Übersicht, Haltekurve, Traffic-Quellen) |
 | morgens | Claude | Kommentare abrufen (`engine/tiktok.py`), auswerten, Antworten-Datei schreiben, `kader.json` aktualisieren, beide Videos bauen (ca. 1–2 h) |
-| 12:00 | Kanalinhaber | Hauptfolge posten (Titelbild, Caption, ersten Kommentar anpinnen), in der ersten Stunde alles beantworten und liken |
-| ab 16:00 | Kanalinhaber | zweites Video posten, optional als zweiten Kommentar die Neuzugänge markieren (Liste in `beschreibung.txt`) |
+| 17–19 Uhr | Kanalinhaber | Hauptfolge posten (Titelbild, Caption, ersten Kommentar anpinnen), alle Kommentare liken, nur die wichtigsten beantworten (max. 5 min) |
+| optional | Kanalinhaber | zweites Video (z. B. Neuzugänge) mindestens 4 h versetzt; bei FC Kuhweide brachte es mehr Follower als die Hauptfolge |
 | abends | Kanalinhaber | Studio-Zahlen schicken; Claude plant daraus die nächste Folge |
 
 **Pro Folge liefern:** `out/<name>.mp4`, `out/titelbild.png`, `out/beschreibung.txt` (Caption + angepinnter Kommentar + Postzeit),
