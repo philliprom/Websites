@@ -1,0 +1,1207 @@
+/* FC Kuhweide – Tag 6: Das Spiel um Berta. Welt und Figuren wie Tag 1, Daten aus kader.json (window.KADER). */
+(() => {
+  const { $, clamp, lerp, E, prog, popS, rng, byId, cue, cues, setT, disp, fmt, camLerp, OUT, sw,
+    humanEls, humanDefaults, poseHuman, faceMarkup, armMarkup, TL } = Engine;
+
+  const SKIN = '#F1C6A0', SKIN_SH = '#DFA67E';
+  const HAIR = '#5A3A22';
+  const SUIT = '#1F8A55', SUIT_D = '#17704A';
+
+  // ---------------------------------------------------------------- Trainer Kalle
+  const kalleMarkup = (p) => `
+  <g id="${p}">
+    <ellipse cx="0" cy="4" rx="86" ry="13" fill="#1E3A1A" opacity=".22"/>
+    <g id="${p}-bob">
+      <path d="M-40 -70 L-12 -70 L-12 -30 L-40 -30 Z" fill="${SUIT_D}" ${sw}/>
+      <path d="M12 -70 L40 -70 L40 -30 L12 -30 Z" fill="${SUIT_D}" ${sw}/>
+      <path d="M-38 -66 L-38 -32 M38 -66 L38 -32" stroke="#fff" stroke-width="5"/>
+      <path d="M-52 0 L-6 0 L-6 -24 Q-6 -34 -16 -34 L-40 -34 Q-52 -34 -52 -20 Z" fill="#fff" ${sw}/>
+      <path d="M52 0 L6 0 L6 -24 Q6 -34 16 -34 L40 -34 Q52 -34 52 -20 Z" fill="#fff" ${sw}/>
+      <path d="M-52 -6 H-6 M52 -6 H6" stroke="#E23A4E" stroke-width="6"/>
+      <g id="${p}-armL" transform="translate(-56,-160)">${armMarkup(p, 'L', SUIT, '#fff', SKIN)}</g>
+      <path d="M-56 -174 Q-86 -120 -76 -66 Q0 -50 76 -66 Q86 -120 56 -174 Q0 -188 -56 -174 Z" fill="${SUIT}" ${sw}/>
+      <path d="M24 -178 Q50 -176 56 -172 Q84 -120 74 -68 Q54 -58 34 -58 Q52 -116 24 -178 Z" fill="${SUIT_D}" opacity=".6"/>
+      <path d="M-56 -170 Q-80 -120 -74 -70 M56 -170 Q80 -120 74 -70" stroke="#fff" stroke-width="5" fill="none"/>
+      <line x1="0" y1="-176" x2="0" y2="-58" stroke="#E9EEF4" stroke-width="5"/>
+      <rect x="-4" y="-150" width="8" height="12" rx="2" fill="#C9D3DE"/>
+      <path d="M-26 -184 L0 -164 L26 -184" stroke="#fff" stroke-width="7" fill="none" stroke-linejoin="round"/>
+      <path d="M-18 -176 Q-4 -150 14 -132" stroke="#E23A4E" stroke-width="3.5" fill="none"/>
+      <g transform="translate(18,-128) rotate(-20)"><rect x="-14" y="-7" width="28" height="15" rx="7" fill="#C9D3DE" stroke="${OUT}" stroke-width="3.5"/><rect x="12" y="-4" width="12" height="8" rx="2" fill="#C9D3DE" stroke="${OUT}" stroke-width="3"/></g>
+      <g id="${p}-armR" transform="translate(56,-160)">${armMarkup(p, 'R', SUIT, '#fff', SKIN)}</g>
+      <g id="${p}-head">
+        <ellipse cx="-75" cy="-226" rx="14" ry="18" fill="${SKIN}" ${sw}/>
+        <ellipse cx="75" cy="-226" rx="14" ry="18" fill="${SKIN}" ${sw}/>
+        <ellipse cx="0" cy="-234" rx="77" ry="75" fill="${SKIN}" ${sw}/>
+        <path d="M-80 -232 Q-90 -300 -30 -316 Q40 -330 78 -284 Q86 -262 80 -232 Q72 -268 50 -282 Q10 -290 -20 -284 Q-46 -292 -64 -270 Q-74 -256 -80 -232 Z" fill="${HAIR}" ${sw}/>
+        <path d="M-20 -284 Q-6 -306 22 -312" stroke="#7A5232" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="-50" cy="-200" rx="14" ry="8" fill="#FF7E86" opacity=".5"/>
+        <ellipse cx="50" cy="-200" rx="14" ry="8" fill="#FF7E86" opacity=".5"/>
+        ${faceMarkup(p, { brow: HAIR, browW: 11 })}
+        <path d="M-9 -212 Q0 -198 9 -212" stroke="${SKIN_SH}" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M-46 -188 Q-24 -212 0 -198 Q24 -212 46 -188 Q34 -184 22 -190 Q10 -182 0 -190 Q-10 -182 -22 -190 Q-34 -184 -46 -188 Z" fill="${HAIR}" ${sw}/>
+      </g>
+    </g>
+  </g>`;
+
+  // ---------------------------------------------------------------- Kuh Berta (schaut nach links)
+  const spot = (d) => `<path d="${d}" fill="${OUT}"/>`;
+  const bertaMarkup = (p) => `
+  <g id="${p}">
+    <ellipse cx="0" cy="4" rx="170" ry="14" fill="#1E3A1A" opacity=".22"/>
+    <g id="${p}-bob">
+      <g id="${p}-tail" transform="translate(148,-196)"><path d="M0 0 Q20 50 10 110" stroke="${OUT}" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M2 104 Q16 96 22 120 Q8 136 0 116 Z" fill="${OUT}"/></g>
+      ${[[96, 1], [124, 1]].map(([x]) => `<rect x="${x - 15}" y="-112" width="30" height="112" rx="12" fill="#F6F6F8" ${sw}/><rect x="${x - 15}" y="-18" width="30" height="18" rx="5" fill="#59606E" ${sw}/>`).join('')}
+      <rect x="-156" y="-218" width="312" height="132" rx="56" fill="#F6F6F8" ${sw}/>
+      ${spot('M-60 -214 Q-20 -222 10 -200 Q20 -170 -10 -160 Q-50 -150 -70 -180 Q-80 -205 -60 -214 Z')}
+      ${spot('M60 -150 Q90 -170 120 -150 Q130 -120 100 -110 Q70 -100 56 -124 Z')}
+      ${spot('M110 -214 Q140 -212 150 -190 Q140 -176 118 -186 Z')}
+      <ellipse cx="50" cy="-86" rx="26" ry="14" fill="#FFB3C1" ${sw}/>
+      ${[[-110, 1], [-82, 1]].map(([x]) => `<rect x="${x - 15}" y="-112" width="30" height="112" rx="12" fill="#F6F6F8" ${sw}/>
+        <g transform="translate(${x},-14)"><path d="M-24 14 L-24 -14 Q-24 -30 -8 -30 L8 -30 Q24 -30 24 -14 L24 14 Z" fill="#FF7A1A" ${sw}/>
+        <path d="M-24 -6 H24" stroke="#fff" stroke-width="6"/><path d="M-30 -20 Q-34 -34 -22 -36" stroke="${OUT}" stroke-width="5" fill="#FF7A1A"/></g>`).join('')}
+      <g id="${p}-head">
+        <path d="M-210 -270 L-226 -296 L-198 -282 Z M-144 -270 L-128 -296 L-156 -282 Z" fill="#F5E6C4" ${sw}/>
+        <ellipse cx="-236" cy="-246" rx="26" ry="13" fill="#F6F6F8" ${sw} transform="rotate(-20 -236 -246)"/>
+        <ellipse cx="-118" cy="-246" rx="26" ry="13" fill="#F6F6F8" ${sw} transform="rotate(20 -118 -246)"/>
+        <ellipse cx="-177" cy="-222" rx="56" ry="62" fill="#F6F6F8" ${sw}/>
+        ${spot('M-150 -276 Q-128 -260 -130 -232 Q-150 -226 -164 -246 Q-170 -268 -150 -276 Z')}
+        <g id="${p}-eyes">
+          <circle cx="-198" cy="-236" r="11" fill="#fff" stroke="${OUT}" stroke-width="3.5"/><circle cx="-156" cy="-236" r="11" fill="#fff" stroke="${OUT}" stroke-width="3.5"/>
+          <circle cx="-197" cy="-234" r="6" fill="${OUT}"/><circle cx="-155" cy="-234" r="6" fill="${OUT}"/>
+          <path d="M-210 -240 Q-198 -250 -186 -240 Z M-168 -240 Q-156 -250 -144 -240 Z" fill="#E4E4EA" stroke="${OUT}" stroke-width="3"/>
+          <path d="M-212 -244 l-6 -6 M-142 -244 l6 -6" stroke="${OUT}" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <g id="${p}-muzzle">
+          <ellipse cx="-177" cy="-176" rx="48" ry="32" fill="#FFB3C1" ${sw}/>
+          <ellipse cx="-193" cy="-182" rx="7" ry="5" fill="#C9677A"/><ellipse cx="-161" cy="-182" rx="7" ry="5" fill="#C9677A"/>
+          <path id="${p}-mouth" d="M-196 -162 Q-177 -152 -158 -162" stroke="${OUT}" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <ellipse id="${p}-moo" cx="-177" cy="-160" rx="14" ry="10" fill="#7A2633" stroke="${OUT}" stroke-width="3" style="display:none"/>
+          <g id="${p}-grass" style="display:none"><path d="M-160 -160 L-138 -186 M-158 -158 L-130 -170 M-162 -160 L-148 -192" stroke="#3FAE5A" stroke-width="5" stroke-linecap="round"/></g>
+          <g id="${p}-bill" style="display:none" transform="translate(-150,-166) rotate(-14)"><rect x="0" y="-12" width="54" height="26" rx="3" fill="#7FD3A0" stroke="${OUT}" stroke-width="3"/>
+            <text x="27" y="7" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="15" fill="${OUT}">50 €</text></g>
+        </g>
+        <path d="M-200 -124 Q-177 -110 -154 -124" stroke="#E23A4E" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M-190 -116 L-164 -116 L-158 -88 L-196 -88 Z" fill="#F2C14E" ${sw}/>
+      </g>
+    </g>
+  </g>`;
+
+  // ---------------------------------------------------------------- Requisiten
+  const ballMarkup = () => `<circle r="26" fill="#fff" ${sw}/><path d="M0 -10 L10 -3 L6 9 L-6 9 L-10 -3 Z" fill="${OUT}"/>
+    <path d="M0 -10 L0 -25 M10 -3 L24 -8 M6 9 L14 21 M-6 9 L-14 21 M-10 -3 L-24 -8" stroke="${OUT}" stroke-width="3"/>`;
+  const pigeonMarkup = () => `
+    <path d="M18 -30 L44 -22 L20 -16 Z" fill="#7C8798" ${sw}/>
+    <ellipse cx="0" cy="-26" rx="30" ry="22" fill="#A7B1C1" ${sw}/>
+    <path d="M-4 -40 Q16 -30 30 -20" stroke="#7C8798" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <g id="pgHead"><ellipse cx="-24" cy="-44" rx="16" ry="14" fill="#8FA0B5" ${sw}/><path d="M-34 -36 Q-26 -28 -14 -34" stroke="#6FB59A" stroke-width="6" fill="none"/>
+      <path d="M-38 -46 L-50 -42 L-38 -40 Z" fill="#F2C14E" stroke="${OUT}" stroke-width="2.5"/><circle cx="-28" cy="-48" r="4" fill="#FF8A2B" stroke="${OUT}" stroke-width="2"/></g>
+    <path d="M-6 -4 L-8 4 M6 -4 L8 4" stroke="#F58FA8" stroke-width="4" stroke-linecap="round"/>
+    <g id="pgLetter" style="display:none" transform="translate(-60,-36) rotate(-14)">
+      <rect id="pgLetterBody" x="-24" y="-16" width="48" height="32" rx="4" fill="#FFF6E2" stroke="${OUT}" stroke-width="3.5"/>
+      <path d="M-24 -16 L0 3 L24 -16" stroke="${OUT}" stroke-width="3" fill="none"/></g>`;
+  const bucketMarkup = () => `
+    <path d="M-30 -60 L-20 -120 M-10 -64 L0 -128 M10 -62 L22 -122 M24 -60 L36 -112 M-22 -62 L-38 -110" stroke="#3FAE5A" stroke-width="7" stroke-linecap="round"/>
+    <path d="M-44 -66 L44 -66 L36 0 L-36 0 Z" fill="#B7C0CC" ${sw}/><path d="M-40 -40 H40" stroke="#8E99AA" stroke-width="5"/>
+    <path d="M-44 -66 Q0 -110 44 -66" stroke="${OUT}" stroke-width="4" fill="none"/>`;
+  const boxMarkup = () => `
+    <rect x="-70" y="-56" width="140" height="56" rx="8" fill="#8E99AA" ${sw}/>
+    <rect x="-14" y="-40" width="28" height="18" rx="4" fill="#F2C14E" ${sw}/>
+    <g id="boxCoins"></g>
+    <g id="boxLid" transform="translate(0,-56)"><rect x="-74" y="-22" width="148" height="22" rx="6" fill="#A7B1C1" ${sw}/><rect x="-24" y="-30" width="48" height="10" rx="5" fill="${OUT}"/></g>`;
+  const moleMarkup = () => `<g id="mole" style="display:none"><ellipse cx="0" cy="-30" rx="26" ry="24" fill="#4A3A34" ${sw}/>
+    <ellipse cx="0" cy="-20" rx="12" ry="9" fill="#FF8FA6" ${sw}/><rect x="-24" y="-46" width="48" height="14" rx="7" fill="${OUT}"/><path d="M-14 -40 H14" stroke="#5CC8FF" stroke-width="4"/></g>`;
+
+  // ---------------------------------------------------------------- Tag 2: Spieler, Ultra
+  const legMarkup = (id, x) => `<g id="${id}" transform="translate(${x},-64)">
+      <rect x="-9" y="0" width="18" height="50" rx="8" fill="#F1C6A0" ${sw}/>
+      <rect x="-10" y="20" width="20" height="28" rx="6" fill="#E23A4E" ${sw}/>
+      <path d="M-12 46 L16 46 Q22 46 22 54 L22 62 L-12 62 Z" fill="${OUT}"/></g>`;
+  const playerMarkup = () => `
+    <ellipse cx="0" cy="3" rx="50" ry="9" fill="#1E3A1A" opacity=".22"/>
+    <g id="plBob">
+      ${legMarkup('plLegL', -12)}${legMarkup('plLegR', 12)}
+      <path d="M-30 -70 L30 -70 L28 -44 L-28 -44 Z" fill="#fff" ${sw}/>
+      <path d="M-30 -132 L-54 -88 M30 -132 L54 -88" stroke="#F1C6A0" stroke-width="14" stroke-linecap="round"/>
+      <rect x="-34" y="-146" width="68" height="82" rx="22" fill="#E23A4E" ${sw}/>
+      <path d="M-34 -120 L34 -120" stroke="#fff" stroke-width="6"/>
+      <text x="0" y="-80" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="#fff" stroke="${OUT}" stroke-width="3" paint-order="stroke">1</text>
+      <circle cx="0" cy="-184" r="40" fill="#F1C6A0" ${sw}/>
+      <path d="M-41 -190 Q-38 -230 0 -228 Q38 -230 41 -190 Q20 -206 0 -201 Q-20 -206 -41 -190 Z" fill="#3A2A1E" ${sw}/>
+      <circle cx="-14" cy="-184" r="6.5" fill="${OUT}"/><circle cx="14" cy="-184" r="6.5" fill="${OUT}"/>
+      <path id="plMouth" d="M-12 -166 Q0 -156 12 -166" stroke="${OUT}" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path id="plSad" d="M-12 -160 Q0 -170 12 -160" stroke="${OUT}" stroke-width="4" fill="none" stroke-linecap="round" style="display:none"/>
+    </g>`;
+  const ultraMini = (id, scarf) => `<g id="${id}"><g class="umb">
+      <path d="M-14 -60 L-30 -104" stroke="#E0A57E" stroke-width="11" stroke-linecap="round"/>
+      <rect x="-22" y="-70" width="44" height="70" rx="17" fill="#1F2A44" ${sw}/>
+      <path d="M-20 -62 L22 -40" stroke="${scarf}" stroke-width="11"/><path d="M-20 -62 L22 -40" stroke="#fff" stroke-width="11" stroke-dasharray="8 8"/>
+      <circle cx="0" cy="-92" r="22" fill="#F1C6A0" ${sw}/>
+      <path d="M-22 -97 Q0 -126 22 -97 Z" fill="${scarf}" ${sw}/>
+      <circle cx="-7" cy="-92" r="3" fill="${OUT}"/><circle cx="7" cy="-92" r="3" fill="${OUT}"/>
+      <ellipse cx="0" cy="-80" rx="7" ry="5" fill="#7A2633" ${sw}/>
+      <circle cx="-32" cy="-108" r="9" fill="#E0A57E" ${sw}/></g></g>`;
+  const ultraMarkup = () => `
+    <g id="drum" transform="translate(78,0)">
+      <rect x="-36" y="-62" width="72" height="62" rx="10" fill="#E23A4E" ${sw}/>
+      <path d="M-36 -44 L36 -18 M-36 -18 L36 -44" stroke="#FFC83A" stroke-width="5"/>
+      <ellipse id="drumSkin" cx="0" cy="-62" rx="36" ry="11" fill="#F4F4F4" ${sw}/></g>
+    <g id="ultraBody">
+      <rect x="-26" y="-80" width="52" height="80" rx="20" fill="#1F2A44" ${sw}/>
+      <path d="M-24 -70 L26 -44" stroke="#E23A4E" stroke-width="13"/>
+      <path d="M-24 -70 L26 -44" stroke="#fff" stroke-width="13" stroke-dasharray="9 9"/>
+      <path d="M-20 -62 L-40 -24" stroke="#E0A57E" stroke-width="12" stroke-linecap="round"/>
+      <circle cx="0" cy="-104" r="26" fill="#E0A57E" ${sw}/>
+      <path d="M-26 -110 Q0 -142 26 -110 Z" fill="#E23A4E" ${sw}/>
+      <circle cx="0" cy="-140" r="7" fill="#fff" ${sw}/>
+      <circle cx="-9" cy="-104" r="3.5" fill="${OUT}"/><circle cx="9" cy="-104" r="3.5" fill="${OUT}"/>
+      <ellipse cx="0" cy="-90" rx="8" ry="6" fill="#7A2633" ${sw}/>
+      <g id="mega" transform="translate(20,-112) rotate(-28)">
+        <path d="M18 -1 L-2 -40" stroke="#E0A57E" stroke-width="12" stroke-linecap="round" transform="translate(-22,40)"/>
+        <path d="M0 -9 L52 -28 L52 28 L0 9 Z" fill="#D5DCE6" ${sw}/>
+        <rect x="-16" y="-9" width="18" height="18" rx="4" fill="#8E99AA" ${sw}/>
+        <path d="M62 -26 l16 -8 M64 0 l18 0 M62 26 l16 8" stroke="#fff" stroke-width="5" stroke-linecap="round"/></g>
+    </g>`;
+
+  const arm = (d, w = 24, c = '#F1C6A0') => `<path d="${d}" stroke="${OUT}" stroke-width="${w + 8}" fill="none" stroke-linecap="round"/><path d="${d}" stroke="${c}" stroke-width="${w}" fill="none" stroke-linecap="round"/>`;
+  const manniMarkup = (p) => `<g id="${p}">
+    <ellipse cx="0" cy="4" rx="100" ry="15" fill="#1E3A1A" opacity=".22"/>
+    <g id="${p}-bob">
+      <rect x="-50" y="-84" width="36" height="86" rx="12" fill="#5A3A22" ${sw}/><rect x="14" y="-84" width="36" height="86" rx="12" fill="#5A3A22" ${sw}/>
+      <path d="M-60 4 L-60 -8 Q-60 -18 -46 -18 L-10 -18 L-10 4 Z M10 -18 L46 -18 Q60 -18 60 -8 L60 4 Z" fill="${OUT}"/>
+      ${arm('M-74 -200 Q-104 -160 -100 -112')}<circle cx="-100" cy="-106" r="17" fill="#F1C6A0" ${sw}/>
+      <ellipse cx="0" cy="-152" rx="90" ry="96" fill="#8A5A2E" ${sw}/>
+      <path d="M-60 -228 Q-84 -170 -86 -120 M60 -228 Q84 -170 86 -120" stroke="#6B4424" stroke-width="10" fill="none"/>
+      <path d="M-58 -200 L58 -200 L68 -78 Q0 -58 -68 -78 Z" fill="#fff" ${sw}/>
+      <path d="M-46 -200 Q-36 -238 -22 -244 M46 -200 Q36 -238 22 -244" stroke="#fff" stroke-width="9" fill="none"/>
+      <path d="M-46 -200 Q-36 -238 -22 -244 M46 -200 Q36 -238 22 -244" stroke="${OUT}" stroke-width="2.5" fill="none" opacity=".5"/>
+      <text x="0" y="-132" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="34" fill="#E23A4E">MANNI</text>
+      <path d="M-30 -112 Q0 -100 30 -112" stroke="#E23A4E" stroke-width="5" fill="none" stroke-linecap="round"/>
+      ${arm('M76 -204 Q122 -224 126 -282')}<circle cx="128" cy="-292" r="18" fill="#F1C6A0" ${sw}/>
+      <g id="${p}-saus" transform="translate(128,-292)">
+        ${[[10, 26, 10], [22, 64, 4], [26, 104, -4], [22, 144, -12], [10, 182, -22]].map(([x, y, r]) => `<ellipse cx="${x}" cy="${y}" rx="15" ry="23" transform="rotate(${r} ${x} ${y})" fill="#C0583A" ${sw}/><path d="M${x - 6} ${y - 10} Q${x - 2} ${y} ${x - 6} ${y + 10}" stroke="#E58D6F" stroke-width="4" fill="none" stroke-linecap="round"/>`).join('')}
+      </g>
+      <rect x="-22" y="-252" width="44" height="26" fill="#F1C6A0" ${sw}/>
+      <circle cx="-58" cy="-290" r="14" fill="#E8B28E" ${sw}/><circle cx="58" cy="-290" r="14" fill="#E8B28E" ${sw}/>
+      <circle cx="0" cy="-292" r="58" fill="#F1C6A0" ${sw}/>
+      <path d="M-56 -296 Q-62 -318 -44 -332 M56 -296 Q62 -318 44 -332" stroke="#4A3220" stroke-width="13" fill="none" stroke-linecap="round"/>
+      <path d="M-22 -340 Q0 -348 20 -340" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity=".55"/>
+      <path d="M-38 -316 L-8 -308 M8 -308 L38 -316" stroke="#3A2A1E" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="-21" cy="-293" r="7.5" fill="${OUT}"/>
+      <circle id="${p}-eyeR" cx="21" cy="-293" r="7.5" fill="${OUT}"/>
+      <path id="${p}-wink" d="M10 -292 Q21 -302 32 -292" stroke="${OUT}" stroke-width="5" fill="none" stroke-linecap="round" style="display:none"/>
+      <ellipse cx="0" cy="-272" rx="14" ry="11" fill="#E39A7A" ${sw}/>
+      <path d="M-20 -244 Q0 -226 20 -244 Z" fill="#7A2633" stroke="${OUT}" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M-52 -252 Q-34 -270 0 -260 Q34 -270 52 -252 Q56 -238 44 -236 Q24 -252 0 -248 Q-24 -252 -44 -236 Q-56 -238 -52 -252 Z" fill="#3A2A1E" ${sw}/>
+      <circle cx="-34" cy="-268" r="9" fill="#F59BA8" opacity=".55"/><circle cx="34" cy="-268" r="9" fill="#F59BA8" opacity=".55"/>
+    </g></g>`;
+
+  // ---------------------------------------------------------------- Tag 6: Spieler-Figuren (Kuhweide rot, Matschbach braun, Torhüter)
+  const playerSvg = (id, shirt, trim, skin, hair) => `<g id="${id}" style="display:none">
+    <ellipse cx="0" cy="3" rx="46" ry="9" fill="#1E3A1A" opacity=".22"/>
+    <g id="${id}-b">
+      ${[-11, 11].map((x, i) => `<g id="${id}-l${i}" transform="translate(${x},-62)"><rect x="-8" y="0" width="16" height="48" rx="7" fill="${skin}" ${sw}/>
+        <rect x="-9" y="20" width="18" height="26" rx="5" fill="${trim}" ${sw}/><path d="M-11 44 L15 44 Q21 44 21 51 L21 58 L-11 58 Z" fill="${OUT}"/></g>`).join('')}
+      <path d="M-27 -66 L27 -66 L25 -42 L-25 -42 Z" fill="#fff" ${sw}/>
+      ${[-1, 1].map((d, i) => `<g id="${id}-a${i}" transform="translate(${d * 27},-124)"><path d="M0 0 L${d * 16} 40" stroke="${skin}" stroke-width="13" stroke-linecap="round"/>
+        <path d="M0 0 L${d * 16} 40" stroke="${OUT}" stroke-width="2.5" stroke-linecap="round" opacity=".45"/></g>`).join('')}
+      <rect x="-31" y="-134" width="62" height="74" rx="20" fill="${shirt}" ${sw}/>
+      <path d="M-31 -112 H31" stroke="${trim}" stroke-width="6" opacity=".7"/>
+      <text id="${id}-num" x="0" y="-80" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="32" fill="#fff" stroke="${OUT}" stroke-width="3" paint-order="stroke"></text>
+      <circle cx="0" cy="-168" r="36" fill="${skin}" ${sw}/>
+      <path d="M-37 -174 Q-34 -210 0 -208 Q34 -210 37 -174 Q18 -188 0 -184 Q-18 -188 -37 -174 Z" fill="${hair}" ${sw}/>
+      <circle cx="-12" cy="-168" r="6" fill="${OUT}"/><circle cx="12" cy="-168" r="6" fill="${OUT}"/>
+      <path id="${id}-m" d="M-11 -152 Q0 -143 11 -152" stroke="${OUT}" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <ellipse id="${id}-o" cx="0" cy="-149" rx="8" ry="7" fill="#7A2633" stroke="${OUT}" stroke-width="3" style="display:none"/>
+      <g id="${id}-c" style="display:none"><rect x="-38" y="-122" width="16" height="22" rx="3" fill="#FFD43B" stroke="${OUT}" stroke-width="2.5"/>
+        <text x="-30" y="-105" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="16" fill="${OUT}">C</text></g>
+    </g>
+    <g id="${id}-tag"><rect id="${id}-tr" x="-90" y="-28" width="180" height="42" rx="12" fill="#fff" ${sw}/>
+      <text id="${id}-tt" x="0" y="2" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="25" fill="${OUT}"></text></g>
+  </g>`;
+  const POOL = { pk0: ['#E23A4E', '#B52738', '#F1C6A0', '#3A2A1E'], pk1: ['#E23A4E', '#B52738', '#E0A57E', '#1F1B18'], pkt: ['#2DBE60', '#1E8A45', '#F6D3B8', '#C98A3A'],
+                 pm0: ['#8A5A2E', '#5A3A22', '#F1C6A0', '#1F1B18'], pm1: ['#8A5A2E', '#5A3A22', '#C68858', '#3A2A1E'], pmt: ['#FFC83A', '#C9971E', '#F1C6A0', '#5A3A22'] };
+  const poolMarkup = () => Object.entries(POOL).map(([id, c]) => playerSvg(id, ...c)).join('');
+  function drawPlayers(S, t) {
+    for (const id of Object.keys(POOL)) {
+      const el = $(id), st = (S.players || {})[id];
+      if (!st) { disp(el, false); continue; }
+      disp(el, true);
+      const s = st.s || 1, lift = st.lift || 0, ph = (st.ph || 0) + t * 13;
+      setT(el, `translate(${st.x},${(st.y || 1350) - lift}) rotate(${st.rot || 0}) scale(${st.flip ? -s : s},${s})`);
+      let l0 = 0, l1 = 0, a0 = 0, a1 = 0, bob = 0;
+      if (st.pose === 'run') { l0 = Math.sin(ph) * 30; l1 = -l0; a0 = -l0 * 0.8; a1 = l0 * 0.8; bob = -Math.abs(Math.sin(ph)) * 8; }
+      else if (st.pose === 'kick') { l1 = -70; l0 = 10; a0 = 40; a1 = -30; }
+      else if (st.pose === 'jump') { l0 = 25; l1 = -25; a0 = 150; a1 = -150; }
+      else if (st.pose === 'cheer') { a0 = 160 + Math.sin(t * 14) * 12; a1 = -160 - Math.sin(t * 14) * 12; bob = -Math.abs(Math.sin(t * 9)) * 18; }
+      else if (st.pose === 'dive') { a0 = 165; a1 = -120; l0 = 20; l1 = -10; }
+      else if (st.pose === 'sad') { a0 = -10; a1 = 10; }
+      setT($(`${id}-l0`), `translate(-11,-62) rotate(${l0})`); setT($(`${id}-l1`), `translate(11,-62) rotate(${l1})`);
+      setT($(`${id}-a0`), `translate(-27,-124) rotate(${a0})`); setT($(`${id}-a1`), `translate(27,-124) rotate(${a1})`);
+      setT($(`${id}-b`), `translate(0,${bob})`);
+      const open = st.pose === 'cheer' || st.pose === 'jump' || st.shout;
+      disp($(`${id}-m`), !open); disp($(`${id}-o`), !!open);
+      disp($(`${id}-c`), !!st.cap);
+      const num = $(`${id}-num`); if (num.textContent !== String(st.num || '')) num.textContent = st.num || '';
+      num.setAttribute('transform', st.flip ? 'scale(-1,1)' : '');
+      const tt = $(`${id}-tt`), name = st.name || '';
+      if (tt.textContent !== name) { tt.textContent = name; const w = Math.max(70, name.length * 14 + 26); $(`${id}-tr`).setAttribute('x', -w / 2); $(`${id}-tr`).setAttribute('width', w); }
+      disp($(`${id}-tag`), !!name);
+      setT($(`${id}-tag`), `translate(0,${-262 + bob}) scale(${st.flip ? -1 : 1},1)`);
+    }
+  }
+
+  // ---------------------------------------------------------------- Welt
+  const HILLS = [[30, 1190], [220, 1250], [420, 1180], [600, 1400], [1050, 1430], [1400, 1210], [1500, 1480], [480, 1520], [2000, 1420], [2250, 1220], [-150, 1350], [1250, 1600], [760, 1700], [1800, 1650]];
+  function world() {
+    const r = rng(12);
+    const clouds = [[200, 300, 1.1], [850, 200, 0.9], [1500, 360, 1.3], [2200, 240, 1.0], [-400, 260, 1.1], [2900, 330, 1.2]].map(([x, y, s], i) =>
+      `<g id="cloud${i}" data-x="${x}" data-y="${y}" data-s="${s}"><g fill="#DCEEFB"><ellipse cy="10" rx="124" ry="40"/><circle cx="74" cy="0" r="40"/></g>
+        <g fill="#fff"><ellipse rx="118" ry="36"/><circle cx="-50" cy="-20" r="46"/><circle cx="20" cy="-40" r="58"/><circle cx="74" cy="-14" r="38"/></g></g>`).join('');
+    let trees = '';
+    for (let i = 0; i < 12; i++) {
+      const x = -400 + i * 300 + r() * 100, s = 0.6 + r() * 0.5;
+      if (x > 200 && x < 700) continue;
+      trees += `<g transform="translate(${x},990) scale(${s})"><ellipse cx="14" cy="2" rx="80" ry="12" fill="#2F6B2A" opacity=".25"/>
+        <rect x="-10" y="-60" width="20" height="60" fill="#6B4A2E"/><rect x="2" y="-60" width="8" height="60" fill="#55381F"/>
+        <g class="tree" data-p="${(r() * 6).toFixed(2)}"><circle cx="0" cy="-120" r="74" fill="#5FA548"/><circle cx="-46" cy="-80" r="46" fill="#5FA548"/><circle cx="48" cy="-84" r="50" fill="#4E933C"/>
+          <circle cx="22" cy="-100" r="52" fill="#4E933C"/><circle cx="-6" cy="-124" r="60" fill="#5FA548"/><circle cx="-26" cy="-146" r="26" fill="#78BE5C"/><circle cx="-52" cy="-96" r="16" fill="#78BE5C"/></g></g>`;
+    }
+    // Wiese: Grasbüschel und Blumen (werden nach hinten kleiner)
+    let deco = '';
+    for (let i = 0; i < 90; i++) {
+      const x = -300 + r() * 3000, y = 1125 + Math.pow(r(), 1.4) * 780, k = 0.5 + (y - 1100) / 700;
+      if (y < 1320 && x > 500 && x < 2150) continue;  // Spielfeld und Tribüne frei lassen
+      deco += `<path transform="translate(${x.toFixed(0)},${y.toFixed(0)}) scale(${k.toFixed(2)})" d="M-8 0 Q-10 -14 -14 -20 M0 0 Q0 -18 2 -26 M8 0 Q10 -12 15 -18" stroke="#4E9A3A" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+    }
+    for (let i = 0; i < 46; i++) {
+      const x = -300 + r() * 3000, y = 1130 + Math.pow(r(), 1.2) * 760, k = 0.5 + (y - 1100) / 650, c = ['#fff', '#FFE14D', '#fff', '#FFB3C7'][i % 4];
+      if (y < 1340 && x > 480 && x < 2180) continue;
+      deco += `<g transform="translate(${x.toFixed(0)},${y.toFixed(0)}) scale(${k.toFixed(2)})"><path d="M0 0 V-14" stroke="#4E9A3A" stroke-width="3"/><circle cx="0" cy="-18" r="7" fill="${c}"/><circle cx="0" cy="-18" r="3" fill="#F2A81E"/></g>`;
+    }
+    const houses = [[-520, 0.9, '#F4EFE6', '#B5523B'], [-380, 0.7, '#EBD9B8', '#8E4A3A'], [1880, 0.8, '#F4EFE6', '#B5523B'], [2010, 1.0, '#EBD9B8', '#8E4A3A'], [2320, 0.75, '#F4EFE6', '#B5523B'], [2440, 0.9, '#E9E2D2', '#8E4A3A'], [3050, 0.8, '#F4EFE6', '#B5523B']]
+      .map(([x, k, w, rf]) => `<g transform="translate(${x},972) scale(${k})"><rect x="-44" y="-60" width="88" height="60" fill="${w}"/><path d="M-54 -58 L0 -108 L54 -58 Z" fill="${rf}"/><rect x="-12" y="-36" width="22" height="36" fill="#8A6A4A"/><rect x="18" y="-44" width="16" height="16" fill="#9AD0F0"/></g>`).join('');
+    let stripes = '';
+    let y = 1060;
+    for (let i = 0; i < 16; i++) { const h = 40 + i * 22; stripes += `<rect x="-2500" y="${y}" width="7200" height="${h}" fill="${i % 2 ? '#78C152' : '#6DB549'}"/>`; y += h; }
+    const hills = HILLS.map(([x, yy], i) => `<g id="hill${i}" transform="translate(${x},${yy})"><path d="M-44 0 Q-36 -30 0 -32 Q36 -30 44 0 Z" fill="#8A5A36" ${sw}/><path d="M-18 -18 Q0 -26 16 -18" stroke="#A9744A" stroke-width="5" fill="none" stroke-linecap="round"/></g>`).join('');
+    return `
+    <defs>
+      <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F8FE6"/><stop offset=".72" stop-color="#8FD0F7"/><stop offset=".9" stop-color="#D6F0FF"/><stop offset="1" stop-color="#FFF4D8"/></linearGradient>
+      <radialGradient id="gSun"><stop offset="0" stop-color="#FFFBE0"/><stop offset=".25" stop-color="#FFF0A0" stop-opacity=".85"/><stop offset=".6" stop-color="#FFE680" stop-opacity=".25"/><stop offset="1" stop-color="#FFE680" stop-opacity="0"/></radialGradient>
+      <linearGradient id="gGrass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBC4" stop-opacity=".30"/><stop offset=".35" stop-color="#FFFBC4" stop-opacity="0"/><stop offset="1" stop-color="#0B4A1E" stop-opacity=".30"/></linearGradient>
+      <linearGradient id="gHaze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".55"/></linearGradient>
+      <pattern id="netPat" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 0 L22 22 M22 0 L0 22" stroke="#fff" stroke-width="2"/></pattern>
+    </defs>
+    <rect x="-2500" y="-2600" width="7200" height="3700" fill="url(#gSky)"/>
+    <g id="pxSky">
+      <g transform="translate(1640,470)"><g id="sunRays" opacity=".5">${Array.from({ length: 10 }, (_, i) => `<path transform="rotate(${i * 36})" d="M0 0 L-46 -760 L46 -760 Z" fill="#FFF6C8" opacity="${i % 2 ? 0.35 : 0.6}"/>`).join('')}</g>
+        <circle r="520" fill="url(#gSun)"/><circle r="96" fill="#FFF7C7"/><circle r="80" fill="#FFEB8A"/></g>
+      <g id="clouds">${clouds}</g>
+      <g id="birds">${[0, 1, 2].map((i) => `<path id="bird${i}" stroke="#3B4A66" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`).join('')}</g>
+    </g>
+    <g id="pxFar">
+      <path d="M-2500 1010 L-1900 800 L-1500 900 L-1050 720 L-700 880 L-250 760 L150 900 L600 730 L1000 880 L1450 770 L1850 900 L2300 740 L2750 880 L3200 780 L3700 900 L4700 1010 L4700 1100 L-2500 1100 Z" fill="#9CC9E4"/>
+      <path d="M-1050 720 L-960 772 L-1010 790 L-1100 760 Z M600 730 L690 786 L630 800 L540 768 Z M2300 740 L2390 792 L2330 806 L2240 774 Z" fill="#EAF6FF"/>
+      <rect x="-2500" y="780" width="7200" height="320" fill="url(#gHaze)"/>
+    </g>
+    <g id="pxMid">
+      <path d="M-2500 1000 Q-1500 820 -300 960 Q300 840 900 960 Q1500 830 2100 950 Q2700 860 3700 980 L4700 980 L4700 1100 L-2500 1100 Z" fill="#A6D987"/>
+      ${houses}
+      <g transform="translate(2150,960)"><rect x="-26" y="-140" width="52" height="140" fill="#F4EFE6"/><rect x="6" y="-140" width="20" height="140" fill="#DDD5C6"/><path d="M-30 -140 L0 -250 L30 -140 Z" fill="#5A6577"/><rect x="-10" y="-110" width="20" height="30" rx="10" fill="#5A6577"/><circle cx="0" cy="-60" r="9" fill="#FFD43B"/></g>
+    </g>
+    <path d="M-2500 1040 Q-700 900 0 1010 Q800 920 1600 1010 Q2400 930 3700 1030 L4700 1030 L4700 1100 L-2500 1100 Z" fill="#86C566"/>
+    ${trees}
+    <g id="barn" transform="translate(440,1010)">
+      <rect x="-200" y="-220" width="400" height="220" fill="#C8443A" ${sw}/>
+      <rect x="110" y="-216" width="86" height="212" fill="#A8352E"/>
+      <path d="M-226 -210 L-120 -330 L120 -330 L226 -210 Z" fill="#6A4A3A" ${sw}/>
+      <path d="M-206 -222 L-116 -322 L-40 -322 L-130 -222 Z" fill="#7D5A47"/>
+      <rect x="-70" y="-150" width="140" height="150" fill="#fff" ${sw}/>
+      <path d="M-70 -150 L70 0 M70 -150 L-70 0" stroke="#C8443A" stroke-width="12"/>
+      <rect x="-30" y="-290" width="60" height="50" fill="#fff" ${sw}/>
+    </g>
+    ${stripes}
+    <rect x="-2500" y="1060" width="7200" height="1900" fill="url(#gGrass)"/>
+    <g id="deco">${deco}</g>
+    <g id="mud">${[[1250, 1420, 90, 18], [1680, 1475, 120, 22], [960, 1520, 100, 20], [1450, 1610, 150, 26], [2050, 1560, 110, 20], [700, 1440, 80, 16]].map(([x, y, rx, ry]) =>
+      `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="#7A5434" opacity=".85"/><ellipse cx="${x - rx * 0.2}" cy="${y - ry * 0.3}" rx="${rx * 0.45}" ry="${ry * 0.35}" fill="#A57A52" opacity=".55"/>`).join('')}</g>
+    <path id="road" d="M1960 1960 Q2160 1500 2560 1108 L2622 1108 Q2330 1480 2290 1960 Z" fill="#CDA873" style="display:none"/>
+    <g id="crowdFar"></g>
+    <g id="fence">${Array.from({ length: 40 }, (_, i) => `<rect x="${-1200 + i * 130}" y="1010" width="14" height="70" fill="#B98048"/>`).join('')}
+      <rect x="-1300" y="1022" width="5000" height="12" fill="#D9A066"/><rect x="-1300" y="1052" width="5000" height="12" fill="#D9A066"/></g>
+    <g id="flagBanner" transform="translate(820,1004) rotate(-1.5)">
+      <rect x="-280" y="-40" width="560" height="78" rx="6" fill="#fff" ${sw}/>
+      <text x="0" y="10" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="31" fill="#8A5A2E">SV MATSCHBACH · SCHLAMMSTADION</text>
+    </g>
+    <g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".92">
+      <path d="M-1400 1110 Q-400 1104 600 1114 Q1600 1120 3600 1108"/>
+      <path d="M1560 1300 Q1556 1220 1562 1130 M1562 1300 Q1800 1306 2140 1298"/>
+      <path d="M380 1600 Q300 1460 380 1330 Q470 1250 560 1320"/>
+    </g>
+    <g id="hills">${hills}</g>
+    ${moleMarkup()}
+    <g id="tribSign" transform="translate(600,1300)"><rect x="-7" y="-170" width="14" height="172" fill="#8C5A30" ${sw}/>
+      <rect x="-90" y="-210" width="180" height="56" rx="8" fill="#fff" ${sw}/><text x="0" y="-172" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="34" fill="#E23A4E">TRIBÜNE</text></g>
+    <g id="crowdBack"></g>
+    <g id="bench"><rect x="640" y="1262" width="390" height="22" rx="6" fill="#C08A52" ${sw}/>
+      <path d="M670 1284 L660 1330 M700 1284 L710 1330 M970 1284 L960 1330 M1000 1284 L1010 1330" stroke="#8C5A30" stroke-width="10" stroke-linecap="round"/></g>
+    <g id="crowdFront"></g>
+    <g id="ultraBanner" style="display:none">
+      <path d="M-236 0 V-336 M236 0 V-336" stroke="#8C5A30" stroke-width="11" stroke-linecap="round"/>
+      <rect x="-250" y="-340" width="500" height="92" rx="8" fill="#E23A4E" ${sw}/>
+      <path d="M-250 -326 H250 M-250 -262 H250" stroke="#fff" stroke-width="7" stroke-dasharray="22 14"/>
+      <text x="0" y="-279" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="48" fill="#fff" stroke="${OUT}" stroke-width="4" paint-order="stroke">ULTRAS · KUHWEIDE</text></g>
+    ${[4, 5, 6, 7, 8, 9].map((n, i) => `<g id="ultra${n}" style="display:none">${ultraMini('u' + n, ['#2DBE60', '#FFC83A', '#E23A4E', '#8C5FD9', '#2F80D1', '#FF8A2B'][i])}</g>`).join('')}
+    <g id="ultra2" style="display:none">${ultraMini('u2', '#E23A4E')}</g>
+    <g id="ultra3" style="display:none">${ultraMini('u3', '#2F80D1')}</g>
+    <g id="ultra" style="display:none">${ultraMarkup()}</g>
+    <g id="ghost" transform="translate(830,1262)" style="display:none">
+      <ellipse cx="0" cy="2" rx="62" ry="14" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="12 10"/>
+      <g id="ghostBody"><rect x="-30" y="-92" width="60" height="92" rx="28" fill="#E23A4E" ${sw}/>
+        <path d="M-30 -60 H30" stroke="#fff" stroke-width="10"/>
+        <circle cx="0" cy="-124" r="36" fill="#FFE0C7" ${sw}/><circle cx="-12" cy="-128" r="5" fill="${OUT}"/><circle cx="12" cy="-128" r="5" fill="${OUT}"/>
+        <path d="M-12 -112 Q0 -102 12 -112" stroke="${OUT}" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path id="ghostArm" d="M26 -70 L52 -110" stroke="#E23A4E" stroke-width="18" stroke-linecap="round"/></g>
+      <g id="ghostArrow"><path d="M-22 -230 H22 V-262 H-22 Z M-40 -230 L0 -190 L40 -230 Z" fill="#FFC83A" ${sw}/></g>
+    </g>
+    <g id="tractor" style="display:none">
+      <g id="trailer"><rect x="-430" y="-150" width="250" height="110" rx="10" fill="#C08A52" ${sw}/>
+        <rect x="-420" y="-235" width="230" height="74" rx="8" fill="#fff" ${sw}/>
+        <text x="-305" y="-187" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="25" fill="#E23A4E">MANNSCHAFTSBUS</text>
+        <path d="M-180 -80 H-120" stroke="${OUT}" stroke-width="8"/><circle cx="-305" cy="-36" r="36" fill="#333" ${sw}/><circle cx="-305" cy="-36" r="12" fill="#aaa"/></g>
+      <rect x="-130" y="-160" width="210" height="100" rx="18" fill="#E23A4E" ${sw}/>
+      <rect x="-110" y="-290" width="120" height="140" rx="12" fill="#fff" fill-opacity=".55" ${sw}/>
+      <rect x="40" y="-230" width="18" height="80" fill="#555" ${sw}/>
+      <g id="tcSmoke"></g>
+      <circle cx="-50" cy="-232" r="26" fill="#F1C6A0" ${sw}/><path d="M-76 -240 Q-50 -276 -24 -240 Z" fill="#2F80D1" ${sw}/>
+      <circle cx="-58" cy="-232" r="3.5" fill="${OUT}"/><circle cx="-42" cy="-232" r="3.5" fill="${OUT}"/>
+      <g id="tcWheelB" transform="translate(-60,-50)"><circle r="70" fill="#333" ${sw}/><circle r="30" fill="#FFC83A" ${sw}/><path d="M-70 0 H70 M0 -70 V70" stroke="#222" stroke-width="8"/></g>
+      <g id="tcWheelF" transform="translate(50,-30)"><circle r="40" fill="#333" ${sw}/><circle r="16" fill="#FFC83A" ${sw}/></g>
+    </g>
+    <g id="pigeon" style="display:none">${pigeonMarkup()}</g>
+    ${[0, 1].map((i) => `<g id="bfly${i}"><g class="w"><path d="M0 0 Q-22 -26 -26 -6 Q-24 10 0 0 Z M0 0 Q22 -26 26 -6 Q24 10 0 0 Z" fill="${['#FFB3C7', '#FFE14D'][i]}" stroke="${OUT}" stroke-width="2.5"/></g><path d="M0 -6 V8" stroke="${OUT}" stroke-width="4" stroke-linecap="round"/></g>`).join('')}
+    <g id="cashbox" transform="translate(760,1262)" style="display:none">${boxMarkup()}</g>
+    <g id="goal">
+      <rect id="goalNet" x="1650" y="1090" width="400" height="210" fill="url(#netPat)" opacity=".7" style="display:none"/>
+      <rect x="1626" y="1070" width="24" height="232" fill="#fff" ${sw}/><rect x="2050" y="1070" width="24" height="232" fill="#fff" ${sw}/>
+      <rect x="1626" y="1064" width="448" height="24" fill="#fff" ${sw}/>
+      <g id="netTag" transform="translate(1840,1088)" style="display:none"><line x1="0" y1="0" x2="0" y2="26" stroke="${OUT}" stroke-width="3"/>
+        <g transform="translate(0,26) rotate(6)"><rect x="-80" y="0" width="160" height="46" rx="8" fill="#fff" ${sw}/>
+          <text x="0" y="33" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="26" fill="#E8243B">OHNE NETZ</text></g></g>
+    </g>
+    <g id="bucket" transform="translate(1600,1340)" style="display:none">${bucketMarkup()}</g>
+    <g id="bertaW" style="display:none">${bertaMarkup('b1')}</g>
+    <g id="kalleW" transform="translate(1180,1350)">${kalleMarkup('k1')}</g>
+    <g id="shooter" style="display:none">${playerMarkup()}</g>
+    <g id="note" style="display:none" transform="translate(1850,1086)">
+      <path d="M0 0 L0 16" stroke="${OUT}" stroke-width="3"/>
+      <g id="noteP"><rect x="-76" y="14" width="152" height="122" rx="4" fill="#FFFDF4" ${sw}/><path d="M-76 30 H76" stroke="#E8243B" stroke-width="3"/>
+        <text x="0" y="62" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="26" fill="${OUT}">BIN</text>
+        <text x="0" y="94" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="26" fill="#E8243B">BELEIDIGT.</text>
+        <text x="0" y="124" text-anchor="middle" font-family="Fredoka" font-weight="600" font-size="22" fill="${OUT}">– B. 🐄</text></g>
+    </g>
+    <g id="sign" style="display:none" transform="translate(2240,1340)">
+      <rect x="-9" y="-250" width="18" height="250" fill="#8E99AA" ${sw}/>
+      <g transform="translate(10,-262) rotate(-3)"><path d="M-140 -48 L116 -48 L160 0 L116 48 L-140 48 Z" fill="#FFD43B" ${sw}/>
+        <path d="M-128 -37 L111 -37 L145 0 L111 37 L-128 37 Z" fill="none" stroke="${OUT}" stroke-width="4"/>
+        <text x="-8" y="-1" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="${OUT}">MATSCHBACH</text>
+        <text x="-8" y="29" text-anchor="middle" font-family="Fredoka" font-weight="600" font-size="24" fill="${OUT}">3 km</text></g>
+    </g>
+    <g id="manniW" style="display:none">${manniMarkup('mn')}</g>
+    ${poolMarkup()}
+    <g id="dust"></g>
+    <g id="bShock" style="display:none"><text x="0" y="0" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="150" fill="#E8243B" stroke="#fff" stroke-width="12" paint-order="stroke">!</text></g>
+    <g id="trail"></g>
+    <g id="ball" transform="translate(1290,1336)">${ballMarkup()}</g>
+    <g id="qmarks" font-family="Fredoka" font-weight="700" font-size="70" fill="#fff" stroke="${OUT}" stroke-width="8" paint-order="stroke" style="display:none">
+      <text id="q1">?</text><text id="q2">?</text>
+    </g>`;
+  }
+
+  // ---------------------------------------------------------------- Traum-Stadion
+  const CROWD = (() => {
+    const r = rng(77), out = [];
+    for (let i = 0; i < 2600; i++) {
+      const a = r() * Math.PI * 2, k = 0.62 + r() * 0.36;
+      out.push({ x: 540 + Math.cos(a) * 560 * k, y: 1150 + Math.sin(a) * 470 * k, c: Math.floor(r() * 4), o: r() });
+    }
+    return out.sort((a, b) => a.o - b.o);
+  })();
+  function alt() {
+    const r = rng(9);
+    let stars = '';
+    for (let i = 0; i < 80; i++) stars += `<circle class="star" cx="${r() * 1080}" cy="${r() * 600}" r="${1 + r() * 2.5}" fill="#fff" data-p="${r() * 6}"/>`;
+    const tower = (x, y, flip) => `<g transform="translate(${x},${y}) scale(${flip ? -1 : 1},1)">
+      <path d="M0 0 L-30 -520 L120 -560 Z" fill="#FFFBD6" opacity=".14"/>
+      <rect x="-8" y="-420" width="16" height="420" fill="#8E99AA"/>
+      <rect x="-60" y="-470" width="120" height="70" rx="8" fill="#5A6577" ${sw}/>
+      ${[-40, -14, 12, 38].map((xx) => `<circle cx="${xx}" cy="-446" r="10" fill="#FFF7C2"/><circle cx="${xx}" cy="-420" r="10" fill="#FFF7C2"/>`).join('')}</g>`;
+    return `
+    <defs><linearGradient id="gNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16204A"/><stop offset="1" stop-color="#2E3D7A"/></linearGradient></defs>
+    <rect width="1080" height="1920" fill="url(#gNight)"/>
+    <g id="stars">${stars}</g>
+    <g id="stadCam">
+      ${tower(110, 760, false)}${tower(970, 760, true)}
+      <ellipse cx="540" cy="1150" rx="600" ry="510" fill="#3A4466" ${sw}/>
+      <ellipse cx="540" cy="1150" rx="560" ry="470" fill="#48527A"/>
+      <g id="crowd"><path id="cr0" fill="#E23A4E"/><path id="cr1" fill="#FFFFFF"/><path id="cr2" fill="#FFC83A"/><path id="cr3" fill="#5CC8FF"/></g>
+      <ellipse cx="540" cy="1150" rx="350" ry="260" fill="#4FA83A" ${sw}/>
+      ${[0, 1, 2, 3, 4, 5].map((i) => `<rect x="${190 + i * 116}" y="890" width="58" height="520" fill="#5DB846" opacity=".7"/>`).join('')}
+      <g fill="none" stroke="#fff" stroke-width="5" opacity=".9"><ellipse cx="540" cy="1150" rx="300" ry="215"/><line x1="540" y1="935" x2="540" y2="1365"/><circle cx="540" cy="1150" r="60"/></g>
+      <g id="stadKalle" transform="translate(540,1200) scale(.55)">${kalleMarkup('k2')}</g>
+    </g>`;
+  }
+
+  // ---------------------------------------------------------------- Icons
+  const lightIcon = `<svg width="120" height="120" viewBox="0 0 120 120"><path d="M58 40 L20 112 L100 112 Z" fill="#FFF3A6" opacity=".8"/>
+    <rect x="56" y="34" width="8" height="84" fill="#8E99AA" stroke="${OUT}" stroke-width="3"/>
+    <rect x="22" y="8" width="76" height="40" rx="8" fill="#5A6577" stroke="${OUT}" stroke-width="5"/>
+    ${[34, 52, 70, 88].map((x) => `<circle cx="${x - 4}" cy="20" r="6" fill="#FFF7C2"/><circle cx="${x - 4}" cy="36" r="6" fill="#FFF7C2"/>`).join('')}</svg>`;
+  const netIcon = `<svg width="130" height="120" viewBox="0 0 130 120"><rect x="14" y="26" width="102" height="80" fill="url(#iconNet)"/>
+    <defs><pattern id="iconNet" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 0 L12 12 M12 0 L0 12" stroke="#8E99AA" stroke-width="2"/></pattern></defs>
+    <path d="M10 108 L10 22 L120 22 L120 108" fill="none" stroke="${OUT}" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M10 108 L10 22 L120 22 L120 108" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+    <g transform="translate(66,82) scale(.6)">${ballMarkup()}</g></svg>`;
+  const qIcon = `<svg width="120" height="120" viewBox="0 0 120 120"><text x="60" y="100" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="112" fill="#FF4B5C" stroke="${OUT}" stroke-width="7" paint-order="stroke">?</text></svg>`;
+
+  // ---------------------------------------------------------------- Zustand + Schnitte
+  // ---------------------------------------------------------------- Zustand + Schnitte (Tag 2: Der Kader)
+  const KD = window.KADER;
+  const base = () => ({
+    kal: Object.assign(humanDefaults(), { x: 1180, y: 1350, s: 1 }),
+    berta: null, ball: { x: 1290, y: 1336, r: 0 }, hills: 1, mole: null, ghost: null, pigeon: null, bucket: null, box: null,
+    net: null, netTag: null, qmarks: null, crowd: null, board: null, post: null, tractor: null, crest: null, stamps: null, reply: null, timecard: null, endcard: null, noCap: false,
+  });
+  const B = (o) => Object.assign({ x: 1850, y: 1302, s: 1, chew: true, moo: false, grass: false, bill: false, hop: false }, o);
+
+  const ULTRA_X = { u2: 1185, main: 1310, u3: 1540, banner: 1348 };
+  const HEAD = 1027;  // Kalles Scheitel (Taube landet dort)
+  const KC = KD.kommentare || {};
+  const CLIST = [];
+  const CI = (c) => CLIST.indexOf(c);
+  function ballFlight(t, k) {
+    const h = Math.max(cue('s11', 'boing'), k + 0.25);
+    if (t < k) return { x: 1520, y: 1345, r: 0 };
+    if (t < h) { const p = prog(t, k, h - k); return { x: lerp(1520, 1690, p), y: lerp(1345, 1095, p) - Math.sin(p * Math.PI) * 90, r: p * 540 }; }
+    const p = E.out(prog(t, h, 0.9));
+    return { x: lerp(1690, 1430, p), y: lerp(1095, 1342, p) - Math.sin(p * Math.PI) * 160, r: 540 - p * 300 };
+  }
+
+  // Zeitlupen-Parade: Berta fliegt, der Ball prallt von ihrem Kopf ab (Einstieg und Titelbild)
+  function parade(S, t, hit) {
+    const pre = clamp(t / Math.max(0.05, hit)), post = clamp((t - hit) / 1.7);
+    S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 950; S.dof = 5;
+    const lift = t < hit ? lerp(60, 95, E.out(pre)) : 95 + Math.sin(post * Math.PI * 0.5) * 12 - post * 22;
+    S.berta = B({ x: lerp(1815, 1795, E.out(clamp(t / 1.2))), y: 1365, s: 1.1, lift, rot: lerp(16, 26, E.out(pre)) - post * 4, chew: false, moo: t > hit + 0.08 && t < hit + 0.9 });
+    const hx = 1668, hy = 958;
+    S.ball = t < hit ? { x: lerp(1530, hx, pre), y: lerp(1070, hy, pre), r: pre * 400 } : { x: lerp(hx, 1540, post), y: lerp(hy, 760, E.out(post)), r: 400 + post * 220 };
+    S.speed = { k: t < hit + 0.55 ? 1 : Math.max(0, 1 - (t - hit - 0.55) / 0.45), cx: 520, cy: 760 };
+  }
+  const kalShot = (S, z = 2.3, cy = 1060) => { S.cam = [1180, cy, z]; };
+  const SP = KD.spieler;
+  const GX = 1850;  // Tormitte
+  const ballAlong = (t, t0, t1, a, b, arc = 0) => { const p = clamp((t - t0) / Math.max(0.05, t1 - t0)); return { x: lerp(a[0], b[0], p), y: lerp(a[1], b[1], p) - Math.sin(p * Math.PI) * arc, r: p * 720 }; };
+  const score = (S, h, a, min, pulse) => { S.score = { h, a, min, pulse }; };
+  const shots = {
+    s01(S, t, s, lt, d) {
+      S.cam = camLerp([1640, 1150, 1.28], [1640, 1150, 1.36], E.out(clamp(lt / d))); S.net = true; S.pigeon = { mode: 'bar' }; S.crowdFar = { hype: 1 };
+      S.berta = B({ chew: false }); S.manni = { x: 1400 }; S.kal.x = 950;
+      S.hook = { t0: -1 };
+      score(S, 0, 0, '0′');
+    },
+    s02(S, t, s, lt, d) {
+      S.cam = camLerp([850, 1195, 1.6], [870, 1195, 1.66], lt / d); S.crowd = { t0: -10 }; S.dim = 0.55;
+      S.lineup = { t0: cue('s02', 'pins') - 0.15, half: 1 };
+      score(S, 0, 0, '0′');
+    },
+    s03(S, t, s, lt, d) {
+      S.cam = camLerp([1200, 1180, 1.5], [1220, 1180, 1.58], lt / d); S.kal.x = 700; S.crowdFar = { hype: 1 };
+      const k0 = s.start - 0.1;
+      S.ball = ballAlong(t, k0 + 0.2, k0 + 0.8, [1200, 1345], [1450, 1345]);
+      S.players = { pk0: { x: 1120, pose: t > k0 + 0.15 ? 'kick' : 'run', num: SP.yg.num, name: SP.yg.name, cap: true },
+                    pk1: { x: lerp(1330, 1480, clamp((t - k0) / 1.2)), pose: 'run', num: SP.mia.num, name: SP.mia.name, cap: true },
+                    pm0: { x: 1515, pose: 'run', num: '4', flip: true, ph: 1 } };
+      S.manni = { x: 1820, s: 0.95 };
+      S.ui.chip2 = { t0: s.start + 0.3, text: '🎤 STADIONSPRECHER: @loki.lauri6 · Makek 🐼', cls: '', top: 1560 };
+      score(S, 0, 0, `${Math.max(1, Math.floor(lt * 4))}′`);
+    },
+    s04(S, t, s, lt, d) {
+      const kk = cue('s04', 'kick_ball'), hh = cue('s04', 'boing');
+      S.cam = camLerp([1640, 1120, 1.5], [1680, 1110, 1.62], lt / d); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 900;
+      const jump = Math.max(0, Math.sin(clamp((t - (hh - 0.35)) / 0.7) * Math.PI)) * 90;
+      S.manni = { x: 1530, lift: jump };
+      S.ballAt = (tt) => tt < kk ? { x: 1230, y: 1345, r: 0 } : tt < hh ? ballAlong(tt, kk, hh, [1230, 1340], [1610, 1000], 220) : ballAlong(tt, hh, hh + 0.4, [1610, 1000], [1900, 1180]);
+      S.ball = S.ballAt(t); S.crowdFar = { hype: 1 };
+      const dv = clamp((t - hh - 0.05) / 0.35);
+      S.players = { pkt: { x: lerp(1840, 1960, dv), lift: Math.sin(dv * Math.PI) * 70, rot: dv * 70, pose: t > hh ? 'dive' : 'stand', num: SP.flo.num, name: SP.flo.name },
+                    pk1: { x: 1440, pose: 'run', num: '4', ph: 2 }, pm0: { x: 1180, pose: t < kk + 0.2 ? 'kick' : 'stand', num: '7', flip: false } };
+      if (t > hh) S.speed = { k: Math.max(0, 1 - (t - hh) / 0.6), cx: 640, cy: 820 };
+      score(S, 0, 0, '12′');
+    },
+    s05(S, t, s, lt, d) {
+      S.cam = camLerp([1560, 1120, 1.55], [1560, 1110, 1.65], lt / d); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 900; S.crowdFar = { hype: 1 };
+      S.manni = { x: 1500, lift: Math.abs(Math.sin(t * 8)) * 26 }; S.ball = { x: 1905, y: 1260, r: 0 };
+      S.players = { pkt: { x: 1980, lift: 0, rot: 85, pose: 'sad', num: SP.flo.num, name: SP.flo.name, y: 1330 } };
+      S.ui.big = { t0: s.start, text: '0 : 1', cls: 'mid', rot: -4 };
+      S.ui.chip2 = { t0: s.start + 0.2, text: '😱 TOR FÜR MATSCHBACH · METZGER-MANNI', cls: 'red', top: 560 };
+      score(S, 0, 1, '12′', s.start);
+      S.shake = Math.max(0, 0.4 - lt / 0.3);
+    },
+    s06(S, t, s, lt, d) {
+      const berta0 = s.start + d * 0.55, ln = cue('s06', 'pins');
+      score(S, 0, 1, 'HZ');
+      if (t < berta0) {
+        kalShot(S, lerp(2.0, 2.1, lt / d), 1110); S.kal.expr = 'happy'; S.kal.armR = -150; S.kal.fingerR = true; S.dof = 4;
+        S.ui.chip = { t0: s.start + 0.6, text: '🔄 WECHSEL: DIE NEUEN KOMMEN!', cls: 'yellow', top: 380 };
+      } else {
+        S.cam = camLerp([1790, 1150, 1.5], [1820, 1150, 1.58], prog(t, berta0, 2)); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 1460;
+        const bxAt = (tt) => lerp(2750, GX, E.out(prog(tt, berta0, 0.9)));
+        S.berta = B({ x: bxAt(t), hop: t < berta0 + 0.9, chew: false, moo: t > cue('s06', 'moo') && t < cue('s06', 'moo') + 0.8 });
+        if (t < berta0 + 0.9) S.dust = Array.from({ length: 12 }, (_, i) => berta0 + i * 0.07).filter((ts) => ts <= t && t - ts < 0.7).map((ts) => [bxAt(ts) + 150, 1302, (t - ts) / 0.7]);
+        S.ui.chip2 = { t0: berta0 + 0.2, text: '🧤 IM TOR: BERTA 🐄', cls: 'green', top: 380 };
+        if (t >= ln) { S.lineup = { t0: ln, half: 2 }; S.dim = 0.55; }
+      }
+    },
+    s07(S, t, s, lt, d) {
+      const kk = cue('s07', 'kick_ball'), hh = cue('s07', 'boing');
+      S.cam = camLerp([1560, 1110, 1.4], [1620, 1100, 1.52], lt / d); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 800;
+      const jump = Math.max(0, Math.sin(clamp((t - (hh - 0.35)) / 0.7) * Math.PI)) * 95;
+      S.ballAt = (tt) => tt < kk ? { x: 1300, y: 1345, r: 0 } : tt < hh ? ballAlong(tt, kk, hh, [1300, 1335], [1600, 990], 240) : ballAlong(tt, hh, hh + 0.35, [1600, 990], [1900, 1170]);
+      S.ball = S.ballAt(t); S.crowdFar = { hype: 1 };
+      const dv = clamp((t - hh - 0.02) / 0.35);
+      S.players = { pk1: { x: 1255, pose: t > kk - 0.15 && t < kk + 0.3 ? 'kick' : 'run', num: SP.mia.num, name: SP.mia.name, cap: true },
+                    pk0: { x: 1560, lift: jump, pose: jump > 5 ? 'jump' : 'run', num: SP.yg.num, name: SP.yg.name, cap: true },
+                    pmt: { x: lerp(1850, 1760, dv), lift: Math.sin(dv * Math.PI) * 60, rot: -dv * 60, pose: t > hh ? 'dive' : 'stand', num: '1' },
+                    pm0: { x: 1690, pose: 'run', num: '5', flip: true, ph: 1.5 } };
+      score(S, 0, 1, '67′');
+    },
+    s08(S, t, s, lt, d) {
+      S.cam = camLerp([1450, 1130, 1.45], [1450, 1120, 1.55], lt / d); S.kal.x = 900; S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16; S.crowdFar = { hype: 1 };
+      S.ball = { x: 1905, y: 1260, r: 0 }; S.net = true;
+      S.players = { pk0: { x: 1380, pose: 'cheer', num: SP.yg.num, name: SP.yg.name, cap: true }, pk1: { x: 1560, pose: 'cheer', num: SP.mia.num, name: SP.mia.name, cap: true, ph: 2 } };
+      S.ui.big = { t0: s.start, text: 'TOOOR!', cls: 'mid', rot: -6 };
+      S.confetti = cue('s08', 'confetti');
+      score(S, t >= s.start + 0.1 ? 1 : 0, 1, '67′', s.start + 0.1);
+    },
+    s09(S, t, s, lt, d) {
+      S.cam = camLerp([1660, 1140, 1.35], [1660, 1140, 1.45], lt / d); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 900; S.crowdFar = { hype: 1 };
+      S.berta = B({ chew: false }); S.manni = { x: 1430 }; S.ball = { x: 1600, y: 1345, r: 0 };
+      S.ui.big = { t0: cue('s09', 'stamp'), text: 'ELFMETER!', cls: 'sm', rot: -5 };
+      score(S, 1, 1, '89′');
+    },
+    s10(S, t, s, lt, d) {
+      S.cam = camLerp([1640, 1150, 1.5], [1660, 1130, 1.85], E.inOut(clamp(lt / (d + 0.5)))); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 900; S.crowdFar = { hype: 1 };
+      S.berta = B({ chew: false, hop: Math.sin(t * 6) > 0.6 }); S.manni = { x: 1450, wink: s.start + 1.0 }; S.ball = { x: 1600, y: 1345, r: 0 };
+      S.dim = 0.25; S.dof = 3;
+      score(S, 1, 1, '89′');
+    },
+    s11(S, t, s, lt, d) {
+      // Zeitlupe: Manni läuft an, Nahaufnahme Berta
+      S.cam = camLerp([1700, 1080, 2.1], [1720, 1060, 2.4], E.inOut(clamp(lt / (d + 0.5)))); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 900;
+      S.berta = B({ chew: false }); S.manni = { x: lerp(1450, 1520, clamp(lt / 1.4)), lift: Math.abs(Math.sin(t * 5)) * 10 }; S.ball = { x: 1600, y: 1345, r: 0 };
+      S.dim = 0.3; S.dof = 5;
+      score(S, 1, 1, '89′');
+    },
+    s12(S, t, s, lt, d) {
+      const hit = cue('s12', 'boing'), kick = cue('s12', 'kick_ball');
+      S.cam = camLerp([1712, 1012, 2.2], [1700, 1002, 2.42], E.out(clamp((t - kick) / 1.8)));
+      parade(S, t - (hit - 0.22), 0.22);
+      S.flash = hit; S.shake = t >= hit ? Math.max(0, 0.6 - (t - hit) / 0.35) : 0;
+      if (t >= hit + 0.1) S.ui.big = { t0: hit + 0.1, text: 'GEHALTEN!', cls: 'sm', rot: -6 };
+      S.confetti = cue('s12', 'confetti');
+      score(S, 1, 1, '89′');
+    },
+    s13(S, t, s, lt, d) {
+      const kk = cue('s13', 'kick_ball');
+      S.cam = camLerp([1530, 1110, 1.3], [1590, 1100, 1.4], lt / d); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 800;
+      S.ballAt = (tt) => tt < kk ? { x: 1345, y: 1345, r: 0 } : ballAlong(tt, kk, kk + 0.75, [1345, 1335], [1925, 1118], 330);
+      S.ball = S.ballAt(t); S.crowdFar = { hype: 1 };
+      const dv = clamp((t - kk - 0.3) / 0.4);
+      S.players = { pk0: { x: 1290, pose: t > kk - 0.15 && t < kk + 0.3 ? 'kick' : 'stand', num: SP.georg.num, name: SP.georg.name },
+                    pm0: { x: 1480, pose: 'stand', num: '4', flip: true }, pm1: { x: 1530, pose: t > kk ? 'jump' : 'stand', lift: t > kk ? Math.max(0, Math.sin(clamp((t - kk) / 0.6) * Math.PI)) * 50 : 0, num: '5', flip: true },
+                    pmt: { x: lerp(1820, 1960, dv), lift: Math.sin(dv * Math.PI) * 80, rot: dv * 75, pose: t > kk + 0.3 ? 'dive' : 'stand', num: '1' } };
+      S.ui.chip2 = { t0: s.start + 0.4, text: '⏱️ NACHSPIELZEIT · FREISTOSS', cls: 'yellow', top: 380 };
+      score(S, 1, 1, '90+3′');
+    },
+    s14(S, t, s, lt, d) {
+      S.cam = camLerp([1300, 1140, 1.45], [1300, 1130, 1.55], lt / d); S.crowd = { t0: -10 }; S.crowdFar = { hype: 1.6 }; S.kal.x = 1560; S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16;
+      S.players = { pk0: { x: 1130, pose: 'cheer', num: SP.georg.num, name: SP.georg.name }, pk1: { x: 1400, pose: 'cheer', num: SP.yg.num, name: SP.yg.name, cap: true, ph: 1 } };
+      S.ui.big = { t0: s.start, text: 'TOOOR!', cls: 'mid', rot: -6 };
+      S.confetti = cue('s14', 'confetti');
+      score(S, t >= s.start + 0.1 ? 2 : 1, 1, '90+3′', s.start + 0.1);
+    },
+    s15(S, t, s, lt, d) {
+      S.cam = camLerp([1600, 1150, 1.25], [1600, 1150, 1.32], lt / d); S.net = true; S.pigeon = { mode: 'bar' }; S.kal.x = 1240; S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16; S.crowdFar = { hype: 1 };
+      S.berta = B({ chew: false, hop: true, moo: t > cue('s15', 'moo') && t < cue('s15', 'moo') + 0.8 });
+      S.players = { pk1: { x: 1370, pose: 'cheer', num: SP.mia.num, name: SP.mia.name, cap: true }, pk0: { x: 1620, pose: 'cheer', num: SP.yg.num, name: SP.yg.name, cap: true, ph: 1 } };
+      S.ui.big = { t0: cue('s15', 'confetti'), text: 'BERTA BLEIBT!', cls: 'sm', rot: -5 };
+      S.ui.chip2 = { t0: s.start + 0.5, text: `🌭 BRATWURST FÜR ALLE · DANKE ${KD.bratwurst}`, cls: 'red', top: 560 };
+      S.confetti = cue('s15', 'confetti'); S.hearts = [cue('s15', 'cheer'), cue('s15', 'cheer') + 0.4];
+      score(S, 2, 1, 'ENDE');
+    },
+    s16(S, t, s, lt, d) {
+      kalShot(S, lerp(2.3, 2.4, lt / d)); S.kal.expr = 'happy'; S.kal.armR = -150 + Math.sin(t * 12) * 16; S.dim = 0.55;
+      S.endcard = { t0: cue('s16', 'pop'), tap: cue('s16', 'tap') };
+      score(S, 2, 1, 'ENDE');
+    },
+  };
+  function boardShot(S, t) { S.cam = [1250, 1150, 1.04]; S.berta = B({}); S.crowd = { t0: -10 }; S.dim = 0.55; S.net = true; }
+
+  // Titelbild: Taktiktafel mit Kalle
+  shots.cover = (S, t) => { S.cam = [1640, 1110, 1.42]; S.net = true; S.pigeon = { mode: 'bar' }; S.berta = B({ chew: false }); S.manni = { x: 1400 }; S.kal.x = 950; S.crowdFar = { hype: 1 }; S.dim = 0.08; };
+
+  // ---------------------------------------------------------------- Fan-Menge
+  const SLOTS = (() => {
+    const r = rng(31), out = [];
+    const shirts = ['#E23A4E', '#FFFFFF', '#E23A4E', '#FFC83A', '#2F80D1', '#2DBE60', '#E23A4E', '#FFFFFF'];
+    const skins = ['#F1C6A0', '#E0A57E', '#C68858', '#8D5A3B', '#F6D3B8'];
+    const rows = [
+      { y: 1262, x0: 660, x1: 1000, n: 12, back: false },  // sitzen auf der Bank
+      { y: 1336, x0: 600, x1: 1080, n: 14, back: false },  // stehen davor
+      { y: 1236, x0: 630, x1: 1040, n: 13, back: true },   // stehen dahinter
+      { y: 1196, x0: 650, x1: 1010, n: 10, back: true },   // auf Schultern
+      { y: 1300, x0: 520, x1: 600, n: 3, back: false },
+      { y: 1380, x0: 570, x1: 1095, n: 14, back: false },   // zweite Reihe vorn
+      { y: 1160, x0: 680, x1: 990, n: 9, back: true },     // ganz hinten
+    ];
+    for (const row of rows) for (let i = 0; i < row.n; i++) {
+      out.push({ x: row.x0 + (row.x1 - row.x0) * (i + 0.5) / row.n + (r() - 0.5) * 10, y: row.y + (r() - 0.5) * 6, back: row.back,
+        c: shirts[Math.floor(r() * shirts.length)], skin: skins[Math.floor(r() * skins.length)], ph: r() * 6, sc: 0.95 + r() * 0.15, flag: r() < 0.13 });
+    }
+    return out;
+  })();
+  const fanSvg = (f, t, s) => {
+    const yy = f.y - Math.abs(Math.sin(t * 8 + f.ph)) * 6;
+    const a = Math.sin(t * 9 + f.ph) * 5;
+    const w = Math.sin(t * 6 + f.ph) * 8;
+    const flag = f.flag ? `<path d="M${18 - a} -66 L${26 - a} -128" stroke="#8C5A30" stroke-width="4" stroke-linecap="round"/>
+      <path d="M${26 - a} -128 Q${48 - a} ${-138 + w} ${70 - a} ${-126 - w} L${66 - a} ${-100 - w} Q${46 - a} ${-110 + w} ${23 - a} -104 Z" fill="${f.ph > 3 ? '#E23A4E' : '#fff'}" stroke="${OUT}" stroke-width="3"/>` : '';
+    return `<g transform="translate(${f.x.toFixed(1)},${yy.toFixed(1)}) scale(${(f.sc * s).toFixed(3)})">${flag}
+      <path d="M-9 -38 L${-18 + a} -66 M9 -38 L${18 - a} -66" stroke="${f.skin}" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-9 -38 L${-18 + a} -66 M9 -38 L${18 - a} -66" stroke="${OUT}" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+      <rect x="-15" y="-46" width="30" height="46" rx="12" fill="${f.c}" stroke="${OUT}" stroke-width="3.5"/>
+      <path d="M-13 -40 H13" stroke="${f.c === '#E23A4E' ? '#fff' : '#E23A4E'}" stroke-width="5"/>
+      <circle cx="0" cy="-60" r="15" fill="${f.skin}" stroke="${OUT}" stroke-width="3.5"/>
+      <circle cx="-5" cy="-62" r="2.2" fill="${OUT}"/><circle cx="5" cy="-62" r="2.2" fill="${OUT}"/>
+      <path d="M-5 -55 Q0 -50 5 -55" stroke="${OUT}" stroke-width="2.2" fill="none"/></g>`;
+  };
+  // Stadion-Zuschauer hinter der Bande (Tag 6): zwei Reihen über die ganze Breite, Matschbach braun-gelb, Kuhweide rot-weiß
+  const FAR = (() => {
+    const r = rng(77), out = [];
+    const skins = ['#F1C6A0', '#E0A57E', '#C68858', '#8D5A3B', '#F6D3B8'];
+    for (const [y, n, sc] of [[1052, 46, 0.62], [1070, 50, 0.7]]) for (let i = 0; i < n; i++) {
+      const x = 1080 + (i + r() * 0.6) * (1500 / n);
+      const home = x < 1500;
+      const cols = home ? ['#E23A4E', '#FFFFFF', '#E23A4E'] : ['#8A5A2E', '#FFC83A', '#8A5A2E', '#5A3A22'];
+      out.push({ x, y: y + (r() - 0.5) * 6, back: true, c: cols[Math.floor(r() * cols.length)], skin: skins[Math.floor(r() * skins.length)], ph: r() * 6, sc: sc * (0.9 + r() * 0.2), flag: r() < 0.1 });
+    }
+    return out;
+  })();
+  function drawCrowdFar(S, t) {
+    const el = $('crowdFar');
+    if (!S.crowdFar) { if (el.innerHTML) el.innerHTML = ''; return; }
+    el.innerHTML = FAR.map((f) => fanSvg(f, t * (S.crowdFar.hype || 1), 1)).join('');
+  }
+  function drawCrowd(S, t) {
+    let back = '', front = '';
+    if (S.crowd) {
+      const n = Math.min(KD.fans, SLOTS.length);
+      const order = SLOTS.map((f, i) => [f, i]).slice(0, n).sort((a, b) => a[0].y - b[0].y);
+      for (const [f, i] of order) {
+        const sc = popS(t, S.crowd.t0 + i * 0.02, 0.25);
+        if (sc <= 0.01) continue;
+        if (f.back) back += fanSvg(f, t, sc); else front += fanSvg(f, t, sc);
+      }
+    }
+    $('crowdBack').innerHTML = back;
+    $('crowdFront').innerHTML = front;
+  }
+
+  // ---------------------------------------------------------------- Taktiktafel
+  let boardEls = null;
+  function buildBoard() {
+    const W = 902, H = 740;
+    const pos = KD.aufstellung.map((p, i) => {
+      const names = p.names.map((n) => `<div class="nm">${n}</div>`);
+      let inner = names[0];
+      if (names.length > 1) inner = names.join(`<div class="tagline${p.duo ? ' duo' : ''}" data-vs="${p.duel ? 1 : 0}">${p.duo ? 'DUO' : 'VS'}</div>`);
+      const note = p.note ? `<div class="tagline${p.note === 'Joker' ? ' joker' : ''}">${p.note === 'Joker' ? '🃏 JOKER' : p.note}</div>` : '';
+      return `<div class="pos" data-k="pos:${i}" style="left:${(p.x * W).toFixed(0)}px;top:${(p.y * H).toFixed(0)}px">
+        <div class="jersey${p.pos === 'TW' ? ' gk' : ''}">${p.pos === 'TW' ? '🐄' : p.num}</div><div class="names">${inner}${note}</div></div>`;
+    }).join('');
+    const lines = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" fill="none" stroke="#fff" stroke-width="5" opacity=".85">
+      <rect x="14" y="10" width="${W - 28}" height="${H - 20}" rx="6"/>
+      <path d="M${W / 2 - 110} 10 A110 110 0 0 0 ${W / 2 + 110} 10"/>
+      <rect x="${W * 0.22}" y="${H * 0.80}" width="${W * 0.56}" height="${H * 0.2 - 10}"/>
+      <rect x="${W * 0.38}" y="${H * 0.92}" width="${W * 0.24}" height="${H * 0.08 - 10}"/>
+      <path d="M${W * 0.40} ${H * 0.80} A80 80 0 0 1 ${W * 0.60} ${H * 0.80}"/></svg>`;
+    const staff = KD.staff.map((s, i) => `<div class="st${s.wide ? ' wide' : ''}" data-k="st:${i}">${s.emo} ${s.rolle}<b>${s.handle}</b></div>`).join('');
+    const el = document.createElement('div');
+    el.id = 'board'; el.className = 'ui';
+    el.innerHTML = `<div class="head">📋 KADER · FC KUHWEIDE</div><div class="pitch">${lines}${pos}</div><div class="staff">${staff}</div>`;
+    $('ui').appendChild(el);
+    const lupe = document.createElement('div');
+    lupe.id = 'lupe'; lupe.className = 'ui'; lupe.textContent = '🔍';
+    $('ui').appendChild(lupe);
+    boardEls = { el, lupe, items: [...el.querySelectorAll('[data-k]')], vs: [...el.querySelectorAll('[data-vs="1"]')] };
+  }
+  function drawBoard(S, t) {
+    if (!boardEls) return;
+    const { el, lupe, items, vs } = boardEls;
+    const B_ = S.board;
+    if (!B_) { el.style.display = 'none'; lupe.style.display = 'none'; return; }
+    el.style.display = '';
+    el.classList.toggle('blurred', !!B_.blur);
+    el.style.transform = `translateY(${B_.ty || 0}px) scale(${B_.zoom || 1})`;
+    const glow = new Set(B_.glow || []);
+    items.forEach((it, i) => {
+      const sc = B_.seq !== undefined ? popS(t, B_.seq + i * 0.08, 0.25) : 1;
+      const isPos = it.classList.contains('pos');
+      it.style.transform = `${isPos ? 'translate(-50%, -35px) ' : ''}scale(${Math.max(0.001, sc)})`;
+      it.style.opacity = clamp(sc * 3);
+      const g = glow.has(it.dataset.k);
+      const target = isPos ? it.querySelector('.jersey') : it;
+      target.classList.toggle('glow', g);
+      if (isPos) it.querySelectorAll('.nm').forEach((n) => n.classList.toggle('glow', g));
+    });
+    vs.forEach((v) => {
+      const k = B_.vs && t >= B_.vs ? 1 + 0.35 * Math.abs(Math.sin((t - B_.vs) * 9)) : 1;
+      v.style.transform = `scale(${k})`;
+      v.style.background = B_.vs && t >= B_.vs ? '#FF2D3D' : '';
+    });
+    if (B_.lupe !== undefined && t >= B_.lupe) {
+      const p = prog(t, B_.lupe, 1.3);
+      lupe.style.display = '';
+      lupe.style.left = `${lerp(80, 640, p)}px`;
+      lupe.style.top = `${560 + Math.sin(p * Math.PI * 2) * 180}px`;
+      lupe.style.transform = `rotate(${-10 + Math.sin(t * 6) * 8}deg)`;
+    } else lupe.style.display = 'none';
+  }
+
+  // ---------------------------------------------------------------- Briefumschlag (Cliffhanger)
+  let postEl = null;
+  function buildPost() {
+    postEl = document.createElement('div');
+    postEl.id = 'post'; postEl.className = 'ui';
+    postEl.innerHTML = `<div class="env"><div class="flap"></div><div class="addr"><small>AN</small><b class="to">Den größten Kreisligaverein<br>der Welt</b><small>VON</small><b>FC KUHWEIDE</b></div>
+      <div class="stampbox">🐄</div><div class="seal">!</div><div class="chall">HERAUSFORDERUNG</div></div>`;
+    $('ui').appendChild(postEl);
+  }
+  function drawPost(S, t) {
+    if (!postEl) return;
+    if (!S.post || t < S.post.t0) { postEl.style.display = 'none'; return; }
+    if (S.post.out !== undefined && t >= S.post.out + 0.32) { postEl.style.display = 'none'; return; }
+    const k = popS(t, S.post.t0, 0.35);
+    let mv = '', sc = 1;
+    if (S.post.out !== undefined && t >= S.post.out) {
+      const p = E.inOut(prog(t, S.post.out, 0.3));
+      mv = `translate(${(S.post.tx - 540) * p}px,${(S.post.ty - 535) * p}px) `; sc = 1 - 0.9 * p;
+    }
+    postEl.style.display = '';
+    postEl.style.transform = `translateX(-50%) ${mv}translateY(${(1 - E.out(prog(t, S.post.t0, 0.35))) * 400}px) rotate(${-6 + Math.sin(t * 8) * 2}deg) scale(${k * sc})`;
+  }
+
+  let scoreEl = null, lineupEl = null, hookEl = null, speedEl = null, posterEl = null, cardEl = null, meterEl = null, flashEl = null, stampEls = [], crestEl = null, replyEl = null, timeEl = null, endEl = null, endHand = null;
+  const bar = (w) => `<span class="bar" style="width:${w}px"></span>`;
+  function buildOverlays() {
+    replyEl = document.createElement('div'); replyEl.id = 'reply'; replyEl.className = 'ui';
+    replyEl.innerHTML = `<div class="renv"><div class="flap"></div><div class="tag">ANTWORT</div>
+        <div class="addr"><small>AN</small><b>FC KUHWEIDE</b><small>VON</small><b class="who">${bar(330)}</b></div><div class="q">?</div></div>
+      <div class="letter front"><p>Liebe Kuhweide,</p><p>wir nehmen an! ⚽</p><p><b>${KD.spiel.replace(' · ', ', ')}</b>, bei uns.</p>
+        <p>Wenn ihr verliert, gehört</p><p>eure Kuh <b class="hit">BERTA</b> uns! 🐄</p><p class="sig">– ${KD.gegner}</p></div>
+      <div class="letter back"><p><b>P.S.</b></p><p>Wir haben einen neuen</p><p><b>Stürmer</b>. Er war mal</p><p><b class="hit">PROFI</b>. 😈</p></div>`;
+    speedEl = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); speedEl.id = 'speed';
+    speedEl.setAttribute('viewBox', '0 0 1080 1920'); speedEl.setAttribute('width', '1080'); speedEl.setAttribute('height', '1920');
+    $('ui').appendChild(speedEl);
+    hookEl = document.createElement('div'); hookEl.id = 'hook'; hookEl.className = 'ui';
+    hookEl.innerHTML = '<div class="l1">DAS SPIEL</div><div class="l2">UM DIE KUH 🐄</div>';
+    scoreEl = document.createElement('div'); scoreEl.id = 'score'; scoreEl.className = 'ui';
+    scoreEl.innerHTML = '<div class="t h">FCK</div><div class="sc"><b id="scH">0</b><span>:</span><b id="scA">0</b></div><div class="t a">SVM</div><div class="min" id="scM">0′</div>';
+    lineupEl = document.createElement('div'); lineupEl.id = 'lineup'; lineupEl.className = 'ui';
+    $('ui').appendChild(scoreEl); $('ui').appendChild(lineupEl);
+    $('ui').appendChild(hookEl);
+    for (let i = 0; i < 12; i++) { const e = document.createElement('div'); e.className = 'ui rstamp'; $('ui').appendChild(e); stampEls.push(e); }
+    crestEl = document.createElement('div'); crestEl.id = 'crest'; crestEl.className = 'ui';
+    crestEl.innerHTML = `<div class="sh"><div class="sv">SV</div><div class="nm">MATSCH<br>BACH</div><div class="yr">GEGR. 1923</div></div><div class="stamp">ERZRIVALE!</div>`;
+    $('ui').appendChild(crestEl);
+    timeEl = document.createElement('div'); timeEl.id = 'timecard'; timeEl.className = 'ui';
+    timeEl.innerHTML = `<div class="clk">⏱️</div><div class="txt">10 SEKUNDEN<br>SPÄTER …</div>`;
+    endEl = document.createElement('div'); endEl.id = 'endcard'; endEl.className = 'ui';
+    endEl.innerHTML = `<div class="av"><img src="../fc-kuhweide-tag1/out/profilbild_kalle.png"></div><div class="k">ENDSTAND</div>
+      <div class="big">2 : 1</div><div class="when">KUHWEIDE – MATSCHBACH</div><div class="btn" id="endBtn">＋ Folgen</div>`;
+    endHand = document.createElement('div'); endHand.id = 'endHand'; endHand.className = 'ui'; endHand.textContent = '👆';
+    posterEl = document.createElement('div'); posterEl.id = 'poster'; posterEl.className = 'ui';
+    posterEl.innerHTML = `<div class="tape l"></div><div class="tape r"></div><div class="hd">VERMISST</div>
+      <svg class="pic" viewBox="-282 -318 464 334">${bertaMarkup('bp')}</svg>
+      <div class="nm">BERTA</div><div class="info">Kuh · schwarz-weiß · Torwartin a. D.<br>zuletzt gesehen: <b>beleidigt</b></div>
+      <div class="tabs">${Array.from({ length: 7 }, () => '<span>BERTA</span>').join('')}</div>`;
+    cardEl = document.createElement('div'); cardEl.id = 'pcard'; cardEl.className = 'ui';
+    cardEl.innerHTML = `<div class="top"><div class="rt">${KD.manni.wertung}<small>${KD.manni.pos}</small></div><div class="cl">SV<br>M</div></div>
+      <svg class="face" viewBox="-100 -356 200 172">${manniMarkup('mc')}</svg>
+      <div class="nm">${KD.manni.name.toUpperCase()}</div>
+      <div class="st">${KD.manni.werte.map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join('')}</div>`;
+    meterEl = document.createElement('div'); meterEl.id = 'meter'; meterEl.className = 'ui';
+    meterEl.innerHTML = `<div class="t">🐄 BERTAS HEIMWEG</div>
+      <div class="track"><div class="end">🏟️<small>KUHWEIDE</small></div><div class="bar"><div class="steps" id="mSteps"></div><div class="cow" id="mCow">🐄</div></div><div class="end">🌭<small>MATSCHBACH</small></div></div>
+      <div class="sub">Jeder Kommentar „BERTA“ = <b>1 Schritt zurück</b></div>
+      <div class="cnt">Noch <b>${KD.meter.schritte}</b> Schritte bis nach Hause</div>`;
+    flashEl = document.createElement('div'); flashEl.id = 'flash';
+    for (const el of [posterEl, cardEl, meterEl, replyEl, timeEl, endEl, endHand, flashEl]) $('ui').appendChild(el);
+  }
+  function drawOverlays(S, t) {
+    const R = S.reply;
+    if (R && t >= R.t0) {
+      replyEl.style.display = '';
+      const open = R.open !== undefined && t >= R.open;
+      replyEl.classList.toggle('open', open);
+      replyEl.classList.toggle('ps', R.ps !== undefined && t >= R.ps);
+      replyEl.classList.toggle('who', !!R.who && Math.sin(t * 9) > -0.4);
+      replyEl.classList.toggle('hl', !!R.hl);
+      replyEl.classList.toggle('date', !!R.date);
+      const k = popS(t, R.t0, 0.35), ko = open ? popS(t, R.open, 0.3) : 1;
+      replyEl.style.transform = `translateX(-50%) translateY(${(1 - E.out(prog(t, R.t0, 0.35))) * 400}px) rotate(${(open ? 1.5 : -5) + Math.sin(t * 7) * 1.2}deg) scale(${k * (open ? lerp(0.8, 1, ko) : 1)})`;
+    } else replyEl.style.display = 'none';
+    stampEls.forEach((e, i) => {
+      const st = (S.stamps || [])[i];
+      if (!st || t < st.t0) { e.style.display = 'none'; return; }
+      if (e.dataset.text !== st.text) { e.textContent = st.text; e.dataset.text = st.text; }
+      e.classList.toggle('small', !!st.small);
+      e.style.display = ''; e.style.left = st.x + 'px'; e.style.top = st.y + 'px';
+      e.style.opacity = clamp((t - st.t0) / 0.08);
+      e.style.transform = `translateX(-100%) rotate(${st.rot || -7}deg) scale(${lerp(2.4, 1, E.out(prog(t, st.t0, 0.16)))})`;
+    });
+    if (S.crest && t >= S.crest.t0) {
+      crestEl.style.display = '';
+      crestEl.style.transform = `translateX(-50%) rotate(${-3 + Math.sin(t * 6) * 1.5}deg) scale(${popS(t, S.crest.t0, 0.35)})`;
+      crestEl.querySelector('.stamp').style.transform = `rotate(-14deg) scale(${t >= S.crest.t0 + 0.45 ? lerp(2.4, 1, E.out(prog(t, S.crest.t0 + 0.45, 0.14))) : 0})`;
+    } else crestEl.style.display = 'none';
+    if (S.timecard !== null && t >= S.timecard) {
+      timeEl.style.display = '';
+      const p = E.out(prog(t, S.timecard, 0.2));
+      timeEl.style.opacity = p;
+      timeEl.style.transform = `scale(${lerp(1.25, 1, p)})`;
+      timeEl.querySelector('.clk').style.transform = `rotate(${Math.sin(t * 20) * 8}deg)`;
+    } else timeEl.style.display = 'none';
+    const SC = S.score;
+    if (SC) {
+      scoreEl.style.display = '';
+      if ($('scH').textContent !== String(SC.h)) $('scH').textContent = SC.h;
+      if ($('scA').textContent !== String(SC.a)) $('scA').textContent = SC.a;
+      if ($('scM').textContent !== SC.min) $('scM').textContent = SC.min;
+      const pu = SC.pulse !== undefined && t >= SC.pulse ? Math.max(0, 1 - (t - SC.pulse) / 0.5) : 0;
+      scoreEl.style.transform = `scale(${1 + 0.25 * pu * pu})`;
+    } else scoreEl.style.display = 'none';
+    const LU = S.lineup;
+    if (LU && t >= LU.t0) {
+      const D = LU.half === 2 ? KD.halbzeit2 : KD.halbzeit1;
+      if (lineupEl.dataset.half !== String(LU.half)) {
+        lineupEl.dataset.half = String(LU.half);
+        lineupEl.innerHTML = `<div class="hd">${D.titel}</div>` + D.reihen.map(([pos, num, nm]) => `<div class="row"><div class="pos">${pos}</div><div class="num">${num}</div><div class="nm">${nm}</div></div>`).join('') + `<div class="ft">${D.fuss}</div>`;
+      }
+      lineupEl.style.display = '';
+      lineupEl.style.transform = `translateX(-50%) rotate(-1deg) scale(${popS(t, LU.t0, 0.35)})`;
+    } else lineupEl.style.display = 'none';
+    const H = S.hook;
+    if (H && t >= H.t0) {
+      hookEl.style.display = '';
+      hookEl.style.transform = `translateX(-50%) rotate(-3deg) scale(${(H.t0 < 0 ? lerp(1.1, 1, E.out(clamp(t / 0.22))) : popS(t, H.t0, 0.3)) * (1 + 0.015 * Math.sin(t * 6))})`;
+    } else hookEl.style.display = 'none';
+    const SP = S.speed;
+    if (SP && SP.k > 0.01) {
+      const r = rng(Math.floor(t * 30) + 7), cx = SP.cx ?? 540, cy = SP.cy ?? 900;
+      let d = '';
+      for (let i = 0; i < 36; i++) {
+        const a = r() * Math.PI * 2, r0 = 380 + r() * 260, len = 300 + r() * 520, w = 6 + r() * 14;
+        const nx = -Math.sin(a) * w / 2, ny = Math.cos(a) * w / 2, x1 = cx + Math.cos(a) * r0, y1 = cy + Math.sin(a) * r0;
+        const x2 = cx + Math.cos(a) * (r0 + len), y2 = cy + Math.sin(a) * (r0 + len);
+        d += `<path d="M${x1.toFixed(0)} ${y1.toFixed(0)} L${(x2 + nx).toFixed(0)} ${(y2 + ny).toFixed(0)} L${(x2 - nx).toFixed(0)} ${(y2 - ny).toFixed(0)} Z" fill="#fff" opacity="${((0.35 + r() * 0.45) * SP.k).toFixed(2)}"/>`;
+      }
+      speedEl.innerHTML = d;
+    } else speedEl.innerHTML = '';
+    const P = S.poster;
+    if (P && t >= P.t0) {
+      posterEl.style.display = '';
+      const k = P.t0 < 0 ? 1 : popS(t, P.t0, 0.3);
+      posterEl.style.transform = `translateX(-50%) rotate(${-2 + Math.sin(t * 2) * 0.6}deg) scale(${k * (P.s || 1) * (P.zoom ? lerp(1, 1.04, clamp(t / 2.5)) * lerp(1.07, 1, E.out(clamp(t / 0.2))) : 1)})`;
+    } else posterEl.style.display = 'none';
+    const PC = S.pcard;
+    if (PC && t >= PC.t0) {
+      cardEl.style.display = '';
+      const p = E.out(prog(t, PC.t0, 0.35));
+      cardEl.style.transform = `translateX(${(1 - p) * 900}px) rotate(${lerp(18, 5, p) + Math.sin(t * 3) * 1.2}deg)`;
+      cardEl.style.setProperty('--shine', `${(((t - PC.t0) * 70) % 260) - 80}%`);
+    } else cardEl.style.display = 'none';
+    const MT = S.meter;
+    if (MT && t >= MT.t0) {
+      meterEl.style.display = '';
+      meterEl.style.transform = `translateX(-50%) rotate(-1.5deg) scale(${popS(t, MT.t0, 0.35)})`;
+      $('mCow').style.transform = `translateX(-50%) translateY(${-Math.abs(Math.sin(t * 8)) * 6}px) scaleX(${MT.back ? 1 : -1})`;
+      $('mSteps').innerHTML = (MT.taps || []).filter((x) => t >= x).map((x, i) => `<span style="left:${74 - i * 8}%;opacity:${Math.max(0, 1 - (t - x) / 1.8).toFixed(2)};transform:translateY(${(-(t - x) * 10).toFixed(1)}px)">👣</span>`).join('');
+    } else meterEl.style.display = 'none';
+    flashEl.style.opacity = S.flash !== undefined && S.flash !== null && t >= S.flash ? Math.max(0, 1 - (t - S.flash) / 0.3) : 0;
+    const C = S.endcard;
+    if (C && t >= C.t0) {
+      endEl.style.display = '';
+      endEl.style.transform = `translateX(-50%) rotate(-2deg) scale(${popS(t, C.t0, 0.35)})`;
+      const done = t >= C.tap, btn = $('endBtn');
+      btn.className = 'btn' + (done ? ' done' : '');
+      btn.textContent = done ? '✓ Gefolgt' : '＋ Folgen';
+      btn.style.transform = `scale(${done ? 1 : 1 + 0.05 * Math.max(0, Math.sin(t * 10))})`;
+      if (t < C.tap + 0.7) {
+        const r = btn.getBoundingClientRect();
+        const p = E.inOut(prog(t, C.t0 + 0.25, Math.max(0.2, C.tap - C.t0 - 0.3)));
+        const x = lerp(860, r.left + r.width * 0.55, p), y = lerp(1250, r.top + r.height * 0.5, p);
+        const tap = t > C.tap - 0.06 && t < C.tap + 0.12 ? 0.85 : 1;
+        endHand.style.display = ''; endHand.style.left = (x - 30) + 'px'; endHand.style.top = (y - 8) + 'px'; endHand.style.transform = `scale(${tap})`;
+      } else endHand.style.display = 'none';
+    } else { endEl.style.display = 'none'; endHand.style.display = 'none'; }
+  }
+
+  // ---------------------------------------------------------------- Zeichnen
+  const K1 = humanEls('k1', 56), K2 = humanEls('k2', 56);
+  const bq = (s) => document.getElementById(`b1-${s}`);
+  function poseBerta(P, t) {
+    setT(bq('bob'), `translate(0,${Math.sin(t * 3) * 2 + (P.hop ? -Math.abs(Math.sin(t * 7)) * 18 : 0)})`);
+    setT(bq('tail'), `translate(148,-196) rotate(${Math.sin(t * 4) * 12})`);
+    setT(bq('head'), `rotate(${Math.sin(t * 1.7) * 2 + (P.moo ? -8 : 0)} -150 -150)`);
+    setT(bq('muzzle'), `translate(${P.chew ? Math.sin(t * 9) * 4 : 0},0)`);
+    disp(bq('moo'), P.moo); disp(bq('mouth'), !P.moo);
+    disp(bq('grass'), P.grass); disp(bq('bill'), P.bill);
+  }
+
+  function drawWorld(S, t) {
+    const [pcx, pcy] = S.cam;
+    setT($('pxSky'), `translate(${(pcx - 1200) * 0.7},${(pcy - 1150) * 0.7})`);
+    setT($('pxFar'), `translate(${(pcx - 1200) * 0.45},${(pcy - 1150) * 0.3})`);
+    setT($('pxMid'), `translate(${(pcx - 1200) * 0.2},${(pcy - 1150) * 0.12})`);
+    const dof = S.dof ? `blur(${S.dof}px)` : '';
+    for (const id of ['pxFar', 'pxMid', 'clouds']) { const el = $(id); if (el && el.style.filter !== dof) el.style.filter = dof; }
+    setT($('sunRays'), `rotate(${t * 3})`);
+    for (let i = 0; i < 3; i++) {
+      const bx = ((t * (26 + i * 7) + i * 900) % 3400) - 500, by = 560 + i * 70 + Math.sin(t * 0.7 + i) * 20, fl = Math.sin(t * 9 + i * 2) * 9;
+      $(`bird${i}`).setAttribute('d', `M${bx - 18} ${by - fl} Q${bx - 8} ${by - 8} ${bx} ${by} Q${bx + 8} ${by - 8} ${bx + 18} ${by - fl}`);
+    }
+    document.querySelectorAll('.tree').forEach((el) => setT(el, `rotate(${Math.sin(t * 1.3 + +el.dataset.p) * 1.6} 0 -60)`));
+    [[1420, 1250, 0], [760, 1470, 2.1]].forEach(([bx, by, ph], i) => {
+      const el = $(`bfly${i}`);
+      setT(el, `translate(${bx + Math.sin(t * 0.7 + ph) * 150 + Math.sin(t * 2.3 + ph) * 20},${by + Math.sin(t * 1.1 + ph * 2) * 50 + Math.sin(t * 3.1) * 10}) rotate(${Math.sin(t * 0.7 + ph) * 20})`);
+      setT(el.querySelector('.w'), `scale(${0.25 + 0.75 * Math.abs(Math.sin(t * 16 + ph))},1)`);
+    });
+    const mo = $('motes');
+    if (mo) {
+      let d = '';
+      for (let i = 0; i < 16; i++) {
+        const mx = (i * 173 + t * (9 + (i % 5) * 4) + Math.sin(t * 0.6 + i) * 30) % 1080, my = 1920 - ((i * 331 + t * (22 + (i % 4) * 9)) % 1920);
+        d += `<circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="${3 + (i % 3) * 2}" fill="#FFFBE0" opacity="${(0.16 + 0.16 * Math.sin(t * 1.3 + i)).toFixed(2)}"/>`;
+      }
+      mo.innerHTML = d;
+    }
+    for (let i = 0; i < 6; i++) {
+      const c = $(`cloud${i}`);
+      setT(c, `translate(${+c.dataset.x + t * 12 * c.dataset.s},${+c.dataset.y}) scale(${c.dataset.s})`);
+    }
+    // Maulwurfshügel
+    HILLS.forEach(([x, y], i) => {
+      const el = $(`hill${i}`);
+      const sc = S.hills === 1 ? 1 : popS(t, S.hills.t0 + i * 0.06, 0.25);
+      setT(el, `translate(${x},${y}) scale(${sc})`);
+    });
+    const mole = $('mole');
+    if (S.mole && t >= S.mole.t0) { disp(mole, true); setT(mole, `translate(1050,${1430 - 14 * popS(t, S.mole.t0)})`); } else disp(mole, false);
+    // Geist (+1 Fan)
+    const g = $('ghost');
+    if (S.ghost && t >= S.ghost.t0) {
+      disp(g, true);
+      setT($('ghostBody'), `scale(${popS(t, S.ghost.t0, 0.35)})`);
+      $('ghostArm').setAttribute('d', `M26 -70 L${52 + Math.sin(t * 12) * 8} -110`);
+      disp($('ghostArrow'), S.ghost.arrow); setT($('ghostArrow'), `translate(0,${Math.sin(t * 7) * 10})`);
+    } else disp(g, false);
+    // Fan-Menge auf und um die Bierbank (Tag 2)
+    drawCrowd(S, t);
+    // Taube: sitzt auf der Bank, fliegt weg, landet auf der Latte
+    const pg = $('pigeon');
+    if (S.pigeon) {
+      disp(pg, true);
+      let x = 1030, y = 1262, rot = 0, sx = 1, sy = 1;
+      if (S.pigeon.mode === 'bar') { x = 1995; y = 1066; }
+      else if (S.pigeon.mode === 'free') {
+        x = S.pigeon.x; y = S.pigeon.y; rot = S.pigeon.rot || 0; sx = (S.pigeon.sx || 1) * (S.pigeon.s || 1); sy = S.pigeon.s || 1;
+        if (S.pigeon.flap) sy *= 0.6 + 0.4 * Math.abs(Math.sin(t * 30));
+      }
+      else if (S.pigeon.mode === 'fly' && t >= S.pigeon.flyAt) {
+        const p = prog(t, S.pigeon.flyAt, 0.9);
+        x = lerp(1030, 1360, p); y = lerp(1262, 960, E.out(p)); rot = 12; sx = -1; sy = 0.6 + 0.4 * Math.abs(Math.sin(t * 30));
+      }
+      setT(pg, `translate(${x},${y}) rotate(${rot}) scale(${sx},${sy})`);
+      const coo = S.pigeon.coo && t > S.pigeon.coo && t < S.pigeon.coo + 0.7;
+      setT($('pgHead'), `translate(${coo ? Math.sin(t * 30) * 3 : 0},${coo ? -4 : 0})`);
+      disp($('pgLetter'), !!S.pigeon.letter);
+      if (S.pigeon.letter) $('pgLetterBody').setAttribute('fill', S.pigeon.letter === 'red' ? '#E8243B' : '#FFF6E2');
+    } else disp(pg, false);
+    // Netz (erscheint mit Plopp)
+    const gn = $('goalNet');
+    if (S.net) { disp(gn, true); gn.setAttribute('opacity', S.net === true ? 0.75 : 0.75 * clamp((t - S.net) * 4)); } else disp(gn, false);
+    // Elfmeter-Schütze
+    const sh_ = $('shooter');
+    if (S.shooter) {
+      disp(sh_, true);
+      const k = S.shooter.kickAt;
+      let legR = 0, legL = 0, lean = 0;
+      if (t < k - 0.22) { legR = Math.sin(t * 18) * 28; legL = -legR; lean = 6; }
+      else if (t < k) { legR = 50 * prog(t, k - 0.22, 0.2); lean = -4; }
+      else { legR = lerp(-75, 0, prog(t, k, 0.45)); lean = 4; }
+      setT($('plLegR'), `translate(12,-64) rotate(${legR})`);
+      setT($('plLegL'), `translate(-12,-64) rotate(${legL})`);
+      setT($('plBob'), `rotate(${lean} 0 -64) translate(0,${t < k - 0.22 ? -Math.abs(Math.sin(t * 18)) * 8 : 0})`);
+      disp($('plMouth'), !S.shooter.sad); disp($('plSad'), !!S.shooter.sad);
+      setT(sh_, `translate(${S.shooter.x},1352) scale(1.1)`);
+    } else disp(sh_, false);
+    // Ultra mit Megafon und Trommel
+    const ul = $('ultra');
+    if (S.ultra) {
+      disp(ul, true);
+      setT(ul, `translate(${ULTRA_X.main},1262) scale(${1.55 * popS(t, S.ultra.t0, 0.3)})`);
+      setT($('mega'), `translate(20,-112) rotate(${-28 + Math.sin(t * 10) * 6})`);
+      const hit = (S.ultra.drums || []).some((x) => t > x && t < x + 0.12);
+      setT($('drumSkin'), `translate(0,${hit ? 4 : 0}) scale(1,${hit ? 0.7 : 1})`);
+      setT($('ultraBody'), `translate(0,${-Math.abs(Math.sin(t * 7)) * 8})`);
+    } else disp(ul, false);
+    const ub = $('ultraBanner');
+    if (S.ultra) { disp(ub, true); setT(ub, `translate(${ULTRA_X.banner},1262) scale(1,${popS(t, S.ultra.t0 + 0.3, 0.35)})`); } else disp(ub, false);
+    [['ultra2', ULTRA_X.u2, 0.12, 1262, 1.35], ['ultra3', ULTRA_X.u3, 0.24, 1262, 1.35],
+     ...[1120, 1212, 1304, 1396, 1488, 1575].map((x, i) => ['ultra' + (4 + i), x, 0.35 + i * 0.08, 1212, 1.2])].forEach(([id, x, dl, yy, sc]) => {
+      const el = $(id);
+      if (S.ultra && (yy === 1262 || S.ultra.big)) {
+        disp(el, true);
+        setT(el, `translate(${x},${yy}) scale(${sc * popS(t, S.ultra.t0 + dl, 0.3)})`);
+        el.querySelector('.umb').setAttribute('transform', `translate(0,${-Math.abs(Math.sin(t * 7 + dl * 9)) * 9})`);
+      } else disp(el, false);
+    });
+    drawPost(S, t);
+    drawOverlays(S, t);
+    const tc = $('tractor');
+    if (S.tractor) {
+      disp(tc, true);
+      setT(tc, `translate(${S.tractor.x},1350) translate(0,${Math.sin(t * 25) * 2})`);
+      setT($('tcWheelB'), `translate(-60,-50) rotate(${-S.tractor.x * 0.8})`);
+      setT($('tcWheelF'), `translate(50,-30) rotate(${-S.tractor.x * 1.4})`);
+      let sm = '';
+      for (let i = 0; i < 4; i++) { const k = ((t * 1.5 + i / 4) % 1); sm += `<circle cx="${49 + k * 30}" cy="${-240 - k * 120}" r="${10 + k * 22}" fill="#ddd" opacity="${0.8 * (1 - k)}"/>`; }
+      $('tcSmoke').innerHTML = sm;
+    } else disp(tc, false);
+    if (sh_) sh_.style.filter = S.shooter && S.shooter.dark ? 'brightness(0)' : '';
+    drawBoard(S, t);
+    // Kasse
+    const bx = $('cashbox');
+    if (S.box) {
+      disp(bx, true);
+      setT($('boxLid'), `translate(0,-56) rotate(${-70 * clamp(S.box.open, 0, 1.2)} -74 0)`);
+      let coins = '';
+      if (S.box.coinsAt && t >= S.box.coinsAt) {
+        const lt = t - S.box.coinsAt, cr = rng(17);
+        for (let i = 0; i < 14; i++) {
+          const a = -Math.PI / 2 + (cr() - 0.5) * 1.8, v = 160 + cr() * 220;
+          const tt = Math.min(lt, 0.9);
+          const x = Math.cos(a) * v * tt, y = -56 + Math.sin(a) * v * tt + 420 * tt * tt;
+          coins += `<ellipse cx="${lt > 0.9 ? x * 0.3 : x}" cy="${lt > 0.9 ? -60 - cr() * 12 : Math.min(y, -58)}" rx="11" ry="9" fill="#F7CF4B" stroke="${OUT}" stroke-width="3"/>`;
+        }
+      }
+      $('boxCoins').innerHTML = coins;
+    } else disp(bx, false);
+    // Tor
+    const nt = $('netTag');
+    if (S.netTag && t >= S.netTag) { disp(nt, true); setT(nt, `translate(1840,1088) scale(${popS(t, S.netTag)}) rotate(${Math.sin(t * 3) * 3})`); } else disp(nt, false);
+    const bu = $('bucket');
+    if (S.bucket && t >= S.bucket.t0) { disp(bu, true); setT(bu, `translate(1600,1340) scale(${popS(t, S.bucket.t0)})`); } else disp(bu, false);
+    // Fragezeichen
+    const qm = $('qmarks');
+    if (S.qmarks && t >= S.qmarks) {
+      disp(qm, true);
+      setT($('q1'), `translate(1090,${1000 + Math.sin(t * 5) * 6}) rotate(-14) scale(${popS(t, S.qmarks)})`);
+      setT($('q2'), `translate(1250,${975 + Math.sin(t * 5 + 1) * 6}) rotate(12) scale(${popS(t, S.qmarks + 0.2)})`);
+    } else disp(qm, false);
+    // Ball
+    setT($('ball'), `translate(${S.ball.x},${S.ball.y}) rotate(${S.ball.r})`);
+    let tr = '';
+    if (S.ballAt) for (let i = 3; i >= 1; i--) { const b = S.ballAt(t - i * 0.035); if (Math.hypot(b.x - S.ball.x, b.y - S.ball.y) > 8) tr += `<circle cx="${b.x.toFixed(1)}" cy="${b.y.toFixed(1)}" r="${26 - i * 4}" fill="#fff" opacity="${(0.5 - i * 0.12).toFixed(2)}"/>`; }
+    $('trail').innerHTML = tr;
+    // Kalle
+    const k = S.kal;
+    setT($('kalleW'), `translate(${k.x},${k.y}) scale(${k.s})`);
+    poseHuman(K1, k, t);
+    // Berta
+    const bw = $('bertaW');
+    if (S.berta) { disp(bw, true); setT(bw, `translate(${S.berta.x},${S.berta.y - (S.berta.lift || 0)}) rotate(${S.berta.rot || 0}) scale(${S.berta.flip ? -S.berta.s : S.berta.s},${S.berta.s})`); poseBerta(S.berta, t); }
+    else disp(bw, false);
+    // Tag 4: Zettel, Wegweiser, Manni, Staub, Schreck
+    const no = $('note');
+    if (S.note) { disp(no, true); setT($('noteP'), `rotate(${Math.sin(t * 2.6) * 5} 0 14)`); } else disp(no, false);
+    disp($('sign'), !!S.sign); disp($('road'), !!S.sign);
+    const mw = $('manniW');
+    if (S.manni) {
+      const M = S.manni; disp(mw, true);
+      setT(mw, `translate(${M.x},${M.y || 1350}) scale(${M.s || 1})`);
+      mw.style.filter = M.dark ? 'brightness(0)' : '';
+      setT($('mn-bob'), `translate(0,${-Math.abs(Math.sin(t * 3.2)) * 6})`);
+      setT($('mn-saus'), `translate(128,-292) rotate(${Math.sin(t * 4.5) * 14})`);
+      const wink = M.wink !== undefined && t >= M.wink && t < M.wink + 0.7;
+      disp($('mn-eyeR'), !wink); disp($('mn-wink'), wink);
+    } else disp(mw, false);
+    drawPlayers(S, t);
+    drawCrowdFar(S, t);
+    $('dust').innerHTML = (S.dust || []).map(([x, y, a]) => `<circle cx="${x.toFixed(0)}" cy="${(y - 20 - a * 40).toFixed(0)}" r="${(20 + a * 46).toFixed(0)}" fill="#E2D2B2" stroke="${OUT}" stroke-width="3" stroke-opacity="${(0.5 * (1 - a)).toFixed(2)}" opacity="${Math.max(0, 0.85 - a).toFixed(2)}"/>`).join('');
+    const bs = $('bShock');
+    if (S.berta && S.berta.shock !== undefined && t >= S.berta.shock && t < (S.berta.shockEnd ?? 1e9)) {
+      disp(bs, true);
+      const hx = S.berta.x + (S.berta.flip ? 177 : -177) * S.berta.s, hy = S.berta.y - 300 * S.berta.s;
+      setT(bs, `translate(${hx},${hy}) scale(${popS(t, S.berta.shock, 0.25) * S.berta.s}) rotate(${Math.sin(t * 20) * 6})`);
+    } else disp(bs, false);
+  }
+
+  function drawAlt(S, t) {
+    const P = S.stad;
+    setT($('stadCam'), `translate(540,960) scale(${P.z}) translate(${-P.f[0]},${-P.f[1]})`);
+    const n = Math.floor(CROWD.length * P.fill);
+    const d = ['', '', '', ''];
+    for (let i = 0; i < n; i++) {
+      const c = CROWD[i];
+      const jy = Math.abs(Math.sin(t * 9 + i)) * 4;
+      d[c.c] += `M${c.x.toFixed(1)} ${(c.y - jy).toFixed(1)}h9v9h-9z`;
+    }
+    for (let i = 0; i < 4; i++) $(`cr${i}`).setAttribute('d', d[i]);
+    poseHuman(K2, Object.assign(humanDefaults(), { armL: 155 + Math.sin(t * 9) * 8, armR: -155, expr: 'happy', bounce: true }), t);
+    for (const st of document.querySelectorAll('.star')) st.setAttribute('opacity', 0.35 + 0.65 * Math.abs(Math.sin(t * 1.5 + +st.dataset.p)));
+  }
+
+  window.ART = { kalleMarkup, bertaMarkup, ballMarkup, OUT };
+  const emoIcon = (e) => `<div class="icon">${e}</div>`;
+
+  Engine.start({
+    world, alt, shots, drawWorld, drawAlt,
+    baseState: base,
+    highlight: '#FFD43B',
+    whip: { skip: [] },
+    karaoke: true,
+    punch: 0.07,
+    confettiColors: ['#E23A4E', '#fff', '#FFC83A', '#2DBE60', '#5CC8FF', '#fff'],
+    preload: '🔄🧤🎤⏱️😱🌭🔎🦗⚖️🌭👣👑🏟️📅💪🚜😤😱🥁🔁✓📣⚽🏟️🥅📋🧤💰👀🐦🗳️🐄🔍⭐🎟️🏷️🃏🇹🇷⏱️✍️👆🦅🇩🇪＋✓',
+    ui: {
+      day: 'TAG 6',
+      profile: { name: 'FC Kuhweide', handle: '@fc.kuhweide', avatar: '⚽', avatarImg: '../fc-kuhweide-tag1/out/profilbild_kalle.png', stat: 'Fans', foot: '1 Follower = 1 Fan ⚽' },
+      comment: '', banner: { small: '', big: '' }, stamp: { emo: '⚽', text: 'KADER!' }, plusOne: '+1 FAN', zirp: '',
+      ticket: '',
+      tstamp: '✓ FAN<br>NR. 1',
+      kasse: 'VEREINSKASSE',
+      cards: [
+        { color: '#E23A4E', icon: emoIcon('🐄'), label: 'BERTA' },
+        { color: '#FF8A94', icon: emoIcon('🌭'), label: 'MANNI' },
+        { color: '#FFC83A', icon: '', label: '' },
+      ],
+      floats: [],
+      ccards: CLIST,
+    },
+  });
+  buildPost();
+  buildOverlays();
+})();

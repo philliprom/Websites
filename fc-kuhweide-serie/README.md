@@ -257,6 +257,15 @@ abflauende Welle gestartet – das erklärt einen großen Teil der niedrigen Rei
 - **Samstag = großer Versuch:** Spiel um Berta mit Anzeigetafel, Spielminute, Zeitlupen-Paraden, Kommentierenden als Spielern.
   Danach entscheiden, wie es mit FC Kuhweide weitergeht (Maßstab: deutlich über 2.000 Aufrufe).
 
+## Tag 5 und Tag 6 (14.11.)
+
+- **Tag 5** (13.11. 12:53, 18 s): 897 Aufrufe, 52 Likes, **32 Kommentare** – fast alle mit Wunschposition. Das Versprechen
+  „Wer heute seine Position kommentiert, spielt morgen mit!“ wirkt stark auf Kommentare.
+- **Tag 6 „Das Spiel um Berta“** (44 s, Post 15 Uhr): alle Positions-Kommentare stehen in der Aufstellung der 2. Halbzeit oder auf
+  der Bank. Eingelöst: Doppelspitze Mia/YG (Flanke + Tor), Georgs Freistoß, Bratwurst für alle (Fynn), Berta bleibt.
+- **Entscheidungspunkt:** Kommt das Spiel nicht deutlich über die üblichen ca. 1.000 Aufrufe (Maßstab 3.000 in 24 h), wechseln wir
+  das Konzept und erzählen FC Kuhweide mit einem kurzen Finale zu Ende.
+
 ## Zwischenstand nach 3 Folgen (12.11.)
 
 - Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.
