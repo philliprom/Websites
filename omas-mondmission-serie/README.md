@@ -49,5 +49,8 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
 
 ## Stand
 
-- 15.11.: Folge 1 gebaut (Grafik, Titelbild, Profilbilder `out/profilbild_oma.png` / `profilbild_duo.png`), stumme Vorschau.
-  Warten auf die Stimmwahl (D, E, F oder G), danach Vertonung und Endfassung.
+- 15.11.: Folge 1 gebaut (Grafik, Titelbild, Profilbilder `out/profilbild_oma.png` / `profilbild_duo.png`). Bilder vom
+  Kanalinhaber gelobt. Stimme: **Oma_Qwen_1** gewählt („warm, leicht rau, frech und verschmitzt“), Referenz `voice/oma_ref.wav`.
+  Endfassung `omas-mondmission-tag1/out/omas-mondmission_tag1.mp4` (ca. 27 s). Satz 2 sagt „Heizöl-Tank“ (mit Bindestrich
+  spricht Qwen das Ö sauber, ohne kam „Heizhültank“); Qwen sagt „habe“ statt „hab“, Untertitel angepasst.
+- Tipp Vertonung: Zahlen im `say` ausschreiben; „100“ statt „hundert“ in `tts_qa.txt` ist nur Schreibweise der Erkennung.

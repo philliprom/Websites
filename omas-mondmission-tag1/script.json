@@ -82,9 +82,9 @@
     },
     {
       "id": "s02",
-      "say": "Die Rakete hab ich aus meinem alten Heizöltank gebaut.",
+      "say": "Die Rakete habe ich aus meinem alten Heizöl-Tank gebaut.",
       "caps": [
-        "DIE RAKETE HAB ICH AUS",
+        "DIE RAKETE HABE ICH AUS",
         "MEINEM ALTEN ^HEIZÖLTANK",
         "GEBAUT."
       ],

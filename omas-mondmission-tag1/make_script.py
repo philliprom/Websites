@@ -9,8 +9,8 @@ segments = [
     {"id": "s01", "say": "Ich bin achtundsiebzig und fliege mit meiner Kuh zum Mond.",
      "caps": ["ICH BIN ^78", "UND FLIEGE MIT MEINER ^KUH", "ZUM ^MOND! 🚀"], "gap": 0.0,
      "sfx": [["title", 0.0], ["sparkle", 0.5]]},
-    {"id": "s02", "say": "Die Rakete hab ich aus meinem alten Heizöltank gebaut.",
-     "caps": ["DIE RAKETE HAB ICH AUS", "MEINEM ALTEN ^HEIZÖLTANK", "GEBAUT."], "gap": 0.15,
+    {"id": "s02", "say": "Die Rakete habe ich aus meinem alten Heizöl-Tank gebaut.",
+     "caps": ["DIE RAKETE HABE ICH AUS", "MEINEM ALTEN ^HEIZÖLTANK", "GEBAUT."], "gap": 0.15,
      "sfx": [["whoosh", -0.05], ["pop", 0.7], ["pop", 1.5], ["pop", 2.3]]},
     {"id": "s03", "say": "Nur Herr Krause vom Gartenverein ist dagegen.",
      "caps": ["NUR ^HERR ^KRAUSE", "VOM GARTENVEREIN", "IST !DAGEGEN."], "gap": 1.0,
@@ -63,7 +63,7 @@ Datei: titelbild.png
 
 PROFIL UMSTELLEN (direkt vor dem Posten)
 Name: Omas Mondmission 🚀
-Profilbild: profilbild_oma.png
+Profilbild: profilbild_duo.png (Oma + Berta, die bisherigen Fans erkennen Berta; Alternative: profilbild_oma.png)
 Bio: Oma Gisela (78) & Kuh Berta fliegen zum Mond 🚀 Jeder Kommentar = 1 Liter Treibstoff. Start bei 100!
 Danach dieses Video oben anpinnen. Die alten FC-Kuhweide-Videos bleiben online.
 """)
