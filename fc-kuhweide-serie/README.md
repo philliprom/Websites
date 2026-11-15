@@ -266,6 +266,27 @@ abflauende Welle gestartet – das erklärt einen großen Teil der niedrigen Rei
 - **Entscheidungspunkt:** Kommt das Spiel nicht deutlich über die üblichen ca. 1.000 Aufrufe (Maßstab 3.000 in 24 h), wechseln wir
   das Konzept und erzählen FC Kuhweide mit einem kurzen Finale zu Ende.
 
+## Ergebnis Spiel und Entscheidung (15.11. mittags)
+
+| Video | Aufrufe | Likes | Kommentare | Shares |
+|---|---|---|---|---|
+| Tag 1 | 1.595 | 76 | 74 | 2 |
+| Tag 2 | 1.634 | 76 | 60 | 6 |
+| Tag 3 | 1.176 | 67 | 59 | 7 |
+| Tag 4 Teil 1 | 842 | 42 | 14 | 1 |
+| Tag 4 Teil 2 | 903 | 32 | 18 | 0 |
+| Tag 5 | 957 | 52 | 32 | 0 |
+| Tag 6 Spiel (gepostet 14.11. 16:32) | 807 (nach ca. 20 h) | 28 | 18 | 0 |
+
+Kanal: 122 Follower. Das aufwendigste Video (Spiel) lief am schwächsten. Seit Tag 4 landet jedes Video unabhängig von Länge,
+Einstieg und Aufwand bei 800–950 Aufrufen, Shares sind auf 0 gefallen. Kommentare kommen fast nur noch vom festen Kern
+(ca. 20–30 Namen, Insider-Themen wie „Wo bin ich?“, „nicht im Kader“).
+
+**Maßstab (3.000 Aufrufe in 24 h) klar verfehlt → FC Kuhweide wird nicht weiter täglich produziert.** Empfehlung: ein kurzes
+Danke-/Saisonpause-Video, danach neues Konzept außerhalb der Fußball-Nische (Übergabe: `UEBERGABE_NEUER_KANAL.md`).
+Hinweis für ein mögliches Finale: @jxmie2skibidi (Joker) stand in keiner Aufstellung, @noel63501 und @kilian93907 fanden sich
+nur auf der Bank – beim nächsten Mal einlösen.
+
 ## Zwischenstand nach 3 Folgen (12.11.)
 
 - Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.
