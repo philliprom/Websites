@@ -212,6 +212,16 @@
   <g id="rocket">
     <g id="rkShake">
       <ellipse id="rkShadow" cx="150" cy="8" rx="300" ry="24" fill="#2B3A1E" opacity=".3"/>
+      <g id="rkGround">
+        <g id="rkLadderW"><g id="rkLadder">
+          <path d="M-196 0 L-158 -640 M-272 0 L-234 -640" stroke="#B5814F" stroke-width="14" stroke-linecap="round"/>
+          <path d="M-196 0 L-158 -640 M-272 0 L-234 -640" stroke="${OUT}" stroke-width="3" fill="none" opacity=".5"/>
+          ${Array.from({ length: 8 }, (_, i) => { const k = (i + 0.6) / 8.4; return `<path d="M${lerp(-270, -232, k)} ${-k * 640} L${lerp(-194, -156, k)} ${-k * 640}" stroke="#B5814F" stroke-width="11" stroke-linecap="round"/>`; }).join('')}
+        </g>
+        </g>
+        <path d="M-172 -300 Q-230 -250 -228 -120 Q-226 -30 -300 -6 Q-380 14 -400 -10" stroke="#3FA45A" stroke-width="14" fill="none" stroke-linecap="round"/>
+        <path d="M-172 -300 Q-230 -250 -228 -120 Q-226 -30 -300 -6 Q-380 14 -400 -10" stroke="#7FD88E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+      </g>
       <g id="rkLift">
         <g id="rkFlame" style="display:none"></g>
         <path d="M-150 -360 L-268 -70 L-268 0 L-214 0 L-150 -130 Z" fill="url(#gFin)" ${sw}/>
@@ -273,13 +283,6 @@
           <g id="rkFlag" transform="translate(4,-1166)"><path id="rkFlagP" d="M0 0 Q30 -10 60 2 Q90 12 120 2 L120 56 Q90 66 60 56 Q30 46 0 56 Z" fill="#FFD43B" stroke="${OUT}" stroke-width="4"/>
             <g transform="translate(60,28)"><circle r="18" fill="#22183A"/><circle cx="7" cy="-5" r="16" fill="#FFD43B"/></g></g>
         </g>
-        <g id="rkLadder">
-          <path d="M-196 0 L-158 -640 M-272 0 L-234 -640" stroke="#B5814F" stroke-width="14" stroke-linecap="round"/>
-          <path d="M-196 0 L-158 -640 M-272 0 L-234 -640" stroke="${OUT}" stroke-width="3" fill="none" opacity=".5"/>
-          ${Array.from({ length: 8 }, (_, i) => { const k = (i + 0.6) / 8.4; return `<path d="M${lerp(-270, -232, k)} ${-k * 640} L${lerp(-194, -156, k)} ${-k * 640}" stroke="#B5814F" stroke-width="11" stroke-linecap="round"/>`; }).join('')}
-        </g>
-        <path d="M-172 -300 Q-230 -250 -228 -120 Q-226 -30 -300 -6 Q-380 14 -400 -10" stroke="#3FA45A" stroke-width="14" fill="none" stroke-linecap="round"/>
-        <path d="M-172 -300 Q-230 -250 -228 -120 Q-226 -30 -300 -6 Q-380 14 -400 -10" stroke="#7FD88E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
         <g id="rkPaint" style="display:none"></g>
         ${TAGS.map(tagMarkup).join('')}
       </g>
@@ -647,6 +650,9 @@
 
   function drawRocket(S, t) {
     const R = S.rocket;
+    const fall = R.lift > 0 ? E.in(clamp(R.lift / 260)) : 0;
+    setT($('rkLadder'), `rotate(${-fall * 62} -234 0)`);
+    disp($('rkGround'), true);
     setT($('rkLift'), `translate(${R.lift > 0 ? Math.sin(t * 40) * 3 : 0},${-R.lift}) rotate(${R.lift > 0 ? Math.sin(t * 6) * 1.2 : 0})`);
     $('rkShadow').setAttribute('opacity', (0.3 * clamp(1 - R.lift / 500)).toFixed(2));
     setT($('rkNeedle'), `rotate(${-120 + R.needle * 240})`);
