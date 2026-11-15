@@ -42,8 +42,10 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
 - Projekt `omas-mondmission-tag1/`: `make_script.py` → `script.json` + `out/beschreibung.txt`; Szene `scene.js` (eigene Grafik,
   Engine-Rig für Oma), Overlay-Elemente in `index.html` (#hook, #tankHud, #demo, #cta, KLONG), `cover.html`, `avatar.js`.
 - Neue Geräusche in `engine/audio.py`: `klong` (leerer Tank), `brush` (Pinsel).
-- Stimme: Oma-Stimme per VoxCPM2 entworfen; die erste Runde (A–C) lag bei 250–430 Hz und klang zu jung, deshalb Runde 2
-  (D–G, 180–265 Hz). Die gewählte Probe wird als `voice/oma_ref.wav` + `oma_ref.txt` zur Klon-Referenz.
+- Stimme: VoxCPM2-Entwürfe (Runde 1 A–C: 250–430 Hz, zu jung; Runde 2 D–G: 180–265 Hz) klangen dem Kanalinhaber alle
+  unnatürlich. Deshalb Qwen3-TTS (ebenfalls aus VoiceStudio, Apache-2.0): Entwurf mit dem VoiceDesign-Modell (Proben Qwen 1–4,
+  saubere Aufnahmen, 207–333 Hz), danach Klonen mit dem Base-Modell. Die gewählte Probe wird `voice/oma_ref.wav` + `oma_ref.txt`,
+  in `script.json` `"engine": "qwen"`. Einrichtung: `engine/README.md`, Abschnitt „Qwen3-TTS“.
 
 ## Stand
 
