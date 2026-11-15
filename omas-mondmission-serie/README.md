@@ -89,4 +89,8 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
 - 15.11. abends: Folge 1 mit Heinz-Geschichte neu gebaut (11 Sätze, **37 s**, −14,2 LUFS): Postkarte vom Mond (Vorder- und
   Rückseite), Herz „H+G 1974“ auf dem Tank, Kreidetafel „Bodenkontrolle“ mit „DEIN NAME?“, offenes Ende „PPS: Vorsicht vor den M…“
   → „Egal! Schreib Tanken!“. Titelbild und Einstieg: „OMA (78) HOLT OPA VOM MOND“.
+- 15.11. später: Kanalinhaber hörte eine „dauernd veränderte“ Stimme. Messung: Stimmfarbe ähnlich (0,93–0,99), aber Tonhöhe
+  je Satz 137–298 Hz (Referenz 252 Hz). Lösung in der Engine: `"candidates": 4, "temperature": 0.7` – je Satz 4 Fassungen,
+  Auswahl nach Sprecher-Ähnlichkeit, Tonhöhe nah an der Referenz und WER. Danach 224–282 Hz, Ähnlichkeit 0,96–0,99.
+  Endfassung 36,7 s, −14,2 LUFS. Messskript: Sprecher-Einbettung von Qwen (`qwen3_engine.speaker_similarity`).
 - Tipp Vertonung: Zahlen im `say` ausschreiben; „100“ statt „hundert“ in `tts_qa.txt` ist nur Schreibweise der Erkennung.
