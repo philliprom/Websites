@@ -28,6 +28,20 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
   Abfrage unsichtbar, dafür braucht es Screenshots.
 - Kommen weniger Liter zusammen, wird es trotzdem lustig (Rakete hüpft nur bis aufs Laubendach).
 
+## Namen auf der Rakete (Platzfrage, 15.11.)
+
+- Test mit den 94 Namen aus dem FC-Kuhweide-Abspann: Auf den Tank passen nur **61 Namen, und das nur in Schrift 12** (zu klein).
+  Das kleine Namensfeld aus dem ersten Entwurf ist deshalb raus. Folge 1 zeigt jetzt „UNTERSCHRIFTEN ERWÜNSCHT!“ quer über den
+  Tank, und der Pinsel malt „DEIN NAME?“ groß darüber.
+- **Plan ab Tag 2:** Namen wie Unterschriften auf einem Gips über die ganze Rakete (Tank, Trichter, Backbleche, Blumentopf).
+  Im Video fährt die Kamera langsam daran entlang, damit jeder seinen Namen findet (Pause drücken).
+- **Wenn es voll wird:** Oma schnallt Booster an (Regentonne, Milchkanne, alter Boiler). Jeder Booster bringt mehr Treibstoff
+  und neuen Platz für Namen, und die Rakete wächst sichtbar mit der Gemeinschaft. Notfalls kommen Namen auch auf Bertas Helm
+  oder Krauses Hecke (Ärger mit Krause). Im All werden die Namen später zu Sternen.
+- Technik: `packNames()` in `omas-mondmission-tag1/scene.js` (Zonen + Aussparungen, Schrift 26 → 12), Probeschnitte
+  `namesTest` / `namesClose`. Offen für Tag 2: Namen auf dem Trichter liegen noch unter der Trichter-Grafik (eigene Ebene
+  nach `rkNose` nötig), Backbleche als schräge Zonen.
+
 ## Folgenplan (Entwurf)
 
 | Folge | Inhalt |

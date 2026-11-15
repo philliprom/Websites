@@ -40,7 +40,7 @@
     <radialGradient id="gLamp"><stop offset="0" stop-color="#FFF4C8" stop-opacity=".95"/><stop offset=".4" stop-color="#FFC870" stop-opacity=".35"/><stop offset="1" stop-color="#FFB050" stop-opacity="0"/></radialGradient>
     <mask id="mMoon"><circle r="56" fill="#fff"/><circle cx="24" cy="-16" r="50" fill="#000"/></mask>
     <clipPath id="cpKrause" clipPathUnits="userSpaceOnUse"><rect x="1400" y="-2000" width="2000" height="3480"/></clipPath>
-    <clipPath id="cpNames" clipPathUnits="userSpaceOnUse"><rect id="cpNamesR" x="-112" y="-420" width="0" height="170"/></clipPath>
+    <clipPath id="cpNames" clipPathUnits="userSpaceOnUse"><rect id="cpNamesR" x="-165" y="-410" width="0" height="170"/></clipPath>
     <filter id="fBlur2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"/></filter>
     <filter id="fBlur5" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>
     <filter id="fBlur10" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"/></filter>
@@ -243,12 +243,13 @@
         <g transform="translate(70,-232)"><rect x="-44" y="-18" width="88" height="34" rx="5" fill="#D9DDE3" stroke="${OUT}" stroke-width="3"/>
           <text x="0" y="6" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="17" fill="${OUT}">BJ. 1974</text></g>
         <g id="rkNames">
-          <rect x="-114" y="-414" width="228" height="156" rx="16" fill="#F7F2E6" stroke="${OUT}" stroke-width="4"/>
-          <rect x="-102" y="-402" width="204" height="132" rx="10" fill="none" stroke="#B9AE96" stroke-width="3" stroke-dasharray="10 8"/>
-          <text id="rkNamesHint" x="0" y="-346" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="21" fill="#B3A68A">HIER KOMMEN</text>
-          <text id="rkNamesHint2" x="0" y="-320" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="21" fill="#B3A68A">EURE NAMEN HIN</text>
-          <g clip-path="url(#cpNames)"><text x="0" y="-322" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="38" fill="${NAVY}" transform="rotate(-4 0 -330)">DEIN NAME?</text></g>
+          <g transform="rotate(-5 0 -350)" opacity=".75">
+            <text id="rkNamesHint" x="-6" y="-366" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="30" fill="#F4FBEA" letter-spacing="2">UNTERSCHRIFTEN</text>
+            <text id="rkNamesHint2" x="-6" y="-330" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="30" fill="#F4FBEA" letter-spacing="2">ERWÜNSCHT!</text>
+          </g>
+          <g clip-path="url(#cpNames)"><text x="-2" y="-322" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="49" fill="#FFF8E8" stroke="${OUT}" stroke-width="4" paint-order="stroke" transform="rotate(-6 0 -330)">DEIN NAME?</text></g>
         </g>
+        <g id="rkNameLayer"></g>
         <g transform="translate(-96,-528) rotate(-30)"><rect x="-30" y="-10" width="60" height="20" rx="3" fill="#C8CCD3" stroke="${OUT}" stroke-width="3"/></g>
         <g transform="translate(-96,-528) rotate(30)"><rect x="-30" y="-10" width="60" height="20" rx="3" fill="#D6DAE0" stroke="${OUT}" stroke-width="3"/></g>
         <g id="rkGauge" transform="translate(-86,-214)">
@@ -289,6 +290,68 @@
     </g>
   </g>`;
   };
+
+  // ---------------------------------------------------------------- Namen auf der Rakete (ab Tag 2)
+  const NAME_ZONES = [
+    [[-136, -712], [136, -712], [136, -126], [-136, -126]],          // Tank
+    [[-132, -806], [132, -806], [34, -952], [-34, -952]],            // Trichter
+    [[-60, -126], [60, -126], [90, -36], [-90, -36]],                // Blumentopf
+  ];
+  const NAME_BLOCK = [
+    { c: [10, -600, 98] }, { c: [-86, -214, 60] },
+    { r: [-130, -510, 120, -438] }, { r: [-134, -556, -58, -502] }, { r: [-128, -168, -44, -128] }, { r: [20, -254, 120, -210] },
+  ];
+  const NAME_COLORS = ['#FFF8E8', '#FFF8E8', '#FFD43B', '#FF9EC4', '#9FE1FF', '#FFF8E8', '#C9F59B'];
+  const spanAt = (poly, y) => {
+    const xs = [];
+    for (let i = 0; i < poly.length; i++) {
+      const [x1, y1] = poly[i], [x2, y2] = poly[(i + 1) % poly.length];
+      if ((y >= Math.min(y1, y2)) && (y <= Math.max(y1, y2)) && y1 !== y2) xs.push(x1 + (x2 - x1) * (y - y1) / (y2 - y1));
+    }
+    return xs.length >= 2 ? [Math.min(...xs), Math.max(...xs)] : null;
+  };
+  function packNames(list, fs) {
+    const R = rng(4242), out = [];
+    let k = 0;
+    const lineH = fs * 1.22;
+    for (const poly of NAME_ZONES) {
+      const ys = poly.map((p) => p[1]);
+      for (let y = Math.min(...ys) + fs * 0.85; y <= Math.max(...ys) - fs * 0.15 && k < list.length; y += lineH) {
+        const top = y - fs * 0.78, bot = y + fs * 0.22;
+        const a = spanAt(poly, top), b = spanAt(poly, bot);
+        if (!a || !b) continue;
+        let free = [[Math.max(a[0], b[0]) + 6, Math.min(a[1], b[1]) - 6]];
+        for (const o of NAME_BLOCK) {
+          let bx = null;
+          if (o.c) { const [cx, cy, r] = o.c, dy = Math.max(0, Math.max(top - cy, cy - bot)); if (dy < r) { const h = Math.sqrt(r * r - dy * dy); bx = [cx - h, cx + h]; } }
+          else { const [x0, y0, x1, y1] = o.r; if (bot > y0 && top < y1) bx = [x0, x1]; }
+          if (!bx) continue;
+          free = free.flatMap(([f0, f1]) => (bx[1] <= f0 || bx[0] >= f1) ? [[f0, f1]] : [[f0, bx[0] - 4], [bx[1] + 4, f1]].filter(([u, v]) => v - u > fs));
+        }
+        for (const [f0, f1] of free) {
+          let cur = f0 + R() * 6;
+          while (k < list.length) {
+            const nm = list[k].replace(/^@/, ''), w = nm.length * fs * 0.56 + 8;
+            if (cur + w > f1) break;
+            out.push({ nm, x: cur + w / 2, y: y + (R() - 0.5) * 4, rot: (R() - 0.5) * 12, c: NAME_COLORS[k % NAME_COLORS.length] });
+            cur += w + 6 + R() * 6; k++;
+          }
+        }
+      }
+    }
+    return { out, all: k >= list.length };
+  }
+  let namesCache = null;
+  function namesMarkup(list) {
+    const key = list.join('|');
+    if (namesCache && namesCache.key === key) return namesCache.svg;
+    let best = null;
+    for (let fs = 26; fs >= 12; fs -= 1) { best = packNames(list, fs); best.fs = fs; if (best.all) break; }
+    const svg = best.out.map((n) => `<text x="${n.x.toFixed(1)}" y="${n.y.toFixed(1)}" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="${best.fs}" fill="${n.c}" stroke="${OUT}" stroke-width="${(best.fs / 7).toFixed(1)}" paint-order="stroke" transform="rotate(${n.rot.toFixed(1)} ${n.x.toFixed(1)} ${n.y.toFixed(1)})">${n.nm.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text>`).join('');
+    namesCache = { key, svg, fs: best.fs, n: best.out.length };
+    window.NAMES_INFO = { schrift: best.fs, platziert: best.out.length, gesamt: list.length };
+    return svg;
+  }
 
   // ---------------------------------------------------------------- Oma Gisela (Rig wie Kalle, Füße bei 0)
   const omaMarkup = (p) => `
@@ -533,7 +596,7 @@
     oma: Object.assign(humanDefaults(), { show: true, x: W.oma.x, y: W.oma.y, s: W.oma.s, cap: false, armL: 12, armR: -12, fist: false }),
     berta: { show: true, x: W.berta.x, y: W.berta.y, s: W.berta.s, moo: false, fog: 0 },
     krause: { up: 0, wag: false, mouth: false, sign: false, blown: false, soot: 0, bubble: null },
-    rocket: { lift: 0, fire: 0, shake: 0, ignite: null, portFace: false, needle: 0, tags: null, paint: null, puff: false },
+    rocket: { lift: 0, fire: 0, shake: 0, ignite: null, portFace: false, needle: 0, tags: null, paint: null, puff: false, names: null },
     knock: null, hook: null, hud: null, demo: null, cta: null, flash: null, grade: 0, gnomeHat: null,
     ui: { title: 999 },
   });
@@ -605,6 +668,12 @@
       const m = cue('s09', 'moo'); S.berta.moo = t > m && t < m + 0.8; S.berta.fog = clamp((t - m) * 2.4) * clamp(1.8 - (t - m) * 0.5);
       S.rocket.paint = { t0: -10, d: 0.1 };
     },
+    namesTest: (S) => {
+      S.cam = [1180, 1000, 1.0]; S.rocket.names = window.TEST_NAMES || []; S.oma.talk = false; S.oma.expr = 'happy'; S.oma.armR = -150; S.oma.fingerR = true;
+    },
+    namesClose: (S) => {
+      S.cam = [1000, 1080, 1.75]; S.rocket.names = window.TEST_NAMES || [];
+    },
     cover: (S, t) => {
       S.cam = [1365, 1385, 1.5];
       S.oma.expr = 'smile'; S.oma.armR = -150; S.oma.fingerR = true; S.oma.talk = false; S.oma.look = [-4, -4];
@@ -669,14 +738,17 @@
       setT(el.querySelector('.lab'), `translate(${g.lx},${g.ly}) scale(${Math.max(0.001, s)}) rotate(${Math.sin(t * 3 + g.lx) * 2})`);
       el.querySelector('path').setAttribute('opacity', clamp(s));
     }
+    // Namen der Tankenden (ab Tag 2) statt Hinweis und „DEIN NAME?“
+    const nl = $('rkNameLayer');
+    if (R.names && R.names.length) { nl.innerHTML = namesMarkup(R.names); disp($('rkNames'), false); }
+    else { if (nl.innerHTML) nl.innerHTML = ''; disp($('rkNames'), true); }
     // Name auf die Rakete malen
     const P = R.paint, pr = P ? clamp((t - P.t0) / P.d) : 0;
-    $('cpNamesR').setAttribute('width', (pr * 230).toFixed(1));
-    $('cpNamesR').setAttribute('x', -115);
+    $('cpNamesR').setAttribute('width', (pr * 330).toFixed(1));
     disp($('rkNamesHint'), pr <= 0); disp($('rkNamesHint2'), pr <= 0);
     const pb = $('rkPaint');
     if (P && t >= P.t0 - 0.3 && t < P.t0 + P.d + 0.5) {
-      const bx = -110 + pr * 220, by = -340 + Math.sin(pr * 30) * 10 - (t < P.t0 ? (P.t0 - t) * 200 : 0) - (t > P.t0 + P.d ? (t - P.t0 - P.d) * 260 : 0);
+      const bx = -150 + pr * 300, by = -350 + Math.sin(pr * 30) * 12 + pr * 30 - (t < P.t0 ? (P.t0 - t) * 200 : 0) - (t > P.t0 + P.d ? (t - P.t0 - P.d) * 260 : 0);
       disp(pb, true);
       pb.innerHTML = `<g transform="translate(${bx.toFixed(1)},${by.toFixed(1)}) rotate(28)"><rect x="-9" y="-150" width="18" height="120" rx="8" fill="#C8763E" stroke="${OUT}" stroke-width="4"/>
         <rect x="-13" y="-40" width="26" height="22" rx="3" fill="#C9D1DB" stroke="${OUT}" stroke-width="4"/><path d="M-13 -18 Q-14 10 0 22 Q14 10 13 -18 Z" fill="${NAVY}" stroke="${OUT}" stroke-width="3"/></g>`;
