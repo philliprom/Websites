@@ -289,6 +289,13 @@ nur auf der Bank – beim nächsten Mal einlösen.
 
 **15.11.:** Abschiedsvideo „Winterpause“ gebaut (`fc-kuhweide-abschied/`). FC Kuhweide ruht, neues Konzept folgt.
 
+**15.11. abends – Kanal wird weitergenutzt** (Idee Kanalinhaber, von Claude empfohlen): Nächstes Konzept „Omas Mondmission“
+(jeder Kommentar = 1 Liter Treibstoff, Start bei 100). Gründe: Konto ist gesund (Grenze lag am Thema, nicht am Konto), der aktive
+Kern (ca. 20–30 Kommentierende) bringt Folge 1 sofort Kommentare, kein Aufwärmen nötig. Profil (Name, Bild, Bio) erst beim Posten
+von Folge 1 umstellen, alte Videos bleiben öffentlich, Folge 1 anpinnen. Folge 1 muss ohne Vorwissen funktionieren.
+Vorschlag: Berta wird Omas Kopilotin statt Dackel Waldi (Brücke für die bisherigen Fans). Der neu aufgewärmte Zweitkanal bekommt
+ein eigenes Konzept (kein Fußball, keine Oma/Raumfahrt), siehe Update in `UEBERGABE_NEUER_KANAL.md`.
+
 ## Zwischenstand nach 3 Folgen (12.11.)
 
 - Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.

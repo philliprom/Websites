@@ -3,6 +3,15 @@
 Stand: 12.11.2026. Diese Datei fasst alles zusammen, was ein neuer Chat braucht, um parallel zu **FC Kuhweide** einen zweiten
 Kanal in derselben Nische aufzubauen: Format, Zahlen, Erkenntnisse, Regeln, Technik und Arbeitsablauf.
 
+> **Update 15.11.2026 – zuerst lesen:**
+> - **FC Kuhweide wird nicht mehr täglich produziert.** Seit Tag 4 blieb jedes Video bei 800–950 Aufrufen, Shares fielen auf 0.
+>   Die Fußball-Nische ist gesättigt (FC Asche: Tag 4 ca. 233.000 → Tag 11 ca. 36.000 Aufrufe, FC Kaiser 09 postet nicht mehr).
+>   Zahlen und Begründung: `fc-kuhweide-serie/README.md`, Abschnitt „Ergebnis Spiel und Entscheidung“.
+> - **Der bestehende Kanal macht mit „Omas Mondmission“ weiter.** Das Konzept ist damit vergeben: für den neuen Kanal nicht
+>   verwenden, die Ordner `mondmission-*` und `omas-mondmission-*` nicht anfassen.
+> - Der neue Kanal braucht ein Konzept, das sich klar von beiden unterscheidet: **kein Fußball, keine Oma, keine Raumfahrt.**
+>   Mitmachen bleibt Pflicht, aber mit einem **sichtbaren Ziel und großem Höhepunkt** (nicht nur Namenslisten, das brachte keine Shares).
+
 ---
 
 ## 0. So startest du den neuen Chat
@@ -17,7 +26,7 @@ Kanal in derselben Nische aufzubauen: Format, Zahlen, Erkenntnisse, Regeln, Tech
 3. **Erste Nachricht (Vorschlag zum Kopieren):**
    > Lies bitte `UEBERGABE_NEUER_KANAL.md` im Repo (Branch `claude/gracious-hamilton-5kohce`) und arbeite danach. Wir bauen einen
    > zweiten Kanal in derselben Nische wie FC Kuhweide. Richte zuerst die Technik ein und schlag mir dann 3 Konzepte vor.
-4. **Nicht anfassen:** die Ordner `fc-kuhweide-*` (laufender Kanal, eigener Chat) und `techlab/` (anderes Projekt). Die Engine
+4. **Nicht anfassen:** die Ordner `fc-kuhweide-*`, `mondmission-*` und `omas-mondmission-*` (Hauptkanal, eigener Chat) und `techlab/` (anderes Projekt). Die Engine
    (`engine/`) wird geteilt, Änderungen dort nur rückwärtskompatibel (neue Optionen standardmäßig aus).
 
 **Rollen:** Der Kanalinhaber postet selbst, antwortet selbst auf Kommentare und schickt Screenshots (Sticker-Kommentare, TikTok Studio).
@@ -130,7 +139,7 @@ Ausführliches Gedächtnis von FC Kuhweide (Zusagen, Regeln, alle Auswertungen):
 - **Bewusst anders als Fußball**, damit sich die beiden Kanäle nicht gegenseitig Zuschauer wegnehmen.
 
 **Schon vorhanden (je ein fertiges „Tag 1“, noch nach alten Regeln, 44–48 s, ältere Piper-Stimme):**
-- `mondmission-tag1/` – **Omas Mondmission:** Oma Gisela (78) baut im Schrebergarten eine Rakete, Dackel Waldi ist Kopilot,
+- `mondmission-tag1/` – **Omas Mondmission (seit 15.11. vergeben an den Hauptkanal, nicht verwenden):** Oma Gisela (78) baut im Schrebergarten eine Rakete, Dackel Waldi ist Kopilot,
   1 Follower = 1 Meter höher. Rollen: Funker, Raketenbauer, Bodenkontrolle … Gegenspieler denkbar: Kleingartenvorstand.
 - `fietland-tag1/` – **Fietland:** Fiete gründet auf einer Sandbank sein eigenes Land, Möwe Jürgen ist Finanzminister,
   1 Follower = 1 Einwohner. Rollen: Minister, Botschafter, Leuchtturmwärter … Gegenspieler denkbar: Nachbarinsel.
