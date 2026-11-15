@@ -42,7 +42,8 @@ segments = [
 ]
 script = {
     "title": "Omas Mondmission – Tag 1", "voice": "qwen3-tts (Oma_Qwen_1)", "lead_in": 0.1, "tail": 2.4, "default_gap": 0.1,
-    "tts": {"engine": "qwen", "voice": "voice/oma_ref.wav", "voice_text": "voice/oma_ref.txt", "tries": 3, "max_wer": 0.08},
+    "tts": {"engine": "qwen", "voice": "voice/oma_ref.wav", "voice_text": "voice/oma_ref.txt", "tries": 3, "max_wer": 0.08,
+            "candidates": 4, "temperature": 0.7},
     "music": {"bpm": 104, "inst": "pluck", "clap": 0.5, "ambience": 0.25,
               "chords": [[60, 64, 67, 72], [55, 59, 62, 67], [57, 60, 64, 69], [53, 57, 60, 65]], "roots": [48, 43, 45, 41],
               "arp": [0, 1, 2, 3, 2, 1, 2, 3]},

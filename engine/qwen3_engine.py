@@ -47,13 +47,67 @@ def _out(wavs, sr):
     return np.asarray(wavs[0], dtype=np.float32)
 
 
-def clone(text, ref_wav, ref_text, seed=0, language="German", **_):
+def clone(text, ref_wav, ref_text, seed=0, language="German", temperature=None, **_):
     key = (ref_wav, ref_text)
     if key not in _PROMPTS:
         _PROMPTS[key] = _MODEL.create_voice_clone_prompt(ref_audio=ref_wav, ref_text=ref_text)
     _seed(seed)
-    wavs, sr = _MODEL.generate_voice_clone(text=text, language=language, voice_clone_prompt=_PROMPTS[key])
+    kw = {}
+    if temperature is not None:  # niedriger = gleichmäßigere Stimme von Satz zu Satz
+        kw = dict(temperature=temperature, subtalker_temperature=temperature)
+    wavs, sr = _MODEL.generate_voice_clone(text=text, language=language, voice_clone_prompt=_PROMPTS[key], **kw)
     return _out(wavs, sr)
+
+
+_REF_EMB = {}
+
+
+def _embed(wav, sr):
+    import torch
+    M = _MODEL.model
+    target = M.speaker_encoder_sample_rate
+    w = np.asarray(wav, dtype=np.float32)
+    if w.ndim > 1:
+        w = w.mean(1)
+    if sr != target:
+        import librosa
+        w = librosa.resample(w, orig_sr=sr, target_sr=target)
+    with torch.no_grad():
+        e = M.extract_speaker_embedding(audio=w, sr=target)
+    e = e.float().flatten().cpu().numpy()
+    return e / (np.linalg.norm(e) + 1e-9)
+
+
+_REF_F0 = {}
+
+
+def pitch(wav, sr):
+    """Median-Tonhöhe in Hz (Praat über parselmouth), None wenn nicht messbar."""
+    try:
+        import parselmouth
+        from parselmouth.praat import call
+    except ImportError:
+        return None
+    snd = parselmouth.Sound(np.asarray(wav, dtype=np.float64), sampling_frequency=sr)
+    f = call(call(snd, "To Pitch", 0.0, 75, 500), "Get quantile", 0, 0, 0.5, "Hertz")
+    return float(f) if f == f and f > 0 else None
+
+
+def pitch_ref(ref_wav):
+    if ref_wav not in _REF_F0:
+        import soundfile as sf
+        r, rs = sf.read(ref_wav, dtype="float32")
+        _REF_F0[ref_wav] = pitch(r if r.ndim == 1 else r.mean(1), rs)
+    return _REF_F0[ref_wav]
+
+
+def speaker_similarity(wav, sr, ref_wav):
+    """Kosinus-Ähnlichkeit der Sprecher-Einbettung eines Satzes zur Referenzstimme (1 = gleich)."""
+    if ref_wav not in _REF_EMB:
+        import soundfile as sf
+        r, rs = sf.read(ref_wav, dtype="float32")
+        _REF_EMB[ref_wav] = _embed(r, rs)
+    return float(_REF_EMB[ref_wav] @ _embed(wav, sr))
 
 
 def design(text, instruct, seed=0, language="German"):

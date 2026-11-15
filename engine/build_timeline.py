@@ -98,15 +98,30 @@ def build_voxcpm(script, model_dir):
             words, hyp = V.asr_words(wav, sr)
             best = (V.wer(text, hyp), wav, words, hyp)
             print(f"  Satz {gi + 1}/{len(groups)} aus Cache: WER {best[0]:.2f} | {hyp}", flush=True)
-        for attempt in range(0 if best else tts.get("tries", 4)):
+        # Qwen mit "candidates": mehrere Fassungen erzeugen und die nehmen, die der Referenzstimme am ähnlichsten ist
+        # (Wertung = Ähnlichkeit − 2 × WER), damit die Stimme von Satz zu Satz gleich klingt.
+        cands = tts.get("candidates", 0) if tts.get("engine") == "qwen" else 0
+        best_score = None
+        for attempt in range(0 if best else (cands or tts.get("tries", 4))):
             if attempt == 0:
                 T.load(model_dir)
                 sr = T.sample_rate()
+            extra = {"temperature": tts.get("temperature")} if tts.get("engine") == "qwen" else {}
             wav = T.clone(text, ref, ref_text, seed=tts.get("seed", 7) + 1000 * gi + attempt,
-                          cfg=tts.get("cfg", 2.0), steps=tts.get("steps", 10), style=style)
+                          cfg=tts.get("cfg", 2.0), steps=tts.get("steps", 10), style=style, **extra)
             wav = trim(np.asarray(wav, dtype=np.float32), sr)
             words, hyp = V.asr_words(wav, sr)
             e = V.wer(text, hyp)
+            if cands:
+                sim = T.speaker_similarity(wav, sr, ref)
+                f, fr = T.pitch(wav, sr), T.pitch_ref(ref)
+                dev = abs(np.log2(f / fr)) if f and fr else 0.0  # Abweichung der Tonhöhe in Oktaven
+                score = sim - 2 * e - 1.5 * max(0.0, dev - 0.15)
+                if best_score is None or score > best_score:
+                    best, best_score = (e, wav, words, hyp), score
+                print(f"  Satz {gi + 1}/{len(groups)} Fassung {attempt + 1}: WER {e:.2f} | Ähnlichkeit {sim:.3f} | "
+                      f"F0 {f or 0:.0f} Hz (Ref. {fr or 0:.0f}) | Wertung {score:.3f} | {hyp}", flush=True)
+                continue
             if best is None or e < best[0]:
                 best = (e, wav, words, hyp)
             print(f"  Satz {gi + 1}/{len(groups)} Versuch {attempt + 1}: WER {e:.2f} | {hyp}", flush=True)
