@@ -86,4 +86,7 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
   Kanalinhaber gelobt. Stimme: **Oma_Qwen_1** gewählt („warm, leicht rau, frech und verschmitzt“), Referenz `voice/oma_ref.wav`.
   Endfassung `omas-mondmission-tag1/out/omas-mondmission_tag1.mp4` (ca. 27 s). Satz 2 sagt „Heizöl-Tank“ (mit Bindestrich
   spricht Qwen das Ö sauber, ohne kam „Heizhültank“); Qwen sagt „habe“ statt „hab“, Untertitel angepasst.
+- 15.11. abends: Folge 1 mit Heinz-Geschichte neu gebaut (11 Sätze, **37 s**, −14,2 LUFS): Postkarte vom Mond (Vorder- und
+  Rückseite), Herz „H+G 1974“ auf dem Tank, Kreidetafel „Bodenkontrolle“ mit „DEIN NAME?“, offenes Ende „PPS: Vorsicht vor den M…“
+  → „Egal! Schreib Tanken!“. Titelbild und Einstieg: „OMA (78) HOLT OPA VOM MOND“.
 - Tipp Vertonung: Zahlen im `say` ausschreiben; „100“ statt „hundert“ in `tts_qa.txt` ist nur Schreibweise der Erkennung.
