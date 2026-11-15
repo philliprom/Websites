@@ -65,10 +65,29 @@ ffmpeg -i $P/build/video_noaudio.mp4 -i $P/build/mix.wav -c:v libx264 -crf 19 -p
 | Effekt-Marken `mstop` / `mgo` | Musik an dieser Stelle aus- bzw. wieder einblenden (kein Klang) |
 
 **Klänge in `sfx`:** pop whoosh ding title stamp confetti sparkle splash waves flap squawk gulp poof riser pins horn squeak tap
-blip tick card kaching hearts bark moo whistle rocket boing kick_ball coo cheer beep bigbeep crunch crickets drum sting scratch
+blip tick card kaching hearts bark moo whistle rocket boing kick_ball coo cheer beep bigbeep crunch crickets drum sting scratch klong brush
 
 **Sprachausgabe (VoxCPM2):** Jeder Satz liegt danach im Satz-Cache `<projekt>/tts_cache/` (mit einchecken). Das Modell wird nur
 geladen, wenn ein Satz neu gesprochen werden muss. Großgeschriebene Wörter („BERTA“) buchstabiert die Stimme: im `say` normal
 schreiben, nur in `caps` groß. Bindestrich-Wörter, die Whisper getrennt schreibt („Metzger Manni“), werden für die Schnittpunkte
 trotzdem gefunden. Zahlen im `say` ausschreiben. Abweichungen wie „Mike“ statt „Maik“ oder „12“ statt „zwölf“ in `build/tts_qa.txt`
 sind nur Schreibweisen der Spracherkennung.
+
+## Qwen3-TTS (Stand 15.11.2026, Omas Mondmission)
+
+Natürlicher klingende Stimmen als VoxCPM2-Stimmentwürfe. Qwen3-TTS ist eine der Engines aus VoiceStudio, Lizenz Apache-2.0,
+kann Deutsch. Zwei Modelle: **VoiceDesign** (Stimme aus einer Beschreibung entwerfen) und **Base** (Stimme klonen, damit die
+Figur in jedem Satz gleich klingt). Die Standard-Engine von VoiceStudio (OmniVoice) ist nur nicht-kommerziell freigegeben.
+
+```bash
+# eigene Umgebung, nutzt torch und faster-whisper aus der VoxCPM-Umgebung vx mit (qwen-tts braucht transformers 4.57)
+python3 -m venv qw && echo "$(vx/bin/python -c 'import site;print(site.getsitepackages()[0])')" > "$(qw/bin/python -c 'import site;print(site.getsitepackages()[0])')/zz_vx_torch.pth"
+qw/bin/pip install qwen-tts
+# Download ohne Xet-Protokoll: der Xet-Server (cas-server.xethub.hf.co) ist in der Umgebung gesperrt, normales HTTP geht
+HF_HUB_DISABLE_XET=1 qw/bin/python -c "from huggingface_hub import snapshot_download as d; d('Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign', local_dir='models/Qwen3-TTS-VoiceDesign')"
+# Stimmen entwerfen (mit Whisper-Prüfung)
+QA_WHISPER=models/whisper-medium qw/bin/python engine/qwen3_engine.py design models/Qwen3-TTS-VoiceDesign <ausgabe> "<Beschreibung>||<Beschreibung>" "<Text>"
+```
+
+Vertonung: in `script.json` `"tts": {"engine": "qwen", "voice": "voice/<ref>.wav", "voice_text": "voice/<ref>.txt"}` und
+`build_timeline.py` mit `qw/bin/python` und dem **Base**-Modell als letztem Argument starten. Satz-Cache und Whisper-Prüfung wie bei VoxCPM2.

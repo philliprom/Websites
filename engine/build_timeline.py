@@ -40,7 +40,8 @@ def trim(audio, sr, thresh_db=-42.0, pad=0.03):
 def cache_key(text, style, ref, tts):
     import hashlib
     h = hashlib.sha1(open(ref, "rb").read()).hexdigest()[:12]
-    return hashlib.sha1(f"{text}|{style}|{h}|{tts.get('cfg', 2.0)}|{tts.get('steps', 10)}".encode()).hexdigest()[:16]
+    eng = "" if tts.get("engine", "voxcpm") == "voxcpm" else f"|{tts['engine']}"  # alte VoxCPM-Caches bleiben gültig
+    return hashlib.sha1(f"{text}|{style}|{h}|{tts.get('cfg', 2.0)}|{tts.get('steps', 10)}{eng}".encode()).hexdigest()[:16]
 
 
 def sf_read(path):
@@ -61,6 +62,10 @@ def build_voxcpm(script, model_dir):
     import re as _re
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import voxcpm_tts as V
+    # Sprach-Engine: VoxCPM2 (Standard) oder Qwen3-TTS ("engine": "qwen"); Whisper-Prüfung kommt immer aus voxcpm_tts
+    T = V
+    if script["tts"].get("engine") == "qwen":
+        import qwen3_engine as T
     sr = None  # wird aus dem Cache gelesen oder nach dem Laden des Modells gesetzt (Modell nur bei Bedarf laden)
     tts = script["tts"]
     ref = os.path.join(HERE, tts["voice"])
@@ -95,9 +100,9 @@ def build_voxcpm(script, model_dir):
             print(f"  Satz {gi + 1}/{len(groups)} aus Cache: WER {best[0]:.2f} | {hyp}", flush=True)
         for attempt in range(0 if best else tts.get("tries", 4)):
             if attempt == 0:
-                V.load(model_dir)
-                sr = V.sample_rate()
-            wav = V.clone(text, ref, ref_text, seed=tts.get("seed", 7) + 1000 * gi + attempt,
+                T.load(model_dir)
+                sr = T.sample_rate()
+            wav = T.clone(text, ref, ref_text, seed=tts.get("seed", 7) + 1000 * gi + attempt,
                           cfg=tts.get("cfg", 2.0), steps=tts.get("steps", 10), style=style)
             wav = trim(np.asarray(wav, dtype=np.float32), sr)
             words, hyp = V.asr_words(wav, sr)
@@ -189,7 +194,7 @@ def main():
     os.makedirs(BUILD, exist_ok=True)
     script = json.load(open(os.path.join(HERE, "script.json"), encoding="utf-8"))
     segs = []
-    if script.get("tts", {}).get("engine") == "voxcpm":
+    if script.get("tts", {}).get("engine") in ("voxcpm", "qwen"):
         sr, pieces, timing, qa, t = build_voxcpm(script, model)
         for i, s in enumerate(script["segments"]):
             a0, a1 = timing[i]
