@@ -82,10 +82,31 @@
     },
     {
       "id": "s02",
-      "say": "Die Rakete habe ich aus meinem alten Heizöl-Tank gebaut.",
+      "say": "Mein Heinz ist neunzehnhundertvierundsiebzig zum Mond geflogen. Jetzt hole ich ihn zurück!",
+      "caps": [
+        "MEIN ^HEINZ IST ^1974",
+        "ZUM MOND GEFLOGEN.",
+        "JETZT HOLE ICH",
+        "IHN ^ZURÜCK!"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "card",
+          -0.05
+        ],
+        [
+          "whoosh",
+          2.6
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Die Rakete habe ich aus seinem alten Heizöl-Tank gebaut.",
       "caps": [
         "DIE RAKETE HABE ICH AUS",
-        "MEINEM ALTEN ^HEIZÖLTANK",
+        "SEINEM ALTEN ^HEIZÖLTANK",
         "GEBAUT."
       ],
       "gap": 0.15,
@@ -109,7 +130,7 @@
       ]
     },
     {
-      "id": "s03",
+      "id": "s04",
       "say": "Nur Herr Krause vom Gartenverein ist dagegen.",
       "caps": [
         "NUR ^HERR ^KRAUSE",
@@ -133,13 +154,13 @@
       ]
     },
     {
-      "id": "s04",
+      "id": "s05",
       "say": "Der kann mir mal den Buckel runterrutschen!",
       "caps": [
         "DER KANN MIR MAL",
         "DEN ^BUCKEL RUNTERRUTSCHEN!"
       ],
-      "gap": 0.35,
+      "gap": 0.3,
       "sfx": [
         [
           "whoosh",
@@ -152,7 +173,7 @@
       ]
     },
     {
-      "id": "s05",
+      "id": "s06",
       "say": "Aber der Tank ist noch leer.",
       "caps": [
         "ABER DER ^TANK",
@@ -175,7 +196,7 @@
       ]
     },
     {
-      "id": "s06",
+      "id": "s07",
       "say": "Jeder Kommentar ist ein Liter Treibstoff.",
       "caps": [
         "JEDER ^KOMMENTAR",
@@ -198,7 +219,7 @@
       ]
     },
     {
-      "id": "s07",
+      "id": "s08",
       "say": "Bei hundert Litern heben wir ab!",
       "caps": [
         "BEI ^100 LITERN",
@@ -221,12 +242,12 @@
       ]
     },
     {
-      "id": "s08",
-      "say": "Und jeder, der tankt, kommt mit Namen auf die Rakete.",
+      "id": "s09",
+      "say": "Und jeder, der tankt, kommt in meine Bodenkontrolle.",
       "caps": [
         "UND JEDER, DER TANKT,",
-        "KOMMT MIT ^NAMEN",
-        "AUF DIE ^RAKETE!"
+        "KOMMT IN MEINE",
+        "^BODENKONTROLLE!"
       ],
       "gap": 0.6,
       "sfx": [
@@ -236,26 +257,50 @@
         ],
         [
           "brush",
-          0.45
+          0.6
         ],
         [
           "brush",
-          1.1
+          1.2
         ],
         [
           "sparkle",
-          1.6
+          1.9
         ]
       ]
     },
     {
-      "id": "s09",
-      "say": "Also: Schreib Tanken!",
+      "id": "s10",
+      "say": "Und ganz unten steht: Vorsicht vor den … was?!",
       "caps": [
-        "ALSO: SCHREIB",
-        "^„TANKEN“! ⛽"
+        "UND GANZ UNTEN STEHT:",
+        "!VORSICHT VOR DEN …",
+        "^WAS?!"
       ],
-      "gap": 0.15,
+      "gap": 0.4,
+      "sfx": [
+        [
+          "card",
+          -0.1
+        ],
+        [
+          "sting",
+          "e-0.6"
+        ],
+        [
+          "moo",
+          "e+0.15"
+        ]
+      ]
+    },
+    {
+      "id": "s11",
+      "say": "Egal! Schreib Tanken!",
+      "caps": [
+        "EGAL!",
+        "SCHREIB ^„TANKEN“! ⛽"
+      ],
+      "gap": 0.55,
       "sfx": [
         [
           "whoosh",
@@ -264,10 +309,6 @@
         [
           "ding",
           "e+0.0"
-        ],
-        [
-          "moo",
-          "e+0.6"
         ]
       ]
     }

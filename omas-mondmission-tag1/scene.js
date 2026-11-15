@@ -39,6 +39,7 @@
     <radialGradient id="gFireGlow"><stop offset="0" stop-color="#FFF1B0" stop-opacity=".95"/><stop offset=".4" stop-color="#FFB040" stop-opacity=".5"/><stop offset="1" stop-color="#FF6A20" stop-opacity="0"/></radialGradient>
     <radialGradient id="gLamp"><stop offset="0" stop-color="#FFF4C8" stop-opacity=".95"/><stop offset=".4" stop-color="#FFC870" stop-opacity=".35"/><stop offset="1" stop-color="#FFB050" stop-opacity="0"/></radialGradient>
     <mask id="mMoon"><circle r="56" fill="#fff"/><circle cx="24" cy="-16" r="50" fill="#000"/></mask>
+    <clipPath id="cpBoard" clipPathUnits="userSpaceOnUse"><rect id="cpBoardR" x="-320" y="-1040" width="0" height="80"/></clipPath>
     <clipPath id="cpKrause" clipPathUnits="userSpaceOnUse"><rect x="1400" y="-2000" width="2000" height="3480"/></clipPath>
     <clipPath id="cpNames" clipPathUnits="userSpaceOnUse"><rect id="cpNamesR" x="-165" y="-410" width="0" height="170"/></clipPath>
     <filter id="fBlur2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"/></filter>
@@ -242,12 +243,11 @@
         <text x="-6" y="-456" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="64" letter-spacing="5" fill="#F4EEDC" opacity=".93">HEIZÖL</text>
         <g transform="translate(70,-232)"><rect x="-44" y="-18" width="88" height="34" rx="5" fill="#D9DDE3" stroke="${OUT}" stroke-width="3"/>
           <text x="0" y="6" text-anchor="middle" font-family="Nunito" font-weight="900" font-size="17" fill="${OUT}">BJ. 1974</text></g>
-        <g id="rkNames">
-          <g transform="rotate(-5 0 -350)" opacity=".75">
-            <text id="rkNamesHint" x="-6" y="-366" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="30" fill="#F4FBEA" letter-spacing="2">UNTERSCHRIFTEN</text>
-            <text id="rkNamesHint2" x="-6" y="-330" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="30" fill="#F4FBEA" letter-spacing="2">ERWÜNSCHT!</text>
-          </g>
-          <g clip-path="url(#cpNames)"><text x="-2" y="-322" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="49" fill="#FFF8E8" stroke="${OUT}" stroke-width="4" paint-order="stroke" transform="rotate(-6 0 -330)">DEIN NAME?</text></g>
+        <g id="rkNames" transform="translate(48,-352) rotate(-6)">
+          <path d="M0 26 C-46 -6 -44 -44 -18 -46 C-6 -47 0 -38 0 -30 C0 -38 6 -47 18 -46 C44 -44 46 -6 0 26 Z" fill="none" stroke="#3D6544" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M0 26 C-46 -6 -44 -44 -18 -46 C-6 -47 0 -38 0 -30 C0 -38 6 -47 18 -46 C44 -44 46 -6 0 26 Z" fill="none" stroke="#B9DB98" stroke-width="2" stroke-linejoin="round" transform="translate(-2,-2)" opacity=".7"/>
+          <text x="0" y="-12" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="22" fill="#2F5636">H+G</text>
+          <text x="0" y="52" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="17" fill="#2F5636" opacity=".85">1974</text>
         </g>
         <g id="rkNameLayer"></g>
         <g transform="translate(-96,-528) rotate(-30)"><rect x="-30" y="-10" width="60" height="20" rx="3" fill="#C8CCD3" stroke="${OUT}" stroke-width="3"/></g>
@@ -368,8 +368,20 @@
       <text x="0" y="${-BOARD.h - 190}" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="34" fill="#F4F1E6" opacity=".85" letter-spacing="3">KUHWEIDE · MISSION MOND</text>
       <path d="M${-BOARD.w / 2 + 40} ${-BOARD.h - 166} H${BOARD.w / 2 - 40}" stroke="#F4F1E6" stroke-width="3" opacity=".5" stroke-dasharray="14 10"/>
       <g id="boardNames"></g>
+      <g id="boardChalk"><g clip-path="url(#cpBoard)"><text x="-312" y="-985" font-family="Fredoka" font-weight="600" font-size="46" fill="#FFFDF4" transform="rotate(-2 -312 -985)">DEIN NAME?</text></g>
+        <g id="chalk" style="display:none"><rect x="-6" y="-46" width="16" height="56" rx="5" fill="#FFFDF4" stroke="${OUT}" stroke-width="3" transform="rotate(24)"/></g></g>
       <rect x="${BOARD.w / 2 - 120}" y="-404" width="90" height="16" rx="6" fill="#EDE6D3" transform="rotate(-8 ${BOARD.w / 2 - 75} -396)"/>
     </g>`;
+  function boardSlotsMarkup(n = 24) {
+    const cols = 2, rows = n / cols, top = -1000, colW = (BOARD.w - 60) / cols, lh = 56;
+    let o = '';
+    for (let i = 0; i < n; i++) {
+      const c = Math.floor(i / rows), r = i % rows, x = -BOARD.w / 2 + 30 + c * colW + 12, y = top + r * lh + 15;
+      o += `<text x="${x}" y="${y}" font-family="Fredoka" font-weight="600" font-size="30" fill="#F4F1E6" opacity="${i === 0 ? 0.9 : 0.4}">${i + 1}.</text>`;
+      if (i > 0) o += `<path d="M${x + 52} ${y + 2} H${x + colW - 50}" stroke="#F4F1E6" stroke-width="3" opacity=".25" stroke-dasharray="10 9"/>`;
+    }
+    return o + `<text x="0" y="-352" text-anchor="middle" font-family="Fredoka" font-weight="600" font-size="30" fill="#FFD43B" opacity=".9">… und Platz für alle! ⛽</text>`;
+  }
   function boardNamesMarkup(list) {
     const cols = list.length > 66 ? 3 : 2, rows = Math.ceil(list.length / cols);
     const top = -BOARD.h - 120, bottom = -330, colW = (BOARD.w - 60) / cols;
@@ -383,6 +395,81 @@
       return `<text x="${x.toFixed(0)}" y="${y.toFixed(0)}" font-family="Fredoka" font-weight="600" font-size="${fs.toFixed(1)}" fill="#F4F1E6" opacity="${(0.82 + R() * 0.18).toFixed(2)}" transform="rotate(${((R() - 0.5) * 3).toFixed(1)} ${x.toFixed(0)} ${y.toFixed(0)})">${i + 1}. ${nm}</text>`;
     }).join('');
   }
+
+  // ---------------------------------------------------------------- Postkarte vom Mond (Overlay, 820×540)
+  const INK = '#2A3F8F';
+  const postcardMarkup = () => {
+    const R = rng(9);
+    let st = '';
+    for (let i = 0; i < 46; i++) st += `<circle cx="${(36 + R() * 748).toFixed(0)}" cy="${(36 + R() * 300).toFixed(0)}" r="${(1.4 + R() * 2.6).toFixed(1)}" fill="#FFF8E6" opacity="${(0.45 + R() * 0.55).toFixed(2)}"/>`;
+    const tear = 'M18 0 L802 0 Q820 0 820 18 L820 404 L796 420 L772 402 L748 424 L722 404 L698 426 L672 406 L648 428 L622 408 L598 430 L574 410 L548 432 L522 414 L498 434 L484 470 L500 498 L482 520 L494 540 L18 540 Q0 540 0 522 L0 18 Q0 0 18 0 Z';
+    const hand = (x, y, size, txt, rot, col = INK, w = 600) => `<text x="${x}" y="${y}" font-family="Fredoka" font-weight="${w}" font-size="${size}" fill="${col}" transform="rotate(${rot} ${x} ${y})">${txt}</text>`;
+    return `
+    <div id="postcard" class="ov"><svg viewBox="-10 -10 840 560" width="840" height="560">
+      <defs>
+        <linearGradient id="pcSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141A45"/><stop offset="1" stop-color="#3B3277"/></linearGradient>
+        <clipPath id="pcClip"><path d="${tear}"/></clipPath>
+      </defs>
+      <g id="pcFront">
+        <rect x="0" y="0" width="820" height="540" rx="18" fill="#FFF8E8" stroke="${NAVY}" stroke-width="8"/>
+        <rect x="24" y="24" width="772" height="492" rx="8" fill="url(#pcSky)"/>
+        ${st}
+        <g transform="translate(112,168)"><circle r="40" fill="#4FA3E0" stroke="${NAVY}" stroke-width="3"/><path d="M-26 -12 q18 -14 34 2 q-6 18 -26 14 z M8 16 q16 -4 22 10 q-14 10 -24 0 z" fill="#5CC27A"/></g>
+        <path d="M24 404 Q200 330 410 362 Q620 330 796 398 L796 516 L24 516 Z" fill="#E6DCC0"/>
+        <path d="M24 404 Q200 330 410 362 Q620 330 796 398" stroke="#FFF4DA" stroke-width="6" fill="none"/>
+        ${[[150, 452, 46, 12], [330, 480, 30, 9], [720, 450, 38, 10], [250, 418, 20, 6]].map(([x, y, rx, ry]) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="#CFC3A2"/><path d="M${x - rx} ${y} Q${x} ${y - ry * 1.4} ${x + rx} ${y}" stroke="#B3A684" stroke-width="3" fill="none"/>`).join('')}
+        <g transform="translate(652,420)">
+          <path d="M-30 0 L-30 -150 Q0 -214 30 -150 L30 0 Z" fill="#F4F4F6" stroke="${NAVY}" stroke-width="5"/>
+          <path d="M-30 -62 L-58 0 L-30 0 Z M30 -62 L58 0 L30 0 Z" fill="#E8433E" stroke="${NAVY}" stroke-width="5" stroke-linejoin="round"/>
+          <circle cx="0" cy="-112" r="13" fill="#8FD3F4" stroke="${NAVY}" stroke-width="4"/>
+          <path d="M-30 -36 H30" stroke="#E8433E" stroke-width="9"/>
+        </g>
+        <g transform="translate(548,428) scale(.55)"><path d="M-30 0 Q-34 -50 0 -54 Q34 -50 30 0 Z" fill="#3F6FC2" stroke="${NAVY}" stroke-width="5"/><circle cx="0" cy="-70" r="20" fill="#F3CDB0" stroke="${NAVY}" stroke-width="5"/><path d="M-22 -64 Q0 -28 22 -64 Z" fill="#fff" stroke="${NAVY}" stroke-width="4"/><path d="M-24 -80 L4 -146 L22 -80 Z" fill="#E8433E" stroke="${NAVY}" stroke-width="5" stroke-linejoin="round"/></g>
+        <g transform="translate(450,430)">
+          <rect x="-24" y="-62" width="20" height="62" rx="7" fill="#F28C28" stroke="${NAVY}" stroke-width="4"/><rect x="4" y="-62" width="20" height="62" rx="7" fill="#F28C28" stroke="${NAVY}" stroke-width="4"/>
+          <ellipse cx="-14" cy="2" rx="18" ry="8" fill="#3A3346"/><ellipse cx="14" cy="2" rx="18" ry="8" fill="#3A3346"/>
+          <path d="M-30 -110 Q-50 -92 -48 -66" stroke="${NAVY}" stroke-width="20" stroke-linecap="round" fill="none"/><path d="M-30 -110 Q-50 -92 -48 -66" stroke="#F28C28" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <path id="pcWave" d="M30 -110 Q52 -132 56 -162" stroke="${NAVY}" stroke-width="20" stroke-linecap="round" fill="none"/><path d="M30 -110 Q52 -132 56 -162" stroke="#F28C28" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <circle cx="56" cy="-168" r="11" fill="#F1C6A0" stroke="${NAVY}" stroke-width="4"/>
+          <rect x="-32" y="-124" width="64" height="74" rx="20" fill="#F28C28" stroke="${NAVY}" stroke-width="5"/>
+          <path d="M-31 -86 H31" stroke="#C9601A" stroke-width="7"/><rect x="-8" y="-92" width="16" height="12" rx="3" fill="#FFD43B" stroke="${NAVY}" stroke-width="3"/>
+          <circle cx="0" cy="-156" r="29" fill="#F1C6A0" stroke="${NAVY}" stroke-width="4"/>
+          <path d="M-30 -160 Q-30 -192 0 -192 Q30 -192 30 -160 Q22 -178 0 -178 Q-22 -178 -30 -160 Z" fill="#6B4423" stroke="${NAVY}" stroke-width="3"/>
+          <rect x="-31" y="-166" width="7" height="22" rx="3" fill="#6B4423"/><rect x="24" y="-166" width="7" height="22" rx="3" fill="#6B4423"/>
+          <circle cx="-11" cy="-158" r="10" fill="#BFE6FF" fill-opacity=".6" stroke="${NAVY}" stroke-width="3.5"/><circle cx="11" cy="-158" r="10" fill="#BFE6FF" fill-opacity=".6" stroke="${NAVY}" stroke-width="3.5"/>
+          <circle cx="-11" cy="-157" r="3.5" fill="${NAVY}"/><circle cx="11" cy="-157" r="3.5" fill="${NAVY}"/>
+          <path d="M-14 -141 Q0 -150 14 -141 Q0 -136 -14 -141 Z" fill="#6B4423"/><path d="M-9 -134 Q0 -126 9 -134" stroke="${NAVY}" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <circle cx="0" cy="-158" r="44" fill="#CDEBFF" fill-opacity=".16" stroke="#EAF7FF" stroke-width="5"/>
+          <path d="M-30 -182 Q-18 -198 2 -200" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8"/>
+        </g>
+        <text x="450" y="104" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="60" fill="#FFD43B" stroke="${NAVY}" stroke-width="12" paint-order="stroke" stroke-linejoin="round" letter-spacing="2">GRÜSSE VOM MOND</text>
+        <g transform="translate(60,488) rotate(-6)"><rect x="-8" y="-30" width="98" height="40" rx="6" fill="#FFF8E8" stroke="${NAVY}" stroke-width="4"/><text x="41" y="0" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="28" fill="${NAVY}">1974</text></g>
+      </g>
+      <g id="pcBack" style="display:none">
+        <g clip-path="url(#pcClip)">
+          <rect x="0" y="0" width="820" height="540" fill="#FFF6E2"/>
+          <path d="M0 0 H820 V540 H0 Z" fill="none" stroke="${NAVY}" stroke-width="16"/>
+          <path d="M452 46 V390" stroke="#C9B99A" stroke-width="4"/>
+          <g transform="translate(700,108) rotate(4)"><rect x="-60" y="-70" width="120" height="140" fill="#FFD43B" stroke="${NAVY}" stroke-width="4" stroke-dasharray="8 5"/>
+            <rect x="-48" y="-58" width="96" height="116" fill="#2A3270"/><circle cx="-6" cy="-6" r="30" fill="#FFF4D6"/><circle cx="8" cy="-14" r="27" fill="#2A3270"/>
+            <text x="0" y="48" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="17" fill="#FFD43B">MONDPOST</text></g>
+          <g transform="translate(600,124) rotate(-12)" opacity=".75"><circle r="50" fill="none" stroke="#7A4A8A" stroke-width="5"/>
+            <text x="0" y="-8" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="17" fill="#7A4A8A">MOND</text>
+            <text x="0" y="16" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="20" fill="#7A4A8A">1974</text>
+            <path d="M54 -18 Q90 -30 126 -18 M54 0 Q90 -12 126 0 M54 18 Q90 6 126 18" stroke="#7A4A8A" stroke-width="5" fill="none"/></g>
+          ${hand(484, 262, 38, 'An Gisela', -2)}${hand(484, 316, 34, 'Parzelle 17', -2)}${hand(484, 368, 34, 'Kuhweide', -2)}
+          <path d="M478 274 H780 M478 328 H780 M478 380 H780" stroke="#C9B99A" stroke-width="3"/>
+          ${hand(40, 104, 46, 'Liebe Gisela,', -3)}
+          ${hand(70, 178, 60, 'komm nach!', -4, INK, 700)}
+          ${hand(110, 250, 46, 'Dein Heinz', -3)}<path transform="translate(352,232) rotate(-8) scale(1.1)" d="M0 14 C-22 -2 -20 -20 -9 -21 C-3 -21 0 -17 0 -13 C0 -17 3 -21 9 -21 C20 -20 22 -2 0 14 Z" fill="#E8433E"/>
+          ${hand(40, 330, 34, 'PS: Bring Kuchen mit.', -2)}
+          <text id="pcPPS" x="468" y="452" text-anchor="end" font-family="Fredoka" font-weight="700" font-size="36" fill="#D23A3A" transform="rotate(-2 468 452)">PPS: Vorsicht vor den M</text>
+        </g>
+        <path d="${tear}" fill="none" stroke="${NAVY}" stroke-width="7" stroke-linejoin="round"/>
+      </g>
+    </svg></div>`;
+  };
+  document.getElementById('ov').insertAdjacentHTML('beforeend', postcardMarkup());
 
   // ---------------------------------------------------------------- Oma Gisela (Rig wie Kalle, Füße bei 0)
   const omaMarkup = (p) => `
@@ -617,7 +704,7 @@
     <g id="omaW">${omaMarkup('om')}</g>
     <g id="bertaW">${bertaMarkup('bb')}</g>
     <g id="knockW">${knockMarkup()}</g>
-    <g id="boardW" transform="translate(470,1560) scale(.62)">${boardMarkup()}</g>
+    <g id="boardW" transform="translate(330,1560) scale(.62)">${boardMarkup()}</g>
     <g id="smokeF"></g>
     <g id="fireGlow" style="display:none"><circle r="420" fill="url(#gFireGlow)"/></g>
     ${fgMarkup()}`;
@@ -629,7 +716,7 @@
     berta: { show: true, x: W.berta.x, y: W.berta.y, s: W.berta.s, moo: false, fog: 0 },
     krause: { up: 0, wag: false, mouth: false, sign: false, blown: false, soot: 0, bubble: null },
     rocket: { lift: 0, fire: 0, shake: 0, ignite: null, portFace: false, needle: 0, tags: null, paint: null, puff: false, names: null },
-    knock: null, hook: null, hud: null, demo: null, cta: null, flash: null, grade: 0, gnomeHat: null, board: null,
+    knock: null, hook: null, hud: null, demo: null, cta: null, flash: null, grade: 0, gnomeHat: null, board: null, boardWrite: null, postcard: null,
     ui: { title: 999 },
   });
 
@@ -641,6 +728,12 @@
       S.berta.moo = lt > 2.0 && lt < 2.7; S.berta.fog = clamp((lt - 2.0) * 2) * clamp(3.4 - lt);
     },
     s02: (S, t, seg, lt, d) => {
+      // Postkarte vom Mond: erst Vorderseite (Heinz 1974), dann Rückseite („Komm nach!“)
+      S.cam = camLerp([1250, 1330, 1.42], [1255, 1325, 1.5], clamp(lt / d));
+      S.oma.expr = lt > 2.6 ? 'happy' : 'smile'; S.oma.look = [-4, -9]; S.oma.armR = -40; S.oma.armL = 40;
+      S.postcard = { t0: seg.start - 0.05, flip: cue('s02', 'whoosh') - 0.1, out: seg.end - 0.2 };
+    },
+    s03: (S, t, seg, lt, d) => {
       const sp = seg.speechEnd - seg.start;
       if (lt < sp + 0.15) {
         S.cam = camLerp([1030, 1420, 1.3], [1030, 700, 1.3], E.inOut(clamp(lt / sp)));
@@ -653,31 +746,31 @@
         S.berta.moo = k > 0.08 && k < 0.85; S.berta.fog = clamp(k * 2.4) * clamp(1.6 - k * 0.4);
       }
     },
-    s03: (S, t, seg, lt) => {
+    s04: (S, t, seg, lt) => {
       S.cam = camLerp([1930, 1150, 1.25], [1935, 1140, 1.32], clamp(lt / 3));
       S.krause.up = E.back(prog(lt, 0.25, 0.4)); S.krause.wag = lt > 0.8; S.krause.mouth = lt > 0.5;
       S.krause.bubble = seg.start + 0.6;
     },
-    s04: (S, t, seg, lt) => {
+    s05: (S, t, seg, lt) => {
       S.cam = camLerp([1600, 1270, 0.96], [1610, 1265, 1.0], clamp(lt / 3));
       S.oma.expr = 'smile'; S.oma.look = [6, -2]; S.oma.tilt = 6;
       S.oma.armR = -150 + Math.sin(t * 16) * 10; S.oma.fist = true;
       const duck = prog(t, seg.speechEnd - 0.05, 0.25);
       S.krause.up = 1 - E.inOut(duck); S.krause.wag = duck < 0.2; S.krause.mouth = duck < 0.2;
     },
-    s05: (S, t, seg, lt) => {
+    s06: (S, t, seg, lt) => {
       S.cam = camLerp([955, 1286, 2.05], [960, 1288, 2.2], clamp(lt / 2));
-      S.knock = [cue('s05', 'klong', 0), cue('s05', 'klong', 1)];
+      S.knock = [cue('s06', 'klong', 0), cue('s06', 'klong', 1)];
       S.oma.show = false;
     },
-    s06: (S, t, seg, lt) => {
+    s07: (S, t, seg, lt) => {
       S.cam = camLerp([1130, 1250, 1.08], [1140, 1245, 1.13], clamp(lt / 3));
       S.hud = { t0: seg.start + 0.05, value: 0 };
-      S.demo = { t0: cue('s06', 'card'), fly: cue('s06', 'gulp') - 0.25, plus: cue('s06', 'gulp') };
+      S.demo = { t0: cue('s07', 'card'), fly: cue('s07', 'gulp') - 0.25, plus: cue('s07', 'gulp') };
       S.oma.expr = 'smile'; S.oma.look = [-6, -4]; S.oma.armR = -60;
     },
-    s07: (S, t, seg, lt, d) => {
-      const ig = cue('s07', 'rocket') - 0.1;
+    s08: (S, t, seg, lt, d) => {
+      const ig = cue('s08', 'rocket') - 0.1;
       const up = Math.max(0, t - ig - 0.35);
       S.rocket.ignite = ig; S.rocket.fire = clamp((t - ig) * 3); S.rocket.lift = 520 * up * up; S.rocket.portFace = true;
       S.cam = [1040, 1180 - Math.min(S.rocket.lift * 0.6, 520), 0.84 + clamp((t - ig) / 2) * 0.05];
@@ -687,18 +780,25 @@
       S.flash = seg.start; S.grade = 1;
       S.ui.chip = { text: '🚀 SO SIEHT ES BEI 100 LITERN AUS:', t0: seg.start + 0.05, cls: 'yellow', top: 250 };
     },
-    s08: (S, t, seg, lt, d) => {
-      S.cam = camLerp([1000, 1172, 2.25], [1000, 1190, 2.0], E.inOut(clamp(lt / d)));
-      S.rocket.paint = { t0: seg.start + 0.45, d: 1.4 };
+    s09: (S, t, seg, lt, d) => {
+      // Kreidetafel „Bodenkontrolle“: „DEIN NAME?“ wird auf Platz 1 geschrieben
+      S.cam = camLerp([360, 1150, 1.25], [335, 1100, 1.5], E.inOut(clamp(lt / 1.2)));
+      S.boardWrite = { t0: cue('s09', 'brush', 0) - 0.1, d: 1.3 };
       S.oma.show = false;
     },
-    s09: (S, t, seg, lt) => {
+    s10: (S, t, seg, lt, d) => {
+      // „PPS: Vorsicht vor den M…“ – der Rest ist abgerissen
+      S.cam = camLerp([1240, 1330, 1.55], [1245, 1325, 1.62], clamp(lt / d));
+      S.oma.expr = lt > d - 1.0 ? 'o' : 'worried'; S.oma.look = [-3, -9]; S.oma.armR = -30; S.oma.armL = 30;
+      S.postcard = { t0: seg.start - 0.1, back: true, zoom: { t0: seg.start + 0.4, d: 0.7 }, out: seg.end - 0.05 };
+      const m = cue('s10', 'moo'); S.berta.moo = t > m && t < m + 0.7; S.berta.fog = clamp((t - m) * 2.4);
+    },
+    s11: (S, t, seg, lt) => {
       S.cam = camLerp([1395, 1325, 1.06], [1400, 1322, 1.1], clamp(lt / 3));
       S.hud = { t0: seg.start + 0.05, value: 0, big: true };
       S.cta = seg.start + 0.25;
       S.oma.expr = 'smile'; S.oma.armR = -168; S.oma.fingerR = true; S.oma.look = [0, -6];
-      const m = cue('s09', 'moo'); S.berta.moo = t > m && t < m + 0.8; S.berta.fog = clamp((t - m) * 2.4) * clamp(1.8 - (t - m) * 0.5);
-      S.rocket.paint = { t0: -10, d: 0.1 };
+      S.berta.fog = clamp(1 - lt * 0.8);
     },
     boardTest: (S) => {
       S.cam = [760, 1080, 0.95]; S.board = window.TEST_NAMES || []; S.oma.expr = 'happy'; S.oma.talk = false; S.oma.armL = 150; S.oma.x = 960;
@@ -876,6 +976,20 @@
       ct.style.display = 'block';
       ct.style.transform = `translateX(-50%) rotate(-3deg) scale(${Math.max(0.001, s) * (1 + 0.045 * Math.max(0, Math.sin(t * 8)))})`;
     } else ct.style.display = 'none';
+    // Postkarte vom Mond
+    const pc = $('postcard');
+    if (S.postcard && t >= S.postcard.t0 && t < S.postcard.out + 0.3) {
+      const P = S.postcard;
+      const s0 = popS(t, P.t0, 0.35) * (1 - E.in(prog(t, P.out, 0.3)));
+      let fx = 1, back = !!P.back;
+      if (P.flip !== undefined && t >= P.flip) { const f = clamp((t - P.flip) / 0.36); fx = Math.abs(Math.cos(Math.PI * f)); back = f > 0.5; }
+      const zk = P.zoom ? E.inOut(prog(t, P.zoom.t0, P.zoom.d)) : 0, z = 1 + 1.15 * zk;
+      disp($('pcFront'), !back); disp($('pcBack'), back);
+      pc.style.display = 'block'; pc.style.opacity = clamp(s0 * 3);
+      pc.style.transform = `translate(${156 * z * zk}px,${(130 - 182 * z) * zk}px) rotate(${-3 + Math.sin(t * 2) * 1.2}deg) scale(${Math.max(0.001, s0 * z * fx)},${Math.max(0.001, s0 * z)})`;
+      setT($('pcWave'), `rotate(${Math.sin(t * 9) * 14} 30 -110)`);
+      $('pcPPS').setAttribute('fill', zk > 0.6 && Math.sin(t * 10) > 0 ? '#FF2D2D' : '#D23A3A');
+    } else pc.style.display = 'none';
     // KLONG!
     ['klong1', 'klong2'].forEach((id, i) => {
       const el = $(id), k0 = S.knock ? S.knock[i] : null;
@@ -939,9 +1053,15 @@
     drawRocket(S, t);
     setT($('rocketW'), `translate(${W.rocket.x},${W.rocket.y})`);
     const bd = $('board');
-    if (S.board) { disp(bd, true); const k = S.board.join('|'); if (bd.dataset.k !== k) { $('boardNames').innerHTML = boardNamesMarkup(S.board); bd.dataset.k = k; } }
-    else disp(bd, false);
-    disp($('gnomeW'), !S.board);
+    disp(bd, true);
+    const k = (S.board || []).join('|');
+    if (bd.dataset.k !== k || bd.dataset.k === undefined) { $('boardNames').innerHTML = S.board && S.board.length ? boardNamesMarkup(S.board) : boardSlotsMarkup(); bd.dataset.k = k; }
+    disp($('boardChalk'), !(S.board && S.board.length));
+    const BW = S.boardWrite, bp = BW ? clamp((t - BW.t0) / BW.d) : 1;
+    $('cpBoardR').setAttribute('width', (bp * 330).toFixed(1));
+    const ch = $('chalk');
+    if (BW && t > BW.t0 - 0.2 && t < BW.t0 + BW.d + 0.3) { disp(ch, true); setT(ch, `translate(${-300 + bp * 290},${-990 + Math.sin(bp * 40) * 8})`); }
+    else disp(ch, false);
     drawOverlay(S, t);
   }
 

@@ -9,30 +9,36 @@ segments = [
     {"id": "s01", "say": "Ich bin achtundsiebzig und fliege mit meiner Kuh zum Mond.",
      "caps": ["ICH BIN ^78", "UND FLIEGE MIT MEINER ^KUH", "ZUM ^MOND! 🚀"], "gap": 0.0,
      "sfx": [["title", 0.0], ["sparkle", 0.5]]},
-    {"id": "s02", "say": "Die Rakete habe ich aus meinem alten Heizöl-Tank gebaut.",
-     "caps": ["DIE RAKETE HABE ICH AUS", "MEINEM ALTEN ^HEIZÖLTANK", "GEBAUT."], "gap": 0.15,
+    {"id": "s02", "say": "Mein Heinz ist neunzehnhundertvierundsiebzig zum Mond geflogen. Jetzt hole ich ihn zurück!",
+     "caps": ["MEIN ^HEINZ IST ^1974", "ZUM MOND GEFLOGEN.", "JETZT HOLE ICH", "IHN ^ZURÜCK!"], "gap": 0.15,
+     "sfx": [["card", -0.05], ["whoosh", 2.6]]},
+    {"id": "s03", "say": "Die Rakete habe ich aus seinem alten Heizöl-Tank gebaut.",
+     "caps": ["DIE RAKETE HABE ICH AUS", "SEINEM ALTEN ^HEIZÖLTANK", "GEBAUT."], "gap": 0.15,
      "sfx": [["whoosh", -0.05], ["pop", 0.7], ["pop", 1.5], ["pop", 2.3]]},
-    {"id": "s03", "say": "Nur Herr Krause vom Gartenverein ist dagegen.",
+    {"id": "s04", "say": "Nur Herr Krause vom Gartenverein ist dagegen.",
      "caps": ["NUR ^HERR ^KRAUSE", "VOM GARTENVEREIN", "IST !DAGEGEN."], "gap": 1.0,
      "sfx": [["moo", -0.95], ["scratch", -0.05], ["boing", 0.35]]},
-    {"id": "s04", "say": "Der kann mir mal den Buckel runterrutschen!",
-     "caps": ["DER KANN MIR MAL", "DEN ^BUCKEL RUNTERRUTSCHEN!"], "gap": 0.35,
+    {"id": "s05", "say": "Der kann mir mal den Buckel runterrutschen!",
+     "caps": ["DER KANN MIR MAL", "DEN ^BUCKEL RUNTERRUTSCHEN!"], "gap": 0.3,
      "sfx": [["whoosh", -0.05], ["squeak", "e+0.05"]]},
-    {"id": "s05", "say": "Aber der Tank ist noch leer.",
+    {"id": "s06", "say": "Aber der Tank ist noch leer.",
      "caps": ["ABER DER ^TANK", "IST NOCH !LEER."], "gap": 0.3,
      "sfx": [["whoosh", -0.05], ["klong", "e+0.05"], ["klong", "e+0.35"]]},
-    {"id": "s06", "say": "Jeder Kommentar ist ein Liter Treibstoff.",
+    {"id": "s07", "say": "Jeder Kommentar ist ein Liter Treibstoff.",
      "caps": ["JEDER ^KOMMENTAR", "IST ^1 LITER TREIBSTOFF! ⛽"], "gap": 0.6,
      "sfx": [["card", 0.15], ["gulp", 1.0], ["ding", 1.25]]},
-    {"id": "s07", "say": "Bei hundert Litern heben wir ab!",
+    {"id": "s08", "say": "Bei hundert Litern heben wir ab!",
      "caps": ["BEI ^100 LITERN", "HEBEN WIR ^AB! 🚀"], "gap": 0.2,
      "sfx": [["riser", -0.2], ["rocket", 0.25], ["cheer", "e+0.1"]]},
-    {"id": "s08", "say": "Und jeder, der tankt, kommt mit Namen auf die Rakete.",
-     "caps": ["UND JEDER, DER TANKT,", "KOMMT MIT ^NAMEN", "AUF DIE ^RAKETE!"], "gap": 0.6,
-     "sfx": [["whoosh", -0.05], ["brush", 0.45], ["brush", 1.1], ["sparkle", 1.6]]},
-    {"id": "s09", "say": "Also: Schreib Tanken!",
-     "caps": ["ALSO: SCHREIB", "^„TANKEN“! ⛽"], "gap": 0.15,
-     "sfx": [["whoosh", -0.05], ["ding", "e+0.0"], ["moo", "e+0.6"]]},
+    {"id": "s09", "say": "Und jeder, der tankt, kommt in meine Bodenkontrolle.",
+     "caps": ["UND JEDER, DER TANKT,", "KOMMT IN MEINE", "^BODENKONTROLLE!"], "gap": 0.6,
+     "sfx": [["whoosh", -0.05], ["brush", 0.6], ["brush", 1.2], ["sparkle", 1.9]]},
+    {"id": "s10", "say": "Und ganz unten steht: Vorsicht vor den … was?!",
+     "caps": ["UND GANZ UNTEN STEHT:", "!VORSICHT VOR DEN …", "^WAS?!"], "gap": 0.4,
+     "sfx": [["card", -0.1], ["sting", "e-0.6"], ["moo", "e+0.15"]]},
+    {"id": "s11", "say": "Egal! Schreib Tanken!",
+     "caps": ["EGAL!", "SCHREIB ^„TANKEN“! ⛽"], "gap": 0.55,
+     "sfx": [["whoosh", -0.05], ["ding", "e+0.0"]]},
 ]
 script = {
     "title": "Omas Mondmission – Tag 1", "voice": "qwen3-tts (Oma_Qwen_1)", "lead_in": 0.1, "tail": 2.4, "default_gap": 0.1,
@@ -44,10 +50,10 @@ script = {
 }
 open(os.path.join(HERE, "script.json"), "w", encoding="utf-8").write(json.dumps(script, ensure_ascii=False, indent=2) + "\n")
 
-cap = ("Oma (78) fliegt mit ihrer Kuh zum Mond 🚀🐄 Jeder Kommentar = 1 Liter Treibstoff. Bei 100 Litern heben wir ab! "
-       "Schreib TANKEN ⛽ #oma #mondmission #tag1 #kuh #fyp")
-pin = ("📌 So geht's: Jeder Kommentar = 1 Liter ⛽ Wir zählen ehrlich. Bei 100 Litern startet die Rakete, "
-       "und jeder, der tankt, kommt mit Namen auf die Rakete 🚀 Tank: 0 / 100")
+cap = ("Oma (78) holt Opa Heinz vom Mond 🚀🐄 Er ist 1974 hingeflogen und nie zurückgekommen. Jeder Kommentar = 1 Liter Treibstoff, "
+       "bei 100 Litern heben wir ab! Schreib TANKEN ⛽ Und was meint Heinz mit „Vorsicht vor den M…“? 👀 #oma #mondmission #tag1 #kuh #fyp")
+pin = ("📌 So geht's: Jeder Kommentar = 1 Liter ⛽ Wir zählen ehrlich. Bei 100 Litern startet die Rakete 🚀 "
+       "Jeder, der tankt, kommt mit Namen in Omas Bodenkontrolle (die Tafel im Garten). Tank: 0 / 100")
 os.makedirs(os.path.join(HERE, "out"), exist_ok=True)
 open(os.path.join(HERE, "out", "beschreibung.txt"), "w", encoding="utf-8").write(f"""OMAS MONDMISSION – TAG 1 · TEXTE ZUM POSTEN
 ============================================
@@ -64,7 +70,7 @@ Datei: titelbild.png
 PROFIL UMSTELLEN (direkt vor dem Posten)
 Name: Omas Mondmission 🚀
 Profilbild: profilbild_duo.png (Oma + Berta, die bisherigen Fans erkennen Berta; Alternative: profilbild_oma.png)
-Bio: Oma Gisela (78) & Kuh Berta fliegen zum Mond 🚀 Jeder Kommentar = 1 Liter Treibstoff. Start bei 100!
+Bio: Oma Gisela (78) holt Opa Heinz vom Mond 🚀🐄 Jeder Kommentar = 1 Liter Treibstoff. Start bei 100!
 Danach dieses Video oben anpinnen. Die alten FC-Kuhweide-Videos bleiben online.
 """)
 print(f"Tag 1: {len(segments)} Sätze")

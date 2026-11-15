@@ -8,6 +8,25 @@ Läuft seit 15.11.2026 auf dem bisherigen Kanal (@gruselwahl.de, vorher „FC Ku
 Oma Gisela (78) aus Kuhweide hat im Schrebergarten aus ihrem alten Heizöltank eine Rakete gebaut und will mit ihrer Kuh Berta
 zum Mond. **Jeder Kommentar = 1 Liter Treibstoff. Bei 100 Litern heben sie ab.** Wer tankt, kommt mit Namen auf die Rakete.
 
+## Roter Faden (seit 15.11. abends, vom Kanalinhaber gewünscht: „mehr Story“)
+
+**Oma holt Opa Heinz vom Mond zurück.** Heinz ist 1974 mit einer selbstgebauten Rakete gestartet und nie zurückgekommen
+(im Dorf heißt es: „Der ist nur Brötchen holen gegangen“). Oma findet in seinem alten Heizöltank (Bj. 1974, auf dem Tank ein
+eingeritztes Herz „H+G 1974“) eine Postkarte vom Mond: Vorderseite „Grüße vom Mond“ mit Heinz im Goldfischglas-Helm, orangem
+Overall, Koteletten, Brille, Schnurrbart, neben einer rot-weißen 70er-Rakete und einem Gartenzwerg. Rückseite: „Liebe Gisela,
+komm nach! Dein Heinz ♥ PS: Bring Kuchen mit. PPS: Vorsicht vor den M…“ (Rest abgerissen). Was meint Heinz? (Auflösung später:
+Mondkühe.)
+
+| Phase | Inhalt | Mitmachen |
+|---|---|---|
+| 1 Der Start | Tank füllen, Krause sabotiert, Testzündung geht schief, Start bei 100 Litern | Kommentar = 1 Liter, Namen auf die Tafel „Bodenkontrolle“ |
+| 2 Die Reise | Krause als blinder Passagier entdeckt (zu dritt), Meteoriten, Weltraumschrott, Tankleck | Funksprüche an Oma (die besten liest sie vor), Abstimmungen mit 2 Optionen |
+| 3 Der Mond | Heinz' Spuren (Brötchentüte 1974, Gartenzwerg im Krater), Mondkühe (Berta verliebt sich), Heinz finden mit Überraschung | Rätsel mitraten, Abstimmungen |
+| danach | Rückflug, Mars oder Heinz' nächstes Geheimnis | |
+
+Jede Folge endet mit einer offenen Frage. Namen stehen auf der Kreidetafel **„Bodenkontrolle · Kuhweide · Mission Mond“** im Garten
+(Entwurf: 94 Namen passen lesbar in 3 Spalten, bei Bedarf zweite Tafel), nicht mehr auf der Rakete.
+
 ## Figuren
 
 | Figur | Aussehen | Rolle |
