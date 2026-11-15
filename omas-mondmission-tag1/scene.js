@@ -353,6 +353,37 @@
     return svg;
   }
 
+  // ---------------------------------------------------------------- Namenstafel „Bodenkontrolle Kuhweide“ (Entwurf)
+  const BOARD = { w: 760, h: 900 };
+  const boardMarkup = () => `
+    <g id="board" style="display:none">
+      <ellipse cx="80" cy="16" rx="420" ry="26" fill="#2B3A1E" opacity=".28"/>
+      <path d="M-300 0 L-280 -360 M300 0 L280 -360" stroke="#8A5A34" stroke-width="26" stroke-linecap="round"/>
+      <rect x="${-BOARD.w / 2 - 34}" y="${-BOARD.h - 320}" width="${BOARD.w + 68}" height="${BOARD.h + 68}" rx="26" fill="#B5814F" ${sw}/>
+      <rect x="${-BOARD.w / 2 - 22}" y="${-BOARD.h - 308}" width="${BOARD.w + 44}" height="${BOARD.h + 44}" rx="18" fill="none" stroke="#D9A46C" stroke-width="6" opacity=".7"/>
+      <rect x="${-BOARD.w / 2}" y="${-BOARD.h - 286}" width="${BOARD.w}" height="${BOARD.h}" rx="10" fill="#2F4A3A" stroke="${OUT}" stroke-width="5"/>
+      <path d="M${-BOARD.w / 2 + 30} ${-BOARD.h - 250} Q0 ${-BOARD.h - 270} ${BOARD.w / 2 - 60} ${-BOARD.h - 240}" stroke="#FFFFFF" stroke-width="40" opacity=".04" fill="none"/>
+      <g transform="translate(0,${-BOARD.h - 300})"><rect x="-300" y="-58" width="600" height="96" rx="20" fill="#FFD43B" stroke="${OUT}" stroke-width="7"/>
+        <text x="0" y="12" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="54" fill="${OUT}">BODENKONTROLLE</text></g>
+      <text x="0" y="${-BOARD.h - 190}" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="34" fill="#F4F1E6" opacity=".85" letter-spacing="3">KUHWEIDE · MISSION MOND</text>
+      <path d="M${-BOARD.w / 2 + 40} ${-BOARD.h - 166} H${BOARD.w / 2 - 40}" stroke="#F4F1E6" stroke-width="3" opacity=".5" stroke-dasharray="14 10"/>
+      <g id="boardNames"></g>
+      <rect x="${BOARD.w / 2 - 120}" y="-404" width="90" height="16" rx="6" fill="#EDE6D3" transform="rotate(-8 ${BOARD.w / 2 - 75} -396)"/>
+    </g>`;
+  function boardNamesMarkup(list) {
+    const cols = list.length > 66 ? 3 : 2, rows = Math.ceil(list.length / cols);
+    const top = -BOARD.h - 120, bottom = -330, colW = (BOARD.w - 60) / cols;
+    const lh = Math.min(46, (bottom - top) / Math.max(1, rows));
+    const fs = Math.min(36, lh * 0.8, colW / 11);
+    const R = rng(77);
+    return list.map((n, i) => {
+      const c = Math.floor(i / rows), r = i % rows;
+      const x = -BOARD.w / 2 + 30 + c * colW + 12, y = top + r * lh + fs;
+      const nm = n.replace(/^@/, '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      return `<text x="${x.toFixed(0)}" y="${y.toFixed(0)}" font-family="Fredoka" font-weight="600" font-size="${fs.toFixed(1)}" fill="#F4F1E6" opacity="${(0.82 + R() * 0.18).toFixed(2)}" transform="rotate(${((R() - 0.5) * 3).toFixed(1)} ${x.toFixed(0)} ${y.toFixed(0)})">${i + 1}. ${nm}</text>`;
+    }).join('');
+  }
+
   // ---------------------------------------------------------------- Oma Gisela (Rig wie Kalle, Füße bei 0)
   const omaMarkup = (p) => `
   <g id="${p}">
@@ -586,6 +617,7 @@
     <g id="omaW">${omaMarkup('om')}</g>
     <g id="bertaW">${bertaMarkup('bb')}</g>
     <g id="knockW">${knockMarkup()}</g>
+    <g id="boardW" transform="translate(470,1560) scale(.62)">${boardMarkup()}</g>
     <g id="smokeF"></g>
     <g id="fireGlow" style="display:none"><circle r="420" fill="url(#gFireGlow)"/></g>
     ${fgMarkup()}`;
@@ -597,7 +629,7 @@
     berta: { show: true, x: W.berta.x, y: W.berta.y, s: W.berta.s, moo: false, fog: 0 },
     krause: { up: 0, wag: false, mouth: false, sign: false, blown: false, soot: 0, bubble: null },
     rocket: { lift: 0, fire: 0, shake: 0, ignite: null, portFace: false, needle: 0, tags: null, paint: null, puff: false, names: null },
-    knock: null, hook: null, hud: null, demo: null, cta: null, flash: null, grade: 0, gnomeHat: null,
+    knock: null, hook: null, hud: null, demo: null, cta: null, flash: null, grade: 0, gnomeHat: null, board: null,
     ui: { title: 999 },
   });
 
@@ -667,6 +699,12 @@
       S.oma.expr = 'smile'; S.oma.armR = -168; S.oma.fingerR = true; S.oma.look = [0, -6];
       const m = cue('s09', 'moo'); S.berta.moo = t > m && t < m + 0.8; S.berta.fog = clamp((t - m) * 2.4) * clamp(1.8 - (t - m) * 0.5);
       S.rocket.paint = { t0: -10, d: 0.1 };
+    },
+    boardTest: (S) => {
+      S.cam = [760, 1080, 0.95]; S.board = window.TEST_NAMES || []; S.oma.expr = 'happy'; S.oma.talk = false; S.oma.armL = 150; S.oma.x = 960;
+    },
+    boardClose: (S) => {
+      S.cam = [470, 1015, 1.75]; S.board = window.TEST_NAMES || []; S.oma.show = false;
     },
     namesTest: (S) => {
       S.cam = [1180, 1000, 1.0]; S.rocket.names = window.TEST_NAMES || []; S.oma.talk = false; S.oma.expr = 'happy'; S.oma.armR = -150; S.oma.fingerR = true;
@@ -900,6 +938,10 @@
     } else disp(kn, false);
     drawRocket(S, t);
     setT($('rocketW'), `translate(${W.rocket.x},${W.rocket.y})`);
+    const bd = $('board');
+    if (S.board) { disp(bd, true); const k = S.board.join('|'); if (bd.dataset.k !== k) { $('boardNames').innerHTML = boardNamesMarkup(S.board); bd.dataset.k = k; } }
+    else disp(bd, false);
+    disp($('gnomeW'), !S.board);
     drawOverlay(S, t);
   }
 
