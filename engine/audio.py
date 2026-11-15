@@ -443,6 +443,23 @@ def sfx_scratch():
     return y * np.sin(np.pi * t / t[-1]) * 0.5
 
 
+def sfx_klong():
+    """Hohles Klopfen auf einen leeren Metalltank."""
+    y = bell(150, 0.9, 0.5, partials=((1, 1, 5), (2.32, 0.6, 7), (4.25, 0.35, 11), (6.63, 0.2, 16)))
+    t = tt(0.03)
+    click = hp(rs.randn(len(t))) * np.exp(-t * 200) * 0.3
+    y[: len(click)] += click
+    return y
+
+
+def sfx_brush():
+    """Pinselstrich: gefiltertes Rauschen, das an- und abschwillt."""
+    t = tt(0.45)
+    p = t / t[-1]
+    n = onepole_lp(hp(rs.randn(len(t))), 2500)
+    return n * np.sin(np.pi * p) ** 1.5 * (0.7 + 0.3 * np.sin(2 * np.pi * 9 * t)) * 0.5
+
+
 SFX = {name[4:]: fn for name, fn in globals().items() if name.startswith("sfx_")}
 # Steuer-Marken ohne Klang: Musik aus ("mstop") und wieder an ("mgo")
 MUSIC_MARKS = ("mstop", "mgo")
