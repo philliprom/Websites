@@ -1,0 +1,203 @@
+{
+  "title": "FC Kuhweide – Winterpause",
+  "voice": "voxcpm2",
+  "lead_in": 0.1,
+  "tail": 2.2,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "voxcpm",
+    "voice": "../fc-kuhweide-tag1/voice/kalle_ref.wav",
+    "voice_text": "../fc-kuhweide-tag1/voice/kalle_ref.txt",
+    "cfg": 2.0,
+    "steps": 10
+  },
+  "music": {
+    "bpm": 96,
+    "inst": "vibes",
+    "clap": 0.6,
+    "ambience": 0.2,
+    "chords": [
+      [
+        60,
+        64,
+        67,
+        72
+      ],
+      [
+        57,
+        60,
+        64,
+        69
+      ],
+      [
+        65,
+        69,
+        72,
+        77
+      ],
+      [
+        67,
+        71,
+        74,
+        79
+      ]
+    ],
+    "roots": [
+      48,
+      45,
+      41,
+      43
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1,
+      2,
+      3
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Danke an alle, die beim FC Kuhweide mitgespielt haben!",
+      "caps": [
+        "DANKE AN ALLE,",
+        "DIE BEIM FC KUHWEIDE",
+        "^MITGESPIELT HABEN!"
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "cheer",
+          0.1
+        ],
+        [
+          "drum",
+          0.6
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Und an die drei, die gestern gefehlt haben:",
+      "caps": [
+        "UND AN DIE DREI,",
+        "DIE GESTERN ^GEFEHLT HABEN:"
+      ],
+      "gap": 2.6,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.3
+        ],
+        [
+          "blip",
+          0.7
+        ],
+        [
+          "blip",
+          1.1
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Jamie, Noel und Kilian: Ihr seid im Ehrenkader!",
+      "caps": [
+        "^JAMIE, ^NOEL UND ^KILIAN:",
+        "IHR SEID IM ^EHRENKADER!"
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "stamp",
+          "e-0.9"
+        ],
+        [
+          "stamp",
+          "e-0.6"
+        ],
+        [
+          "stamp",
+          "e-0.3"
+        ],
+        [
+          "cheer",
+          "e-0.2"
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Jetzt geht der FC Kuhweide in die Winterpause.",
+      "caps": [
+        "JETZT GEHT DER FC KUHWEIDE",
+        "IN DIE ^WINTERPAUSE."
+      ],
+      "gap": 1.0,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "sparkle",
+          0.3
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Berta passt so lange auf das Tor auf.",
+      "caps": [
+        "^BERTA PASST SO LANGE",
+        "AUF DAS TOR AUF."
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "moo",
+          "e+0.1"
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Danke für hundertzweiundzwanzig Fans!",
+      "caps": [
+        "DANKE FÜR",
+        "^122 FANS!"
+      ],
+      "gap": 0.6,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.1
+        ],
+        [
+          "confetti",
+          0.15
+        ],
+        [
+          "ding",
+          "e+0.2"
+        ]
+      ]
+    }
+  ]
+}

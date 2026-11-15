@@ -287,6 +287,8 @@ Danke-/Saisonpause-Video, danach neues Konzept außerhalb der Fußball-Nische (�
 Hinweis für ein mögliches Finale: @jxmie2skibidi (Joker) stand in keiner Aufstellung, @noel63501 und @kilian93907 fanden sich
 nur auf der Bank – beim nächsten Mal einlösen.
 
+**15.11.:** Abschiedsvideo „Winterpause“ gebaut (`fc-kuhweide-abschied/`). FC Kuhweide ruht, neues Konzept folgt.
+
 ## Zwischenstand nach 3 Folgen (12.11.)
 
 - Jede Folge bleibt bei 1.000–1.550 Aufrufen stehen. Das ist die erste Testgruppe von TikTok, weiter wird nicht ausgespielt.

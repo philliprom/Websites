@@ -95,6 +95,7 @@ def _norm(s):
     s = re.sub(r"[^a-zäöü ]+", " ", s)
     # stummes Dehnungs-h nach Vokal ignorieren (Kuhweide = Kuweide), sonst gelten Homophone als Fehler
     s = re.sub(r"([aeiouäöü])h(?=[^aeiouäöü]|$)", r"\1", s)
+    s = s.replace("th", "t")  # „Bertha“ klingt wie „Berta“
     return s.split()
 
 

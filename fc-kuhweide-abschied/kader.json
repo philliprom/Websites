@@ -1,0 +1,181 @@
+{
+  "_stand": "15.11. – Abschied in die Winterpause",
+  "fans": 122,
+  "gegner": "SV Matschbach",
+  "spiel": "Samstag · 15 Uhr",
+  "anpfiff": "15 Uhr",
+  "meter": {
+    "schritte": 100
+  },
+  "manni": {
+    "name": "Metzger-Manni",
+    "wertung": 87,
+    "pos": "ST",
+    "werte": [
+      [
+        "TOR",
+        312
+      ],
+      [
+        "SCH",
+        91
+      ],
+      [
+        "TEM",
+        12
+      ],
+      [
+        "WUR",
+        99
+      ]
+    ]
+  },
+  "halbzeit1": {
+    "titel": "",
+    "reihen": [],
+    "fuss": ""
+  },
+  "halbzeit2": {
+    "titel": "",
+    "reihen": [],
+    "fuss": ""
+  },
+  "spieler": {
+    "flo": {
+      "name": "@flo49472",
+      "num": "1"
+    },
+    "mia": {
+      "name": "@miaa16120",
+      "num": "7"
+    },
+    "yg": {
+      "name": "@yunusks11",
+      "num": "9"
+    },
+    "georg": {
+      "name": "@georggruber1",
+      "num": "6"
+    }
+  },
+  "bratwurst": "@fynn17134",
+  "namen": [
+    "@.hannes.06",
+    "@126darian0",
+    "@2022lennie",
+    "@21elias_h10",
+    "@75sandro10",
+    "@aaronistog",
+    "@ac_elias1",
+    "@arsenij0034",
+    "@ben.kreq",
+    "@ben433836",
+    "@besijan14",
+    "@bruno.0555",
+    "@bvb.forever86",
+    "@corny6612",
+    "@crakez23",
+    "@dami12213443",
+    "@elias.fcs",
+    "@elyassopicasso",
+    "@felix62629t3",
+    "@filip212343",
+    "@fini0941",
+    "@flo49472",
+    "@flori6140",
+    "@florian.gnther26",
+    "@fokus.salkin",
+    "@fsvandsgd",
+    "@fynn17134",
+    "@fynn7372",
+    "@georggruber1",
+    "@hassi7333",
+    "@huama667",
+    "@i__n1805",
+    "@ivanxxq",
+    "@j.weber.21",
+    "@jannick_gsv7",
+    "@jason82505",
+    "@jfcgera",
+    "@joelski74",
+    "@jonimay234",
+    "@juliusc1904",
+    "@jxmie2skibidi",
+    "@jxst_elias2",
+    "@kakok9731",
+    "@keeperlife1234",
+    "@kilian93907",
+    "@kiwimo33",
+    "@l.e.o.46",
+    "@l3vinln1",
+    "@landi12345676",
+    "@lennox_bzc",
+    "@leo_kss8",
+    "@leolausemaus703",
+    "@leonardo.mika7",
+    "@leoseo23",
+    "@leutiben",
+    "@levi_szc",
+    "@lillyfriedrich242",
+    "@linnert.spinnat",
+    "@linus726",
+    "@ljl1407",
+    "@loki.lauri6",
+    "@luca_mgd15",
+    "@ludwig4365",
+    "Makek 🐼",
+    "@mali1650",
+    "@mamas.kleiner.pri",
+    "@miaa16120",
+    "Michi_mgd 🚀",
+    "@mohammed_almeflih",
+    "@mrv_ru7",
+    "@mxik.1965",
+    "@ni.na4587",
+    "@nikolas_stefan",
+    "@nixzuwissen1",
+    "@njfootbol",
+    "@noel63501",
+    "@omar.rdz04",
+    "@oskarfrings",
+    "@paul.price68",
+    "@paulmartenwiese",
+    "Peatoo 🇩🇪🦅",
+    "@sarahhauswirth123123",
+    "@sebastian.jr10",
+    "@seymen.demir6",
+    "@til.com",
+    "@tymonpolak9",
+    "@username679086666",
+    "@username9065731",
+    "@useruzi2kb3ese",
+    "@vini.fch",
+    "@x_danieeee",
+    "YG 🇹🇷",
+    "@yoxnes1",
+    "@yunusks11"
+  ],
+  "ehrenkader": [
+    {
+      "handle": "@jxmie2skibidi",
+      "text": "Nicht im kader heute 😪😪 Egal Sieg!!!",
+      "rolle": "JOKER · EHRENKADER",
+      "color": "#8C5FD9",
+      "num": "99"
+    },
+    {
+      "handle": "@noel63501",
+      "text": "Wo bin ich",
+      "rolle": "NR. 77 · EHRENKADER",
+      "color": "#E23A4E",
+      "num": "77"
+    },
+    {
+      "handle": "@kilian93907",
+      "text": "Ich wurde nicht eingewechselt schade aber Hauptsache gewinnen",
+      "rolle": "EHRENKADER",
+      "color": "#FF8A2B",
+      "num": "18"
+    }
+  ]
+}
