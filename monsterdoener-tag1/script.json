@@ -24,7 +24,8 @@
       },
       "werwolf": {
         "voice": "voice/werwolf.wav",
-        "voice_text": "voice/werwolf.txt"
+        "voice_text": "voice/werwolf.txt",
+        "fx": "rubberband=pitch=0.78:formant=shifted,volume=1.4"
       },
       "zombie": {
         "voice": "voice/zombie.wav",

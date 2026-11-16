@@ -8,6 +8,7 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 VOICES = {v: {"voice": f"voice/{v}.wav", "voice_text": f"voice/{v}.txt"} for v in ("leo", "vampir", "geist", "werwolf", "zombie")}
 VOICES["geist"]["fx"] = "aecho=0.8:0.7:90|160:0.35|0.22"
+VOICES["werwolf"]["fx"] = "rubberband=pitch=0.78:formant=shifted,volume=1.4"
 segments = [
     {"id": "s01", "voice": "leo", "say": "Tag eins: Ich habe eine Dönerbude für Monster eröffnet.",
      "caps": ["TAG 1: ICH HABE EINE", "^DÖNERBUDE FÜR ^MONSTER", "ERÖFFNET! 🧛"], "gap": 0.0, "sfx": [["title", -0.1]]},
