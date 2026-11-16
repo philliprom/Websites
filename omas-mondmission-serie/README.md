@@ -67,6 +67,8 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
 |---|---|---|---|---|---|---|---|---|
 | Abschied FC Kuhweide | 15.11. 13:49 | 20 s | 16.11. früh | 824 | 18 | 7 | 2 | 2 |
 | Mondmission Tag 1 | 15.11. 18:52 | 36 s | 16.11. früh | 743 | 26 | 11 | 0 | 1 |
+| Mondmission Tag 1 | 15.11. 18:52 | 36 s | 16.11. 22 Uhr | 796 | 28 | 12 | 0 | 1 |
+| Mondmission Tag 2 | 16.11. 13:01 | 23 s | 16.11. 22 Uhr (nach 9 h) | 766 | 9 | 11 | 0 | 1 |
 
 **Studio Tag 1 (16.11. 07:14):** 746 Aufrufe, Ø Wiedergabe **9,1 s von 37 s (25 %)**, ganz angesehen 5,3 %, 12 neue Follower,
 Gesamtwiedergabe 1:54 h, 96,9 % „Für dich“. Kurve: Absturz in der ersten Sekunde (laut TikTok hören die meisten bei 0:01 auf),
@@ -74,6 +76,11 @@ bei ca. 3 s nur noch rund 40 %, danach langsam fallend. Aufrufe kamen in zwei Te
 ersten ca. 6 h, danach Stillstand. Zum Vergleich FC Kuhweide Tag 2: 72 % bei 1 s, ca. 37 % bei 4 s.
 **Folgerung:** Das erste Bild hält nicht (ruhige Totale, langer Textkasten, ruhiger erster Satz). Tag 2 mit Action im ersten
 Bild (kalter Einstieg), kürzer (≤ 25 s).
+
+Tag 2 trotz Explosion im ersten Bild wieder bei rund 770 Aufrufen, Likes nur 1,2 % (Tag 1: 3,5 %). Kanal 16.11. abends:
+139 Follower. Alle 10 Videos des Kontos liegen bei 750–1.600 Aufrufen, egal welches Konzept, welche Länge, welcher Einstieg.
+Offene Frage: liegt es am Inhalt oder am Konto (Publikum aus FC-Kuhweide-Zeiten)? Vorschlag: dieselbe Folge auf dem neuen
+Konto B testen.
 
 Kanal 16.11. früh: 137 Follower (15.11.: 122). Anzeigename noch „FC Kuhweide“, Bio schon umgestellt.
 **Tank nach Tag 1: 11 Liter** (11 Kommentare von 11 verschiedenen Leuten, alle „Tanken“, keine Sticker): leif244, mxik.1965,
