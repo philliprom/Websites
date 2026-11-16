@@ -35,3 +35,11 @@ Dönerspieß vor Grillwand, Kühlschrank „Blutorangen-Limo“, Theke mit Knobl
 - Engine: Stimme pro Segment (`tts.voices`, optional `fx` als ffmpeg-Filter, z. B. Hall beim Geist), neue Geräusche `howl`, `knock`.
 - Achtung IDs: Szene darf keine IDs der Engine-Oberfläche benutzen (z. B. `counter`, `title`, `stamp`, `big`) – sonst verschwindet
   das Szenen-Element und der Engine-Kasten erscheint (passiert mit der Theke, jetzt `shopCounter`).
+
+## Stand
+
+- 17.11. nachts: Tag 1 fertig (`monsterdoener-tag1/out/monsterdoener_tag1.mp4`, 34,5 s, −14,6 LUFS, 11 Sätze, 5 Stimmen,
+  rund 20 Szenen). Stimmen: Leo 154 Hz, Vampir 161 Hz (zweiter Entwurf, „Male, about 50, very low deep bass“), Geist 273 Hz + Hall,
+  Werwolf 214 Hz → per `rubberband` tiefer, Zombie 105 Hz. Ähnlichkeit zur jeweiligen Vorlage 0,93–0,995.
+- Profilbilder: `profilbild_logo.png` (Döner mit Vampirzähnen, empfohlen), `profilbild_leo.png`.
+- Nächste Folge: Abstimmung A/B/C auswerten (eine Stimme pro Person), Sieger-Monster kommt, Lebensmittelkontrolle auflösen.
