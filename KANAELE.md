@@ -1,0 +1,53 @@
+# Kanäle – Überblick und Ablauf (Stand 16.11.2026)
+
+Ziel: bis zu 3 TikTok-Kanäle gleichzeitig, ohne durcheinanderzukommen. Grundidee: **3 Kanäle = 3 Versuche.** Jeder Kanal
+testet ein eigenes Konzept. Nach etwa 5 Folgen bekommt das Konzept mit den besten Zahlen die meiste Energie.
+
+## Die Kanäle
+
+| | Kanal A | Kanal B | Kanal C |
+|---|---|---|---|
+| Konto | @gruselwahl.de | neues Konto (wird aufgewärmt) | noch anlegen |
+| Name im Profil | Omas Mondmission 🚀 | offen | offen |
+| Konzept | Oma Gisela holt Opa Heinz vom Mond, Kommentar = 1 Liter | eigenes, siehe unten | eigenes, siehe unten |
+| Projektordner | `omas-mondmission-*` | eigenes Kürzel, z. B. `fietland-*` | eigenes Kürzel |
+| Serien-Notizen | `omas-mondmission-serie/README.md` | `<kürzel>-serie/README.md` | `<kürzel>-serie/README.md` |
+| Chat | dieser Chat | eigener Chat (Start mit `UEBERGABE_NEUER_KANAL.md`) | eigener Chat |
+| Postzeit | 12–13 Uhr | 16–17 Uhr | 19–20 Uhr |
+
+## Regeln gegen Durcheinander
+
+1. **Ein Chat pro Kanal.** Jeder Chat kennt nur seinen Kanal und arbeitet nur in seinen Ordnern. Bei Fragen zu einem Kanal
+   immer im passenden Chat schreiben.
+2. **Jede Datei zum Posten trägt den Kanal im Namen und in der ersten Zeile:** Video `out/<kürzel>_tagN.mp4`, in
+   `beschreibung.txt` steht ganz oben `KANAL: … (@konto)`. Vor dem Posten kurz prüfen: richtiges Konto in der App?
+3. **Feste Postzeiten** (Tabelle oben), damit sich die Kanäle nicht gegenseitig Zuschauer wegnehmen und der Tag planbar ist.
+   TikTok kann Videos auch zeitgesteuert veröffentlichen (TikTok Studio im Browser), dann reicht einmal am Tag hochladen.
+4. **Zahlen und Kommentare** jeden Morgen pro Kanal in den passenden Chat: Studio-Screenshots von gestern und
+   Screenshots von Sticker-Kommentaren. Der Chat zählt dann selbst (Liter, Namen usw.).
+5. **Kommentare beantworten, schlank:** alle liken, eine Sammelantwort pro Video, nur Fragen einzeln beantworten.
+6. **Technik:** Die Engine (`engine/`) ist geteilt. Änderungen nur rückwärtskompatibel (neue Optionen standardmäßig aus).
+   Jeder Chat arbeitet auf seinem eigenen Branch. Neue Engine-Bausteine aus diesem Branch holt ein anderer Chat mit
+   `git fetch origin claude/gracious-hamilton-5kohce && git checkout origin/claude/gracious-hamilton-5kohce -- engine/`.
+7. **Stimmen:** jede Hauptfigur bekommt eine eigene Qwen3-TTS-Stimme (Entwurf + Klon mit `"candidates": 4`), damit
+   kein Kanal wie ein anderer klingt. Anleitung: `engine/README.md`, Abschnitt „Qwen3-TTS“.
+
+## Was jeder neue Kanal aus Kanal A lernen sollte
+
+- **Das erste Bild entscheidet.** Mondmission Tag 1: die meisten Zuschauer weg bei 0:01, Ø 9 von 37 s. Deshalb: Action im
+  ersten Bild (kalter Einstieg), kurzer Text, starker erster Satz.
+- **Kurz:** Hauptfolge höchstens 25 s, pro Satz eine Szene.
+- **Geschichte mit offener Frage** (Rätsel, Gegenspieler, Frist) statt nur Namen und Zahlen. Wer dranbleibt, folgt
+  (Tag 1: 12 neue Follower bei 746 Aufrufen).
+- **Mitmachen mit sichtbarem Ziel** (Tank, Meter, Einwohner …), ehrlich zählen, Namen auf einer Tafel.
+
+## Konzept-Ideen für B und C (müssen sich von A und voneinander unterscheiden)
+
+| Idee | Haken im ersten Bild | Mitmachen | Rätsel/Gegenspieler |
+|---|---|---|---|
+| **Fietland** – Fiete gründet sein eigenes Land auf einer Sandbank | Welle schwappt über die Sandbank, Fiete klammert sich an den Fahnenmast | 1 Kommentar = 1 Sandsack gegen die Flut | Flaschenpost mit Schatzkarte, Nachbarinsel will die Sandbank |
+| **Ritterburg aus Pappe** – Kurt (12) baut eine Burg im Hinterhof | Burgmauer kippt auf den Ritter | 1 Kommentar = 1 Stein | Raubritter vom Nachbarhof, geheimer Tunnel |
+| **Wanderzirkus** – Zirkus Fiasko ist pleite | Elefant fällt durchs Zelt | 1 Kommentar = 1 Zuschauer | Konkurrenzzirkus, verschwundener Zauberer |
+
+Vorschlag zur Reihenfolge: B startet, sobald das Konto aufgewärmt ist. C erst, wenn A oder B nach einer Woche zeigt,
+welche Machart besser läuft. Drei Kanäle täglich kosten viel Nutzungs-Limit, für B und C reicht anfangs jeden zweiten Tag.

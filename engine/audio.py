@@ -443,6 +443,15 @@ def sfx_scratch():
     return y * np.sin(np.pi * t / t[-1]) * 0.5
 
 
+def sfx_boom():
+    """Dumpfe Explosion: tiefes Rauschen mit Druckwelle und langem Nachrollen."""
+    t = tt(1.6)
+    n = onepole_lp(rs.randn(len(t)), 180) * 3.0
+    thump = np.sin(2 * np.pi * (55 * np.exp(-t * 3)) * t) * np.exp(-t * 5) * 1.2
+    crack = hp(rs.randn(len(t))) * np.exp(-t * 30) * 0.5
+    return (n * np.exp(-t * 2.2) + thump + crack) * att(t, 0.002) * 0.7
+
+
 def sfx_klong():
     """Hohles Klopfen auf einen leeren Metalltank."""
     y = bell(150, 0.9, 0.5, partials=((1, 1, 5), (2.32, 0.6, 7), (4.25, 0.35, 11), (6.63, 0.2, 16)))
