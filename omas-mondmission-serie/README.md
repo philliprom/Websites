@@ -61,6 +61,18 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
   `namesTest` / `namesClose`. Offen für Tag 2: Namen auf dem Trichter liegen noch unter der Trichter-Grafik (eigene Ebene
   nach `rkNose` nötig), Backbleche als schräge Zonen.
 
+## Zahlen
+
+| Video | gepostet | Länge | Stand | Aufrufe | Likes | Komm. | Shares | Gesp. |
+|---|---|---|---|---|---|---|---|---|
+| Abschied FC Kuhweide | 15.11. 13:49 | 20 s | 16.11. früh | 824 | 18 | 7 | 2 | 2 |
+| Mondmission Tag 1 | 15.11. 18:52 | 36 s | 16.11. früh | 743 | 26 | 11 | 0 | 1 |
+
+Kanal 16.11. früh: 137 Follower (15.11.: 122). Anzeigename noch „FC Kuhweide“, Bio schon umgestellt.
+**Tank nach Tag 1: 11 Liter** (11 Kommentare von 11 verschiedenen Leuten, alle „Tanken“, keine Sticker): leif244, mxik.1965,
+ljl1407, ka_digga60, flo49472, hannes.mp, 2022lennie, nellly1946, lennox.hager, azad_.051, ryersonmotion1909.
+Niemand hat auf „Vorsicht vor den M…“ geraten.
+
 ## Folgenplan (Entwurf)
 
 | Folge | Inhalt |
