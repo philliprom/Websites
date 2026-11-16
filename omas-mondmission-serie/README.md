@@ -80,6 +80,13 @@ Kanal 16.11. früh: 137 Follower (15.11.: 122). Anzeigename noch „FC Kuhweide�
 ljl1407, ka_digga60, flo49472, hannes.mp, 2022lennie, nellly1946, lennox.hager, azad_.051, ryersonmotion1909.
 Niemand hat auf „Vorsicht vor den M…“ geraten.
 
+## Tag 2 (gebaut 16.11. vormittags, `omas-mondmission-tag2/`)
+
+23 s, −14,0 LUFS. Kalter Einstieg: Testzündung explodiert im ersten Bild (Feuerball, Scherben, „KABUMM!“, Rakete hüpft und
+bleibt schief stehen, Oma voller Ruß mit zerzausten Haaren, Bertas Helm beschlagen). Danach Tank 11/100, Postkarte kurz, Tafel mit
+den 11 Namen, Krause mit Schild „FRIST: SONNTAG!“, Aufruf. Liter und Namen stehen in `tank.json` (vor dem Posten aktualisieren,
+dann `make_script.py` und neu bauen; nur Sätze mit der Zahl werden neu gesprochen). Neues Geräusch `boom` in `engine/audio.py`.
+
 ## Folgenplan (Entwurf)
 
 | Folge | Inhalt |
