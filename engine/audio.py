@@ -452,6 +452,29 @@ def sfx_boom():
     return (n * np.exp(-t * 2.2) + thump + crack) * att(t, 0.002) * 0.7
 
 
+def sfx_howl():
+    """Werwolf-Heulen: Ton steigt an, hält mit Vibrato und fällt ab."""
+    t = tt(1.7)
+    p = t / t[-1]
+    f = 260 + 420 * np.sin(np.pi * np.minimum(1, p * 1.4)) ** 0.8 + 18 * np.sin(2 * np.pi * 6 * t)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    y = np.sin(ph) + 0.35 * np.sin(2 * ph) + 0.15 * np.sin(3 * ph)
+    breath = onepole_lp(rs.randn(len(t)), 1800) * 0.25
+    env = np.minimum(1, p * 6) * np.minimum(1, (1 - p) * 3)
+    return (y + breath) * env * 0.32
+
+
+def sfx_knock():
+    """Dreimal an die Tür klopfen."""
+    out = np.zeros(int(0.75 * SR))
+    for k in range(3):
+        t = tt(0.12)
+        y = (np.sin(2 * np.pi * 180 * t) + 0.5 * np.sin(2 * np.pi * 410 * t)) * np.exp(-t * 45) + hp(rs.randn(len(t))) * np.exp(-t * 90) * 0.4
+        i = int(k * 0.22 * SR)
+        out[i:i + len(y)] += y * 0.7
+    return out
+
+
 def sfx_klong():
     """Hohles Klopfen auf einen leeren Metalltank."""
     y = bell(150, 0.9, 0.5, partials=((1, 1, 5), (2.32, 0.6, 7), (4.25, 0.35, 11), (6.63, 0.2, 16)))

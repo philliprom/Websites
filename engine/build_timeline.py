@@ -68,13 +68,21 @@ def build_voxcpm(script, model_dir):
         import qwen3_engine as T
     sr = None  # wird aus dem Cache gelesen oder nach dem Laden des Modells gesetzt (Modell nur bei Bedarf laden)
     tts = script["tts"]
-    ref = os.path.join(HERE, tts["voice"])
-    ref_text = open(os.path.join(HERE, tts["voice_text"]), encoding="utf-8").read().strip()
     segs = script["segments"]
+
+    # Mehrere Sprecher: Segment mit "voice": "<name>" nutzt tts["voices"][name] (voice, voice_text, optional fx = ffmpeg-Filter)
+    def voice_of(seg):
+        v = seg.get("voice")
+        cfg = tts.get("voices", {}).get(v) if v else None
+        cfg = cfg or {"voice": tts["voice"], "voice_text": tts["voice_text"]}
+        return (os.path.join(HERE, cfg["voice"]), open(os.path.join(HERE, cfg["voice_text"]), encoding="utf-8").read().strip(),
+                cfg.get("fx"))
+
     groups, cur = [], []
     for i, s in enumerate(segs):
         cur.append(i)
-        if _re.search(r"[.!?]$", s["say"].strip()) or i == len(segs) - 1:
+        nxt = segs[i + 1] if i + 1 < len(segs) else None
+        if _re.search(r"[.!?…]$", s["say"].strip()) or nxt is None or nxt.get("voice") != s.get("voice"):
             groups.append(cur)
             cur = []
     t = script["lead_in"]
@@ -83,6 +91,7 @@ def build_voxcpm(script, model_dir):
         if gi > 0:
             t += segs[g[0]].get("gap", script["default_gap"])
         text = " ".join(segs[i]["say"] for i in g)
+        ref, ref_text, fx = voice_of(segs[g[0]])
         style = segs[g[0]].get("style") or tts.get("style")
         best = None
         key = cache_key(text, style, ref, tts)
@@ -178,6 +187,15 @@ def build_voxcpm(script, model_dir):
             a0 = t + starts[k]
             a1 = t + (starts[k + 1] if k + 1 < len(g) else dur)
             timing[i] = (a0, a1)
+        if fx:  # Klangeffekt der Figur (z. B. Hall beim Geist) nur für die Platzierung, Cache bleibt trocken
+            import subprocess
+            import tempfile
+            with tempfile.TemporaryDirectory() as td:
+                a, b = os.path.join(td, "a.wav"), os.path.join(td, "b.wav")
+                sf_write(a, wav, sr)
+                subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", a, "-af", fx, "-ar", str(sr), "-ac", "1", b], check=True)
+                wfx = sf_read(b)
+            wav = wfx[: len(wav)] if len(wfx) >= len(wav) else np.pad(wfx, (0, len(wav) - len(wfx)))
         pieces.append((t, wav))
         t += dur
     return sr, pieces, timing, qa, t

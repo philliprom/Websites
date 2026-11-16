@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Monsterdöner – Tag 1</title>
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/nunito/800.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/nunito/900.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/600.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/700.css">
+<link rel="stylesheet" href="../engine/engine.css">
+<style>
+  :root {
+    --navy: #1B1430; --badge-bg: #7CFF6B; --badge-fg: #1B1430; --banner-bg: #E8433E; --banner-fg: #fff; --banner-tail: #B52738;
+    --banner-size: 104px; --stage-bg: #2A1E3F; --avatar-bg: radial-gradient(circle at 50% 50%, #7A3FC0, #2A1E3F);
+  }
+  #badge { color: #1B1430; }
+  /* Neonlicht im Laden: grünlich-violett von oben, warm von der Grillwand links */
+  #light { background:
+      radial-gradient(circle at 18% 58%, rgba(255, 150, 60, .30) 0, rgba(255, 150, 60, .10) 24%, rgba(255, 150, 60, 0) 46%),
+      radial-gradient(circle at 50% 12%, rgba(150, 255, 140, .20) 0, rgba(150, 255, 140, 0) 40%),
+      linear-gradient(180deg, rgba(120, 60, 200, .10), rgba(20, 10, 40, .18));
+    mix-blend-mode: screen; pointer-events: none; }
+  #vignette { background: radial-gradient(ellipse at 50% 46%, rgba(0,0,0,0) 50%, rgba(10, 4, 25, .5) 100%); }
+  #flash { position: absolute; inset: 0; pointer-events: none; background: #F4FFF0; opacity: 0; }
+  .ov { position: absolute; display: none; transform-origin: 50% 50%; }
+  #hook { left: 540px; top: 150px; width: 980px; text-align: center; background: #fff; color: #1B1430; border: 9px solid #1B1430;
+    border-radius: 44px; padding: 14px 18px 20px; box-shadow: 0 16px 0 rgba(27, 20, 48, .4);
+    font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 64px; line-height: 1.05; }
+  #hook small { display: inline-block; font-size: 38px; background: #7CFF6B; border: 6px solid #1B1430; border-radius: 18px;
+    padding: 2px 18px 6px; margin-bottom: 8px; letter-spacing: 2px; }
+  #cta { left: 540px; top: 1170px; background: #7CFF6B; color: #1B1430; border: 10px solid #1B1430; border-radius: 40px;
+    padding: 10px 36px 18px; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 70px; white-space: nowrap;
+    box-shadow: 0 16px 0 rgba(27, 20, 48, .45); }
+  .comic { left: 0; top: 0; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 110px; color: #fff; white-space: nowrap;
+    -webkit-text-stroke: 12px #1B1430; paint-order: stroke fill; letter-spacing: 2px; }
+  .card .icon { font-family: 'Noto Color Emoji'; font-size: 128px; line-height: 150px; height: 150px; }
+  .card .likes { display: none; }
+  .card { top: 430px; }
+  #votePill { top: 860px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="world" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"><g id="cam"></g></svg>
+  <svg id="alt" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="light" class="layer"></div>
+  <svg id="motes" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="vignette" class="layer"></div>
+  <div id="dim" class="layer"></div>
+  <div id="flash" class="layer"></div>
+  <svg id="fx" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="ui" class="layer"></div>
+  <div id="ov" class="layer">
+    <div id="hook" class="ov"><small>TAG 1</small><br>ICH HABE EINE DÖNERBUDE<br>FÜR MONSTER ERÖFFNET 🧛</div>
+    <div id="cta" class="ov">1 FOLLOWER = 1 KUNDE 🥙</div>
+    <div id="cm0" class="ov comic"></div>
+    <div id="cm1" class="ov comic"></div>
+    <div id="cm2" class="ov comic"></div>
+  </div>
+  <svg id="caps" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="cap1" x="540" y="1390" text-anchor="middle"></text>
+    <text id="cap2" x="540" y="1480" text-anchor="middle"></text>
+  </svg>
+</div>
+<script src="build/timeline.js"></script>
+<script src="../engine/engine.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+{
+  "title": "Monsterdöner – Tag 1",
+  "voice": "qwen3-tts (5 Stimmen)",
+  "lead_in": 0.15,
+  "tail": 2.2,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "qwen",
+    "voice": "voice/leo.wav",
+    "voice_text": "voice/leo.txt",
+    "voices": {
+      "leo": {
+        "voice": "voice/leo.wav",
+        "voice_text": "voice/leo.txt"
+      },
+      "vampir": {
+        "voice": "voice/vampir.wav",
+        "voice_text": "voice/vampir.txt"
+      },
+      "geist": {
+        "voice": "voice/geist.wav",
+        "voice_text": "voice/geist.txt",
+        "fx": "aecho=0.8:0.7:90|160:0.35|0.22"
+      },
+      "werwolf": {
+        "voice": "voice/werwolf.wav",
+        "voice_text": "voice/werwolf.txt"
+      },
+      "zombie": {
+        "voice": "voice/zombie.wav",
+        "voice_text": "voice/zombie.txt"
+      }
+    },
+    "tries": 3,
+    "max_wer": 0.08,
+    "candidates": 3,
+    "temperature": 0.7
+  },
+  "music": {
+    "bpm": 120,
+    "inst": "pluck",
+    "clap": 0.6,
+    "ambience": 0.15,
+    "chords": [
+      [
+        57,
+        60,
+        64,
+        69
+      ],
+      [
+        53,
+        57,
+        60,
+        65
+      ],
+      [
+        48,
+        52,
+        55,
+        60
+      ],
+      [
+        52,
+        56,
+        59,
+        64
+      ]
+    ],
+    "roots": [
+      45,
+      41,
+      48,
+      40
+    ],
+    "arp": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      1,
+      0,
+      2
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "voice": "leo",
+      "say": "Tag eins: Ich habe eine Dönerbude für Monster eröffnet.",
+      "caps": [
+        "TAG 1: ICH HABE EINE",
+        "^DÖNERBUDE FÜR ^MONSTER",
+        "ERÖFFNET! 🧛"
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "title",
+          -0.1
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "voice": "vampir",
+      "say": "Einmal Döner. Aber ohne Knoblauch!",
+      "caps": [
+        "EINMAL DÖNER.",
+        "ABER !OHNE !KNOBLAUCH!"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "voice": "leo",
+      "say": "Oh. Die Soße ist schon drauf.",
+      "caps": [
+        "OH. DIE SOSSE",
+        "IST SCHON ^DRAUF. 😬"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.4
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "voice": "vampir",
+      "say": "Neeeein!",
+      "caps": [
+        "!NEEEEIN!"
+      ],
+      "gap": 0.1,
+      "sfx": [
+        [
+          "poof",
+          "e+0.05"
+        ],
+        [
+          "flap",
+          "e+0.3"
+        ],
+        [
+          "flap",
+          "e+0.6"
+        ],
+        [
+          "flap",
+          "e+0.9"
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "voice": "geist",
+      "say": "Einmal mit alles, bitte.",
+      "caps": [
+        "EINMAL MIT ALLES, BITTE. 👻"
+      ],
+      "gap": 1.0,
+      "sfx": [
+        [
+          "ding",
+          -0.5
+        ],
+        [
+          "whoosh",
+          -0.05
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "voice": "geist",
+      "say": "Schon wieder durchgefallen.",
+      "caps": [
+        "SCHON WIEDER",
+        "^DURCHGEFALLEN."
+      ],
+      "gap": 1.3,
+      "sfx": [
+        [
+          "card",
+          -1.25
+        ],
+        [
+          "whoosh",
+          -0.85
+        ],
+        [
+          "splash",
+          -0.45
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "voice": "werwolf",
+      "say": "Döner mit extra Fleisch!",
+      "caps": [
+        "DÖNER MIT",
+        "^EXTRA FLEISCH!"
+      ],
+      "gap": 0.7,
+      "sfx": [
+        [
+          "ding",
+          -0.5
+        ],
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "riser",
+          "e+0.1"
+        ],
+        [
+          "poof",
+          "e+0.75"
+        ],
+        [
+          "howl",
+          "e+0.85"
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "voice": "zombie",
+      "say": "Mit … alles …",
+      "caps": [
+        "MIT … ALLES … 🧟"
+      ],
+      "gap": 2.9,
+      "sfx": [
+        [
+          "crunch",
+          -1.0
+        ],
+        [
+          "ding",
+          -0.5
+        ],
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "crunch",
+          "e+0.3"
+        ]
+      ]
+    },
+    {
+      "id": "s09",
+      "voice": "leo",
+      "say": "Passt so.",
+      "caps": [
+        "PASST SO. 😅"
+      ],
+      "gap": 0.75,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ]
+      ]
+    },
+    {
+      "id": "s10",
+      "voice": "leo",
+      "say": "Ein Follower ist ein Kunde. Und ihr entscheidet: Wer kommt morgen?",
+      "caps": [
+        "^1 FOLLOWER = ^1 KUNDE.",
+        "UND IHR ENTSCHEIDET:",
+        "WER KOMMT ^MORGEN?"
+      ],
+      "gap": 0.3,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          2.4
+        ],
+        [
+          "pop",
+          2.6
+        ],
+        [
+          "pop",
+          2.8
+        ]
+      ]
+    },
+    {
+      "id": "s11",
+      "voice": "leo",
+      "say": "Oh nein. Die Lebensmittelkontrolle!",
+      "caps": [
+        "OH NEIN …",
+        "DIE !LEBENSMITTEL-",
+        "!KONTROLLE!"
+      ],
+      "gap": 0.95,
+      "sfx": [
+        [
+          "knock",
+          -0.85
+        ],
+        [
+          "sting",
+          "e+0.05"
+        ]
+      ]
+    }
+  ]
+}

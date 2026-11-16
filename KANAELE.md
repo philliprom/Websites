@@ -1,5 +1,7 @@
 # Kanäle – Überblick und Ablauf (Stand 16.11.2026)
 
+**Stand 16.11. abends:** Mondmission pausiert (alle Folgen ~800 Aufrufe, Kanalinhaber: „zu langweilig, nicht aufwendig genug“). Kanal B startet mit **Monsterdöner** (aufwendiger: 5 Figuren, 5 Stimmen, viele Szenen).
+
 Ziel: bis zu 3 TikTok-Kanäle gleichzeitig, ohne durcheinanderzukommen. Grundidee: **3 Kanäle = 3 Versuche.** Jeder Kanal
 testet ein eigenes Konzept. Nach etwa 5 Folgen bekommt das Konzept mit den besten Zahlen die meiste Energie.
 
@@ -7,12 +9,12 @@ testet ein eigenes Konzept. Nach etwa 5 Folgen bekommt das Konzept mit den beste
 
 | | Kanal A | Kanal B | Kanal C |
 |---|---|---|---|
-| Konto | @gruselwahl.de | neues Konto (wird aufgewärmt) | noch anlegen |
-| Name im Profil | Omas Mondmission 🚀 | offen | offen |
-| Konzept | Oma Gisela holt Opa Heinz vom Mond, Kommentar = 1 Liter | eigenes, siehe unten | eigenes, siehe unten |
-| Projektordner | `omas-mondmission-*` | eigenes Kürzel, z. B. `fietland-*` | eigenes Kürzel |
-| Serien-Notizen | `omas-mondmission-serie/README.md` | `<kürzel>-serie/README.md` | `<kürzel>-serie/README.md` |
-| Chat | dieser Chat | eigener Chat (Start mit `UEBERGABE_NEUER_KANAL.md`) | eigener Chat |
+| Konto | @gruselwahl.de | neues Konto (aufgewärmt) | noch anlegen |
+| Name im Profil | Omas Mondmission 🚀 (pausiert) | Monsterdöner 🧛🥙 | offen |
+| Konzept | Oma Gisela holt Opa Heinz vom Mond, Kommentar = 1 Liter | Dönerbude für Monster, 1 Follower = 1 Kunde, Abstimmung wer kommt | eigenes, siehe unten |
+| Projektordner | `omas-mondmission-*` | `monsterdoener-*` | eigenes Kürzel |
+| Serien-Notizen | `omas-mondmission-serie/README.md` | `monsterdoener-serie/README.md` | `<kürzel>-serie/README.md` |
+| Chat | dieser Chat | dieser Chat | eigener Chat |
 | Postzeit | 12–13 Uhr | 16–17 Uhr | 19–20 Uhr |
 
 ## Regeln gegen Durcheinander

@@ -1,0 +1,19 @@
+<!-- Titelbild-Overlay für Monsterdöner – Tag 1. Wird von engine/render_cover.cjs über die Szene gelegt. -->
+<style>
+  #cover { position: absolute; inset: 0; pointer-events: none; }
+  #cover .tag { position: absolute; left: 540px; top: 140px; transform: translateX(-50%) rotate(-4deg); font-size: 92px;
+    padding: 4px 48px 14px; border-width: 9px; box-shadow: 0 0 0 8px var(--navy), 0 16px 0 8px rgba(20,20,50,.3); }
+  #cover svg.head { position: absolute; left: 0; top: 0; filter: drop-shadow(0 10px 0 rgba(10, 5, 30, .55)); }
+  #cover svg.head text { font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; paint-order: stroke fill; stroke: var(--navy);
+    stroke-width: 22px; stroke-linejoin: round; fill: #fff; }
+  #cover .pill { position: absolute; left: 540px; top: 1360px; transform: translateX(-50%) rotate(-2deg); font-size: 54px; padding: 16px 34px 20px;
+    background: #7CFF6B; color: #1B1430; }
+</style>
+<div id="cover">
+  <div class="ui badge tag">TAG 1</div>
+  <svg class="head" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="h1" x="540" y="370" text-anchor="middle" font-size="118">DÖNERBUDE</text>
+    <text id="h2" x="540" y="500" text-anchor="middle" font-size="118" style="fill:#7CFF6B">FÜR MONSTER</text>
+  </svg>
+  <div class="ui chip pill">🥙 1 FOLLOWER = 1 KUNDE</div>
+</div>
