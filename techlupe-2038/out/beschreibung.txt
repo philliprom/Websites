@@ -1,0 +1,20 @@
+KANAL: Tech-Lupe (dein bestehender Kanal)
+TECH-LUPE – FOLGE 2: DAS JAHR-2038-PROBLEM · TEXTE ZUM POSTEN
+=============================================================
+
+BESCHREIBUNG (Caption):
+Am 19.01.2038 um 04:14:07 Uhr springt bei manchen Computern die Uhr auf 1901 🤯 Das Jahr-2038-Problem in 30 Sekunden erklärt. Welches Thema als Nächstes? 👇 #informatik #programmieren #2038 #techtok #fyp
+
+ERSTER KOMMENTAR (selbst posten und anpinnen):
+📌 Wusstest du das schon? Und welches Informatik-Thema soll ich als Nächstes erklären? Das meistgelikte kommt als Nächstes 👇
+
+TITELBILD
+Datei: titelbild.png
+
+POSTEN
+Beim Posten „KI-generierte Inhalte“ einschalten (die Stimme ist ein KI-Klon der freien Thorsten-Voice-Stimme).
+Nicht am selben Tag wie Folge 1 posten, mindestens 1 Tag Abstand.
+
+FAKTEN ZUM NACHPRÜFEN
+2^31 − 1 = 2.147.483.647 Sekunden nach dem 01.01.1970 = 19.01.2038, 03:14:07 UTC (04:14:07 deutsche Zeit).
+Eine Sekunde später: −2^31 = 13.12.1901, 20:45:52 UTC. 64 Bit (2^63 s) reichen für rund 292 Milliarden Jahre.
