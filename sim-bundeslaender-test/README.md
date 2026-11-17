@@ -18,5 +18,5 @@ Lücke. Wer durch die Lücke fällt, ist raus. Tabelle unten zeigt Platzierungen
   Damit hat keiner gerechnet!“, mehrere Ausgeschiedene in einem Satz, „Finale!“, Sieger, Aufruf), plant mit echten
   Satzlängen, damit nichts hinterherhinkt, mischt die Stimme ein und macht Musik/Geräusche darunter leiser.
   Untertitel (`build/voice.js`) erscheinen über dem Ring.
-- Stimme: Klon von Thorsten-Voice (CC0), Referenz „amüsiert“ (`voice/kommentator.*`), siehe `stimmproben/README.md`.
-- Seed 166: 14 Sätze, jede Ansage 0,1–0,4 s nach dem Ausscheiden, Video 37,3 s, −15,8 LUFS.
+- Stimme: Klon von Thorsten-Voice (CC0), Referenz „ruhig“ = Variante A (`voice/kommentator.*`, B als `kommentator_b.*`), siehe `stimmproben/README.md`.
+- Seed 166: 14 Sätze, jede Ansage 0,1–0,4 s nach dem Ausscheiden, mit A: Video 38,1 s, −15,4 LUFS.
