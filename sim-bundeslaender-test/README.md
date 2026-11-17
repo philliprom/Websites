@@ -11,3 +11,12 @@ Lücke. Wer durch die Lücke fällt, ist raus. Tabelle unten zeigt Platzierungen
 - Einstellungen: g 900, Ring r 410, Ball r 46, Drehung 0,9 rad/s, Lücke halbe Breite 0,15 rad + 0,01 je Ausgeschiedenem.
 - Seed 166: erster raus nach 1,7 s, alle ≤ 4 s einer, Finale 3,9 s, Sieger Saarland, Video 35,2 s, −15,3 LUFS.
 - Ehrlich bleiben: Seed nur nach Tempo auswählen, nie nach Sieger.
+
+## Kommentator (17.11. abends)
+
+- `kommentar.py <seed> <Qwen3-TTS-Base>` (mit Qwen-Umgebung): baut aus den Ereignissen kurze Ansagen („Bayern ist raus!
+  Damit hat keiner gerechnet!“, mehrere Ausgeschiedene in einem Satz, „Finale!“, Sieger, Aufruf), plant mit echten
+  Satzlängen, damit nichts hinterherhinkt, mischt die Stimme ein und macht Musik/Geräusche darunter leiser.
+  Untertitel (`build/voice.js`) erscheinen über dem Ring.
+- Stimme: Klon von Thorsten-Voice (CC0), Referenz „amüsiert“ (`voice/kommentator.*`), siehe `stimmproben/README.md`.
+- Seed 166: 14 Sätze, jede Ansage 0,1–0,4 s nach dem Ausscheiden, Video 37,3 s, −15,8 LUFS.
