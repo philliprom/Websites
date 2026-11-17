@@ -48,6 +48,10 @@ testet ein eigenes Konzept. Nach etwa 5 Folgen bekommt das Konzept mit den beste
   Die Cloud-Umgebung hat keine Grafikkarte, deshalb geht hier nur dieser Stil. Besprochen: Produktion auf dem eigenen Rechner,
   falls dort eine NVIDIA-Grafikkarte steckt (freie Bild-/Video-Modelle wie Wan oder FLUX schnell, kostenlos, aber Rechenzeit).
 
+- **17.11.: zwei Testvideos statt Zeichentrick-Geschichten:** `sim-bundeslaender-test/` (Physik-Simulation, keine Stimme,
+  Mitmachen über Kommentare) und `techlupe-test/` (Informatik animiert erklärt, für den bestehenden Kanal Tech-Lupe des
+  Kanalinhabers, der selbst Informatiker ist).
+
 ## Konzept-Ideen für B und C (müssen sich von A und voneinander unterscheiden)
 
 | Idee | Haken im ersten Bild | Mitmachen | Rätsel/Gegenspieler |

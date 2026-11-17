@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Bundesländer-Battle</title>
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/600.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/700.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #0B0820; }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+  svg { position: absolute; left: 0; top: 0; }
+  text { font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; }
+  .lbl { fill: #fff; stroke: #0B0820; stroke-width: 7px; paint-order: stroke fill; text-anchor: middle; dominant-baseline: central; }
+</style>
+</head>
+<body>
+<div id="stage">
+<svg id="sv" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="48%" r="75%">
+      <stop offset="0" stop-color="#2A1B5E"/><stop offset="0.55" stop-color="#160F3A"/><stop offset="1" stop-color="#07051A"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="0" flood-color="#000" flood-opacity=".45"/></filter>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <g id="dots"></g>
+  <text id="bigNum" x="540" y="1010" text-anchor="middle" dominant-baseline="central" font-size="330" fill="#fff" opacity="0.07">16</text>
+  <g id="trails"></g>
+  <g id="sparks"></g>
+  <path id="ringGlow" fill="none" stroke="#36F1FF" stroke-width="18" stroke-linecap="round" filter="url(#glow)"/>
+  <path id="ring" fill="none" stroke="#C9FCFF" stroke-width="8" stroke-linecap="round"/>
+  <g id="balls"></g>
+  <g id="confetti"></g>
+  <!-- Kopf -->
+  <g filter="url(#shadow)">
+    <text x="540" y="168" text-anchor="middle" font-size="96" fill="#fff" class="" style="stroke:#0B0820;stroke-width:14px;paint-order:stroke fill">16 BUNDESLÄNDER</text>
+    <text x="540" y="276" text-anchor="middle" font-size="84" fill="#FFD43B" style="stroke:#0B0820;stroke-width:14px;paint-order:stroke fill">NUR 1 ÜBERLEBT 🏆</text>
+  </g>
+  <g id="tip" transform="translate(540,372)">
+    <rect x="-250" y="-38" width="500" height="76" rx="38" fill="#FF3D7F" stroke="#0B0820" stroke-width="6"/>
+    <text x="0" y="2" text-anchor="middle" dominant-baseline="central" font-size="40" fill="#fff">WER IST DEIN TIPP? 👇</text>
+  </g>
+  <g id="winBanner" opacity="0">
+    <rect x="70" y="420" width="940" height="130" rx="40" fill="#FFD43B" stroke="#0B0820" stroke-width="9"/>
+    <text id="winText" x="540" y="487" text-anchor="middle" dominant-baseline="central" font-size="72" fill="#0B0820">🏆 SAARLAND GEWINNT!</text>
+  </g>
+  <g id="toast" opacity="0">
+    <rect id="toastBg" x="140" y="1440" width="800" height="88" rx="44" fill="#E8433E" stroke="#0B0820" stroke-width="7"/>
+    <text id="toastText" x="540" y="1486" text-anchor="middle" dominant-baseline="central" font-size="50" fill="#fff">❌ BAYERN IST RAUS</text>
+  </g>
+  <g id="grid"></g>
+  <g id="cta" opacity="0">
+    <rect x="60" y="1500" width="960" height="250" rx="44" fill="#fff" stroke="#0B0820" stroke-width="9"/>
+    <text x="540" y="1575" text-anchor="middle" dominant-baseline="central" font-size="66" fill="#0B0820">REVANCHE MORGEN? 🔁</text>
+    <text x="540" y="1668" text-anchor="middle" dominant-baseline="central" font-size="50" fill="#FF3D7F">SCHREIB DEIN BUNDESLAND 👇</text>
+  </g>
+</svg>
+</div>
+<script src="build/sim.js"></script>
+<script>
+(() => {
+  const S = window.SIM, P = S.p, N = S.states.length, FPS = P.fps;
+  const $ = (id) => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+  const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+  const mainCol = (cols) => cols.find((c) => c !== '#FFFFFF') || '#FFFFFF';
+  // Sterne im Hintergrund (fest)
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 70; i++) mk('circle', { cx: rnd() * 1080, cy: rnd() * 1920, r: 1 + rnd() * 2.2, fill: '#fff', opacity: 0.15 + rnd() * 0.35 }, $('dots'));
+  // Bälle
+  const balls = [], trails = [];
+  S.states.forEach(([ab, name, cols], i) => {
+    const g = mk('g', {}, $('balls'));
+    mk('clipPath', { id: 'cp' + i }, g).appendChild(mk('circle', { r: P.r }));
+    const fg = mk('g', { 'clip-path': `url(#cp${i})` }, g);
+    const h = (2 * P.r) / cols.length;
+    cols.forEach((c, k) => mk('rect', { x: -P.r, y: -P.r + k * h, width: 2 * P.r, height: h + 1, fill: c }, fg));
+    mk('circle', { r: P.r - 2, fill: 'none', stroke: '#fff', 'stroke-width': 5 }, g);
+    mk('circle', { r: P.r + 2, fill: 'none', stroke: '#0B0820', 'stroke-width': 3 }, g);
+    const t = mk('text', { class: 'lbl', y: 1, 'font-size': ab.length > 2 ? 32 : 38 }, g); t.textContent = ab;
+    balls.push(g);
+    const tr = []; for (let k = 0; k < 5; k++) tr.push(mk('circle', { r: P.r * (0.85 - k * 0.12), fill: mainCol(cols), opacity: 0 }, $('trails')));
+    trails.push(tr);
+  });
+  // Tabelle unten (4 x 4)
+  const chips = [];
+  S.states.forEach(([ab, name, cols], i) => {
+    const col = i % 4, row = Math.floor(i / 4);
+    const outer = mk('g', { transform: `translate(${42 + col * 254},${1560 + row * 84})` }, $('grid'));
+    const g = mk('g', {}, outer);
+    const bg = mk('rect', { width: 236, height: 70, rx: 35, fill: '#241A52', stroke: '#0B0820', 'stroke-width': 5 }, g);
+    mk('clipPath', { id: 'cc' + i }, g).appendChild(mk('circle', { cx: 35, cy: 35, r: 24 }));
+    const fg = mk('g', { 'clip-path': `url(#cc${i})` }, g);
+    const h = 48 / cols.length; cols.forEach((c, k) => mk('rect', { x: 11, y: 11 + k * h, width: 48, height: h + 1, fill: c }, fg));
+    mk('circle', { cx: 35, cy: 35, r: 24, fill: 'none', stroke: '#fff', 'stroke-width': 3 }, g);
+    const t = mk('text', { x: 72, y: 37, 'dominant-baseline': 'central', 'font-size': 34, fill: '#fff' }, g); t.textContent = ab;
+    const pl = mk('text', { x: 222, y: 37, 'text-anchor': 'end', 'dominant-baseline': 'central', 'font-size': 30, fill: '#FF6B6B' }, g);
+    const x = mk('path', { d: 'M18 18 L52 52 M52 18 L18 52', stroke: '#FF3B3B', 'stroke-width': 7, 'stroke-linecap': 'round', opacity: 0 }, g);
+    chips.push({ g, bg, pl, x });
+  });
+  const place = {}; S.elim.forEach(([t, i], k) => { place[i] = { t, rank: N - k }; });
+  const walls = S.events.filter((e) => e[0] === 'wall');
+  const outs = S.events.filter((e) => e[0] === 'out');
+  const winEv = S.events.find((e) => e[0] === 'win');
+  const tWin = S.t_win;
+  // Konfetti (fest vorberechnet)
+  const conf = []; seed = 99;
+  for (let i = 0; i < 90; i++) conf.push({ x: rnd() * 1080, v: 260 + rnd() * 380, d: rnd() * 0.6, w: rnd() * 6, c: ['#FFD43B', '#FF3D7F', '#36F1FF', '#7CFF6B', '#fff'][i % 5], s: 10 + rnd() * 12, r: rnd() * 360 });
+  const confEls = conf.map((c) => mk('rect', { width: c.s, height: c.s * 0.6, fill: c.c, opacity: 0 }, $('confetti')));
+  const arc = (phi, hw, R) => {
+    const a0 = phi + hw, a1 = phi - hw + 2 * Math.PI;
+    const p = (a) => `${(P.cx + R * Math.cos(a)).toFixed(1)} ${(P.cy + R * Math.sin(a)).toFixed(1)}`;
+    return `M ${p(a0)} A ${R} ${R} 0 1 1 ${p(a1)}`;
+  };
+  const fr = (t) => S.frames[Math.max(0, Math.min(S.frames.length - 1, Math.round(t * FPS) - 1))];
+
+  window.renderAt = (t) => {
+    const F = fr(t), [phi, hw, B] = F;
+    const won = t >= tWin;
+    const wk = won ? ease((t - tWin) / 0.7) : 0;
+    // Ring
+    const d = arc(phi, hw, P.R + 4);
+    $('ring').setAttribute('d', d); $('ringGlow').setAttribute('d', d);
+    const alive = B.filter((b) => b[2] === 1).length;
+    const hot = alive <= 3 && !won ? 0.5 + 0.5 * Math.sin(t * 12) : 0;
+    $('ringGlow').setAttribute('stroke', won ? '#FFD43B' : hot ? '#FF4D6D' : '#36F1FF');
+    $('ringGlow').setAttribute('opacity', won ? 1 - wk * 0.6 : 1);
+    $('ring').setAttribute('opacity', won ? 1 - wk * 0.6 : 1);
+    // große Zahl
+    $('bigNum').textContent = won ? '1' : String(alive);
+    // Bälle + Spuren
+    const prev = [1, 2, 3, 4, 5].map((k) => fr(Math.max(0, t - k * 0.034))[2]);
+    B.forEach(([x, y, st], i) => {
+      let X = x, Y = y, sc = 1;
+      if (won && i === S.winner) { X = x + (P.cx - x) * wk; Y = y + (P.cy - y) * wk; sc = 1 + 1.8 * wk; }
+      const show = st !== 0 && Y < 2050;
+      balls[i].style.display = show ? '' : 'none';
+      balls[i].setAttribute('transform', `translate(${X.toFixed(1)},${Y.toFixed(1)}) scale(${sc.toFixed(3)})`);
+      balls[i].setAttribute('opacity', st === 2 ? 0.75 : won && i !== S.winner ? 1 - wk : 1);
+      trails[i].forEach((c, k) => {
+        const q = prev[k][i];
+        const on = show && st === 1 && !won;
+        c.setAttribute('opacity', on ? (0.22 - k * 0.04).toFixed(3) : 0);
+        c.setAttribute('cx', q[0]); c.setAttribute('cy', q[1]);
+      });
+    });
+    if (won) $('balls').appendChild(balls[S.winner]);
+    // Funken an der Wand
+    const sp = $('sparks'); sp.innerHTML = '';
+    for (const e of walls) {
+      const dt = t - e[1]; if (dt < 0) break; if (dt > 0.22) continue;
+      const k = dt / 0.22, th = e[4], R = P.R + 4;
+      mk('circle', { cx: P.cx + R * Math.cos(th), cy: P.cy + R * Math.sin(th), r: 12 + 46 * k, fill: 'none', stroke: '#fff', 'stroke-width': 6 * (1 - k), opacity: 1 - k }, sp);
+    }
+    // Meldung „raus“
+    let last = null; for (const e of outs) if (e[1] <= t) last = e;
+    const toast = $('toast');
+    if (last && !won && t - last[1] < 1.3) {
+      const name = S.states[last[2]][1].toUpperCase();
+      const txt = `❌ ${name} IST RAUS`;
+      $('toastText').textContent = txt;
+      const fs = Math.min(50, 1300 / txt.length);
+      $('toastText').setAttribute('font-size', fs.toFixed(0));
+      const k = t - last[1], s = k < 0.15 ? 0.6 + 0.4 * ease(k / 0.15) * 1.08 : 1;
+      toast.setAttribute('opacity', clamp((1.3 - k) / 0.25));
+      toast.setAttribute('transform', `translate(540,1484) scale(${s.toFixed(3)}) translate(-540,-1484)`);
+    } else toast.setAttribute('opacity', 0);
+    // Tabelle
+    S.states.forEach((_, i) => {
+      const c = chips[i], pl = place[i];
+      const out = pl && pl.t <= t;
+      const winner = won && i === S.winner;
+      c.g.setAttribute('opacity', out ? 0.42 : 1);
+      c.x.setAttribute('opacity', out ? 1 : 0);
+      c.pl.textContent = out ? `#${pl.rank}` : winner ? '🏆' : '';
+      c.bg.setAttribute('fill', winner ? '#B8860B' : out ? '#1A1236' : '#241A52');
+      const pop = out ? ease((t - pl.t) / 0.2) : 1;
+      const sc = out && t - pl.t < 0.2 ? 1.15 - 0.15 * pop : 1;
+      c.g.setAttribute('transform', `translate(118,35) scale(${sc.toFixed(3)}) translate(-118,-35)`);
+    });
+    $('grid').setAttribute('opacity', won ? clamp(1 - (t - tWin - 1.6) / 0.4) : 1);
+    // Sieg
+    $('winBanner').setAttribute('opacity', won ? ease((t - tWin - 0.3) / 0.3) : 0);
+    $('winText').textContent = `🏆 ${S.states[S.winner][1].toUpperCase()} GEWINNT!`;
+    $('winText').setAttribute('font-size', Math.min(72, 1800 / $('winText').textContent.length).toFixed(0));
+    const ws = won ? 0.8 + 0.2 * ease((t - tWin - 0.3) / 0.3) : 1;
+    $('winBanner').setAttribute('transform', `translate(540,485) scale(${ws.toFixed(3)}) translate(-540,-485)`);
+    $('tip').setAttribute('opacity', won ? 1 - wk : 1);
+    $('cta').setAttribute('opacity', won ? clamp((t - tWin - 2.0) / 0.3) : 0);
+    confEls.forEach((el, i) => {
+      const c = conf[i], k = t - tWin - 0.3 - c.d;
+      if (!won || k < 0) { el.setAttribute('opacity', 0); return; }
+      const y = -40 + c.v * k + 60 * k * k, x = c.x + Math.sin(k * 3 + c.w) * 40;
+      el.setAttribute('opacity', y < 1960 ? 1 : 0);
+      el.setAttribute('transform', `translate(${x.toFixed(1)},${y.toFixed(1)}) rotate(${(c.r + k * 300).toFixed(0)})`);
+    });
+    // Krone
+    let crown = document.getElementById('crown');
+    if (!crown) { crown = mk('text', { id: 'crown', 'text-anchor': 'middle', 'font-size': 120 }, $('sv')); crown.textContent = '👑'; }
+    crown.setAttribute('opacity', won ? ease((t - tWin - 0.5) / 0.3) : 0);
+    crown.setAttribute('x', P.cx); crown.setAttribute('y', P.cy - P.r * 2.8 - 20 + 8 * Math.sin(t * 5));
+  };
+  document.fonts.ready.then(() => { window.renderAt(0); window.READY = true; });
+})();
+</script>
+</body>
+</html>
