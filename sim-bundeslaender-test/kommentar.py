@@ -31,57 +31,42 @@ def join(ns):
     return ns[0] if len(ns) == 1 else ", ".join(ns[:-1]) + " und " + ns[-1]
 
 
+def art(name):
+    return "das Saarland" if name == "Saarland" else name
+
+
 def plan(res, dur_of):
-    """Ablauf der Sätze. dur_of(text) liefert die (geschätzte oder echte) Länge in Sekunden."""
+    """Wenige Ansagen, nur an den wichtigen Stellen (Kanalinhaber 17.11.: „labert permanent“):
+    Start, eine Überraschung (großes Land fliegt früh), nur noch drei, Finale, Sieger, Aufruf. Mindestens 3 s Ruhe dazwischen."""
     elim = res["elim"]
     n = len(sim.STATES)
-    lines, free, k = [], 0.05, 0
-    lines.append((free, "Sechzehn Bundesländer. Nur eins überlebt!"))
-    free += dur_of(lines[-1][1]) + GAP
-    tipp_done = False
-    var = 0
-    while k < len(elim):
-        t_ev = elim[k][0]
-        start = max(free, t_ev + 0.12)
-        # alle, die bis zum Sprechbeginn raus sind, zusammen ansagen
-        grp = [i for t, i in elim[k:] if t <= start + 0.3] or [elim[k][1]]
-        k += len(grp)
-        left = n - k
-        ns = names(grp)
-        ab = [sim.STATES[i][0] for i in grp]
-        if left == 1:
-            break
-        lag = start - t_ev
-        nums = ['null', 'eins', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn']
+    lines = [(0.05, "Sechzehn Bundesländer. Nur eins überlebt!")]
+    free = 0.05 + dur_of(lines[0][1]) + 3.0
+    surprise = False
+    for k, (t_ev, i) in enumerate(elim):
+        left = n - (k + 1)
+        ab, name = sim.STATES[i][0], sim.STATES[i][1]
+        txt = None
         if left == 2:
-            a, b = [i for i in range(n) if i not in [j for _, j in elim[:k]]]
-            txt = f"{join(ns)} raus! Finale!"
-        elif len(grp) >= 3:
-            txt = f"{', '.join(ns)}! Alle raus!"
-        elif len(grp) == 2:
-            txt = f"{join(ns)} raus!"
-        elif ab[0] in BIG and left >= 5 and lag < 0.8:
-            txt = f"{ns[0]} ist raus! Damit hat keiner gerechnet!"
-        else:
-            txt = [f"{ns[0]} ist raus!", f"{ns[0]} fliegt!", f"Tschüss, {ns[0]}!"][var % 3]
-            var += 1
-            nxt = elim[k][0] if k < len(elim) else 1e9
-            if left <= 10 and start + dur_of(txt + " Noch zehn.") < nxt - 0.2:
-                txt += f" Noch {nums[left]}."
+            a, b = [j for j in range(n) if j not in [x for _, x in elim[:k + 1]]]
+            txt = f"Finale! {sim.STATES[a][1]} gegen {art(sim.STATES[b][1])}!"
+        elif left == 3:
+            txt = "Nur noch drei!"
+        elif not surprise and ab in BIG and left >= 5:
+            txt = f"{name} ist raus! Damit hat keiner gerechnet!"
+        if not txt or left < 2:
+            continue
+        start = t_ev + 0.12
+        nxt_important = left == 3  # „Nur noch drei“ darf das Finale nicht blockieren
+        if start < free and not (left == 2):
+            continue
+        start = max(start, lines[-1][0] + dur_of(lines[-1][1]) + GAP)
         lines.append((start, txt))
-        free = start + dur_of(txt) + GAP
-        # Tipp-Frage, wenn bis zum nächsten Ausscheiden genug Luft ist
-        if not tipp_done and k < len(elim) and left <= 12:
-            q = "Wer ist dein Tipp? Schreib es in die Kommentare!"
-            if free + dur_of(q) + 0.1 < elim[k][0]:
-                lines.append((free, q))
-                free += dur_of(q) + GAP
-                tipp_done = True
+        surprise = surprise or "gerechnet" in txt
+        free = start + dur_of(txt) + (0.3 if nxt_important else 3.0)
     w = res["winner"]
-    t_win = res["t_win"]
-    start = max(free, t_win + 0.35)
-    win = sim.STATES[w][1]
-    lines.append((start, f"{'Das ' if win == 'Saarland' else ''}{win} gewinnt! Wahnsinn!"))
+    start = max(lines[-1][0] + dur_of(lines[-1][1]) + GAP, res["t_win"] + 0.35)
+    lines.append((start, f"{art(sim.STATES[w][1])[0].upper() + art(sim.STATES[w][1])[1:]} gewinnt! Wahnsinn!"))
     free = start + dur_of(lines[-1][1]) + 0.35
     lines.append((free, "Revanche morgen? Schreib dein Bundesland in die Kommentare!"))
     return lines
@@ -165,7 +150,7 @@ def main():
         j = min(len(vo), i + len(w))
         vo[i:j] += w[: j - i]
         a, b = max(0, i - int(0.08 * SR)), min(len(duck), j + int(0.15 * SR))
-        duck[a:b] = 0.42
+        duck[a:b] = 0.5
     # weiche Übergänge beim Leiserwerden
     k = int(0.06 * SR)
     duck = np.convolve(duck, np.ones(k) / k, mode="same")

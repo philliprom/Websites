@@ -60,7 +60,12 @@ ERSTER KOMMENTAR (selbst posten und anpinnen):
 TITELBILD
 Datei: titelbild.png
 
-HINWEIS
-Stimme ist KI (Qwen3-TTS). Beim Posten „KI-generierte Inhalte“ einschalten. Mit deiner eigenen Stimme wäre es glaubwürdiger.
+PROFIL (Vorschlag für die Umstellung auf Informatik)
+Name: Tech-Lupe 🔍
+Bio: Informatiker erklärt Informatik in 30 Sekunden 🔍 Schreib mir dein Thema!
+
+POSTEN
+Beim Posten „KI-generierte Inhalte“ einschalten (die Stimme ist ein KI-Klon der freien Thorsten-Voice-Stimme).
+Mit deiner eigenen Stimme wäre es noch glaubwürdiger.
 """)
 print(f"{len(segments)} Sätze")

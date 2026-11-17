@@ -20,3 +20,6 @@ Lücke. Wer durch die Lücke fällt, ist raus. Tabelle unten zeigt Platzierungen
   Untertitel (`build/voice.js`) erscheinen über dem Ring.
 - Stimme: Klon von Thorsten-Voice (CC0), Referenz „ruhig“ = Variante A (`voice/kommentator.*`, B als `kommentator_b.*`), siehe `stimmproben/README.md`.
 - Seed 166: 14 Sätze, jede Ansage 0,1–0,4 s nach dem Ausscheiden, mit A: Video 38,1 s, −15,4 LUFS.
+- 17.11. später: Kanalinhaber fand den Dauer-Kommentar „schrecklich, labert permanent“. Jetzt nur noch 6 Ansagen an den
+  wichtigen Stellen (Start, eine Überraschung, „Nur noch drei!“, Finale mit Namen, Sieger, Aufruf), sonst nur Kugel-Töne.
+  Regel: zwischen Ansagen mindestens 3 s Ruhe. Seed 166: 0,05 / 14,4 / 24,3 / 26,4 / 30,5 / 33,5 s.
