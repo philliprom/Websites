@@ -43,6 +43,11 @@ testet ein eigenes Konzept. Nach etwa 5 Folgen bekommt das Konzept mit den beste
   (Tag 1: 12 neue Follower bei 746 Aufrufen).
 - **Mitmachen mit sichtbarem Ziel** (Tank, Meter, Einwohner …), ehrlich zählen, Namen auf einer Tafel.
 
+- **Stand 17.11.: Der Look selbst ist vermutlich die Grenze.** 13 Videos auf zwei Konten, vier Themen, immer dasselbe Bild:
+  die meisten weg bei 0:01. Gezeichnete SVG-Figuren + KI-Stimme wirken neben dem, was sonst auf TikTok läuft, billig.
+  Die Cloud-Umgebung hat keine Grafikkarte, deshalb geht hier nur dieser Stil. Besprochen: Produktion auf dem eigenen Rechner,
+  falls dort eine NVIDIA-Grafikkarte steckt (freie Bild-/Video-Modelle wie Wan oder FLUX schnell, kostenlos, aber Rechenzeit).
+
 ## Konzept-Ideen für B und C (müssen sich von A und voneinander unterscheiden)
 
 | Idee | Haken im ersten Bild | Mitmachen | Rätsel/Gegenspieler |
