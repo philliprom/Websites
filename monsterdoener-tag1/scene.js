@@ -52,7 +52,7 @@
       <path d="M-24 0 L-24 -96 Q-24 -112 -10 -116 L-8 -132 L8 -132 L10 -116 Q24 -112 24 -96 L24 0 Z" fill="${col}" ${sw}/>
       <rect x="-9" y="-150" width="18" height="20" rx="4" fill="${cap}" ${sw}/>
       <rect x="-22" y="-80" width="44" height="40" rx="6" fill="#fff" stroke="${OUT}" stroke-width="3"/>
-      <text x="0" y="-55" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="${label.length > 6 ? 9 : 12}" fill="${lc}">${label}</text></g>`;
+      <text x="0" y="-55" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="${label.length > 6 ? 9 : 12}" ${label.length > 6 ? 'textLength="38" lengthAdjust="spacingAndGlyphs"' : ''} fill="${lc}">${label}</text></g>`;
   const shopMarkup = () => {
     let lamps = '';
     for (const lx of [820, 1520]) lamps += `<g transform="translate(${lx},300)"><path d="M0 0 V120" stroke="${NAVY}" stroke-width="5"/>
@@ -336,7 +336,7 @@
       else if (t < sw + 0.25) {
         S.cam = [POS.leo + 170, FLOOR - 600, 2.3]; S.leo.armR = -110; S.leo.expr = 'o'; S.leo.look = [10, -8];
         S.leo.prop = t < sw ? 'garlic' : 'scharf';
-        S.comics = [{ id: 'cm0', text: t < sw ? 'KNOBLAUCH?!' : 'PUH …', t0: t < sw ? e + 0.05 : sw, t1: sw + 0.3, wx: POS.leo + 260, wy: FLOOR - 860, rot: -8 }];
+        S.comics = [{ id: 'cm0', text: t < sw ? 'KNOBLAUCH?!' : 'PUH …', t0: t < sw ? e + 0.05 : sw, t1: sw + 0.3, wx: POS.leo + 175, wy: FLOOR - 720, rot: -8 }];
       } else {
         twoShot(S, 1.05); S.leo.expr = 'happy'; S.vla.look = [-6, 0];
         if (t < h0 + 0.35) { S.leo.armR = -80; S.hand = { x: lerp(POS.leo + 150, POS.cust - 80, E.inOut(prog(t, h0, 0.35))), y: FLOOR - 430 }; }

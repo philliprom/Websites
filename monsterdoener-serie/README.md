@@ -18,7 +18,7 @@ Stimmen, ein Gag pro Kunde, Cliffhanger am Ende.
 | **Geist** | weißes Laken, große Augen | Döner fällt durch ihn durch („Schon wieder durchgefallen.“), Stimme mit Hall |
 | **Werwolf Wolfgang** | Holzfällerhemd, Bart; bei Vollmond Wolfskopf | „Extra Fleisch!“ → Vollmond → frisst den ganzen Spieß |
 | **Zombie Günther** | grün, zerrissenes Hemd | „Mit … alles …“, Arm fällt auf die Theke |
-| **Lebensmittelkontrolle** | Schatten hinter der Glastür mit Geister-Staubsauger | Cliffhanger Tag 1 |
+| **Lebensmittelkontrolle** | Schatten hinter der Glastür mit Geister-Staubsauger | Reserve für eine spätere Folge (Szene ist schon gezeichnet) |
 
 **Laden:** Seitenansicht, Fliesenwand, Neonschild „MONSTER DÖNER“, Speisekarte (Vampir-Teller ohne Knoblauch, Hirn-Box),
 Dönerspieß vor Grillwand, Kühlschrank „Blutorangen-Limo“, Theke mit Knoblauch-/Scharf-Flasche und Trinkgeldglas
@@ -26,7 +26,8 @@ Dönerspieß vor Grillwand, Kühlschrank „Blutorangen-Limo“, Theke mit Knobl
 
 ## Mitmachen
 
-- Abstimmung „Wer kommt morgen?“ Tag 1: A Mumie · B Hexe · C Alien. Gewinner = meiste Kommentare mit dem Buchstaben, eine Stimme pro Person.
+- Abstimmung „Wer kommt morgen?“ Tag 1: A 🐺 Werwolf · B 👻 Geist · C 🧟 Zombie (alle drei schon gezeichnet und vertont).
+  Gewinner = meiste Kommentare mit dem Buchstaben, eine Stimme pro Person.
 - Kunden-Zähler = echte Followerzahl.
 
 ## Technik
@@ -38,8 +39,17 @@ Dönerspieß vor Grillwand, Kühlschrank „Blutorangen-Limo“, Theke mit Knobl
 
 ## Stand
 
-- 17.11. nachts: Tag 1 fertig (`monsterdoener-tag1/out/monsterdoener_tag1.mp4`, 34,5 s, −14,6 LUFS, 11 Sätze, 5 Stimmen,
+- 17.11. nachts: erste Fassung von Tag 1 (verworfen, 34,5 s, −14,6 LUFS, 11 Sätze, 5 Stimmen,
   rund 20 Szenen). Stimmen: Leo 154 Hz, Vampir 161 Hz (zweiter Entwurf, „Male, about 50, very low deep bass“), Geist 273 Hz + Hall,
   Werwolf 214 Hz → per `rubberband` tiefer, Zombie 105 Hz. Ähnlichkeit zur jeweiligen Vorlage 0,93–0,995.
 - Profilbilder: `profilbild_logo.png` (Döner mit Vampirzähnen, empfohlen), `profilbild_leo.png`.
-- Nächste Folge: Abstimmung A/B/C auswerten (eine Stimme pro Person), Sieger-Monster kommt, Lebensmittelkontrolle auflösen.
+- 17.11. Umbau nach Feedback des Kanalinhabers („hektisch, dann wieder lange Pausen, am Anfang passiert nichts Wildes“):
+  Tag 1 (`monsterdoener-tag1/out/monsterdoener_tag1.mp4`) ist jetzt **eine durchgehende Vampir-Geschichte**, 24,1 s, 8 Sätze, Pausen höchstens 0,5 s (außer wenn im Bild etwas
+  passiert). Ablauf: kalter Einstieg „Mein erster Kunde will mich beißen!“ (Vampir zischt, Nahaufnahme) → „⏪ 30 Sekunden
+  vorher“ → „Einen Döner. Ohne Knoblauch.“ → Leo greift zur Knoblauch-Flasche („KNOBLAUCH?!“), tauscht gegen Scharf („PUH …“)
+  → Vampir beißt, wird grün → das Brot ist Knoblauch-Fladenbrot → „Neeeein!“ → Puff, Fledermaus-Schwarm, Flaschen fallen →
+  Leo mit Besen und Strubbelhaaren „Ab morgen kein Knoblauch mehr.“ → Abstimmung Werwolf/Geist/Zombie.
+  Geist, Werwolf, Zombie und Lebensmittelkontrolle sind aus Tag 1 raus und bleiben für spätere Folgen.
+- Lehre daraus für alle Folgen: **eine Figur, ein Problem, eine Pointe pro Folge**, das wildeste Bild zuerst (danach Rückblende),
+  keine Pausen ohne Handlung, ≤ 25 s.
+- Nächste Folge: Abstimmung A/B/C auswerten (eine Stimme pro Person), das Sieger-Monster bekommt seine eigene Geschichte.
