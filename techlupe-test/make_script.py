@@ -35,8 +35,8 @@ segments = [
      "sfx": [["whoosh", -0.05], ["pop", 0.9], ["ding", "e+0.2"]]},
 ]
 script = {
-    "title": "Tech-Lupe – 0,1 + 0,2", "voice": "qwen3-tts (Erzähler)", "lead_in": 0.05, "tail": 1.8, "default_gap": 0.1,
-    "tts": {"engine": "qwen", "voice": "voice/erzaehler.wav", "voice_text": "voice/erzaehler.txt",
+    "title": "Tech-Lupe – 0,1 + 0,2", "voice": "qwen3-tts (Klon Thorsten-Voice, CC0)", "lead_in": 0.05, "tail": 1.8, "default_gap": 0.1,
+    "tts": {"engine": "qwen", "voice": "voice/thorsten.wav", "voice_text": "voice/thorsten.txt",
             "tries": 3, "max_wer": 0.1, "candidates": 2, "temperature": 0.7},
     "music": {"bpm": 112, "inst": "vibes", "clap": 0.35, "ambience": 0.05,
               "chords": [[50, 53, 57, 62], [46, 50, 53, 58], [48, 52, 55, 60], [45, 48, 52, 57]], "roots": [38, 34, 36, 33],

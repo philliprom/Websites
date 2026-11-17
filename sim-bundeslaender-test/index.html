@@ -44,6 +44,7 @@
     <rect x="-250" y="-38" width="500" height="76" rx="38" fill="#FF3D7F" stroke="#0B0820" stroke-width="6"/>
     <text x="0" y="2" text-anchor="middle" dominant-baseline="central" font-size="40" fill="#fff">WER IST DEIN TIPP? 👇</text>
   </g>
+  <text id="say" x="540" y="500" text-anchor="middle" font-size="50" fill="#fff" style="stroke:#0B0820;stroke-width:12px;paint-order:stroke fill"></text>
   <g id="winBanner" opacity="0">
     <rect x="70" y="420" width="940" height="130" rx="40" fill="#FFD43B" stroke="#0B0820" stroke-width="9"/>
     <text id="winText" x="540" y="487" text-anchor="middle" dominant-baseline="central" font-size="72" fill="#0B0820">🏆 SAARLAND GEWINNT!</text>
@@ -60,6 +61,7 @@
   </g>
 </svg>
 </div>
+<script src="build/voice.js"></script>
 <script src="build/sim.js"></script>
 <script>
 (() => {
@@ -185,6 +187,21 @@
       c.g.setAttribute('transform', `translate(118,35) scale(${sc.toFixed(3)}) translate(-118,-35)`);
     });
     $('grid').setAttribute('opacity', won ? clamp(1 - (t - tWin - 1.6) / 0.4) : 1);
+    // Untertitel zur Kommentator-Stimme
+    const say = $('say'), V = window.VOICE || [];
+    const cur = !won ? V.find(([a, b]) => t >= a - 0.05 && t <= b + 0.25) : null;
+    if (cur) {
+      const words = cur[2].toUpperCase().split(' ');
+      say.textContent = cur[2].toUpperCase();
+      say.setAttribute('font-size', 50);
+      if (say.getComputedTextLength() > 960 && words.length > 1) {
+        const mid = Math.ceil(words.length / 2);
+        say.innerHTML = `<tspan x="540" dy="-28">${words.slice(0, mid).join(' ')}</tspan><tspan x="540" dy="58">${words.slice(mid).join(' ')}</tspan>`;
+      }
+      const k = clamp((t - cur[0] + 0.05) / 0.12);
+      say.setAttribute('opacity', k);
+      say.setAttribute('transform', `translate(540,500) scale(${(0.85 + 0.15 * k).toFixed(3)}) translate(-540,-500)`);
+    } else say.setAttribute('opacity', 0);
     // Sieg
     $('winBanner').setAttribute('opacity', won ? ease((t - tWin - 0.3) / 0.3) : 0);
     $('winText').textContent = `🏆 ${S.states[S.winner][1].toUpperCase()} GEWINNT!`;

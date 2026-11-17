@@ -256,12 +256,12 @@ def build_audio(res, duration):
         w.writeframes((mix * 32767).astype("<i2").tobytes())
 
 
-def build(seed):
+def build(seed, duration=None):
     os.makedirs(BUILD, exist_ok=True)
     res = simulate(seed, record=True)
     q = pace(res)
     t_win = res["t_win"]
-    duration = round(t_win + 5.0, 2)
+    duration = round(duration or (t_win + 5.0), 2)
     data = dict(seed=seed, p=P, states=STATES, t_win=t_win, winner=res["winner"], frames=res["frames"],
                 events=res["events"], order=[i for _, i in res["elim"]], elim=[[round(t, 3), i] for t, i in res["elim"]])
     with open(os.path.join(BUILD, "sim.js"), "w", encoding="utf-8") as f:

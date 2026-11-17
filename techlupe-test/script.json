@@ -1,13 +1,13 @@
 {
   "title": "Tech-Lupe – 0,1 + 0,2",
-  "voice": "qwen3-tts (Erzähler)",
+  "voice": "qwen3-tts (Klon Thorsten-Voice, CC0)",
   "lead_in": 0.05,
   "tail": 1.8,
   "default_gap": 0.1,
   "tts": {
     "engine": "qwen",
-    "voice": "voice/erzaehler.wav",
-    "voice_text": "voice/erzaehler.txt",
+    "voice": "voice/thorsten.wav",
+    "voice_text": "voice/thorsten.txt",
     "tries": 3,
     "max_wer": 0.1,
     "candidates": 2,
