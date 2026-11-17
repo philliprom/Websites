@@ -78,10 +78,11 @@ window.Engine = (() => {
     setT(H.browR, `translate(0,${browUp}) rotate(${worried ? 12 : 0} 27 -262)`);
     const open = talk > 0.06;
     let mode = P.expr === 'o' ? 'o' : worried ? 'frown' : happy ? 'open' : 'smile';
-    if (open) mode = 'open';
+    // P.talkO: beim Sprechen bleibt der O-Mund (Schreck/Schrei) und bewegt sich mit, statt in den lachenden offenen Mund zu wechseln
+    if (open && !(P.talkO && mode === 'o')) mode = 'open';
     disp(H.mSmile, mode === 'smile'); disp(H.mFrown, mode === 'frown'); disp(H.mO, mode === 'o'); disp(H.mOpen, mode === 'open');
     if (mode === 'open') setT(H.mOpen, `translate(0,-186) scale(1,${clamp(open ? 0.25 + 0.8 * talk : 0.85, 0.2, 1.05)})`);
-    if (mode === 'o') setT(H.mO, `scale(1,${1 + talk * 0.3})`);
+    if (mode === 'o') setT(H.mO, `scale(1,${1 + talk * (P.talkO ? 0.7 : 0.3)})`);
     disp(H.cap, P.cap); disp(H.hairTop, !P.cap);
   }
 

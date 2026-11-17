@@ -64,5 +64,19 @@ Dönerspieß vor Grillwand, Kühlschrank „Blutorangen-Limo“, Theke mit Knobl
   öffentliches Video vom 11.11. (Aufwärmphase).
 - Kanalinhaber: „so schlecht hat noch nie ein Video performt“. Zum Vergleich: Auf @gruselwahl.de (älteres Konto mit Verlauf)
   hatten alle Videos 750–1.600 Aufrufe. Ein neues Konto ohne Follower bekommt zuerst nur eine kleine Testgruppe.
-- Offen: Studio-Daten (Ø Wiedergabezeit, % ganz angesehen, Absprung-Kurve, Zuschauerquellen „Für dich“, Hinweis
-  „nicht für Für dich geeignet“?). Erst danach entscheiden: liegt es am Video oder am kalten Konto?
+- Studio 17.11. 15:32 (7 h): 85 Aufrufe, Gesamtzeit 14:40, **Ø 8,4 s von 24 s (35 %)**, **9,52 % ganz angesehen**, 0 neue
+  Follower. Aufrufe fast alle in der ersten Stunde (~90), danach praktisch 0 → TikTok hat nach der ersten Testgruppe
+  aufgehört zu verteilen. Zuschauerquellen erst ab 100 Aufrufen sichtbar.
+- Kurve (abgelesen): 1 s ≈ 78 %, **3 s ≈ 48 %**, 5 s ≈ 33 %, 8 s ≈ 22 %, danach fast flach bis 21 s (≈ 16 %), Ende ≈ 9 %.
+  → Wer 8 s schafft, schaut die Geschichte meist zu Ende. Verloren gehen die Leute in den ersten 3 s.
+- Ursache, die wir selbst gebaut haben: Der Satz, der neugierig macht („… will mich beißen!“), kam erst bei **3,5 s**.
+  Davor: „Tag eins in meiner Dönerbude für Monster“ (Erklärung) und eine ruhige Totale mit großem weißem Textkasten.
+- Vergleich Mondmission Tag 1 (altes Konto): Ø 9,1 von 37 s (25 %), 5,28 % ganz. Haltekraft in % also besser, aber dasselbe Muster:
+  die meisten weg bei 0:01. Gilt für alle bisherigen Videos → **die ersten 2 Sekunden sind das Hauptproblem**, nicht die Geschichte.
+- Gegenmaßnahme (17.11. nachmittags): neuer Einstieg „Hilfe! Mein erster Kunde will mich beißen!“, Vampir springt ab Bild 1
+  fauchend auf die Kamera zu, „beißen“ schon bei ~1,6 s, kein großer Textkasten mehr (nur kleiner Chip „TAG 1 · DÖNERBUDE FÜR MONSTER“).
+  Messgröße für den Test: Anteil nach 3 s (vorher ≈ 48 %).
+- Neue Fassung Tag 1 (17.11. nachmittags): 22,4 s, −14,6 LUFS. Bild 1 = Vampir in Großaufnahme (springt auf die Kamera zu),
+  0,05 s „Hilfe!“, 0,5 s Leo (Hände am Kopf, Schreck-Mund), 1,6 s „will mich beißen!“ mit beiden im Bild, 3,4 s „⏪ 30 Sekunden vorher“.
+  Engine: neue Option `talkO` am Figuren-Rig (Schreck-Mund bewegt sich beim Sprechen), standardmäßig aus.
+  Empfehlung: altes Video auf „Nur ich“ stellen (nicht löschen), neue Fassung 16–17 Uhr posten, nach 24 h Kurve vergleichen.

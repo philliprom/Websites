@@ -10,9 +10,9 @@ VOICES = {v: {"voice": f"voice/{v}.wav", "voice_text": f"voice/{v}.txt"} for v i
 VOICES["geist"]["fx"] = "aecho=0.8:0.7:90|160:0.35|0.22"
 VOICES["werwolf"]["fx"] = "rubberband=pitch=0.78:formant=shifted,volume=1.4"
 segments = [
-    {"id": "s01", "voice": "leo", "say": "Tag eins in meiner Dönerbude für Monster. Und mein erster Kunde will mich beißen!",
-     "caps": ["TAG 1 IN MEINER DÖNERBUDE", "FÜR ^MONSTER …", "UND MEIN ERSTER KUNDE", "WILL MICH !BEISSEN! 😰"], "gap": 0.0,
-     "sfx": [["hiss", -0.15], ["sting", 0.1], ["hiss", 2.4]]},
+    {"id": "s01", "voice": "leo", "say": "Hilfe! Mein erster Kunde will mich beißen!",
+     "caps": ["!HILFE!", "MEIN ERSTER KUNDE", "WILL MICH !BEISSEN! 😱"], "gap": 0.0,
+     "sfx": [["hiss", -0.1], ["sting", 0.05], ["hiss", "e-0.6"], ["whoosh", "e-0.75"]]},
     {"id": "s02", "voice": "vampir", "say": "Einen Döner. Ohne Knoblauch.",
      "caps": ["EINEN DÖNER.", "!OHNE !KNOBLAUCH."], "gap": 0.5, "sfx": [["scratch", -0.5], ["ding", -0.2]]},
     {"id": "s03", "voice": "leo", "say": "Kommt sofort!",
@@ -31,7 +31,7 @@ segments = [
      "sfx": [["whoosh", -0.05], ["pop", 1.2], ["pop", 1.4], ["pop", 1.6], ["ding", "e+0.3"]]},
 ]
 script = {
-    "title": "Monsterdöner – Tag 1", "voice": "qwen3-tts (5 Stimmen)", "lead_in": 0.1, "tail": 2.3, "default_gap": 0.1,
+    "title": "Monsterdöner – Tag 1", "voice": "qwen3-tts (5 Stimmen)", "lead_in": 0.05, "tail": 2.3, "default_gap": 0.1,
     "tts": {"engine": "qwen", "voice": "voice/leo.wav", "voice_text": "voice/leo.txt", "voices": VOICES,
             "tries": 3, "max_wer": 0.08, "candidates": 3, "temperature": 0.7},
     "music": {"bpm": 120, "inst": "pluck", "clap": 0.6, "ambience": 0.15,

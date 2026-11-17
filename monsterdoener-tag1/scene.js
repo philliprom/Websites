@@ -316,13 +316,23 @@
 
   const shots = {
     s01: (S, t, seg, lt, d) => {
-      // Kalter Einstieg: Vampir hängt fauchend über der Theke, Leo klebt zitternd am Spieß
+      // Kalter Einstieg ab Bild 1: Vampir springt fauchend auf die Kamera zu („Hilfe!“), Leo zittert, dann beide im Bild
+      const c1 = seg.caps[1] ? seg.caps[1].start : seg.start + 0.8, c2 = seg.caps[2] ? seg.caps[2].start : seg.start + 1.6;
       Object.assign(S.vla, { show: true, x: 1430, lean: -16, armL: 150, armR: -150, expr: 'o', glow: true, talk: false, look: [-10, 2] });
-      Object.assign(S.leo, { x: 640, expr: 'o', armL: 130, armR: -130, tremble: 1, look: [10, 0], talk: true });
-      S.hook = { t0: -1, t1: 2.9 };
-      if (lt < 1.4) S.cam = camLerp([1060, FLOOR - 380, 1.3], [1050, FLOOR - 390, 1.38], E.inOut(clamp(lt / 1.4)));
-      else if (lt < 2.9) { S.cam = camLerp([1400, FLOOR - 560, 1.85], [1395, FLOOR - 565, 1.95], clamp((lt - 1.4) / 1.5)); S.shake = 0.25; }
-      else S.cam = camLerp([680, FLOOR - 520, 1.8], [690, FLOOR - 525, 1.9], clamp((lt - 2.9) / 1.6));
+      Object.assign(S.leo, { x: 720, expr: 'o', talkO: true, armL: 160, armR: -160, tremble: 1, look: [10, 0], talk: true });
+      S.hook = { t0: -1, t1: c2 + 0.6 };
+      if (t < c1) {
+        const k = E.out(clamp((t - 0) / 0.5));
+        S.vla.lean = -16 - 10 * k;
+        S.cam = camLerp([1310, FLOOR - 265, 2.05], [1290, FLOOR - 275, 2.6], k); S.shake = 0.7;
+      } else if (t < c2) {
+        S.cam = camLerp([740, FLOOR - 255, 1.9], [740, FLOOR - 262, 2.05], clamp((t - c1) / (c2 - c1))); S.shake = 0.3;
+      } else {
+        const k = E.out(clamp((t - c2) / 0.35));
+        S.vla.lean = -16 - 14 * k; S.leo.lean = 8 * k;
+        S.cam = camLerp([1090, FLOOR - 420, 1.2], [1080, FLOOR - 430, 1.34], clamp((t - c2) / 1.8)); S.shake = t < c2 + 0.5 ? 0.45 : 0.15;
+        if (t < c2 + 0.3) S.flash = c2;
+      }
     },
     s02: (S, t, seg, lt) => {
       custShot(S, 1.55); S.vla.show = true; S.vla.look = [-6, 0]; S.vla.armR = -110; S.vla.fingerR = true; S.vla.expr = 'smile';
