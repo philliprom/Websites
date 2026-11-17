@@ -1,0 +1,22 @@
+KANAL: Tech-Lupe (dein bestehender Kanal)
+TECH-LUPE – FOLGE 3: SO FUNKTIONIERT CHATGPT WIRKLICH · TEXTE ZUM POSTEN
+=======================================================================
+
+BESCHREIBUNG (Caption):
+So funktioniert ChatGPT wirklich 🤖 Es rät Wort für Wort, was am besten passt, nicht was stimmt. Darum: wichtige Fakten selbst prüfen! Welches Thema als Nächstes? 👇 #informatik #ki #chatgpt #techtok #fyp
+
+ERSTER KOMMENTAR (selbst posten und anpinnen):
+📌 Hat dir eine KI auch schon mal etwas Falsches total überzeugt erzählt? Schreib's in die Kommentare 👇
+
+TITELBILD
+Datei: titelbild.png
+
+POSTEN
+Beim Posten „KI-generierte Inhalte“ einschalten (die Stimme ist ein KI-Klon der freien Thorsten-Voice-Stimme).
+Mindestens 1 Tag Abstand zur vorigen Folge.
+
+INHALT ZUM NACHPRÜFEN (bewusst vereinfacht)
+Sprachmodelle wie ChatGPT berechnen für das nächste Textstück (genauer: Token, oft ein Wortstück) eine Wahrscheinlichkeit,
+wählen eins aus, hängen es an und wiederholen das. Gelernt aus sehr großen Textmengen, gespeichert in Milliarden
+Parametern; danach zusätzlich darauf trainiert, hilfreich zu antworten. Die Prozentwerte im Video sind Beispielwerte.
+Das Australien-Beispiel ist zur Veranschaulichung (Hauptstadt ist Canberra).

@@ -11,12 +11,17 @@ Qwen3-TTS-Klon von Thorsten-Voice (CC0), Variante A „ruhig“ (`stimmproben/RE
   deshalb wirkt die WER bei Zahlensätzen hoch, obwohl der Ton stimmt.
 - Schluss immer: „Folge für mehr Informatik in dreißig Sekunden!“ + Themenfrage in den Kommentaren.
 
+## Themenwahl
+Kanalinhaber 17.11.: lieber **relevante, wichtige** Informatik statt Kuriositäten (0,1 + 0,2 und 2038 waren ihm zu speziell).
+Also Themen, die jeden betreffen: KI, Passwörter/Sicherheit, Internet, Datenschutz, wie Apps Daten sammeln.
+
 ## Folgen
 | Nr. | Ordner | Thema | Länge | Stand |
 |---|---|---|---|---|
 | 1 | `techlupe-test/` | Warum 0,1 + 0,2 = 0,30000000000000004 | 34,1 s | fertig, noch nicht gepostet |
 | 2 | `techlupe-2038/` | Das Jahr-2038-Problem (Unix-Zeit, 32 Bit → 1901, Lösung 64 Bit) | 37,1 s | fertig 17.11. |
+| 3 | `techlupe-ki/` | So funktioniert ChatGPT wirklich (nächstes Wort, Wahrscheinlichkeiten, passend ≠ wahr, selbst prüfen) | 29,6 s | fertig 17.11. |
 
-Themen-Ideen: Warum Passwörter mit 8 Zeichen schnell geknackt sind · Was passiert, wenn du google.de eintippst (DNS) ·
-Warum Computer keinen echten Zufall können · Wie ein QR-Code trotz Kratzer funktioniert (Fehlerkorrektur) ·
-Warum 1 KB manchmal 1024 Byte ist.
+Themen-Ideen (relevant): Wie Passwörter gespeichert werden und warum Leaks gefährlich sind (Hashing) · Was HTTPS/das Schloss
+wirklich schützt · Was passiert, wenn du google.de eintippst (DNS, IP, Pakete) · Wie Phishing-Links tricksen ·
+Was Cookies über dich wissen · Warum KI-Bilder erkennbar sind (oder nicht) · Was ein Algorithmus ist (TikTok-Feed).
