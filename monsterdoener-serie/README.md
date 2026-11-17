@@ -53,3 +53,16 @@ Dönerspieß vor Grillwand, Kühlschrank „Blutorangen-Limo“, Theke mit Knobl
 - Lehre daraus für alle Folgen: **eine Figur, ein Problem, eine Pointe pro Folge**, das wildeste Bild zuerst (danach Rückblende),
   keine Pausen ohne Handlung, ≤ 25 s.
 - Nächste Folge: Abstimmung A/B/C auswerten (eine Stimme pro Person), das Sieger-Monster bekommt seine eigene Geschichte.
+
+## Zahlen
+
+| Folge | gepostet | Stand | Aufrufe | Likes | Komm. | Follower Kanal |
+|---|---|---|---|---|---|---|
+| Tag 1 (Vampir) | Di 17.11. 08:22 (geplant war 16–17 Uhr) | 17.11. 12:14 (knapp 4 h) | 85 | 2 | 0 | 0 |
+
+- Konto: @monsterdoener. Der angezeigte Name ist noch „DayOnd“ (nicht „Monsterdöner 🧛🥙“). Dazu gibt es ein nicht
+  öffentliches Video vom 11.11. (Aufwärmphase).
+- Kanalinhaber: „so schlecht hat noch nie ein Video performt“. Zum Vergleich: Auf @gruselwahl.de (älteres Konto mit Verlauf)
+  hatten alle Videos 750–1.600 Aufrufe. Ein neues Konto ohne Follower bekommt zuerst nur eine kleine Testgruppe.
+- Offen: Studio-Daten (Ø Wiedergabezeit, % ganz angesehen, Absprung-Kurve, Zuschauerquellen „Für dich“, Hinweis
+  „nicht für Für dich geeignet“?). Erst danach entscheiden: liegt es am Video oder am kalten Konto?
