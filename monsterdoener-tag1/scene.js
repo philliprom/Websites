@@ -42,6 +42,12 @@
       <circle cx="-22" cy="-38" r="7" fill="#E8433E"/><circle cx="16" cy="-40" r="7" fill="#E8433E"/>
       <path d="M-40 -10 q2 22 -2 30 M8 -12 q3 18 0 26 M40 -8 q2 14 0 22" stroke="#FFFDF4" stroke-width="9" fill="none" stroke-linecap="round"/>
       <path d="M-70 10 Q0 24 70 10" stroke="#C99A52" stroke-width="5" fill="none"/></g>`;
+  const breadBag = () => `<g><path d="M-80 0 L-66 -170 L66 -170 L80 0 Z" fill="#E9D3A6" ${sw}/><path d="M-66 -170 l12 -20 l12 20 l12 -20 l12 20 l12 -20 l12 20 l12 -20 l12 20 l12 -20 l12 20" fill="#E9D3A6" stroke="${OUT}" stroke-width="4"/>
+      <text x="0" y="-110" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="22" fill="#2E7D32">KNOBLAUCH-</text>
+      <text x="0" y="-82" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="22" fill="${OUT}">FLADENBROT</text>
+      <g transform="translate(0,-40)"><path d="M0 -20 Q-26 -8 -22 10 Q-12 24 0 22 Q12 24 22 10 Q26 -8 0 -20 Z" fill="#FFFDF4" stroke="${OUT}" stroke-width="3"/><path d="M0 -20 V-30" stroke="#7CBF5A" stroke-width="4"/></g></g>`;
+  const broom = () => `<g transform="rotate(10)"><rect x="-6" y="-260" width="12" height="300" rx="5" fill="#B5814F" ${sw}/><path d="M-40 40 L40 40 L56 130 L-56 130 Z" fill="#E8C55A" ${sw}/>
+      <path d="M-30 60 V122 M-10 60 V126 M10 60 V126 M30 60 V122" stroke="#B89A3A" stroke-width="4"/></g>`;
   const bottle = (x, y, col, cap, label, lc) => `<g transform="translate(${x},${y})">
       <path d="M-24 0 L-24 -96 Q-24 -112 -10 -116 L-8 -132 L8 -132 L10 -116 Q24 -112 24 -96 L24 0 Z" fill="${col}" ${sw}/>
       <rect x="-9" y="-150" width="18" height="20" rx="4" fill="${cap}" ${sw}/>
@@ -95,10 +101,12 @@
         <rect x="-200" y="0" width="400" height="310" fill="#E8433E" ${sw}/>
         <rect x="-200" y="120" width="400" height="34" fill="#fff"/><text x="0" y="250" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="40" fill="#fff" opacity=".9">🥙 SEIT TAG 1</text>
         <rect x="-226" y="-26" width="452" height="34" rx="10" fill="url(#gSteel)" ${sw}/>
-        ${bottle(-140, -26, '#FFFDF4', '#7CFF6B', 'KNOBLAUCH', '#1B1430')}${bottle(-80, -26, '#E8433E', '#FFD43B', 'SCHARF', '#E8433E')}
+        <g id="btlK">${bottle(-140, -26, '#FFFDF4', '#7CFF6B', 'KNOBLAUCH', '#1B1430')}</g><g id="btlS">${bottle(-80, -26, '#E8433E', '#FFD43B', 'SCHARF', '#E8433E')}</g>
         <g transform="translate(40,-26)"><rect x="-40" y="-60" width="80" height="60" rx="8" fill="#fff" ${sw}/><path d="M-26 -60 q26 -26 52 0" fill="#fff" stroke="${OUT}" stroke-width="3"/></g>
         <g transform="translate(140,-26)"><path d="M-34 0 L-30 -86 L30 -86 L34 0 Z" fill="#BFE6FF" fill-opacity=".5" ${sw}/>
           <circle cx="-8" cy="-22" r="12" fill="#FFD43B" stroke="${OUT}" stroke-width="3"/><circle cx="12" cy="-34" r="12" fill="#FFD43B" stroke="${OUT}" stroke-width="3"/>
+          <g id="jarBat" style="display:none" transform="translate(0,-56) scale(.55)"><path d="M0 0 Q-40 -30 -70 -10 Q-50 0 -46 14 Q-30 4 0 10 Z M0 0 Q40 -30 70 -10 Q50 0 46 14 Q30 4 0 10 Z" fill="${NAVY}"/>
+            <ellipse cx="0" cy="4" rx="16" ry="20" fill="${NAVY}"/><path d="M-12 -12 L-8 -26 L-2 -14 Z M12 -12 L8 -26 L2 -14 Z" fill="${NAVY}"/><circle cx="-6" cy="0" r="4" fill="#FF3B4E"/><circle cx="6" cy="0" r="4" fill="#FF3B4E"/></g>
           <g transform="translate(0,-120) rotate(4)"><rect x="-70" y="-18" width="140" height="34" rx="6" fill="#FFF6E2" stroke="${OUT}" stroke-width="3"/>
             <text x="0" y="5" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="15" fill="${OUT}">TRINKGELD (KEINE SEELEN)</text></g></g>
         <g id="zArmOnCounter" style="display:none"></g>
@@ -152,7 +160,9 @@
         <ellipse cx="-72" cy="-226" rx="13" ry="17" fill="${SKIN}" ${sw}/><ellipse cx="72" cy="-226" rx="13" ry="17" fill="${SKIN}" ${sw}/>
         <ellipse cx="0" cy="-232" rx="72" ry="72" fill="${SKIN}" ${sw}/>
         <path d="M-74 -244 Q-80 -300 -30 -312 Q-10 -330 10 -312 Q30 -332 50 -306 Q82 -296 76 -246 Q60 -280 30 -282 Q0 -268 -30 -284 Q-60 -280 -74 -244 Z" fill="#6B4423" ${sw}/>
-        <path d="M-58 -296 L-46 -336 L58 -336 L66 -296 Z" fill="#fff" ${sw}/><path d="M-60 -304 H64" stroke="#E8433E" stroke-width="10"/>
+        <g id="${p}-cap"><path d="M-58 -296 L-46 -336 L58 -336 L66 -296 Z" fill="#fff" ${sw}/><path d="M-60 -304 H64" stroke="#E8433E" stroke-width="10"/></g>
+        <g id="${p}-mess" style="display:none" stroke="#6B4423" stroke-width="8" stroke-linecap="round" fill="none">
+          <path d="M-60 -290 l-26 -30 M-30 -310 l-8 -40 M0 -316 l6 -42 M30 -310 l18 -36 M60 -292 l28 -26"/></g>
         ${[[-44, -200], [-36, -192], [-50, -190], [44, -200], [36, -192], [50, -190]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3" fill="#C98256"/>`).join('')}
         ${faceMarkup(p, { brow: '#4A2E18', browW: 9 })}
         <path d="M-8 -212 Q0 -198 8 -212" stroke="#D9967A" stroke-width="5" fill="none" stroke-linecap="round"/>
@@ -171,7 +181,7 @@
       <path d="M-50 -178 Q-70 -130 -62 -76 Q0 -64 62 -76 Q70 -130 50 -178 Q0 -190 -50 -178 Z" fill="#22182E" ${sw}/>
       <path d="M-22 -182 L0 -120 L22 -182 Z" fill="#fff" stroke="${OUT}" stroke-width="4"/>
       <circle cx="0" cy="-118" r="12" fill="#C8323A" stroke="#FFD43B" stroke-width="4"/>
-      <g id="${p}-armR" transform="translate(50,-160)">${armMarkup(p, 'R', '#22182E', '#FFFFFF', VSKIN)}</g>
+      <g id="${p}-armR" transform="translate(50,-160)">${armMarkup(p, 'R', '#22182E', '#FFFFFF', VSKIN)}<g id="${p}-propR" transform="translate(0,104)"></g></g>
       <path d="M-86 -186 L-112 -300 L-56 -214 Z M86 -186 L112 -300 L56 -214 Z" fill="#8E1B2E" ${sw}/>
       <g id="${p}-head">
         <path d="M-70 -236 L-104 -270 L-66 -206 Z M70 -236 L104 -270 L66 -206 Z" fill="${VSKIN}" ${sw}/>
@@ -181,6 +191,9 @@
         ${faceMarkup(p, { brow: '#141022', browW: 10, eyeRx: 17, eyeRy: 19, pup: 9 })}
         <path d="M-6 -214 L0 -196 L6 -214" fill="${VSKIN}" stroke="#9C8CBC" stroke-width="3"/>
         <path id="${p}-fangs" d="M-14 -184 L-10 -168 L-6 -184 Z M6 -184 L10 -168 L14 -184 Z" fill="#fff" stroke="${OUT}" stroke-width="2.5"/>
+        <ellipse id="${p}-sick" cx="0" cy="-226" rx="62" ry="72" fill="#8BD46A" opacity="0" style="mix-blend-mode:multiply"/>
+        <g id="${p}-glow" style="display:none" filter="url(#fNeon)"><circle cx="-27" cy="-228" r="13" fill="#FF2D3D"/><circle cx="27" cy="-228" r="13" fill="#FF2D3D"/>
+          <circle cx="-27" cy="-228" r="5" fill="#FFE0E0"/><circle cx="27" cy="-228" r="5" fill="#FFE0E0"/></g>
       </g>
     </g>
   </g>`;
@@ -264,6 +277,9 @@
       <ellipse cx="0" cy="4" rx="16" ry="20" fill="${NAVY}"/><path d="M-12 -12 L-8 -26 L-2 -14 Z M12 -12 L8 -26 L2 -14 Z" fill="${NAVY}"/>
       <circle cx="-6" cy="0" r="3.5" fill="#FF3B4E"/><circle cx="6" cy="0" r="3.5" fill="#FF3B4E"/><path d="M-4 12 l2 6 l2 -6" fill="#fff"/></g>`;
 
+  const swarmMarkup = () => Array.from({ length: 12 }, (_, i) => `<g id="sw${i}" style="display:none"><g class="swW"><path d="M0 0 Q-40 -40 -90 -20 Q-70 -10 -66 10 Q-50 0 -40 14 Q-24 4 0 10 Z" fill="${NAVY}"/><path d="M0 0 Q40 -40 90 -20 Q70 -10 66 10 Q50 0 40 14 Q24 4 0 10 Z" fill="${NAVY}"/></g>
+      <ellipse cx="0" cy="4" rx="16" ry="20" fill="${NAVY}"/><circle cx="-6" cy="0" r="3.5" fill="#FF3B4E"/><circle cx="6" cy="0" r="3.5" fill="#FF3B4E"/></g>`).join('');
+
   // ---------------------------------------------------------------- Welt
   const world = () => `${defs}${shopMarkup()}
     <g id="leoW">${leoMarkup('leo')}</g>
@@ -278,16 +294,18 @@
     <g id="splat" style="display:none"><ellipse rx="110" ry="22" fill="#FFFDF4" ${sw}/><circle cx="-50" cy="-10" r="12" fill="#5CC24E"/><circle cx="30" cy="-6" r="10" fill="#E8433E"/><path d="M-20 -14 q20 -10 40 0" stroke="#8A4A2A" stroke-width="10" fill="none"/></g>
     <g id="zArm" style="display:none"><g transform="rotate(90)">${armMarkup('zarm', 'L', '#8FB8D8', '#6E95BF', ZSKIN)}</g></g>
     ${batMarkup()}
+    <g id="swarm">${swarmMarkup()}</g>
     <g id="poofs"></g>`;
 
   // ---------------------------------------------------------------- Zustand
   const LEO = humanEls('leo', 48), VLA = humanEls('vla', 50), WWF = humanEls('wwf', 64), ZOM = humanEls('zom', 50);
   const fig = (x, s, extra = {}) => Object.assign(humanDefaults(), { show: false, x, y: FLOOR, s, cap: false }, extra);
   const base = () => ({
-    leo: fig(POS.leo, 1.42, { show: true, prop: null }),
-    vla: fig(POS.cust, 1.5), wwf: fig(POS.cust, 1.55, { wolf: 0 }), zom: fig(POS.cust, 1.42, { armOff: null }),
+    leo: fig(POS.leo, 1.42, { show: true, prop: null, propL: null, mess: false, duck: 0, tremble: 0 }),
+    vla: fig(POS.cust, 1.5, { prop: null, glow: false, sick: 0, lean: 0 }), wwf: fig(POS.cust, 1.55, { wolf: 0 }), zom: fig(POS.cust, 1.42, { armOff: null }),
     gho: { show: false, x: POS.cust, y: FLOOR - 40, s: 1.3, sad: false, tear: false, talk: true },
     bat: null, fall: null, hand: null, moon: 0, spitEaten: false, insp: 0, poofs: [], comics: [], hook: null, cta: null, flash: null,
+    swarm: null, btlFall: null, jarBat: false,
     ui: { title: 999 },
   });
 
@@ -298,102 +316,72 @@
 
   const shots = {
     s01: (S, t, seg, lt, d) => {
-      S.cam = camLerp([1175, FLOOR - 330, 1.06], [1170, FLOOR - 340, 1.14], E.inOut(clamp(lt / (d + 0.3))));
-      S.hook = { t0: -1, t1: seg.end - 0.1 };
-      S.leo.expr = 'happy'; S.leo.armR = lerp(-20, -150, E.out(prog(lt, 0.5, 0.4))) + Math.sin(t * 9) * (lt > 0.9 ? 10 : 0);
-      S.vla.show = true; S.vla.talk = false; S.vla.look = [-8, 0]; S.vla.armL = 20; S.vla.armR = -20; S.vla.expr = 'smile';
+      // Kalter Einstieg: Vampir hängt fauchend über der Theke, Leo klebt zitternd am Spieß
+      Object.assign(S.vla, { show: true, x: 1430, lean: -16, armL: 150, armR: -150, expr: 'o', glow: true, talk: false, look: [-10, 2] });
+      Object.assign(S.leo, { x: 640, expr: 'o', armL: 130, armR: -130, tremble: 1, look: [10, 0], talk: true });
+      S.hook = { t0: -1, t1: 2.9 };
+      if (lt < 1.4) S.cam = camLerp([1060, FLOOR - 380, 1.3], [1050, FLOOR - 390, 1.38], E.inOut(clamp(lt / 1.4)));
+      else if (lt < 2.9) { S.cam = camLerp([1400, FLOOR - 560, 1.85], [1395, FLOOR - 565, 1.95], clamp((lt - 1.4) / 1.5)); S.shake = 0.25; }
+      else S.cam = camLerp([680, FLOOR - 520, 1.8], [690, FLOOR - 525, 1.9], clamp((lt - 2.9) / 1.6));
     },
     s02: (S, t, seg, lt) => {
       custShot(S, 1.55); S.vla.show = true; S.vla.look = [-6, 0]; S.vla.armR = -110; S.vla.fingerR = true; S.vla.expr = 'smile';
-      if (t > seg.speechEnd - 0.9) { S.vla.expr = 'worried'; S.vla.armR = -150 + Math.sin(t * 20) * 6; }
+      S.ui.chip = { text: '⏪ 30 SEKUNDEN VORHER', t0: seg.start - 0.05, cls: 'dark', top: 250 };
+      S.flash = seg.start - 0.05;
     },
-    s03: (S, t, seg, lt) => {
-      leoShot(S, 1.6); S.leo.expr = 'worried'; S.leo.armR = -70; S.leo.prop = 'doner'; S.leo.look = [8, 0];
+    s03: (S, t, seg, lt, d) => {
+      const e = seg.speechEnd, sw = cue('s03', 'boing'), h0 = cue('s04', 'card'), bite = cue('s04', 'crunch');
+      S.vla.show = true;
+      if (t < e + 0.05) { leoShot(S, 1.6); S.leo.expr = 'happy'; S.leo.armR = -110; S.leo.prop = 'garlic'; }
+      else if (t < sw + 0.25) {
+        S.cam = [POS.leo + 170, FLOOR - 600, 2.3]; S.leo.armR = -110; S.leo.expr = 'o'; S.leo.look = [10, -8];
+        S.leo.prop = t < sw ? 'garlic' : 'scharf';
+        S.comics = [{ id: 'cm0', text: t < sw ? 'KNOBLAUCH?!' : 'PUH …', t0: t < sw ? e + 0.05 : sw, t1: sw + 0.3, wx: POS.leo + 260, wy: FLOOR - 860, rot: -8 }];
+      } else {
+        twoShot(S, 1.05); S.leo.expr = 'happy'; S.vla.look = [-6, 0];
+        if (t < h0 + 0.35) { S.leo.armR = -80; S.hand = { x: lerp(POS.leo + 150, POS.cust - 80, E.inOut(prog(t, h0, 0.35))), y: FLOOR - 430 }; }
+        else { S.vla.prop = t < bite ? 'doner' : 'bitten'; S.vla.armR = -120; S.vla.expr = t < bite ? 'smile' : 'o'; }
+      }
     },
     s04: (S, t, seg, lt, d) => {
+      custShot(S, 1.6); S.vla.show = true; S.vla.prop = 'bitten'; S.vla.armR = -120; S.vla.expr = 'worried'; S.vla.look = [-4, -6];
+      S.vla.sick = clamp((lt - d * 0.5) / (d * 0.5));
+    },
+    s05: (S, t, seg, lt, d) => {
+      S.leo.propL = 'bag'; S.leo.armL = 120; S.leo.expr = lt < 0.4 ? 'o' : 'worried'; S.leo.look = [-8, -8];
+      if (lt < 0.45) leoShot(S, 1.55); else S.cam = [POS.leo - 90, FLOOR - 600, 2.05];
+    },
+    s06: (S, t, seg, lt, d) => {
       const pf = seg.speechEnd + 0.05;
-      if (t < pf + 0.15) {
-        custShot(S, 1.65); S.vla.show = true; S.vla.expr = 'o'; S.vla.armL = 150; S.vla.armR = -150; S.shake = 0.6; S.vla.tilt = -6;
+      if (t < pf + 0.1) {
+        custShot(S, 1.7); Object.assign(S.vla, { show: true, sick: 1, expr: 'o', armL: 150, armR: -150, prop: null, glow: true }); S.shake = 0.6;
       } else {
-        S.cam = camLerp([1700, FLOOR - 440, 1.1], [1820, FLOOR - 450, 1.0], clamp((t - pf) / 0.9));
-        const k = (t - pf) / 0.75;
-        if (k < 1) S.bat = { x: lerp(POS.cust, POS.door + 240, E.in(clamp(k))), y: lerp(FLOOR - 560, FLOOR - 860, clamp(k)) + Math.sin(t * 14) * 18, s: 1.4 };
-        const s5 = Engine.byId.s05.start, g0 = pf + 0.45;
-        if (t > g0) { S.gho.show = true; S.gho.x = lerp(POS.door + 120, POS.cust, E.out(clamp((t - g0) / (s5 - g0)))); }
+        S.cam = camLerp([1250, FLOOR - 380, 0.95], [1230, FLOOR - 385, 1.0], clamp((t - pf) / 1.5)); S.shake = 0.35;
+        S.swarm = pf; S.btlFall = cue('s06', 'klong') - 0.15;
+        S.leo.duck = E.out(clamp((t - pf - 0.15) / 0.3)); S.leo.armL = 160; S.leo.armR = -160; S.leo.expr = 'o';
+        S.comics = [{ id: 'cm0', text: 'PUFF!', t0: pf, t1: pf + 0.7, wx: POS.cust, wy: FLOOR - 720, rot: -8 },
+          { id: 'cm1', text: 'FLATTER FLATTER!', t0: pf + 0.5, t1: pf + 1.5, wx: 1200, wy: 760, rot: 5 }];
       }
-      S.poofs = [{ x: POS.cust, y: FLOOR - 330, t0: pf, s: 1.4 }];
-      S.comics = [{ id: 'cm0', text: 'PUFF!', t0: pf, t1: pf + 0.8, wx: POS.cust + 40, wy: FLOOR - 640, rot: -8 }];
-    },
-    s05: (S, t, seg, lt) => {
-      S.gho.show = true;
-      if (t < seg.speechEnd + 0.05) { custShot(S, 1.5); return; }
-      const h0 = cue('s06', 'card'), f0 = cue('s06', 'whoosh'), sp = cue('s06', 'splash');
-      twoShot(S, 1.04);
-      S.leo.armR = -80; S.leo.expr = 'happy';
-      if (t < f0) S.hand = { x: lerp(POS.leo + 150, POS.cust - 60, E.inOut(prog(t, h0, f0 - h0 - 0.05))), y: FLOOR - 420 };
-      else S.fall = { x: POS.cust - 50, y: lerp(FLOOR - 420, FLOOR - 30, E.in(prog(t, f0, sp - f0))), rot: (t - f0) * 300, splat: sp };
-      S.comics = [{ id: 'cm1', text: 'PLATSCH!', t0: sp, t1: sp + 0.9, wx: POS.cust + 170, wy: FLOOR - 140, rot: 6 }];
-      S.gho.sad = t > sp; if (t > sp) S.leo.expr = 'o';
-    },
-    s06: (S, t, seg, lt) => {
-      custShot(S, 1.55); S.gho.show = true; S.gho.sad = true; S.gho.tear = true;
-      S.fall = { x: POS.cust - 50, y: FLOOR - 30, rot: 0, splat: cue('s06', 'splash') };
+      S.poofs = [{ x: POS.cust, y: FLOOR - 340, t0: pf, s: 1.5 }];
     },
     s07: (S, t, seg, lt) => {
-      const e = seg.speechEnd, poof = cue('s07', 'poof');
-      S.wwf.show = true; S.wwf.look = [-6, 0];
-      if (t < e + 0.12) { custShot(S, 1.5); S.wwf.armR = -100; S.wwf.fingerR = true; S.wwf.expr = 'smile'; }
-      else if (t < poof - 0.05) {
-        S.cam = [POS.door, 1040, 1.45]; S.moon = clamp((t - e - 0.12) / 0.5);
-      } else if (t < poof + 1.35) {
-        custShot(S, 1.35); S.moon = 1; S.wwf.wolf = 1; S.wwf.armL = 160; S.wwf.armR = -160; S.wwf.tilt = -22; S.wwf.expr = 'o'; S.shake = 0.5;
-        S.poofs = [{ x: POS.cust, y: FLOOR - 360, t0: poof, s: 1.6 }];
-        S.comics = [{ id: 'cm0', text: 'AUUUU!', t0: poof + 0.15, t1: poof + 1.4, wx: POS.cust - 20, wy: FLOOR - 820, rot: -6 }];
-      } else {
-        S.cam = [POS.leo - 60, FLOOR - 470, 1.35]; S.spitEaten = true; S.leo.expr = 'o'; S.leo.armL = 30; S.leo.armR = -30; S.leo.look = [10, 0];
-        S.comics = [{ id: 'cm1', text: 'MAMPF!', t0: poof + 1.35, t1: poof + 2.4, wx: POS.leo - 200, wy: FLOOR - 820, rot: 8 }];
-      }
+      S.cam = camLerp([1000, FLOOR - 450, 1.32], [990, FLOOR - 455, 1.4], clamp(lt / 2.5));
+      Object.assign(S.leo, { mess: true, prop: 'broom', armR: -40, armL: 20, expr: 'worried', look: [4, 0] });
+      S.btlFall = -10; S.jarBat = true;
     },
     s08: (S, t, seg, lt) => {
-      const off = cue('s08', 'crunch', 1);
-      S.spitEaten = true; S.zom.show = true; S.zom.look = [-8, 2]; S.zom.armL = 70; S.zom.armR = -20; S.zom.tilt = 8;
-      S.zom.armOff = off;
-      if (t < seg.speechEnd + 0.1) custShot(S, 1.5); else twoShot(S, 1.08);
-      if (t >= off) S.comics = [{ id: 'cm2', text: 'KNACK!', t0: off, t1: off + 0.9, wx: POS.cust - 160, wy: FLOOR - 560, rot: -10 }];
-      S.leo.expr = t > off ? 'o' : 'smile';
-    },
-    s09: (S, t, seg, lt) => {
-      leoShot(S, 1.6); S.spitEaten = true; S.leo.expr = 'happy'; S.leo.armR = -150; S.leo.fingerR = true; S.leo.look = [6, 0];
-      S.zom.armOff = -10;
-    },
-    s10: (S, t, seg, lt) => {
-      S.cam = camLerp([1420, FLOOR - 420, 0.78], [1400, FLOOR - 430, 0.82], clamp(lt / 4));
-      S.spitEaten = true; S.leo.expr = 'happy'; S.leo.armR = -150; S.leo.fingerR = true;
-      // Alle Kunden in der Schlange
-      Object.assign(S.vla, { show: true, x: 1500, look: [-6, 0], expr: 'smile' });
-      Object.assign(S.gho, { show: true, x: 1760 });
-      Object.assign(S.wwf, { show: true, x: 2010, wolf: 1, expr: 'smile' });
-      Object.assign(S.zom, { show: true, x: 2260, armOff: -10, look: [-8, 2] });
-      S.ui.cards = [cue('s10', 'pop', 0), cue('s10', 'pop', 1), cue('s10', 'pop', 2)];
-      S.ui.vote = cue('s10', 'pop', 2) + 0.2;
-      S.cta = seg.start + 0.3;
-      const kn = cue('s11', 'knock');
-      if (t >= kn - 0.05) {
-        S.cam = camLerp([POS.door, 1120, 1.2], [POS.door, 1110, 1.3], clamp((t - kn) / 2));
-        S.ui.cards = null; S.ui.vote = null; S.cta = null; S.insp = clamp((t - kn + 0.1) / 0.4);
-        S.vla.show = false; S.gho.show = false; S.wwf.show = false; S.zom.show = false;
-        S.comics = [{ id: 'cm0', text: 'KLOPF KLOPF', t0: kn, t1: kn + 1.1, wx: POS.door, wy: 800, rot: -4 }];
-      }
-    },
-    s11: (S, t, seg, lt) => {
-      const kn = cue('s11', 'knock');
-      S.spitEaten = true; S.insp = 1;
-      if (t > seg.speechEnd + 0.15) { S.cam = camLerp([POS.door, 1110, 1.3], [POS.door, 1100, 1.42], clamp((t - seg.speechEnd) / 2)); }
-      else { leoShot(S, 1.65); S.leo.expr = 'o'; S.leo.armL = 40; S.leo.armR = -40; S.leo.look = [10, -2]; }
-      if (t > seg.speechEnd + 0.2) S.ui.chip = { text: 'FORTSETZUNG FOLGT …', t0: seg.speechEnd + 0.3, cls: 'dark', top: 1150 };
+      S.cam = camLerp([1120, FLOOR - 420, 0.98], [1110, FLOOR - 425, 1.02], clamp(lt / 3));
+      Object.assign(S.leo, { mess: true, expr: 'happy', armR: -150, fingerR: true, look: [0, 0] });
+      S.btlFall = -10; S.jarBat = true;
+      S.ui.cards = [cue('s08', 'pop', 0), cue('s08', 'pop', 1), cue('s08', 'pop', 2)];
+      S.ui.vote = cue('s08', 'pop', 2) + 0.2;
+      S.cta = seg.start + 0.2;
     },
     cover: (S, t) => {
-      S.cam = [1240, FLOOR - 330, 1.32];
+      Object.assign(S.vla, { show: true, x: 1430, lean: -16, armL: 150, armR: -150, expr: 'o', glow: true, talk: false, look: [-10, 2] });
+      Object.assign(S.leo, { x: 640, expr: 'o', armL: 130, armR: -130, look: [10, 0], talk: false });
+      S.cam = [1060, FLOOR - 330, 1.25];
+      return;
       S.leo.expr = 'o'; S.leo.armR = -70; S.leo.prop = 'doner'; S.leo.look = [8, 0]; S.leo.talk = false;
       Object.assign(S.vla, { show: true, x: 1520, expr: 'o', armL: 150, armR: -150, talk: false });
       Object.assign(S.gho, { show: true, x: 1880, talk: false });
@@ -409,9 +397,16 @@
   function placeHuman(H, id, P, t) {
     disp($(id), P.show);
     if (!P.show) return;
-    setT($(id), `translate(${P.x},${P.y}) scale(${P.s})`);
+    const jx = P.tremble ? Math.sin(t * 70) * 5 * P.tremble : 0, dy = (P.duck || 0) * 150;
+    setT($(id), `translate(${P.x + jx},${P.y + dy}) rotate(${P.lean || 0}) scale(${P.s})`);
     poseHuman(H, P, t);
   }
+  // Requisiten stehen aufrecht in der Hand (Gruppe wird gegen den Armwinkel gedreht)
+  const propMarkup = (k) => k === 'doner' ? `<g transform="translate(0,-10)">${doner(0.9)}</g>`
+    : k === 'bitten' ? `<g transform="translate(0,-10)">${doner(0.9)}<circle cx="58" cy="-40" r="32" fill="#22182E"/></g>`
+    : k === 'garlic' ? `<g transform="translate(0,60) scale(1.15)">${bottle(0, 0, '#FFFDF4', '#7CFF6B', 'KNOBLAUCH', '#1B1430')}</g>`
+    : k === 'scharf' ? `<g transform="translate(0,60) scale(1.15)">${bottle(0, 0, '#E8433E', '#FFD43B', 'SCHARF', '#E8433E')}</g>`
+    : k === 'bag' ? `<g transform="translate(0,70) scale(1.15)">${breadBag()}</g>` : k === 'broom' ? `<g transform="translate(0,40)">${broom()}</g>` : '';
 
   function drawWorld(S, t) {
     // Neon flackert, Spieß dreht sich, Hitze flimmert
@@ -425,7 +420,31 @@
     document.querySelectorAll('.lampCone').forEach((el) => el.setAttribute('opacity', (0.5 + 0.06 * Math.sin(t * 5)).toFixed(2)));
     // Leo
     placeHuman(LEO, 'leoW', S.leo, t);
-    $('leo-propR').innerHTML = S.leo.prop === 'doner' ? `<g transform="rotate(-90) translate(0,-30)">${doner(0.9)}</g>` : '';
+    const pk = `${S.leo.prop}|${S.leo.propL}|${S.vla.prop}`;
+    if ($('leo-propR').dataset.k !== pk) {
+      $('leo-propR').innerHTML = propMarkup(S.leo.prop); $('leo-propL').innerHTML = propMarkup(S.leo.propL); $('vla-propR').innerHTML = propMarkup(S.vla.prop);
+      $('leo-propR').dataset.k = pk;
+    }
+    setT($('leo-propR'), `translate(0,104) rotate(${-S.leo.armR})`); setT($('leo-propL'), `translate(0,104) rotate(${-S.leo.armL})`);
+    setT($('vla-propR'), `translate(0,104) rotate(${-S.vla.armR})`);
+    disp($('leo-mess'), S.leo.mess); setT($('leo-cap'), S.leo.mess ? 'rotate(-14 0 -310) translate(-10,6)' : '');
+    disp($('vla-glow'), S.vla.glow); $('vla-sick').setAttribute('opacity', (0.75 * S.vla.sick).toFixed(2));
+    // Flaschen fallen um, Fledermaus im Trinkgeldglas
+    const bf = S.btlFall !== null ? E.out(clamp((t - S.btlFall) / 0.35)) : 0;
+    setT($('btlK'), `rotate(${-82 * bf} -164 -26)`); setT($('btlS'), `rotate(${70 * bf} -56 -26)`);
+    disp($('jarBat'), S.jarBat);
+    // Fledermausschwarm: kreist durch den Laden, fliegt dann zur Tür hinaus
+    for (let i = 0; i < 12; i++) {
+      const el = $(`sw${i}`);
+      if (S.swarm === null || t < S.swarm) { disp(el, false); continue; }
+      const a = t - S.swarm, k = clamp(a / 0.5), out = clamp((a - 1.9 - i * 0.04) / 0.7);
+      const ph = i * 0.52, rx = 380 + (i % 4) * 110, ry = 170 + (i % 3) * 60;
+      let x = lerp(POS.cust, 1250 + Math.cos(a * 3.2 + ph) * rx, k), y = lerp(FLOOR - 560, 1080 + Math.sin(a * 4.1 + ph * 1.7) * ry, k);
+      x = lerp(x, POS.door + 400, E.in(out)); y = lerp(y, 900, E.in(out));
+      disp(el, out < 1);
+      setT(el, `translate(${x.toFixed(0)},${y.toFixed(0)}) scale(${(1 + (i % 3) * 0.25).toFixed(2)})`);
+      setT(el.querySelector('.swW'), `scale(1,${(0.35 + 0.65 * Math.abs(Math.sin(t * 24 + i))).toFixed(2)})`);
+    }
     // Kunden
     placeHuman(VLA, 'vlaW', S.vla, t);
     const W = S.wwf;
@@ -514,16 +533,16 @@
     karaoke: true,
     punch: 0.06,
     confettiColors: ['#7CFF6B', '#FF5CC8', '#FFD43B', '#fff', '#5CC8FF', '#B67CFF'],
-    preload: '🧛🥙👻🧟🧻🧙‍♀️👽😬😅',
+    preload: '🧛🥙👻🧟🐺😬😰⏪!…',
     ui: {
       day: 'TAG 1',
       profile: { name: 'Monsterdöner', handle: '@monsterdoener', avatar: '🥙', stat: 'Kunden', foot: '1 Follower = 1 Kunde 🥙' },
       comment: '', banner: { small: '', big: '' }, stamp: { emo: '🥙', text: 'BESTELLT!' }, plusOne: '+1 KUNDE', zirp: '',
       ticket: '', tstamp: '', kasse: 'KASSE',
       cards: [
-        { color: '#E9E1C8', icon: emoIcon('🧻'), label: 'MUMIE' },
-        { color: '#7CFF6B', icon: emoIcon('🧙‍♀️'), label: 'HEXE' },
-        { color: '#5CC8FF', icon: emoIcon('👽'), label: 'ALIEN' },
+        { color: '#B9876A', icon: emoIcon('🐺'), label: 'WERWOLF' },
+        { color: '#E9EEFF', icon: emoIcon('👻'), label: 'GEIST' },
+        { color: '#A9CC86', icon: emoIcon('🧟'), label: 'ZOMBIE' },
       ],
       floats: [], ccards: [],
     },

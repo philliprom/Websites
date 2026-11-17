@@ -452,6 +452,15 @@ def sfx_boom():
     return (n * np.exp(-t * 2.2) + thump + crack) * att(t, 0.002) * 0.7
 
 
+def sfx_hiss():
+    """Fauchen (Vampir, Katze): helles Rauschen, schnell an, langsam aus."""
+    t = tt(0.8)
+    p = t / t[-1]
+    n = hp(hp(rs.randn(len(t))))
+    n = n - onepole_lp(n, 2500)
+    return n * np.minimum(1, p * 12) * (1 - p) ** 1.5 * 0.9
+
+
 def sfx_howl():
     """Werwolf-Heulen: Ton steigt an, hält mit Vibrato und fällt ab."""
     t = tt(1.7)
