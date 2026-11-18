@@ -69,6 +69,8 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
 | Mondmission Tag 1 | 15.11. 18:52 | 36 s | 16.11. früh | 743 | 26 | 11 | 0 | 1 |
 | Mondmission Tag 1 | 15.11. 18:52 | 36 s | 16.11. 22 Uhr | 796 | 28 | 12 | 0 | 1 |
 | Mondmission Tag 2 | 16.11. 13:01 | 23 s | 16.11. 22 Uhr (nach 9 h) | 766 | 9 | 11 | 0 | 1 |
+| Mondmission Tag 1 | 15.11. 18:52 | 36 s | 18.11. abends | 806 | 27 | 12 | 0 | 1 |
+| Mondmission Tag 2 | 16.11. 13:01 | 23 s | 18.11. abends | 777 | 10 | 11 | 0 | 1 |
 
 **Studio Tag 1 (16.11. 07:14):** 746 Aufrufe, Ø Wiedergabe **9,1 s von 37 s (25 %)**, ganz angesehen 5,3 %, 12 neue Follower,
 Gesamtwiedergabe 1:54 h, 96,9 % „Für dich“. Kurve: Absturz in der ersten Sekunde (laut TikTok hören die meisten bei 0:01 auf),
@@ -127,3 +129,13 @@ dann `make_script.py` und neu bauen; nur Sätze mit der Zahl werden neu gesproch
   Auswahl nach Sprecher-Ähnlichkeit, Tonhöhe nah an der Referenz und WER. Danach 224–282 Hz, Ähnlichkeit 0,96–0,99.
   Endfassung 36,7 s, −14,2 LUFS. Messskript: Sprecher-Einbettung von Qwen (`qwen3_engine.speaker_similarity`).
 - Tipp Vertonung: Zahlen im `say` ausschreiben; „100“ statt „hundert“ in `tts_qa.txt` ist nur Schreibweise der Erkennung.
+
+## Tag 3 (gebaut 18.11. abends, `omas-mondmission-tag3/`)
+
+Kanalinhaber will es „nochmal probieren“. **Tank: 23 Liter** (Tag 1: 12 Kommentare, Tag 2: 11). **20 Namen** auf der Tafel
+(einmal pro Person; neu: .al1n4aa, wer.hat.dich.gefr, 2.takt.lennox.de, hassi7333, finni111, jan.priv068, tayler_235,
+kersy58 (Antwort), luki02235). Ablauf: kalter Einstieg mit Heizöl-Fontäne aus einem Loch im Tank („Krause hat ein Loch in
+meinen Tank gebohrt!“) → Kaugummi-Flicken („PFLOPP!“) → Tankanzeige zählt 11 → 23 → Tafel mit 20 Namen → Krause mit
+Bohrmaschine, dann Schild „FRIST: SONNTAG!“ („Am Sonntag kommt das Ordnungsamt!“) → **Abstimmung A 🐄 Berta hält Wache /
+B 🏡 als Gartenhaus tarnen** → „Schreib A oder B. Jeder Kommentar ist ein Liter!“. Tag 4 zeigt das Ergebnis der Abstimmung.
+Stimme Oma_Qwen_1 mit 4 Fassungen pro Satz, neu `max_pause` 0,45 s.
