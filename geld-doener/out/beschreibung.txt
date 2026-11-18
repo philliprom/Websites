@@ -11,10 +11,11 @@ ERSTER KOMMENTAR (selbst posten und anpinnen):
 TITELBILD
 Datei: titelbild.png
 
-PROFIL (Vorschlag)
+PROFIL
+Profilbild: profilbild_logo.png (Euro-Münze im Ringdiagramm, empfohlen) · Alternative: profilbild_tag.png (Preisschild „€?“)
 Name: Wo geht dein Geld hin? 💸
-Nutzername (falls frei): @wogehtdeingeld oder @geld.roentgen
-Bio: Alltagspreise auseinandergenommen 💸 Was steckt wirklich drin? Jede Woche neue Preise.
+Nutzername (falls frei, der Reihe nach probieren): @wogehtdeingeld · @wo.geht.dein.geld · @geldroentgen
+Bio (65 Zeichen, TikTok erlaubt 80): Alltagspreise auseinandergenommen 💸 Was steckt wirklich im Preis?
 
 POSTEN
 Beim Posten „KI-generierte Inhalte“ einschalten (die Stimme ist ein KI-Klon der freien Thorsten-Voice-Stimme).
