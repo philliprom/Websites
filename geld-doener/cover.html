@@ -1,0 +1,13 @@
+<!-- Titelbild-Overlay für „Wo geht dein Geld hin?“ – Folge 1: Döner. Wird von engine/render_cover.cjs über die Szene gelegt. -->
+<style>
+  #cover { position: absolute; inset: 0; pointer-events: none; }
+  #cover svg.head { position: absolute; left: 0; top: 0; filter: drop-shadow(0 10px 0 rgba(0, 10, 5, .6)); }
+  #cover svg.head text { font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; paint-order: stroke fill; stroke: #071510;
+    stroke-width: 22px; stroke-linejoin: round; fill: #fff; }
+</style>
+<div id="cover">
+  <svg class="head" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="h1" x="540" y="360" text-anchor="middle" font-size="120">WAS BLEIBT VOM</text>
+    <text id="h2" x="540" y="500" text-anchor="middle" font-size="120" style="fill:#FFC94A">8-€-DÖNER?</text>
+  </svg>
+</div>

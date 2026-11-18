@@ -24,6 +24,42 @@ def synth(voice, text, length_scale):
     return audio, sr
 
 
+def squeeze_pauses(audio, sr, max_pause, thresh_db=-40.0):
+    """Kürzt Stille im Satz auf höchstens max_pause Sekunden (Rand bleibt, 10 ms Überblendung)."""
+    f = int(0.02 * sr)
+    n = len(audio) // f
+    if n < 3:
+        return audio
+    rms = np.sqrt(np.mean(audio[: n * f].reshape(n, f) ** 2, axis=1) + 1e-12)
+    quiet = 20 * np.log10(rms / (rms.max() + 1e-12)) < thresh_db
+    keep, i, lim = [], 0, int(max_pause / 0.02)
+    out, last = [], 0
+    while i < n:
+        if quiet[i]:
+            j = i
+            while j < n and quiet[j]:
+                j += 1
+            if j - i > lim and i > 0 and j < n:  # nur Pausen mitten im Satz
+                a, b = (i + lim // 2) * f, (j - (lim - lim // 2)) * f
+                out.append(audio[last:a])
+                last = b
+            i = j
+        else:
+            i += 1
+    out.append(audio[last:])
+    if len(out) == 1:
+        return audio
+    x = int(0.01 * sr)
+    res = out[0]
+    for part in out[1:]:
+        if len(res) > x and len(part) > x:
+            fade = np.linspace(1, 0, x, dtype=np.float32)
+            res = np.concatenate([res[:-x], res[-x:] * fade + part[:x] * (1 - fade), part[x:]])
+        else:
+            res = np.concatenate([res, part])
+    return res.astype(np.float32)
+
+
 def trim(audio, sr, thresh_db=-42.0, pad=0.03):
     win = int(sr * 0.01)
     n = len(audio) // win
@@ -140,6 +176,13 @@ def build_voxcpm(script, model_dir):
         if not os.path.exists(cpath):
             os.makedirs(os.path.dirname(cpath), exist_ok=True)
             sf_write(cpath, wav, sr)
+        # Optional "max_pause" (Sekunden): lange Atempausen im Satz kürzen (Cache bleibt unverändert), danach neu ausrichten
+        if tts.get("max_pause"):
+            short = squeeze_pauses(wav, sr, tts["max_pause"])
+            if len(short) < len(wav) - int(0.03 * sr):
+                print(f"  Satz {gi + 1}: Pausen gekürzt {len(wav) / sr:.2f}s -> {len(short) / sr:.2f}s", flush=True)
+                wav = short
+                words, hyp = V.asr_words(wav, sr)
         dur = len(wav) / sr
         qa.append((text, hyp, e))
         # Schnittpunkte: Wortanfang des ersten Worts jedes Folgesegments

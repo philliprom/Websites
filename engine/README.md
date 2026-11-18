@@ -91,3 +91,7 @@ QA_WHISPER=models/whisper-medium qw/bin/python engine/qwen3_engine.py design mod
 
 Vertonung: in `script.json` `"tts": {"engine": "qwen", "voice": "voice/<ref>.wav", "voice_text": "voice/<ref>.txt"}` und
 `build_timeline.py` mit `qw/bin/python` und dem **Base**-Modell als letztem Argument starten. Satz-Cache und Whisper-Prüfung wie bei VoxCPM2.
+
+### Option `max_pause` (18.11.2026)
+`"tts": {"max_pause": 0.45}` kürzt lange Atempausen innerhalb eines Satzes auf höchstens 0,45 s (Cache bleibt roh,
+Wortzeiten werden danach neu per Whisper bestimmt). Standardmäßig aus.

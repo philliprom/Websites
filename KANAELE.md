@@ -68,7 +68,7 @@ welche Machart besser läuft. Drei Kanäle täglich kosten viel Nutzungs-Limit, 
 Kugel-Simulation verworfen (Kanalinhaber: „gibt es zu oft, zu eintönig“). Gezeichnete Geschichten mit KI-Stimme ebenfalls
 gefloppt. Neue Richtung: Bewegtgrafik + echte Referenzstimme (wie Tech-Lupe), aber Themen für alle.
 
-1. **Wo geht dein Geld hin? (Empfehlung)** – Alltagspreise aufgeschlüsselt: Döner, Tankfüllung, Kinoticket, Handyvertrag,
+1. **Wo geht dein Geld hin? (gewählt 18.11., Folge 1 Döner fertig, siehe `geld-serie/README.md`)** – Alltagspreise aufgeschlüsselt: Döner, Tankfüllung, Kinoticket, Handyvertrag,
    Konzertkarte, Spotify-Stream. Preisschild zerfällt in Teile (Steuer, Miete, Personal, Gewinn …). Zahlen vorher
    recherchieren, als Beispielrechnung kennzeichnen. Diskussionen in den Kommentaren („bei uns kostet er 9 €“).
 2. **Rätsel der Geschichte** – echte, gut belegte historische Rätsel (z. B. Kaspar Hauser), mehrteilig mit Cliffhanger.

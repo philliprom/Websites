@@ -1,0 +1,283 @@
+{
+  "title": "Wo geht dein Geld hin? – Döner",
+  "voice": "qwen3-tts (Klon Thorsten-Voice, CC0, Variante A ruhig)",
+  "lead_in": 0.05,
+  "tail": 2.0,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "qwen",
+    "voice": "voice/thorsten.wav",
+    "voice_text": "voice/thorsten.txt",
+    "tries": 3,
+    "max_wer": 0.1,
+    "candidates": 3,
+    "temperature": 0.6,
+    "max_pause": 0.45
+  },
+  "music": {
+    "bpm": 104,
+    "inst": "marimba",
+    "clap": 0.4,
+    "ambience": 0.05,
+    "chords": [
+      [
+        57,
+        60,
+        64,
+        67
+      ],
+      [
+        53,
+        57,
+        60,
+        64
+      ],
+      [
+        50,
+        53,
+        57,
+        60
+      ],
+      [
+        52,
+        55,
+        59,
+        64
+      ]
+    ],
+    "roots": [
+      45,
+      41,
+      38,
+      40
+    ],
+    "arp": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      3,
+      1,
+      2
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Du zahlst acht Euro für einen Döner. Aber was bleibt davon eigentlich beim Laden?",
+      "caps": [
+        "DU ZAHLST ^8 ^EURO",
+        "FÜR EINEN DÖNER.",
+        "ABER WAS BLEIBT",
+        "DAVON !BEIM !LADEN?"
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "kaching",
+          0.1
+        ],
+        [
+          "sting",
+          "e-1.0"
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Zweiundfünfzig Cent bekommt das Finanzamt. Das ist die Mehrwertsteuer.",
+      "caps": [
+        "!52 !CENT BEKOMMT",
+        "DAS ^FINANZAMT.",
+        "DIE ^MEHRWERTSTEUER."
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "stamp",
+          0.5
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Drei Euro kosten die Zutaten. Allein das Fleisch kostet zwei Euro.",
+      "caps": [
+        "^3 ^EURO FÜR",
+        "DIE ZUTATEN.",
+        "ALLEIN DAS FLEISCH:",
+        "!2 !EURO."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.5
+        ],
+        [
+          "pop",
+          0.7
+        ],
+        [
+          "pop",
+          0.9
+        ],
+        [
+          "pop",
+          1.1
+        ],
+        [
+          "pop",
+          1.3
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Bleiben vier Euro achtundvierzig. Davon zahlt der Laden Miete, Personal und Strom.",
+      "caps": [
+        "BLEIBEN ^4,48 ^EURO.",
+        "DAVON ZAHLT DER LADEN",
+        "MIETE, PERSONAL",
+        "UND STROM."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          "e-1.6"
+        ],
+        [
+          "pop",
+          "e-1.0"
+        ],
+        [
+          "pop",
+          "e-0.4"
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Verkauft ein Laden hundertfünfzig Döner am Tag, sind das rund zwei Euro siebzig pro Döner.",
+      "caps": [
+        "VERKAUFT EIN LADEN",
+        "^150 DÖNER AM TAG,",
+        "SIND DAS RUND",
+        "!2,70 !EURO PRO DÖNER."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "card",
+          0.6
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Dann bleiben etwa ein Euro siebzig. Vor Steuern. Und davon muss der Inhaber leben.",
+      "caps": [
+        "DANN BLEIBEN ETWA",
+        "^1,70 ^EURO.",
+        "VOR STEUERN.",
+        "DAVON LEBT DER INHABER."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "kaching",
+          0.9
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Verkauft der Laden aber nur sechzig Döner am Tag, macht er mit jedem über zwei Euro Verlust.",
+      "caps": [
+        "NUR ^60 DÖNER AM TAG?",
+        "DANN MACHT ER",
+        "MIT JEDEM !ÜBER !2 !EURO",
+        "!VERLUST."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "boing",
+          "e-0.8"
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Darum kann der volle Laden oft günstiger sein als der leere.",
+      "caps": [
+        "DARUM KANN DER",
+        "^VOLLE LADEN OFT",
+        "^GÜNSTIGER SEIN",
+        "ALS DER LEERE."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "ding",
+          "e-0.2"
+        ]
+      ]
+    },
+    {
+      "id": "s09",
+      "say": "Was kostet der Döner bei dir? Schreib es in die Kommentare!",
+      "caps": [
+        "WAS KOSTET DER",
+        "^DÖNER BEI DIR?",
+        "SCHREIB ES IN DIE",
+        "^KOMMENTARE! 👇"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.8
+        ],
+        [
+          "ding",
+          "e+0.2"
+        ]
+      ]
+    }
+  ]
+}
