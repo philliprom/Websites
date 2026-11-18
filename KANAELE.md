@@ -62,3 +62,15 @@ testet ein eigenes Konzept. Nach etwa 5 Folgen bekommt das Konzept mit den beste
 
 Vorschlag zur Reihenfolge: B startet, sobald das Konto aufgewärmt ist. C erst, wenn A oder B nach einer Woche zeigt,
 welche Machart besser läuft. Drei Kanäle täglich kosten viel Nutzungs-Limit, für B und C reicht anfangs jeden zweiten Tag.
+
+## Zweiter Kanal: neue Ideen (18.11.2026)
+
+Kugel-Simulation verworfen (Kanalinhaber: „gibt es zu oft, zu eintönig“). Gezeichnete Geschichten mit KI-Stimme ebenfalls
+gefloppt. Neue Richtung: Bewegtgrafik + echte Referenzstimme (wie Tech-Lupe), aber Themen für alle.
+
+1. **Wo geht dein Geld hin? (Empfehlung)** – Alltagspreise aufgeschlüsselt: Döner, Tankfüllung, Kinoticket, Handyvertrag,
+   Konzertkarte, Spotify-Stream. Preisschild zerfällt in Teile (Steuer, Miete, Personal, Gewinn …). Zahlen vorher
+   recherchieren, als Beispielrechnung kennzeichnen. Diskussionen in den Kommentaren („bei uns kostet er 9 €“).
+2. **Rätsel der Geschichte** – echte, gut belegte historische Rätsel (z. B. Kaspar Hauser), mehrteilig mit Cliffhanger.
+   Karten, Zeitstrahl, gemeinfreie Bilder. Keine Fälle mit lebenden Beteiligten.
+3. **Quiz zum Mitraten** – z. B. Bundesland am Umriss erkennen, Punkte in die Kommentare. Leicht zu machen, aber verbreitet.
