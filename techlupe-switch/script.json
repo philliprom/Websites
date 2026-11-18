@@ -1,0 +1,332 @@
+{
+  "title": "Tech-Lupe – Hub vs. Switch",
+  "voice": "qwen3-tts (Klon Thorsten-Voice, CC0, Variante A ruhig)",
+  "lead_in": 0.05,
+  "tail": 1.8,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "qwen",
+    "voice": "voice/thorsten.wav",
+    "voice_text": "voice/thorsten.txt",
+    "tries": 3,
+    "max_wer": 0.1,
+    "candidates": 2,
+    "temperature": 0.7
+  },
+  "music": {
+    "bpm": 112,
+    "inst": "vibes",
+    "clap": 0.35,
+    "ambience": 0.05,
+    "chords": [
+      [
+        50,
+        53,
+        57,
+        62
+      ],
+      [
+        46,
+        50,
+        53,
+        58
+      ],
+      [
+        48,
+        52,
+        55,
+        60
+      ],
+      [
+        45,
+        48,
+        52,
+        57
+      ]
+    ],
+    "roots": [
+      38,
+      34,
+      36,
+      33
+    ],
+    "arp": [
+      0,
+      2,
+      1,
+      3,
+      2,
+      3,
+      1,
+      2
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Hub und Switch sehen fast gleich aus. Aber einer von beiden schickt deine Daten an jeden im Netzwerk.",
+      "caps": [
+        "^HUB UND ^SWITCH",
+        "SEHEN GLEICH AUS.",
+        "ABER EINER SCHICKT",
+        "DEINE DATEN !AN !JEDEN."
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "blip",
+          0.05
+        ],
+        [
+          "blip",
+          0.6
+        ],
+        [
+          "sting",
+          "e-1.2"
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Beide verbinden Computer zu einem Netzwerk. Zum Beispiel zu Hause oder im Büro.",
+      "caps": [
+        "BEIDE VERBINDEN",
+        "COMPUTER ZU EINEM ^NETZWERK.",
+        "ZU HAUSE ODER IM BÜRO."
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.5
+        ],
+        [
+          "pop",
+          0.7
+        ],
+        [
+          "pop",
+          0.9
+        ],
+        [
+          "pop",
+          1.1
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Der Hub ist simpel. Kommt ein Datenpaket an, kopiert er es einfach an alle Anschlüsse.",
+      "caps": [
+        "DER ^HUB IST SIMPEL.",
+        "KOMMT EIN PAKET AN,",
+        "KOPIERT ER ES",
+        "AN !ALLE !ANSCHLÜSSE."
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "whoosh",
+          "e-1.5"
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Alle bekommen es. Auch die, für die es gar nicht gedacht ist.",
+      "caps": [
+        "!ALLE BEKOMMEN ES.",
+        "AUCH DIE, FÜR DIE ES",
+        "GAR NICHT GEDACHT IST. 👀"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "pop",
+          0.3
+        ],
+        [
+          "pop",
+          0.5
+        ],
+        [
+          "pop",
+          0.7
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Und senden zwei gleichzeitig, stoßen die Pakete zusammen. Dann muss man neu senden.",
+      "caps": [
+        "SENDEN ZWEI GLEICHZEITIG,",
+        "STOSSEN SIE !ZUSAMMEN.",
+        "DANN NOCHMAL SENDEN."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          0.3
+        ],
+        [
+          "boom",
+          2.3
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Der Switch ist schlauer. Er merkt sich, welches Gerät an welchem Anschluss hängt.",
+      "caps": [
+        "DER ^SWITCH IST SCHLAUER.",
+        "ER MERKT SICH,",
+        "WELCHES GERÄT AN",
+        "WELCHEM ^ANSCHLUSS HÄNGT."
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "tick",
+          1.8
+        ],
+        [
+          "tick",
+          2.2
+        ],
+        [
+          "tick",
+          2.6
+        ],
+        [
+          "tick",
+          3.0
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Dafür liest er die MAC-Adresse. Das ist die feste Adresse jeder Netzwerkkarte.",
+      "caps": [
+        "DAFÜR LIEST ER DIE",
+        "^MAC-ADRESSE.",
+        "DIE FESTE ADRESSE",
+        "JEDER ^NETZWERKKARTE."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "ding",
+          1.3
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Dann schickt er jedes Paket nur genau dorthin, wo es hin soll.",
+      "caps": [
+        "DANN SCHICKT ER",
+        "JEDES PAKET NUR",
+        "^GENAU ^DORTHIN."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          0.3
+        ],
+        [
+          "ding",
+          "e-0.2"
+        ]
+      ]
+    },
+    {
+      "id": "s09",
+      "say": "So können mehrere Geräte gleichzeitig senden. Ohne Zusammenstoß, und die anderen bekommen nichts mit.",
+      "caps": [
+        "MEHRERE GERÄTE SENDEN",
+        "^GLEICHZEITIG.",
+        "OHNE ZUSAMMENSTOSS,",
+        "UND DIE ANDEREN",
+        "^BEKOMMEN ^NICHTS MIT."
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          0.2
+        ],
+        [
+          "ding",
+          1.6
+        ],
+        [
+          "ding",
+          1.8
+        ]
+      ]
+    },
+    {
+      "id": "s10",
+      "say": "Deshalb gibt es heute fast nur noch Switches. Sogar in deinem Router steckt einer.",
+      "caps": [
+        "HEUTE FAST NUR NOCH",
+        "^SWITCHES.",
+        "SOGAR IN DEINEM",
+        "^ROUTER STECKT EINER. 📶"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          "e-0.4"
+        ]
+      ]
+    },
+    {
+      "id": "s11",
+      "say": "Folge für mehr Informatik, einfach erklärt!",
+      "caps": [
+        "FOLGE FÜR MEHR",
+        "^INFORMATIK, EINFACH ERKLÄRT! 🔍"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.9
+        ],
+        [
+          "ding",
+          "e+0.2"
+        ]
+      ]
+    }
+  ]
+}

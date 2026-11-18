@@ -1,0 +1,22 @@
+KANAL: Tech-Lupe (dein bestehender Kanal)
+TECH-LUPE – FOLGE 4: HUB VS. SWITCH · TEXTE ZUM POSTEN
+======================================================
+
+BESCHREIBUNG (Caption):
+Hub oder Switch? Sehen gleich aus, aber einer schickt deine Daten an jeden im Netzwerk 👀 Der Unterschied in unter einer Minute erklärt. Welches Thema als Nächstes? 👇 #informatik #netzwerk #itausbildung #techtok #fyp
+
+ERSTER KOMMENTAR (selbst posten und anpinnen):
+📌 Wusstest du, dass in deinem Router ein Switch steckt? Welches Netzwerk-Thema soll ich als Nächstes erklären? 👇
+
+TITELBILD
+Datei: titelbild.png
+
+POSTEN
+Beim Posten „KI-generierte Inhalte“ einschalten (die Stimme ist ein KI-Klon der freien Thorsten-Voice-Stimme).
+Mindestens 1 Tag Abstand zur vorigen Folge.
+
+INHALT ZUM NACHPRÜFEN (bewusst vereinfacht)
+Hub (Schicht 1): wiederholt jedes Signal an alle anderen Ports, ein Kollisionsbereich, Halbduplex, bei Kollision
+erneut senden (CSMA/CD). Switch (Schicht 2): lernt aus der Absender-MAC, welches Gerät an welchem Port hängt
+(MAC-Tabelle), leitet Frames nur an den Ziel-Port weiter; unbekannte Ziele und Broadcasts gehen weiter an alle.
+Jeder Port eigener Kollisionsbereich, Vollduplex. Die MAC-Adressen im Video sind ausgedacht.
