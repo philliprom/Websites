@@ -10,6 +10,8 @@ möglichst Material, das er selbst nicht nutzt). Für andere deutsche Streamer k
    meistgesehene Clips des Spiels „Grand Theft Auto VI“, mindestens 12 h alt). Braucht `TWITCH_CLIENT_ID` und einen
    App-Token (Netzwerk-Geheimnis für api.twitch.tv oder `TWITCH_TOKEN`), und api.twitch.tv muss in der Umgebung erlaubt sein.
 2. **Clip-Dateien:** lädt der Kanalinhaber selbst herunter (diese Umgebung erreicht Twitch nicht) und schickt sie.
+   Upload im Chat geht nur bis 30 MB: Clips in **720p** laden (60 s ≈ 20–28 MB, 30 s ≈ 10–15 MB), 1080p nur bei
+   Clips bis etwa 30 s. Für TikTok reicht 720p, der Schnitt rechnet den Facecam-Bereich automatisch um.
 3. **Schnitt:** `<vx>/bin/python clips/make_short.py <clip.mp4> --streamer papaplatte --titel "…"` →
    1080×1920, Facecam oben + Spiel darunter (Facecam-Bereich in `streamers.json`) oder Spiel groß, Untertitel per Whisper
    (Nunito Black, gesprochenes Wort gelb, max. 740 px breit), Titel ab y 290, „▶ twitch.tv/…“ unten links, −14 LUFS.

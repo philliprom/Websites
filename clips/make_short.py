@@ -4,6 +4,9 @@
   <vx>/bin/python clips/make_short.py <clip.mp4> --streamer papaplatte --titel "Er hat es wirklich gemacht 😂" [--out datei.mp4]
       [--facecam x,y,b,h] [--whisper <modellordner>]
 
+Quelle darf 1080p oder 720p sein (720p bleibt bei einem 60-s-Clip meist unter 30 MB). Der Facecam-Bereich wird immer
+bezogen auf 1920×1080 angegeben und automatisch auf die echte Auflösung umgerechnet.
+
 Layout:
   - mit Facecam (Bereich im Quellbild, aus streamers.json oder --facecam): Facecam oben, Spielbild darunter
   - ohne Facecam: Spielbild groß in der Mitte (4:3-Ausschnitt), unscharfer Hintergrund
@@ -93,8 +96,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         ev.append(f"Dialogue: 1,{ass_time(0)},{ass_time(dur)},Titel,,0,0,0,,{esc(titel)}")
     if credit:
         ev.append(f"Dialogue: 1,{ass_time(0)},{ass_time(dur)},Credit,,0,0,0,,{esc(credit)}")
-    for ch in chunks(words):
+    cl = chunks(words)
+    for k, ch in enumerate(cl):
         c_end = ch[-1][2] + 0.25
+        if k + 1 < len(cl):  # nie mit der nächsten Zeile überlappen, sonst stapelt libass beide übereinander
+            c_end = min(c_end, cl[k + 1][0][1])
         for i, (w, ws, we) in enumerate(ch):
             st = ch[0][1] if i == 0 else ws
             en = ch[i + 1][1] if i + 1 < len(ch) else c_end
@@ -120,6 +126,9 @@ def main():
     st = cfg.get(a.streamer, {"name": a.streamer, "twitch": f"twitch.tv/{a.streamer}", "facecam": None})
     fc = [int(v) for v in a.facecam.split(",")] if a.facecam else st.get("facecam")
     W, H, dur = probe(a.clip)
+    if fc and (W, H) != (1920, 1080):  # Angaben gelten für 1920×1080
+        fc = [int(round(fc[0] * W / 1920)), int(round(fc[1] * H / 1080)),
+              int(round(fc[2] * W / 1920)), int(round(fc[3] * H / 1080))]
     out = a.out or os.path.join(HERE, "out", os.path.splitext(os.path.basename(a.clip))[0] + "_tiktok.mp4")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     print(f"Quelle {W}×{H}, {dur:.1f} s, Facecam: {fc or 'keine'}", flush=True)
@@ -135,13 +144,13 @@ def main():
         y_cam, y_game = 395, 395 + ch + 12
         if y_game + gh > 1640:  # Spielbild darf nicht in die untere Zone ragen
             y_game = 1640 - gh
-        filt = (f"{bg};[0:v]crop={b}:{h}:{x}:{y},scale=1080:{ch}[cam];[0:v]scale=1080:{gh}[game];"
+        filt = (f"{bg};[0:v]crop={b}:{h}:{x}:{y},scale=1080:{ch}:flags=lanczos[cam];[0:v]scale=1080:{gh}:flags=lanczos[game];"
                 f"[bg][game]overlay=0:{y_game}[v1];[v1][cam]overlay=0:{y_cam}[v2]")
     else:
         cw = min(W, int(H * 4 / 3))
         gh = int(round(1080 * H / cw / 2) * 2)
         y_game = 470
-        filt = f"{bg};[0:v]crop={cw}:{H}:{(W - cw) // 2}:0,scale=1080:{gh}[game];[bg][game]overlay=0:{y_game}[v2]"
+        filt = f"{bg};[0:v]crop={cw}:{H}:{(W - cw) // 2}:0,scale=1080:{gh}:flags=lanczos[game];[bg][game]overlay=0:{y_game}[v2]"
     ass_esc = ass.replace(":", "\\:").replace("'", "\\'")
     filt += f";[v2]ass='{ass_esc}':fontsdir='{FONTS}'[v]"
     cmd = ["ffmpeg", "-v", "error", "-y", "-i", a.clip, "-filter_complex", filt, "-map", "[v]", "-map", "0:a?",
