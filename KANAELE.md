@@ -76,3 +76,10 @@ gefloppt. Neue Richtung: Bewegtgrafik + echte Referenzstimme (wie Tech-Lupe), ab
 2. **Rätsel der Geschichte** – echte, gut belegte historische Rätsel (z. B. Kaspar Hauser), mehrteilig mit Cliffhanger.
    Karten, Zeitstrahl, gemeinfreie Bilder. Keine Fälle mit lebenden Beteiligten.
 3. **Quiz zum Mitraten** – z. B. Bundesland am Umriss erkennen, Punkte in die Kommentare. Leicht zu machen, aber verbreitet.
+
+## GTA-6-Highlight-Kanal (Idee 19.11.2026, `clips/`)
+
+Clips bekannter deutscher Streamer als TikTok-Highlights, nur mit öffentlicher Erlaubnis (bisher Papaplatte, Regeln in
+`clips/streamers.json`). Ablauf: Top-Clips über die offizielle Twitch-Schnittstelle (`clips/twitch_top.py`), Dateien lädt
+der Kanalinhaber herunter, Schnitt automatisch (`clips/make_short.py`). Offene Hürden: Twitch-Entwicklerzugang + Freigabe
+api.twitch.tv, Facecam-Bereich pro Streamer ausmessen, eigenes neutrales Konto (kein Name, der offiziell wirkt).

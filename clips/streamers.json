@@ -1,0 +1,22 @@
+{
+  "_hinweis": "Nur Streamer mit öffentlich nachlesbarer Erlaubnis für Clips auf TikTok. Regeln vor jedem Post beachten. Stand 19.11.2026.",
+  "streamer": [
+    {
+      "login": "papaplatte",
+      "name": "Papaplatte",
+      "twitch": "twitch.tv/papaplatte",
+      "tiktok_offiziell": "@papaplatte",
+      "erlaubnis": "Content Guidelines (Stand Juli 2025), veröffentlicht über leakshield (setzt seine Urheberrechte durch): leakshield.io/post/papaplatte-content-guidelines",
+      "regeln": [
+        "TikTok und YouTube Shorts: Original-Content darf frei verwendet werden",
+        "nicht zu Werbezwecken (keine bezahlten Kooperationen in diesen Videos)",
+        "nicht aus dem Zusammenhang reißen, nichts, was ihm schadet (kein Rage-Bait, keine falschen Titel)",
+        "frühestens 12 Stunden nach dem Stream posten",
+        "vor allem Material, das er auf seinen eigenen Clip-Kanälen nicht verwendet",
+        "keine kompletten Streams, keine 1:1-Restreams, kein Merch mit Name/Bild"
+      ],
+      "facecam": null,
+      "_facecam_hinweis": "Bereich der Facecam im 1920×1080-Bild [x, y, b, h]. Erst mit einem echten Clip ausmessen, bis dahin Layout ohne Facecam."
+    }
+  ]
+}
