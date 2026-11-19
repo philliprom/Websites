@@ -25,11 +25,10 @@
     </defs>
     <rect width="1080" height="1920" fill="url(#bgG)"/>
     <g opacity=".07" fill="#FFE9A8">${Array.from({ length: 60 }, (_, i) => `<circle cx="${(i * 197) % 1080}" cy="${(i * 331) % 1920}" r="${3 + (i % 4)}"/>`).join('')}</g>
-    <g id="dyn"></g>
-    <g transform="translate(540,128)"><rect x="-290" y="-46" width="580" height="92" rx="46" fill="${C.gold}" stroke="${C.dark}" stroke-width="7"/>${T(0, 17, '💸 WO GEHT DEIN GELD HIN?', { s: 42, f: C.dark })}</g>`;
+    <g id="dyn"></g>`;
 
   // Preisbalken: 8 € = 940 px
-  const PRICE = 8, BX = 70, BW = 940, BY = 300, BH = 92;
+  const PRICE = 8, BX = 70, BW = 940, BY = 340, BH = 92;
   const PARTS = { mwst: [0.52, C.red, 'MwSt'], zut: [3.0, C.orange, 'Zutaten'], fix: [2.67, C.blue, 'Miete, Personal …'], pack: [0.1, '#C8D6CF', ''], gew: [1.71, C.mint, 'Gewinn'] };
   const ORDER = ['mwst', 'zut', 'fix', 'pack', 'gew'];
   const bar = (t, shown, o = {}) => {
@@ -52,7 +51,7 @@
       const w = BX + BW - x;
       if (w > 4) h += `<rect x="${x}" y="${BY + 6}" width="${w}" height="${BH - 12}" rx="14" fill="none" stroke="${C.grey}" stroke-width="4" stroke-dasharray="14 10"/>` + T(x + w / 2, BY + 60, o.rest, { s: 32, f: C.grey });
     }
-    h += T(BX, BY - 22, '0 €', { s: 30, f: C.grey, a: 'start' }) + T(BX + BW, BY - 22, '8,00 €', { s: 34, f: C.gold, a: 'end' });
+    h += T(BX, BY - 22, '💸 WO GEHT DEIN GELD HIN?', { s: 32, f: C.gold, a: 'start' }) + T(BX + BW, BY - 22, '8,00 €', { s: 34, f: C.gold, a: 'end' });
     return h;
   };
   const priceTag = (x, y, txt, s = 1, r = -8, col = C.gold, fs = 78) => `<g transform="translate(${x},${y}) rotate(${r}) scale(${s})">
@@ -66,7 +65,7 @@
     let h = bar(t, {}, { rest: '' });
     h += `<g transform="${at(540, 820, 1 + 0.03 * Math.sin(t * 2))}">${T(540, 920, '🥙', { s: 330 })}</g>`;
     h += `<g transform="${at(760, 640, 1 + 0.06 * Math.max(0, Math.sin(t * 6)))}">${priceTag(760, 640, '8,00 €', 1, -10 + sw)}</g>`;
-    if (t >= st) h += `<g transform="${at(540, 1140, pop(t, st, 0.3), -2)}">${T(540, 1170, 'WAS BLEIBT BEIM LADEN?', { s: 70, f: C.w, st: C.dark, sw: 14 })}</g>`;
+    if (t >= st) h += `<g transform="${at(540, 1140, pop(t, st, 0.3), -2)}">${T(540, 1170, 'WAS BLEIBT BEIM LADEN?', { s: 56, f: C.w, st: C.dark, sw: 12 })}</g>`;
     out(S, h);
   };
 
@@ -105,14 +104,14 @@
     const c2 = caps(seg, 2, seg.start + 1.6);
     const ps = [0.5, 0.7, 0.9, 1.1, 1.3].map((x) => seg.start + x);
     let h = bar(t, { mwst: -9, zut: seg.start + 0.2 }, { rest: '' });
-    h += receipt(140, 470, 800, [
+    h += receipt(160, 480, 740, [
       { e: '🥩', n: 'Fleisch (125 g)', v: '2,00 €', t0: ps[0], hi: t >= c2 },
       { e: '🫓', n: 'Brot', v: '0,38 €', t0: ps[1] },
       { e: '🥗', n: 'Salat', v: '0,39 €', t0: ps[2] },
       { e: '🥣', n: 'Soße', v: '0,15 €', t0: ps[3] },
       { e: '🌶️', n: 'Gewürze', v: '0,08 €', t0: ps[4] },
     ], t, { sum: { n: 'ZUTATEN', v: '3,00 €', t0: ps[4] + 0.3 } });
-    h += T(540, 1225, 'Quelle: Verband der Dönerproduzenten', { s: 30, f: C.grey });
+    h += T(530, 1235, 'Quelle: Verband der Dönerproduzenten', { s: 28, f: C.grey });
     out(S, h);
   };
 
@@ -123,8 +122,8 @@
     h += `<g transform="${at(540, 600, pop(t, seg.start + 0.1, 0.3))}">${T(540, 650, '4,48 €', { s: 160, f: C.w, st: C.dark, sw: 14 })}</g>`;
     h += T(540, 740, 'bleiben übrig für …', { s: 46, f: C.grey });
     [['🏠', 'Miete'], ['👨‍🍳', 'Personal'], ['⚡', 'Strom']].forEach(([e, n], i) => {
-      const k = pop(t, p[i], 0.3), x = 230 + i * 310;
-      if (k > 0) h += `<g transform="${at(x, 930, k)}"><circle cx="${x}" cy="900" r="110" fill="${C.panel}" stroke="${C.blue}" stroke-width="7"/>${T(x, 935, e, { s: 100 })}${T(x, 1075, n, { s: 46 })}</g>`;
+      const k = pop(t, p[i], 0.3), x = 250 + i * 270;
+      if (k > 0) h += `<g transform="${at(x, 930, k)}"><circle cx="${x}" cy="900" r="100" fill="${C.panel}" stroke="${C.blue}" stroke-width="7"/>${T(x, 932, e, { s: 90 })}${T(x, 1065, n, { s: 44 })}</g>`;
     });
     out(S, h);
   };
@@ -134,14 +133,14 @@
     const cd = cue('s05', 'card');
     let h = bar(t, { mwst: -9, zut: -9, fix: cd, pack: cd + 0.3 }, { rest: t < cd ? 'REST' : '' });
     const rows = [['🥙', '150 Döner am Tag'], ['🏠', 'Miete 3.000 €'], ['👨‍🍳', '2 Angestellte (Mindestlohn)'], ['⚡', 'Strom & Co. 900 €'], ['🧾', 'Sonstiges 2.300 €']];
-    h += `<g filter="url(#sh)"><rect x="110" y="450" width="860" height="560" rx="34" fill="${C.panel}" stroke="${C.line}" stroke-width="6"/></g>`;
-    h += T(540, 515, 'BEISPIEL-LADEN', { s: 42, f: C.gold });
+    h += `<g filter="url(#sh)"><rect x="120" y="470" width="790" height="560" rx="34" fill="${C.panel}" stroke="${C.line}" stroke-width="6"/></g>`;
+    h += T(515, 535, 'BEISPIEL-LADEN', { s: 42, f: C.gold });
     rows.forEach(([e, n], i) => {
       const k = pop(t, seg.start + 0.1 + i * 0.12, 0.25);
-      if (k > 0) h += `<g opacity="${k}">${T(170, 600 + i * 76, e, { s: 50, a: 'start' })}${T(250, 600 + i * 76, n, { s: 46, a: 'start' })}</g>`;
+      if (k > 0) h += `<g opacity="${k}">${T(170, 620 + i * 76, e, { s: 50, a: 'start' })}${T(250, 620 + i * 76, n, { s: 44, a: 'start' })}</g>`;
     });
-    h += T(540, 975, '= 12.000 € im Monat', { s: 50, f: C.w, op: clamp((t - seg.start - 0.8) * 4) });
-    h += chip(540, 1120, '÷ 4.500 Döner = 2,67 € pro Döner', t, cd, { bg: C.blue, fg: C.dark, s: 44, w: 860 });
+    h += T(515, 995, '= 12.000 € im Monat', { s: 48, f: C.w, op: clamp((t - seg.start - 0.8) * 4) });
+    h += chip(520, 1130, '÷ 4.500 Döner = 2,67 € pro Döner', t, cd, { bg: C.blue, fg: C.dark, s: 38, w: 740 });
     out(S, h);
   };
 
@@ -177,14 +176,14 @@
     const c1 = caps(seg, 1, seg.start + 0.6), c2 = caps(seg, 2, seg.start + 1.4);
     const shop = (x, title, sub, people, tag, col, t0) => {
       const k = pop(t, t0, 0.3);
-      let g = `<g transform="${at(x, 760, k)}"><rect x="${x - 220}" y="470" width="440" height="560" rx="36" fill="${C.panel}" stroke="${col}" stroke-width="8"/>`;
-      g += T(x, 560, title, { s: 50, f: col }) + T(x, 720, '🏪', { s: 150 }) + T(x, 850, people, { s: 70 }) + T(x, 950, sub, { s: 42, f: C.grey });
+      let g = `<g transform="${at(x, 760, k)}"><rect x="${x - 190}" y="470" width="380" height="560" rx="36" fill="${C.panel}" stroke="${col}" stroke-width="8"/>`;
+      g += T(x, 560, title, { s: 44, f: col }) + T(x, 720, '🏪', { s: 140 }) + T(x, 850, people, { s: 62 }) + T(x, 950, sub, { s: 40, f: C.grey });
       return g + '</g>';
     };
-    let h = shop(290, 'VOLLER LADEN', '150 am Tag', '🧍🧍🧍🧍', '€', C.mint, c1 - 0.2) + shop(790, 'LEERER LADEN', '60 am Tag', '🦗', '€€€', C.red, c1 + 0.1);
+    let h = shop(290, 'VOLLER LADEN', '150 am Tag', '🧍🧍🧍🧍', '€', C.mint, c1 - 0.2) + shop(715, 'LEERER LADEN', '60 am Tag', '🦗', '€€€', C.red, c1 + 0.1);
     if (t >= c2) {
       h += `<g transform="${at(290, 1130, pop(t, c2, 0.3))}">${priceTag(290, 1130, 'günstiger', 0.8, -6, C.mint, 48)}</g>`;
-      h += `<g transform="${at(790, 1130, pop(t, c2 + 0.2, 0.3))}">${priceTag(790, 1130, 'teurer', 0.8, 6, C.red, 56)}</g>`;
+      h += `<g transform="${at(715, 1130, pop(t, c2 + 0.2, 0.3))}">${priceTag(700, 1130, 'teurer', 0.8, 6, C.red, 56)}</g>`;
     }
     out(S, h);
   };
@@ -194,7 +193,7 @@
     let h = `<g transform="${at(540, 700, 1 + 0.03 * Math.sin(t * 2))}">${T(540, 800, '🥙', { s: 280 })}</g>`;
     h += `<g transform="${at(780, 560, pop(t, seg.start + 0.1, 0.35))}">${priceTag(780, 560, '?? €', 0.9, -10 + Math.sin(t * 3) * 5)}</g>`;
     h += chip(540, 1010, 'SCHREIB DEINEN PREIS 👇', t, cue('s09', 'pop'), { bg: C.gold, fg: C.dark, s: 50, w: 700 });
-    h += T(540, 1140, 'Folge für mehr Preise, die du jeden Tag zahlst', { s: 38, f: C.grey, op: clamp((t - seg.start - 1.2) * 4) });
+    h += T(540, 1140, 'Folge für mehr Alltagspreise', { s: 40, f: C.grey, op: clamp((t - seg.start - 1.2) * 4) });
     out(S, h);
   };
 

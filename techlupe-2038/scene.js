@@ -29,7 +29,7 @@
     <rect width="1080" height="1920" fill="url(#bgG)"/>
     <g opacity=".08" stroke="#8FB4FF" stroke-width="2">${Array.from({ length: 13 }, (_, i) => `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920"/>`).join('')}${Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}"/>`).join('')}</g>
     <g id="dyn"></g>
-    <g transform="translate(540,128)"><rect x="-185" y="-46" width="370" height="92" rx="46" fill="${C.cyan}" stroke="#0B1022" stroke-width="7"/>${T(0, 17, '🔍 TECH-LUPE', { s: 46, f: '#0B1022' })}</g>`;
+`;
 
   const shots = {};
   const out = (S, html) => { S.layer = 'alt'; S.html = html; };
@@ -104,14 +104,14 @@
 
   // 32-Bit-Register
   const reg = (y, bits, o = {}) => {
-    const s = 108, x0 = 540 - 4 * s;
+    const s = 92, x0 = 540 - 4 * s;
     let h = '';
     for (let i = 0; i < 32; i++) {
       const r = Math.floor(i / 8), c = i % 8, b = bits[i];
       const sign = i === 0;
       const fill = b === '1' ? (sign && o.redSign ? C.red : C.cyan) : '#1A2350';
       h += `<rect x="${x0 + c * s + 5}" y="${y + r * s + 5}" width="${s - 10}" height="${s - 10}" rx="14" fill="${fill}" stroke="${sign ? C.yel : '#3A4C8A'}" stroke-width="${sign ? 6 : 3}"/>`;
-      h += T(x0 + c * s + s / 2, y + r * s + s / 2 + 21, b, { s: 58, f: b === '1' ? '#0B1022' : C.grey, m: true });
+      h += T(x0 + c * s + s / 2, y + r * s + s / 2 + 18, b, { s: 50, f: b === '1' ? '#0B1022' : C.grey, m: true });
     }
     if (o.signLabel) h += T(x0 + 54, y - 22, '↓ Vorzeichen', { s: 34, f: C.yel, a: 'start' });
     return h;
@@ -121,9 +121,9 @@
   shots.s04 = (S, t, seg) => {
     const c2 = caps(seg, 2, seg.start + 2.0);
     const max = t >= c2;
-    let h = chip(540, 300, '32 BIT', t, seg.start, { bg: C.cyan, fg: '#0B1022', s: 56, w: 300 });
+    let h = chip(540, 335, '32 BIT', t, seg.start, { bg: C.cyan, fg: '#0B1022', s: 56, w: 300 });
     h += reg(420, max ? bits32(MAX) : bits32(NOW), { signLabel: max });
-    h += T(540, 990, max ? de(MAX) : de(NOW), { s: 92, f: max ? C.red : C.yel, m: true });
+    h += T(540, 990, max ? de(MAX) : de(NOW), { s: 78, f: max ? C.red : C.yel, m: true });
     h += T(540, 1060, max ? 'größte Zahl in 32 Bit' : 'heute', { s: 44, f: C.grey });
     if (max) h += chip(540, 1190, 'MAXIMUM = 19.01.2038', t, c2 + 0.2, { bg: C.red, s: 46, w: 640 });
     out(S, h);
@@ -138,9 +138,9 @@
     for (let i = 0; i < flipped; i++) { const j = 31 - i; bits[j] = j === 0 ? '1' : '0'; }
     bits = bits.join('');
     const neg = flipped >= 32;
-    let h = chip(540, 300, '+1 SEKUNDE', t, seg.start + 0.1, { bg: C.yel, fg: '#0B1022', s: 52, w: 420 });
+    let h = chip(540, 335, '+1 SEKUNDE', t, seg.start + 0.1, { bg: C.yel, fg: '#0B1022', s: 52, w: 420 });
     h += reg(420, bits, { signLabel: true, redSign: neg });
-    h += T(540, 990, neg ? '−2.147.483.648' : de(MAX), { s: 92, f: neg ? C.red : C.w, m: true });
+    h += T(540, 990, neg ? '−2.147.483.648' : de(MAX), { s: 78, f: neg ? C.red : C.w, m: true });
     if (neg) h += chip(540, 1130, 'NEGATIV!', t, st, { bg: C.red, s: 56, w: 380, r: 3 });
     S.shake = neg && t - st < 0.35 ? 0.5 : 0;
     out(S, `<g transform="translate(${S.shake ? Math.sin(t * 90) * 12 : 0},0)">${h}</g>`);
@@ -149,10 +149,10 @@
   // s06: Zeitstrahl 2038 -> 1901
   shots.s06 = (S, t, seg) => {
     const c2 = caps(seg, 2, seg.start + 2.4);
-    const x = (yr) => 120 + (yr - 1901) / (2038 - 1901) * 840;
+    const x = (yr) => 150 + (yr - 1901) / (2038 - 1901) * 720;
     const jump = E.inOut(clamp((t - seg.start - 0.4) / 1.4));
     const cx = lerp(x(2038), x(1901), jump);
-    let h = `<line x1="100" y1="760" x2="980" y2="760" stroke="${C.line}" stroke-width="10" stroke-linecap="round"/>`;
+    let h = `<line x1="120" y1="760" x2="900" y2="760" stroke="${C.line}" stroke-width="10" stroke-linecap="round"/>`;
     for (const [yr, lab] of [[1901, '1901'], [1970, '1970'], [2026, 'heute'], [2038, '2038']]) {
       h += `<line x1="${x(yr)}" y1="735" x2="${x(yr)}" y2="785" stroke="${C.grey}" stroke-width="6"/>` + T(x(yr), yr === 2026 ? 700 : 850, lab, { s: yr === 2026 ? 36 : 44, f: yr === 1901 ? C.red : yr === 2026 ? C.grey : C.w });
     }
@@ -169,13 +169,13 @@
     const kc = cue('s07', 'kaching');
     const fill = clamp((t - seg.start - 0.1) / 1.2);
     const nb = Math.floor(fill * 64), s = 80, x0 = 540 - 4 * s, y0 = 380;
-    let h = chip(540, 300, '64 BIT', t, seg.start, { bg: C.grn, fg: '#0B1022', s: 56, w: 300 });
+    let h = chip(540, 335, '64 BIT', t, seg.start, { bg: C.grn, fg: '#0B1022', s: 56, w: 300 });
     for (let i = 0; i < 64; i++) {
       const r = Math.floor(i / 8), c = i % 8;
       h += `<rect x="${x0 + c * s + 4}" y="${y0 + r * s + 4}" width="${s - 8}" height="${s - 8}" rx="12" fill="${i < nb ? C.grn : '#1A2350'}" opacity="${i < nb ? 0.9 : 1}"/>`;
     }
     const k = pop(t, Math.min(kc - 0.4, seg.start + 1.6), 0.3);
-    if (k > 0) h += `<g transform="${at(540, 1100, k)}"><rect x="90" y="1030" width="900" height="150" rx="40" fill="#0B1022" stroke="${C.grn}" stroke-width="8"/>${T(540, 1130, '✅ 292 MILLIARDEN JAHRE', { s: 66, f: C.grn })}</g>`;
+    if (k > 0) h += `<g transform="${at(540, 1100, k)}"><rect x="165" y="1035" width="750" height="140" rx="40" fill="#0B1022" stroke="${C.grn}" stroke-width="8"/>${T(540, 1125, '✅ 292 MILLIARDEN JAHRE', { s: 52, f: C.grn })}</g>`;
     out(S, h);
   };
 
@@ -184,10 +184,10 @@
     const c2 = caps(seg, 2, seg.start + 1.4);
     const card = (x, title, sub, emo, col, t0) => {
       const k = pop(t, t0, 0.3);
-      return `<g transform="${at(x, 720, k, x < 540 ? -3 : 3)}"><rect x="${x - 215}" y="520" width="430" height="400" rx="40" fill="${C.panel}" stroke="${col}" stroke-width="8"/>${T(x, 650, emo, { s: 110 })}${T(x, 770, title, { s: 50, f: C.w })}${T(x, 840, sub, { s: 42, f: col })}</g>`;
+      return `<g transform="${at(x, 720, k, x < 540 ? -3 : 3)}"><rect x="${x - 190}" y="520" width="380" height="400" rx="40" fill="${C.panel}" stroke="${col}" stroke-width="8"/>${T(x, 650, emo, { s: 110 })}${T(x, 770, title, { s: 46, f: C.w })}${T(x, 840, sub, { s: 38, f: col })}</g>`;
     };
-    let h = card(300, 'NEUE SYSTEME', 'schon 64 Bit', '✅', C.grn, seg.start + 0.1);
-    h += card(780, 'ALTE GERÄTE', 'teils noch 32 Bit', '⚠️', C.yel, c2);
+    let h = card(290, 'NEUE SYSTEME', 'schon 64 Bit', '✅', C.grn, seg.start + 0.1);
+    h += card(715, 'ALTE GERÄTE', 'teils noch 32 Bit', '⚠️', C.yel, c2);
     out(S, h);
   };
 
@@ -198,7 +198,7 @@
     h += `<g opacity="${clamp((t - seg.start - 0.3) * 4)}">${T(540, 810, 'Informatik in 30 Sekunden', { s: 52, f: C.w })}</g>`;
     const b = pop(t, seg.start + 0.5) * (1 + 0.05 * Math.max(0, Math.sin(t * 9)));
     if (b > 0) h += `<g transform="${at(540, 950, b)}"><rect x="320" y="895" width="440" height="110" rx="55" fill="${C.red}" stroke="#0B1022" stroke-width="8"/>${T(540, 970, '+ FOLGEN', { s: 60 })}</g>`;
-    h += chip(540, 1150, 'WELCHES THEMA ALS NÄCHSTES? 👇', t, seg.start + 1.1, { bg: C.yel, fg: '#0B1022', s: 42, w: 820, r: -2 });
+    h += chip(540, 1150, 'WELCHES THEMA ALS NÄCHSTES? 👇', t, seg.start + 1.1, { bg: C.yel, fg: '#0B1022', s: 36, w: 700, r: -2 });
     out(S, h);
   };
 

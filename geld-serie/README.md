@@ -5,6 +5,8 @@ Teile. Bewegtgrafik (Engine-Ebene `alt`), dunkelgrün/gold, Preisbalken oben (Ge
 Preisschilder. Stimme: Qwen3-TTS-Klon Thorsten-Voice (CC0), Variante A, 3 Fassungen pro Satz, `max_pause` 0,45 s.
 
 ## Regeln
+- Sichere Zonen: `node engine/safe_check.cjs <projekt>` muss „alles frei ✓“ melden (18.11.: Kanalname oben und
+  Untertitel-Enden rechts waren von TikTok verdeckt).
 - Zahlen vorher recherchieren, Quellen in `make_script.py` und `beschreibung.txt`; was angenommen ist, im Bild als
   „Beispiel“ kennzeichnen.
 - Aussprache prüfen: `build/tts_qa.txt` lesen. Wörter, die Whisper anders hört, umformulieren statt hoffen

@@ -217,7 +217,7 @@ window.Engine = (() => {
         if (!c) { el.style.display = 'none'; continue; }
         if (el.dataset.text !== c.text) { el.textContent = c.text; el.dataset.text = c.text; }
         el.className = `ui chip ${c.cls || ''}`;
-        el.style.top = (c.top || 278) + 'px';
+        el.style.top = Math.max(300, c.top || 300) + 'px';
         uiPop(el, t, c.t0, { rot: key === 'chip' ? -2 : 2 });
       }
       const z = $('zirp');
@@ -311,8 +311,8 @@ window.Engine = (() => {
         if (t < t0) { el.style.display = 'none'; return; }
         const lt = t - t0;
         el.style.display = '';
-        el.style.left = `${120 + ((i * 137) % 760)}px`;
-        el.style.top = `${1700 - lt * 520}px`;
+        el.style.left = `${150 + ((i * 137) % 620)}px`;
+        el.style.top = `${1560 - lt * 520}px`;
         el.style.opacity = clamp(lt * 6) * clamp(1.6 - lt);
         el.style.transform = `translateX(${Math.sin(lt * 5 + i) * 30}px) scale(${0.6 + (i % 3) * 0.2})`;
       });
@@ -338,17 +338,20 @@ window.Engine = (() => {
       const build = (el, words) => { el.innerHTML = words.map(([w, s]) => { const k = wi++; return `<tspan fill="${col[s]}"${k > spoken ? ' fill-opacity=".4" stroke-opacity=".55"' : ''}>${w}</tspan>`; }).join(' '); };
       const sc = lerp(0.82, 1, popS(t, chunk.start, 0.16));
       build(c1, chunk.words);
-      c1.setAttribute('font-size', 84); c2.textContent = '';
+      // Schriftgröße als style setzen: eine CSS-Regel für #caps text würde das Attribut sonst überstimmen
+      c1.style.fontSize = '84px'; c2.style.fontSize = '84px'; c2.textContent = '';
       let lines = 1;
-      if (c1.getComputedTextLength() > 900 && chunk.words.length > 1) {
+      // Sichere Breite: rechts liegen bei TikTok die Knöpfe (ab x ≈ 920), deshalb höchstens P.capWidth (Standard 740) breit
+      const CW = P.capWidth || 740;
+      if (c1.getComputedTextLength() > CW - 20 && chunk.words.length > 1) {
         const mid = Math.ceil(chunk.words.length / 2);
         wi = 0;
         build(c1, chunk.words.slice(0, mid)); build(c2, chunk.words.slice(mid));
         lines = 2;
       }
       const maxW = Math.max(c1.getComputedTextLength(), lines === 2 ? c2.getComputedTextLength() : 0);
-      const fs = maxW > 920 ? Math.floor(84 * 920 / maxW) : 84;
-      c1.setAttribute('font-size', fs); c2.setAttribute('font-size', fs);
+      const fs = maxW > CW ? Math.floor(84 * CW / maxW) : 84;
+      c1.style.fontSize = `${fs}px`; c2.style.fontSize = `${fs}px`;
       const y0 = lines === 2 ? 1350 : 1395;
       c1.setAttribute('y', y0); c2.setAttribute('y', y0 + fs * 1.08);
       setT(c1, `translate(540,${y0}) scale(${sc}) translate(-540,${-y0})`);

@@ -29,7 +29,7 @@
     <rect width="1080" height="1920" fill="url(#bgG)"/>
     <g opacity=".08" stroke="#8FB4FF" stroke-width="2">${Array.from({ length: 13 }, (_, i) => `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920"/>`).join('')}${Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}"/>`).join('')}</g>
     <g id="dyn"></g>
-    <g transform="translate(540,128)"><rect x="-185" y="-46" width="370" height="92" rx="46" fill="${C.cyan}" stroke="#0B1022" stroke-width="7"/>${T(0, 17, '🔍 TECH-LUPE', { s: 46, f: '#0B1022' })}</g>`;
+`;
 
   const shots = {};
   const out = (S, html) => { S.layer = 'alt'; S.html = html; };
@@ -38,9 +38,9 @@
   // Geräte und Anschlüsse
   const DEV = [
     { n: 'Anna', x: 205, y: 470, c: '#FF6B9A', port: [395, 720], mac: 'A4:83:E7:2B:11:0A' },
-    { n: 'Ben', x: 875, y: 470, c: '#FFD43B', port: [685, 720], mac: '3C:22:FB:90:4C:1B' },
+    { n: 'Ben', x: 820, y: 470, c: '#FFD43B', port: [685, 720], mac: '3C:22:FB:90:4C:1B' },
     { n: 'Cem', x: 205, y: 1110, c: '#7CFF6B', port: [395, 860], mac: 'F0:18:98:6D:22:3C' },
-    { n: 'Dana', x: 875, y: 1110, c: '#B98CFF', port: [685, 860], mac: '00:1A:2B:3C:4D:5E' },
+    { n: 'Dana', x: 800, y: 1110, c: '#B98CFF', port: [685, 860], mac: '00:1A:2B:3C:4D:5E' },
   ];
   const BOX = [540, 790];
   const top = (d) => d.y < 790;
@@ -52,7 +52,7 @@
     h += `<rect x="${x - 78}" y="${y - 54}" width="156" height="92" rx="6" fill="${d.c}" opacity=".25"/>`;
     h += `<path d="M ${x - 125} ${y + 62} L ${x + 125} ${y + 62} L ${x + 105} ${y + 84} L ${x - 105} ${y + 84} Z" fill="#2A3A6E" stroke="${d.c}" stroke-width="5"/>`;
     h += T(x, top(d) ? y - 92 : y + 140, d.n, { s: 48, f: d.c });
-    if (o.badge) h += T(x + 92, y - 40, o.badge, { s: 70 });
+    if (o.badge) h += T(x + 66, y - 40, o.badge, { s: 64 });
     if (o.mail) h += envelope(x, y - 8, d.c === o.mail ? d.c : o.mail, 0.9, o.mailLabel);
     return h + '</g>';
   };
@@ -133,7 +133,7 @@
   // s02: Netzwerk aufbauen
   shots.s02 = (S, t, seg) => {
     const show = DEV.map((_, i) => t >= seg.start + 0.5 + i * 0.2);
-    out(S, T(540, 300, 'NETZWERK', { s: 54, f: C.grey }) + net('neutral', t, { show, cable: clamp((t - seg.start - 0.4) / 0.9) }));
+    out(S, T(540, 330, 'NETZWERK', { s: 54, f: C.grey }) + net('neutral', t, { show, cable: clamp((t - seg.start - 0.4) / 0.9) }));
   };
 
   // s03: Hub kopiert an alle
@@ -143,7 +143,7 @@
     h += inbound(t, 0, c1 - 0.1, c2, DEV[0].c, 'an Cem');
     [1, 2, 3].forEach((i) => { h += outbound(t, i, c2, c2 + 0.9, DEV[0].c, 'an Cem'); });
     if (t >= c2) h += chip(540, 640, 'KOPIE AN ALLE', t, c2, { bg: ORANGE, fg: NAVY, s: 44, w: 440 });
-    out(S, T(540, 300, 'HUB', { s: 54, f: ORANGE }) + h);
+    out(S, T(540, 330, 'HUB', { s: 54, f: ORANGE }) + h);
   };
 
   // s04: alle bekommen es
@@ -153,7 +153,7 @@
     const mail = [null, DEV[0].c, DEV[0].c, DEV[0].c];
     let h = net('hub', t, { badge, mail });
     h += chip(540, 640, 'NUR CEM WAR GEMEINT', t, p[2] + 0.2, { bg: C.red, s: 42, w: 560 });
-    out(S, T(540, 300, 'HUB', { s: 54, f: ORANGE }) + h);
+    out(S, T(540, 330, 'HUB', { s: 54, f: ORANGE }) + h);
   };
 
   // s05: Kollision
@@ -168,19 +168,19 @@
     }
     if (t >= c2) {
       h += chip(205, 300, '⟳ nochmal', t, c2, { bg: '#23305E', s: 40, w: 300 });
-      h += chip(875, 960, '⟳ nochmal', t, c2 + 0.1, { bg: '#23305E', s: 40, w: 300 });
+      h += chip(760, 960, '⟳ nochmal', t, c2 + 0.1, { bg: '#23305E', s: 40, w: 260 });
     }
     out(S, h);
   };
 
   // MAC-Tabelle
   const table = (rows, t, y0, o = {}) => {
-    let h = `<rect x="70" y="${y0}" width="940" height="${80 + rows.length * 70}" rx="28" fill="#0A0F24" stroke="${C.cyan}" stroke-width="6"/>`;
-    h += T(130, y0 + 55, 'PORT', { s: 34, f: C.grey, a: 'start' }) + T(300, y0 + 55, 'MAC-ADRESSE', { s: 34, f: C.grey, a: 'start' }) + T(950, y0 + 55, 'GERÄT', { s: 34, f: C.grey, a: 'end' });
+    let h = `<rect x="70" y="${y0}" width="840" height="${80 + rows.length * 70}" rx="28" fill="#0A0F24" stroke="${C.cyan}" stroke-width="6"/>`;
+    h += T(110, y0 + 55, 'PORT', { s: 32, f: C.grey, a: 'start' }) + T(260, y0 + 55, 'MAC-ADRESSE', { s: 32, f: C.grey, a: 'start' }) + T(885, y0 + 55, 'GERÄT', { s: 32, f: C.grey, a: 'end' });
     rows.forEach((i, r) => {
       const d = DEV[i], y = y0 + 120 + r * 70, hi = o.hi === i;
-      if (hi) h += `<rect x="85" y="${y - 50}" width="910" height="66" rx="16" fill="${C.cyan}" opacity=".25"/>`;
-      h += T(150, y, String(i + 1), { s: 40, f: C.w, m: true }) + T(300, y, d.mac, { s: 36, f: C.w, m: true, a: 'start' }) + T(950, y, d.n, { s: 40, f: d.c, a: 'end' });
+      if (hi) h += `<rect x="85" y="${y - 50}" width="810" height="66" rx="16" fill="${C.cyan}" opacity=".25"/>`;
+      h += T(140, y, String(i + 1), { s: 40, f: C.w, m: true }) + T(260, y, d.mac, { s: 34, f: C.w, m: true, a: 'start' }) + T(885, y, d.n, { s: 40, f: d.c, a: 'end' });
     });
     return h;
   };
@@ -221,7 +221,7 @@
     h += inbound(t, 0, t0, mid, DEV[0].c, 'an Cem') + outbound(t, 2, mid, t1, DEV[0].c, 'an Cem');
     if (t >= mid) h += chip(540, 640, 'Cem → Port 3', t, mid, { bg: C.cyan, fg: NAVY, s: 44, w: 420 });
     if (t >= t1) h += T(320, 1060, '✅', { s: 80 });
-    out(S, T(540, 300, 'SWITCH', { s: 54, f: C.cyan }) + h);
+    out(S, T(540, 330, 'SWITCH', { s: 54, f: C.cyan }) + h);
   };
 
   // s09: gleichzeitig
@@ -231,8 +231,8 @@
     h += inbound(t, 0, t0, mid, DEV[0].c, 'an Cem') + outbound(t, 2, mid, t1, DEV[0].c, 'an Cem');
     h += inbound(t, 1, t0, mid, DEV[1].c, 'an Dana') + outbound(t, 3, mid, t1, DEV[1].c, 'an Dana');
     if (t >= t1) h += chip(540, 640, '✅ GLEICHZEITIG', t, t1, { bg: C.grn, fg: NAVY, s: 46, w: 480 });
-    if (t >= t1 + 0.3) h += T(320, 1060, '✅', { s: 72 }) + T(990, 1060, '✅', { s: 72 });
-    out(S, T(540, 300, 'SWITCH', { s: 54, f: C.cyan }) + h);
+    if (t >= t1 + 0.3) h += T(320, 1060, '✅', { s: 72 }) + T(720, 1000, '✅', { s: 72 });
+    out(S, T(540, 330, 'SWITCH', { s: 54, f: C.cyan }) + h);
   };
 
   // s10: Vergleich + Router
@@ -258,7 +258,7 @@
     h += `<g opacity="${clamp((t - seg.start - 0.3) * 4)}">${T(540, 810, 'Informatik einfach erklärt', { s: 52, f: C.w })}</g>`;
     const b = pop(t, seg.start + 0.5) * (1 + 0.05 * Math.max(0, Math.sin(t * 9)));
     if (b > 0) h += `<g transform="${at(540, 950, b)}"><rect x="320" y="895" width="440" height="110" rx="55" fill="${C.red}" stroke="${NAVY}" stroke-width="8"/>${T(540, 970, '+ FOLGEN', { s: 60 })}</g>`;
-    h += chip(540, 1150, 'WELCHES THEMA ALS NÄCHSTES? 👇', t, seg.start + 1.1, { bg: C.yel, fg: NAVY, s: 42, w: 820, r: -2 });
+    h += chip(540, 1150, 'WELCHES THEMA ALS NÄCHSTES? 👇', t, seg.start + 1.1, { bg: C.yel, fg: NAVY, s: 36, w: 700, r: -2 });
     out(S, h);
   };
 

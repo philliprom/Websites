@@ -5,6 +5,8 @@ Machart: reine Bewegtgrafik (Engine-Ebene `alt`, dunkles Tech-Design, JetBrains 
 Qwen3-TTS-Klon von Thorsten-Voice (CC0), Variante A „ruhig“ (`stimmproben/README.md`). Beim Posten „KI-generierte Inhalte“ an.
 
 ## Regeln
+- Sichere Zonen: `node engine/safe_check.cjs <projekt>` muss „alles frei ✓“ melden (18.11.: Kanalname oben und
+  Untertitel-Enden rechts waren von TikTok verdeckt).
 - Erstes Bild = das überraschende Ergebnis (Terminal mit falscher Rechnung, Uhr springt auf 1901 …), kein Vorspann.
 - Ein Thema, ein Aha, Zahlen vorher nachrechnen (Faktenblock in `make_script.py` und `beschreibung.txt`).
 - Zahlen in `say` als Wörter schreiben („zweiunddreißig Bit“), in `caps` als Ziffern. Whisper liest Zahlen als Ziffern,

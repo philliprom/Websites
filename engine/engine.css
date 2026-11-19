@@ -1,3 +1,5 @@
+/* Sichere Zonen für TikTok (18.11.2026): oben bis 260 px, rechts ab x 920 (y 800–1700) und unten ab y 1660 liegt TikTok-Oberfläche.
+   Prüfen mit: node engine/safe_check.cjs <projekt> */
 :root {
   --navy: #1B2547;
   --ink: #1B1530;
@@ -24,12 +26,12 @@ html, body { margin: 0; padding: 0; background: #000; }
 .badge { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--badge-fg, var(--navy)); background: var(--badge-bg, var(--yellow));
   border: 7px solid #fff; border-radius: 26px; box-shadow: 0 0 0 6px var(--navy), 0 12px 0 6px rgba(20,20,50,.3);
   padding: 4px 30px 8px; line-height: 1; white-space: nowrap; }
-#badge { left: 56px; top: 150px; font-size: 64px; transform-origin: 0 0; }
+#badge { left: 56px; top: 290px; font-size: 64px; transform-origin: 0 0; }
 #title { left: 540px; top: 640px; font-size: 190px; padding: 14px 70px 26px; border-width: 12px; border-radius: 56px;
   box-shadow: 0 0 0 10px var(--navy), 0 22px 0 10px rgba(20,20,50,.3); }
 
 /* Chips */
-.chip { left: 540px; top: 278px; white-space: nowrap; font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 42px;
+.chip { left: 540px; top: 300px; white-space: nowrap; font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 42px;
   line-height: 1; padding: 16px 30px 19px; border-radius: 999px; background: #fff; color: var(--navy);
   border: 6px solid var(--navy); box-shadow: 0 8px 0 rgba(20,20,50,.3); }
 .chip.yellow { background: var(--yellow); }
@@ -46,7 +48,7 @@ html, body { margin: 0; padding: 0; background: #000; }
 #stamp .emo { font-size: 86px; margin-right: 10px; }
 
 /* Banner */
-#banner { left: 540px; top: 270px; width: 860px; text-align: center; font-family: 'Fredoka', sans-serif; font-weight: 700;
+#banner { left: 540px; top: 300px; width: 860px; text-align: center; font-family: 'Fredoka', sans-serif; font-weight: 700;
   color: var(--banner-fg, var(--navy)); background: var(--banner-bg, var(--yellow)); border: 7px solid var(--navy); border-radius: 18px;
   padding: 14px 20px 22px; box-shadow: 0 12px 0 rgba(20,20,50,.3); }
 #banner span { display: block; font-size: 46px; letter-spacing: 3px; }
@@ -113,13 +115,13 @@ html, body { margin: 0; padding: 0; background: #000; }
 #big.mid { font-size: 168px; -webkit-text-stroke: 12px var(--navy); }
 
 /* Kasse */
-#kasse { left: 540px; top: 260px; min-width: 420px; text-align: center; background: var(--green); border: 8px solid var(--navy); border-radius: 30px;
+#kasse { left: 540px; top: 300px; min-width: 420px; text-align: center; background: var(--green); border: 8px solid var(--navy); border-radius: 30px;
   color: #fff; box-shadow: 0 14px 0 rgba(20,20,50,.3); padding: 12px 40px 22px; font-family: 'Nunito'; }
 #kasse small { display: block; font-weight: 900; font-size: 38px; letter-spacing: 4px; color: #D9FFE5; }
 #kasse b { display: block; font-weight: 900; font-size: 150px; line-height: 1; }
 
 /* Abstimmungskarten */
-.card { top: 250px; width: 280px; height: 380px; background: #fff; border: 7px solid var(--navy); border-radius: 30px;
+.card { top: 300px; width: 280px; height: 380px; background: #fff; border: 7px solid var(--navy); border-radius: 30px;
   box-shadow: 0 14px 0 rgba(20,20,50,.3); text-align: center; font-family: 'Nunito', 'Noto Color Emoji'; color: var(--navy);
   padding-top: 18px; }
 .card .letter { width: 76px; height: 76px; border-radius: 50%; margin: 0 auto; border: 6px solid var(--navy); font-family: 'Fredoka';
@@ -127,7 +129,7 @@ html, body { margin: 0; padding: 0; background: #000; }
 .card svg { display: block; margin: 8px auto 0; }
 .card .lab { font-weight: 900; font-size: 34px; line-height: 1.05; margin-top: 6px; height: 74px; display: flex; align-items: center; justify-content: center; }
 .card .likes { font-weight: 900; font-size: 38px; color: var(--red); margin-top: 6px; }
-#votePill { left: 540px; top: 670px; }
+#votePill { left: 540px; top: 720px; }
 
 .floater { left: 0; top: 0; white-space: nowrap; }
 .bubble { font-family: 'Nunito', 'Noto Color Emoji'; font-weight: 900; font-size: 38px; background: #fff; color: var(--navy);

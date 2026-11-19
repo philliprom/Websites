@@ -775,7 +775,7 @@
     },
     s04: (S, t, seg, lt, d) => {
       after(S);
-      S.cam = camLerp([360, 1200, 1.4], [330, 1205, 1.8], E.inOut(clamp(lt / 0.9)));
+      S.cam = camLerp([360, 1160, 1.4], [330, 1158, 1.8], E.inOut(clamp(lt / 0.9)));
       S.boardPop = seg.start + 0.35; S.hearts = [seg.start + 1.6, seg.start + 1.9];
       S.oma.show = false;
     },

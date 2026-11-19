@@ -31,7 +31,9 @@ testet ein eigenes Konzept. Nach etwa 5 Folgen bekommt das Konzept mit den beste
 6. **Technik:** Die Engine (`engine/`) ist geteilt. Änderungen nur rückwärtskompatibel (neue Optionen standardmäßig aus).
    Jeder Chat arbeitet auf seinem eigenen Branch. Neue Engine-Bausteine aus diesem Branch holt ein anderer Chat mit
    `git fetch origin claude/gracious-hamilton-5kohce && git checkout origin/claude/gracious-hamilton-5kohce -- engine/`.
-7. **Stimmen:** jede Hauptfigur bekommt eine eigene Qwen3-TTS-Stimme (Entwurf + Klon mit `"candidates": 4`), damit
+7. **Sichere Zonen:** Vor jedem Rendern `node engine/safe_check.cjs <projekt>` laufen lassen, bis „alles frei ✓“ kommt.
+   Oben bis 260 px, rechts ab x 920 (y 800–1700) und unten ab 1660 px liegt TikTok-Oberfläche (siehe `engine/README.md`).
+8. **Stimmen:** jede Hauptfigur bekommt eine eigene Qwen3-TTS-Stimme (Entwurf + Klon mit `"candidates": 4`), damit
    kein Kanal wie ein anderer klingt. Anleitung: `engine/README.md`, Abschnitt „Qwen3-TTS“.
 
 ## Was jeder neue Kanal aus Kanal A lernen sollte

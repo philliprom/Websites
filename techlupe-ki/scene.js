@@ -29,7 +29,7 @@
     <rect width="1080" height="1920" fill="url(#bgG)"/>
     <g opacity=".08" stroke="#8FB4FF" stroke-width="2">${Array.from({ length: 13 }, (_, i) => `<line x1="${i * 90}" y1="0" x2="${i * 90}" y2="1920"/>`).join('')}${Array.from({ length: 22 }, (_, i) => `<line x1="0" y1="${i * 90}" x2="1080" y2="${i * 90}"/>`).join('')}</g>
     <g id="dyn"></g>
-    <g transform="translate(540,128)"><rect x="-185" y="-46" width="370" height="92" rx="46" fill="${C.cyan}" stroke="#0B1022" stroke-width="7"/>${T(0, 17, '🔍 TECH-LUPE', { s: 46, f: '#0B1022' })}</g>`;
+`;
 
   const shots = {};
   const out = (S, html) => { S.layer = 'alt'; S.html = html; };
@@ -54,9 +54,9 @@
       const k = E.out(clamp((t - t0 - i * 0.18) / 0.45));
       const y = y0 + i * 100, hi = o.hi === i;
       h += T(300, y + 46, w, { s: 52, f: hi ? C.yel : C.w, a: 'end', m: true });
-      h += `<rect x="330" y="${y}" width="560" height="64" rx="18" fill="#1A2350"/>`;
-      h += `<rect x="330" y="${y}" width="${560 * p / 100 * k}" height="64" rx="18" fill="${hi ? C.yel : C.cyan}"${hi ? ' filter="url(#gl)"' : ''}/>`;
-      h += T(1000, y + 46, `${Math.round(p * k)} %`, { s: 44, f: C.w, a: 'end', m: true, op: k.toFixed(2) });
+      h += `<rect x="330" y="${y}" width="440" height="64" rx="18" fill="#1A2350"/>`;
+      h += `<rect x="330" y="${y}" width="${440 * p / 100 * k}" height="64" rx="18" fill="${hi ? C.yel : C.cyan}"${hi ? ' filter="url(#gl)"' : ''}/>`;
+      h += T(905, y + 46, `${Math.round(p * k)} %`, { s: 44, f: C.w, a: 'end', m: true, op: k.toFixed(2) });
     });
     h += T(540, y0 + rows.length * 100 + 30, 'Beispielwerte', { s: 32, f: C.grey });
     return h;
@@ -67,12 +67,12 @@
   // s01: Chat, die KI schreibt, nächstes Wort?
   shots.s01 = (S, t, seg) => {
     const st = cue('s01', 'sting');
-    let h = T(540, 280, 'WAS CHATGPT WIRKLICH MACHT', { s: 54, f: C.yel });
-    h += chatPanel(330, 600);
-    h += bubble('r', 390, 'Erzähl mir was über den Himmel.', { s: 50, w: 780 });
+    let h = T(540, 330, 'WAS CHATGPT WIRKLICH MACHT', { s: 54, f: C.yel });
+    h += chatPanel(370, 580);
+    h += bubble('r', 420, 'Erzähl mir was über den Himmel.', { s: 50, w: 780 });
     const ans = typed('Der Himmel ist', t, seg.start, 10);
     const ask = t >= st;
-    h += bubble('l', 610, `${esc(ans)}${ask ? ' <tspan fill="#FFD43B">???</tspan>' : cursor(t)}`, { raw: true, s: 72, w: 820, stroke: ask ? C.yel : 'none' });
+    h += bubble('l', 640, `${esc(ans)}${ask ? ' <tspan fill="#FFD43B">???</tspan>' : cursor(t)}`, { raw: true, s: 72, w: 820, stroke: ask ? C.yel : 'none' });
     if (ask) h += chip(540, 1050, '🎲 NÄCHSTES WORT?', t, st, { bg: C.yel, fg: NAVY, s: 54, w: 640, r: -3 });
     out(S, h);
   };
@@ -102,8 +102,8 @@
     }
     if (t >= loop - 0.1) {
       const k = E.out(prog(t, loop - 0.1, 0.5));
-      h += `<g transform="${at(940, 1110, k)}"><circle cx="940" cy="1110" r="62" fill="${C.grn}" stroke="${NAVY}" stroke-width="7"/>${T(940, 1138, '↻', { s: 84, f: NAVY })}</g>`;
-      h += chip(600, 1110, 'VON VORN', t, loop - 0.1, { bg: C.grn, fg: NAVY, s: 46, w: 330 });
+      h += `<g transform="${at(820, 1110, k)}"><circle cx="820" cy="1110" r="62" fill="${C.grn}" stroke="${NAVY}" stroke-width="7"/>${T(820, 1138, '↻', { s: 84, f: NAVY })}</g>`;
+      h += chip(520, 1110, 'VON VORN', t, loop - 0.1, { bg: C.grn, fg: NAVY, s: 46, w: 330 });
     }
     out(S, h);
   };
@@ -116,18 +116,18 @@
     for (let i = 0; i < 18; i++) {
       const ph = R(), lane = R();
       const k = ((t - seg.start) * 0.9 + ph) % 1;
-      const x = lerp(60, 470, k), y = 420 + lane * 560 + Math.sin(k * 6 + i) * 20;
+      const x = lerp(60, 440, k), y = 420 + lane * 560 + Math.sin(k * 6 + i) * 20;
       h += T(x, y, '📄', { s: 64, op: (Math.min(k * 4, 1) * (1 - Math.max(0, k - 0.8) * 5)).toFixed(2) });
     }
     h += T(260, 360, 'Riesige Mengen Text', { s: 40, f: C.grey });
-    h += `<g filter="url(#sh)"><rect x="560" y="420" width="440" height="560" rx="40" fill="#0A0F24" stroke="${C.cyan}" stroke-width="7"/></g>`;
-    h += T(780, 490, 'SPRACHMODELL', { s: 40, f: C.cyan });
+    h += `<g filter="url(#sh)"><rect x="520" y="420" width="390" height="560" rx="40" fill="#0A0F24" stroke="${C.cyan}" stroke-width="7"/></g>`;
+    h += T(715, 490, 'SPRACHMODELL', { s: 38, f: C.cyan });
     const R2 = rng(9);
     for (let r = 0; r < 9; r++) for (let c = 0; c < 3; c++) {
       const v = (Math.sin(t * (2 + R2() * 4) + R2() * 10) * 2).toFixed(2);
-      h += T(640 + c * 140, 560 + r * 46, v, { s: 30, f: v < 0 ? C.red : C.grn, m: true, op: 0.85 });
+      h += T(600 + c * 115, 560 + r * 46, v, { s: 28, f: v < 0 ? C.red : C.grn, m: true, op: 0.85 });
     }
-    h += chip(780, 1100, 'MILLIARDEN ZAHLEN', t, c3, { bg: C.cyan, fg: NAVY, s: 44, w: 520, r: -2 });
+    h += chip(560, 1100, 'MILLIARDEN ZAHLEN', t, c3, { bg: C.cyan, fg: NAVY, s: 44, w: 520, r: -2 });
     out(S, h);
   };
 
@@ -174,7 +174,7 @@
     h += `<g opacity="${clamp((t - seg.start - 0.3) * 4)}">${T(540, 810, 'Informatik in 30 Sekunden', { s: 52, f: C.w })}</g>`;
     const b = pop(t, seg.start + 0.5) * (1 + 0.05 * Math.max(0, Math.sin(t * 9)));
     if (b > 0) h += `<g transform="${at(540, 950, b)}"><rect x="320" y="895" width="440" height="110" rx="55" fill="${C.red}" stroke="${NAVY}" stroke-width="8"/>${T(540, 970, '+ FOLGEN', { s: 60 })}</g>`;
-    h += chip(540, 1150, 'WELCHES THEMA ALS NÄCHSTES? 👇', t, seg.start + 1.1, { bg: C.yel, fg: NAVY, s: 42, w: 820, r: -2 });
+    h += chip(540, 1150, 'WELCHES THEMA ALS NÄCHSTES? 👇', t, seg.start + 1.1, { bg: C.yel, fg: NAVY, s: 36, w: 700, r: -2 });
     out(S, h);
   };
 

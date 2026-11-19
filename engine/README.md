@@ -95,3 +95,21 @@ Vertonung: in `script.json` `"tts": {"engine": "qwen", "voice": "voice/<ref>.wav
 ### Option `max_pause` (18.11.2026)
 `"tts": {"max_pause": 0.45}` kürzt lange Atempausen innerhalb eines Satzes auf höchstens 0,45 s (Cache bleibt roh,
 Wortzeiten werden danach neu per Whisper bestimmt). Standardmäßig aus.
+
+## Sichere Zonen für TikTok (18.11.2026)
+
+TikTok legt eigene Oberfläche über das Video (Screenshot des Kanalinhabers vom Döner-Video): oben Suche/Tabs, rechts die
+Knöpfe (Profilbild, Like, Kommentar, Speichern, Teilen), unten Name und Beschreibung. Text dort ist teilweise verdeckt.
+Zonen (1080×1920): **oben bis y 260**, **rechts ab x 920 zwischen y 800 und 1700**, **unten ab y 1660**.
+
+- Prüfen vor jedem Rendern: `node engine/safe_check.cjs <projekt>` (alle 0,5 s, listet Text in den Zonen, Exit-Code 1 bei
+  Verstößen). Mit `--bild 1.0,5.0` entstehen Standbilder mit eingezeichneten Zonen (`build/safe_<t>.png`).
+  „Hinweis … Kulisse“ betrifft Schrift in der gezeichneten Szene (z. B. Aufschrift auf der Rakete) und ist meist egal.
+- Engine-Untertitel sind jetzt höchstens 740 px breit (`capWidth` in `Engine.start` änderbar). Dabei behoben: Die
+  Schriftgröße wurde per Attribut gesetzt und von der CSS-Regel `#caps text` überstimmt, zu lange Untertitel wurden also nie
+  verkleinert. Jetzt per `style.fontSize`.
+- Gilt ab 18.11. für neue Videos. Die schon fertigen Videos (Tech-Lupe 1–4, Döner, Oma Tag 3) bleiben bewusst wie
+  verschickt (Wunsch des Kanalinhabers: „nur für die Zukunft merken“); ihre `scene.js` sind schon angepasst und würden
+  beim nächsten Neubau sicher.
+- Engine-Elemente tiefer gesetzt: `#badge` 290 px, `.chip` mindestens 300 px, `#banner`/`#kasse` 300 px, `.card` 300 px,
+  `#votePill` 720 px. Herzchen fliegen nicht mehr in die untere Ecke.
