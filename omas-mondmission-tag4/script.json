@@ -1,0 +1,295 @@
+{
+  "title": "Omas Mondmission – Tag 4",
+  "voice": "qwen3-tts (Oma_Qwen_1)",
+  "lead_in": 0.35,
+  "tail": 2.0,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "qwen",
+    "voice": "../omas-mondmission-tag1/voice/oma_ref.wav",
+    "voice_text": "../omas-mondmission-tag1/voice/oma_ref.txt",
+    "tries": 3,
+    "max_wer": 0.08,
+    "candidates": 4,
+    "temperature": 0.7,
+    "max_pause": 0.45
+  },
+  "music": {
+    "bpm": 112,
+    "inst": "pluck",
+    "clap": 0.55,
+    "ambience": 0.25,
+    "chords": [
+      [
+        60,
+        64,
+        67,
+        72
+      ],
+      [
+        55,
+        59,
+        62,
+        67
+      ],
+      [
+        57,
+        60,
+        64,
+        69
+      ],
+      [
+        53,
+        57,
+        60,
+        65
+      ]
+    ],
+    "roots": [
+      48,
+      43,
+      45,
+      41
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1,
+      2,
+      3
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Ihr habt entschieden: Meine Rakete ist jetzt ein Gartenhaus!",
+      "caps": [
+        "IHR HABT ENTSCHIEDEN:",
+        "MEINE RAKETE IST JETZT",
+        "EIN !GARTENHAUS! 🏡"
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "knock",
+          -0.3
+        ],
+        [
+          "knock",
+          -0.15
+        ],
+        [
+          "sparkle",
+          0.3
+        ],
+        [
+          "ding",
+          "e-0.4"
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Nur die Spitze guckt ein bisschen raus.",
+      "caps": [
+        "NUR DIE ^SPITZE GUCKT",
+        "EIN BISSCHEN RAUS. 🚀"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "boing",
+          "e-0.5"
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Und dank euch sind schon vierzig Liter im Tank!",
+      "caps": [
+        "UND DANK EUCH SIND SCHON",
+        "^40 LITER IM TANK! ⛽"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "ding",
+          "e-0.1"
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Einer hat sogar Buchstabe für Buchstabe getankt. Hi, wie geht es euch? Uns geht es prima!",
+      "caps": [
+        "EINER HAT ^BUCHSTABE FÜR",
+        "^BUCHSTABE GETANKT:",
+        "„HI, WIE GEHT ES EUCH?“",
+        "UNS GEHT ES ^PRIMA! ❤️"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.5
+        ],
+        [
+          "blip",
+          0.63
+        ],
+        [
+          "blip",
+          0.76
+        ],
+        [
+          "blip",
+          0.89
+        ],
+        [
+          "blip",
+          1.02
+        ],
+        [
+          "blip",
+          1.15
+        ],
+        [
+          "blip",
+          1.28
+        ],
+        [
+          "blip",
+          1.4100000000000001
+        ],
+        [
+          "blip",
+          1.54
+        ],
+        [
+          "blip",
+          1.67
+        ],
+        [
+          "blip",
+          1.8
+        ],
+        [
+          "blip",
+          1.9300000000000002
+        ],
+        [
+          "blip",
+          2.06
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Meine Tafel ist voll. Neue Namen kommen jetzt an die Gartenhaus-Wand!",
+      "caps": [
+        "MEINE TAFEL IST !VOLL.",
+        "NEUE NAMEN KOMMEN AN",
+        "DIE ^GARTENHAUS-WAND! ✍️"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "stamp",
+          1.0
+        ],
+        [
+          "brush",
+          "e-1.7"
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Aber am Sonntag kommt das Ordnungsamt.",
+      "caps": [
+        "ABER AM ^SONNTAG KOMMT",
+        "DAS !ORDNUNGSAMT."
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "scratch",
+          -0.05
+        ],
+        [
+          "boing",
+          0.3
+        ],
+        [
+          "stamp",
+          "e-0.6"
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Fällt es auf mein Gartenhaus rein? Schreib Ja oder Nein!",
+      "caps": [
+        "FÄLLT ES AUF MEIN",
+        "GARTENHAUS REIN?",
+        "SCHREIB ^JA ODER ^NEIN! 👇"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          1.6
+        ],
+        [
+          "pop",
+          2.0
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Jeder Kommentar ist ein Liter!",
+      "caps": [
+        "JEDER KOMMENTAR = ^1 LITER ⛽"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "ding",
+          "e+0.0"
+        ],
+        [
+          "moo",
+          "e+0.4"
+        ]
+      ]
+    }
+  ]
+}

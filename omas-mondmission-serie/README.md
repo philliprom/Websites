@@ -71,6 +71,7 @@ Düse = Blumentopf, Lichterkette am oberen Rand, Leiter, Gartenschlauch, Tankanz
 | Mondmission Tag 2 | 16.11. 13:01 | 23 s | 16.11. 22 Uhr (nach 9 h) | 766 | 9 | 11 | 0 | 1 |
 | Mondmission Tag 1 | 15.11. 18:52 | 36 s | 18.11. abends | 806 | 27 | 12 | 0 | 1 |
 | Mondmission Tag 2 | 16.11. 13:01 | 23 s | 18.11. abends | 777 | 10 | 11 | 0 | 1 |
+| Mondmission Tag 3 | 18.11. 21:33 | 28 s | 19.11. mittags (ca. 15 h) | 647 | 14 | 17 | 0 | 0 |
 
 **Studio Tag 1 (16.11. 07:14):** 746 Aufrufe, Ø Wiedergabe **9,1 s von 37 s (25 %)**, ganz angesehen 5,3 %, 12 neue Follower,
 Gesamtwiedergabe 1:54 h, 96,9 % „Für dich“. Kurve: Absturz in der ersten Sekunde (laut TikTok hören die meisten bei 0:01 auf),
@@ -139,3 +140,24 @@ meinen Tank gebohrt!“) → Kaugummi-Flicken („PFLOPP!“) → Tankanzeige z�
 Bohrmaschine, dann Schild „FRIST: SONNTAG!“ („Am Sonntag kommt das Ordnungsamt!“) → **Abstimmung A 🐄 Berta hält Wache /
 B 🏡 als Gartenhaus tarnen** → „Schreib A oder B. Jeder Kommentar ist ein Liter!“. Tag 4 zeigt das Ergebnis der Abstimmung.
 Stimme Oma_Qwen_1 mit 4 Fassungen pro Satz, neu `max_pause` 0,45 s.
+
+## Auswertung Tag 3 (19.11. mittags)
+
+- 647 Aufrufe nach rund 15 h, 14 Likes (2,2 %), 17 Kommentare, 0 Shares, 0 gespeichert. Gepostet 21:33 statt wie geplant
+  12–13 Uhr. Reichweite bleibt im Bereich aller Folgen (650–820), wächst nicht.
+- Abstimmung (eine Stimme pro Person): **B 3** (@l_eg7430, @1234567891011cwjs, @jonas_hptn) : **A 1** (@lenni.gehres21)
+  → Rakete wird als Gartenhaus getarnt.
+- @jonas_hptn hat nach seinem „B“ 13 einzelne Buchstaben kommentiert: H I W I G E T E S E U C H („Hi, wie geht's euch“).
+  Nach Regel (jeder Kommentar = 1 Liter) zählt alles: **Tank 23 + 17 = 40 Liter**.
+- @ka_digga60 heißt jetzt @anonym13142 (gleiche Person, Name auf der Tafel angepasst). **24 Namen**, Tafel damit voll.
+- Studio-Daten (Wiedergabedauer, Kurve) fehlen noch, beim Kanalinhaber erfragen.
+
+## Tag 4 (gebaut 19.11., `omas-mondmission-tag4/`)
+
+28,3 s, −14,3 LUFS. Kalter Einstieg: Rakete steht als Gartenhaus da (Bretterwand, Fenster mit Vorhängen ums Bullauge,
+Blumenkasten, Schild „GARTENHAUS“, Tür mit Herz, rotes Dach, nur die Raketenspitze guckt raus), Oma präsentiert, „TADAA!“ →
+Zoom auf die Spitze → Tank 23 → 40 → Buchstaben-Tanker @jonas_hptn: Buchstaben-Kacheln „HI WIGETES EUCH“ = „Hi, wie geht's
+euch?“, Oma: „Uns geht es prima!“ → Tafel mit 24 Namen, Stempel „VOLL!“ → neues Feld „DEIN NAME HIER ✍️“ an der
+Gartenhaus-Wand → Krause mit Schild „SONNTAG: ORDNUNGSAMT!“ → **Abstimmung Ja 🏡 fällt drauf rein / Nein 🚨 fliegt auf** →
+„Jeder Kommentar ist ein Liter!“. Sichere Zonen geprüft (nur Kulissen-Schrift). Alle 8 Sätze ohne Aussprachefehler.
+Tag 5 (Sonntag): Ordnungsamt kommt, Ergebnis der Abstimmung.
