@@ -793,7 +793,7 @@
     return TK.countdown ? sg.start + TK.countdown[i] : caps(sg, i, sg.start + i * 0.6);
   };
   const LOS = () => countAt(3);
-  const liftAt = (t) => { const dt = t - LOS() - 0.25; return dt <= 0 ? 0 : dt < 1.2 ? 600 * dt * dt : 864 + 1440 * (dt - 1.2); };
+  const liftAt = (t) => { const dt = t - LOS() - 0.25; return dt <= 0 ? 0 : dt < 1.2 ? 600 * dt * dt : 864 + 900 * (dt - 1.2); };
   const launch = (S, t) => {
     const L0 = LOS();
     inside(S);
@@ -836,7 +836,7 @@
       const c2 = caps(seg, 2, seg.end - 1.5);
       S.oma.armR = t >= c2 ? -155 + 18 * Math.sin(t * 13) : -150; S.oma.fingerR = t < c2;
       S.letters = { t0: seg.start + 0.25, step: 0.035, head: '@1234567891011cwjs ⛽ 64 BUCHSTABEN', text: TK.brief_chris || '', lower: true,
-        tr: caps(seg, 1, seg.start + 1.8) + 0.3, trText: '= „… KÖNNT IHR MICH GRÜSSEN? HEISSE CHRIS“' };
+        tr: caps(seg, 1, seg.start + 1.8) + 0.3, trText: '= „KÖNNT IHR MICH GRÜSSEN?“ 👋' };
       if (t >= c2) S.hearts = [c2, c2 + 0.3];
     },
     s04: (S, t, seg, lt, d) => {
@@ -851,7 +851,7 @@
         S.oma.armR = -150; S.oma.fingerR = true;
         const fly = c2 + 0.1;
         S.jerseyCard = { t0: c1 + 0.05, fly, to: [W.rocket.x + 64, W.rocket.y - 1124] };
-        S.rocket.jersey = t > fly + 0.45;
+        S.rocket.jersey = t > fly + 0.3;
       }
     },
     s05: (S, t, seg, lt, d) => {
@@ -887,7 +887,7 @@
       const rk = [W.rocket.x, W.rocket.y - S.rocket.lift - 420];
       const k = E.inOut(clamp((lt - 0.35) / 0.9));
       S.cam = [lerp(rk[0], kx + 40, k), lerp(rk[1], ky + 190, k), lerp(0.84, 1.15, k)];
-      if (lt > 1.0) S.boomText = { t0: seg.start + 1.0, t1: seg.start + 1.9, text: 'HALT!!!', color: '#FF5C5C', at: [700, 1170], size: 150 };
+      if (lt > 1.0) S.boomText = { t0: seg.start + 1.0, t1: seg.start + 1.9, text: 'HALT!!!', color: '#FF5C5C', at: [600, 1180], size: 125 };
     },
     s08: (S, t, seg, lt, d) => {
       launch(S, t);
@@ -1250,8 +1250,8 @@
     for (let i = 0; i < Rn.n; i++) {
       const ts = Rn.t0 + i * 0.04, u = (t - ts) / 0.8;
       if (u < 0 || u > 1) continue;
-      const x0 = 140 + ((i * 137) % 800), y0 = 290 + ((i * 53) % 150);
-      const e = E.in(u), x = lerp(x0, tx, e), y = lerp(y0, ty, e) - Math.sin(u * Math.PI) * 90;
+      const x0 = 140 + ((i * 137) % 780), y0 = 310 + ((i * 53) % 140);
+      const e = E.in(u), x = lerp(x0, tx, e), y = lerp(y0, ty, e) + Math.sin(u * Math.PI) * 40;
       g += `<g opacity="${clamp((1 - u) * 6).toFixed(2)}">${tile(x, y, lerp(1, 0.35, e), ((i * 37) % 40) - 20 + u * 200, RAIN[i % RAIN.length] || 'a')}</g>`;
     }
     return g;
@@ -1261,7 +1261,7 @@
     if (t < J.t0 || t > J.fly + 0.45) return '';
     const s0 = popS(t, J.t0, 0.3), u = E.inOut(clamp((t - J.fly) / 0.45));
     const x = lerp(540, tx, u), y = lerp(600, ty, u), sc = lerp(2.6 * s0, z, u);
-    let g = `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${Math.max(0.001, sc).toFixed(3)}) rotate(${(Math.sin(t * 5) * 4 * (1 - u)).toFixed(1)})">${jerseyMarkup()}</g>`;
+    let g = `<g opacity="${(1 - clamp((u - 0.55) * 2.6)).toFixed(2)}" transform="translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${Math.max(0.001, sc).toFixed(3)}) rotate(${(Math.sin(t * 5) * 4 * (1 - u)).toFixed(1)})">${jerseyMarkup()}</g>`;
     if (u < 0.2) g += chip(540, 810, s0 * (1 - u * 5), '@noel63501 · FC KUHWEIDE ⚽', 36, '#fff', '#22183A', -2);
     return g;
   }
@@ -1280,8 +1280,8 @@
     const hud = $('tankHud');
     if (S.hud && t >= S.hud.t0) {
       const s = popS(t, S.hud.t0, 0.35);
-      hud.style.display = 'block'; hud.style.top = `${S.hud.top || 300}px`;
-      hud.style.transform = `translateX(-50%) scale(${Math.max(0.001, s) * (S.hud.big ? 1.06 + 0.025 * Math.sin(t * 6) : 1)})`;
+      hud.style.display = 'block'; hud.style.top = `${S.hud.top || 300}px`; hud.style.left = `${S.hud.top ? 490 : 540}px`;
+      hud.style.transform = `translateX(-50%) scale(${Math.max(0.001, s) * (S.hud.top ? 0.86 : 1) * (S.hud.big ? 1.04 + 0.02 * Math.sin(t * 6) : 1)})`;
       $('thVal').textContent = S.hud.value;
       const over = S.hud.value >= 100;
       $('thFill').style.width = `${Math.min(100, S.hud.value)}%`;
