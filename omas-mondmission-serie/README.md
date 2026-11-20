@@ -161,3 +161,31 @@ euch?“, Oma: „Uns geht es prima!“ → Tafel mit 24 Namen, Stempel „VOLL!
 Gartenhaus-Wand → Krause mit Schild „SONNTAG: ORDNUNGSAMT!“ → **Abstimmung Ja 🏡 fällt drauf rein / Nein 🚨 fliegt auf** →
 „Jeder Kommentar ist ein Liter!“. Sichere Zonen geprüft (nur Kulissen-Schrift). Alle 8 Sätze ohne Aussprachefehler.
 Tag 5 (Sonntag): Ordnungsamt kommt, Ergebnis der Abstimmung.
+
+## Auswertung Tag 4 (20.11. mittags)
+
+- Gepostet 19.11. 11:52. **658 Aufrufe, 13 Likes (2,0 %), 76 Kommentare**, 0 Shares, 0 gespeichert. Reichweite wie immer
+  (650–870), die Kommentarzahl ist ein Rekord, kommt aber von nur **4 Personen**.
+- Buchstaben-Tanken ist zum Spiel der Stammzuschauer geworden (Tag 4 hatte @jonas_hptn dafür gelobt):
+  - @1234567891011cwjs (Chris): **64 Buchstaben** = „halo wie gehtes euch ofe gut bis morgen tschau könt ihr mich grüßen
+    heiße chri(s)“ → er will **gegrüßt werden**.
+  - @david69056: 9 Buchstaben „DEHALOHLO“ (vermutlich „Hallo“).
+  - @lol_111.4: „hoffe euch geht's gutttt“ (Antwort auf „Uns geht es prima“).
+- **Abstimmung Ja/Nein: 0 Stimmen.** Niemand hat abgestimmt, alle haben getankt.
+- Unter Tag 1 neu: @noel63501 „Wieso keine Fußballmannschaft mehr“ + „Ich vermisse sie“ (war im FC-Kuhweide-Ehrenkader, Nr. 77).
+- **Tank: 14 + 11 + 17 + 74 = 116 Liter → VOLL.** (2 Kommentare unter Tag 4 sind unsichtbar, Sticker oder eigener
+  Kommentar, nicht gezählt.) **27 Namen** (neu: @noel63501, @david69056, @lol_111.4).
+- Lehre: Wer erwähnt oder gegrüßt wird, kommentiert weiter. Persönliche Grüße im Video sind der stärkste Hebel für
+  Kommentare, aber nicht für Reichweite (Aufrufe bleiben gleich, Shares 0). Studio-Daten (Wiedergabedauer) fehlen noch.
+
+## Tag 5 (gebaut 20.11., `omas-mondmission-tag5/`) – DER START
+
+Kalter Einstieg: Heizöl schießt oben aus der Raketenspitze (Gartenhaus-Tarnung steht noch), „Ihr Verrückten! Der Tank ist
+voll!“ → Tankanzeige 40 → 116 („VOLL!“), Buchstaben regnen in die Spitze → **Chris' Brief** als Buchstaben-Kacheln (64),
+„Liebe Grüße zurück, Chris!“ → „Hallo David!“ (Kacheln) → **Noel: rotes FC-Kuhweide-Trikot Nr. 77** fliegt an den
+Fahnenmast der Rakete → Oma und Berta im Bullauge: „Ordnungsamt hin oder her: Wir starten jetzt!“, die Gartenhaus-Wand
+kracht um, das Dach fliegt weg → Countdown 3-2-1-LOS, Start mit Rauchfahne, Zwerg verliert die Mütze → „Moment mal. Herr
+Krause hängt dran!“: Krause baumelt am Gartenschlauch unter der Rakete, Schild „HALT! §17“, strampelt →
+**Abstimmung A 🫨 abschütteln / B 🚀 mitnehmen**. Ab jetzt neue Mitmach-Regel: Funksprüche an Oma (im angepinnten Kommentar).
+Countdown-Piepser per `countdown.py` genau auf die gesprochenen Zahlen gelegt (zweiter Lauf von `make_script.py`).
+Tag 6: Ergebnis der Abstimmung (Krause abschütteln oder als blinder Passagier mit), erste Funksprüche.

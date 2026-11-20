@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Omas Mondmission – Tag 5</title>
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/nunito/800.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/nunito/900.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/600.css">
+<link rel="stylesheet" href="../engine/node_modules/@fontsource/fredoka/700.css">
+<link rel="stylesheet" href="../engine/engine.css">
+<style>
+  :root {
+    --navy: #22183A; --badge-bg: #FFD43B; --badge-fg: #22183A; --banner-bg: #E8433E; --banner-fg: #fff; --banner-tail: #B52738;
+    --banner-size: 104px; --stage-bg: #F2A06E; --avatar-bg: radial-gradient(circle at 50% 50%, #FFB46B, #D96E86);
+  }
+  #badge { color: #22183A; }
+  /* Abendlicht: warmes Licht von links oben, kühle Schatten rechts unten */
+  #light { background:
+      radial-gradient(circle at 8% 52%, rgba(255, 214, 140, .38) 0, rgba(255, 190, 120, .16) 26%, rgba(255, 190, 120, 0) 52%),
+      linear-gradient(160deg, rgba(255, 170, 90, .10) 0%, rgba(255, 170, 90, 0) 45%, rgba(60, 40, 110, .16) 100%);
+    mix-blend-mode: screen; pointer-events: none; }
+  #vignette { background: radial-gradient(ellipse at 50% 46%, rgba(0,0,0,0) 52%, rgba(30, 12, 50, .38) 100%); }
+  #grade { position: absolute; inset: 0; pointer-events: none; background: rgba(255, 120, 60, 0); mix-blend-mode: soft-light; }
+  #flash { position: absolute; inset: 0; pointer-events: none; background: #FFF6E0; opacity: 0; }
+  .ov { position: absolute; display: none; transform-origin: 50% 50%; }
+  /* Einstieg: Schlagzeile */
+  #hook { left: 760px; top: 300px; width: 520px; text-align: center; background: #fff; color: #22183A; border: 9px solid #22183A;
+    border-radius: 44px; padding: 16px 20px 22px; box-shadow: 0 16px 0 rgba(34, 24, 58, .35);
+    font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 60px; line-height: 1.02; white-space: nowrap; }
+  #hook small { display: inline-block; font-size: 40px; background: #FFD43B; border: 6px solid #22183A; border-radius: 18px;
+    padding: 2px 18px 6px; margin-bottom: 10px; letter-spacing: 2px; }
+  /* Tankanzeige */
+  #tankHud { left: 540px; top: 300px; width: 820px; background: #22183A; border-radius: 34px; padding: 18px 26px 22px;
+    box-shadow: 0 14px 0 rgba(20, 10, 40, .35), 0 0 0 7px #fff; color: #fff; font-family: 'Fredoka', 'Noto Color Emoji'; }
+  #tankHud .row { display: flex; align-items: center; gap: 14px; font-weight: 700; font-size: 52px; line-height: 1; }
+  #tankHud .row .lb { flex: 1; letter-spacing: 3px; }
+  #tankHud .row .val { font-size: 54px; color: #FFD43B; }
+  #tankHud .row .val b { font-size: 70px; }
+  #tankHud .bar { position: relative; height: 54px; margin-top: 14px; border-radius: 27px; background: #3A2E58; overflow: hidden;
+    box-shadow: inset 0 5px 0 rgba(0,0,0,.25); }
+  #tankHud .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: 27px;
+    background: linear-gradient(180deg, #FFE07A, #FF9F2E 60%, #F26B1D); }
+  #tankHud .bar .tick { position: absolute; top: 10px; bottom: 10px; width: 4px; background: rgba(255,255,255,.25); border-radius: 2px; }
+  #tankHud .bar .goal { position: absolute; right: 14px; top: 3px; font-size: 40px; }
+  #tankHud .bar .zero { position: absolute; left: 18px; top: 4px; font-family: 'Nunito'; font-weight: 900; font-size: 32px; color: #FF6B6B; letter-spacing: 2px; }
+  /* Beispiel-Kommentar */
+  #demo { left: 130px; top: 640px; width: 820px; }
+  #plus { left: 540px; top: 470px; z-index: 2; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 110px; color: #FFD43B;
+    -webkit-text-stroke: 10px #22183A; paint-order: stroke fill; }
+  /* Aufruf */
+  #cta { left: 540px; top: 540px; background: #FFD43B; color: #22183A; border: 10px solid #22183A; border-radius: 40px;
+    padding: 12px 40px 20px; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 86px; white-space: nowrap;
+    box-shadow: 0 16px 0 rgba(34, 24, 58, .4); }
+  #postcard { left: 120px; top: 230px; width: 840px; height: 560px; filter: drop-shadow(0 18px 0 rgba(20, 10, 40, .38)); }
+  .comic { left: 0; top: 0; font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; font-size: 120px; color: #fff; white-space: nowrap;
+    -webkit-text-stroke: 12px #22183A; paint-order: stroke fill; letter-spacing: 2px; }
+  #motes circle { mix-blend-mode: screen; }
+  .card .icon { font-family: 'Noto Color Emoji'; font-size: 128px; line-height: 150px; height: 150px; }
+  .card .likes { display: none; }
+  .card { top: 330px; }
+  #votePill { top: 760px; font-size: 34px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="world" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"><g id="cam"></g></svg>
+  <svg id="alt" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="grade" class="layer"></div>
+  <div id="light" class="layer"></div>
+  <svg id="motes" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="vignette" class="layer"></div>
+  <div id="dim" class="layer"></div>
+  <div id="flash" class="layer"></div>
+  <svg id="fx" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <div id="ui" class="layer"></div>
+  <div id="ov" class="layer">
+    <div id="hook" class="ov"><small>TAG 5</small><br>TANK VOLL! 🤯</div>
+    <div id="tankHud" class="ov"><div class="row"><span>⛽</span><span class="lb">TANK</span><span class="val"><b id="thVal">0</b> / 100 L</span></div>
+      <div class="bar"><i id="thFill"></i><span class="zero" id="thZero">LEER</span><span class="tick" style="left:25%"></span><span class="tick" style="left:50%"></span><span class="tick" style="left:75%"></span><span class="goal">🚀</span></div></div>
+    <div id="demo" class="ov ccard ui" style="display:none"><div class="av" style="background:#FF5C8A">D</div>
+      <div class="body"><div class="who"><b>@du</b> · gerade eben</div><div class="txt">TANKEN ⛽</div></div><div class="heart">♡</div></div>
+    <div id="plus" class="ov">+1 L</div>
+    <div id="cta" class="ov">SCHREIB A ODER B 👇</div>
+    <div id="klong1" class="ov comic">KLONG!</div>
+    <div id="boom" class="ov comic" style="left:540px;top:600px;font-size:190px;color:#FFD43B;-webkit-text-stroke:16px #22183A">KABUMM!</div>
+    <div id="klong2" class="ov comic">KLONG!</div>
+    <div id="pflopp" class="ov comic" style="color:#FFD43B">TADAA!</div>
+  </div>
+  <svg id="letters" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920"></svg>
+  <svg id="caps" class="layer" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="cap1" x="540" y="1390" text-anchor="middle"></text>
+    <text id="cap2" x="540" y="1480" text-anchor="middle"></text>
+  </svg>
+</div>
+<script src="build/timeline.js"></script>
+<script src="../engine/engine.js"></script>
+<script src="tank.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>

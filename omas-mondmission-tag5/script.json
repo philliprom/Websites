@@ -1,0 +1,354 @@
+{
+  "title": "Omas Mondmission – Tag 5",
+  "voice": "qwen3-tts (Oma_Qwen_1)",
+  "lead_in": 0.35,
+  "tail": 2.0,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "qwen",
+    "voice": "../omas-mondmission-tag1/voice/oma_ref.wav",
+    "voice_text": "../omas-mondmission-tag1/voice/oma_ref.txt",
+    "tries": 3,
+    "max_wer": 0.08,
+    "candidates": 4,
+    "temperature": 0.7,
+    "max_pause": 0.45
+  },
+  "music": {
+    "bpm": 112,
+    "inst": "pluck",
+    "clap": 0.55,
+    "ambience": 0.25,
+    "chords": [
+      [
+        60,
+        64,
+        67,
+        72
+      ],
+      [
+        55,
+        59,
+        62,
+        67
+      ],
+      [
+        57,
+        60,
+        64,
+        69
+      ],
+      [
+        53,
+        57,
+        60,
+        65
+      ]
+    ],
+    "roots": [
+      48,
+      43,
+      45,
+      41
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1,
+      2,
+      3
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Ihr Verrückten! Der Tank ist voll!",
+      "caps": [
+        "IHR VERRÜCKTEN!",
+        "DER TANK IST !VOLL! ⛽"
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "splash",
+          -0.3
+        ],
+        [
+          "hiss",
+          -0.25
+        ],
+        [
+          "splash",
+          0.6
+        ],
+        [
+          "sparkle",
+          "e-0.5"
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Hundertsechzehn Liter! Und alles Buchstabe für Buchstabe.",
+      "caps": [
+        "^116 LITER! 🤯",
+        "UND ALLES BUCHSTABE",
+        "FÜR ^BUCHSTABE!"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "ding",
+          0.9
+        ],
+        [
+          "ding",
+          1.2
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Chris hat sogar einen ganzen Brief getankt. Liebe Grüße zurück, Chris!",
+      "caps": [
+        "^CHRIS HAT SOGAR EINEN",
+        "GANZEN ^BRIEF GETANKT:",
+        "LIEBE GRÜSSE ZURÜCK,",
+        "^CHRIS! 👋"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.25
+        ],
+        [
+          "blip",
+          0.4
+        ],
+        [
+          "blip",
+          0.55
+        ],
+        [
+          "blip",
+          0.7
+        ],
+        [
+          "blip",
+          0.85
+        ],
+        [
+          "blip",
+          1.0
+        ],
+        [
+          "blip",
+          1.15
+        ],
+        [
+          "blip",
+          1.3
+        ],
+        [
+          "blip",
+          1.45
+        ],
+        [
+          "blip",
+          1.5999999999999999
+        ],
+        [
+          "blip",
+          1.75
+        ],
+        [
+          "blip",
+          1.9
+        ],
+        [
+          "blip",
+          2.05
+        ],
+        [
+          "blip",
+          2.2
+        ],
+        [
+          "blip",
+          2.35
+        ],
+        [
+          "blip",
+          2.5
+        ],
+        [
+          "hearts",
+          "e-0.6"
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Hallo David! Und Noel: Dein Trikot fliegt mit!",
+      "caps": [
+        "HALLO ^DAVID! 👋",
+        "UND ^NOEL: DEIN TRIKOT",
+        "FLIEGT MIT! ⚽"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "blip",
+          0.1
+        ],
+        [
+          "blip",
+          0.17
+        ],
+        [
+          "blip",
+          0.24000000000000002
+        ],
+        [
+          "blip",
+          0.31000000000000005
+        ],
+        [
+          "blip",
+          0.38
+        ],
+        [
+          "blip",
+          0.45000000000000007
+        ],
+        [
+          "blip",
+          0.52
+        ],
+        [
+          "blip",
+          0.5900000000000001
+        ],
+        [
+          "blip",
+          0.66
+        ],
+        [
+          "whistle",
+          "e-1.3"
+        ],
+        [
+          "pop",
+          "e-1.2"
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Ordnungsamt hin oder her: Wir starten jetzt!",
+      "caps": [
+        "ORDNUNGSAMT HIN ODER HER:",
+        "WIR ^STARTEN JETZT! 🚀"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "scratch",
+          -0.05
+        ],
+        [
+          "crunch",
+          "e-0.7"
+        ],
+        [
+          "poof",
+          "e-0.62"
+        ],
+        [
+          "whoosh",
+          "e-0.55"
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Drei! Zwei! Eins! Los!",
+      "caps": [
+        "^3 …",
+        "^2 …",
+        "^1 …",
+        "!LOS! 🚀"
+      ],
+      "gap": 0.25,
+      "sfx": [
+        [
+          "riser",
+          -0.1
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Moment mal. Herr Krause hängt dran!",
+      "caps": [
+        "MOMENT MAL …",
+        "HERR ^KRAUSE HÄNGT DRAN! 😱"
+      ],
+      "gap": 0.5,
+      "sfx": [
+        [
+          "boing",
+          0.0
+        ],
+        [
+          "squeak",
+          "e-1.0"
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Abschütteln oder mitnehmen? Schreib A oder B!",
+      "caps": [
+        "^ABSCHÜTTELN ODER",
+        "^MITNEHMEN?",
+        "SCHREIB ^A ODER ^B! 👇"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "pop",
+          0.2
+        ],
+        [
+          "pop",
+          1.2
+        ],
+        [
+          "moo",
+          "e+0.3"
+        ]
+      ]
+    }
+  ]
+}
