@@ -130,7 +130,10 @@ def build_voxcpm(script, model_dir):
         ref, ref_text, fx = voice_of(segs[g[0]])
         style = segs[g[0]].get("style") or tts.get("style")
         best = None
-        key = cache_key(text, style, ref, tts)
+        # Satz-Optionen: "take" nimmt nur diesen Satz neu auf (eigener Cache und Seed), "candidates"/"pitch_tol" überschreiben
+        # die Projektwerte für diesen Satz
+        take = segs[g[0]].get("take", 0)
+        key = cache_key(text, style, ref, tts) + (f"-t{take}" if take else "")
         # Satz-Cache liegt im Projekt (wird mit eingecheckt), alte Ablage in build/ wird weiter gelesen
         cpath = os.path.join(HERE, "tts_cache", key + ".flac")
         old = os.path.join(BUILD, "tts_cache", key + ".wav")
@@ -145,14 +148,15 @@ def build_voxcpm(script, model_dir):
             print(f"  Satz {gi + 1}/{len(groups)} aus Cache: WER {best[0]:.2f} | {hyp}", flush=True)
         # Qwen mit "candidates": mehrere Fassungen erzeugen und die nehmen, die der Referenzstimme am ähnlichsten ist
         # (Wertung = Ähnlichkeit − 2 × WER), damit die Stimme von Satz zu Satz gleich klingt.
-        cands = tts.get("candidates", 0) if tts.get("engine") == "qwen" else 0
+        cands = segs[g[0]].get("candidates", tts.get("candidates", 0)) if tts.get("engine") == "qwen" else 0
+        tol = segs[g[0]].get("pitch_tol", tts.get("pitch_tol", 0.15))
         best_score = None
         for attempt in range(0 if best else (cands or tts.get("tries", 4))):
             if attempt == 0:
                 T.load(model_dir)
                 sr = T.sample_rate()
             extra = {"temperature": tts.get("temperature")} if tts.get("engine") == "qwen" else {}
-            wav = T.clone(text, ref, ref_text, seed=tts.get("seed", 7) + 1000 * gi + attempt,
+            wav = T.clone(text, ref, ref_text, seed=tts.get("seed", 7) + 1000 * gi + attempt + 100000 * take,
                           cfg=tts.get("cfg", 2.0), steps=tts.get("steps", 10), style=style, **extra)
             wav = trim(np.asarray(wav, dtype=np.float32), sr)
             words, hyp = V.asr_words(wav, sr)
@@ -161,7 +165,7 @@ def build_voxcpm(script, model_dir):
                 sim = T.speaker_similarity(wav, sr, ref)
                 f, fr = T.pitch(wav, sr), T.pitch_ref(ref)
                 dev = abs(np.log2(f / fr)) if f and fr else 0.0  # Abweichung der Tonhöhe in Oktaven
-                score = sim - 2 * e - 1.5 * max(0.0, dev - 0.15)
+                score = sim - 2 * e - 1.5 * max(0.0, dev - tol)
                 if best_score is None or score > best_score:
                     best, best_score = (e, wav, words, hyp), score
                 print(f"  Satz {gi + 1}/{len(groups)} Fassung {attempt + 1}: WER {e:.2f} | Ähnlichkeit {sim:.3f} | "

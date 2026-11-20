@@ -46,6 +46,7 @@ segments = [
      "sfx": [["riser", -0.1]], "countdown": True},
     {"id": "s07", "say": "Moment mal. Herr Krause hängt dran!",
      "caps": ["MOMENT MAL …", "HERR ^KRAUSE HÄNGT DRAN! 😱"], "gap": 0.5,
+     "take": 1, "candidates": 10, "pitch_tol": 0.06,  # erste Fassung klang zu tief (217 Hz statt 252 Hz)
      "sfx": [["boing", 0.0], ["squeak", "e-1.0"]]},
     {"id": "s08", "say": "Abschütteln oder mitnehmen? Schreib A oder B!",
      "caps": ["^ABSCHÜTTELN ODER", "^MITNEHMEN?", "SCHREIB ^A ODER ^B! 👇"], "gap": 0.15,

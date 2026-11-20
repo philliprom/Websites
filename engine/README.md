@@ -96,6 +96,13 @@ Vertonung: in `script.json` `"tts": {"engine": "qwen", "voice": "voice/<ref>.wav
 `"tts": {"max_pause": 0.45}` kürzt lange Atempausen innerhalb eines Satzes auf höchstens 0,45 s (Cache bleibt roh,
 Wortzeiten werden danach neu per Whisper bestimmt). Standardmäßig aus.
 
+### Einzelnen Satz neu aufnehmen: `take`, `candidates`, `pitch_tol` (20.11.2026)
+Klingt ein Satz anders als die übrigen (andere Stimmfarbe, zu hoch oder zu tief), nur diesen Satz neu erzeugen, im Segment:
+`"take": 1, "candidates": 10, "pitch_tol": 0.06`. `take` gibt dem Satz einen eigenen Cache-Eintrag und andere Zufallswerte
+(die anderen Sätze kommen weiter aus dem Cache), `candidates` überschreibt die Zahl der Fassungen, `pitch_tol` die erlaubte
+Tonhöhen-Abweichung von der Referenz in Oktaven, bevor Strafpunkte anfallen (Standard 0,15 ≈ ±11 %, 0,06 ≈ ±4 %).
+Im Log stehen je Fassung Ähnlichkeit und F0. Gute Werte für Oma: Ähnlichkeit ≥ 0,975, F0 235–270 Hz (Referenz 252 Hz).
+
 ## Sichere Zonen für TikTok (18.11.2026)
 
 TikTok legt eigene Oberfläche über das Video (Screenshot des Kanalinhabers vom Döner-Video): oben Suche/Tabs, rechts die

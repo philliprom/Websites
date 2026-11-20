@@ -339,6 +339,9 @@
         "HERR ^KRAUSE HÄNGT DRAN! 😱"
       ],
       "gap": 0.5,
+      "take": 1,
+      "candidates": 10,
+      "pitch_tol": 0.06,
       "sfx": [
         [
           "boing",
