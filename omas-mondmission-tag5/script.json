@@ -333,15 +333,12 @@
     },
     {
       "id": "s07",
-      "say": "Moment mal. Herr Krause hängt dran!",
+      "say": "Ach du Schreck! Herr Krause hängt dran!",
       "caps": [
-        "MOMENT MAL …",
+        "ACH DU SCHRECK!",
         "HERR ^KRAUSE HÄNGT DRAN! 😱"
       ],
       "gap": 0.5,
-      "take": 1,
-      "candidates": 10,
-      "pitch_tol": 0.06,
       "sfx": [
         [
           "boing",

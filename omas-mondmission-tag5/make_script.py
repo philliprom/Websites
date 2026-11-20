@@ -44,9 +44,10 @@ segments = [
     {"id": "s06", "say": "Drei! Zwei! Eins! Los!",
      "caps": ["^3 …", "^2 …", "^1 …", "!LOS! 🚀"], "gap": 0.25,
      "sfx": [["riser", -0.1]], "countdown": True},
-    {"id": "s07", "say": "Moment mal. Herr Krause hängt dran!",
-     "caps": ["MOMENT MAL …", "HERR ^KRAUSE HÄNGT DRAN! 😱"], "gap": 0.5,
-     "take": 1, "candidates": 10, "pitch_tol": 0.06,  # erste Fassung klang zu tief (217 Hz statt 252 Hz)
+    # „Moment mal. Herr Krause hängt dran!“ kam in 14 Fassungen nie in Omas Stimmfarbe (zu tief, Ähnlichkeit ≤ 0,965).
+    # „Ach du Schreck!“ passt: Ähnlichkeit 0,987, 257 Hz (Probe im Satz-Cache)
+    {"id": "s07", "say": "Ach du Schreck! Herr Krause hängt dran!",
+     "caps": ["ACH DU SCHRECK!", "HERR ^KRAUSE HÄNGT DRAN! 😱"], "gap": 0.5,
      "sfx": [["boing", 0.0], ["squeak", "e-1.0"]]},
     {"id": "s08", "say": "Abschütteln oder mitnehmen? Schreib A oder B!",
      "caps": ["^ABSCHÜTTELN ODER", "^MITNEHMEN?", "SCHREIB ^A ODER ^B! 👇"], "gap": 0.15,

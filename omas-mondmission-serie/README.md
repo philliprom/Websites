@@ -184,9 +184,13 @@ Kalter Einstieg: Heizöl schießt oben aus der Raketenspitze (Gartenhaus-Tarnung
 voll!“ → Tankanzeige 40 → 116 („VOLL!“), Buchstaben regnen in die Spitze → **Chris' Brief** als Buchstaben-Kacheln (64),
 „Liebe Grüße zurück, Chris!“ → „Hallo David!“ (Kacheln) → **Noel: rotes FC-Kuhweide-Trikot Nr. 77** fliegt an den
 Fahnenmast der Rakete → Oma und Berta im Bullauge: „Ordnungsamt hin oder her: Wir starten jetzt!“, die Gartenhaus-Wand
-kracht um, das Dach fliegt weg → Countdown 3-2-1-LOS, Start mit Rauchfahne, Zwerg verliert die Mütze → „Moment mal. Herr
+kracht um, das Dach fliegt weg → Countdown 3-2-1-LOS, Start mit Rauchfahne, Zwerg verliert die Mütze → „Ach du Schreck! Herr
 Krause hängt dran!“: Krause baumelt am Gartenschlauch unter der Rakete, Schild „HALT! §17“, strampelt →
 **Abstimmung A 🫨 abschütteln / B 🚀 mitnehmen**. Ab jetzt neue Mitmach-Regel: Funksprüche an Oma (im angepinnten Kommentar).
 Countdown-Piepser per `countdown.py` genau auf die gesprochenen Zahlen gelegt (zweiter Lauf von `make_script.py`).
 **Endfassung 28,5 s, −14,1 LUFS**, alle 8 Sätze ohne Aussprachefehler, sichere Zonen geprüft (nur Kulisse: Tafel, Trikot am Mast).
+Nachbesserung 20.11.: Kanalinhaber hörte bei Satz 7 („Moment mal. Herr Krause hängt dran!“) eine andere Stimmfarbe. Messung:
+gewählt war 217 Hz / Ähnlichkeit 0,965 (übrige Sätze 229–276 Hz, 0,966–0,987). 10 weitere Fassungen derselben Worte blieben
+zu tief oder fremd (118–328 Hz, ≤ 0,976). Neue Formulierung **„Ach du Schreck! Herr Krause hängt dran!“**: 257 Hz, 0,987.
+Lehre: Wenn ein Satz in vielen Fassungen nicht passt, liegt es an der Formulierung, nicht am Zufall. Umformulieren.
 Tag 6: Ergebnis der Abstimmung (Krause abschütteln oder als blinder Passagier mit), erste Funksprüche.
