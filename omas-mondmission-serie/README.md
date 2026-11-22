@@ -213,3 +213,22 @@ Kommentare, aber keinen Grund zu folgen. Bei FC Kuhweide brachte jede Folge 26�
   300 in etwa 8–12 Folgen, wenn die Reichweite nicht steigt. Deshalb die Zwischenziele.
 - Tag 5 (gepostet 21.11. 10:37), Stand 22.11.: 683 Aufrufe, 26 Likes (3,8 %, beste Like-Rate der Serie), 7 Kommentare,
   0 Shares, 1 gespeichert. Kanal weiter 140 Follower, Anzeigename und Bio noch nicht geändert.
+
+## Auswertung Tag 5 (22.11.)
+
+- 683 Aufrufe, 26 Likes (3,8 %, beste Like-Rate der Serie), 7 Kommentare, 0 Shares, 1 gespeichert. Kanal: 140 Follower.
+- **Abstimmung A (abschütteln) 5 : 0.** A: @hirschi552, @em1li0.12, @jan.1.fc.kln („a sonst Anzeige“), @1234567891011cwjs
+  (Chris: „Hiiiiiiii“, „bin wieder da“, „A“), @toby28324. Neu auf der Tafel: hirschi552, em1li0.12, jan.1.fc.kln, toby28324
+  → **31 Namen**. Funksprüche gab es noch keine (Regel stand nur im angepinnten Kommentar).
+
+## Tag 6 (gebaut 22.11., `omas-mondmission-tag6/`) – Krause fliegt raus, Follower-Ziel 300
+
+Kalter Einstieg: Oma schaukelt die Rakete, Krause baumelt wild am Gartenschlauch („KRAUSE MUSS RUNTER! 🫨“) → Ergebnis
+„🫨 A: 5 / 🚀 B: 0“ + Kommentarkarte @jan.1.fc.kln „a sonst Anzeige“ → „Festhalten, Berta! Tschüss, Herr Krause!“: Krause lässt
+los, „AAAAH!“ → Schnitt in den Garten: **Krause steckt kopfüber in seiner eigenen Hecke** (Ringelsocken strampeln, Schild
+„HALT! §17“ daneben, „PLUMPS!“), „Keine Sorge, er ist weich gelandet.“ → Bullauge groß, Kommentarkarte von Chris, „Hallo
+Chris!“ → **Flugkarte**: unten Erde („START: KUHWEIDE“) mit geschafftem Stück bis 140, darüber die Rest-Strecke mit
+175 Weltraumschrott 🔩, 200 Raumstation 🛰️, 250 Meteoriten ☄️, 300 Mondlandung 🌕, Rakete beim Stand „140 / 300“ →
+**Profilkarte „Omas Mondmission 🚀 @gruselwahl.de“, Hand tippt „Folgen“ → „Gefolgt ✓“, 140 → 141, „+1 🚀“** → Station 175
+wird rot, Schrott (Schrauben, Socken, Dosen) kreist: „Bei hundertfünfundsiebzig wird es gefährlich!“.
+Followerzahl steht in `tank.json` („follower“), vor dem Posten aktualisieren und neu bauen (Satz 7 wird neu gesprochen).

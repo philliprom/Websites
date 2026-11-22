@@ -1,0 +1,18 @@
+<!-- Titelbild-Overlay für Omas Mondmission – Tag 6. Wird von engine/render_cover.cjs über die Szene gelegt. -->
+<style>
+  #cover { position: absolute; inset: 0; pointer-events: none; }
+  #cover .tag { position: absolute; left: 540px; top: 150px; transform: translateX(-50%) rotate(-4deg); font-size: 92px;
+    padding: 4px 48px 14px; border-width: 9px; box-shadow: 0 0 0 8px var(--navy), 0 16px 0 8px rgba(20,20,50,.3); }
+  #cover svg.head { position: absolute; left: 0; top: 0; filter: drop-shadow(0 10px 0 rgba(20, 15, 45, .45)); }
+  #cover svg.head text { font-family: 'Fredoka', 'Noto Color Emoji'; font-weight: 700; paint-order: stroke fill; stroke: var(--navy);
+    stroke-width: 22px; stroke-linejoin: round; fill: #fff; }
+  #cover .pill { position: absolute; left: 540px; top: 1330px; transform: translateX(-50%) rotate(-2deg); font-size: 50px; padding: 18px 34px 22px; }
+</style>
+<div id="cover">
+  <div class="ui badge tag">TAG 6</div>
+  <svg class="head" viewBox="0 0 1080 1920" width="1080" height="1920">
+    <text id="h1" x="540" y="390" text-anchor="middle" font-size="130" style="fill:#FFD43B">TSCHÜSS, KRAUSE! 🫨</text>
+    <text id="h2" x="540" y="510" text-anchor="middle" font-size="86">BEI 300 FOLLOWERN LANDET OMA 🌕</text>
+  </svg>
+  <div class="ui chip dark pill">🚀 140 / 300 FOLLOWER</div>
+</div>

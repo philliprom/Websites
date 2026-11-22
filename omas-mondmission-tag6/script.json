@@ -1,0 +1,277 @@
+{
+  "title": "Omas Mondmission – Tag 6",
+  "voice": "qwen3-tts (Oma_Qwen_1)",
+  "lead_in": 0.35,
+  "tail": 2.0,
+  "default_gap": 0.1,
+  "tts": {
+    "engine": "qwen",
+    "voice": "../omas-mondmission-tag1/voice/oma_ref.wav",
+    "voice_text": "../omas-mondmission-tag1/voice/oma_ref.txt",
+    "tries": 3,
+    "max_wer": 0.08,
+    "candidates": 4,
+    "temperature": 0.7,
+    "max_pause": 0.45
+  },
+  "music": {
+    "bpm": 112,
+    "inst": "pluck",
+    "clap": 0.55,
+    "ambience": 0.25,
+    "chords": [
+      [
+        60,
+        64,
+        67,
+        72
+      ],
+      [
+        55,
+        59,
+        62,
+        67
+      ],
+      [
+        57,
+        60,
+        64,
+        69
+      ],
+      [
+        53,
+        57,
+        60,
+        65
+      ]
+    ],
+    "roots": [
+      48,
+      43,
+      45,
+      41
+    ],
+    "arp": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1,
+      2,
+      3
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Ihr habt entschieden: Krause wird abgeschüttelt!",
+      "caps": [
+        "IHR HABT ENTSCHIEDEN:",
+        "KRAUSE WIRD",
+        "!ABGESCHÜTTELT! 🫨"
+      ],
+      "gap": 0.0,
+      "sfx": [
+        [
+          "boing",
+          -0.3
+        ],
+        [
+          "whoosh",
+          0.4
+        ],
+        [
+          "boing",
+          1.2
+        ],
+        [
+          "squeak",
+          1.9
+        ]
+      ]
+    },
+    {
+      "id": "s02",
+      "say": "Fünf zu null! Jan schreibt sogar: A, sonst Anzeige!",
+      "caps": [
+        "^5 : 0 FÜR A!",
+        "JAN SCHREIBT SOGAR:",
+        "„A, SONST ^ANZEIGE!“ 😂"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "ding",
+          0.3
+        ],
+        [
+          "pop",
+          "e-1.6"
+        ]
+      ]
+    },
+    {
+      "id": "s03",
+      "say": "Festhalten, Berta! Tschüss, Herr Krause!",
+      "caps": [
+        "FESTHALTEN, ^BERTA!",
+        "TSCHÜSS, HERR ^KRAUSE! 👋"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "boing",
+          0.0
+        ],
+        [
+          "boing",
+          0.4
+        ],
+        [
+          "moo",
+          0.6
+        ],
+        [
+          "whistle",
+          "e-0.9"
+        ],
+        [
+          "whoosh",
+          "e-0.8"
+        ]
+      ]
+    },
+    {
+      "id": "s04",
+      "say": "Keine Sorge, er ist weich gelandet.",
+      "caps": [
+        "KEINE SORGE,",
+        "ER IST ^WEICH GELANDET. 🌳"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "crunch",
+          -0.2
+        ],
+        [
+          "poof",
+          -0.15
+        ],
+        [
+          "boing",
+          1.2
+        ]
+      ]
+    },
+    {
+      "id": "s05",
+      "say": "Und Chris ist wieder da! Hallo Chris!",
+      "caps": [
+        "UND ^CHRIS IST WIEDER DA!",
+        "HALLO ^CHRIS! 👋"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "pop",
+          0.1
+        ],
+        [
+          "hearts",
+          "e-0.8"
+        ]
+      ]
+    },
+    {
+      "id": "s06",
+      "say": "Jetzt geht es zum Mond. Aber nur mit euch!",
+      "caps": [
+        "JETZT GEHT ES ZUM ^MOND. 🌕",
+        "ABER NUR MIT ^EUCH!"
+      ],
+      "gap": 0.2,
+      "sfx": [
+        [
+          "riser",
+          -0.1
+        ],
+        [
+          "whoosh",
+          0.2
+        ],
+        [
+          "sparkle",
+          0.9
+        ]
+      ]
+    },
+    {
+      "id": "s07",
+      "say": "Bei dreihundert Followern landen wir. Wir sind schon bei hundertvierzig!",
+      "caps": [
+        "BEI ^300 FOLLOWERN",
+        "LANDEN WIR. 🌕",
+        "WIR SIND SCHON",
+        "BEI ^140! 🚀"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "pop",
+          0.5
+        ],
+        [
+          "pop",
+          0.8
+        ],
+        [
+          "pop",
+          1.1
+        ],
+        [
+          "pop",
+          1.4
+        ],
+        [
+          "ding",
+          "e-0.6"
+        ]
+      ]
+    },
+    {
+      "id": "s08",
+      "say": "Folg mir, damit wir ankommen! Bei hundertfünfundsiebzig wird es gefährlich!",
+      "caps": [
+        "^FOLG MIR, DAMIT",
+        "WIR ANKOMMEN! ❤️",
+        "BEI ^175 WIRD ES",
+        "!GEFÄHRLICH! ⚠️"
+      ],
+      "gap": 0.15,
+      "sfx": [
+        [
+          "whoosh",
+          -0.05
+        ],
+        [
+          "tap",
+          1.0
+        ],
+        [
+          "kaching",
+          1.05
+        ],
+        [
+          "sting",
+          "e-1.2"
+        ]
+      ]
+    }
+  ]
+}
