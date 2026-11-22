@@ -1133,9 +1133,10 @@
     const el = $('shedW'), SH = S.shed, R = S.rocket;
     if (!SH) { el.innerHTML = ''; return; }
     const jx = R.shake ? Math.sin(t * 53) * 3 * R.shake : 0;
-    setT(el, `translate(${W.rocket.x + jx},${W.rocket.y - R.lift}) rotate(${R.tilt})`);
     const wx0 = -195, wx1 = 195, wy0 = -720, hx0 = -95, hx1 = 115, hy0 = -698, hy1 = -502;
     const fallen = SH.fall !== undefined && t >= SH.fall, ft = fallen ? t - SH.fall : 0;
+    // umgekippte Wand bleibt im Garten liegen (fliegt nicht mit der Rakete)
+    setT(el, fallen && R.lift > 0 ? `translate(${W.rocket.x},${W.rocket.y}) rotate(2)` : `translate(${W.rocket.x + jx},${W.rocket.y - R.lift}) rotate(${R.tilt})`);
     let sy = 1;
     if (fallen) sy = ft < 0.35 ? lerp(1, -0.14, E.in(ft / 0.35)) : -0.14 + 0.06 * Math.sin((ft - 0.35) * 26) * Math.exp(-(ft - 0.35) * 7);
     let h = fallen ? '' : `<ellipse cx="0" cy="6" rx="250" ry="22" fill="#2B3A1E" opacity=".3"/>`;
@@ -1290,9 +1291,9 @@
       const hot = i === 0 && M.warn !== undefined && t >= M.warn;
       const warn = hot ? 1 + 0.14 * Math.max(0, Math.sin((t - M.warn) * 12)) : 1;
       if (!last) g += `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${(Math.max(0.001, k) * warn).toFixed(3)})"><circle r="36" fill="#22183A" stroke="${hot ? '#FF5C5C' : '#FFD43B'}" stroke-width="7"/><text y="15" text-anchor="middle" font-family="${FONT}" font-size="40">${emo}</text></g>`;
-      const txt = last ? `${n} · ${name} ${emo}` : `${n} · ${name}${hot ? ' ⚠️' : ''}`, fs = 34, w = txt.length * fs * 0.56 + 70;
+      const txt = last ? `${n} · ${name} ${emo}` : `${n} · ${name}`, fs = 34, w = txt.length * fs * 0.56 + 70;
       const lx = last ? mx + 150 + w / 2 : x + 56 + w / 2, ly = last ? my + 120 : y;
-      g += chip(lx, ly, k * warn, txt, fs, hot ? '#FF5C5C' : '#fff', hot ? '#fff' : '#22183A');
+      g += chip(lx, ly, k, txt, fs, hot ? '#FF5C5C' : '#fff', hot ? '#fff' : '#22183A');
     });
     // Weltraumschrott ums erste Zwischenziel
     if (M.warn !== undefined && t >= M.warn && MS.length) {
@@ -1332,7 +1333,7 @@
     </g>`;
     // Hand fährt zum Knopf und tippt
     const p = E.inOut(clamp((t - Fo.t0 - 0.2) / Math.max(0.3, Fo.tap - Fo.t0 - 0.25)));
-    const hx = lerp(820, 560, p), hy = lerp(1180, 980, p), tap = t > Fo.tap - 0.06 && t < Fo.tap + 0.14 ? 0.85 : 1;
+    const hx = lerp(740, 560, p), hy = lerp(1180, 980, p), tap = t > Fo.tap - 0.06 && t < Fo.tap + 0.14 ? 0.85 : 1;
     if (t < Fo.out) g += `<text x="${hx.toFixed(1)}" y="${hy.toFixed(1)}" font-family="${FONT}" font-size="96" transform="scale(1) translate(0,0)" style="transform-box:fill-box;transform-origin:center;transform:scale(${tap})">👆</text>`;
     if (done && t < Fo.out) g += chip(800, 700, popS(t, Fo.tap, 0.25), '+1 🚀', 40, '#7EE07A', '#22183A', 6);
     return g;

@@ -232,3 +232,5 @@ Chris!“ → **Flugkarte**: unten Erde („START: KUHWEIDE“) mit geschafftem 
 **Profilkarte „Omas Mondmission 🚀 @gruselwahl.de“, Hand tippt „Folgen“ → „Gefolgt ✓“, 140 → 141, „+1 🚀“** → Station 175
 wird rot, Schrott (Schrauben, Socken, Dosen) kreist: „Bei hundertfünfundsiebzig wird es gefährlich!“.
 Followerzahl steht in `tank.json` („follower“), vor dem Posten aktualisieren und neu bauen (Satz 7 wird neu gesprochen).
+**Endfassung 30,0 s, −14,2 LUFS**, alle 8 Sätze Ähnlichkeit 0,982–0,991 / 227–271 Hz, sichere Zonen frei (nur Kulisse).
+Behoben: Die umgekippte Gartenhaus-Wand flog seit Tag 5 als Bretterstück unten an der Rakete mit (Tag 5 so gepostet).
