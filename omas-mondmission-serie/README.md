@@ -201,11 +201,15 @@ Befund: Seit Start der Mondmission (15.11.) nur 122 → 140 Follower (+18 in 6 T
 Kommentare, aber keinen Grund zu folgen. Bei FC Kuhweide brachte jede Folge 26–36 Follower (Follow-Rate 2,2–3,6 %), weil
 **Folgen selbst Teil des Spiels war** („1 Follower = 1 Fan“, „ich nehme euch in den Verein auf“).
 
-- **Neue Regel ab Tag 6: „Jeder Follower bringt Oma näher an den Mond. Bei 200 Followern landet sie.“** Öffentlich nachprüfbar
-  (Followerzahl im Profil), wie die Liter. Im Video: Flugbahn Erde → Mond, Rakete steht beim aktuellen Stand (z. B. 140/200),
+- **Neue Regel ab Tag 6: „Jeder Follower bringt Oma näher an den Mond. Bei 300 Followern landet sie.“** (22.11. vom
+  Kanalinhaber von 200 auf 300 erhöht.) Zwischenziele, damit sich in jeder Folge etwas tut: **175** Weltraumschrott,
+  **200** Raumstation, **250** Meteoritenschauer, **300** Mondlandung. Öffentlich nachprüfbar
+  (Followerzahl im Profil), wie die Liter. Im Video: Flugbahn Erde → Mond, Rakete steht beim aktuellen Stand (z. B. 140/300),
   am Ende die Profilkarte der Engine mit animiertem „Folgen“-Knopf (`ui.profile.followAt`). Kommentare bleiben Funksprüche.
 - Inhalt Tag 6: Ergebnis der Abstimmung (Krause abschütteln/mitnehmen), erste Funksprüche vorlesen, Follower-Ziel.
 - Sofort im Profil (Kanalinhaber): Anzeigename von „FC Kuhweide“ auf „Omas Mondmission 🚀“, Bio aktualisieren
   („Start bei 100“ ist erledigt), Tag 1 und Tag 5 im Profil anpinnen.
 - Erwartung ehrlich: Reichweite liegt bei ca. 650 Aufrufen. Mit 2–3 % Follow-Rate sind das 13–20 Follower je Folge, also
-  200 in etwa 3–4 Folgen, wenn die Reichweite nicht steigt.
+  300 in etwa 8–12 Folgen, wenn die Reichweite nicht steigt. Deshalb die Zwischenziele.
+- Tag 5 (gepostet 21.11. 10:37), Stand 22.11.: 683 Aufrufe, 26 Likes (3,8 %, beste Like-Rate der Serie), 7 Kommentare,
+  0 Shares, 1 gespeichert. Kanal weiter 140 Follower, Anzeigename und Bio noch nicht geändert.
