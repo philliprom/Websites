@@ -253,6 +253,10 @@ def render_phone(s, t):
     return to_img(a)
 
 
+CARD_SMALL = {k: ASSET[k].resize((int(ASSET[k].width * 0.8), int(ASSET[k].height * 0.8)), Image.LANCZOS)
+              for k in ("cardA", "cardB") if k in ASSET}
+
+
 def render_decision(s, t):
     t0 = s["t"][0]
     fk = EV["final_knock"]
@@ -260,6 +264,7 @@ def render_decision(s, t):
         img = to_img(np.zeros((H, W, 3), np.float32) + rng.normal(0, 0.012, (H, W, 1)).astype(np.float32).clip(0, 1))
         d = ImageDraw.Draw(img)
         d.text((540, 860), "TEIL 2 FOLGT", font=F_END, fill=(230, 230, 225), anchor="mm")
+        d.text((540, 980), "KOMMENTIERE  A  ODER  B", font=F_SUB, fill=(225, 40, 45), anchor="mm")
         return img
     a, _ = cctv_frame(s, t, t0, s.get("dim", 0.5))
     red = 0.06 + 0.04 * math.sin(t * 3)
@@ -271,12 +276,14 @@ def render_decision(s, t):
     if t >= t0 + 0.2:
         d.text((540, 470), "DU ENTSCHEIDEST", font=F_HEAD, fill=(225, 40, 45), anchor="mm", stroke_width=4, stroke_fill=(0, 0, 0))
     ca, cb = EV["cards"]
+    A, B = CARD_SMALL["cardA"], CARD_SMALL["cardB"]
+    x_end = (W - A.width) // 2
     if t >= ca:
-        x = -760 + (170 + 760) * ease_out_back((t - ca) / 0.45)
-        img.alpha_composite(ASSET["cardA"], (int(x), 640))
+        x = -A.width + (x_end + A.width) * ease_out_back((t - ca) / 0.45)
+        img.alpha_composite(A, (int(x), 975))
     if t >= cb:
-        x = 1080 + (170 - 1080) * ease_out_back((t - cb) / 0.45)
-        img.alpha_composite(ASSET["cardB"], (int(x), 900))
+        x = W + (x_end - W) * ease_out_back((t - cb) / 0.45)
+        img.alpha_composite(B, (int(x), 1175))
     out = img.convert("RGB")
     osd(out, s, t, t0)
     return out

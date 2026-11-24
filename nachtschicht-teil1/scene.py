@@ -745,7 +745,7 @@ sc.camera = cam
 if SHOT == "note":
     cam.data.dof.use_dof = True
     cam.data.dof.focus_distance = (Vector(tgt) - cam.location).length
-    cam.data.dof.aperture_fstop = 2.2
+    cam.data.dof.aperture_fstop = 6.0
 
 sc.render.engine = "CYCLES"
 sc.cycles.device = "CPU"
