@@ -25,7 +25,7 @@ Also Themen, die jeden betreffen: KI, Passwörter/Sicherheit, Internet, Datensch
 | 2 | `techlupe-2038/` | Das Jahr-2038-Problem (Unix-Zeit, 32 Bit → 1901, Lösung 64 Bit) | 37,1 s | fertig 17.11. |
 | 3 | `techlupe-ki/` | So funktioniert ChatGPT wirklich (nächstes Wort, Wahrscheinlichkeiten, passend ≠ wahr, selbst prüfen) | 29,6 s | fertig 17.11. |
 | 4 | `techlupe-switch/` | Hub vs. Switch (Hub kopiert an alle, Kollision, Switch lernt MAC-Adressen, gezielt + gleichzeitig, Router) | 52,9 s | fertig 18.11. (Wunsch des Kanalinhabers, bis 60 s erlaubt) |
-| 5 | `techlupe-ipv6/` | IPv4 vs. IPv6 (Europa seit 25.11.2019 ohne freie IPv4-Adressen, Hausnummer, 4 Zahlen 0–255, 32 Bit = 4,3 Mrd, mehr Geräte als Adressen, NAT im Router, IPv6 128 Bit = 340 Sextillionen, Sandkörner, rund 50 % der Google-Zugriffe) | ca. 55 s | gebaut 24.11. (Wunsch des Kanalinhabers) |
+| 5 | `techlupe-ipv6/` | IPv4 vs. IPv6 (Europa seit 25.11.2019 ohne freie IPv4-Adressen, Hausnummer, 4 Zahlen 0–255, 32 Bit = 4,3 Mrd, mehr Geräte als Adressen, NAT im Router, IPv6 128 Bit = 340 Sextillionen, Sandkörner, rund 50 % der Google-Zugriffe) | 52,1 s | fertig 24.11. (Wunsch des Kanalinhabers), −14,4 LUFS, sichere Zonen frei |
 
 Themen-Ideen (relevant): Wie Passwörter gespeichert werden und warum Leaks gefährlich sind (Hashing) · Was HTTPS/das Schloss
 wirklich schützt · Was passiert, wenn du google.de eintippst (DNS, IP, Pakete) · Wie Phishing-Links tricksen ·
