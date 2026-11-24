@@ -13,3 +13,10 @@ deren Geschichten/Figuren nein). Test, ob Blender in der Cloud realistisch genug
   (450×800 → 1080×1920, Unschärfe, Rauschen, ausgeblichene Farben, Vignette, „CAM 03 EINGANG“, Datum/Uhrzeit läuft,
   blinkendes „● REC“, Farbversatz beim Sprung). `--test <png>` macht ein Vorschaubild.
 - Rechenzeit: ca. 35 s pro Bild bei 450×800, 40 Samples, 4 CPU-Kerne → 5 s Video ≈ 45 min.
+
+## Ergebnis Test 1
+`out/nachtschicht_test.mp4` (5 s) und `out/standbild_tuer.png`. Stimmung und Kamera-Look funktionieren (Zeitstempel,
+REC, Rauschen, Stromausfall mit hell bleibendem Tankdach draußen, Sprung an die Tür mit Bildstörung und Klopfen).
+Schwächen: Die Gestalt wirkt noch wie eine Schaufensterpuppe (aus Grundformen gebaut), Waren und Regale sind einfache
+Klötze. Nächste Stufe: echte Texturen/HDRI von Poly Haven (CC0, Host muss freigegeben werden), Figur aus MakeHuman (CC0),
+mehr Details (Preisschilder, Plakate, Schmutz), Kamerabewegung leicht (Rauschen/Zittern statt starr).
