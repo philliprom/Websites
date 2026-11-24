@@ -281,6 +281,14 @@ with wave.open(os.path.join(BUILD, "vo.wav"), "rb") as w:
 if vsr != SR:
     vo = np.interp(np.arange(int(len(vo) * SR / vsr)) / SR, np.arange(len(vo)) / vsr, vo)
 vo = np.pad(vo, (0, max(0, n - len(vo))))[:n]
+# Stimme je Satz auf gleiche Lautheit bringen (einzelne Fassungen sind leiser/lauter), höchstens ±4 dB
+tl_ = json.load(open(os.path.join(BUILD, "timeline.json"), encoding="utf-8"))
+rms_all = [np.sqrt(np.mean(vo[int(s_["start"] * SR):int(s_["speechEnd"] * SR)] ** 2)) for s_ in tl_["segments"]]
+target = float(np.median(rms_all))
+for s_, r_ in zip(tl_["segments"], rms_all):
+    g = float(np.clip(target / max(r_, 1e-6), 0.63, 1.58))
+    i0, i1 = int((s_["start"] - 0.05) * SR), int((s_["speechEnd"] + 0.1) * SR)
+    vo[i0:i1] *= g
 venv = bp(np.abs(vo), hi=8, order=1)
 duck = 1.0 - 0.6 * np.clip(venv / 0.04, 0, 1)
 mix = bed * duck[:, None] + fx + wet * 0.35 + dry
