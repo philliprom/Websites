@@ -1,0 +1,255 @@
+{
+  "title": "Nachtschicht – Teil 1",
+  "voice": "qwen3-tts (Klon Thorsten-Voice, CC0, Variante A ruhig)",
+  "lead_in": 0.9,
+  "tail": 2.4,
+  "default_gap": 0.3,
+  "tts": {
+    "engine": "qwen",
+    "voice": "voice/thorsten.wav",
+    "voice_text": "voice/thorsten.txt",
+    "tries": 3,
+    "max_wer": 0.1,
+    "candidates": 3,
+    "temperature": 0.7,
+    "max_pause": 0.5
+  },
+  "music": {
+    "bpm": 60,
+    "inst": "vibes",
+    "clap": 0.0,
+    "ambience": 0.0,
+    "chords": [
+      [
+        45,
+        48,
+        52
+      ]
+    ],
+    "roots": [
+      33
+    ],
+    "arp": [
+      0
+    ]
+  },
+  "segments": [
+    {
+      "id": "s01",
+      "say": "Würdest du aufmachen?",
+      "caps": [
+        "WÜRDEST DU ^AUFMACHEN?"
+      ],
+      "gap": 0.0,
+      "sfx": []
+    },
+    {
+      "id": "s02",
+      "say": "Acht Minuten vorher.",
+      "caps": [
+        "ACHT MINUTEN VORHER."
+      ],
+      "gap": 0.7,
+      "sfx": []
+    },
+    {
+      "id": "s03",
+      "say": "Du hast Nachtschicht an einer Tankstelle. Irgendwo an der Landstraße. Du bist allein.",
+      "caps": [
+        "DU HAST ^NACHTSCHICHT",
+        "AN EINER TANKSTELLE.",
+        "IRGENDWO AN DER LANDSTRASSE.",
+        "DU BIST ^ALLEIN."
+      ],
+      "gap": 0.5,
+      "sfx": []
+    },
+    {
+      "id": "s04",
+      "say": "Draußen regnet es seit Stunden.",
+      "caps": [
+        "DRAUSSEN REGNET ES",
+        "SEIT STUNDEN."
+      ],
+      "gap": 0.2,
+      "sfx": []
+    },
+    {
+      "id": "s05",
+      "say": "Dein Chef hat dir einen Zettel dagelassen.",
+      "caps": [
+        "DEIN CHEF HAT DIR",
+        "EINEN ^ZETTEL DAGELASSEN."
+      ],
+      "gap": 0.5,
+      "sfx": []
+    },
+    {
+      "id": "s06",
+      "say": "Regel eins: Ab zwei Uhr bleibt die Tür zu.",
+      "caps": [
+        "REGEL 1:",
+        "AB 2 UHR BLEIBT",
+        "DIE TÜR ^ZU."
+      ],
+      "gap": 0.3,
+      "sfx": []
+    },
+    {
+      "id": "s07",
+      "say": "Regel zwei: Flackert das Licht, schau auf Kamera drei.",
+      "caps": [
+        "REGEL 2:",
+        "FLACKERT DAS LICHT,",
+        "SCHAU AUF ^KAMERA ^3."
+      ],
+      "gap": 0.25,
+      "sfx": []
+    },
+    {
+      "id": "s08",
+      "say": "Regel drei: Steht draußen jemand still im Regen, sprich ihn nicht an.",
+      "caps": [
+        "REGEL 3:",
+        "STEHT DRAUSSEN JEMAND",
+        "STILL IM REGEN,",
+        "SPRICH IHN ^NICHT AN."
+      ],
+      "gap": 0.25,
+      "sfx": []
+    },
+    {
+      "id": "s09",
+      "say": "Regel vier: Er klopft dreimal. Mach niemals auf.",
+      "caps": [
+        "REGEL 4:",
+        "ER KLOPFT ^DREIMAL.",
+        "MACH ^NIEMALS AUF."
+      ],
+      "gap": 0.25,
+      "sfx": []
+    },
+    {
+      "id": "s10",
+      "say": "Darunter, mit rotem Stift: Egal, wer es sagt.",
+      "caps": [
+        "DARUNTER, MIT ROTEM STIFT:",
+        "„^EGAL, ^WER ^ES ^SAGT.“"
+      ],
+      "gap": 0.35,
+      "sfx": []
+    },
+    {
+      "id": "s11",
+      "say": "Zwei Uhr vierundvierzig. Das Licht flackert.",
+      "caps": [
+        "2:44 UHR.",
+        "DAS LICHT ^FLACKERT."
+      ],
+      "gap": 0.6,
+      "sfx": []
+    },
+    {
+      "id": "s12",
+      "say": "Du schaust auf Kamera drei.",
+      "caps": [
+        "DU SCHAUST",
+        "AUF ^KAMERA ^3."
+      ],
+      "gap": 0.3,
+      "sfx": []
+    },
+    {
+      "id": "s13",
+      "say": "Zwischen den Zapfsäulen steht jemand. Im Regen. Er bewegt sich nicht.",
+      "caps": [
+        "ZWISCHEN DEN ZAPFSÄULEN",
+        "STEHT ^JEMAND.",
+        "IM REGEN.",
+        "ER BEWEGT SICH ^NICHT."
+      ],
+      "gap": 0.5,
+      "sfx": []
+    },
+    {
+      "id": "s14",
+      "say": "Das Licht flackert wieder.",
+      "caps": [
+        "DAS LICHT",
+        "FLACKERT WIEDER."
+      ],
+      "gap": 0.4,
+      "sfx": []
+    },
+    {
+      "id": "s15",
+      "say": "Er ist weg.",
+      "caps": [
+        "ER IST ^WEG."
+      ],
+      "gap": 0.7,
+      "sfx": []
+    },
+    {
+      "id": "s16",
+      "say": "Er klopft dreimal. Genau wie auf dem Zettel.",
+      "caps": [
+        "ER KLOPFT ^DREIMAL.",
+        "GENAU WIE AUF DEM ZETTEL."
+      ],
+      "gap": 3.9,
+      "sfx": []
+    },
+    {
+      "id": "s17",
+      "say": "Dann vibriert dein Handy. Eine Nachricht von deinem Chef.",
+      "caps": [
+        "DANN VIBRIERT DEIN ^HANDY.",
+        "EINE NACHRICHT",
+        "VON DEINEM ^CHEF."
+      ],
+      "gap": 0.6,
+      "sfx": []
+    },
+    {
+      "id": "s18",
+      "say": "Mach die Tür auf. Sofort.",
+      "caps": [
+        "„MACH DIE TÜR AUF.",
+        "^SOFORT.“"
+      ],
+      "gap": 0.35,
+      "sfx": []
+    },
+    {
+      "id": "s19",
+      "say": "Die Regeln sagen: niemals. Dein Chef sagt: sofort.",
+      "caps": [
+        "DIE REGELN SAGEN: ^NIEMALS.",
+        "DEIN CHEF SAGT: ^SOFORT."
+      ],
+      "gap": 0.6,
+      "sfx": []
+    },
+    {
+      "id": "s20",
+      "say": "Was machst du? Schreib A oder B.",
+      "caps": [
+        "WAS MACHST DU?",
+        "SCHREIB ^A ODER ^B."
+      ],
+      "gap": 0.4,
+      "sfx": []
+    },
+    {
+      "id": "s21",
+      "say": "Die Mehrheit entscheidet über Teil zwei.",
+      "caps": [
+        "DIE MEHRHEIT ENTSCHEIDET",
+        "ÜBER ^TEIL ^2."
+      ],
+      "gap": 0.3,
+      "sfx": []
+    }
+  ]
+}
