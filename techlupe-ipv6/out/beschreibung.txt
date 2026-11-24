@@ -1,0 +1,23 @@
+KANAL: Tech-Lupe (dein bestehender Kanal)
+TECH-LUPE – FOLGE 5: IPv4 VS. IPv6 · TEXTE ZUM POSTEN
+=====================================================
+
+BESCHREIBUNG (Caption):
+Europa hat seit 2019 keine freien IPv4-Adressen mehr 😳 Warum das Internet umzieht und was IPv6 damit zu tun hat, einfach erklärt. Welches Thema als Nächstes? 👇 #informatik #netzwerk #ipv6 #itausbildung #techtok #fyp
+
+ERSTER KOMMENTAR (selbst posten und anpinnen):
+📌 Fun Fact: IPv5 gab es auch, aber nur als Experiment fürs Streaming. Welches Netzwerk-Thema soll ich als Nächstes erklären? 👇
+
+TITELBILD
+Datei: titelbild.png
+
+POSTEN
+Beim Posten „KI-generierte Inhalte“ einschalten (die Stimme ist ein KI-Klon der freien Thorsten-Voice-Stimme).
+Mindestens 1 Tag Abstand zur vorigen Folge.
+
+INHALT ZUM NACHPRÜFEN
+IPv4: 32 Bit, 2^32 = 4.294.967.296 Adressen, 4 Zahlen 0–255. RIPE NCC (Europa) hat am 25.11.2019 die letzten freien
+IPv4-Adressen vergeben (IANA-Vorrat schon 2011 leer). Notlösung NAT: eine öffentliche Adresse am Router, private Adressen
+(192.168.x.x) zu Hause. IPv6: 128 Bit, 2^128 ≈ 3,4·10^38 = 340 Sextillionen Adressen, 8 Blöcke Hex. Sandkörner der Erde
+(Schätzung ≈ 7,5·10^18) → ≈ 4,5·10^19 Adressen pro Sandkorn. Google: rund 50 % der Nutzer erreichen Google über IPv6 (2026).
+Beispieladressen im Video stammen aus den Dokumentationsbereichen (203.0.113.0/24, 2001:db8::/32), sind also keine echten Geräte.
