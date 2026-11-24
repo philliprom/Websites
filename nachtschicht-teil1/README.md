@@ -30,3 +30,20 @@ weg · SH6 CAM 01 Dippen, Stromausfall, Sprung, Klopfen · SH7 Handy · SH8 Ents
 ## Schriften (`fonts/`)
 Special Elite (Schreibmaschine, Apache 2.0), Permanent Marker (Filzstift, Apache 2.0), Oswald (Untertitel, OFL),
 von npm (@fontsource) geladen und mit fontTools nach TTF umgewandelt.
+
+## Ergebnis (24.11.2026, 20:05)
+- `out/nachtschicht_teil1_tiktok.mp4` (66,4 s, 45 MB, 5,5 Mbit/s, −14,7 LUFS) – zum Hochladen.
+  `out/nachtschicht_teil1.mp4` ist die Fassung mit hoher Bitrate (100 MB). Beide nicht im Repository (GitHub-Grenze),
+  neu erzeugen mit `assemble.py` (ca. 6 min) bzw. ffmpeg (crf 23, maxrate 6M).
+- `out/titelbild.png`, `out/beschreibung.txt` (Caption, angepinnter Kommentar, Kanal-Vorschlag).
+- Rechenzeit Blender: r2 17 s/Bild (90 Bilder), r3 20 s/Bild (71), r1 20 s/Bild (113), Zettel ca. 3 min.
+  Mit `use_persistent_data` bleibt die Szene zwischen den Bildern im Speicher – fast 3× schneller als im Test.
+- Stimme: 21 Sätze, Ähnlichkeit 0,963–0,989, Tonhöhe 109–127 Hz (Referenz 120), je Satz lautheitsangeglichen.
+- Nachbesserungen nach dem ersten Schnitt: Stromausfall im Schnitt verstärkt (Bild ×0,33 + Rauschen, wie eine
+  nachregelnde Kamera), Entscheidungskarten kleiner und tiefer (Gestalt an der Tür bleibt sichtbar), Zettel mit
+  weniger Tiefenunschärfe (Blende 6) gerendert, Rauschen etwas schwächer, Bitrate begrenzt.
+
+## Ideen für Teil 2
+- A (aufmachen): Tür öffnet sich, Gestalt ist weg – auf dem Boden eine nasse Spur bis zum Lager; das Handy vibriert:
+  „Wer hat dir gesagt, dass du aufmachen sollst? – Chef“ (der Chef hat nie geschrieben).
+- B (nicht aufmachen): Klopfen hört auf, Kamera 2 (Lager) zeigt eine offene Hintertür … Regel 5 auf der Rückseite des Zettels.
