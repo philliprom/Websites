@@ -20,3 +20,15 @@ REC, Rauschen, Stromausfall mit hell bleibendem Tankdach draußen, Sprung an die
 Schwächen: Die Gestalt wirkt noch wie eine Schaufensterpuppe (aus Grundformen gebaut), Waren und Regale sind einfache
 Klötze. Nächste Stufe: echte Texturen/HDRI von Poly Haven (CC0, Host muss freigegeben werden), Figur aus MakeHuman (CC0),
 mehr Details (Preisschilder, Plakate, Schmutz), Kamerabewegung leicht (Rauschen/Zittern statt starr).
+
+## Test 2 (24.11. abends): mehr Details, neuer Ton
+Wunsch des Kanalinhabers nach Test 1: „ein paar mehr Details und bessere Soundeffekte“.
+- Szene: Fliesen mit Fugen und Schmutz, Rasterdecke, Fußmatte und Pfütze am Eingang, rotes „OFFEN“-Neonschild im
+  Fenster (von innen spiegelverkehrt, rotes Licht), „24/7“-Aufkleber, Öffnungszeiten, Sicherheitsspiegel in der Ecke,
+  Kühlregale mit Glastüren, Böden und Flaschen im Gegenlicht, Preisleisten und Preisschilder an den Regalen,
+  Regalschilder, Plakate („KAFFEE 1,50 €“, „2 FÜR 1“), Kaffeeautomat mit Display, Zigarettenregal mit Packungen,
+  Monitor, Kaffeebecher, Lotto-Schild, draußen Bordstein, Parkmarkierungen, Mülleimer, Preissäule mit LED-Preisen,
+  Luftstation. Gestalt an der Tür: rechte Hand flach an der Scheibe auf Gesichtshöhe.
+- Ton (Stereo, `post.py`, mit der vx-Umgebung wegen SciPy): siehe Kopf von `post.py`. Lautheitsverlauf: Grundpegel
+  um −23 dB, beim Stromausfall leiser (−27), Schock −8 dB, Klopfen −11/−12 dB.
+- Rechenzeit: ca. 60 s pro Bild (32 Samples, 450×800), 75 Bilder ≈ 75 min.
