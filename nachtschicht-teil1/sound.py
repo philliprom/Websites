@@ -248,7 +248,8 @@ for ft in flick_times(r3["dips"], SH["SH6"]["t"][0], 1):
 m = int(0.5 * SR)
 k = np.arange(m) / SR
 put(fx, np.sin(2 * np.pi * np.cumsum(np.linspace(100, 30, m)) / SR) * np.exp(-k * 6), bo[0], 0.15)
-put(fx, np.sin(2 * np.pi * 70 * k) * np.exp(-k * 30) + click(0.05) * 0.5, bo[0], 0.4, 0.3)
+put(fx, np.sin(2 * np.pi * 70 * k) * np.exp(-k * 30), bo[0], 0.4, 0.3)
+put(fx, click(0.05), bo[0], 0.2, 0.3)
 put(fx, (np.sin(2 * np.pi * 3200 * k) + 0.6 * np.sin(2 * np.pi * 4730 * k)) * np.exp(-k * 7), EV["jump"], 0.05, 0.2)
 put(fx, hit(), EV["jump"], 1.0)
 put(fx, screech(), EV["jump"] + 0.01, 0.07)
