@@ -94,7 +94,7 @@ def cctv_frame(spec, t, t0, dim=1.0):
     a = y_[..., None] + 0.32 * (a - y_[..., None])
     a = np.clip((a - 0.5) * 1.12 + 0.48, 0, 1) ** 1.05
     a = a * np.array([0.95, 1.03, 0.98], dtype=np.float32)
-    nz = rng.normal(0, 0.038, (H // 2, W // 2)).astype(np.float32)
+    nz = rng.normal(0, 0.03, (H // 2, W // 2)).astype(np.float32)
     nz = np.repeat(np.repeat(nz, 2, 0), 2, 1)[..., None]
     a = (a + nz) * VIG * SCAN * dim
     return a, z
@@ -143,6 +143,13 @@ def render_cctv(s, t):
     t0 = s["t"][0]
     a, z = cctv_frame(s, t, t0, s.get("dim", 1.0))
     jump = EV["jump"]
+    # Stromausfall/Dippen: Kamera regelt nach, Bild wird schlagartig dunkel und rauscht stärker
+    if s["id"] == "SH6":
+        bo = EV["blackout"]
+        if bo[0] <= t < jump:
+            a = a * 0.33 + rng.normal(0, 0.03, (H, W, 1)).astype(np.float32)
+        elif any(d <= t < d + 0.1 for d in EV["dips"]):
+            a = a * 0.6
     if s["id"] == "SH6" and jump <= t < jump + 0.28:
         a = glitch(a, 1.0, int(t * 100))
         if t < jump + 0.07:
@@ -363,7 +370,7 @@ def cover():
     """Titelbild: Gestalt an der Tür (nach dem Sprung), Serientitel, Frage."""
     img = render_cctv(SH["SH6"], EV["jump"] + 1.3)
     d = ImageDraw.Draw(img)
-    big = ImageFont.truetype(os.path.join(FONTS, "SpecialElite-Regular.ttf"), 150)
+    big = ImageFont.truetype(os.path.join(FONTS, "SpecialElite-Regular.ttf"), 132)
     q = ImageFont.truetype(os.path.join(FONTS, "Oswald-Bold.ttf"), 104)
     d.text((540, 520), "NACHTSCHICHT", font=big, fill=(225, 36, 42), anchor="mm", stroke_width=6, stroke_fill=(0, 0, 0))
     d.text((540, 650), "TEIL 1", font=F_SUB, fill=(240, 240, 240), anchor="mm", stroke_width=4, stroke_fill=(0, 0, 0))
@@ -391,8 +398,8 @@ def main():
     n = int(D * FPS)
     vf = f"ass='{ass}':fontsdir='{FONTS}'"
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
-           "-i", os.path.join(BUILD, "mix.wav"), "-vf", vf, "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
-           "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out]
+           "-i", os.path.join(BUILD, "mix.wav"), "-vf", vf, "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-maxrate", "12M",
+           "-bufsize", "24M", "-pix_fmt", "yuv420p", "-af", "loudnorm=I=-13.3:TP=-1.0:LRA=11", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", out]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     for i in range(n):
         p.stdin.write(frame_at(i / FPS).tobytes())
