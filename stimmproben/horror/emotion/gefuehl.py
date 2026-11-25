@@ -5,9 +5,11 @@ Drei Fassungen desselben Textes (7 Sätze, Spannung steigt von Stufe 0 bis 3):
   B  mehr Gefühl beim Sprechen: Sätze ab Stufe 1 mit einer Referenz, die höher und etwas schneller gesprochen ist
      (per PSOLA aus derselben Stimme erzeugt). Das Modell spricht dann selbst höher, die Betonung bleibt seine eigene.
   C  mehr Gefühl nachträglich: Fassung A, jeder Satz je nach Stufe per PSOLA (Praat) angehoben, ab Stufe 3 steigend.
+  D  mehr Gefühl durch Auswahl: normale Referenz, aber für spannende Sätze 6 Fassungen und die genommen, die von sich aus
+     1,5/2,5/3,5 Halbtöne höher liegt (Engine-Option pitch_up). Nichts nachbearbeitet.
 Aufrufe (vx = Python mit parselmouth/scipy, qw = Qwen3-TTS):
   vx gefuehl.py setup       -> Referenzen (voice/) und script.json für a_wie_teil1/ und b_mehr_gefuehl/
-  qw engine/build_timeline.py <a|b> <Qwen3-TTS-Base>   (je Projekt)
+  qw engine/build_timeline.py <a|b|d> <Qwen3-TTS-Base>   (je Projekt)
   vx gefuehl.py mix         -> c_nachbearbeitet/ und die Hörproben 1_…, 2_…, 3_….m4a plus Messwerte
 """
 import json
@@ -68,15 +70,20 @@ def f0_median(wav, sr):
 def setup():
     r, rs = sf.read(REF, dtype="float32")
     for name, (st, du, rg) in {"horror_spannung1": (1.5, 0.95, 1.1), "horror_spannung2": (3.0, 0.9, 1.2)}.items():
+        if os.path.exists(os.path.join(HERE, "voice", name + ".wav")):
+            continue   # schon da (Satz-Cache hängt am Inhalt der Referenz)
         out = psola(r, rs, st, du, rg)
         sf.write(os.path.join(HERE, "voice", name + ".wav"), out / max(1e-6, np.abs(out).max()) * 0.9, rs, subtype="PCM_16")
         print(f"Referenz {name}: {f0_median(r, rs):.0f} Hz -> {f0_median(out, rs):.0f} Hz, {len(r) / rs:.1f} s -> {len(out) / rs:.1f} s")
-    for proj, use_tense in (("a_wie_teil1", False), ("b_mehr_gefuehl", True)):
+    for proj, use_tense in (("a_wie_teil1", False), ("b_mehr_gefuehl", True), ("d_ausgewaehlt", False)):
         segs = []
         for k, (txt, lvl, gap) in enumerate(SENTENCES):
             s = {"id": f"s{k + 1:02d}", "say": txt, "caps": [txt.upper()], "gap": gap, "sfx": [], "spannung": lvl}
             if use_tense and lvl > 0:
                 s["voice"] = "spannung1" if lvl == 1 else "spannung2"
+            if proj == "d_ausgewaehlt" and lvl > 0:   # natürlich höhere Fassung auswählen (Engine-Option pitch_up)
+                # "take": eigener Cache-Eintrag und andere Zufallswerte als in A (sonst käme A's Fassung aus dem Cache)
+                s.update({"pitch_up": {1: 1.5, 2: 2.5, 3: 3.5}[lvl], "candidates": 6, "temperature": 0.85, "pitch_tol": 0.05, "take": 1})
             segs.append(s)
         tts = {"engine": "qwen", "voice": "../../../../nachtschicht-teil1/voice/horror.wav",
                "voice_text": "../../../../nachtschicht-teil1/voice/horror.txt", "tries": 3, "max_wer": 0.1,
@@ -87,7 +94,18 @@ def setup():
         os.makedirs(os.path.join(HERE, proj), exist_ok=True)
         json.dump({"lead_in": 0.4, "default_gap": 0.5, "tail": 1.0, "tts": tts, "segments": segs},
                   open(os.path.join(HERE, proj, "script.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print("script.json für a_wie_teil1/ und b_mehr_gefuehl/ geschrieben")
+    # ruhige Sätze (Stufe 0) von D sind dieselben wie in A: nur deren Satz-Cache übernehmen
+    import shutil
+    sys.path.insert(0, os.path.join(HERE, "..", "..", "..", "engine"))
+    from build_timeline import cache_key
+    tts_a = json.load(open(os.path.join(HERE, "a_wie_teil1", "script.json"), encoding="utf-8"))["tts"]
+    src, dst = os.path.join(HERE, "a_wie_teil1", "tts_cache"), os.path.join(HERE, "d_ausgewaehlt", "tts_cache")
+    os.makedirs(dst, exist_ok=True)
+    for txt, lvl, _ in SENTENCES:
+        f_ = cache_key(txt, None, os.path.join(HERE, "a_wie_teil1", tts_a["voice"]), tts_a) + ".flac"
+        if lvl == 0 and os.path.exists(os.path.join(src, f_)):
+            shutil.copy(os.path.join(src, f_), dst)
+    print("script.json für a_wie_teil1/, b_mehr_gefuehl/ und d_ausgewaehlt/ geschrieben")
 
 
 def sentences(proj):
@@ -111,10 +129,12 @@ def mix():
     rows = {}
     a, sr = sentences("a_wie_teil1")
     b, _ = sentences("b_mehr_gefuehl")
+    d, _ = sentences("d_ausgewaehlt")
     c = [psola(p, sr, *STUFE[lvl][:4]) for p, (_, lvl, _) in zip(a, SENTENCES)]
     os.makedirs(os.path.join(HERE, "c_nachbearbeitet"), exist_ok=True)
     lv = [STUFE[lvl][4] for _, lvl, _ in SENTENCES]
-    for name, parts, gains in (("1_wie_teil1", a, [0] * len(a)), ("2_mehr_gefuehl_gesprochen", b, lv), ("3_mehr_gefuehl_nachbearbeitet", c, lv)):
+    for name, parts, gains in (("1_wie_teil1", a, [0] * len(a)), ("2_mehr_gefuehl_gesprochen", b, lv), ("3_mehr_gefuehl_nachbearbeitet", c, lv),
+                              ("4_mehr_gefuehl_ausgewaehlt", d, lv)):
         x = assemble(parts, sr, gains)
         tmp = os.path.join(HERE, "c_nachbearbeitet", name + ".wav")
         sf.write(tmp, x / max(1e-6, np.abs(x).max()) * 0.9, sr, subtype="PCM_16")

@@ -103,6 +103,14 @@ Klingt ein Satz anders als die übrigen (andere Stimmfarbe, zu hoch oder zu tief
 Tonhöhen-Abweichung von der Referenz in Oktaven, bevor Strafpunkte anfallen (Standard 0,15 ≈ ±11 %, 0,06 ≈ ±4 %).
 Im Log stehen je Fassung Ähnlichkeit und F0. Gute Werte für Oma: Ähnlichkeit ≥ 0,975, F0 235–270 Hz (Referenz 252 Hz).
 
+### Mehr Gefühl an spannenden Stellen: `pitch_up`, `temperature` je Satz (25.11.2026)
+`"pitch_up": 2.5` (Halbtöne) verschiebt die Zieltonhöhe der Auswahl: Von den Fassungen gewinnt die, die von sich aus so
+viel höher liegt als die Referenz. Das Modell spricht dann mit seiner eigenen Betonung höher, es wird nichts
+nachträglich verbogen. Dazu mehr Fassungen und etwas mehr Zufall: `"candidates": 6, "temperature": 0.85,
+"pitch_tol": 0.05`. Hintergrund: Die normale Auswahl bevorzugt die Fassung nahe an der Referenztonhöhe und verwirft
+damit gerade die lebhafteren Fassungen (Nachtschicht: 109-Hz-Fassungen verworfen, 94 Hz genommen). Test und Vergleich
+mit anderen Wegen: `stimmproben/horror/emotion/`.
+
 ## Sichere Zonen für TikTok (18.11.2026)
 
 TikTok legt eigene Oberfläche über das Video (Screenshot des Kanalinhabers vom Döner-Video): oben Suche/Tabs, rechts die

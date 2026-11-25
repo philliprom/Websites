@@ -150,12 +150,16 @@ def build_voxcpm(script, model_dir):
         # (Wertung = Ähnlichkeit − 2 × WER), damit die Stimme von Satz zu Satz gleich klingt.
         cands = segs[g[0]].get("candidates", tts.get("candidates", 0)) if tts.get("engine") == "qwen" else 0
         tol = segs[g[0]].get("pitch_tol", tts.get("pitch_tol", 0.15))
+        # "pitch_up" (Halbtöne): für spannende Sätze die Fassung bevorzugen, die von sich aus so viel höher liegt als die
+        # Referenz (natürliche Betonung des Modells, keine Nachbearbeitung). "temperature" je Satz für mehr Auswahl.
+        up = segs[g[0]].get("pitch_up", 0.0)
+        temp = segs[g[0]].get("temperature", tts.get("temperature"))
         best_score = None
         for attempt in range(0 if best else (cands or tts.get("tries", 4))):
             if attempt == 0:
                 T.load(model_dir)
                 sr = T.sample_rate()
-            extra = {"temperature": tts.get("temperature")} if tts.get("engine") == "qwen" else {}
+            extra = {"temperature": temp} if tts.get("engine") == "qwen" else {}
             wav = T.clone(text, ref, ref_text, seed=tts.get("seed", 7) + 1000 * gi + attempt + 100000 * take,
                           cfg=tts.get("cfg", 2.0), steps=tts.get("steps", 10), style=style, **extra)
             wav = trim(np.asarray(wav, dtype=np.float32), sr)
@@ -164,12 +168,14 @@ def build_voxcpm(script, model_dir):
             if cands:
                 sim = T.speaker_similarity(wav, sr, ref)
                 f, fr = T.pitch(wav, sr), T.pitch_ref(ref)
+                if fr:
+                    fr = fr * 2 ** (up / 12)  # Zieltonhöhe (Referenz, bei "pitch_up" entsprechend höher)
                 dev = abs(np.log2(f / fr)) if f and fr else 0.0  # Abweichung der Tonhöhe in Oktaven
                 score = sim - 2 * e - 1.5 * max(0.0, dev - tol)
                 if best_score is None or score > best_score:
                     best, best_score = (e, wav, words, hyp), score
                 print(f"  Satz {gi + 1}/{len(groups)} Fassung {attempt + 1}: WER {e:.2f} | Ähnlichkeit {sim:.3f} | "
-                      f"F0 {f or 0:.0f} Hz (Ref. {fr or 0:.0f}) | Wertung {score:.3f} | {hyp}", flush=True)
+                      f"F0 {f or 0:.0f} Hz ({'Ziel' if up else 'Ref.'} {fr or 0:.0f}) | Wertung {score:.3f} | {hyp}", flush=True)
                 continue
             if best is None or e < best[0]:
                 best = (e, wav, words, hyp)
