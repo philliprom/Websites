@@ -281,7 +281,11 @@ with wave.open(os.path.join(BUILD, "vo.wav"), "rb") as w:
     if w.getnchannels() > 1:
         vo = vo.reshape(-1, w.getnchannels()).mean(axis=1)
 if vsr != SR:
-    vo = np.interp(np.arange(int(len(vo) * SR / vsr)) / SR, np.arange(len(vo)) / vsr, vo)
+    # sauber umrechnen (Polyphasenfilter); lineare Interpolation hat Spiegelfrequenzen erzeugt, die als feines Zischeln mitliefen
+    from math import gcd
+    from scipy.signal import resample_poly
+    gd = gcd(SR, vsr)
+    vo = resample_poly(vo, SR // gd, vsr // gd).astype(np.float32)
 vo = np.pad(vo, (0, max(0, n - len(vo))))[:n]
 # Stimme je Satz auf gleiche Lautheit bringen (einzelne Fassungen sind leiser/lauter), höchstens ±4 dB
 tl_ = json.load(open(os.path.join(BUILD, "timeline.json"), encoding="utf-8"))
@@ -291,8 +295,7 @@ for s_, r_ in zip(tl_["segments"], rms_all):
     g = float(np.clip(target / max(r_, 1e-6), 0.63, 1.58))
     i0, i1 = int((s_["start"] - 0.05) * SR), int((s_["speechEnd"] + 0.1) * SR)
     vo[i0:i1] *= g
-# Erzähler-Klang (ab 25.11.): ganz leichter Flüster-Hauch (Rauschen mit der Hüllkurve der Stimme), mehr Bass,
-# etwas weniger Präsenz und ein kurzer, dunkler Raum
+# Erzähler-Klang (ab 25.11.): mehr Bass, etwas weniger Präsenz und ein kurzer, dunkler Raum (sehr leise)
 from scipy.signal import lfilter  # noqa: E402
 
 
@@ -305,23 +308,24 @@ def peq(x, f0, gain_db, q=1.0):
     return lfilter(np.array(b) / a[0], np.array(a) / a[0], x)
 
 
-v_env = bp(np.abs(vo), hi=35, order=1)
-breath = bp(rs.randn(n), 1800, 7500) * v_env
-v_rms = np.sqrt(np.mean(vo[np.abs(vo) > 0.01] ** 2)) if np.any(np.abs(vo) > 0.01) else 0.05
-b_rms = np.sqrt(np.mean(breath[np.abs(vo) > 0.01] ** 2)) if np.any(np.abs(vo) > 0.01) else 1.0
-vo = vo + breath * (v_rms * 10 ** (-15 / 20) / max(b_rms, 1e-9))
+# (25.11.) Künstlicher Flüster-Hauch entfernt: Kanalinhaber hörte bei jedem Satz ein Rauschen. Die Stimme selbst ist sauber.
 vo = peq(peq(vo, 130, 2.5, 0.8), 3500, -1.5, 1.2)
 mi_ = int(0.45 * SR)
 k_ = np.arange(mi_) / SR
 ir_v = bp(rs.randn(mi_), hi=5000) * np.exp(-k_ * 11)
 ir_v /= np.abs(ir_v).sum() / 6
-vo = vo + fftconvolve(vo, ir_v)[:n] * 0.12
-venv = bp(np.abs(vo), hi=8, order=1)
-duck = 1.0 - 0.6 * np.clip(venv / 0.04, 0, 1)
+vo = vo + fftconvolve(vo, ir_v)[:n] * 0.07
+# Absenkung der Atmosphäre unter der Stimme: weich und gleichmäßig über den ganzen Satz (kein Pumpen zwischen Wörtern)
+speak = np.zeros(n)
+for s_ in tl_["segments"]:
+    speak[int((s_["start"] - 0.15) * SR):int((s_["speechEnd"] + 0.25) * SR)] = 1.0
+speak = bp(speak, hi=2.0, order=1)
+duck = 1.0 - 0.5 * np.clip(speak, 0, 1)
 mix = bed * duck[:, None] + fx + wet * 0.35 + dry
 mix = mix / max(1e-6, np.abs(mix).max()) * 0.55
+# Sättigung nur für die Geräusche (Klopfen bekommt Druck); die Stimme kommt danach unverzerrt dazu
+mix = np.tanh(mix * 1.2) / 1.2  # bei kleinen Pegeln unverändert, Spitzen der Geräusche ~1 dB weicher (wie bisher)
 mix += np.stack([vo, vo], axis=1) * 0.9
-mix = np.tanh(mix * 1.2) / np.tanh(1.2)
 mix = mix / max(1e-6, np.abs(mix).max()) * 0.92
 with wave.open(os.path.join(BUILD, "mix.wav"), "wb") as w:
     w.setnchannels(2)

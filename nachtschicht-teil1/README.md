@@ -53,10 +53,23 @@ Kanalinhaber: Thorsten A klingt zu fröhlich. Vier Proben (`stimmproben/horror/`
 (Qwen3-TTS VoiceDesign), Wunsch: „ein ganz kleines bisschen flüstern, weniger lange Pausen“.
 - Referenz `voice/horror.wav`: Entwurf 3 mit gekürzten Pausen (15,3 → 11,8 s), Klon mit dem Base-Modell, `max_pause` 0,32.
 - 21 Sätze: Ähnlichkeit 0,974–0,991, Tonhöhe 84–101 Hz (Referenz 96), keine Aussprachefehler.
-- Im Mix (`sound.py`): leichter Flüster-Hauch (Rauschen 1,8–7,5 kHz mit der Hüllkurve der Stimme, −15 dB), Bass
-  +2,5 dB, Präsenz −1,5 dB, kurzer dunkler Raum.
+- Im Mix (`sound.py`): Bass +2,5 dB, Präsenz −1,5 dB, sehr leiser dunkler Raum. (Der zuerst eingebaute künstliche
+  Flüster-Hauch ist wieder raus, siehe unten.)
 - Folge jetzt **79,6 s** (langsamere Stimme). Neue Zeitplanung, aber nur geänderte Bilder neu gerendert (`reuse.py`:
   147 von 314 Bildern behalten, 167 neu, ca. 50 min).
 - Zusätzlich zweiter Zwischenschnitt im Zettel-Teil: bei „Er klopft dreimal“ die leere Eingangstür (CAM 01) mit leisem
   dreimaligem Klopfen.
-- `out/nachtschicht_teil1_tiktok.mp4`: 79,6 s, 55 MB, −13,9 LUFS.
+- `out/nachtschicht_teil1_tiktok.mp4`: 79,6 s, 55 MB, −14,1 LUFS (Stand nach der Rausch-Korrektur).
+
+### Korrektur 25.11.: Rauschen bei jedem Satz
+Kanalinhaber: „jedes Mal, wenn er spricht, so ein komisches Rauschen“. Ursachen und Änderungen in `sound.py`
+(nur der Ton wurde ausgetauscht, das Bild ist unverändert):
+1. Hauptursache: der künstliche Flüster-Hauch (Rauschen im Takt der Stimme), komplett entfernt. Die geklonte Stimme
+   selbst ist sauber (Grundrauschen in Pausen unter −78 dB).
+2. Stimme wurde mit linearer Interpolation von 24 auf 44,1 kHz umgerechnet → Spiegelfrequenzen über 12 kHz
+   (feines Zischeln im Takt der Stimme). Jetzt `resample_poly` (Polyphasenfilter).
+3. Die Stimme lief durch den tanh-Sättiger für die Geräusche (Verzerrung ca. −28 dB). Jetzt wird nur noch die
+   Geräusch-Spur gesättigt, die Stimme kommt danach unverzerrt dazu.
+4. Regen-Absenkung unter der Stimme folgte jeder Silbe (Pumpen). Jetzt weich über den ganzen Satz (−6 dB).
+- Messung im neuen Mix: über 12,5 kHz ist es während der Sätze 2,7 dB leiser als in den Pausen (nur Regen), es kommt
+  also kein Rauschen mehr mit der Stimme dazu. Hörprobe: `stimmproben/horror/nachtschicht_ausschnitt_ohne_rauschen.m4a`.
