@@ -59,9 +59,15 @@ def nframes(src):
     return len([f for f in os.listdir(SRC[src]) if f.endswith(".png") and f[:4].isdigit()])
 
 
+_yq, _xq = np.mgrid[0:768, 0:432].astype(np.float32)
+# Lager: die Außenlampe spiegelt sich als heller Fleck im nassen Boden an der Hintertür – im Schnitt abdämpfen
+LAGER_FLECK = (1 - 0.62 * np.exp(-((_xq - 252) ** 2 + (_yq - 492) ** 2) / (2 * 30.0 ** 2)))[..., None]
+
+
 @lru_cache(maxsize=64)
 def src_arr(src, k):
-    return np.asarray(Image.open(os.path.join(SRC[src], f"{k:04d}.png")).convert("RGB"), dtype=np.float32) / 255
+    a = np.asarray(Image.open(os.path.join(SRC[src], f"{k:04d}.png")).convert("RGB"), dtype=np.float32) / 255
+    return a * LAGER_FLECK if src == "lager" and a.shape[:2] == (768, 432) else a
 
 
 def src_index(spec, t, t0):
