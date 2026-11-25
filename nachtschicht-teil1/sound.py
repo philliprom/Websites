@@ -161,8 +161,9 @@ for s in edl["shots"]:
         outside += mask(a, b, 0.03)
 # Zwischenschnitt im Zettel auf Kamera 3 (draußen)
 for c in SH["SH3"].get("cuts", []):
-    inside -= mask(c["t"][0], c["t"][1], 0.03)
-    outside += mask(c["t"][0], c["t"][1], 0.03)
+    if c["src"] == "r2":
+        inside -= mask(c["t"][0], c["t"][1], 0.03)
+        outside += mask(c["t"][0], c["t"][1], 0.03)
 inside = np.clip(inside, 0, 1)
 outside = np.clip(outside, 0, 1)
 power = np.ones(n)
@@ -218,9 +219,10 @@ put(dry, rustle(), SH["SH3"]["t"][0] + 0.05, 0.35)
 for kt, name in SH["SH3"]["keys"]:
     if name.startswith("Regel"):
         put(dry, squeak(), kt + 0.15, 0.08, 0.2)
-r4 = [kt for kt, nm in SH["SH3"]["keys"] if nm == "Regel 4"][0]
+kc = [c for c in SH["SH3"].get("cuts", []) if c.get("knock")]
+k0 = kc[0]["t"][0] + 0.35 if kc else [kt for kt, nm in SH["SH3"]["keys"] if nm == "Regel 4"][0] + 0.9
 for k_ in range(3):
-    put(fx, knock(0.5), r4 + 0.9 + k_ * 0.27, 0.12, -0.6)
+    put(fx, knock(0.55), k0 + k_ * 0.27, 0.16, -0.6)
 put(fx, bp(np.cumsum(rs.randn(int(4 * SR))) * 0.003, 18, 160) * env(int(4 * SR), 0.6, 1.4), SH["SH2"]["t"][0] + 1.2, 1.0, -0.3)  # ferner Donner
 
 

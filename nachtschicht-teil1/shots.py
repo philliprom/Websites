@@ -94,7 +94,10 @@ edl = {
                   [r(st("s09")), "Regel 4"], [r(st("s10")), "Rot"]],
          # Zwischenschnitt bei Regel 3 („steht draußen jemand still im Regen“): der leere Platz auf Kamera 3
          "cuts": [{"t": [r(capt("s08", 1) - 0.05), r(capt("s08", 3) - 0.1)], "src": "r2", "from": r2["fig_out"] + 2, "loop": True,
-                   "cam": "CAM 03  ZAPFSÄULEN", "clock": 2 * 3600 + 41 * 60 + 2}]},
+                   "cam": "CAM 03  ZAPFSÄULEN", "clock": 2 * 3600 + 41 * 60 + 2},
+                  # bei Regel 4 („Er klopft dreimal“): die leere Eingangstür, leises Klopfen – niemand da
+                  {"t": [r(capt("s09", 1) - 0.05), r(capt("s09", 2) - 0.1)], "src": "r1", "from": 20, "loop": True,
+                   "cam": "CAM 01  EINGANG", "clock": 2 * 3600 + 41 * 60 + 40, "knock": True}]},
         {"id": "SH4", "t": [r(x) for x in sh["SH4"]], "kind": "cctv", "src": "r1", "from": n2 + 1, "cam": "CAM 01  EINGANG", "clock": CLOCK["SH4"]},
         {"id": "SH5", "t": [r(x) for x in sh["SH5"]], "kind": "cctv", "src": "r2", "from": 1, "cam": "CAM 03  ZAPFSÄULEN", "clock": CLOCK["SH5"],
          "zoom": [r(capt("s13", 0)), r(capt("s13", 0) + 2.2), 1.75]},
