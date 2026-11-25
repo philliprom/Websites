@@ -1,0 +1,233 @@
+{
+  "title": "Nachtschicht – Teil 2 (aufgemacht)",
+  "lead_in": 0.6,
+  "tail": 2.6,
+  "default_gap": 0.3,
+  "tts": {
+    "engine": "qwen",
+    "voice": "../../nachtschicht-teil1/voice/horror.wav",
+    "voice_text": "../../nachtschicht-teil1/voice/horror.txt",
+    "tries": 3,
+    "max_wer": 0.1,
+    "candidates": 3,
+    "temperature": 0.7,
+    "max_pause": 0.32
+  },
+  "segments": [
+    {
+      "id": "a01",
+      "say": "Die Spuren enden direkt hinter dir.",
+      "caps": [
+        "DIE SPUREN ENDEN",
+        "DIREKT ^HINTER ^DIR."
+      ],
+      "gap": 0.0,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "a02",
+      "say": "Ihr habt entschieden.",
+      "caps": [
+        "IHR HABT ^ENTSCHIEDEN."
+      ],
+      "gap": 0.9,
+      "sfx": [],
+      "spannung": 0
+    },
+    {
+      "id": "a03",
+      "say": "Du machst auf.",
+      "caps": [
+        "DU MACHST ^AUF."
+      ],
+      "gap": 0.3,
+      "sfx": [],
+      "spannung": 0
+    },
+    {
+      "id": "a04",
+      "say": "Du drehst den Schlüssel um. Die Tür geht auf.",
+      "caps": [
+        "DU DREHST DEN",
+        "^SCHLÜSSEL UM.",
+        "DIE TÜR GEHT ^AUF."
+      ],
+      "gap": 0.6,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "a05",
+      "say": "Kalte Luft. Regen. Und draußen ist niemand.",
+      "caps": [
+        "KALTE LUFT. REGEN.",
+        "UND DRAUSSEN",
+        "IST ^NIEMAND."
+      ],
+      "gap": 0.7,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "a06",
+      "say": "Er stand doch eben noch hier.",
+      "caps": [
+        "ER STAND DOCH",
+        "EBEN NOCH ^HIER."
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "a07",
+      "say": "Du schließt wieder ab. Dein Handy vibriert.",
+      "caps": [
+        "DU SCHLIESST WIEDER AB.",
+        "DEIN ^HANDY VIBRIERT."
+      ],
+      "gap": 0.8,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "a08",
+      "say": "Wer hat dir gesagt, dass du aufmachen sollst?",
+      "caps": [
+        "„WER HAT DIR GESAGT,",
+        "DASS DU ^AUFMACHEN",
+        "^SOLLST?“"
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "a09",
+      "say": "Du scrollst nach oben. Seine Nachricht von vorhin ist weg.",
+      "caps": [
+        "DU SCROLLST NACH OBEN.",
+        "SEINE NACHRICHT",
+        "VON VORHIN IST ^WEG."
+      ],
+      "gap": 0.7,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "a10",
+      "say": "Dein Chef hat dir nie geschrieben.",
+      "caps": [
+        "DEIN CHEF HAT DIR",
+        "^NIE GESCHRIEBEN."
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "a11",
+      "say": "Du schaust auf Kamera eins.",
+      "caps": [
+        "DU SCHAUST",
+        "AUF ^KAMERA ^1."
+      ],
+      "gap": 0.9,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "a12",
+      "say": "Auf dem Boden sind nasse Fußspuren. Sie kommen von der Tür.",
+      "caps": [
+        "AUF DEM BODEN:",
+        "NASSE ^FUSSSPUREN.",
+        "SIE KOMMEN VON DER ^TÜR."
+      ],
+      "gap": 0.4,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "a13",
+      "say": "Du warst nicht draußen.",
+      "caps": [
+        "DU WARST",
+        "^NICHT DRAUSSEN."
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "a14",
+      "say": "Sie gehen an der Theke vorbei. Bis hinter die Kasse.",
+      "caps": [
+        "SIE GEHEN AN DER",
+        "THEKE VORBEI.",
+        "BIS HINTER DIE ^KASSE."
+      ],
+      "gap": 0.4,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "a15",
+      "say": "Genau dorthin, wo du stehst.",
+      "caps": [
+        "GENAU DORTHIN,",
+        "WO ^DU ^STEHST."
+      ],
+      "gap": 0.4,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "a16",
+      "say": "Das Licht geht aus.",
+      "caps": [
+        "DAS LICHT",
+        "GEHT ^AUS."
+      ],
+      "gap": 0.7,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "a17",
+      "say": "Und direkt hinter dir atmet jemand.",
+      "caps": [
+        "UND DIREKT ^HINTER ^DIR",
+        "ATMET ^JEMAND."
+      ],
+      "gap": 2.2,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "a18",
+      "say": "Drehst du dich um? Oder rennst du raus in den Regen?",
+      "caps": [
+        "DREHST DU DICH ^UM?",
+        "ODER RENNST DU",
+        "RAUS IN DEN ^REGEN?"
+      ],
+      "gap": 1.0,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "a19",
+      "say": "Schreib A oder B. Die Mehrheit entscheidet über Teil drei.",
+      "caps": [
+        "SCHREIB ^A ODER ^B.",
+        "DIE MEHRHEIT ENTSCHEIDET",
+        "ÜBER ^TEIL ^3."
+      ],
+      "gap": 0.4,
+      "sfx": [],
+      "spannung": 0
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "title": "Nachtschicht – Teil 2 (nicht aufgemacht)",
+  "lead_in": 0.6,
+  "tail": 2.6,
+  "default_gap": 0.3,
+  "tts": {
+    "engine": "qwen",
+    "voice": "../../nachtschicht-teil1/voice/horror.wav",
+    "voice_text": "../../nachtschicht-teil1/voice/horror.txt",
+    "tries": 3,
+    "max_wer": 0.1,
+    "candidates": 3,
+    "temperature": 0.7,
+    "max_pause": 0.32
+  },
+  "segments": [
+    {
+      "id": "b01",
+      "say": "Die Hintertür war abgeschlossen. Da bist du dir ganz sicher.",
+      "caps": [
+        "DIE HINTERTÜR WAR",
+        "^ABGESCHLOSSEN.",
+        "DA BIST DU DIR",
+        "GANZ ^SICHER."
+      ],
+      "gap": 0.0,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "b02",
+      "say": "Ihr habt entschieden.",
+      "caps": [
+        "IHR HABT ^ENTSCHIEDEN."
+      ],
+      "gap": 0.9,
+      "sfx": [],
+      "spannung": 0
+    },
+    {
+      "id": "b03",
+      "say": "Du machst nicht auf.",
+      "caps": [
+        "DU MACHST",
+        "^NICHT AUF."
+      ],
+      "gap": 0.3,
+      "sfx": [],
+      "spannung": 0
+    },
+    {
+      "id": "b04",
+      "say": "Du bleibst hinter der Theke und rührst dich nicht.",
+      "caps": [
+        "DU BLEIBST",
+        "HINTER DER THEKE",
+        "UND RÜHRST DICH ^NICHT."
+      ],
+      "gap": 0.6,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "b05",
+      "say": "Er klopft noch einmal. Dreimal.",
+      "caps": [
+        "ER KLOPFT NOCH EINMAL.",
+        "^DREIMAL."
+      ],
+      "gap": 0.6,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "b06",
+      "say": "Dein Handy vibriert. Wieder dein Chef.",
+      "caps": [
+        "DEIN ^HANDY VIBRIERT.",
+        "WIEDER DEIN ^CHEF."
+      ],
+      "gap": 2.4,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "b07",
+      "say": "Er friert. Warum machst du nicht auf?",
+      "caps": [
+        "„ER ^FRIERT.",
+        "WARUM MACHST DU",
+        "^NICHT AUF?“"
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "b08",
+      "say": "Dann hört das Klopfen auf.",
+      "caps": [
+        "DANN HÖRT DAS",
+        "KLOPFEN ^AUF."
+      ],
+      "gap": 0.9,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "b09",
+      "say": "Du schaust auf Kamera eins. Er ist weg.",
+      "caps": [
+        "DU SCHAUST AUF",
+        "^KAMERA ^1.",
+        "ER IST ^WEG."
+      ],
+      "gap": 0.6,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "b10",
+      "say": "Kamera drei: niemand.",
+      "caps": [
+        "KAMERA 3:",
+        "^NIEMAND."
+      ],
+      "gap": 0.6,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "b11",
+      "say": "Und dann siehst du Kamera zwei. Das Lager.",
+      "caps": [
+        "UND DANN SIEHST DU",
+        "^KAMERA ^2.",
+        "DAS LAGER."
+      ],
+      "gap": 0.8,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "b12",
+      "say": "Die Hintertür steht offen.",
+      "caps": [
+        "DIE HINTERTÜR",
+        "STEHT ^OFFEN."
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "b13",
+      "say": "Du hast sie um Mitternacht selbst abgeschlossen.",
+      "caps": [
+        "DU HAST SIE UM MITTERNACHT",
+        "^SELBST ABGESCHLOSSEN."
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "b14",
+      "say": "Du drehst den Zettel um. Auf der Rückseite steht noch eine Regel.",
+      "caps": [
+        "DU DREHST DEN ^ZETTEL UM.",
+        "AUF DER RÜCKSEITE",
+        "STEHT NOCH EINE ^REGEL."
+      ],
+      "gap": 0.8,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "b15",
+      "say": "Regel fünf: Steht die Hintertür offen, ist er schon drin.",
+      "caps": [
+        "REGEL 5:",
+        "STEHT DIE HINTERTÜR OFFEN,",
+        "IST ER ^SCHON ^DRIN."
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "b16",
+      "say": "Versteck dich.",
+      "caps": [
+        "^VERSTECK ^DICH."
+      ],
+      "gap": 0.5,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "b17",
+      "say": "Versteckst du dich im Kühlraum? Oder rennst du raus in den Regen?",
+      "caps": [
+        "VERSTECKST DU DICH",
+        "IM ^KÜHLRAUM?",
+        "ODER RENNST DU",
+        "RAUS IN DEN ^REGEN?"
+      ],
+      "gap": 1.0,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "b18",
+      "say": "Schreib A oder B. Die Mehrheit entscheidet über Teil drei.",
+      "caps": [
+        "SCHREIB ^A ODER ^B.",
+        "DIE MEHRHEIT ENTSCHEIDET",
+        "ÜBER ^TEIL ^3."
+      ],
+      "gap": 0.4,
+      "sfx": [],
+      "spannung": 0
+    }
+  ]
+}

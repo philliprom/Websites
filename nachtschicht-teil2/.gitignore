@@ -1,0 +1,5 @@
+a/build/
+b/build/
+build/
+out/*.mp4
+*.log
