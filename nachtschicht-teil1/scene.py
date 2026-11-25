@@ -662,11 +662,23 @@ import json  # noqa: E402
 
 args = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:]
 SHOT = args[args.index("--shot") + 1] if "--shot" in args else "r1"
+
+
+def _arg(name, default, typ=float):
+    return typ(args[args.index(name) + 1]) if name in args else default
+
+
+PROFIL_RES = _arg("--res", 1080, int)
+PROFIL_SAMPLES = _arg("--samples", 128, int)
+PROFIL_INNEN = _arg("--innen", 0.3)
+PROFIL_AUGEN = _arg("--augen", 3.0)
+PROFIL_DACH = _arg("--dach", 0.15)    # Tankdach-Licht (1 = wie in der Folge)
 DEFAULTS = {
     "r1": {"frames": 95, "dips": [78, 79], "blackout": None, "jump": None, "flick5": list(range(70, 95, 3)), "canopy_off": [], "fig_out": 0},
     "r2": {"frames": 95, "dips": [], "blackout": None, "jump": None, "flick5": [], "canopy_off": [66, 67, 68, 70], "fig_out": 68},
     "r3": {"frames": 70, "dips": [6, 9], "blackout": [11, 15], "jump": 16, "flick5": [25, 26, 40, 52, 53, 61], "canopy_off": [], "fig_out": 0},
     "note": {"frames": 1, "dips": [], "blackout": None, "jump": None, "flick5": [], "canopy_off": [], "fig_out": 0},
+    "profil": {"frames": 1, "dips": [], "blackout": None, "jump": None, "flick5": [], "canopy_off": [], "fig_out": 0},
 }
 sp_path = os.path.join(BUILD, "shots.json")
 CFG = dict(DEFAULTS[SHOT])
@@ -676,6 +688,8 @@ N = CFG["frames"]
 
 
 def interior(f):
+    if SHOT == "profil":
+        return PROFIL_INNEN   # Laden fast dunkel: Gestalt hebt sich als Umriss vor dem hellen Tankdach ab
     b = CFG.get("blackout")
     if b and b[0] <= f <= b[1]:
         return 0.0
@@ -703,7 +717,7 @@ for name, base in (("Display blau", 4.0), ("Monitorbild", 1.6), ("Bildschirm", 2
     m_ = bpy.data.materials.get(name)
     if m_:
         key_strength(m_, base, interior)
-canopy = lambda f: 0.04 if f in CFG["canopy_off"] else 1.0  # noqa: E731
+canopy = lambda f: PROFIL_DACH if SHOT == "profil" else (0.04 if f in CFG["canopy_off"] else 1.0)  # noqa: E731
 key_strength(CANOPY_L, 30.0, canopy)
 key_strength(BAND, 5.0, canopy)
 for f in range(1, N + 1):
@@ -717,7 +731,7 @@ for f in range(1, N + 1):
         L.data.keyframe_insert("energy", frame=f)
     fig_out.hide_render = not (SHOT == "r2" and f < CFG["fig_out"])
     fig_out.keyframe_insert("hide_render", frame=f)
-    fig_door.hide_render = not (SHOT == "r3" and CFG.get("jump") and f >= CFG["jump"])
+    fig_door.hide_render = not ((SHOT == "r3" and CFG.get("jump") and f >= CFG["jump"]) or (SHOT == "profil" and "--puppe" in args))
     fig_door.keyframe_insert("hide_render", frame=f)
 # Gestalt im Regen schwankt kaum merklich
 for f in range(1, N + 1, 4):
@@ -727,13 +741,94 @@ NOTE.hide_render = SHOT != "note"
 for o in NOTE.children:
     o.hide_render = SHOT != "note"
 
+# ---------------------------------------------------------------- Profilbild: Tropfen auf der Glastür
+if SHOT == "profil":
+    import bmesh
+    from mathutils import Matrix
+    WATER = bpy.data.materials.new("Wassertropfen")
+    WATER.use_nodes = True
+    wb = WATER.node_tree.nodes["Principled BSDF"]
+    wb.inputs["Base Color"].default_value = (1, 1, 1, 1)
+    wb.inputs["Roughness"].default_value = 0.03
+    wb.inputs["IOR"].default_value = 1.33
+    wb.inputs["Transmission Weight" if "Transmission Weight" in wb.inputs else "Transmission"].default_value = 1.0
+    me = bpy.data.meshes.new("Tropfen")
+    bm = bmesh.new()
+    rr = random.Random(23)
+    for _ in range(520):
+        r_ = rr.uniform(0.0015, 0.0045) * (1.6 if rr.random() < 0.08 else 1.0)
+        streak = rr.uniform(1.0, 3.2) if rr.random() < 0.3 else rr.uniform(0.8, 1.25)
+        x_, z_ = rr.uniform(-0.78, 0.78), rr.uniform(0.45, 2.55)
+        mtx = Matrix.Translation((x_, D1 + 0.0035, z_)) @ Matrix.Diagonal((1.0, 0.4, streak, 1.0))
+        bmesh.ops.create_uvsphere(bm, u_segments=12, v_segments=7, radius=r_, matrix=mtx)
+    bm.to_mesh(me)
+    # Gestalt fürs Profilbild: langer Umhang mit spitzer Kapuze (der runde Kopf der Folgen-Gestalt wirkt aus der Nähe wie eine Puppe)
+    gx_, gy_ = _arg("--gx", 0.12), D1 + _arg("--gy", 0.2)
+    M["cloth"].node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = (*([_arg("--stoff", 0.03)] * 3), 1)
+    cl = [
+        cone("Umhang", (gx_, gy_, 0.9), 0.42, 0.24, 1.8, M["cloth"], scale=(1.0, 0.62, 1.0)),
+        sphere("Schultern", (gx_, gy_, 1.55), 0.26, M["cloth"], scale=(1.0, 0.62, 0.75)),
+        cone("Kapuzenfall", (gx_, gy_ + 0.02, 1.73), 0.25, 0.15, 0.32, M["cloth"], scale=(1.0, 0.78, 1.0)),   # Stoff fällt von der Kapuze auf die Schultern
+        sphere("Kapuze", (gx_, gy_ + 0.06, 1.97), 0.17, M["cloth"], scale=(1.0, 1.1, 1.15)),
+        cone("Kapuzenspitze", (gx_, gy_ + 0.13, 2.1), 0.12, 0.03, 0.2, M["cloth"], rot=(math.radians(-35), 0, 0)),
+        sphere("Gesicht", (gx_, gy_ - 0.08, 1.95), 0.105, mat("Leere", (0.0, 0.0, 0.0), 1.0), scale=(0.85, 0.5, 1.1)),
+    ]
+    bpy.ops.mesh.primitive_torus_add(major_radius=0.1, minor_radius=0.026, location=(gx_, gy_ - 0.12, 1.955), rotation=(math.radians(90), 0, 0))
+    rim_ = bpy.context.object
+    rim_.scale = (0.92, 1.18, 1.0)      # nach der Drehung: x breit, y (lokal) = Höhe
+    rim_.data.materials.append(M["cloth"])
+    bpy.ops.object.shade_smooth()
+    cl.append(rim_)
+    bpy.ops.object.select_all(action="DESELECT")
+    for p_ in cl:
+        p_.select_set(True)
+    bpy.context.view_layer.objects.active = cl[0]
+    bpy.ops.object.join()
+    cloak = bpy.context.object
+    sc.cursor.location = (gx_, gy_, 0)
+    bpy.ops.object.origin_set(type="ORIGIN_CURSOR")
+    # Stoff statt glatter Grundkörper: feiner unterteilen und leicht unregelmäßig verbeulen
+    sub_ = cloak.modifiers.new("Unterteilung", "SUBSURF")
+    sub_.levels = sub_.render_levels = 2
+    tex_ = bpy.data.textures.new("Stofffalten", "CLOUDS")
+    tex_.noise_scale = 0.14
+    dis_ = cloak.modifiers.new("Falten", "DISPLACE")
+    dis_.texture = tex_
+    dis_.strength = _arg("--falten", 0.018)
+    dis_.mid_level = 0.5
+    eyes_ = []
+    for dx in (-0.034, 0.034):
+        e_ = sphere("Auge", (gx_ + dx, gy_ - 0.14, 1.975), 0.0062, EYESHINE, scale=(1.35, 1.0, 0.8))
+        e_.parent = cloak
+        e_.matrix_parent_inverse = cloak.matrix_world.inverted()
+        eyes_.append(e_)
+    cloak.rotation_euler = (0, math.radians(_arg("--tilt", -4.0)), 0)
+    # ein Licht genau über der Gestalt (draußen, leicht dahinter): Kapuze und Schultern bekommen eine Kante, das Gesicht bleibt schwarz
+    bpy.ops.object.light_add(type="SPOT", location=(gx_, gy_ + 0.3, 3.0))
+    top_ = bpy.context.object
+    top_.data.energy, top_.data.spot_size, top_.data.color = _arg("--oben", 45.0), math.radians(55), (0.85, 0.9, 1.0)
+    top_.data.shadow_soft_size = 0.15
+    for o_ in list(sc.objects):   # Fassaden-Strahler über dem Gehweg abschwächen (sie hellen sonst den Umhang von vorn auf)
+        if o_.type == "LIGHT" and o_.data.type == "SPOT" and abs(o_.location.z - (H + 0.05)) < 0.01:
+            o_.data.energy *= _arg("--fassade", 0.3)
+    if bpy.data.objects.get("Ziehen"):
+        bpy.data.objects["Ziehen"].hide_render = True   # „DRÜCKEN“ läge sonst mitten auf der Brust
+    drops = bpy.data.objects.new("Tropfen", me)
+    sc.collection.objects.link(drops)
+    drops.data.materials.append(WATER)
+    for poly in me.polygons:
+        poly.use_smooth = True
+
 # ---------------------------------------------------------------- Kamera
 CAMS = {
     "cam01": ((3.55, -2.2, 2.75), (-0.2, 3.0, 0.95), 17),
     "cam03": ((2.0, 12.4, 3.9), (-0.5, 5.0, 1.45), 23),
     "note": ((3.6, 0.98, 1.47), (3.04, 0.99, 1.048), 40),
+    # von innen frontal auf die Glastür: Türpfosten links/rechts, Gestalt als Umriss vor dem hellen Tankdach
+    "profil": (lambda v: (tuple(v[0:3]), tuple(v[3:6]), v[6]))([float(x) for x in args[args.index("--cam") + 1].split(",")])
+    if "--cam" in args else ((0.12, 1.3, 1.62), (0.12, D1 + 0.25, 1.9), 35),
 }
-cam_key = {"r1": "cam01", "r2": "cam03", "r3": "cam01", "note": "note"}[SHOT]
+cam_key = {"r1": "cam01", "r2": "cam03", "r3": "cam01", "note": "note", "profil": "profil"}[SHOT]
 loc, tgt, lens = CAMS[cam_key]
 bpy.ops.object.camera_add(location=loc)
 cam = bpy.context.object
@@ -746,10 +841,15 @@ if SHOT == "note":
     cam.data.dof.use_dof = True
     cam.data.dof.focus_distance = (Vector(tgt) - cam.location).length
     cam.data.dof.aperture_fstop = 6.0
+if SHOT == "profil":
+    cam.data.dof.use_dof = True
+    cam.data.dof.focus_distance = (Vector((0.25, D1 + 0.2, 1.97)) - cam.location).length   # scharf auf die Kapuze
+    cam.data.dof.aperture_fstop = _arg("--fstop", 4.0)
+    EYESHINE.node_tree.nodes["Principled BSDF"].inputs["Emission Strength"].default_value = PROFIL_AUGEN
 
 sc.render.engine = "CYCLES"
 sc.cycles.device = "CPU"
-sc.cycles.samples = 64 if SHOT == "note" else 24
+sc.cycles.samples = {"note": 64, "profil": PROFIL_SAMPLES}.get(SHOT, 24)
 sc.cycles.adaptive_threshold = 0.02
 sc.cycles.use_denoising = True
 sc.cycles.max_bounces = 4
@@ -759,7 +859,7 @@ sc.cycles.transparent_max_bounces = 4
 sc.cycles.blur_glossy = 1.0
 sc.cycles.sample_clamp_indirect = 3.0
 sc.render.use_persistent_data = True
-sc.render.resolution_x, sc.render.resolution_y = (720, 1280) if SHOT == "note" else RES
+sc.render.resolution_x, sc.render.resolution_y = {"note": (720, 1280), "profil": (PROFIL_RES, PROFIL_RES)}.get(SHOT, RES)
 sc.render.fps = FPS
 sc.frame_start, sc.frame_end = 1, N
 sc.view_settings.view_transform = "AgX"
@@ -777,7 +877,12 @@ if SHOT == "r2":
     json.dump({"x": round(pr.x * RES[0], 1), "y": round((1 - pr.y) * RES[1], 1)}, open(os.path.join(outdir, "figure.json"), "w"))
 if "--save" in args:
     bpy.ops.wm.save_as_mainfile(filepath=os.path.join(BUILD, f"{SHOT}.blend"))
-if SHOT == "note":
+if SHOT == "profil":
+    sc.frame_set(1)
+    sc.render.filepath = os.path.join(outdir, f"profil_{PROFIL_RES}.png")
+    bpy.ops.render.render(write_still=True)
+    print("Profilbild fertig:", sc.render.filepath)
+elif SHOT == "note":
     sc.frame_set(1)
     sc.render.filepath = os.path.join(outdir, "zettel.png")
     bpy.ops.render.render(write_still=True)

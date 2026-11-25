@@ -1,0 +1,87 @@
+{
+ "lead_in": 0.4,
+ "default_gap": 0.5,
+ "tail": 1.0,
+ "tts": {
+  "engine": "qwen",
+  "voice": "../../../../nachtschicht-teil1/voice/horror.wav",
+  "voice_text": "../../../../nachtschicht-teil1/voice/horror.txt",
+  "tries": 3,
+  "max_wer": 0.1,
+  "candidates": 3,
+  "temperature": 0.7,
+  "max_pause": 0.32
+ },
+ "segments": [
+  {
+   "id": "s01",
+   "say": "Das Klopfen hört auf.",
+   "caps": [
+    "DAS KLOPFEN HÖRT AUF."
+   ],
+   "gap": 0.0,
+   "sfx": [],
+   "spannung": 0
+  },
+  {
+   "id": "s02",
+   "say": "Einfach so.",
+   "caps": [
+    "EINFACH SO."
+   ],
+   "gap": 0.55,
+   "sfx": [],
+   "spannung": 0
+  },
+  {
+   "id": "s03",
+   "say": "Du hältst die Luft an.",
+   "caps": [
+    "DU HÄLTST DIE LUFT AN."
+   ],
+   "gap": 0.8,
+   "sfx": [],
+   "spannung": 1
+  },
+  {
+   "id": "s04",
+   "say": "Und dann hörst du es.",
+   "caps": [
+    "UND DANN HÖRST DU ES."
+   ],
+   "gap": 0.6,
+   "sfx": [],
+   "spannung": 1
+  },
+  {
+   "id": "s05",
+   "say": "Schritte.",
+   "caps": [
+    "SCHRITTE."
+   ],
+   "gap": 0.9,
+   "sfx": [],
+   "spannung": 2
+  },
+  {
+   "id": "s06",
+   "say": "Nicht draußen.",
+   "caps": [
+    "NICHT DRAUSSEN."
+   ],
+   "gap": 0.5,
+   "sfx": [],
+   "spannung": 2
+  },
+  {
+   "id": "s07",
+   "say": "Sondern hinter dir, im Lager!",
+   "caps": [
+    "SONDERN HINTER DIR, IM LAGER!"
+   ],
+   "gap": 0.45,
+   "sfx": [],
+   "spannung": 3
+  }
+ ]
+}

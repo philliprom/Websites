@@ -12,8 +12,6 @@ Datei: titelbild.png
 
 POSTEN
 - Am besten abends/nachts (20–23 Uhr): Horror wird nachts geschaut (auch bei der Vorlage).
-- Beim Posten „KI-generierte Inhalte“ einschalten (Erzählerstimme ist ein KI-Klon der freien Thorsten-Voice-Stimme,
+- Beim Posten „KI-generierte Inhalte“ einschalten (Erzählerstimme ist KI-generiert mit Qwen3-TTS,
   Bilder sind am Computer erzeugt).
-- Kanal-Vorschlag (Monsterdöner-Konto umbauen): Name „Nachtschicht – Du entscheidest“,
-  Bio: „Horror-Serie zum Mitentscheiden 🌧️🚪 Du bist allein in der Nachtschicht. Kommentiere A oder B – die Mehrheit
-  bestimmt, wie es weitergeht.“
+- Kanal: Name, Bio (max. 80 Zeichen) und Profilbild stehen in nachtschicht-kanal/README.md.

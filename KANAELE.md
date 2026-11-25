@@ -87,6 +87,7 @@ api.twitch.tv, Facecam-Bereich pro Streamer ausmessen, eigenes neutrales Konto (
 
 ## Horror-Kanal „Nachtschicht – Du entscheidest“ (24.11.2026)
 Interaktive Horror-Serie im Überwachungskamera-Stil, Format wie @playmalo.com (Du-Perspektive, Abstimmung A/B per
-Kommentar), Geschichte eigen. Bilder mit Blender (Cycles CPU in der Cloud), Erzähler Thorsten-Klon, eigenes Sounddesign.
-Teil 1 fertig: `nachtschicht-teil1/` (README mit Ablauf). Vorgeschlagen: Monsterdöner-Konto umbauen
-(Name „Nachtschicht – Du entscheidest“), Posten abends 20–23 Uhr, „KI-generierte Inhalte“ an.
+Kommentar), Geschichte eigen. Bilder mit Blender (Cycles CPU in der Cloud), Erzählerstimme Qwen3-TTS VoiceDesign
+(tief, langsam; seit 25.11.), eigenes Sounddesign. Teil 1 fertig: `nachtschicht-teil1/` (README mit Ablauf).
+Eigener neuer Kanal: Name, Bio und Profilbild in `nachtschicht-kanal/`. Posten abends 20–23 Uhr, „KI-generierte
+Inhalte“ an. Wunsch für Teil 2: mehr Gefühl in der Stimme (an spannenden Stellen natürlich höher).
