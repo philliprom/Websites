@@ -456,7 +456,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 def cover():
     if Z == "a":
-        img = render_ir(dict(next(s for s in SHOTS if s["kind"] == "ir"), zoom=None), next(s for s in SHOTS if s["kind"] == "ir")["t"][0] + 1.0)
+        ir_s = next(s for s in SHOTS if s["kind"] == "ir")
+        img = render_ir(dict(ir_s, zoom=[0, 1, 1.35, 1.35]), ir_s["t"][0] + 1.0)   # näher an die Gestalt: Augen über dem Text
         l1, l2 = "DIE SPUREN ENDEN", "HINTER DIR."
     else:
         s6 = next(s for s in SHOTS if s["id"] == "SH6")
