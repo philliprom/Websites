@@ -168,7 +168,7 @@ if os.path.exists(os.path.join(SB, "spuren", "spuren.png")) and os.path.exists(o
     for poly in json.load(open(os.path.join(SB, "spuren", "spuren.json"))):
         m = Image.new("L", (w_.shape[1], w_.shape[0]), 0)
         ImageDraw.Draw(m).polygon([tuple(p) for p in poly], fill=255)
-        m = m.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(1.2))
+        m = m.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(0.8))
         PR_MASKS.append(np.asarray(m, dtype=np.float32)[..., None] / 255)
 
 
@@ -185,12 +185,17 @@ def render_cctv(s, t, dim=None):
     t0 = s["t"][0]
     a = src_arr(s["src"], src_index(s, t, t0))
     if s["kind"] == "prints" and PR_DIFF is not None:
+        # Spuren: Blender-Differenz (Glanz, Schatten) plus Abdunkeln in der Form jeder Spur – nah an der Tür glänzen die
+        # gerenderten Spuren nur und wären im Kamerabild sonst kaum zu sehen. Vorn nasser (dunkler), hinten trockener.
         al = prints_alpha(s, t)
-        add = np.zeros_like(a)
-        for m, w in zip(PR_MASKS, al):
+        n_ = len(PR_MASKS)
+        add = np.zeros(a.shape[:2] + (1,), np.float32)
+        dark = np.zeros(a.shape[:2] + (1,), np.float32)
+        for i, (m, w) in enumerate(zip(PR_MASKS, al)):
             if w > 0:
                 add += m * w
-        a = np.clip(a + PR_DIFF * np.clip(add, 0, 1), 0, 1)
+                dark = np.maximum(dark, m * w * (0.55 - 0.22 * i / max(1, n_ - 1)))
+        a = np.clip((a + PR_DIFF * np.clip(add, 0, 1) * 0.6) * (1 - dark), 0, 1)
     z = zoom_level(s, t)
     a = grade_cctv(upscale(a, z, FOCUS.get(s["src"])), s.get("dim", 1.0) if dim is None else dim)
     if s.get("out"):                                   # „Das Licht geht aus“: Flackern, dann schwarz
