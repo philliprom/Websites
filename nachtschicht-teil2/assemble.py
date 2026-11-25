@@ -323,7 +323,7 @@ def note_state(name):
     if name == "all":
         bs = list(BOXES.values())
         x0, y0, x1, y1 = min(b[0] for b in bs), min(b[1] for b in bs), max(b[2] for b in bs), max(b[3] for b in bs)
-        return ((x0 + x1) / 2, (y0 + y1) / 2 + 30, 1.45)
+        return ((x0 + x1) / 2, (y0 + y1) / 2 + 30, 1.6)
     x0, y0, x1, y1 = BOXES[name]
     s_ = min(3.0, max(1.7, W * 0.9 / (x1 - x0 + 24)))
     return ((x0 + x1) / 2, (y0 + y1) / 2, s_)
@@ -346,6 +346,7 @@ def render_note(s, t):
     cx += 3 * math.sin(1.3 * t) + 2 * math.sin(2.9 * t + 1)
     cy += 3 * math.cos(1.1 * t) + 2 * math.sin(2.3 * t)
     im = Image.fromarray((A * 255).astype(np.uint8))
+    sc = max(sc, W / im.width * 1.01, H / im.height * 1.01)      # Ausschnitt nie größer als das Bild
     sw, sh_ = W / sc, H / sc
     cx = min(max(cx, sw / 2), im.width - sw / 2)
     cy = min(max(cy, sh_ / 2), im.height - sh_ / 2)
