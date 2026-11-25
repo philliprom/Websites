@@ -3,3 +3,4 @@ b/build/
 build/
 out/*.mp4
 *.log
+__pycache__/
