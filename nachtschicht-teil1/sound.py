@@ -289,6 +289,31 @@ for s_, r_ in zip(tl_["segments"], rms_all):
     g = float(np.clip(target / max(r_, 1e-6), 0.63, 1.58))
     i0, i1 = int((s_["start"] - 0.05) * SR), int((s_["speechEnd"] + 0.1) * SR)
     vo[i0:i1] *= g
+# Erzähler-Klang (ab 25.11.): ganz leichter Flüster-Hauch (Rauschen mit der Hüllkurve der Stimme), mehr Bass,
+# etwas weniger Präsenz und ein kurzer, dunkler Raum
+from scipy.signal import lfilter  # noqa: E402
+
+
+def peq(x, f0, gain_db, q=1.0):
+    a_ = 10 ** (gain_db / 40)
+    w0 = 2 * np.pi * f0 / SR
+    al = np.sin(w0) / (2 * q)
+    b = [1 + al * a_, -2 * np.cos(w0), 1 - al * a_]
+    a = [1 + al / a_, -2 * np.cos(w0), 1 - al / a_]
+    return lfilter(np.array(b) / a[0], np.array(a) / a[0], x)
+
+
+v_env = bp(np.abs(vo), hi=35, order=1)
+breath = bp(rs.randn(n), 1800, 7500) * v_env
+v_rms = np.sqrt(np.mean(vo[np.abs(vo) > 0.01] ** 2)) if np.any(np.abs(vo) > 0.01) else 0.05
+b_rms = np.sqrt(np.mean(breath[np.abs(vo) > 0.01] ** 2)) if np.any(np.abs(vo) > 0.01) else 1.0
+vo = vo + breath * (v_rms * 10 ** (-15 / 20) / max(b_rms, 1e-9))
+vo = peq(peq(vo, 130, 2.5, 0.8), 3500, -1.5, 1.2)
+mi_ = int(0.45 * SR)
+k_ = np.arange(mi_) / SR
+ir_v = bp(rs.randn(mi_), hi=5000) * np.exp(-k_ * 11)
+ir_v /= np.abs(ir_v).sum() / 6
+vo = vo + fftconvolve(vo, ir_v)[:n] * 0.12
 venv = bp(np.abs(vo), hi=8, order=1)
 duck = 1.0 - 0.6 * np.clip(venv / 0.04, 0, 1)
 mix = bed * duck[:, None] + fx + wet * 0.35 + dry

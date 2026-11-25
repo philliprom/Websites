@@ -1,7 +1,7 @@
 """Nachtschicht – Teil 1. Interaktive Horror-Folge im Überwachungskamera-Stil („Du entscheidest“).
 Format angelehnt an interaktive Horror-Serien (Ich-/Du-Perspektive, Abstimmung per Kommentar), Geschichte eigen.
 
-Erzeugt script.json (Erzählerstimme, Thorsten-Klon Variante A) und out/beschreibung.txt.
+Erzeugt script.json (Erzählerstimme: entworfene Horror-Stimme 3, ab 25.11.; vorher Thorsten A) und out/beschreibung.txt.
 Danach: engine/build_timeline.py (Stimme) → shots.py (Bildfolgen planen) → scene.py (Blender) → sound.py → assemble.py.
 
 Einstellungen (SH = Einstellung im Schnitt):
@@ -48,10 +48,10 @@ S = [
 ]
 segments = [{"id": i, "say": say, "caps": caps, "gap": gap, "sfx": []} for i, say, caps, gap in S]
 script = {
-    "title": "Nachtschicht – Teil 1", "voice": "qwen3-tts (Klon Thorsten-Voice, CC0, Variante A ruhig)",
+    "title": "Nachtschicht – Teil 1", "voice": "qwen3-tts (Klon der entworfenen Horror-Stimme 3 „tief, langsam“, Pausen gekürzt)",
     "lead_in": 0.9, "tail": 2.4, "default_gap": 0.3,
-    "tts": {"engine": "qwen", "voice": "voice/thorsten.wav", "voice_text": "voice/thorsten.txt",
-            "tries": 3, "max_wer": 0.1, "candidates": 3, "temperature": 0.7, "max_pause": 0.5},
+    "tts": {"engine": "qwen", "voice": "voice/horror.wav", "voice_text": "voice/horror.txt",
+            "tries": 3, "max_wer": 0.1, "candidates": 3, "temperature": 0.7, "max_pause": 0.32},
     "music": {"bpm": 60, "inst": "vibes", "clap": 0.0, "ambience": 0.0, "chords": [[45, 48, 52]], "roots": [33], "arp": [0]},
     "segments": segments,
 }

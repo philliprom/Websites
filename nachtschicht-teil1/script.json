@@ -1,18 +1,18 @@
 {
   "title": "Nachtschicht – Teil 1",
-  "voice": "qwen3-tts (Klon Thorsten-Voice, CC0, Variante A ruhig)",
+  "voice": "qwen3-tts (Klon der entworfenen Horror-Stimme 3 „tief, langsam“, Pausen gekürzt)",
   "lead_in": 0.9,
   "tail": 2.4,
   "default_gap": 0.3,
   "tts": {
     "engine": "qwen",
-    "voice": "voice/thorsten.wav",
-    "voice_text": "voice/thorsten.txt",
+    "voice": "voice/horror.wav",
+    "voice_text": "voice/horror.txt",
     "tries": 3,
     "max_wer": 0.1,
     "candidates": 3,
     "temperature": 0.7,
-    "max_pause": 0.5
+    "max_pause": 0.32
   },
   "music": {
     "bpm": 60,
