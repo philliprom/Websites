@@ -26,7 +26,7 @@ EV, SHOTS, D = edl["events"], edl["shots"], edl["duration"]
 SRC = {"t1r1": os.path.join(T1B, "r1"), "t1r2": os.path.join(T1B, "r2"), "t1r3": os.path.join(T1B, "r3"),
        "tuer": os.path.join(SB, "tuer"), "lager": os.path.join(SB, "lager")}
 # Bildpunkte (Quelle 432×768), auf die digital gezoomt wird
-FOCUS = {"t1r1": (250, 560), "lager": (250, 380), "ir": (205, 470)}
+FOCUS = {"t1r1": (190, 620), "lager": (250, 380), "ir": (205, 470)}
 
 F_OSD = ImageFont.truetype("/usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Bold.ttf", 38)
 F_TITLE = ImageFont.truetype(os.path.join(FONTS, "SpecialElite-Regular.ttf"), 112)
@@ -370,7 +370,7 @@ def render_decision(s, t):
         d.text((540, 470), "DU ENTSCHEIDEST", font=F_HEAD, fill=(225, 40, 45), anchor="mm", stroke_width=4, stroke_fill=(0, 0, 0))
     A_, B_ = [ASSET[k].resize((int(ASSET[k].width * 0.8), int(ASSET[k].height * 0.8)), Image.LANCZOS) for k in s["cards"]]
     ca, cb = s["card_t"]
-    x_end = (W - A_.width) // 2
+    x_end = (W - A_.width) // 2 + (70 if s["base"] == "ir" else 0)   # Nachtsicht: Gestalt links nicht verdecken
     if t >= ca:
         img.alpha_composite(A_, (int(-A_.width + (x_end + A_.width) * ease_out_back((t - ca) / 0.45)), 975))
     if t >= cb:

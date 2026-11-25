@@ -757,7 +757,8 @@ def make_prints(ctrl, tag, step=0.33):
 
 if SHOT in ("spuren", "ir"):
     # Nasse Spuren von der Tür an der Theke vorbei bis hinter die Kasse
-    TEIL2["prints"] = make_prints([(0.05, 1.85), (0.7, 1.45), (1.35, 1.05), (1.75, 0.45), (1.85, -0.25), (1.9, -0.95), (2.4, -1.2), (2.95, -1.25)], "Laden")
+    # Weg so, dass CAM 01 ihn über die Theke hinweg sieht (direkt an der Theke verdeckt sie den Boden)
+    TEIL2["prints"] = make_prints([(0.15, 1.82), (0.55, 1.45), (0.88, 0.85), (1.0, 0.25), (1.12, -0.3), (1.4, -0.9), (2.0, -1.3), (2.7, -1.45)], "Laden")
 
 if SHOT == "ir":
     # Nach dem Stromausfall: Gestalt steht am Ende der Spuren, schaut zur Kamera. Kamera sieht im Infrarot (Strahler an der Kamera)
