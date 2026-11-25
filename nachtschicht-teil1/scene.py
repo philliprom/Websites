@@ -764,7 +764,17 @@ if SHOT == "profil":
     bm.to_mesh(me)
     # Gestalt fürs Profilbild: langer Umhang mit spitzer Kapuze (der runde Kopf der Folgen-Gestalt wirkt aus der Nähe wie eine Puppe)
     gx_, gy_ = _arg("--gx", 0.12), D1 + _arg("--gy", 0.2)
-    M["cloth"].node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = (*([_arg("--stoff", 0.03)] * 3), 1)
+    # Die Scheibe ist in den Folgen zu 5 % deckend grau (wirkt im Kamerabild wie Schmutz). Beim Gegenlicht fürs Profilbild
+    # legt sie sich als milchiger Schleier über die Gestalt, deshalb hier fast ganz durchsichtig.
+    M["glass"].node_tree.nodes["Principled BSDF"].inputs["Alpha"].default_value = _arg("--glas", 0.005)
+    # heller Regen im Hintergrund statt mehr Licht: der Umriss hebt sich ab, ohne dass die Gestalt aufgehellt wird
+    M["rain"].node_tree.nodes["Principled BSDF"].inputs["Emission Strength"].default_value = 0.35 * _arg("--regen", 1.0)
+    cb_ = M["cloth"].node_tree.nodes["Principled BSDF"]
+    cb_.inputs["Base Color"].default_value = (*([_arg("--stoff", 0.03)] * 3), 1)
+    # Stoff-Schimmer (Sheen): bei Gegenlicht leuchten nur die Kanten, die Fläche bleibt dunkel
+    cb_.inputs["Sheen Weight"].default_value = _arg("--schimmer", 1.0)
+    cb_.inputs["Sheen Roughness"].default_value = 0.35
+    cb_.inputs["Sheen Tint"].default_value = (0.8, 0.88, 1.0, 1)
     cl = [
         cone("Umhang", (gx_, gy_, 0.9), 0.42, 0.24, 1.8, M["cloth"], scale=(1.0, 0.62, 1.0)),
         sphere("Schultern", (gx_, gy_, 1.55), 0.26, M["cloth"], scale=(1.0, 0.62, 0.75)),
@@ -779,6 +789,15 @@ if SHOT == "profil":
     rim_.data.materials.append(M["cloth"])
     bpy.ops.object.shade_smooth()
     cl.append(rim_)
+    # Kegel haben nur oben/unten einen Ring: senkrecht feiner teilen, sonst gibt die Verbeulung Längsrillen (wie Strick)
+    for p_ in cl:
+        if p_.name.startswith(("Umhang", "Kapuzenfall", "Kapuzenspitze")):
+            bm_ = bmesh.new()
+            bm_.from_mesh(p_.data)
+            ed_ = [e for e in bm_.edges if abs(e.verts[0].co.z - e.verts[1].co.z) > 1e-4]
+            bmesh.ops.subdivide_edges(bm_, edges=ed_, cuts=12, use_grid_fill=True)
+            bm_.to_mesh(p_.data)
+            bm_.free()
     bpy.ops.object.select_all(action="DESELECT")
     for p_ in cl:
         p_.select_set(True)
@@ -791,7 +810,7 @@ if SHOT == "profil":
     sub_ = cloak.modifiers.new("Unterteilung", "SUBSURF")
     sub_.levels = sub_.render_levels = 2
     tex_ = bpy.data.textures.new("Stofffalten", "CLOUDS")
-    tex_.noise_scale = 0.14
+    tex_.noise_scale = _arg("--faltengroesse", 0.3)
     dis_ = cloak.modifiers.new("Falten", "DISPLACE")
     dis_.texture = tex_
     dis_.strength = _arg("--falten", 0.018)
@@ -803,6 +822,14 @@ if SHOT == "profil":
         e_.matrix_parent_inverse = cloak.matrix_world.inverted()
         eyes_.append(e_)
     cloak.rotation_euler = (0, math.radians(_arg("--tilt", -4.0)), 0)
+    # kühles Kantenlicht von hinten links/rechts: die Kapuze hebt sich auch im kleinen Rundbild vom Hintergrund ab
+    head_ = Vector((gx_ + 1.97 * math.sin(math.radians(_arg("--tilt", -4.0))), gy_, 1.97))
+    for side_ in (-1, 1):
+        bpy.ops.object.light_add(type="AREA", location=(head_.x + side_ * 0.28, gy_ + 1.2, 1.95))
+        rl_ = bpy.context.object
+        rl_.data.size, rl_.data.energy, rl_.data.color = 0.12, _arg("--kante", 25.0), (0.72, 0.84, 1.0)
+        rl_.rotation_euler = (head_ - rl_.location).to_track_quat("-Z", "Y").to_euler()
+        rl_.visible_camera = False
     # ein Licht genau über der Gestalt (draußen, leicht dahinter): Kapuze und Schultern bekommen eine Kante, das Gesicht bleibt schwarz
     bpy.ops.object.light_add(type="SPOT", location=(gx_, gy_ + 0.3, 3.0))
     top_ = bpy.context.object
@@ -812,7 +839,8 @@ if SHOT == "profil":
         if o_.type == "LIGHT" and o_.data.type == "SPOT" and abs(o_.location.z - (H + 0.05)) < 0.01:
             o_.data.energy *= _arg("--fassade", 0.3)
     if bpy.data.objects.get("Ziehen"):
-        bpy.data.objects["Ziehen"].hide_render = True   # „DRÜCKEN“ läge sonst mitten auf der Brust
+        bpy.data.objects["Ziehen"].hide_render = True
+    PROFIL_PANEL = _arg("--panel", 1.0)   # sichtbare Leuchtfelder unter dem Tankdach zusätzlich dimmen (Licht bleibt)   # „DRÜCKEN“ läge sonst mitten auf der Brust
     drops = bpy.data.objects.new("Tropfen", me)
     sc.collection.objects.link(drops)
     drops.data.materials.append(WATER)
@@ -846,6 +874,9 @@ if SHOT == "profil":
     cam.data.dof.focus_distance = (Vector((0.25, D1 + 0.2, 1.97)) - cam.location).length   # scharf auf die Kapuze
     cam.data.dof.aperture_fstop = _arg("--fstop", 4.0)
     EYESHINE.node_tree.nodes["Principled BSDF"].inputs["Emission Strength"].default_value = PROFIL_AUGEN
+    sock_ = CANOPY_L.node_tree.nodes["Principled BSDF"].inputs["Emission Strength"]
+    sock_.default_value = 30.0 * PROFIL_DACH * PROFIL_PANEL
+    sock_.keyframe_insert("default_value", frame=1)
 
 sc.render.engine = "CYCLES"
 sc.cycles.device = "CPU"
@@ -864,7 +895,7 @@ sc.render.fps = FPS
 sc.frame_start, sc.frame_end = 1, N
 sc.view_settings.view_transform = "AgX"
 sc.view_settings.look = "None"
-sc.view_settings.exposure = -0.75 if SHOT == "r2" else -0.3
+sc.view_settings.exposure = -0.75 if SHOT == "r2" else (_arg("--belichtung", -0.3) if SHOT == "profil" else -0.3)
 sp.hide_render = SHOT == "r2"
 sc.render.image_settings.file_format = "PNG"
 

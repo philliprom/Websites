@@ -21,9 +21,13 @@ Die App zählt beim Tippen mit. Emojis können doppelt zählen, deshalb ist unte
 
 ## Profilbild: so entsteht es
 Blender-Szene aus Teil 1 (`nachtschicht-teil1/scene.py`, Einstellung `--shot profil`): von innen frontal auf die
-Glastür, Laden dunkel, Tankdach-Licht gedimmt, ein Licht genau über der Gestalt. Fürs Profilbild eine eigene
-Kapuzengestalt (Umhang, Kapuze mit Saum, Stofffalten über Displace-Modifier, kleine leuchtende Augen), Regentropfen
-auf der Scheibe, Schärfe auf den Augen (Blende 2,8). Der runde Kopf der Folgen-Gestalt wirkte aus der Nähe wie eine
-Spielfigur. Befehl mit allen Werten: `nachtschicht-teil1/build/profil/befehl.txt` (1080 × 1080, 80 Samples).
-Danach `profilbild.py` (vx-Umgebung): Leuchten um die Augen, kühle Farbe, Vignette, Korn, Variante mit „● REC“,
-Vorschau.
+Glastür, 65-mm-Objektiv auf Augenhöhe, Schärfe auf den Augen (Blende 2,8), Regentropfen auf der Scheibe.
+Fürs Profilbild eine eigene Kapuzengestalt (Umhang, Kapuze mit Saum, weiche Stofffalten, kleine leuchtende Augen).
+Der runde Kopf der Folgen-Gestalt wirkte aus der Nähe wie eine Spielfigur.
+Licht: Laden fast dunkel, Tankdach gedimmt, dafür heller Regen im Hintergrund und zwei kühle Kantenlichter genau
+hinter dem Kopf, dazu Stoff-Schimmer (Sheen). So bleibt die Gestalt dunkel und hebt sich trotzdem als Umriss ab.
+Was nicht funktioniert hat: mehr Gesamtlicht (Kapuze wirkt wie Plastik). Die zu 5 % deckende Scheibe aus den Folgen
+legte sich als milchiger Schleier über das Bild, deshalb ist sie hier fast ganz durchsichtig.
+Alle Werte: `nachtschicht-teil1/build/profil/befehl.txt` (1080 × 1080, 80 Samples, ca. 6–10 min auf 4 Kernen).
+Danach `profilbild.py` (vx-Umgebung): Leuchten um die Augen (auch klein sichtbar), kühle Farbe, Vignette, Korn,
+Variante mit „● REC“, Vorschau.

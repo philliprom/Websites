@@ -28,6 +28,11 @@ def blur(x, r):
 # Leuchten um helle Stellen (Augen, Dachlicht): zwei weiche Schichten, Augen leicht kühl-grünlich
 hi = np.clip((lum(a) - 0.62) / 0.38, 0, 1)[..., None] * np.array([0.86, 1.0, 0.94], dtype=np.float32)
 a = a + blur(hi, 5) * 0.55 + blur(hi, 18) * 0.45 + blur(hi, 48) * 0.25
+# Augen zusätzlich weit leuchten lassen (nur im Bereich der Augen), damit sie auch im 56-px-Rundbild zu sehen sind
+yy0, xx0 = np.mgrid[0:H, 0:W].astype(np.float32)
+near = np.exp(-(((xx0 - 0.5 * W) / (0.13 * W)) ** 2 + ((yy0 - 0.43 * H) / (0.09 * H)) ** 2))[..., None]
+eye = np.clip((lum(a) - 0.8) / 0.2, 0, 1)[..., None] * near * np.array([0.8, 1.0, 0.9], dtype=np.float32)
+a = a + blur(eye, 14) * 0.9 + blur(eye, 40) * 0.8
 # Farbe: Schwarz leicht blaugrün angehoben, sanfte S-Kurve
 lift = np.array([0.012, 0.018, 0.026], dtype=np.float32)
 a = a * (1 - lift) + lift
