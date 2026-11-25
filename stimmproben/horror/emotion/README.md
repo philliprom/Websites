@@ -19,3 +19,20 @@ Befund beim Bau: Die Auswahl in Teil 1 nahm immer die Fassung nahe der Referenzt
 die das Modell von sich aus höher sprach (109 Hz bei „Du hältst die Luft an“ und beim letzten Satz), wurden dadurch
 verworfen. Das hat die Stimme mit flach gemacht. Daraus entstand Fassung 4.
 Aufruf und Ablauf: `gefuehl.py` (Kopf der Datei).
+
+## Ergebnis (Messung, Tonhöhe je Satz in Hz)
+
+| Fassung | Stufe 0 | 0 | 1 | 1 | 2 | 2 | 3 | Sprechzeit | Tonumfang spannende Sätze |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 wie Teil 1 | 78 | 76 | 91 | 92 | 78 | 85 | 99 | 8,9 s | 8,8 Halbtöne |
+| 2 Vorlage höher | 78 | 76 | 94 | 96 | 78 | 72 | 112 | 8,9 s | 8,9 |
+| 3 nachbearbeitet | 78 | 75 | 98 | 98 | 89 | 97 | 125 | 8,5 s | 12,3 |
+| 4 ausgewählt | 78 | 76 | 96 | 95 | 70 | 77 | 99 | 9,1 s | 7,8 |
+
+- 3 hebt wie geplant stufenweise an (+1 bis +4 Halbtöne, lebendigere Satzmelodie), Stimmqualität gleich
+  (HNR 10,9 dB gegenüber 10,8 dB bei Fassung 1, keine Knackser). 2 wirkt vor allem im letzten Satz (+2 Halbtöne).
+- 4 hat nicht funktioniert: Mit der ruhigen Vorlage spricht das Modell auch unter 6 Fassungen kaum von sich aus höher
+  (Ziel 105–118 Hz, erreicht 86–101 Hz). „Schritte.“ kam dabei geflüstert heraus und wurde nur gewählt, weil eine
+  nicht messbare Tonhöhe bisher keine Strafpunkte bekam (in `engine/build_timeline.py` behoben). Fassung 4 wird deshalb
+  nicht verschickt. Die Option `pitch_up` bleibt in der Engine, hilft aber nur zusammen mit einer lebhafteren Vorlage.
+- Verschickt an den Kanalinhaber: 1, 2 und 3. Er entscheidet nach Gehör, ob 2 oder 3 für Teil 2 genommen wird.

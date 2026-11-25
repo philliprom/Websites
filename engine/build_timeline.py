@@ -170,7 +170,9 @@ def build_voxcpm(script, model_dir):
                 f, fr = T.pitch(wav, sr), T.pitch_ref(ref)
                 if fr:
                     fr = fr * 2 ** (up / 12)  # Zieltonhöhe (Referenz, bei "pitch_up" entsprechend höher)
-                dev = abs(np.log2(f / fr)) if f and fr else 0.0  # Abweichung der Tonhöhe in Oktaven
+                # Abweichung der Tonhöhe in Oktaven. Nicht messbar (geflüstert/stimmlos) zählt als Abweichung, sonst gewinnt
+                # so eine Fassung allein über die Ähnlichkeit (Stimmtest 25.11.: geflüstertes „Schritte.“ ausgewählt)
+                dev = abs(np.log2(f / fr)) if f and fr else (tol + 0.2 if fr else 0.0)
                 score = sim - 2 * e - 1.5 * max(0.0, dev - tol)
                 if best_score is None or score > best_score:
                     best, best_score = (e, wav, words, hyp), score
