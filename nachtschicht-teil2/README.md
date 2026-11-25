@@ -39,3 +39,13 @@ ihn 1 / 2 / 3,5 dB lauter. Messung Fassung A: Stufe 3 von 85–94 Hz auf 113–1
 - Die Theke verdeckt von CAM 01 aus den Boden direkt daneben: die Spuren laufen deshalb mit etwas Abstand zur Theke
   (per Strahl geprüft: alle sichtbar außer der ersten auf der Fußmatte).
 - Die runde Folgen-Gestalt wirkt aus der Nähe albern: in der Nachtsicht steht die Kapuzengestalt vom Profilbild.
+
+## Ergebnis (25.11.2026, 20:00)
+- **A:** `out/nachtschicht_teil2_a_tiktok.mp4` (60,4 s, 43 MB, −14,0 LUFS), `out/titelbild_a.png`, `out/beschreibung_a.txt`
+- **B:** `out/nachtschicht_teil2_b_tiktok.mp4` (61,0 s, 42 MB, −14,3 LUFS), `out/titelbild_b.png`, `out/beschreibung_b.txt`
+- Fassungen mit hoher Bitrate (12 Mbit/s): `out/nachtschicht_teil2_<a|b>.mp4`. Videos nicht im Repository (Größe),
+  neu erzeugen mit `assemble.py` (ca. 6 min) und ffmpeg (crf 22, maxrate 6M).
+- Rechenzeit Blender (4 Kerne, teils parallel zur Stimme): Lager 100 Bilder ≈ 45 min, Tür 97 Bilder ≈ 45 min,
+  Standbilder je 2–4 min. Wiederverwendet aus Teil 1: CAM 01 leer, CAM 03, Gestalt an der Tür.
+- Im Schnitt nachgebessert: Fußspuren werden in ihrer Form abgedunkelt (an der Tür glänzten sie nur), die
+  Lampenspiegelung im Lager gedämpft, Titelbild A näher an der Gestalt.
