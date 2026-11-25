@@ -142,11 +142,23 @@ def mix():
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-af",
                         "equalizer=f=130:t=q:w=0.8:g=2.5,equalizer=f=3500:t=q:w=1.2:g=-1.5,loudnorm=I=-16:TP=-1.5:LRA=11",
                         "-ar", "44100", "-c:a", "aac", "-b:a", "160k", os.path.join(HERE, name + ".m4a")], check=True)
-        rows[name] = [f0_median(p, sr) for p in parts] + [sum(len(p) for p in parts) / sr]
-    print("Tonhöhe je Satz (Hz) und Sprechzeit gesamt:")
+        rows[name] = [f0_median(p, sr) for p in parts] + [sum(len(p) for p in parts) / sr, melodie(parts, sr)]
+    print("Tonhöhe je Satz (Hz), Sprechzeit gesamt, Tonumfang in den spannenden Sätzen (Halbtöne, 10.–90. Perzentil):")
     print("  Stufe:              " + " ".join(f"{lvl:>5d}" for _, lvl, _ in SENTENCES))
     for name, r_ in rows.items():
-        print(f"  {name[:20]:20s} " + " ".join(f"{v:5.0f}" for v in r_[:-1]) + f"   {r_[-1]:.1f} s")
+        print(f"  {name[:20]:20s} " + " ".join(f"{v:5.0f}" for v in r_[:-2]) + f"   {r_[-2]:.1f} s   {r_[-1]:.1f} HT")
+
+
+def melodie(parts, sr):
+    """Tonumfang (Halbtöne) aller Sätze ab Stufe 1 zusammen: wie lebendig die Satzmelodie ist."""
+    fs = []
+    for p, (_, lvl, _) in zip(parts, SENTENCES):
+        if lvl:
+            snd = parselmouth.Sound(np.asarray(p, dtype=np.float64), sampling_frequency=sr)
+            f = snd.to_pitch(0.01, 60, 300).selected_array["frequency"]
+            fs += list(f[f > 0])
+    q = np.percentile(fs, [10, 90]) if fs else [1, 1]
+    return float(12 * np.log2(q[1] / q[0]))
 
 
 if __name__ == "__main__":
