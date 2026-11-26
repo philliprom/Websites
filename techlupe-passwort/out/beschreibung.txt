@@ -1,0 +1,18 @@
+TECH-LUPE – WIE WEBSITES DEIN PASSWORT SPEICHERN · TEXTE ZUM POSTEN
+=================================================================
+
+BESCHREIBUNG (Caption):
+Die Website kennt dein Passwort gar nicht 🤯 Sie speichert nur einen Hash – und warum ein Datenleck trotzdem gefährlich ist. 🔐 #informatik #passwort #itsicherheit #lernenmittiktok #techlupe
+
+ERSTER KOMMENTAR:
+Welches Thema soll die Tech-Lupe als Nächstes erklären? 👇
+
+FAKTEN (für Rückfragen in den Kommentaren):
+- Seriöse Dienste speichern einen Hash (Einwegfunktion), keine Passwörter. Beim Login wird verglichen.
+- SHA-256 von „passwort123“ = 55789e79eca2f9a1e0786388b869f34f28a64ccbc37eb85ceeb031fd9677e06e
+- Schnelle Verfahren: eine RTX 4090 schafft laut hashcat-Benchmark ca. 22 Mrd. SHA-256-Versuche pro Sekunde.
+  Gute Dienste nutzen langsame Verfahren mit Salt (bcrypt, Argon2): dort nur Tausende pro Sekunde.
+- Empfehlung (BSI): lang, für jeden Dienst ein eigenes Passwort, Passwort-Manager, Zwei-Faktor-Anmeldung.
+
+POSTEN
+- „KI-generierte Inhalte“ einschalten (Stimme ist ein KI-Klon).

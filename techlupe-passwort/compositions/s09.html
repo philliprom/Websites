@@ -1,0 +1,37 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    
+@font-face { font-family: 'TLNunito'; src: url('assets/fonts/TLNunito-900.woff2') format('woff2'); font-weight: 900; }
+@font-face { font-family: 'TLFredoka'; src: url('assets/fonts/TLFredoka-700.woff2') format('woff2'); font-weight: 700; }
+@font-face { font-family: 'TLMono'; src: url('assets/fonts/TLMono-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'TLEmoji'; src: url('assets/fonts/TLEmoji.ttf') format('truetype'); }
+
+.abs { position: absolute; }
+.card { position: absolute; background: #131B36; border: 3px solid rgba(255,255,255,.10); border-radius: 34px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.lbl { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #8A93B2; font-size: 34px; letter-spacing: 2px; }
+.big { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #F2F5FF; }
+.mono { font-family: 'TLMono', monospace; font-weight: 700; }
+.cy { color: #3DDCFF; } .ye { color: #FFC83A; } .rd { color: #FF4B5C; } .gr { color: #3DFF9A; } .mu { color: #8A93B2; }
+.emo { font-family: 'TLEmoji', sans-serif; }
+.stamp { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #fff; background: #FF4B5C; border: 8px solid #fff;
+  border-radius: 20px; padding: 6px 30px 12px; font-size: 64px; white-space: nowrap; }
+
+    
+  </style>
+  <div id="root" data-composition-id="s09" data-width="1080" data-height="1920">
+    <div id="s09-wrap" class="clip" data-start="0" data-duration="6.02" style="position:absolute;inset:0">
+    <div id="s09-i1" class="card" style="position:absolute;left:150px;top:300px;width:600px;height:170px"><div class="big gr" style="position:absolute;left:30px;top:16px;font-size:46px">✔ LANG</div><div class="mono" style="position:absolute;left:30px;top:90px;font-size:32px;color:#F2F5FF">kaffee-regen-tiger-lampe</div></div>
+    <div id="s09-i2" class="card" style="position:absolute;left:150px;top:500px;width:600px;height:220px"><div class="big gr" style="position:absolute;left:30px;top:16px;font-size:46px">✔ JEDE SEITE EIGENES</div><div class="mono" style="position:absolute;left:30px;top:86px;font-size:28px;line-height:1.45;color:#F2F5FF">📧 h7#Kq…  🛒 m2!Zx…<br>💬 Tr9$pa…  🏦 V4%dLw…</div></div>
+    <div id="s09-vault" class="" style="position:absolute;left:150px;top:760px"><div style="width:600px;height:200px;border-radius:30px;background:#2A2150;border:6px solid #B79CFF;display:flex;align-items:center;justify-content:center;gap:22px"><span class="emo" style="font-size:90px">🔐</span><span class="big" style="font-size:52px;color:#fff;line-height:1.05">PASSWORT-<br>MANAGER</span></div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s09-i1", {"opacity": 0, "y": 20, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.4, "ease": "expo.out"}, 0.000);
+    tl.fromTo("#s09-i2", {"opacity": 0, "y": 20, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.4, "ease": "expo.out"}, 1.302);
+    tl.fromTo("#s09-vault", {"opacity": 0, "y": 40, "scale": 0.85, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.5, "ease": "expo.out"}, 3.179);
+    window.__timelines["s09"] = tl;
+  </script>
+</template>

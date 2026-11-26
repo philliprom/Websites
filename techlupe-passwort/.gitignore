@@ -1,0 +1,8 @@
+node_modules/
+build/
+.hyperframes/
+assets/mix.wav
+assets/fonts/TLEmoji.ttf
+out/*.mp4
+*.log
+__pycache__/

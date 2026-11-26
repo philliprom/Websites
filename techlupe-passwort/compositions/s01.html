@@ -1,0 +1,66 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    
+@font-face { font-family: 'TLNunito'; src: url('assets/fonts/TLNunito-900.woff2') format('woff2'); font-weight: 900; }
+@font-face { font-family: 'TLFredoka'; src: url('assets/fonts/TLFredoka-700.woff2') format('woff2'); font-weight: 700; }
+@font-face { font-family: 'TLMono'; src: url('assets/fonts/TLMono-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'TLEmoji'; src: url('assets/fonts/TLEmoji.ttf') format('truetype'); }
+
+.abs { position: absolute; }
+.card { position: absolute; background: #131B36; border: 3px solid rgba(255,255,255,.10); border-radius: 34px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.lbl { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #8A93B2; font-size: 34px; letter-spacing: 2px; }
+.big { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #F2F5FF; }
+.mono { font-family: 'TLMono', monospace; font-weight: 700; }
+.cy { color: #3DDCFF; } .ye { color: #FFC83A; } .rd { color: #FF4B5C; } .gr { color: #3DFF9A; } .mu { color: #8A93B2; }
+.emo { font-family: 'TLEmoji', sans-serif; }
+.stamp { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #fff; background: #FF4B5C; border: 8px solid #fff;
+  border-radius: 20px; padding: 6px 30px 12px; font-size: 64px; white-space: nowrap; }
+
+    
+  </style>
+  <div id="root" data-composition-id="s01" data-width="1080" data-height="1920">
+    <div id="s01-wrap" class="clip" data-start="0" data-duration="2.74" style="position:absolute;inset:0">
+    <div id="s01-login" class="card" style="position:absolute;left:150px;top:300px;width:600px;height:330px">
+  <div class="lbl" style="position:absolute;left:36px;top:26px">🌐 meinshop.de · ANMELDEN</div>
+  <div class="mono mu" style="position:absolute;left:36px;top:96px;font-size:30px">E-Mail</div>
+  <div class="mono" style="position:absolute;left:36px;top:134px;width:528px;height:62px;border-radius:14px;background:#0B1020;color:#F2F5FF;font-size:32px;line-height:62px;padding-left:20px">lisa@mail.de</div>
+  <div class="mono mu" style="position:absolute;left:36px;top:212px;font-size:30px">Passwort</div>
+  <div style="position:absolute;left:36px;top:250px;width:528px;height:62px;border-radius:14px;background:#0B1020"></div></div>
+    <div id="s01-dot0" class="mono" style="position:absolute;left:206px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot1" class="mono" style="position:absolute;left:236px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot2" class="mono" style="position:absolute;left:266px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot3" class="mono" style="position:absolute;left:296px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot4" class="mono" style="position:absolute;left:326px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot5" class="mono" style="position:absolute;left:356px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot6" class="mono" style="position:absolute;left:386px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot7" class="mono" style="position:absolute;left:416px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot8" class="mono" style="position:absolute;left:446px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-dot9" class="mono" style="position:absolute;left:476px;top:552px;font-size:44px;color:#F2F5FF;opacity:0">•</div>
+    <div id="s01-db" class="card" style="position:absolute;left:150px;top:670px;width:600px;height:330px">
+  <div class="lbl" style="position:absolute;left:36px;top:26px">🗄️ DATENBANK</div>
+  <div class="mono mu" style="position:absolute;left:36px;top:92px;font-size:28px">nutzer</div>
+  <div class="mono mu" style="position:absolute;left:230px;top:92px;font-size:28px">passwort?</div>
+  <div class="mono" style="position:absolute;left:36px;top:138px;font-size:34px;color:#F2F5FF">lisa</div>
+  <div class="mono ye" style="position:absolute;left:230px;top:138px;font-size:27px;line-height:1.25">55789e79eca2f9a1<br>e0786388b869f34f<br>28a64ccbc37eb85c…</div></div>
+    <div id="s01-stamp" class="stamp" data-layout-allow-occlusion data-layout-allow-overlap data-layout-allow-overflow style="position:absolute;left:200px;top:610px">KENNT ES NICHT</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.set("#s01-dot0", {"opacity": 1}, 0.050);
+    tl.set("#s01-dot1", {"opacity": 1}, 0.110);
+    tl.set("#s01-dot2", {"opacity": 1}, 0.170);
+    tl.set("#s01-dot3", {"opacity": 1}, 0.230);
+    tl.set("#s01-dot4", {"opacity": 1}, 0.290);
+    tl.set("#s01-dot5", {"opacity": 1}, 0.350);
+    tl.set("#s01-dot6", {"opacity": 1}, 0.410);
+    tl.set("#s01-dot7", {"opacity": 1}, 0.470);
+    tl.set("#s01-dot8", {"opacity": 1}, 0.530);
+    tl.set("#s01-dot9", {"opacity": 1}, 0.590);
+    tl.fromTo("#s01-db", {"scale": 1.0}, {"scale": 1.03, "duration": 0.5, "ease": "power2.out"}, 0.000);
+    tl.fromTo("#s01-stamp", {"opacity": 0, "scale": 2.2, "rotation": -7}, {"opacity": 1, "scale": 1, "rotation": -7, "duration": 0.32, "ease": "back.out(1.6)"}, 1.439);
+    window.__timelines["s01"] = tl;
+  </script>
+</template>

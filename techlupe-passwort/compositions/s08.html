@@ -1,0 +1,63 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    
+@font-face { font-family: 'TLNunito'; src: url('assets/fonts/TLNunito-900.woff2') format('woff2'); font-weight: 900; }
+@font-face { font-family: 'TLFredoka'; src: url('assets/fonts/TLFredoka-700.woff2') format('woff2'); font-weight: 700; }
+@font-face { font-family: 'TLMono'; src: url('assets/fonts/TLMono-Bold.ttf') format('truetype'); font-weight: 700; }
+@font-face { font-family: 'TLEmoji'; src: url('assets/fonts/TLEmoji.ttf') format('truetype'); }
+
+.abs { position: absolute; }
+.card { position: absolute; background: #131B36; border: 3px solid rgba(255,255,255,.10); border-radius: 34px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+.lbl { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #8A93B2; font-size: 34px; letter-spacing: 2px; }
+.big { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #F2F5FF; }
+.mono { font-family: 'TLMono', monospace; font-weight: 700; }
+.cy { color: #3DDCFF; } .ye { color: #FFC83A; } .rd { color: #FF4B5C; } .gr { color: #3DFF9A; } .mu { color: #8A93B2; }
+.emo { font-family: 'TLEmoji', sans-serif; }
+.stamp { font-family: 'TLFredoka', sans-serif; font-weight: 700; color: #fff; background: #FF4B5C; border: 8px solid #fff;
+  border-radius: 20px; padding: 6px 30px 12px; font-size: 64px; white-space: nowrap; }
+
+    
+  </style>
+  <div id="root" data-composition-id="s08" data-width="1080" data-height="1920">
+    <div id="s08-wrap" class="clip" data-start="0" data-duration="6.43" style="position:absolute;inset:0">
+    <div id="s08-pw" class="card" style="position:absolute;left:200px;top:300px;width:500px;height:120px"><div class="mono" style="position:absolute;inset:0;text-align:center;line-height:114px;font-size:52px;color:#F2F5FF">hallo1</div></div>
+    <div id="s08-tim" class="big rd" style="position:absolute;left:120px;top:450px;width:660px;text-align:center;font-size:40px">⏱ GEKNACKT IN UNTER 1 SEKUNDE</div>
+    <div id="s08-app0" class="" style="position:absolute;left:130px;top:600px"><div style="width:150px;height:190px;border-radius:28px;background:#131B36;border:3px solid rgba(255,255,255,.12);text-align:center"><div class="emo" style="font-size:66px;padding-top:18px">📧</div><div class="lbl" style="font-size:28px;margin-top:6px;color:#F2F5FF">MAIL</div></div></div>
+    <div id="s08-lock0" class="emo" style="position:absolute;left:180px;top:810px;font-size:56px">🔒</div>
+    <div id="s08-unl0" class="emo" style="position:absolute;left:180px;top:810px;font-size:56px;opacity:0">🔓</div>
+    <div id="s08-app1" class="" style="position:absolute;left:295px;top:600px"><div style="width:150px;height:190px;border-radius:28px;background:#131B36;border:3px solid rgba(255,255,255,.12);text-align:center"><div class="emo" style="font-size:66px;padding-top:18px">🛒</div><div class="lbl" style="font-size:28px;margin-top:6px;color:#F2F5FF">SHOP</div></div></div>
+    <div id="s08-lock1" class="emo" style="position:absolute;left:345px;top:810px;font-size:56px">🔒</div>
+    <div id="s08-unl1" class="emo" style="position:absolute;left:345px;top:810px;font-size:56px;opacity:0">🔓</div>
+    <div id="s08-app2" class="" style="position:absolute;left:460px;top:600px"><div style="width:150px;height:190px;border-radius:28px;background:#131B36;border:3px solid rgba(255,255,255,.12);text-align:center"><div class="emo" style="font-size:66px;padding-top:18px">💬</div><div class="lbl" style="font-size:28px;margin-top:6px;color:#F2F5FF">CHAT</div></div></div>
+    <div id="s08-lock2" class="emo" style="position:absolute;left:510px;top:810px;font-size:56px">🔒</div>
+    <div id="s08-unl2" class="emo" style="position:absolute;left:510px;top:810px;font-size:56px;opacity:0">🔓</div>
+    <div id="s08-app3" class="" style="position:absolute;left:625px;top:600px"><div style="width:150px;height:190px;border-radius:28px;background:#131B36;border:3px solid rgba(255,255,255,.12);text-align:center"><div class="emo" style="font-size:66px;padding-top:18px">🏦</div><div class="lbl" style="font-size:28px;margin-top:6px;color:#F2F5FF">BANK</div></div></div>
+    <div id="s08-lock3" class="emo" style="position:absolute;left:675px;top:810px;font-size:56px">🔒</div>
+    <div id="s08-unl3" class="emo" style="position:absolute;left:675px;top:810px;font-size:56px;opacity:0">🔓</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s08-pw", {"opacity": 0, "y": 20, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.35, "ease": "expo.out"}, 0.000);
+    tl.fromTo("#s08-tim", {"opacity": 0, "y": 10, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.3, "ease": "expo.out"}, 1.645);
+    tl.fromTo("#s08-app0", {"opacity": 0, "y": 30, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.35, "ease": "expo.out"}, 3.163);
+    tl.fromTo("#s08-lock0", {"opacity": 0, "y": 10, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.3, "ease": "expo.out"}, 3.263);
+    tl.fromTo("#s08-lock0", {"opacity": 1}, {"opacity": 0, "duration": 0.08, "ease": "power2.in", "immediateRender": false}, 4.608);
+    tl.fromTo("#s08-unl0", {"opacity": 0, "scale": 2.2, "rotation": 0}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.32, "ease": "back.out(1.6)"}, 4.608);
+    tl.fromTo("#s08-app1", {"opacity": 0, "y": 30, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.35, "ease": "expo.out"}, 3.243);
+    tl.fromTo("#s08-lock1", {"opacity": 0, "y": 10, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.3, "ease": "expo.out"}, 3.343);
+    tl.fromTo("#s08-lock1", {"opacity": 1}, {"opacity": 0, "duration": 0.08, "ease": "power2.in", "immediateRender": false}, 4.808);
+    tl.fromTo("#s08-unl1", {"opacity": 0, "scale": 2.2, "rotation": 0}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.32, "ease": "back.out(1.6)"}, 4.808);
+    tl.fromTo("#s08-app2", {"opacity": 0, "y": 30, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.35, "ease": "expo.out"}, 3.323);
+    tl.fromTo("#s08-lock2", {"opacity": 0, "y": 10, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.3, "ease": "expo.out"}, 3.423);
+    tl.fromTo("#s08-lock2", {"opacity": 1}, {"opacity": 0, "duration": 0.08, "ease": "power2.in", "immediateRender": false}, 5.008);
+    tl.fromTo("#s08-unl2", {"opacity": 0, "scale": 2.2, "rotation": 0}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.32, "ease": "back.out(1.6)"}, 5.008);
+    tl.fromTo("#s08-app3", {"opacity": 0, "y": 30, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.35, "ease": "expo.out"}, 3.403);
+    tl.fromTo("#s08-lock3", {"opacity": 0, "y": 10, "scale": 0.9, "filter": "blur(6px)"}, {"opacity": 1, "y": 0, "scale": 1, "filter": "blur(0px)", "duration": 0.3, "ease": "expo.out"}, 3.503);
+    tl.fromTo("#s08-lock3", {"opacity": 1}, {"opacity": 0, "duration": 0.08, "ease": "power2.in", "immediateRender": false}, 5.208);
+    tl.fromTo("#s08-unl3", {"opacity": 0, "scale": 2.2, "rotation": 0}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.32, "ease": "back.out(1.6)"}, 5.208);
+    window.__timelines["s08"] = tl;
+  </script>
+</template>
