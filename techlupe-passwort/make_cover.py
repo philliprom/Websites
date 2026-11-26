@@ -15,11 +15,14 @@ if not os.path.exists(tmp):
     f.save(tmp)
 img = Image.open(sys.argv[1]).convert("RGB").resize((1080, 1920))
 d = ImageDraw.Draw(img)
-big = ImageFont.truetype(tmp, 132)
-for y, txt, col in ((330, "SIE KENNT DEIN", (255, 255, 255)), (470, "PASSWORT NICHT!", (255, 75, 92))):
+lines = ((330, "SIE KENNT DEIN", (255, 255, 255)), (465, "PASSWORT NICHT!", (255, 75, 92)))
+size = 140
+while size > 60 and max(ImageFont.truetype(tmp, size).getlength(t) for _, t, _ in lines) + 40 > 960:   # passt in 960 px (mit Kontur)
+    size -= 4
+big = ImageFont.truetype(tmp, size)
+for y, txt, col in lines:
     d.text((540, y), txt, font=big, fill=col, anchor="mm", stroke_width=20, stroke_fill=(11, 16, 34))
 pill = ImageFont.truetype(tmp, 52)
-txt = "…NUR EINEN HASH. 🔐"
 txt = "…NUR EINEN HASH."
 w = d.textlength(txt, font=pill)
 x0, y0 = 540 - w / 2 - 36, 1150

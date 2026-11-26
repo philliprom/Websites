@@ -330,7 +330,9 @@ s.pop_in(logo, 0.0, 0.5, 30, 0.8)
 fol = s.el("fol", '<div style="display:inline-block;background:#FF4B5C;color:#fff;border-radius:999px;padding:18px 54px" class="big">+ FOLGEN</div>',
            "left:120px;top:690px;width:660px;text-align:center;font-size:56px")
 s.slam(fol, 0.45, 0)
-q = card(s, "q", 150, 840, 600, 150, '<div class="big" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:40px;color:#F2F5FF;line-height:1.15">Welches Thema als Nächstes?<br><span class="ye">Schreib’s in die Kommentare 👇</span></div>')
+q = card(s, "q", 150, 840, 600, 150, '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">'
+         '<div class="big" style="text-align:center;font-size:40px;color:#F2F5FF;line-height:1.2">Welches Thema als Nächstes?<br>'
+         '<span class="ye">Schreib’s in die Kommentare <span class="emo">👇</span></span></div></div>')
 s.pop_in(q, 0.9, 0.45, 30)
 s.write()
 
