@@ -1,7 +1,7 @@
 {
   "title": "Nachtschicht – Teil 1 (kurz)",
-  "lead_in": 0.35,
-  "tail": 1.6,
+  "lead_in": 1.05,
+  "tail": 2.4,
   "default_gap": 0.25,
   "tts": {
     "engine": "qwen",

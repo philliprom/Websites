@@ -50,12 +50,12 @@ add("SH3", t3, t4, "cctv", src="t1r3", frm=JUMP + 12, loop=True, cam="CAM 01  EI
     zoom=[t3, t4, 1.3, 1.85])
 add("SH4", t4, t5, "phone", lock="phone_bg", notifs=[["notif1", capt("k07", 1) - 0.15, 700]], buzz=[st("k07") + 0.05])
 add("SH5", t5, D, "decision", base="cctv", src="t1r3", frm=JUMP + 20, loop=True, cam="CAM 01  EINGANG", clock=C(2, 47, 20),
-    dim=0.5, cards=["cardA", "cardB"], card_t=[st("k08") + 0.15, st("k08") + 0.55], end=en("k09") + 0.4, end_text="TEIL 2 FOLGT")
-ev["hook_knocks"] = [0.32, 0.6, 0.88]
+    dim=0.5, cards=["cardA", "cardB"], card_t=[st("k08") + 0.15, st("k08") + 0.55], end=en("k09") + 1.0, end_text="TEIL 2 FOLGT")
+ev["hook_knocks"] = [0.3, 0.58, 0.86]
 ev["jump"] = 0.2
 ev["gone"] = gone_at
 ev["door_knocks"] = [t3 + 0.25, t3 + 0.53, t3 + 0.81]
-ev["final_knock"] = en("k09") + 0.4
+ev["final_knock"] = en("k09") + 1.0
 json.dump({"duration": r(D), "fps_src": 10, "events": ev, "shots": shots}, open(os.path.join(B, "edl.json"), "w"), indent=1, ensure_ascii=False)
 print(f"Kurz: {D:.1f} s")
 for s in shots:

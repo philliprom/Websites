@@ -21,7 +21,7 @@ S = [
     ("k09", "Schreib A oder B.", ["SCHREIB ^A ODER ^B."], 0.25, 0),
 ]
 segments = [{"id": i, "say": say, "caps": caps, "gap": gap, "sfx": [], "spannung": sp} for i, say, caps, gap, sp in S]
-script = {"title": "Nachtschicht – Teil 1 (kurz)", "lead_in": 0.35, "tail": 1.6, "default_gap": 0.25,
+script = {"title": "Nachtschicht – Teil 1 (kurz)", "lead_in": 1.05, "tail": 2.4, "default_gap": 0.25,
           "tts": {"engine": "qwen", "voice": "../nachtschicht-teil1/voice/horror.wav", "voice_text": "../nachtschicht-teil1/voice/horror.txt",
                   "tries": 3, "max_wer": 0.1, "candidates": 3, "temperature": 0.7, "max_pause": 0.22},
           "segments": segments}

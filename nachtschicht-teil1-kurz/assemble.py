@@ -355,6 +355,14 @@ def render_note(s, t):
     sc *= 1 + 0.012 * math.sin(t * 0.7)
     cx += 3 * math.sin(1.3 * t) + 2 * math.sin(2.9 * t + 1)
     cy += 3 * math.cos(1.1 * t) + 2 * math.sin(2.3 * t)
+    A = A.copy()
+    _, BOXES = note_data()
+    for kt, name in keys:                                                 # Textmarker über die Regel (wie in Teil 1)
+        if name.startswith("Regel") and t >= kt + 0.2:
+            p = min(1.0, (t - kt - 0.2) / 0.45)
+            x0, y0, x1, y1 = BOXES[name]
+            xe = int(x0 - 6 + (x1 - x0 + 12) * p)
+            A[y0 - 3:y1 + 3, x0 - 6:xe] *= np.array([1.0, 0.9, 0.35], dtype=np.float32) * 0.6 + 0.4
     im = Image.fromarray((A * 255).astype(np.uint8))
     sc = max(sc, W / im.width * 1.01, H / im.height * 1.01)      # Ausschnitt nie größer als das Bild
     sw, sh_ = W / sc, H / sc
