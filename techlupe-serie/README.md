@@ -30,3 +30,11 @@ Also Themen, die jeden betreffen: KI, Passwörter/Sicherheit, Internet, Datensch
 Themen-Ideen (relevant): Wie Passwörter gespeichert werden und warum Leaks gefährlich sind (Hashing) · Was HTTPS/das Schloss
 wirklich schützt · Was passiert, wenn du google.de eintippst (DNS, IP, Pakete) · Wie Phishing-Links tricksen ·
 Was Cookies über dich wissen · Warum KI-Bilder erkennbar sind (oder nicht) · Was ein Algorithmus ist (TikTok-Feed).
+
+## ElevenLabs (Stand 26.11.2026)
+- Stimme laut Kanalinhaber: **George** (Voice-ID `JBFqnCBsd6RMkjVDRZzb`), Modell `eleven_multilingual_v2`, speed 1,1.
+- Schlüssel liegen NICHT im Repository; sie werden über das sichere Formular als Netzwerk-Geheimnis der Umgebung
+  gespeichert (Header `xi-api-key` für api.elevenlabs.io).
+- 26.11.: Konto „neu“ (kostenlos, 2.866 Zeichen frei) lehnt jede Erzeugung ab: „Unusual activity … Free Tier access
+  has been disabled“ (laut ElevenLabs ausgelöst durch Proxy/VPN oder mehrere kostenlose Konten). Nutzbar nur mit
+  bezahltem Tarif. Ohnehin gilt im kostenlosen Tarif: keine kommerzielle Nutzung, „elevenlabs.io“ muss im Titel stehen.
