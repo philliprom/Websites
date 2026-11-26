@@ -6,3 +6,5 @@ assets/fonts/TLEmoji.ttf
 out/*.mp4
 *.log
 __pycache__/
+out/.*hf-transaction*/
+out/work-*/
