@@ -1,0 +1,114 @@
+{
+  "title": "Nachtschicht – Teil 1 (kurz)",
+  "lead_in": 0.35,
+  "tail": 1.6,
+  "default_gap": 0.25,
+  "tts": {
+    "engine": "qwen",
+    "voice": "../nachtschicht-teil1/voice/horror.wav",
+    "voice_text": "../nachtschicht-teil1/voice/horror.txt",
+    "tries": 3,
+    "max_wer": 0.1,
+    "candidates": 3,
+    "temperature": 0.7,
+    "max_pause": 0.22
+  },
+  "segments": [
+    {
+      "id": "k01",
+      "say": "Er klopft dreimal.",
+      "caps": [
+        "ER KLOPFT ^DREIMAL."
+      ],
+      "gap": 0.0,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "k02",
+      "say": "Regel vier vom Chef: Mach niemals auf.",
+      "caps": [
+        "REGEL 4 VOM CHEF:",
+        "MACH ^NIEMALS AUF."
+      ],
+      "gap": 0.35,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "k03",
+      "say": "Egal, wer es sagt.",
+      "caps": [
+        "„^EGAL, ^WER ^ES ^SAGT.“"
+      ],
+      "gap": 0.2,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "k04",
+      "say": "Vor fünf Minuten stand er noch draußen. Im Regen.",
+      "caps": [
+        "VOR FÜNF MINUTEN",
+        "STAND ER NOCH ^DRAUSSEN.",
+        "IM REGEN."
+      ],
+      "gap": 0.35,
+      "sfx": [],
+      "spannung": 1
+    },
+    {
+      "id": "k05",
+      "say": "Dann war er weg.",
+      "caps": [
+        "DANN WAR ER ^WEG."
+      ],
+      "gap": 0.2,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "k06",
+      "say": "Jetzt steht er an deiner Tür.",
+      "caps": [
+        "JETZT STEHT ER",
+        "AN ^DEINER ^TÜR."
+      ],
+      "gap": 0.3,
+      "sfx": [],
+      "spannung": 3
+    },
+    {
+      "id": "k07",
+      "say": "Und dein Chef schreibt: Mach die Tür auf. Sofort.",
+      "caps": [
+        "UND DEIN CHEF SCHREIBT:",
+        "„MACH DIE TÜR AUF.",
+        "^SOFORT.“"
+      ],
+      "gap": 0.45,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "k08",
+      "say": "Machst du auf?",
+      "caps": [
+        "MACHST DU ^AUF?"
+      ],
+      "gap": 0.35,
+      "sfx": [],
+      "spannung": 2
+    },
+    {
+      "id": "k09",
+      "say": "Schreib A oder B.",
+      "caps": [
+        "SCHREIB ^A ODER ^B."
+      ],
+      "gap": 0.25,
+      "sfx": [],
+      "spannung": 0
+    }
+  ]
+}
