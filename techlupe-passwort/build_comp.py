@@ -221,6 +221,7 @@ s = Scene("s04")
 hb = card(s, "h", 150, 300, 600, 160, f'<div class="mono ye" style="position:absolute;left:34px;top:24px;font-size:32px;line-height:1.3">{hexlines(HASH[:32], 16)}…</div>')
 s.pop_in(hb, 0.0, 0.35, 20)
 back = s.el("back", "↑ ZURÜCK ZU „passwort123“?", "left:120px;top:500px;width:660px;text-align:center;font-size:40px;color:#F2F5FF", "big")
+s.html[-1] = s.html[-1].replace('class="big"', 'class="big" data-layout-allow-overlap', 1)   # das ✕ liegt absichtlich darüber
 s.pop_in(back, 0.15)
 x_ = s.el("x", "✕", "left:375px;top:430px;font-size:190px;color:#FF4B5C", "big")
 s.slam(x_, s.t(capt("s04", 1)) - 0.05, 0)
@@ -246,7 +247,7 @@ s.write()
 
 # s06 Datenleck: Hashes fliegen raus, Wortliste wird durchprobiert
 s = Scene("s06")
-rows = "".join(f'<div class="mono ye" style="font-size:26px;line-height:44px">{u:<6} {"".join(R.choice(HEX) for _ in range(20))}…</div>' for u in ("lisa", "tom", "ali", "mia", "ben"))
+rows = "".join(f'<div class="mono ye" style="font-size:28px;line-height:46px">{u:<6} {"".join(R.choice(HEX) for _ in range(20))}…</div>' for u in ("lisa", "tom", "ali", "mia", "ben"))
 db = card(s, "db", 150, 300, 600, 330, f'<div class="lbl" style="position:absolute;left:30px;top:20px">🗄️ DATENBANK</div><div style="position:absolute;left:30px;top:70px">{rows}</div>')
 s.pop_in(db, 0.0, 0.3, 10)
 s.tw(db, {"x": 0, "rotation": 0}, {"x": 14, "rotation": -2, "duration": 0.06, "ease": "none", "yoyo": True, "repeat": 5}, 0.35)
@@ -275,8 +276,8 @@ fans = "".join(f'<g transform="translate({cx},70)"><circle r="52" fill="#0B1020"
 gpu = s.el("gpu", f'<svg width="500" height="160" viewBox="0 0 500 160"><rect x="4" y="4" width="492" height="132" rx="20" fill="#131B36" stroke="rgba(255,255,255,.2)" stroke-width="4"/>{fans}<rect x="30" y="136" width="300" height="16" fill="#FFC83A"/></svg>',
             "left:200px;top:320px")
 s.pop_in(gpu, 0.0, 0.45, 30)
-for k, cx in enumerate((110, 250, 390)):
-    s.tw(f"#s07-fan{k}", {"rotation": 0, "svgOrigin": f"{cx} 70"}, {"rotation": 1440, "duration": max(1.0, s.dur), "ease": "none", "svgOrigin": f"{cx} 70"}, 0.0)
+for k in range(3):     # Flügel sind symmetrisch: Mitte der Flügelgruppe = Lüftermitte
+    s.tw(f"#s07-fan{k}", {"rotation": 0, "transformOrigin": "50% 50%"}, {"rotation": 1440, "duration": max(1.0, s.dur), "ease": "none", "transformOrigin": "50% 50%"}, 0.0)
 vals = [int(22_000_000_000 * (j / 23) ** 3) for j in range(24)]
 texts = [f"{v:,}".replace(",", ".") for v in vals]
 tc = s.t(capt("s07", 1)) - 0.2

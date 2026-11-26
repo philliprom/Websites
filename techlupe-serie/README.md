@@ -26,6 +26,7 @@ Also Themen, die jeden betreffen: KI, Passwörter/Sicherheit, Internet, Datensch
 | 3 | `techlupe-ki/` | So funktioniert ChatGPT wirklich (nächstes Wort, Wahrscheinlichkeiten, passend ≠ wahr, selbst prüfen) | 29,6 s | fertig 17.11. |
 | 4 | `techlupe-switch/` | Hub vs. Switch (Hub kopiert an alle, Kollision, Switch lernt MAC-Adressen, gezielt + gleichzeitig, Router) | 52,9 s | fertig 18.11. (Wunsch des Kanalinhabers, bis 60 s erlaubt) |
 | 5 | `techlupe-ipv6/` | IPv4 vs. IPv6 (Europa seit 25.11.2019 ohne freie IPv4-Adressen, Hausnummer, 4 Zahlen 0–255, 32 Bit = 4,3 Mrd, mehr Geräte als Adressen, NAT im Router, IPv6 128 Bit = 340 Sextillionen, Sandkörner, rund 50 % der Google-Zugriffe) | 52,1 s | fertig 24.11. (Wunsch des Kanalinhabers), −14,4 LUFS, sichere Zonen frei |
+| 6 | `techlupe-passwort/` | Wie Websites dein Passwort speichern (Hash statt Passwort, Einbahnstraße, Login-Vergleich, Datenleck + Wortliste, Grafikkarte: Milliarden Versuche/s bei schnellen Verfahren, überall gleiches Passwort = alle Konten offen, Passwort-Manager) | 44,0 s | 26.11., **erste Folge mit HyperFrames** statt eigener Engine |
 
 Themen-Ideen (relevant): Wie Passwörter gespeichert werden und warum Leaks gefährlich sind (Hashing) · Was HTTPS/das Schloss
 wirklich schützt · Was passiert, wenn du google.de eintippst (DNS, IP, Pakete) · Wie Phishing-Links tricksen ·
@@ -38,3 +39,15 @@ Was Cookies über dich wissen · Warum KI-Bilder erkennbar sind (oder nicht) · 
 - 26.11.: Konto „neu“ (kostenlos, 2.866 Zeichen frei) lehnt jede Erzeugung ab: „Unusual activity … Free Tier access
   has been disabled“ (laut ElevenLabs ausgelöst durch Proxy/VPN oder mehrere kostenlose Konten). Nutzbar nur mit
   bezahltem Tarif. Ohnehin gilt im kostenlosen Tarif: keine kommerzielle Nutzung, „elevenlabs.io“ muss im Titel stehen.
+
+## HyperFrames (ab Folge 6, Test 26.11.2026)
+HeyGens Open-Source-Werkzeug „HTML → Video“ (`npm i hyperframes@0.9.98` im Projektordner, Node 22 + ffmpeg).
+Telemetrie abgeschaltet (`npx hyperframes telemetry disable`). Ablauf in `techlupe-passwort/`:
+`make_script.py` → Stimme wie immer (`engine/build_timeline.py`, Qwen-Klon Thorsten A) → Musik/Geräusche wie immer
+(`engine/audio.py`) → `build_comp.py` (vx; erzeugt `index.html` + je Szene `compositions/sNN.html` mit eigener
+GSAP-Zeitleiste, Untertitel als eigene Spur `compositions/caps.html`) → `npx hyperframes check` → `snapshot` → `render`.
+- Vorteile: weiche Animationen (GSAP), eingebaute Prüfung (Überlappung, Kontrast, Lesezeit, sichere Zonen 9:16),
+  Probebilder mit Kontaktabzug, gleiche Ausgabe bei jedem Rendern.
+- Was man beachten muss: alle Elemente absolut positionieren (sonst rutschen sie in den Textfluss), Schriften als
+  `@font-face` aus `assets/fonts/` (auch Emoji), keine Zufallszahlen zur Laufzeit (Rauschen/Zähler vorberechnen),
+  sichere Zone laut HyperFrames: Inhalt y 288–1248, x 120–888 (unter y 840 nur bis 780).
