@@ -5,447 +5,1566 @@
    "who": "ben",
    "kind": "zeile",
    "start": 0.45,
-   "end": 2.37,
-   "dur": 1.92,
+   "end": 2.31,
+   "dur": 1.86,
    "sub": "Noah… sie hat uns eingeschlossen.",
    "rot": [
     "eingeschlossen"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.46,
+     "Noah,"
+    ],
+    [
+     0.7,
+     0.86,
+     "sie"
+    ],
+    [
+     0.86,
+     1.02,
+     "hat"
+    ],
+    [
+     1.02,
+     1.26,
+     "uns"
+    ],
+    [
+     1.26,
+     1.74,
+     "eingeschlossen!"
+    ]
+   ]
   },
   {
    "id": "l02",
    "who": "sander",
    "kind": "zeile",
-   "start": 2.72,
-   "end": 6.251,
-   "dur": 3.53,
+   "start": 2.66,
+   "end": 5.63,
+   "dur": 2.97,
    "sub": "Alle bleiben sitzen. Das ist nur eine Übung.",
    "rot": [
     "Übung"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.36,
+     "Alle"
+    ],
+    [
+     0.36,
+     0.7,
+     "bleiben"
+    ],
+    [
+     0.7,
+     1.1,
+     "sitzen."
+    ],
+    [
+     1.62,
+     1.82,
+     "Das"
+    ],
+    [
+     1.82,
+     2.06,
+     "ist"
+    ],
+    [
+     2.06,
+     2.22,
+     "nur"
+    ],
+    [
+     2.22,
+     2.5,
+     "eine"
+    ],
+    [
+     2.5,
+     2.86,
+     "Übung."
+    ]
+   ]
   },
   {
    "id": "l03",
    "who": "lina",
    "kind": "zeile",
-   "start": 6.401,
-   "end": 9.962,
-   "dur": 3.561,
+   "start": 5.78,
+   "end": 9.036,
+   "dur": 3.256,
    "sub": "Bei Feueralarm müssen wir raus! Das weiß jeder!",
    "rot": [
     "raus"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.28,
+     "Bei"
+    ],
+    [
+     0.28,
+     0.96,
+     "Feueralarm"
+    ],
+    [
+     0.96,
+     1.22,
+     "müssen"
+    ],
+    [
+     1.22,
+     1.46,
+     "wir"
+    ],
+    [
+     1.46,
+     1.8,
+     "raus."
+    ],
+    [
+     2.32,
+     2.52,
+     "Das"
+    ],
+    [
+     2.52,
+     2.76,
+     "weiß"
+    ],
+    [
+     2.76,
+     3.1,
+     "jeder."
+    ]
+   ]
   },
   {
    "id": "l04",
    "who": "sander",
    "kind": "zeile",
-   "start": 10.162,
-   "end": 11.405,
-   "dur": 1.243,
+   "start": 9.236,
+   "end": 10.596,
+   "dur": 1.36,
    "sub": "Hinsetzen, Lina.",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.76,
+     "Hinsetzen,"
+    ],
+    [
+     1.06,
+     1.26,
+     "Lina."
+    ]
+   ]
   },
   {
    "id": "r1",
    "who": "noah",
    "kind": "regel",
-   "start": 12.155,
-   "end": 17.551,
-   "dur": 5.396,
+   "start": 11.346,
+   "end": 17.133,
+   "dur": 5.787,
    "sub": "Das ist keine Übung. Und sie ist keine Lehrerin. Tu so, als glaubst du ihr.",
    "rot": [
     "keine Lehrerin"
    ],
-   "n": 1
+   "n": 1,
+   "words": null
   },
   {
    "id": "l05",
    "who": "noah",
    "kind": "zeile",
-   "start": 17.901,
-   "end": 19.17,
-   "dur": 1.269,
+   "start": 17.483,
+   "end": 18.458,
+   "dur": 0.974,
    "sub": "Wer schreibt mir das?",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.24,
+     "Wer"
+    ],
+    [
+     0.24,
+     0.58,
+     "schreibt"
+    ],
+    [
+     0.58,
+     0.72,
+     "mir"
+    ],
+    [
+     0.72,
+     0.9,
+     "das?"
+    ]
+   ]
   },
   {
    "id": "l06",
    "who": "ben",
    "kind": "zeile",
-   "start": 19.32,
-   "end": 22.407,
-   "dur": 3.087,
+   "start": 18.608,
+   "end": 21.088,
+   "dur": 2.48,
    "sub": "Unbekannte Nummer? Alter… zeig her.",
    "rot": [
     "Unbekannte Nummer"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.72,
+     "Unbekannte"
+    ],
+    [
+     0.72,
+     1.04,
+     "Nummer?"
+    ],
+    [
+     1.6,
+     1.8,
+     "Alter,"
+    ],
+    [
+     2.08,
+     2.26,
+     "zeig"
+    ],
+    [
+     2.26,
+     2.4,
+     "her!"
+    ]
+   ]
   },
   {
    "id": "l07",
    "who": "sander",
    "kind": "zeile",
-   "start": 22.857,
-   "end": 25.36,
-   "dur": 2.503,
+   "start": 21.538,
+   "end": 23.37,
+   "dur": 1.833,
    "sub": "Was gibt's da hinten zu flüstern?",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.28,
+     "Was"
+    ],
+    [
+     0.28,
+     0.68,
+     "gibt's"
+    ],
+    [
+     0.68,
+     0.76,
+     "da"
+    ],
+    [
+     0.76,
+     1.06,
+     "hinten"
+    ],
+    [
+     1.06,
+     1.34,
+     "zu"
+    ],
+    [
+     1.34,
+     1.74,
+     "flüstern?"
+    ]
+   ]
   },
   {
    "id": "l08",
    "who": "noah",
    "kind": "zeile",
-   "start": 25.61,
-   "end": 29.239,
-   "dur": 3.629,
+   "start": 23.62,
+   "end": 26.212,
+   "dur": 2.592,
    "sub": "Nichts. Ben hat nur Angst vor dem Alarm.",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.82,
+     "Nichts."
+    ],
+    [
+     1.08,
+     1.2,
+     "Ben"
+    ],
+    [
+     1.2,
+     1.44,
+     "hat"
+    ],
+    [
+     1.44,
+     1.64,
+     "nur"
+    ],
+    [
+     1.64,
+     1.92,
+     "Angst"
+    ],
+    [
+     1.92,
+     2.1,
+     "vor"
+    ],
+    [
+     2.1,
+     2.28,
+     "dem"
+    ],
+    [
+     2.28,
+     2.56,
+     "Alarm."
+    ]
+   ]
   },
   {
    "id": "l09",
    "who": "sander",
    "kind": "zeile",
-   "start": 29.539,
-   "end": 33.484,
-   "dur": 3.945,
+   "start": 26.512,
+   "end": 29.524,
+   "dur": 3.012,
    "sub": "Musst du nicht, Ben. Hier drin passiert euch nichts.",
    "rot": [
     "Hier drin"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.44,
+     "Musst"
+    ],
+    [
+     0.44,
+     0.56,
+     "du"
+    ],
+    [
+     0.56,
+     0.78,
+     "nicht,"
+    ],
+    [
+     0.94,
+     1.06,
+     "Ben."
+    ],
+    [
+     1.62,
+     1.86,
+     "Hier"
+    ],
+    [
+     1.86,
+     2.08,
+     "drin"
+    ],
+    [
+     2.08,
+     2.44,
+     "passiert"
+    ],
+    [
+     2.44,
+     2.68,
+     "euch"
+    ],
+    [
+     2.68,
+     2.94,
+     "nichts."
+    ]
+   ]
   },
   {
    "id": "l10",
    "who": "lina",
    "kind": "zeile",
-   "start": 34.034,
-   "end": 38.803,
-   "dur": 4.769,
+   "start": 30.074,
+   "end": 34.976,
+   "dur": 4.902,
    "sub": "Guckt mal raus. Die ganze Schule steht draußen. Nur wir nicht.",
    "rot": [
     "Nur wir nicht"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.4,
+     "Guckt"
+    ],
+    [
+     0.4,
+     0.7,
+     "mal"
+    ],
+    [
+     0.7,
+     1.16,
+     "raus."
+    ],
+    [
+     1.76,
+     1.88,
+     "Die"
+    ],
+    [
+     1.88,
+     2.22,
+     "ganze"
+    ],
+    [
+     2.22,
+     2.6,
+     "Schule"
+    ],
+    [
+     2.6,
+     2.92,
+     "steht"
+    ],
+    [
+     2.92,
+     3.54,
+     "draußen."
+    ],
+    [
+     4.04,
+     4.22,
+     "Nur"
+    ],
+    [
+     4.22,
+     4.5,
+     "wir"
+    ],
+    [
+     4.5,
+     4.8,
+     "nicht."
+    ]
+   ]
   },
   {
    "id": "l11",
    "who": "ben",
    "kind": "zeile",
-   "start": 38.953,
-   "end": 40.148,
-   "dur": 1.195,
+   "start": 35.126,
+   "end": 36.006,
+   "dur": 0.88,
    "sub": "Warum nur wir?",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.36,
+     "Warum"
+    ],
+    [
+     0.36,
+     0.54,
+     "nur"
+    ],
+    [
+     0.54,
+     0.78,
+     "wir?"
+    ]
+   ]
   },
   {
    "id": "l12",
    "who": "sander",
    "kind": "zeile",
-   "start": 40.598,
-   "end": 45.267,
-   "dur": 4.668,
+   "start": 36.456,
+   "end": 40.806,
+   "dur": 4.35,
    "sub": "Ich mache kurz Anwesenheit. Wer aufgerufen wird, steht auf.",
    "rot": [
     "Anwesenheit"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.26,
+     "Ich"
+    ],
+    [
+     0.26,
+     0.54,
+     "mache"
+    ],
+    [
+     0.54,
+     0.92,
+     "kurz"
+    ],
+    [
+     0.92,
+     1.8,
+     "Anwesenheit."
+    ],
+    [
+     2.28,
+     2.5,
+     "Wer"
+    ],
+    [
+     2.5,
+     3.2,
+     "aufgerufen"
+    ],
+    [
+     3.2,
+     3.6,
+     "wird,"
+    ],
+    [
+     3.94,
+     4.02,
+     "steht"
+    ],
+    [
+     4.02,
+     4.32,
+     "auf."
+    ]
+   ]
   },
   {
    "id": "r2",
    "who": "noah",
    "kind": "regel",
-   "start": 46.017,
-   "end": 50.606,
-   "dur": 4.59,
+   "start": 41.556,
+   "end": 46.454,
+   "dur": 4.897,
    "sub": "Wenn sie deinen Namen sagt: Bleib sitzen. Sie sucht DICH.",
    "rot": [
     "DICH"
    ],
-   "n": 2
+   "n": 2,
+   "words": null
   },
   {
    "id": "l13",
    "who": "sander",
    "kind": "zeile",
-   "start": 51.056,
-   "end": 52.071,
+   "start": 46.904,
+   "end": 47.918,
    "dur": 1.014,
    "sub": "Noah Berger?",
    "rot": [
     "Noah Berger"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.48,
+     "Noah"
+    ],
+    [
+     0.48,
+     0.92,
+     "Berger?"
+    ]
+   ]
   },
   {
    "id": "l14",
    "who": "sander",
    "kind": "zeile",
-   "start": 53.071,
-   "end": 56.089,
-   "dur": 3.018,
+   "start": 48.918,
+   "end": 51.964,
+   "dur": 3.046,
    "sub": "Noah Berger. Ist der heute nicht da?",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.4,
+     "Noah"
+    ],
+    [
+     0.4,
+     1.02,
+     "Berger,"
+    ],
+    [
+     1.76,
+     1.88,
+     "ist"
+    ],
+    [
+     1.88,
+     2.1,
+     "der"
+    ],
+    [
+     2.1,
+     2.4,
+     "heute"
+    ],
+    [
+     2.4,
+     2.7,
+     "nicht"
+    ],
+    [
+     2.7,
+     2.9,
+     "da?"
+    ]
+   ]
   },
   {
    "id": "l15",
    "who": "ben",
    "kind": "zeile",
-   "start": 56.289,
-   "end": 58.041,
+   "start": 52.164,
+   "end": 53.916,
    "dur": 1.752,
    "sub": "Der ist krank. Seit Montag.",
    "rot": [
     "krank"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.22,
+     "Der"
+    ],
+    [
+     0.22,
+     0.42,
+     "ist"
+    ],
+    [
+     0.42,
+     0.68,
+     "krank!"
+    ],
+    [
+     0.9,
+     1.04,
+     "Seit"
+    ],
+    [
+     1.04,
+     1.66,
+     "Montag!"
+    ]
+   ]
   },
   {
    "id": "l16",
    "who": "sander",
    "kind": "zeile",
-   "start": 58.591,
-   "end": 60.434,
-   "dur": 1.843,
+   "start": 54.466,
+   "end": 56.277,
+   "dur": 1.812,
    "sub": "Krank. Soso.",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.46,
+     0.9,
+     "krank."
+    ],
+    [
+     1.26,
+     1.48,
+     "So,"
+    ],
+    [
+     1.62,
+     1.78,
+     "so."
+    ]
+   ]
   },
   {
    "id": "l17",
    "who": "durchsage",
    "kind": "durchsage",
-   "start": 61.684,
-   "end": 66.796,
-   "dur": 5.112,
+   "start": 57.527,
+   "end": 63.27,
+   "dur": 5.743,
    "sub": "Raum 204! Warum ist eure Tür zu? Sofort raus zum Sammelplatz!",
    "rot": [
     "Sofort raus"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.44,
+     "Raum"
+    ],
+    [
+     0.44,
+     1.94,
+     "204."
+    ],
+    [
+     2.28,
+     2.46,
+     "Warum"
+    ],
+    [
+     2.46,
+     2.74,
+     "ist"
+    ],
+    [
+     2.74,
+     3.06,
+     "eure"
+    ],
+    [
+     3.06,
+     3.3,
+     "Tür"
+    ],
+    [
+     3.3,
+     3.66,
+     "zu?"
+    ],
+    [
+     4.04,
+     4.38,
+     "Sofort"
+    ],
+    [
+     4.38,
+     4.72,
+     "raus"
+    ],
+    [
+     4.72,
+     4.96,
+     "zum"
+    ],
+    [
+     4.96,
+     5.58,
+     "Sammelplatz!"
+    ]
+   ]
   },
   {
    "id": "l18",
    "who": "lina",
    "kind": "zeile",
-   "start": 67.246,
-   "end": 69.318,
-   "dur": 2.072,
+   "start": 63.72,
+   "end": 65.837,
+   "dur": 2.116,
    "sub": "Sie hat die Durchsage abgedreht!",
    "rot": [
     "abgedreht"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.24,
+     "Sie"
+    ],
+    [
+     0.24,
+     0.44,
+     "hat"
+    ],
+    [
+     0.44,
+     0.68,
+     "die"
+    ],
+    [
+     0.68,
+     1.24,
+     "Durchsage"
+    ],
+    [
+     1.24,
+     2.08,
+     "abgedreht!"
+    ]
+   ]
   },
   {
    "id": "r3",
    "who": "noah",
    "kind": "regel",
-   "start": 70.068,
-   "end": 73.961,
-   "dur": 3.894,
+   "start": 66.587,
+   "end": 71.052,
+   "dur": 4.465,
    "sub": "Die Tür hinter dem Pult ist offen. Geh, wenn sie telefoniert.",
    "rot": [
     "Tür hinter dem Pult"
    ],
-   "n": 3
+   "n": 3,
+   "words": null
   },
   {
    "id": "l19",
    "who": "sander",
    "kind": "zeile",
-   "start": 74.661,
-   "end": 78.509,
-   "dur": 3.848,
+   "start": 71.752,
+   "end": 75.68,
+   "dur": 3.929,
    "sub": "Er ist hier. Ich weiß nur noch nicht, welcher. … Fünf Minuten.",
    "rot": [
     "welcher"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.2,
+     "Er"
+    ],
+    [
+     0.2,
+     0.48,
+     "ist"
+    ],
+    [
+     0.48,
+     0.84,
+     "hier."
+    ],
+    [
+     1.24,
+     1.4,
+     "Ich"
+    ],
+    [
+     1.4,
+     1.68,
+     "weiß"
+    ],
+    [
+     1.68,
+     1.92,
+     "nur"
+    ],
+    [
+     1.92,
+     2.14,
+     "noch"
+    ],
+    [
+     2.14,
+     2.38,
+     "nicht"
+    ],
+    [
+     2.38,
+     2.86,
+     "welcher."
+    ],
+    [
+     3.14,
+     3.38,
+     "5"
+    ],
+    [
+     3.38,
+     3.82,
+     "Minuten."
+    ]
+   ]
   },
   {
    "id": "l20",
    "who": "ben",
    "kind": "zeile",
-   "start": 78.759,
-   "end": 81.373,
-   "dur": 2.614,
+   "start": 75.93,
+   "end": 78.4,
+   "dur": 2.47,
    "sub": "Welcher?! Die weiß gar nicht, wie du aussiehst!",
    "rot": [
     "wie du aussiehst"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.6,
+     "Welcher?"
+    ],
+    [
+     0.94,
+     1.1,
+     "Die"
+    ],
+    [
+     1.1,
+     1.28,
+     "weiß"
+    ],
+    [
+     1.28,
+     1.5,
+     "gar"
+    ],
+    [
+     1.5,
+     1.6,
+     "nicht,"
+    ],
+    [
+     1.64,
+     1.72,
+     "wie"
+    ],
+    [
+     1.72,
+     1.92,
+     "du"
+    ],
+    [
+     1.92,
+     2.38,
+     "aussiehst."
+    ]
+   ]
   },
   {
    "id": "l21",
    "who": "noah",
    "kind": "zeile",
-   "start": 81.523,
-   "end": 82.678,
-   "dur": 1.155,
+   "start": 78.55,
+   "end": 79.778,
+   "dur": 1.228,
    "sub": "Komm. Jetzt.",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.44,
+     "Komm,"
+    ],
+    [
+     0.9,
+     1.08,
+     "jetzt!"
+    ]
+   ]
   },
   {
    "id": "l22",
    "who": "lina",
    "kind": "zeile",
-   "start": 83.028,
-   "end": 86.495,
-   "dur": 3.467,
+   "start": 80.128,
+   "end": 82.821,
+   "dur": 2.693,
    "sub": "Frau Sander! Mir ist voll schlecht!",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.36,
+     "Frau"
+    ],
+    [
+     0.36,
+     1.02,
+     "Sander,"
+    ],
+    [
+     1.38,
+     1.56,
+     "mir"
+    ],
+    [
+     1.56,
+     1.78,
+     "ist"
+    ],
+    [
+     1.78,
+     2.04,
+     "voll"
+    ],
+    [
+     2.04,
+     2.58,
+     "schlecht."
+    ]
+   ]
   },
   {
    "id": "r4",
    "who": "noah",
    "kind": "regel",
-   "start": 87.345,
-   "end": 93.169,
-   "dur": 5.824,
+   "start": 83.671,
+   "end": 89.518,
+   "dur": 5.846,
    "sub": "Nicht die Haupttreppe. Keller, Raum K3. Schließ hinter dir ab.",
    "rot": [
     "Keller, Raum K3"
    ],
-   "n": 4
+   "n": 4,
+   "words": null
   },
   {
    "id": "l23",
    "who": "ben",
    "kind": "zeile",
-   "start": 93.369,
-   "end": 95.865,
-   "dur": 2.496,
+   "start": 89.718,
+   "end": 92.172,
+   "dur": 2.454,
    "sub": "In den Keller? Da unten ist doch niemand!",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.2,
+     "In"
+    ],
+    [
+     0.2,
+     0.44,
+     "den"
+    ],
+    [
+     0.44,
+     0.68,
+     "Keller?"
+    ],
+    [
+     1.12,
+     1.36,
+     "Da"
+    ],
+    [
+     1.36,
+     1.58,
+     "unten"
+    ],
+    [
+     1.58,
+     1.8,
+     "ist"
+    ],
+    [
+     1.8,
+     2.0,
+     "doch"
+    ],
+    [
+     2.0,
+     2.26,
+     "niemand!"
+    ]
+   ]
   },
   {
    "id": "l24",
    "who": "sander",
    "kind": "zeile",
-   "start": 96.215,
-   "end": 98.82,
-   "dur": 2.605,
+   "start": 92.522,
+   "end": 94.842,
+   "dur": 2.32,
    "sub": "Noah?! Ich weiß, dass du das bist!",
    "rot": [
     "Ich weiß"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.46,
+     "Noah,"
+    ],
+    [
+     1.0,
+     1.12,
+     "ich"
+    ],
+    [
+     1.12,
+     1.42,
+     "weiß,"
+    ],
+    [
+     1.52,
+     1.6,
+     "dass"
+    ],
+    [
+     1.6,
+     1.74,
+     "du"
+    ],
+    [
+     1.74,
+     1.94,
+     "das"
+    ],
+    [
+     1.94,
+     2.24,
+     "bist."
+    ]
+   ]
   },
   {
    "id": "l25",
    "who": "ben",
    "kind": "zeile",
-   "start": 98.92,
-   "end": 99.412,
-   "dur": 0.492,
-   "sub": "Lauf!",
+   "start": 94.942,
+   "end": 96.058,
+   "dur": 1.116,
+   "sub": "Lauf! Lauf!",
    "rot": [
     "Lauf"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.58,
+     "Lauf!"
+    ],
+    [
+     0.88,
+     1.08,
+     "Lauf!"
+    ]
+   ]
   },
   {
    "id": "l26",
    "who": "pohl",
    "kind": "zeile",
-   "start": 101.312,
-   "end": 104.731,
-   "dur": 3.418,
+   "start": 97.958,
+   "end": 100.427,
+   "dur": 2.47,
    "sub": "Ihr? Was macht ihr denn hier unten?",
    "rot": [],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.36,
+     "Ihr?"
+    ],
+    [
+     1.08,
+     1.26,
+     "Was"
+    ],
+    [
+     1.26,
+     1.5,
+     "macht"
+    ],
+    [
+     1.5,
+     1.72,
+     "ihr"
+    ],
+    [
+     1.72,
+     1.86,
+     "denn"
+    ],
+    [
+     1.86,
+     2.14,
+     "hier"
+    ],
+    [
+     2.14,
+     2.38,
+     "unten?"
+    ]
+   ]
   },
   {
    "id": "l27",
    "who": "noah",
    "kind": "zeile",
-   "start": 104.981,
-   "end": 109.585,
-   "dur": 4.605,
-   "sub": "Oben ist eine Frau. Die sucht mich. Und jemand schreibt mir, was ich tun soll.",
+   "start": 100.677,
+   "end": 104.817,
+   "dur": 4.139,
+   "sub": "Da oben ist eine Frau. Die sucht mich. Und jemand schreibt mir, was ich tun soll.",
    "rot": [
     "sucht mich"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.26,
+     "Da"
+    ],
+    [
+     0.26,
+     0.42,
+     "oben"
+    ],
+    [
+     0.42,
+     0.62,
+     "ist"
+    ],
+    [
+     0.62,
+     0.8,
+     "eine"
+    ],
+    [
+     0.8,
+     1.18,
+     "Frau,"
+    ],
+    [
+     1.52,
+     1.68,
+     "die"
+    ],
+    [
+     1.68,
+     1.98,
+     "sucht"
+    ],
+    [
+     1.98,
+     2.26,
+     "mich"
+    ],
+    [
+     2.26,
+     2.6,
+     "und"
+    ],
+    [
+     2.6,
+     2.82,
+     "jemand"
+    ],
+    [
+     2.82,
+     3.16,
+     "schreibt"
+    ],
+    [
+     3.16,
+     3.32,
+     "mir,"
+    ],
+    [
+     3.38,
+     3.46,
+     "was"
+    ],
+    [
+     3.46,
+     3.62,
+     "ich"
+    ],
+    [
+     3.62,
+     3.86,
+     "tun"
+    ],
+    [
+     3.86,
+     4.06,
+     "soll."
+    ]
+   ]
   },
   {
    "id": "l28",
    "who": "pohl",
    "kind": "zeile",
-   "start": 109.885,
-   "end": 114.454,
-   "dur": 4.568,
+   "start": 105.117,
+   "end": 109.943,
+   "dur": 4.826,
    "sub": "Ich weiß. Ich hab den Alarm gedrückt, als sie reinkam. Zeig mal her.",
    "rot": [
     "Alarm gedrückt"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.22,
+     "Ich"
+    ],
+    [
+     0.22,
+     0.64,
+     "weiß."
+    ],
+    [
+     1.58,
+     1.74,
+     "Ich"
+    ],
+    [
+     1.74,
+     1.9,
+     "hab"
+    ],
+    [
+     1.9,
+     2.12,
+     "den"
+    ],
+    [
+     2.12,
+     2.48,
+     "Alarm"
+    ],
+    [
+     2.48,
+     2.84,
+     "gedrückt,"
+    ],
+    [
+     2.92,
+     3.0,
+     "als"
+    ],
+    [
+     3.0,
+     3.18,
+     "sie"
+    ],
+    [
+     3.18,
+     3.98,
+     "reinkam."
+    ],
+    [
+     4.3,
+     4.46,
+     "Zeig"
+    ],
+    [
+     4.46,
+     4.58,
+     "mal"
+    ],
+    [
+     4.58,
+     4.76,
+     "her."
+    ]
+   ]
   },
   {
    "id": "r5",
    "who": "noah",
    "kind": "regel",
-   "start": 115.254,
-   "end": 120.504,
-   "dur": 5.25,
+   "start": 110.743,
+   "end": 111.562,
+   "dur": 0.819,
    "sub": "Ich bin's. Papa. Geh NICHT mit Pohl. Hinterhof. Blaues Auto.",
    "rot": [
     "Papa",
     "NICHT"
    ],
-   "n": 5
+   "n": 5,
+   "words": null
+  },
+  {
+   "id": "r5b",
+   "who": "papa",
+   "kind": "regel",
+   "start": 111.912,
+   "end": 117.273,
+   "dur": 5.36,
+   "sub": "Ich bin's. Papa. Geh NICHT mit Pohl. Hinterhof. Blaues Auto.",
+   "rot": [],
+   "n": 5,
+   "words": null
   },
   {
    "id": "l29",
    "who": "noah",
    "kind": "zeile",
-   "start": 121.104,
-   "end": 121.839,
-   "dur": 0.735,
+   "start": 117.873,
+   "end": 118.299,
+   "dur": 0.426,
    "sub": "Papa…?",
    "rot": [
     "Papa"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.28,
+     "Papa?"
+    ]
+   ]
   },
   {
    "id": "l30",
    "who": "pohl",
    "kind": "zeile",
-   "start": 122.389,
-   "end": 126.86,
-   "dur": 4.471,
+   "start": 118.849,
+   "end": 122.893,
+   "dur": 4.044,
    "sub": "Noah… das kann nicht sein. Ich war auf der Beerdigung deines Vaters.",
    "rot": [
     "Beerdigung"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.4,
+     "Noah,"
+    ],
+    [
+     0.44,
+     0.68,
+     "das"
+    ],
+    [
+     0.68,
+     0.92,
+     "kann"
+    ],
+    [
+     0.92,
+     1.16,
+     "nicht"
+    ],
+    [
+     1.16,
+     1.46,
+     "sein."
+    ],
+    [
+     2.12,
+     2.28,
+     "Ich"
+    ],
+    [
+     2.28,
+     2.44,
+     "war"
+    ],
+    [
+     2.44,
+     2.62,
+     "auf"
+    ],
+    [
+     2.62,
+     2.82,
+     "der"
+    ],
+    [
+     2.82,
+     3.26,
+     "Beerdigung"
+    ],
+    [
+     3.26,
+     3.5,
+     "Deines"
+    ],
+    [
+     3.5,
+     3.92,
+     "Vaters."
+    ]
+   ]
   },
   {
    "id": "l31",
    "who": "ben",
    "kind": "zeile",
-   "start": 127.46,
-   "end": 129.282,
-   "dur": 1.822,
+   "start": 123.493,
+   "end": 125.011,
+   "dur": 1.518,
    "sub": "Noah… wem glaubst du?",
    "rot": [
     "wem glaubst du"
    ],
-   "n": null
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.4,
+     "Noah,"
+    ],
+    [
+     0.8,
+     1.0,
+     "wem"
+    ],
+    [
+     1.0,
+     1.34,
+     "glaubst"
+    ],
+    [
+     1.34,
+     1.42,
+     "du?"
+    ]
+   ]
   }
  ],
  "events": [
@@ -455,46 +1574,46 @@
   },
   {
    "kind": "buzz",
-   "t": 11.505,
+   "t": 10.696,
    "regel": 1
   },
   {
    "kind": "buzz",
-   "t": 45.367,
+   "t": 40.906,
    "regel": 2
   },
   {
    "kind": "gong",
-   "t": 60.484
+   "t": 56.327
   },
   {
    "kind": "buzz",
-   "t": 69.418,
+   "t": 65.937,
    "regel": 3
   },
   {
    "kind": "buzz",
-   "t": 86.595,
+   "t": 82.921,
    "regel": 4
   },
   {
    "kind": "tuer_flur",
-   "t": 86.545
+   "t": 82.871
   },
   {
    "kind": "tuer_keller",
-   "t": 99.512
+   "t": 96.158
   },
   {
    "kind": "buzz",
-   "t": 114.554,
+   "t": 110.043,
    "regel": 5
   },
   {
    "kind": "endkarte",
-   "t": 129.982
+   "t": 125.711
   }
  ],
- "total": 133.982,
+ "total": 129.711,
  "sr": 24000
 }

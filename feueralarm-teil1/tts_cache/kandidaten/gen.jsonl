@@ -63,3 +63,6 @@
 {"id": "r5b", "j": 0, "dur": 8.08, "f0": 101, "wer": 0.0, "hyp": "Ich bin's Papa, geh nicht mit Pol Hinterhof, blaues Auto", "sec": 196.3}
 {"id": "r5b", "j": 1, "dur": 7.12, "f0": 88, "wer": 0.0, "hyp": "Ich bin's. Papa. Geh nicht mit Pol. Hinterhof. Blaues Auto.", "sec": 42.6}
 {"id": "r5b", "j": 2, "dur": 7.04, "f0": 89, "wer": 0.18, "hyp": "Ich Bens, Papa, geh nicht mit Pol, Hinterhof, blaues Auto.", "sec": 40.4}
+{"id": "l17", "j": 2, "dur": 5.92, "f0": 209, "wer": 0.23, "hyp": "Raum 204, warum ist eure Tür zu? Sofort raus zum Sammelplatz!", "sec": 51.1}
+{"id": "l17", "j": 3, "dur": 5.28, "f0": 260, "wer": 0.23, "hyp": "Raum 204, warum ist eure Tür zu? Sofort raus zum Sammelplatz!", "sec": 42.6}
+{"id": "l17", "j": 4, "dur": 6.32, "f0": 267, "wer": 0.23, "hyp": "Raum 204, warum ist eure Tür zu? Sofort raus zum Sammelplatz!", "sec": 51.0}

@@ -4,7 +4,7 @@ Video im Format des Vorbilds „Perspektive in Dramen“ (POV, Dialog statt Erz�
 Handy-Einblendung, Entscheidungskarte am Ende). **Geschichte, Figuren, Sets und Wendung sind eigene**, nichts ist 1:1
 übernommen.
 
-- Video: `out/feueralarm_teil1_tiktok.mp4` (1080×1920, 30 fps, 2:14 min, 47,5 MB, −14,5 LUFS, Spitze −1,3 dBFS);
+- Video: `out/feueralarm_teil1_tiktok.mp4` (1080×1920, 30 fps, Version 2: 2:10 min, −14 LUFS);
   wegen der Größe nicht im Repo (`.gitignore`), lässt sich mit dem Ablauf unten neu erzeugen
 - Titelbild: `out/titelbild.png`
 - Beschreibung: `out/beschreibung.txt`, angepinnter Kommentar: `out/kommentar.txt`
@@ -22,12 +22,29 @@ Regel 5: „Ich bin's. Papa. Geh NICHT mit Pohl. Hinterhof. Blaues Auto.“ Pohl
 Figuren: Noah (du, nur Hände/Stimme), Ben (Freund, orange Hoodie), Lina (Klassenkameradin), Frau Sander (Bob, Brille,
 Blazer), Hausmeister Pohl (Mütze, Schnurrbart), Schulleiter (nur Durchsage).
 
+## Version 2 (Rückmeldung: Aussprache, Hände, Ende)
+
+- **Aussprache:** Jede Zeile wurde mit Whisper Wort für Wort geprüft. Vorher gab es Fehler wie „Crank. Sozo.“, „Rige drei“,
+  „Ruben ist eine Frau“, und „unten“ war kaum verständlich. Jetzt ist jede Figur ein **Klon einer festen Referenz** aus ihren
+  deutlichsten Aufnahmen (`voices2.py`, `tts_cache/refs/`). Je Zeile gibt es 2 bis 4 Varianten, gewählt wird nach
+  Wort-Sicherheit, Textgleichheit und Stimmähnlichkeit (`tts_cache/wahl2.json`). Alle 37 Zeilen werden jetzt fehlerfrei erkannt.
+  Ein paar Texte sind für die Sprachausgabe umgeschrieben: „So, so.“, „Raum Ka drei“, „Lauf, lauf!“, „Da oben ist eine Frau“.
+  Die künstliche Beschleunigung der Regeln ist entfernt, sie klang unnatürlich.
+- **Regel 5:** Noah liest nur „Regel fünf.“, der Rest kommt in der **Stimme des Vaters** (tief, warm, leiser Hall). So denkt
+  niemand, Noah sagt „Ich bin's. Papa.“
+- **Hände:** Eine rechte Hand hält das Handy wie im Vorbild (Daumen rechts, Fingerspitzen links, Ärmel von unten rechts),
+  der Bildschirm bleibt frei.
+- **Ende:** ruhige Handy-Einstellung für Regel 5, dann Pohls Gesicht ohne Schwenk, dann Ben. Die Endkarte ist aufgeräumt
+  (kein Zusatztext, ruhiger dunkler Hintergrund), der Ton am Ende ruhiger (ein Schlag bei „Papa“, leiser Herzschlag).
+- Die Durchsage hat eine tiefere Schulleiter-Stimme, Pohls erster Satz ist in seiner normalen Stimmlage.
+- Die Untertitel folgen den echten Wortzeiten (Whisper), nicht mehr der Zeichenzahl.
+
 ## Herstellung (alles lokal, kostenlos)
 
 | Schritt | Werkzeug | Datei |
 |---|---|---|
 | Skript, Emotionen je Zeile | Python | `story.py` |
-| 6 Figurenstimmen | Qwen3-TTS VoiceDesign (2–4 Varianten je Zeile), Auswahl nach Sprecher-Ähnlichkeit, Tonhöhe, Whisper-Prüfung | `voices.py`, `tts_cache/auswahl_manuell.json` |
+| 7 Stimmen | Qwen3-TTS: Stimmentwurf (VoiceDesign), dann Klon je Figur (Base); Auswahl nach Whisper-Wortsicherheit | `voices.py`, `voices2.py`, `tts_cache/auswahl2.json` |
 | Zeitleiste | Stille schneiden, Pausen kürzen, Regeln 14 % schneller (Praat) | `timeline.py` → `timeline.json` |
 | 3D-Toon-Look | Blender Workbench (ohne Grafikkarte, Mesa/EGL), eigene Toon-Matcap, schwarze Konturen per Geometry Nodes, Schlagschatten | `toon.py`, `make_matcap.py` |
 | Figuren | Gelenkpuppen aus Grundformen (große Köpfe/Augen, Frisuren, Kleidung) | `figur.py`, `cast.py` |
@@ -42,9 +59,11 @@ Ablauf (Pfade anpassen; `bl` = Blender-Python, `qw` = Qwen-Umgebung, `vx` = Ton)
 
 ```bash
 python3 tex.py && python3 phone.py && python3 make_matcap.py
-qw/bin/python voices.py gen <Qwen3-TTS-VoiceDesign> 2      # Stimmen (lange: ~8x Echtzeit auf CPU, QWEN_DTYPE=bf16)
-qw/bin/python voices.py pick <Qwen3-TTS-Base>
-qw/bin/python timeline.py
+qw/bin/python voices.py gen <Qwen3-TTS-VoiceDesign> 2      # Stimmentwürfe (~8x Echtzeit auf CPU, QWEN_DTYPE=bf16)
+qw/bin/python voices2.py refs                               # Referenz je Figur
+qw/bin/python voices2.py klon <Qwen3-TTS-Base> 2            # Klon-Varianten (~5x Echtzeit)
+qw/bin/python voices2.py wahl <Qwen3-TTS-Base> <whisper-medium>
+QA_WHISPER=<whisper-medium> qw/bin/python timeline.py       # mit Wortzeiten für die Untertitel
 EGL_PLATFORM=surfaceless bl/bin/python build_base.py klasse <base>/klasse.blend   # dito flur, keller
 EGL_PLATFORM=surfaceless bl/bin/python render_shot.py liste <base> <frames>       # schreibt build/shots.json
 EGL_PLATFORM=surfaceless bl/bin/python render_shot.py alle <base> <frames>        # ~1 Bild/s bei 2 Prozessen
