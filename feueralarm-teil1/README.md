@@ -58,3 +58,12 @@ Hinweise:
   einzeln (`toon.merge_children`).
 - Schulter-Gelenke drehen in der Reihenfolge ZXY (erst um den Oberarm, dann heben, dann abspreizen), sonst zeigen
   verschränkte Arme nach außen.
+
+## Ideen für Teil 2 (je nach Abstimmung)
+
+- **AUTO gewinnt:** Hinterhof, das blaue Auto läuft schon. Am Steuer ein Mann mit Kappe und Sonnenbrille, die Stimme vom
+  Telefon: „Steig ein, Noah.“ Ben weigert sich. Regel 6: „Wenn er die Brille abnimmt, renn.“ Frau Sander taucht am
+  Schultor auf. Entscheidung: einsteigen oder zurück zu Lina?
+- **POHL gewinnt:** Pohl führt die beiden durch den Heizungsgang zur Turnhalle. Pohls Handy vibriert, Absender: dieselbe
+  unbekannte Nummer: „Du hattest einen Auftrag.“ Was weiß Pohl? Entscheidung: Pohl das Handy wegnehmen oder weglaufen?
+- In beiden Fällen kommt Lina zurück (sie hat Frau Sander abgelenkt und weiß jetzt etwas über sie).
