@@ -4,7 +4,8 @@ Video im Format des Vorbilds „Perspektive in Dramen“ (POV, Dialog statt Erz�
 Handy-Einblendung, Entscheidungskarte am Ende). **Geschichte, Figuren, Sets und Wendung sind eigene**, nichts ist 1:1
 übernommen.
 
-- Video: `out/feueralarm_teil1_tiktok.mp4` (1080×1920, 30 fps, ca. 2:14 min, −14 LUFS); nicht im Repo, siehe unten
+- Video: `out/feueralarm_teil1_tiktok.mp4` (1080×1920, 30 fps, 2:14 min, 47,5 MB, −14,5 LUFS, Spitze −1,3 dBFS);
+  wegen der Größe nicht im Repo (`.gitignore`), lässt sich mit dem Ablauf unten neu erzeugen
 - Titelbild: `out/titelbild.png`
 - Beschreibung: `out/beschreibung.txt`, angepinnter Kommentar: `out/kommentar.txt`
 
