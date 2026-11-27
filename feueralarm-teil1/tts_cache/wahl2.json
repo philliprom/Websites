@@ -169,6 +169,26 @@
  ],
  "r1": [
   {
+   "datei": "r1_c3.wav",
+   "score": 1.539,
+   "wer": 0.0,
+   "mean": 0.94,
+   "min": 0.7,
+   "sim": 0.986,
+   "dur": 5.91,
+   "hyp": "Regel 1. Das ist keine Übung und sie ist keine Lehrerin. Tu so, als glaubst du ihr."
+  },
+  {
+   "datei": "r1_c2.wav",
+   "score": 1.494,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.63,
+   "sim": 0.985,
+   "dur": 5.75,
+   "hyp": "Regel 1. Das ist keine Übung. Und sie ist keine Lehrerin. Tu so, als glaubst du ihr."
+  },
+  {
    "datei": "r1_c0.wav",
    "score": 1.447,
    "wer": 0.0,
@@ -715,6 +735,26 @@
  ],
  "l16": [
   {
+   "datei": "l16_c3.wav",
+   "score": 1.368,
+   "wer": 0.0,
+   "mean": 0.81,
+   "min": 0.67,
+   "sim": 0.975,
+   "dur": 1.92,
+   "hyp": "krank. So, so."
+  },
+  {
+   "datei": "l16_c2.wav",
+   "score": 1.316,
+   "wer": 0.0,
+   "mean": 0.85,
+   "min": 0.74,
+   "sim": 0.977,
+   "dur": 2.31,
+   "hyp": "krank. So, so."
+  },
+  {
    "datei": "l16_c0.wav",
    "score": 1.289,
    "wer": 0.0,
@@ -821,6 +861,26 @@
  ],
  "r3": [
   {
+   "datei": "r3_c3.wav",
+   "score": 1.622,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.78,
+   "sim": 0.982,
+   "dur": 4.89,
+   "hyp": "Regel 3. Die Tür hinter dem Pult ist offen. Geh, wenn sie telefoniert."
+  },
+  {
+   "datei": "r3_c2.wav",
+   "score": 1.445,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.6,
+   "sim": 0.982,
+   "dur": 5.21,
+   "hyp": "Regel 3 Die Tür hinter dem Pult ist offen. Geh, wenn sie telefoniert."
+  },
+  {
    "datei": "r3_c0.wav",
    "score": 1.367,
    "wer": 0.0,
@@ -862,6 +922,26 @@
   }
  ],
  "l19": [
+  {
+   "datei": "l19_c3.wav",
+   "score": 1.503,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.67,
+   "sim": 0.988,
+   "dur": 4.08,
+   "hyp": "Er ist hier. Ich weiß nur noch nicht welcher. 5 Minuten."
+  },
+  {
+   "datei": "l19_c2.wav",
+   "score": 1.457,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.62,
+   "sim": 0.985,
+   "dur": 4.48,
+   "hyp": "Er ist hier. Ich weiß nur noch nicht welcher. 5 Minuten."
+  },
   {
    "datei": "l19_c0.wav",
    "score": 1.454,
