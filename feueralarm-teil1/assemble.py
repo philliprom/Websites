@@ -46,6 +46,15 @@ def chunks(line):
         else:
             merged.append(p)
     total = sum(len(p) for p in merged)
+    words = line.get("words") or []
+    nwords = [len(p.split()) for p in merged]
+    if words and len(words) >= sum(nwords) - 1:
+        out, k = [], 0
+        for p, nw in zip(merged, nwords):
+            seg = words[k:k + nw] or words[-1:]
+            out.append((line["start"] + seg[0][0], line["start"] + seg[-1][1], p))
+            k += nw
+        return out
     t = line["start"]
     out = []
     for p in merged:
@@ -148,10 +157,10 @@ def render_banner(n, text):
 
 
 BANNERS = []
-for l in TL["lines"]:
-    if l["kind"] == "regel":
-        buzz = [e["t"] for e in TL["events"] if e["kind"] == "buzz" and e.get("regel") == l["n"]][0]
-        BANNERS.append(dict(t0=buzz + 0.3, t1=l["end"] + 0.7, img=render_banner(l["n"], l["sub"])))
+for nr in sorted({l["n"] for l in TL["lines"] if l["kind"] == "regel"}):
+    ls = [l for l in TL["lines"] if l["kind"] == "regel" and l["n"] == nr]
+    buzz = [e["t"] for e in TL["events"] if e["kind"] == "buzz" and e.get("regel") == nr][0]
+    BANNERS.append(dict(t0=buzz + 0.3, t1=max(l["end"] for l in ls) + 0.7, img=render_banner(nr, ls[0]["sub"])))
 
 
 # ---------------------------------------------------------------- Entscheidungskarte
@@ -212,14 +221,9 @@ def endcard():
     w2 = d.textlength(t2, font=f2)
     d.rounded_rectangle(((W - w2) / 2 - 40, 940, (W + w2) / 2 + 40, 1030), 45, fill=YELLOW + (255,))
     d.text(((W - w2) / 2, 950), t2, font=f2, fill=(20, 20, 20))
-    hint = "Schreib AUTO oder POHL in die Kommentare"
-    fh = font(34)
-    d.text(((W - d.textlength(hint, font=fh)) / 2, 1060), hint, font=fh, fill=(255, 255, 255), stroke_width=4,
-           stroke_fill=(0, 0, 0))
     ttl = f"{TITLE} · {PART}"
-    ft = font(32)
-    d.text(((W - d.textlength(ttl, font=ft)) / 2, 1130), ttl, font=ft, fill=(220, 220, 230), stroke_width=3,
-           stroke_fill=(0, 0, 0))
+    ft = font(30)
+    d.text(((W - d.textlength(ttl, font=ft)) / 2, 1065), ttl, font=ft, fill=(210, 210, 220))
     return img
 
 
@@ -271,8 +275,8 @@ def compose(frame, t):
     arr = np.asarray(frame.resize((W, H), Image.LANCZOS))
     if t >= ENDK:  # Endkarte: Bild abdunkeln und weichzeichnen
         k = ease((t - ENDK) / 0.5)
-        blur = frame.resize((W, H), Image.BILINEAR).filter(ImageFilter.GaussianBlur(10 * k))
-        arr = (np.asarray(blur).astype(np.float32) * (1 - 0.55 * k)).astype(np.uint8)
+        blur = frame.resize((W, H), Image.BILINEAR).filter(ImageFilter.GaussianBlur(4 * k))
+        arr = (np.asarray(blur).astype(np.float32) * (1 - 0.7 * k)).astype(np.uint8)
     else:
         arr = grade(arr, t)
     img = Image.fromarray(arr).convert("RGBA")

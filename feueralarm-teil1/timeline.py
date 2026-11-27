@@ -27,12 +27,12 @@ GAP = {
     "r4": 0.85,   # Szenenwechsel Flur
     "l23": 0.2, "l24": 0.35, "l25": 0.1,
     "l26": 1.9,   # Rennen zur Treppe + Kellertür
-    "l27": 0.25, "l28": 0.3, "r5": 0.8, "l29": 0.6, "l30": 0.55, "l31": 0.6,
+    "l27": 0.25, "l28": 0.3, "r5": 0.8, "r5b": 0.35, "l29": 0.6, "l30": 0.55, "l31": 0.6,
 }
 END_PAUSE = 0.7
 END_CARD = 4.0
-REGEL_TEMPO = 0.86      # Regeln etwas zügiger vorlesen (Tonhöhe bleibt)
-MAX_PAUSE = 0.32        # längere Pausen innerhalb einer Zeile kürzen
+REGEL_TEMPO = 1.0       # keine künstliche Beschleunigung mehr (klang unnatürlich)
+MAX_PAUSE = 0.45        # nur sehr lange Pausen innerhalb einer Zeile kürzen
 
 
 def cap_pauses(w, sr, max_pause=MAX_PAUSE, thr_db=-40):
@@ -90,9 +90,27 @@ def trim(w, sr, thr_db=-38, pad=0.04):
     return w[s:e]
 
 
+def words_of(path):
+    """Wortzeiten (Whisper) relativ zum Zeilenbeginn, für genaue Untertitel."""
+    try:
+        from faster_whisper import WhisperModel
+        from scipy.signal import resample_poly
+    except ImportError:
+        return None
+    global _ASR
+    if "_ASR" not in globals():
+        _ASR = WhisperModel(os.environ.get("QA_WHISPER", "small"), device="cpu", compute_type="int8")
+    w, sr = sf.read(path, dtype="float32")
+    segs, _ = _ASR.transcribe(resample_poly(w, 16000, sr).astype(np.float32), language="de", word_timestamps=True,
+                              beam_size=5)
+    return [[round(x.start, 3), round(x.end, 3), x.word.strip()] for s_ in segs for x in s_.words]
+
+
 def main():
     os.makedirs(TRIM, exist_ok=True)
-    apply_manual()
+    if not os.path.exists(os.path.join(CACHE, "auswahl2.json")):
+        apply_manual()  # alte Auswahl (Runde 1)
+    seen_n = set()
     t = 0.0
     out = []
     events = [dict(kind="alarm_start", t=0.0)]
@@ -101,12 +119,13 @@ def main():
         if w.ndim > 1:
             w = w.mean(1)
         w = trim(w, sr)
-        w = cap_pauses(w, sr, 0.28 if l["kind"] == "regel" else MAX_PAUSE)
-        if l["kind"] == "regel":
+        w = cap_pauses(w, sr, MAX_PAUSE)
+        if l["kind"] == "regel" and REGEL_TEMPO != 1.0:
             w = tempo(w, sr, REGEL_TEMPO)
         sf.write(os.path.join(TRIM, f'{l["id"]}.wav'), w, sr)
         gap = GAP.get(l["id"], 0.2)
-        if l["kind"] == "regel":
+        if l["kind"] == "regel" and l["n"] not in seen_n:
+            seen_n.add(l["n"])
             events.append(dict(kind="buzz", t=round(t + 0.1, 3), regel=l["n"]))
         if l["id"] == "l17":
             events.append(dict(kind="gong", t=round(t + 0.05, 3)))
@@ -117,7 +136,8 @@ def main():
         t += gap
         d = len(w) / sr
         out.append(dict(id=l["id"], who=l["who"], kind=l["kind"], start=round(t, 3), end=round(t + d, 3),
-                        dur=round(d, 3), sub=l["sub"], rot=l.get("rot", []), n=l.get("n")))
+                        dur=round(d, 3), sub=l["sub"], rot=l.get("rot", []), n=l.get("n"),
+                        words=None if l["kind"] == "regel" else words_of(os.path.join(TRIM, f'{l["id"]}.wav'))))
         t += d
     t += END_PAUSE
     events.append(dict(kind="endkarte", t=round(t, 3)))

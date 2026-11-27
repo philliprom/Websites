@@ -94,7 +94,7 @@ def rms_db(x):
     return 20 * np.log10(np.sqrt((x ** 2).mean()) + 1e-9)
 
 
-PAN = {"ben": -0.35, "lina": -0.15, "sander": 0.15, "pohl": 0.05, "noah": 0.0, "durchsage": 0.25}
+PAN = {"ben": -0.35, "lina": -0.15, "sander": 0.15, "pohl": 0.05, "noah": 0.0, "durchsage": 0.25, "papa": 0.0}
 for l in TL["lines"]:
     w, sr = sf.read(os.path.join(HERE, "tts_cache", "trim", f'{l["id"]}.wav'), dtype="float32")
     w = resample_poly(w, SR, sr).astype(np.float64)
@@ -118,6 +118,9 @@ for l in TL["lines"]:
         w = reverb(w, "flur", 0.55)
     elif l["id"] == "l19":  # leise ins Telefon, weiter weg
         w = reverb(bp(w, 120, 6000), "klasse", 0.25) * 0.85
+    elif l["who"] == "papa":  # Nachricht in der Stimme des Vaters: warm, etwas Hall, wie eine Erinnerung
+        w = reverb(bp(w, 90, 7500), "hall", 0.22)
+        w *= 10 ** ((-21.5 - rms_db(w)) / 20)
     elif l["kind"] == "regel":
         w = reverb(w, loc, 0.06)
     else:
@@ -229,8 +232,8 @@ def heart(t0, t1, bpm0=88, bpm1=112):
     tt = t0
     while tt < t1:
         bpm = bpm0 + (bpm1 - bpm0) * (tt - t0) / max(1e-3, t1 - t0)
-        put(fx, thump(52, 0.3, 0.55), tt)
-        put(fx, thump(46, 0.3, 0.38), tt + 0.17)
+        put(fx, thump(52, 0.3, 0.4), tt)
+        put(fx, thump(46, 0.3, 0.28), tt + 0.17)
         tt += 60 / bpm
 
 
@@ -317,10 +320,9 @@ put(mus, hit(0.5), E("l16") - 0.1)
 put(mus, riser(0.9, 0.3), t_flur - 0.9)
 put(mus, hit(0.55), t_flur)
 put(mus, hit(0.5), S("l24"))
-put(mus, riser(1.6, 0.4), S("r5") + 1.0)
-put(mus, hit(0.9, 3.0), S("r5") + 2.0)
-put(mus, hit(0.75), S("l30") + LN["l30"]["dur"] * 0.55)
-heart(S("r5"), D, 84, 118)
+put(mus, riser(1.2, 0.3), S("r5b") - 1.2)
+put(mus, hit(0.8, 3.0), S("r5b") + 0.05)
+heart(S("r5"), D, 80, 104)
 endk = [e["t"] for e in TL["events"] if e["kind"] == "endkarte"][0]
 put(mus, hit(1.1, 3.5), endk)
 
