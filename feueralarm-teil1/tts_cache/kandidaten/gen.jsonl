@@ -60,3 +60,6 @@
 {"id": "l29", "j": 1, "dur": 6.88, "f0": 180, "wer": 0.0, "hyp": "Papa?", "sec": 44.6}
 {"id": "l30", "j": 1, "dur": 5.92, "f0": 79, "wer": 0.08, "hyp": "Nur, das kann nicht sein. Ich war auf der Beerdigung deines Vaters.", "sec": 44.9}
 {"id": "l31", "j": 1, "dur": 2.0, "f0": 340, "wer": 0.0, "hyp": "Noah, wem glaubst du?", "sec": 25.0}
+{"id": "r5b", "j": 0, "dur": 8.08, "f0": 101, "wer": 0.0, "hyp": "Ich bin's Papa, geh nicht mit Pol Hinterhof, blaues Auto", "sec": 196.3}
+{"id": "r5b", "j": 1, "dur": 7.12, "f0": 88, "wer": 0.0, "hyp": "Ich bin's. Papa. Geh nicht mit Pol. Hinterhof. Blaues Auto.", "sec": 42.6}
+{"id": "r5b", "j": 2, "dur": 7.04, "f0": 89, "wer": 0.18, "hyp": "Ich Bens, Papa, geh nicht mit Pol, Hinterhof, blaues Auto.", "sec": 40.4}
