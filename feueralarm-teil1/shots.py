@@ -82,9 +82,11 @@ def s03(c):
     lina.place(LINA_SITZ, 180)
     sander.place((2.55, 4.25, 0), heading((2.55, 4.25, 0), LINA_KOPF))
     sander.look(c.t0, LINA_KOPF, 0.3)
-    lina.look(c.t0, (2.55, 4.25, 1.75), 0.2)
-    lina.bend(c.t0, (-4, 35), 0.3)
+    lina.look(c.t0, "cam", 0.25)                       # erst zu Noah und Ben: „müssen wir raus!“
+    lina.bend(c.t0, (-4, -30), 0.3)
     lina.arm(c.t0 + 0.2, "r", "abwehr", 0.3)
+    lina.look(c.S("l03") + 1.9, (2.55, 4.25, 1.75), 0.35)  # dann zu Frau Sander: „Das weiß jeder!“
+    lina.bend(c.S("l03") + 1.9, (-4, 25), 0.4)
     lina.brow(c.t0, "boese", 0.2)
     lina.say(c.S("l03"), c.env("l03"))
     ben.look(c.t0, LINA_KOPF, 0.3)
