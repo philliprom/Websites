@@ -1,0 +1,826 @@
+{
+ "r5": [
+  {
+   "datei": "r5_c0.wav",
+   "score": 1.8,
+   "wer": 0.0,
+   "mean": 0.99,
+   "min": 0.97,
+   "sim": 0.988,
+   "dur": 2.48,
+   "hyp": "Hinterhof. Blaues Auto."
+  },
+  {
+   "datei": "r5_c2.wav",
+   "score": 1.795,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.97,
+   "sim": 0.988,
+   "dur": 2.42,
+   "hyp": "Hinterhof. Blaues Auto."
+  },
+  {
+   "datei": "r5_c1.wav",
+   "score": 1.761,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.94,
+   "sim": 0.987,
+   "dur": 2.38,
+   "hyp": "Hinterhof, blaues Auto."
+  }
+ ],
+ "k01": [
+  {
+   "datei": "k01_c0.wav",
+   "score": 1.764,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.93,
+   "sim": 0.988,
+   "dur": 2.9,
+   "hyp": "Noah, bleib hier. Das ist eine Falle."
+  },
+  {
+   "datei": "k01_c1.wav",
+   "score": 1.75,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.92,
+   "sim": 0.99,
+   "dur": 3.49,
+   "hyp": "Noah, bleib hier. Das ist eine Falle."
+  },
+  {
+   "datei": "k01_c2.wav",
+   "score": 1.658,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.82,
+   "sim": 0.988,
+   "dur": 3.5,
+   "hyp": "Noah, bleib hier. Das ist eine Falle."
+  }
+ ],
+ "k02": [
+  {
+   "datei": "k02_c1.wav",
+   "score": 1.74,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.91,
+   "sim": 0.985,
+   "dur": 2.62,
+   "hyp": "Noah, warte! Wo willst du hin?"
+  },
+  {
+   "datei": "k02_c2.wav",
+   "score": 1.74,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.91,
+   "sim": 0.986,
+   "dur": 2.8,
+   "hyp": "Noah, warte! Wo willst du hin?"
+  },
+  {
+   "datei": "k02_c0.wav",
+   "score": 1.589,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.75,
+   "sim": 0.986,
+   "dur": 2.45,
+   "hyp": "Noah, warte! Wo willst du hin?"
+  }
+ ],
+ "k03": [
+  {
+   "datei": "k03_c2.wav",
+   "score": 1.618,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.78,
+   "sim": 0.983,
+   "dur": 3.41,
+   "hyp": "Zum Auto. Wenn das wirklich Papa ist."
+  },
+  {
+   "datei": "k03_c1.wav",
+   "score": 1.606,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.77,
+   "sim": 0.981,
+   "dur": 2.74,
+   "hyp": "Zum Auto. Wenn das wirklich Papa ist."
+  },
+  {
+   "datei": "k03_c0.wav",
+   "score": 1.526,
+   "wer": 0.0,
+   "mean": 0.94,
+   "min": 0.69,
+   "sim": 0.98,
+   "dur": 2.85,
+   "hyp": "Zum Auto. Wenn das wirklich Papa ist."
+  }
+ ],
+ "k04": [
+  {
+   "datei": "k04_c1.wav",
+   "score": 1.776,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.95,
+   "sim": 0.982,
+   "dur": 2.79,
+   "hyp": "Da! Ein blaues Auto! Der Motor läuft!"
+  },
+  {
+   "datei": "k04_c2.wav",
+   "score": 1.764,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.94,
+   "sim": 0.976,
+   "dur": 3.12,
+   "hyp": "Da! Ein blaues Auto. Der Motor läuft."
+  },
+  {
+   "datei": "k04_c0.wav",
+   "score": 1.567,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.73,
+   "sim": 0.976,
+   "dur": 2.64,
+   "hyp": "Da! Ein blaues Auto! Der Motor läuft!"
+  }
+ ],
+ "k05": [
+  {
+   "datei": "k05_c2.wav",
+   "score": 1.735,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.9,
+   "sim": 0.989,
+   "dur": 4.35,
+   "hyp": "Noah, dein Vater schickt mich. Steig ein! Schnell!"
+  },
+  {
+   "datei": "k05_1.wav",
+   "score": 1.697,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.87,
+   "sim": 0.976,
+   "dur": 4.0,
+   "hyp": "Noah, dein Vater schickt mich. Steig ein. Schnell."
+  },
+  {
+   "datei": "k05_c1.wav",
+   "score": 1.69,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.85,
+   "sim": 0.99,
+   "dur": 3.67,
+   "hyp": "Noah, dein Vater schickt mich. Steig ein! Schnell!"
+  },
+  {
+   "datei": "k05_0.wav",
+   "score": 0.983,
+   "wer": 0.12,
+   "mean": 0.89,
+   "min": 0.37,
+   "sim": 0.996,
+   "dur": 5.91,
+   "hyp": "Noah, dein Vater schickt mich. Pah, steig ein, schnell!"
+  },
+  {
+   "datei": "k05_c0.wav",
+   "score": 0.971,
+   "wer": 0.12,
+   "mean": 0.8,
+   "min": 0.47,
+   "sim": 0.992,
+   "dur": 4.24,
+   "hyp": "Nur, dein Vater schickt mich steig ein schnell."
+  }
+ ],
+ "k06": [
+  {
+   "datei": "k06_c3.wav",
+   "score": 1.753,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.93,
+   "sim": 0.978,
+   "dur": 1.68,
+   "hyp": "Woher kennt der Typ deinen Namen?"
+  },
+  {
+   "datei": "k06_c2.wav",
+   "score": 1.731,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.91,
+   "sim": 0.982,
+   "dur": 1.68,
+   "hyp": "Woher kennt der Typ deinen Namen?"
+  },
+  {
+   "datei": "k06_c1.wav",
+   "score": 1.729,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.91,
+   "sim": 0.979,
+   "dur": 1.76,
+   "hyp": "Woher kennt der Typ deinen Namen?"
+  },
+  {
+   "datei": "k06_c0.wav",
+   "score": 1.632,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.81,
+   "sim": 0.978,
+   "dur": 1.76,
+   "hyp": "Woher kennt der Typ deinen Namen?"
+  }
+ ],
+ "k07": [
+  {
+   "datei": "k07_c0.wav",
+   "score": 1.754,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.93,
+   "sim": 0.975,
+   "dur": 0.93,
+   "hyp": "Wo ist mein Vater?"
+  },
+  {
+   "datei": "k07_c1.wav",
+   "score": 1.709,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.89,
+   "sim": 0.973,
+   "dur": 0.93,
+   "hyp": "Wo ist mein Vater?"
+  },
+  {
+   "datei": "k07_c2.wav",
+   "score": 1.682,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.86,
+   "sim": 0.976,
+   "dur": 0.97,
+   "hyp": "Wo ist mein Vater?"
+  }
+ ],
+ "k08": [
+  {
+   "datei": "k08_1.wav",
+   "score": 1.561,
+   "wer": 0.0,
+   "mean": 0.94,
+   "min": 0.73,
+   "sim": 0.986,
+   "dur": 3.12,
+   "hyp": "Er wartet auf dich. Ich bring dich hin."
+  },
+  {
+   "datei": "k08_c2.wav",
+   "score": 1.558,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.74,
+   "sim": 0.985,
+   "dur": 2.69,
+   "hyp": "Er wartet auf dich. Ich bring dich hin."
+  },
+  {
+   "datei": "k08_c0.wav",
+   "score": 1.547,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.73,
+   "sim": 0.988,
+   "dur": 2.88,
+   "hyp": "Er wartet auf dich. Ich bring dich hin."
+  },
+  {
+   "datei": "k08_0.wav",
+   "score": 1.545,
+   "wer": 0.0,
+   "mean": 0.94,
+   "min": 0.71,
+   "sim": 0.99,
+   "dur": 3.08,
+   "hyp": "Er wartet auf dich. Ich bring dich hin."
+  },
+  {
+   "datei": "k08_c1.wav",
+   "score": 1.522,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.69,
+   "sim": 0.986,
+   "dur": 2.72,
+   "hyp": "Er wartet auf dich. Ich bring dich hin."
+  }
+ ],
+ "k09": [
+  {
+   "datei": "k09_c0.wav",
+   "score": 1.592,
+   "wer": 0.0,
+   "mean": 0.92,
+   "min": 0.8,
+   "sim": 0.98,
+   "dur": 1.77,
+   "hyp": "Noah, bleib stehen."
+  },
+  {
+   "datei": "k09_c2.wav",
+   "score": 1.578,
+   "wer": 0.0,
+   "mean": 0.92,
+   "min": 0.79,
+   "sim": 0.982,
+   "dur": 2.0,
+   "hyp": "Noah, bleib stehen."
+  },
+  {
+   "datei": "k09_c1.wav",
+   "score": 1.481,
+   "wer": 0.0,
+   "mean": 0.89,
+   "min": 0.7,
+   "sim": 0.984,
+   "dur": 1.79,
+   "hyp": "Noah, bleib stehen!"
+  }
+ ],
+ "k10": [
+  {
+   "datei": "k10_c1.wav",
+   "score": 1.755,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.93,
+   "sim": 0.985,
+   "dur": 2.4,
+   "hyp": "Sie kommt! Los, rein da!"
+  },
+  {
+   "datei": "k10_c2.wav",
+   "score": 1.744,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.92,
+   "sim": 0.978,
+   "dur": 2.12,
+   "hyp": "Sie kommt! Los, rein da!"
+  },
+  {
+   "datei": "k10_c0.wav",
+   "score": 1.726,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.9,
+   "sim": 0.981,
+   "dur": 2.16,
+   "hyp": "Sie kommt! Los, rein da!"
+  }
+ ],
+ "k11": [
+  {
+   "datei": "k11_c2.wav",
+   "score": 1.607,
+   "wer": 0.0,
+   "mean": 0.92,
+   "min": 0.81,
+   "sim": 0.983,
+   "dur": 2.1,
+   "hyp": "Anschnallen und Kopf runter."
+  },
+  {
+   "datei": "k11_0.wav",
+   "score": 1.371,
+   "wer": 0.0,
+   "mean": 0.85,
+   "min": 0.62,
+   "sim": 0.976,
+   "dur": 2.69,
+   "hyp": "Anschnallen und Kopf runter."
+  },
+  {
+   "datei": "k11_c1.wav",
+   "score": 1.345,
+   "wer": 0.0,
+   "mean": 0.87,
+   "min": 0.55,
+   "sim": 0.987,
+   "dur": 2.27,
+   "hyp": "Anschnallen und Kopf runter."
+  },
+  {
+   "datei": "k11_c0.wav",
+   "score": 1.305,
+   "wer": 0.0,
+   "mean": 0.86,
+   "min": 0.51,
+   "sim": 0.986,
+   "dur": 2.47,
+   "hyp": "Anschnallen und Kopf runter."
+  },
+  {
+   "datei": "k11_1.wav",
+   "score": 0.916,
+   "wer": 0.25,
+   "mean": 0.84,
+   "min": 0.67,
+   "sim": 0.983,
+   "dur": 2.34,
+   "hyp": "Anschneiden und Kopf runter."
+  }
+ ],
+ "k12": [
+  {
+   "datei": "k12_c0.wav",
+   "score": 1.661,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.84,
+   "sim": 0.98,
+   "dur": 2.24,
+   "hyp": "Und Lina? Die ist noch bei ihr!"
+  },
+  {
+   "datei": "k12_c2.wav",
+   "score": 1.657,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.83,
+   "sim": 0.975,
+   "dur": 2.24,
+   "hyp": "Und Lina? Die ist noch bei ihr!"
+  },
+  {
+   "datei": "k12_c1.wav",
+   "score": 1.631,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.82,
+   "sim": 0.979,
+   "dur": 2.0,
+   "hyp": "Und Lina? Die ist noch bei ihr!"
+  }
+ ],
+ "k13": [
+  {
+   "datei": "k13_c1.wav",
+   "score": 1.765,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.95,
+   "sim": 0.979,
+   "dur": 1.81,
+   "hyp": "Papa holt sie. Ganz sicher."
+  },
+  {
+   "datei": "k13_c0.wav",
+   "score": 1.764,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.94,
+   "sim": 0.98,
+   "dur": 2.1,
+   "hyp": "Papa holt sie, ganz sicher."
+  },
+  {
+   "datei": "k13_c2.wav",
+   "score": 1.682,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.86,
+   "sim": 0.979,
+   "dur": 1.72,
+   "hyp": "Papa holt sie. Ganz sicher."
+  }
+ ],
+ "r6": [
+  {
+   "datei": "r6_c0.wav",
+   "score": 1.769,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.93,
+   "sim": 0.987,
+   "dur": 4.55,
+   "hyp": "Falsches Auto. Ich warte hinter der Turnhalle. Steig aus."
+  },
+  {
+   "datei": "r6_c1.wav",
+   "score": 1.76,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.93,
+   "sim": 0.985,
+   "dur": 4.77,
+   "hyp": "Falsches Auto. Ich warte hinter der Turnhalle. Steig aus."
+  },
+  {
+   "datei": "r6_c2.wav",
+   "score": 1.759,
+   "wer": 0.0,
+   "mean": 0.99,
+   "min": 0.92,
+   "sim": 0.986,
+   "dur": 4.69,
+   "hyp": "Falsches Auto. Ich warte hinter der Turnhalle. Steig aus."
+  }
+ ],
+ "k14": [
+  {
+   "datei": "k14_c0.wav",
+   "score": 1.731,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.93,
+   "sim": 0.968,
+   "dur": 0.86,
+   "hyp": "Falsches Auto?"
+  },
+  {
+   "datei": "k14_c2.wav",
+   "score": 1.703,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.91,
+   "sim": 0.972,
+   "dur": 0.96,
+   "hyp": "Falsches Auto?"
+  },
+  {
+   "datei": "k14_c1.wav",
+   "score": 1.694,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.91,
+   "sim": 0.969,
+   "dur": 0.82,
+   "hyp": "Falsches Auto?"
+  }
+ ],
+ "k15": [
+  {
+   "datei": "k15_c0.wav",
+   "score": 1.633,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.81,
+   "sim": 0.986,
+   "dur": 2.08,
+   "hyp": "Noah, auf seinem Handy steht Sander."
+  },
+  {
+   "datei": "k15_c1.wav",
+   "score": 1.626,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.82,
+   "sim": 0.977,
+   "dur": 1.84,
+   "hyp": "Noah, auf seinem Handy steht Sander!"
+  },
+  {
+   "datei": "k15_c2.wav",
+   "score": 1.53,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.71,
+   "sim": 0.985,
+   "dur": 2.32,
+   "hyp": "Noah, auf seinem Handy steht Sander."
+  }
+ ],
+ "k16": [
+  {
+   "datei": "k16_c1.wav",
+   "score": 0.844,
+   "wer": 0.4,
+   "mean": 0.93,
+   "min": 0.86,
+   "sim": 0.974,
+   "dur": 1.54,
+   "hyp": "Gibt's ein Problem dahinten?"
+  },
+  {
+   "datei": "k16_c0.wav",
+   "score": 0.839,
+   "wer": 0.4,
+   "mean": 0.92,
+   "min": 0.86,
+   "sim": 0.977,
+   "dur": 1.68,
+   "hyp": "Gibt's ein Problem dahinten?"
+  },
+  {
+   "datei": "k16_1.wav",
+   "score": 0.802,
+   "wer": 0.4,
+   "mean": 0.92,
+   "min": 0.82,
+   "sim": 0.977,
+   "dur": 1.72,
+   "hyp": "Gibt's ein Problem dahinten?"
+  },
+  {
+   "datei": "k16_c2.wav",
+   "score": 0.771,
+   "wer": 0.4,
+   "mean": 0.92,
+   "min": 0.78,
+   "sim": 0.975,
+   "dur": 1.44,
+   "hyp": "Gibt's ein Problem dahinten?"
+  },
+  {
+   "datei": "k16_0.wav",
+   "score": 0.614,
+   "wer": 0.4,
+   "mean": 0.88,
+   "min": 0.65,
+   "sim": 0.967,
+   "dur": 1.62,
+   "hyp": "gibt's ein Problem dahinten."
+  }
+ ],
+ "k17": [
+  {
+   "datei": "k17_c2.wav",
+   "score": 1.745,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.93,
+   "sim": 0.984,
+   "dur": 1.96,
+   "hyp": "Nein, mir ist nur schlecht."
+  },
+  {
+   "datei": "k17_c1.wav",
+   "score": 1.736,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.91,
+   "sim": 0.985,
+   "dur": 1.94,
+   "hyp": "Nein, mir ist nur schlecht."
+  },
+  {
+   "datei": "k17_c0.wav",
+   "score": 1.731,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.9,
+   "sim": 0.983,
+   "dur": 1.89,
+   "hyp": "Nein, mir ist nur schlecht."
+  }
+ ],
+ "r7": [
+  {
+   "datei": "r7_c2.wav",
+   "score": 1.503,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.63,
+   "sim": 0.987,
+   "dur": 6.25,
+   "hyp": "An der Ampel. Fenster hinten rechts geht auf. Raus, wenn es grün wird."
+  },
+  {
+   "datei": "r7_c3.wav",
+   "score": 1.456,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.61,
+   "sim": 0.988,
+   "dur": 5.49,
+   "hyp": "An der Ampel, Fenster hinten rechts geht auf, raus wenn es grün wird."
+  },
+  {
+   "datei": "r7_c0.wav",
+   "score": 1.382,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.49,
+   "sim": 0.987,
+   "dur": 6.15,
+   "hyp": "An der Ampel. Fenster hinten rechts geht auf. Raus, wenn es grün wird."
+  },
+  {
+   "datei": "r7_c1.wav",
+   "score": 1.374,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.48,
+   "sim": 0.988,
+   "dur": 5.6,
+   "hyp": "an der Ampel. Fenster hinten rechts geht auf. Raus, wenn es grün wird."
+  }
+ ],
+ "k18": [
+  {
+   "datei": "k18_c1.wav",
+   "score": 1.727,
+   "wer": 0.0,
+   "mean": 0.97,
+   "min": 0.91,
+   "sim": 0.978,
+   "dur": 1.79,
+   "hyp": "Finger weg vom Fenster, Noah."
+  },
+  {
+   "datei": "k18_c2.wav",
+   "score": 1.687,
+   "wer": 0.0,
+   "mean": 0.96,
+   "min": 0.87,
+   "sim": 0.976,
+   "dur": 1.83,
+   "hyp": "Finger weg vom Fenster, Noah!"
+  },
+  {
+   "datei": "k18_0.wav",
+   "score": 1.513,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.85,
+   "sim": 0.976,
+   "dur": 5.51,
+   "hyp": "Finger weg vom Fenster, Noah."
+  },
+  {
+   "datei": "k18_c0.wav",
+   "score": 1.5,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.68,
+   "sim": 0.977,
+   "dur": 1.78,
+   "hyp": "Finger weg vom Fenster Noah."
+  },
+  {
+   "datei": "k18_1.wav",
+   "score": 1.433,
+   "wer": 0.0,
+   "mean": 0.89,
+   "min": 0.66,
+   "sim": 0.968,
+   "dur": 2.06,
+   "hyp": "Finger weg vom Fenster Noah."
+  }
+ ],
+ "k19": [
+  {
+   "datei": "k19_c1.wav",
+   "score": 1.726,
+   "wer": 0.0,
+   "mean": 0.98,
+   "min": 0.91,
+   "sim": 0.973,
+   "dur": 1.19,
+   "hyp": "Noah, was machen wir?"
+  },
+  {
+   "datei": "k19_c0.wav",
+   "score": 1.571,
+   "wer": 0.0,
+   "mean": 0.94,
+   "min": 0.77,
+   "sim": 0.961,
+   "dur": 1.12,
+   "hyp": "Noah, was machen wir?"
+  },
+  {
+   "datei": "k19_c2.wav",
+   "score": 1.502,
+   "wer": 0.0,
+   "mean": 0.92,
+   "min": 0.7,
+   "sim": 0.969,
+   "dur": 1.28,
+   "hyp": "Noah, was machen wir?"
+  }
+ ]
+}

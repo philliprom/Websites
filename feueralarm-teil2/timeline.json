@@ -1,0 +1,857 @@
+{
+ "lines": [
+  {
+   "id": "r5",
+   "who": "papa",
+   "kind": "regel",
+   "start": 0.3,
+   "end": 2.313,
+   "dur": 2.013,
+   "sub": "Ich bin's. Papa. Geh NICHT mit Pohl. Hinterhof. Blaues Auto.",
+   "rot": [],
+   "n": 5,
+   "words": null
+  },
+  {
+   "id": "k01",
+   "who": "pohl",
+   "kind": "zeile",
+   "start": 2.663,
+   "end": 5.418,
+   "dur": 2.756,
+   "sub": "Noah! Bleib hier! Das ist eine Falle!",
+   "rot": [
+    "Falle"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.44,
+     "Noah,"
+    ],
+    [
+     1.0,
+     1.2,
+     "bleib"
+    ],
+    [
+     1.2,
+     1.46,
+     "hier."
+    ],
+    [
+     1.78,
+     1.98,
+     "Das"
+    ],
+    [
+     1.98,
+     2.18,
+     "ist"
+    ],
+    [
+     2.18,
+     2.4,
+     "eine"
+    ],
+    [
+     2.4,
+     2.72,
+     "Falle."
+    ]
+   ]
+  },
+  {
+   "id": "k02",
+   "who": "ben",
+   "kind": "zeile",
+   "start": 5.968,
+   "end": 8.557,
+   "dur": 2.588,
+   "sub": "Noah, warte! Wo willst du hin?",
+   "rot": [],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.58,
+     "Noah,"
+    ],
+    [
+     0.9,
+     1.34,
+     "warte!"
+    ],
+    [
+     1.76,
+     1.92,
+     "Wo"
+    ],
+    [
+     1.92,
+     2.12,
+     "willst"
+    ],
+    [
+     2.12,
+     2.36,
+     "du"
+    ],
+    [
+     2.36,
+     2.56,
+     "hin?"
+    ]
+   ]
+  },
+  {
+   "id": "k03",
+   "who": "noah",
+   "kind": "zeile",
+   "start": 8.757,
+   "end": 11.641,
+   "dur": 2.885,
+   "sub": "Zum Auto. Wenn das wirklich Papa ist…",
+   "rot": [
+    "Papa"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.34,
+     "Zum"
+    ],
+    [
+     0.34,
+     0.88,
+     "Auto."
+    ],
+    [
+     1.34,
+     1.48,
+     "Wenn"
+    ],
+    [
+     1.48,
+     1.74,
+     "das"
+    ],
+    [
+     1.74,
+     2.12,
+     "wirklich"
+    ],
+    [
+     2.12,
+     2.44,
+     "Papa"
+    ],
+    [
+     2.44,
+     2.72,
+     "ist."
+    ]
+   ]
+  },
+  {
+   "id": "k04",
+   "who": "ben",
+   "kind": "zeile",
+   "start": 12.241,
+   "end": 15.03,
+   "dur": 2.789,
+   "sub": "Da! Ein blaues Auto. Der Motor läuft.",
+   "rot": [
+    "blaues Auto"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.36,
+     "Da!"
+    ],
+    [
+     0.6,
+     0.9,
+     "Ein"
+    ],
+    [
+     0.9,
+     1.22,
+     "blaues"
+    ],
+    [
+     1.22,
+     1.64,
+     "Auto!"
+    ],
+    [
+     1.84,
+     2.04,
+     "Der"
+    ],
+    [
+     2.04,
+     2.4,
+     "Motor"
+    ],
+    [
+     2.4,
+     2.72,
+     "läuft!"
+    ]
+   ]
+  },
+  {
+   "id": "k05",
+   "who": "fahrer",
+   "kind": "zeile",
+   "start": 15.83,
+   "end": 20.157,
+   "dur": 4.327,
+   "sub": "Noah? Dein Vater schickt mich. Steig ein. Schnell.",
+   "rot": [
+    "Dein Vater"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.52,
+     "Noah,"
+    ],
+    [
+     1.12,
+     1.26,
+     "dein"
+    ],
+    [
+     1.26,
+     1.66,
+     "Vater"
+    ],
+    [
+     1.66,
+     2.0,
+     "schickt"
+    ],
+    [
+     2.0,
+     2.48,
+     "mich."
+    ],
+    [
+     2.84,
+     3.1,
+     "Steig"
+    ],
+    [
+     3.1,
+     3.38,
+     "ein."
+    ],
+    [
+     4.04,
+     4.22,
+     "Schnell."
+    ]
+   ]
+  },
+  {
+   "id": "k06",
+   "who": "ben",
+   "kind": "zeile",
+   "start": 20.407,
+   "end": 22.087,
+   "dur": 1.68,
+   "sub": "Woher kennt der Typ deinen Namen?",
+   "rot": [
+    "deinen Namen"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.46,
+     "Woher"
+    ],
+    [
+     0.46,
+     0.6,
+     "kennt"
+    ],
+    [
+     0.6,
+     0.78,
+     "der"
+    ],
+    [
+     0.78,
+     0.98,
+     "Typ"
+    ],
+    [
+     0.98,
+     1.24,
+     "deinen"
+    ],
+    [
+     1.24,
+     1.58,
+     "Namen?"
+    ]
+   ]
+  },
+  {
+   "id": "k07",
+   "who": "noah",
+   "kind": "zeile",
+   "start": 22.287,
+   "end": 23.213,
+   "dur": 0.926,
+   "sub": "Wo ist mein Vater?",
+   "rot": [],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.22,
+     "Wo"
+    ],
+    [
+     0.22,
+     0.36,
+     "ist"
+    ],
+    [
+     0.36,
+     0.52,
+     "mein"
+    ],
+    [
+     0.52,
+     0.8,
+     "Vater?"
+    ]
+   ]
+  },
+  {
+   "id": "k08",
+   "who": "fahrer",
+   "kind": "zeile",
+   "start": 23.363,
+   "end": 25.993,
+   "dur": 2.63,
+   "sub": "Er wartet auf dich. Ich bring dich hin.",
+   "rot": [],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.26,
+     "Er"
+    ],
+    [
+     0.26,
+     0.68,
+     "wartet"
+    ],
+    [
+     0.68,
+     0.88,
+     "auf"
+    ],
+    [
+     0.88,
+     1.16,
+     "dich."
+    ],
+    [
+     1.66,
+     1.84,
+     "Ich"
+    ],
+    [
+     1.84,
+     2.08,
+     "bring"
+    ],
+    [
+     2.08,
+     2.28,
+     "dich"
+    ],
+    [
+     2.28,
+     2.52,
+     "hin."
+    ]
+   ]
+  },
+  {
+   "id": "k09",
+   "who": "sander",
+   "kind": "zeile",
+   "start": 26.543,
+   "end": 28.25,
+   "dur": 1.706,
+   "sub": "Noah?! Bleib stehen!",
+   "rot": [
+    "Bleib stehen"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.7,
+     "Noah,"
+    ],
+    [
+     1.18,
+     1.48,
+     "bleib"
+    ],
+    [
+     1.48,
+     1.68,
+     "stehen."
+    ]
+   ]
+  },
+  {
+   "id": "k10",
+   "who": "ben",
+   "kind": "zeile",
+   "start": 28.45,
+   "end": 30.846,
+   "dur": 2.396,
+   "sub": "Sie kommt! Los, rein da!",
+   "rot": [
+    "Sie kommt"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.26,
+     "Sie"
+    ],
+    [
+     0.26,
+     0.66,
+     "kommt!"
+    ],
+    [
+     1.16,
+     1.4,
+     "Los,"
+    ],
+    [
+     1.88,
+     2.0,
+     "rein"
+    ],
+    [
+     2.0,
+     2.3,
+     "da!"
+    ]
+   ]
+  },
+  {
+   "id": "k11",
+   "who": "fahrer",
+   "kind": "zeile",
+   "start": 32.746,
+   "end": 34.85,
+   "dur": 2.104,
+   "sub": "Anschnallen. Und Kopf runter.",
+   "rot": [],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.9,
+     "Anschnallen"
+    ],
+    [
+     0.9,
+     1.34,
+     "und"
+    ],
+    [
+     1.34,
+     1.64,
+     "Kopf"
+    ],
+    [
+     1.64,
+     1.98,
+     "runter."
+    ]
+   ]
+  },
+  {
+   "id": "k12",
+   "who": "ben",
+   "kind": "zeile",
+   "start": 35.35,
+   "end": 37.59,
+   "dur": 2.24,
+   "sub": "Und Lina? Die ist noch bei ihr!",
+   "rot": [
+    "Lina"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.32,
+     "Und"
+    ],
+    [
+     0.32,
+     0.86,
+     "Lina?"
+    ],
+    [
+     1.1,
+     1.26,
+     "Die"
+    ],
+    [
+     1.26,
+     1.44,
+     "ist"
+    ],
+    [
+     1.44,
+     1.68,
+     "noch"
+    ],
+    [
+     1.68,
+     1.92,
+     "bei"
+    ],
+    [
+     1.92,
+     2.16,
+     "ihr!"
+    ]
+   ]
+  },
+  {
+   "id": "k13",
+   "who": "noah",
+   "kind": "zeile",
+   "start": 37.79,
+   "end": 39.604,
+   "dur": 1.813,
+   "sub": "Papa holt sie. Ganz sicher.",
+   "rot": [],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.28,
+     "Papa"
+    ],
+    [
+     0.28,
+     0.54,
+     "holt"
+    ],
+    [
+     0.54,
+     0.86,
+     "sie."
+    ],
+    [
+     1.2,
+     1.42,
+     "Ganz"
+    ],
+    [
+     1.42,
+     1.68,
+     "sicher."
+    ]
+   ]
+  },
+  {
+   "id": "r6",
+   "who": "papa",
+   "kind": "regel",
+   "start": 40.504,
+   "end": 44.343,
+   "dur": 3.839,
+   "sub": "Falsches Auto. Ich warte hinter der Turnhalle. Steig AUS.",
+   "rot": [
+    "Falsches Auto"
+   ],
+   "n": 6,
+   "words": null
+  },
+  {
+   "id": "k14",
+   "who": "noah",
+   "kind": "zeile",
+   "start": 44.693,
+   "end": 45.553,
+   "dur": 0.86,
+   "sub": "Falsches Auto…?",
+   "rot": [
+    "Falsches Auto"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.5,
+     "Falsches"
+    ],
+    [
+     0.5,
+     0.74,
+     "Auto?"
+    ]
+   ]
+  },
+  {
+   "id": "k15",
+   "who": "ben",
+   "kind": "zeile",
+   "start": 46.653,
+   "end": 48.733,
+   "dur": 2.08,
+   "sub": "Noah… auf seinem Handy steht Sander!",
+   "rot": [
+    "Sander"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.46,
+     "Noah,"
+    ],
+    [
+     0.74,
+     0.86,
+     "auf"
+    ],
+    [
+     0.86,
+     1.06,
+     "seinem"
+    ],
+    [
+     1.06,
+     1.38,
+     "Handy"
+    ],
+    [
+     1.38,
+     1.6,
+     "steht"
+    ],
+    [
+     1.6,
+     2.0,
+     "Sander."
+    ]
+   ]
+  },
+  {
+   "id": "k16",
+   "who": "fahrer",
+   "kind": "zeile",
+   "start": 49.083,
+   "end": 50.62,
+   "dur": 1.537,
+   "sub": "Gibt's ein Problem da hinten?",
+   "rot": [],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.42,
+     "Gibt's"
+    ],
+    [
+     0.42,
+     0.58,
+     "ein"
+    ],
+    [
+     0.58,
+     0.96,
+     "Problem"
+    ],
+    [
+     0.96,
+     1.48,
+     "dahinten?"
+    ]
+   ]
+  },
+  {
+   "id": "k17",
+   "who": "noah",
+   "kind": "zeile",
+   "start": 50.82,
+   "end": 52.78,
+   "dur": 1.96,
+   "sub": "Nein. Mir ist nur schlecht.",
+   "rot": [],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.44,
+     "Nein,"
+    ],
+    [
+     1.12,
+     1.22,
+     "mir"
+    ],
+    [
+     1.22,
+     1.4,
+     "ist"
+    ],
+    [
+     1.4,
+     1.56,
+     "nur"
+    ],
+    [
+     1.56,
+     1.84,
+     "schlecht."
+    ]
+   ]
+  },
+  {
+   "id": "r7",
+   "who": "papa",
+   "kind": "regel",
+   "start": 53.68,
+   "end": 58.566,
+   "dur": 4.886,
+   "sub": "An der Ampel. Fenster hinten rechts geht auf. Raus, wenn es grün wird.",
+   "rot": [
+    "Ampel"
+   ],
+   "n": 7,
+   "words": null
+  },
+  {
+   "id": "k18",
+   "who": "fahrer",
+   "kind": "zeile",
+   "start": 59.316,
+   "end": 61.109,
+   "dur": 1.793,
+   "sub": "Finger weg vom Fenster, Noah.",
+   "rot": [
+    "Finger weg"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.44,
+     "Finger"
+    ],
+    [
+     0.44,
+     0.7,
+     "weg"
+    ],
+    [
+     0.7,
+     0.92,
+     "vom"
+    ],
+    [
+     0.92,
+     1.42,
+     "Fenster,"
+    ],
+    [
+     1.56,
+     1.64,
+     "Noah."
+    ]
+   ]
+  },
+  {
+   "id": "k19",
+   "who": "ben",
+   "kind": "zeile",
+   "start": 61.459,
+   "end": 62.651,
+   "dur": 1.192,
+   "sub": "Noah… was machen wir?",
+   "rot": [
+    "was machen wir"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.42,
+     "Noah,"
+    ],
+    [
+     0.62,
+     0.64,
+     "was"
+    ],
+    [
+     0.64,
+     0.92,
+     "machen"
+    ],
+    [
+     0.92,
+     1.1,
+     "wir?"
+    ]
+   ]
+  }
+ ],
+ "events": [
+  {
+   "kind": "alarm_start",
+   "t": 0.0
+  },
+  {
+   "kind": "buzz",
+   "t": 0.1,
+   "regel": 5
+  },
+  {
+   "kind": "buzz",
+   "t": 39.704,
+   "regel": 6
+  },
+  {
+   "kind": "buzz",
+   "t": 52.88,
+   "regel": 7
+  },
+  {
+   "kind": "endkarte",
+   "t": 64.551
+  }
+ ],
+ "total": 68.551,
+ "sr": 24000
+}

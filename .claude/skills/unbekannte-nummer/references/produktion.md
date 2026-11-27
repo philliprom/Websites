@@ -124,3 +124,24 @@ Verdeckt jemand die Sicht? Ist der Täter groß genug?
 - Sichtlinie zur Tür war durch sitzende Schüler verdeckt → Plätze in `FREI`.
 - Alte Handhaltung (zwei Fäustlinge über dem Bildschirm) sah seltsam aus → eine Hand, Bildschirm frei.
 - Kamera-Schwenk über Pohls Bauch wirkte wirr → harter Schnitt aufs Gesicht.
+- Toon-Figuren haben große Köpfe: Im Auto ragten Fahrer und Ben durchs Dach. Kopfhöhen vor dem Rendern messen
+  (Bounding Box der Kopf-Meshes) und Innenräume danach bauen (Auto: Himmel innen ≥ 1,7 m, Sitze tief).
+- Dunkle Sitze + Fahrer in Schwarz = nicht lesbar → Innenraum hell (Sitze #77716a).
+- Von der Rückbank sieht man den Fahrer nur von hinten → er dreht Kopf **und** Schultern (`look("cam")` + `bend((0, -32))`).
+- Texturierte Flächen an beweglichen Teilen (Nummernschilder) brauchen `parent=` und müssen beim Verbinden in `keep`,
+  sonst schweben sie am Ursprung bzw. werden weiß.
+- Handy-Bildschirm eines anderen (z. B. Anruf „SANDER“) nur mit Teleobjektiv lesbar: Brennweite ~100 statt 30.
+- Ampel von innen nicht sichtbar, wenn das Auto direkt an der Haltelinie steht → wartendes Auto davor, eigenes Auto
+  hält ~12 m vor der Ampel, Noah duckt sich (Kamera tiefer).
+
+## 8. Fortsetzungen (Teil 2, 3 …)
+
+- Kommentare entscheiden: `scripts/tiktok_stats.py` liest nur öffentliche Zahlen. Die Kommentare selbst liest der
+  Nutzer und nennt das Ergebnis (nicht über inoffizielle Schnittstellen abrufen).
+- Rückblick ≤ 2,5 s (Regel-Banner der letzten Regel + Pille „TEIL n · Ihr habt gewählt: …“ unter dem Banner),
+  dann sofort Bedrohung. Teil 1 hatte Ø 51 s Wiedergabe bei 130 s Länge → Teil 2 auf ~80 s gekürzt.
+- Vorlage für Fahrzeuge und Außen-Sets: `feueralarm-teil2/` (`set_hof.py`: Hof, Straße, Auto mit Innenraum;
+  `anim.py` `follow`; `render_shot.py` `car_y_fn`, `c.ampel`, `c.glas_aus`, `c.fahrerhandy`).
+- Während die Stimmen laufen, mit einer **vorläufigen Zeitleiste** (geschätzte Zeilenlängen, Platzhalter-Hüllkurven)
+  Testbilder aller Einstellungen rendern; die echte `timeline.py` überschreibt später alles.
+- Cliffhanger-Einstellung nach der letzten Zeile (z. B. Ampel springt auf Rot-Gelb): `END_PAUSE` entsprechend verlängern.
