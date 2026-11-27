@@ -101,28 +101,32 @@ for l in TL["lines"]:
     e = EMO[l["id"]].lower()
     target = -20.5
     if "whisper" in e:
-        target = -23.0
+        target = -22.0
     if any(k in e for k in ("shout", "scream", "loud", "calls out")):
         target = -19.0
     if l["kind"] == "regel":
         target = -21.5
+    if l["id"] == "l29":  # kurzes „Papa…?“: Schlüsselmoment, deutlich hörbar
+        target = -18.5
     w = w * 10 ** ((target - rms_db(w)) / 20)
     loc = where(l["start"] + 0.05)
-    if l["id"] == "l17":   # Lautsprecher-Durchsage
-        w = bp(w, 380, 3300, 3)
-        w = np.tanh(w * 3.0) / 1.6
-        w = reverb(w, "klasse", 0.35)
+    if l["id"] == "l17":   # Lautsprecher-Durchsage (sanfter Filter, damit jedes Wort verständlich bleibt)
+        w = bp(w, 260, 4800, 2)
+        w = np.tanh(w * 1.6) / 1.3
+        w = reverb(w, "klasse", 0.18)
         w *= 10 ** ((-20 - rms_db(w)) / 20)
-    elif l["id"] == "l24":  # Ruf vom anderen Flurende
-        w = bp(w, 150, 4200)
-        w = reverb(w, "flur", 0.55)
+    elif l["id"] == "l24":  # Ruf vom anderen Flurende (Hall nur so viel, dass „Noah“ verständlich bleibt)
+        w = bp(w, 150, 5500)
+        w = reverb(w, "flur", 0.28)
     elif l["id"] == "l19":  # leise ins Telefon, weiter weg
         w = reverb(bp(w, 120, 6000), "klasse", 0.25) * 0.85
     elif l["who"] == "papa":  # Nachricht in der Stimme des Vaters: warm, etwas Hall, wie eine Erinnerung
-        w = reverb(bp(w, 90, 7500), "hall", 0.22)
-        w *= 10 ** ((-21.5 - rms_db(w)) / 20)
+        w = reverb(bp(w, 90, 8000), "hall", 0.1)
+        w *= 10 ** ((-21.0 - rms_db(w)) / 20)
     elif l["kind"] == "regel":
         w = reverb(w, loc, 0.06)
+    elif l["id"] == "l29":  # „Papa…?“ trocken, damit das P klar bleibt
+        pass
     else:
         w = reverb(w, loc, {"klasse": 0.12, "flur": 0.2, "keller": 0.16}[loc])
     put(voice, w, l["start"], 1.0, PAN.get(l["who"], 0) * (0.5 if l["kind"] == "regel" else 1))
@@ -149,7 +153,7 @@ a_flur = alarm * mask(t_flur, t_keller, 0.05)
 a_kel = bp(alarm, None, 500) * mask(t_keller, D + 1, 0.3)
 # Klasse: Alarm kommt gedämpft durch die Tür (am Anfang laut, dann Hintergrund)
 start_boost = 1.0 + 1.6 * np.clip(1 - t / 1.2, 0, 1)
-put(bed, reverb(bp(a_cls, None, 3000), "flur", 0.6) * 0.11 * start_boost, 0)
+put(bed, reverb(bp(a_cls, None, 3000), "flur", 0.6) * 0.09 * start_boost, 0)
 put(bed, reverb(a_flur, "flur", 0.4) * 0.2, 0)
 put(bed, a_kel * 0.18, 0)
 
@@ -228,12 +232,13 @@ def thump(f=55, dur=0.35, g=1.0):
     return np.sin(2 * np.pi * f * k * (1 - 0.3 * k)) * np.exp(-k * 12) * g
 
 
-def heart(t0, t1, bpm0=88, bpm1=112):
+def heart(t0, t1, bpm0=88, bpm1=112, pause=()):
     tt = t0
     while tt < t1:
         bpm = bpm0 + (bpm1 - bpm0) * (tt - t0) / max(1e-3, t1 - t0)
-        put(fx, thump(52, 0.3, 0.4), tt)
-        put(fx, thump(46, 0.3, 0.28), tt + 0.17)
+        if not any(a <= tt <= b for a, b in pause):
+            put(fx, thump(52, 0.3, 0.4), tt)
+            put(fx, thump(46, 0.3, 0.28), tt + 0.17)
         tt += 60 / bpm
 
 
@@ -322,7 +327,7 @@ put(mus, hit(0.55), t_flur)
 put(mus, hit(0.5), S("l24"))
 put(mus, riser(1.2, 0.3), S("r5b") - 1.2)
 put(mus, hit(0.8, 3.0), S("r5b") + 0.05)
-heart(S("r5"), D, 80, 104)
+heart(S("r5"), D, 80, 104, pause=[(S("l29") - 0.5, E("l29") + 0.25)])
 endk = [e["t"] for e in TL["events"] if e["kind"] == "endkarte"][0]
 put(mus, hit(1.1, 3.5), endk)
 

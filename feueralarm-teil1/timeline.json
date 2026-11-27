@@ -1441,8 +1441,8 @@
    "who": "noah",
    "kind": "zeile",
    "start": 117.873,
-   "end": 118.299,
-   "dur": 0.426,
+   "end": 118.312,
+   "dur": 0.44,
    "sub": "Papa…?",
    "rot": [
     "Papa"
@@ -1451,7 +1451,7 @@
    "words": [
     [
      0.0,
-     0.28,
+     0.3,
      "Papa?"
     ]
    ]
@@ -1460,8 +1460,8 @@
    "id": "l30",
    "who": "pohl",
    "kind": "zeile",
-   "start": 118.849,
-   "end": 122.893,
+   "start": 118.862,
+   "end": 122.906,
    "dur": 4.044,
    "sub": "Noah… das kann nicht sein. Ich war auf der Beerdigung deines Vaters.",
    "rot": [
@@ -1535,8 +1535,8 @@
    "id": "l31",
    "who": "ben",
    "kind": "zeile",
-   "start": 123.493,
-   "end": 125.011,
+   "start": 123.506,
+   "end": 125.024,
    "dur": 1.518,
    "sub": "Noah… wem glaubst du?",
    "rot": [
@@ -1611,9 +1611,9 @@
   },
   {
    "kind": "endkarte",
-   "t": 125.711
+   "t": 125.724
   }
  ],
- "total": 129.711,
+ "total": 129.724,
  "sr": 24000
 }
