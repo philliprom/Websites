@@ -2,7 +2,9 @@
 # Kontaktbogen eines Videos: alle N Sekunden ein Bild mit Zeitstempel.  bash kontaktbogen.sh video.mp4 bogen.png [N=3]
 V=$1; OUTP=$2; STEP=${3:-3}
 D=$(mktemp -d)
-ffmpeg -hide_banner -loglevel error -i "$V" -vf "fps=1/$STEP,scale=270:480" $D/s_%03d.png
+# select statt fps: fps=1/N nimmt jeweils das Bild aus der Intervallmitte (Zeitstempel wären um N/2 versetzt)
+ffmpeg -hide_banner -loglevel error -i "$V" -vf "select='isnan(prev_selected_t)+gte(t-prev_selected_t\,$STEP-0.01)',scale=270:480" \
+  -fps_mode vfr $D/s_%03d.png
 python3 - "$D" "$OUTP" "$STEP" <<'PY'
 import sys, glob
 from PIL import Image, ImageDraw

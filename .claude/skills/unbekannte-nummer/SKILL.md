@@ -13,8 +13,10 @@ description: >-
 # Unbekannte Nummer: POV-Dramen produzieren
 
 Erste Folge: **Der Feueralarm, Teil 1** (Repo-Ordner `feueralarm-teil1/`). Auf @gruselwahl.de hatte sie nach 1,3 h
-1.629 Aufrufe und 4,8 % Likes. Die Folgen davor im anderen Stil kamen insgesamt auf ca. 275. Dieser Skill enthält den
-kompletten, erprobten Ablauf als Vorlage und alles, was beim ersten Mal schiefging.
+1.629 Aufrufe und 4,8 % Likes, später 9.000 Aufrufe, Ø 50,9 s Wiedergabe (bei 130 s Länge), 17,5 % bis zum Ende,
+101 neue Follower. Die Folgen davor im anderen Stil kamen insgesamt auf ca. 275. Fortsetzung: **Teil 2**
+(`feueralarm-teil2/`, 68 s, Auto/Straße/Ampel). Dieser Skill enthält den kompletten, erprobten Ablauf als Vorlage und
+alles, was beim ersten Mal schiefging.
 
 Sprache mit dem Nutzer: **Deutsch**, ehrlich (nichts schönreden), kurze Zwischenstände bei langen Schritten.
 
