@@ -32,36 +32,50 @@ def kid_spec(i):
                 lashes=st in ("lang", "zopf"), brow=pick(KIDS_HAIR, 2), band=pick(KIDS_TOP, 7), head=1.1)
 
 
-def pov_haende(cam, phone_tex=None, line=0.004, sleeve="#27365c", skin="#efc4a2"):
-    """Unterarme und Hände von Noah mit Handy, an der Kamera befestigt (Kamera-Raum: -Z nach vorn, Y nach oben)."""
+def _glied(name, p0, p1, r, mat, parent, line, r2=None):
+    """Kapsel von p0 nach p1 (im Raum des Elternteils)."""
+    from mathutils import Vector
+    p0, p1 = Vector(p0), Vector(p1)
+    d = p1 - p0
+    e = T.empty(f"{name}_achse", tuple(p0), parent)
+    e.rotation_mode = "QUATERNION"
+    e.rotation_quaternion = d.normalized().to_track_quat("-Z", "Y")
+    T.capsule(name, r, d.length, mat, parent=e, line=line, r2=r2, segs=16)
+    return e
+
+
+def pov_haende(cam, phone_tex=None, line=0.0022, sleeve="#27365c", skin="#efc4a2"):
+    """Noahs rechte Hand hält das Handy (wie im Vorbild): Handfläche hinter dem Gerät, Daumen am rechten Rand,
+    Fingerspitzen links um die Kante, Ärmel kommt von unten rechts ins Bild. Bildschirm bleibt frei.
+    Kamera-Raum: -Z nach vorn, Y nach oben, X nach rechts."""
     R = {}
     rig = T.empty("pov_rig", (0, 0, 0), cam)
     sl = T.mat("Noah_aermel", sleeve)
     sk = T.mat("Noah_haut", skin)
-    # Handy vor der Kamera, unten Mitte
-    hp = T.empty("pov_handy", (0.0, -0.075, -0.27), rig, rot=(-8, 0, 0))
+    hp = T.empty("pov_handy", (0.0, -0.058, -0.25), rig, rot=(-6, 0, 0))
     R["handy"] = hp
     body = T.mat("Handy", "#17181c")
     T.box("handy_koerper", (0.074, 0.152, 0.009), body, parent=hp, line=line, bevel=0.006)
     scr = T.mat("Handy_bild", "#0d1117", tex=phone_tex)
-    T.plane("handy_bild", (0.068, 0.146), scr, loc=(0, 0, 0.0047), rot=(0, 0, 0), parent=hp)
+    T.plane("handy_bild", (0.067, 0.145), scr, loc=(0, 0, 0.0047), rot=(0, 0, 0), parent=hp)
     R["bild"] = scr
-    for side, sx in (("l", -1), ("r", 1)):
-        hd = T.empty(f"pov_hand_{side}", (sx * 0.040, -0.035, -0.012), hp)
-        palm = T.ellipsoid(f"pov_handfl_{side}", (0.055, 0.085, 0.032), sk, parent=hd, line=line)
-        palm.rotation_euler[1] = math.radians(sx * 20)
-        th = T.ellipsoid(f"pov_daumen_{side}", (0.022, 0.055, 0.02), sk, loc=(-sx * 0.012, 0.035, 0.014), parent=hd,
-                         line=line)
-        th.rotation_euler = (math.radians(10), 0, math.radians(sx * 25))
-        for k in range(3):
-            f = T.ellipsoid(f"pov_finger_{side}_{k}", (0.02, 0.05, 0.018), sk,
-                            loc=(sx * 0.005, 0.03 - k * 0.022, -0.004), parent=hd, line=line * 0.8)
-            f.rotation_euler[2] = math.radians(sx * 70)
-            f.location.x += sx * 0.02
-        arm = T.capsule(f"pov_unterarm_{side}", 0.035, 0.22, sl, loc=(sx * 0.02, -0.06, -0.02), parent=hd, line=line,
-                        axis="Y")
-        arm.rotation_euler = (math.radians(-30), math.radians(-sx * 15), 0)
-        R[f"hand_{side}"] = hd
+    hd = T.empty("pov_hand_r", (0.0, 0.0, 0.0), hp)
+    # Handfläche hinter dem Gerät (unten rechts), Ballen schaut rechts hervor
+    T.ellipsoid("pov_handfl", (0.078, 0.10, 0.032), sk, loc=(0.016, -0.04, -0.021), parent=hd, line=line)
+    T.ellipsoid("pov_ballen", (0.03, 0.05, 0.028), sk, loc=(0.042, -0.052, -0.006), parent=hd, line=line)
+    # Daumen vorn am rechten Rand, nach oben-innen
+    _glied("pov_daumen_grund", (0.046, -0.062, -0.002), (0.043, -0.03, 0.006), 0.0115, sk, hd, line)
+    _glied("pov_daumen_spitze", (0.043, -0.03, 0.006), (0.034, -0.006, 0.008), 0.0105, sk, hd, line, r2=0.0095)
+    # Fingerspitzen links um die Kante
+    for k, y in enumerate((-0.058, -0.037, -0.016, 0.004)):
+        ln = 0.011 if k in (1, 2) else 0.008
+        _glied(f"pov_finger_{k}", (-0.045, y, -0.006), (-0.045 + ln, y + 0.002, 0.002), 0.0074, sk, hd, line,
+               r2=0.0068)
+        _glied(f"pov_fingerruecken_{k}", (-0.02, y - 0.003, -0.012), (-0.047, y, -0.006), 0.0085, sk, hd, line)
+    # Handgelenk und Ärmel nach unten rechts aus dem Bild
+    _glied("pov_gelenk", (0.028, -0.085, -0.024), (0.07, -0.16, -0.05), 0.026, sk, hd, line, r2=0.028)
+    _glied("pov_aermel", (0.06, -0.14, -0.045), (0.16, -0.36, -0.1), 0.036, sl, hd, line, r2=0.042)
+    R["hand_r"] = hd
     return R
 
 

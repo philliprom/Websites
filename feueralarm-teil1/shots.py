@@ -114,7 +114,7 @@ def handy_einstellung(c, n, nach_oben=None, seitlich=None):
         ben.look(c.t0, NOAH + Vector((0.0, 0.25, -0.45)), 0.3)
         ben.bend(c.t0, (10, -22), 0.4)
         ben.brow(c.t0, "sorge", 0.3)
-    c.pov.at(c.t0, pos=NOAH + Vector((0, 0.02, -0.04)), target=NOAH + Vector((0.05, 0.55, -0.95)), dur=0.01, lens=17)
+    c.pov.at(c.t0, pos=NOAH + Vector((0, 0.02, -0.04)), target=NOAH + Vector((0.05, 0.55, -0.95)), dur=0.01, lens=22)
     c.pov.at(c.t0 + 0.2, target=NOAH + Vector((0.02, 0.6, -0.9)), dur=1.5)
     c.phone(f"r{n}", raise_at=c.t0, lower_at=None)
     c.pov.shake = 0.7
@@ -527,62 +527,44 @@ def s29(c):
 @shot("30_regel5", "keller", lambda c: c.S("r5") - 0.7)
 def s30(c):
     pohl, ben = c.a["Pohl"], c.a["Ben"]
-    pp = (-2.15, 0.95, 0)
+    pp = (-1.75, 0.95, 0)
     pohl.place(pp, heading(pp, (-2.35, -0.25, 0)))
-    pohl.bend(c.t0, (22, 0), 0.4)
-    pohl.look(c.t0, (-2.3, 0.1, 0.95), 0.3)
-    pohl.arm(c.t0, "r", "greifen", 0.01)
-    pohl.arm(c.t0 + 0.6, "r", "stehen", 0.6)
-    pohl.brow(c.t0 + 2.0, "schreck", 0.4)
-    ben.place((-1.6, 0.45, 0), -40)
-    ben.look(c.t0, (-2.3, 0.1, 0.95), 0.3)
-    c.pov.at(c.t0, pos=(-2.35, -0.25, 1.52), target=(-2.25, 0.6, 1.0), dur=0.01, lens=17)
-    c.pov.shake = 0.8
+    pohl.look(c.t0, (-2.3, 0.1, 1.0), 0.3)
+    pohl.brow(c.t0 + 1.5, "sorge", 0.4)
+    ben.place((-2.9, 0.5, 0), 40)
+    ben.look(c.t0, (-2.3, 0.1, 1.0), 0.3)
+    c.pov.at(c.t0, pos=(-2.35, -0.25, 1.52), target=(-2.3, 0.55, 0.62), dur=0.01, lens=22)
+    c.pov.at(c.S("r5b"), target=(-2.31, 0.5, 0.66), dur=c.t1 - c.S("r5b"), lens=27)
+    c.pov.shake = 0.6
     c.phone("r5", raise_at=c.t0, lower_at=None)
 
 
-@shot("31_papa", "keller", lambda c: c.S("l29") - 0.3)
+@shot("31_papa", "keller", lambda c: c.S("l29") - 0.25)
 def s31(c):
-    pohl, ben = c.a["Pohl"], c.a["Ben"]
-    pp = (-2.15, 0.95, 0)
-    pohl.place(pp, heading(pp, (-2.35, -0.25, 0)))
-    pohl.bend(c.t0, (22, 0), 0.01)
-    pohl.bend(c.t0 + 0.3, (4, 0), 0.8)
-    pohl.look(c.t0, (-2.3, 0.1, 0.95), 0.01)
-    pohl.look(c.t0 + 0.5, "cam", 0.5)
-    pohl.brow(c.t0, "schreck", 0.01)
-    ben.place((-1.6, 0.45, 0), -40)
-    ben.look(c.t0, "cam", 0.4)
-    c.pov.at(c.t0, pos=(-2.35, -0.25, 1.52), target=(-2.3, 0.3, 0.6), dur=0.01, lens=17)
-    c.pov.at(c.t0 + 0.4, target=(-2.15, 0.95, 1.7), dur=1.0, lens=22)
-    c.phone("r5", raise_at=None, lower_at=c.t0 + 0.4)
-
-
-@shot("32_beerdigung", "keller", lambda c: c.S("l30") - 0.2)
-def s32(c):
     pohl = c.a["Pohl"]
-    pp = (-2.15, 0.95, 0)
+    pp = (-1.75, 0.95, 0)
     pohl.place(pp, heading(pp, (-2.35, -0.25, 0)))
     pohl.look(c.t0, "cam", 0.01)
-    pohl.brow(c.t0, "sorge", 0.3)
+    pohl.brow(c.t0, "schreck", 0.01)
+    pohl.brow(c.S("l30") - 0.2, "sorge", 0.5)
     pohl.say(c.S("l30"), c.env("l30"))
-    pohl.idle = 0.6
-    c.a["Ben"].place((-1.6, 0.45, 0), -40)
-    c.pov.at(c.t0, pos=(-2.35, -0.25, 1.52), target=(-2.15, 0.95, 1.78), dur=0.01, lens=30)
-    c.pov.at(c.t0 + 0.2, target=(-2.15, 0.95, 1.8), dur=c.t1 - c.t0 - 0.2, lens=38)
-    c.pov.shake = 0.6
+    pohl.idle = 0.5
+    c.a["Ben"].place((-2.9, 0.5, 0), 40)
+    c.pov.at(c.t0, pos=(-2.35, -0.25, 1.52), target=(-1.75, 0.95, 1.78), dur=0.01, lens=30)
+    c.pov.at(c.S("l30"), target=(-1.75, 0.95, 1.8), dur=c.t1 - c.S("l30"), lens=40)
+    c.pov.shake = 0.5
 
 
 @shot("33_wem_glaubst_du", "keller", lambda c: c.S("l31") - 0.2)
 def s33(c):
     ben = c.a["Ben"]
-    bp = (-1.6, 0.45, 0)
+    bp = (-2.9, 0.5, 0)
     ben.place(bp, heading(bp, (-2.35, -0.25, 0)))
     ben.look(c.t0, "cam", 0.01)
     ben.brow(c.t0, "sorge", 0.01)
     ben.say(c.S("l31"), c.env("l31"))
-    c.a["Pohl"].place((-2.15, 0.95, 0), heading((-2.15, 0.95, 0), (-2.35, -0.25, 0)))
+    c.a["Pohl"].place((-1.75, 0.95, 0), heading((-1.75, 0.95, 0), (-2.35, -0.25, 0)))
     c.a["Pohl"].look(c.t0, "cam", 0.01)
-    c.pov.at(c.t0, pos=(-2.35, -0.25, 1.52), target=(-1.6, 0.45, 1.5), dur=0.01, lens=20)
-    c.pov.at(c.t0 + 0.3, target=(-1.62, 0.45, 1.55), dur=2.0, lens=24)
-    c.pov.shake = 0.6
+    c.pov.at(c.t0, pos=(-2.35, -0.25, 1.52), target=(-2.9, 0.5, 1.5), dur=0.01, lens=22)
+    c.pov.at(c.t0 + 0.3, target=(-2.88, 0.5, 1.55), dur=2.0, lens=26)
+    c.pov.shake = 0.5

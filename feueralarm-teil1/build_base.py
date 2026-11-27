@@ -82,9 +82,7 @@ def main():
             H[k] = v.name
     rigs["_pov"] = {k: v for k, v in H.items() if isinstance(v, str)}
     hand_rig = bpy.data.objects["pov_rig"]
-    T.merge_children(bpy.data.objects["pov_handy"], recursive=False)
-    for side in ("l", "r"):
-        T.merge_children(bpy.data.objects[f"pov_hand_{side}"], recursive=True)
+    T.merge_children(bpy.data.objects["pov_hand_r"], recursive=True)
     hand_rig.hide_render = False
     # versteckte (zusammengeführte) Originale endgültig entfernen, Datei klein halten
     for o in [o for o in bpy.data.objects if o.hide_render and o.type == "MESH"]:

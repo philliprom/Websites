@@ -20,6 +20,8 @@ VOICES = {
               "speaking slowly and precisely like a strict teacher.",
     "pohl": "A man around sixty, the school caretaker, with a deep, raspy, warm and worn voice.",
     "durchsage": "A middle-aged male headmaster with an authoritative, loud voice making an urgent announcement.",
+    "papa": "A German man in his mid-forties with a warm, deep, slightly husky voice. He speaks quietly, slowly and "
+            "urgently, like a father leaving a secret message for his son.",
 }
 
 LINES = [
@@ -63,7 +65,7 @@ LINES = [
          emo="She repeats the name louder, impatient and suspicious."),
     dict(id="l15", who="ben", sub="Der ist krank. Seit Montag.", rot=["krank"],
          emo="He answers quickly, nervous, trying to lie convincingly."),
-    dict(id="l16", who="sander", sub="Krank. Soso.", rot=[],
+    dict(id="l16", who="sander", sub="Krank. Soso.", say="Krank. So, so.", rot=[],
          emo="She says it slowly and drawn out, deeply suspicious, menacing."),
     # Durchsage, Sander dreht den Lautsprecher ab
     dict(id="l17", who="durchsage", kind="durchsage", sub="Raum 204! Warum ist eure Tür zu? Sofort raus zum Sammelplatz!",
@@ -87,25 +89,28 @@ LINES = [
     # Flur, Alarmlicht
     dict(id="r4", who="noah", kind="regel", n=4,
          sub="Nicht die Haupttreppe. Keller, Raum K3. Schließ hinter dir ab.",
-         say="Regel vier. Nicht die Haupttreppe. Keller, Raum K drei. Schließ hinter dir ab.",
+         say="Regel vier. Nicht die Haupttreppe. Keller, Raum Ka drei. Schließ hinter dir ab.",
          rot=["Keller, Raum K3"], emo="He reads a text message out of breath, while running, tense."),
     dict(id="l23", who="ben", sub="In den Keller? Da unten ist doch niemand!", rot=[],
          emo="He is out of breath and panicking while running."),
     dict(id="l24", who="sander", sub="Noah?! Ich weiß, dass du das bist!", rot=["Ich weiß"],
          emo="She shouts angrily from far away, sharp and threatening."),
-    dict(id="l25", who="ben", sub="Lauf!", rot=["Lauf"],
+    dict(id="l25", who="ben", sub="Lauf! Lauf!", say="Lauf, lauf!", rot=["Lauf"],
          emo="He shouts one single word loudly and urgently, clearly articulated."),
     # Keller K3
     dict(id="l26", who="pohl", sub="Ihr? Was macht ihr denn hier unten?", rot=[],
          emo="He is startled and surprised, gruff."),
-    dict(id="l27", who="noah", sub="Oben ist eine Frau. Die sucht mich. Und jemand schreibt mir, was ich tun soll.",
+    dict(id="l27", who="noah", sub="Da oben ist eine Frau. Die sucht mich. Und jemand schreibt mir, was ich tun soll.",
          rot=["sucht mich"], emo="He is out of breath and desperate, speaking fast."),
     dict(id="l28", who="pohl", sub="Ich weiß. Ich hab den Alarm gedrückt, als sie reinkam. Zeig mal her.", rot=["Alarm gedrückt"],
          emo="He speaks quietly and seriously, calm and protective."),
     dict(id="r5", who="noah", kind="regel", n=5,
          sub="Ich bin's. Papa. Geh NICHT mit Pohl. Hinterhof. Blaues Auto.",
-         say="Regel fünf. Ich bin's. Papa. Geh nicht mit Pohl. Hinterhof. Blaues Auto.",
-         rot=["Papa", "NICHT"], emo="He reads a short text message out loud at a normal pace, in shock, his voice shaking."),
+         say="Regel fünf.", rot=["Papa", "NICHT"], emo="He reads quietly and slowly, tense, almost whispering."),
+    dict(id="r5b", who="papa", kind="regel", n=5,
+         sub="Ich bin's. Papa. Geh NICHT mit Pohl. Hinterhof. Blaues Auto.",
+         say="Ich bin's. Papa. Geh nicht mit Pohl. Hinterhof. Blaues Auto.", rot=[],
+         emo="He speaks quietly and urgently, warm but serious, pausing briefly between the short sentences."),
     dict(id="l29", who="noah", sub="Papa…?", rot=["Papa"],
          emo="He whispers, stunned, his voice breaking, close to tears."),
     dict(id="l30", who="pohl", sub="Noah… das kann nicht sein. Ich war auf der Beerdigung deines Vaters.",
