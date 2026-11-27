@@ -23,9 +23,11 @@ def load(model_dir):
     global _MODEL
     if _MODEL is None:
         import torch
-        torch.set_num_threads(os.cpu_count() or 4)
+        torch.set_num_threads(int(os.environ.get("QWEN_THREADS", 0)) or os.cpu_count() or 4)
         from qwen_tts import Qwen3TTSModel
-        _MODEL = Qwen3TTSModel.from_pretrained(model_dir, device_map="cpu", dtype=torch.float32)
+        # QWEN_DTYPE=bf16: auf CPUs mit AMX/AVX512-BF16 mehrfach schneller, Klang praktisch gleich
+        dt = torch.bfloat16 if os.environ.get("QWEN_DTYPE") == "bf16" else torch.float32
+        _MODEL = Qwen3TTSModel.from_pretrained(model_dir, device_map="cpu", dtype=dt)
     return _MODEL
 
 

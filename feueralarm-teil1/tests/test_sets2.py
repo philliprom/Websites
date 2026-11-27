@@ -1,0 +1,21 @@
+import math, os, sys, time
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import bpy, toon as T, cast as C, set_flur as F
+out = sys.argv[-1]
+T.reset(); sc = T.setup(res=(540, 960), aa="FXAA", bg="#222222", shadow=0.3, light=(-0.4, -0.5, 0.75))
+F.flur()
+ben = C.baue("Ben", "ben", loc=(0.45, 3.0, 0), rot=200)
+ben["schulter_l"].rotation_euler[0] = math.radians(-50); ben["schulter_r"].rotation_euler[0] = math.radians(40)
+ben["huefte_l"].rotation_euler[0] = math.radians(-30); ben["knie_l"].rotation_euler[0] = math.radians(40)
+ben["huefte_r"].rotation_euler[0] = math.radians(25); ben["kopf"].rotation_euler[2] = math.radians(30)
+sander = C.baue("Sander", "sander", loc=(0.2, -1.4, 0), rot=180)
+cam = T.camera(loc=(-0.2, 1.2, 1.55), lens=14); T.look_at(cam, (0.3, 26, 1.2))
+sc.render.filepath = out + "_flur.png"; bpy.ops.render.render(write_still=True)
+cam.location = (0.0, 6.0, 1.55); T.look_at(cam, (0.2, -1.4, 1.4))
+sc.render.filepath = out + "_flur_zurueck.png"; bpy.ops.render.render(write_still=True)
+T.reset(); sc = T.setup(res=(540, 960), aa="FXAA", bg="#111111", shadow=0.4, light=(0.2, -0.3, 0.9))
+F.keller()
+pohl = C.baue("Pohl", "pohl", loc=(-1.9, 3.4, 0), rot=-60)
+pohl["kopf"].rotation_euler[2] = math.radians(-30)
+cam = T.camera(loc=(-1.2, -0.5, 1.5), lens=14); T.look_at(cam, (-1.6, 4.0, 1.3))
+sc.render.filepath = out + "_keller.png"; bpy.ops.render.render(write_still=True)
