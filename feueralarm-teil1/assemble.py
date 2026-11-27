@@ -317,10 +317,14 @@ def main():
                 compose(Image.open(p).convert("RGB"), (f - 1) / FPS).save(os.path.join(BUILD, f"check_{tt:06.2f}.png"))
         return
     os.makedirs(OUT, exist_ok=True)
+    name = "feueralarm_teil1_tiktok.mp4"
+    if len(sys.argv) > 3 and sys.argv[2] == "teil":  # Probe: nur die ersten N Sekunden
+        nf = int(float(sys.argv[3]) * FPS)
+        name = f"probe_{sys.argv[3]}s.mp4"
     tmp = os.path.join(BUILD, "video_ohne_ton.mp4")
     enc = subprocess.Popen(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
                             "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "medium",
-                            "-crf", "18", "-pix_fmt", "yuv420p", tmp], stdin=subprocess.PIPE)
+                            "-crf", "21", "-pix_fmt", "yuv420p", tmp], stdin=subprocess.PIPE)
     last = None
     for f in range(1, nf + 1):
         p = frame_path(fdir, f)
@@ -333,7 +337,7 @@ def main():
             print(f"{f}/{nf}", flush=True)
     enc.stdin.close()
     enc.wait()
-    out = os.path.join(OUT, "feueralarm_teil1_tiktok.mp4")
+    out = os.path.join(OUT, name)
     subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", tmp, "-i", os.path.join(BUILD, "mix.wav"),
                     "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
                     "-shortest", "-movflags", "+faststart", out], check=True)

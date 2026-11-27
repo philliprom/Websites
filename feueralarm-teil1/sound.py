@@ -311,8 +311,8 @@ put(mus, drone * lvl, 0)
 high = pad([440.0, 466.2], D + 0.6, 1.0)[:n]
 put(mus, bp(high, 300, 3000) * 0.02 * (mask(S("r2") + 2, S("l16") + 2, 1.0) + mask(S("r5"), D + 1, 1.5)), 0)
 # Akzente
-put(mus, riser(1.0, 0.35), S("r2") + LN["r2"]["dur"] - 1.6)
-put(mus, hit(0.6), E("r2") - 0.2)
+put(mus, riser(1.0, 0.35), E("r2") - 1.0)
+put(mus, hit(0.6), E("r2") + 0.05)
 put(mus, hit(0.5), E("l16") - 0.1)
 put(mus, riser(0.9, 0.3), t_flur - 0.9)
 put(mus, hit(0.55), t_flur)
