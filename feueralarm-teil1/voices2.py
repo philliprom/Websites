@@ -103,14 +103,18 @@ def wer(ref, hyp):
     return d[len(h)] / max(1, len(r))
 
 
-def wahl(model, whisper_dir):
+def wahl(model, whisper_dir, only=None):
     from faster_whisper import WhisperModel
     from scipy.signal import resample_poly
     T.load(model)
     asr = WhisperModel(whisper_dir, device="cpu", compute_type="int8")
-    report, chosen = {}, {}
+    rp, cp = os.path.join(CACHE, "wahl2.json"), os.path.join(CACHE, "auswahl2.json")
+    report = json.load(open(rp)) if only and os.path.exists(rp) else {}
+    chosen = json.load(open(cp)) if only and os.path.exists(cp) else {}
     for l in LINES:
         i = l["id"]
+        if only and i not in only:
+            continue
         files = sorted(glob.glob(os.path.join(CAND, f"{i}_*.wav")))
         rows = []
         for f in files:
@@ -150,4 +154,4 @@ if __name__ == "__main__":
         klon(sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else 2,
              set(sys.argv[4].split(",")) if len(sys.argv) > 4 else None)
     elif cmd == "wahl":
-        wahl(sys.argv[2], sys.argv[3])
+        wahl(sys.argv[2], sys.argv[3], set(sys.argv[4].split(",")) if len(sys.argv) > 4 else None)

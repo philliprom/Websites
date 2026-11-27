@@ -19,7 +19,8 @@ VOICES = {
     "sander": "A woman in her mid-forties with a low, smooth, controlled voice, polite on the surface but cold and menacing, "
               "speaking slowly and precisely like a strict teacher.",
     "pohl": "A man around sixty, the school caretaker, with a deep, raspy, warm and worn voice.",
-    "durchsage": "A middle-aged male headmaster with an authoritative, loud voice making an urgent announcement.",
+    "durchsage": "A German headmaster in his late fifties with a deep, firm, authoritative male voice, low pitch. He "
+                 "speaks loudly and urgently over a school loudspeaker, but without shouting.",
     "papa": "A German man in his mid-forties with a warm, deep, slightly husky voice. He speaks quietly, slowly and "
             "urgently, like a father leaving a secret message for his son.",
 }
