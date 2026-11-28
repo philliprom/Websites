@@ -63,154 +63,11 @@
    ]
   },
   {
-   "id": "k02",
-   "who": "ben",
-   "kind": "zeile",
-   "start": 5.968,
-   "end": 8.557,
-   "dur": 2.588,
-   "sub": "Noah, warte! Wo willst du hin?",
-   "rot": [],
-   "n": null,
-   "words": [
-    [
-     0.0,
-     0.58,
-     "Noah,"
-    ],
-    [
-     0.9,
-     1.34,
-     "warte!"
-    ],
-    [
-     1.76,
-     1.92,
-     "Wo"
-    ],
-    [
-     1.92,
-     2.12,
-     "willst"
-    ],
-    [
-     2.12,
-     2.36,
-     "du"
-    ],
-    [
-     2.36,
-     2.56,
-     "hin?"
-    ]
-   ]
-  },
-  {
-   "id": "k03",
-   "who": "noah",
-   "kind": "zeile",
-   "start": 8.757,
-   "end": 11.641,
-   "dur": 2.885,
-   "sub": "Zum Auto. Wenn das wirklich Papa ist…",
-   "rot": [
-    "Papa"
-   ],
-   "n": null,
-   "words": [
-    [
-     0.0,
-     0.34,
-     "Zum"
-    ],
-    [
-     0.34,
-     0.88,
-     "Auto."
-    ],
-    [
-     1.34,
-     1.48,
-     "Wenn"
-    ],
-    [
-     1.48,
-     1.74,
-     "das"
-    ],
-    [
-     1.74,
-     2.12,
-     "wirklich"
-    ],
-    [
-     2.12,
-     2.44,
-     "Papa"
-    ],
-    [
-     2.44,
-     2.72,
-     "ist."
-    ]
-   ]
-  },
-  {
-   "id": "k04",
-   "who": "ben",
-   "kind": "zeile",
-   "start": 12.241,
-   "end": 15.03,
-   "dur": 2.789,
-   "sub": "Da! Ein blaues Auto. Der Motor läuft.",
-   "rot": [
-    "blaues Auto"
-   ],
-   "n": null,
-   "words": [
-    [
-     0.0,
-     0.36,
-     "Da!"
-    ],
-    [
-     0.6,
-     0.9,
-     "Ein"
-    ],
-    [
-     0.9,
-     1.22,
-     "blaues"
-    ],
-    [
-     1.22,
-     1.64,
-     "Auto!"
-    ],
-    [
-     1.84,
-     2.04,
-     "Der"
-    ],
-    [
-     2.04,
-     2.4,
-     "Motor"
-    ],
-    [
-     2.4,
-     2.72,
-     "läuft!"
-    ]
-   ]
-  },
-  {
    "id": "k05",
    "who": "fahrer",
    "kind": "zeile",
-   "start": 15.83,
-   "end": 20.157,
+   "start": 6.518,
+   "end": 10.845,
    "dur": 4.327,
    "sub": "Noah? Dein Vater schickt mich. Steig ein. Schnell.",
    "rot": [
@@ -264,8 +121,8 @@
    "id": "k06",
    "who": "ben",
    "kind": "zeile",
-   "start": 20.407,
-   "end": 22.087,
+   "start": 11.095,
+   "end": 12.775,
    "dur": 1.68,
    "sub": "Woher kennt der Typ deinen Namen?",
    "rot": [
@@ -309,8 +166,8 @@
    "id": "k07",
    "who": "noah",
    "kind": "zeile",
-   "start": 22.287,
-   "end": 23.213,
+   "start": 12.975,
+   "end": 13.901,
    "dur": 0.926,
    "sub": "Wo ist mein Vater?",
    "rot": [],
@@ -342,8 +199,8 @@
    "id": "k08",
    "who": "fahrer",
    "kind": "zeile",
-   "start": 23.363,
-   "end": 25.993,
+   "start": 14.051,
+   "end": 16.681,
    "dur": 2.63,
    "sub": "Er wartet auf dich. Ich bring dich hin.",
    "rot": [],
@@ -395,8 +252,8 @@
    "id": "k09",
    "who": "sander",
    "kind": "zeile",
-   "start": 26.543,
-   "end": 28.25,
+   "start": 17.181,
+   "end": 18.888,
    "dur": 1.706,
    "sub": "Noah?! Bleib stehen!",
    "rot": [
@@ -425,8 +282,8 @@
    "id": "k10",
    "who": "ben",
    "kind": "zeile",
-   "start": 28.45,
-   "end": 30.846,
+   "start": 19.088,
+   "end": 21.484,
    "dur": 2.396,
    "sub": "Sie kommt! Los, rein da!",
    "rot": [
@@ -465,8 +322,8 @@
    "id": "k11",
    "who": "fahrer",
    "kind": "zeile",
-   "start": 32.746,
-   "end": 34.85,
+   "start": 23.584,
+   "end": 25.688,
    "dur": 2.104,
    "sub": "Anschnallen. Und Kopf runter.",
    "rot": [],
@@ -498,8 +355,8 @@
    "id": "k12",
    "who": "ben",
    "kind": "zeile",
-   "start": 35.35,
-   "end": 37.59,
+   "start": 26.138,
+   "end": 28.378,
    "dur": 2.24,
    "sub": "Und Lina? Die ist noch bei ihr!",
    "rot": [
@@ -548,8 +405,8 @@
    "id": "k13",
    "who": "noah",
    "kind": "zeile",
-   "start": 37.79,
-   "end": 39.604,
+   "start": 28.578,
+   "end": 30.392,
    "dur": 1.813,
    "sub": "Papa holt sie. Ganz sicher.",
    "rot": [],
@@ -586,8 +443,8 @@
    "id": "r6",
    "who": "papa",
    "kind": "regel",
-   "start": 40.504,
-   "end": 44.343,
+   "start": 31.242,
+   "end": 35.081,
    "dur": 3.839,
    "sub": "Falsches Auto. Ich warte hinter der Turnhalle. Steig AUS.",
    "rot": [
@@ -600,12 +457,13 @@
    "id": "k14",
    "who": "noah",
    "kind": "zeile",
-   "start": 44.693,
-   "end": 45.553,
-   "dur": 0.86,
-   "sub": "Falsches Auto…?",
+   "start": 35.431,
+   "end": 37.782,
+   "dur": 2.35,
+   "sub": "Falsches Auto…? Die Tür geht nicht auf!",
    "rot": [
-    "Falsches Auto"
+    "Falsches Auto",
+    "nicht auf"
    ],
    "n": null,
    "words": [
@@ -616,8 +474,88 @@
     ],
     [
      0.5,
-     0.74,
+     0.82,
      "Auto?"
+    ],
+    [
+     1.36,
+     1.5,
+     "Die"
+    ],
+    [
+     1.5,
+     1.64,
+     "Tür"
+    ],
+    [
+     1.64,
+     1.84,
+     "geht"
+    ],
+    [
+     1.84,
+     2.06,
+     "nicht"
+    ],
+    [
+     2.06,
+     2.28,
+     "auf."
+    ]
+   ]
+  },
+  {
+   "id": "k15a",
+   "who": "fahrer",
+   "kind": "zeile",
+   "start": 38.932,
+   "end": 42.123,
+   "dur": 3.191,
+   "sub": "Ja. Ich hab beide. Wir sind gleich da.",
+   "rot": [
+    "Ich hab beide"
+   ],
+   "n": null,
+   "words": [
+    [
+     0.0,
+     0.6,
+     "Ja,"
+    ],
+    [
+     0.96,
+     1.06,
+     "ich"
+    ],
+    [
+     1.06,
+     1.26,
+     "hab"
+    ],
+    [
+     1.26,
+     1.66,
+     "beide."
+    ],
+    [
+     2.2,
+     2.34,
+     "Wir"
+    ],
+    [
+     2.34,
+     2.58,
+     "sind"
+    ],
+    [
+     2.58,
+     2.84,
+     "gleich"
+    ],
+    [
+     2.84,
+     3.1,
+     "da."
     ]
    ]
   },
@@ -625,10 +563,10 @@
    "id": "k15",
    "who": "ben",
    "kind": "zeile",
-   "start": 46.653,
-   "end": 48.733,
-   "dur": 2.08,
-   "sub": "Noah… auf seinem Handy steht Sander!",
+   "start": 42.423,
+   "end": 44.263,
+   "dur": 1.84,
+   "sub": "Noah… der arbeitet für Sander!",
    "rot": [
     "Sander"
    ],
@@ -636,32 +574,27 @@
    "words": [
     [
      0.0,
-     0.46,
+     0.5,
      "Noah,"
     ],
     [
-     0.74,
+     0.7,
      0.86,
-     "auf"
+     "der"
     ],
     [
      0.86,
-     1.06,
-     "seinem"
+     1.26,
+     "arbeitet"
     ],
     [
-     1.06,
-     1.38,
-     "Handy"
+     1.26,
+     1.46,
+     "für"
     ],
     [
-     1.38,
-     1.6,
-     "steht"
-    ],
-    [
-     1.6,
-     2.0,
+     1.46,
+     1.78,
      "Sander."
     ]
    ]
@@ -670,8 +603,8 @@
    "id": "k16",
    "who": "fahrer",
    "kind": "zeile",
-   "start": 49.083,
-   "end": 50.62,
+   "start": 44.613,
+   "end": 46.15,
    "dur": 1.537,
    "sub": "Gibt's ein Problem da hinten?",
    "rot": [],
@@ -703,8 +636,8 @@
    "id": "k17",
    "who": "noah",
    "kind": "zeile",
-   "start": 50.82,
-   "end": 52.78,
+   "start": 46.35,
+   "end": 48.31,
    "dur": 1.96,
    "sub": "Nein. Mir ist nur schlecht.",
    "rot": [],
@@ -741,8 +674,8 @@
    "id": "r7",
    "who": "papa",
    "kind": "regel",
-   "start": 53.68,
-   "end": 58.566,
+   "start": 49.16,
+   "end": 54.046,
    "dur": 4.886,
    "sub": "An der Ampel. Fenster hinten rechts geht auf. Raus, wenn es grün wird.",
    "rot": [
@@ -755,8 +688,8 @@
    "id": "k18",
    "who": "fahrer",
    "kind": "zeile",
-   "start": 59.316,
-   "end": 61.109,
+   "start": 54.796,
+   "end": 56.589,
    "dur": 1.793,
    "sub": "Finger weg vom Fenster, Noah.",
    "rot": [
@@ -795,8 +728,8 @@
    "id": "k19",
    "who": "ben",
    "kind": "zeile",
-   "start": 61.459,
-   "end": 62.651,
+   "start": 58.939,
+   "end": 60.131,
    "dur": 1.192,
    "sub": "Noah… was machen wir?",
    "rot": [
@@ -839,19 +772,19 @@
   },
   {
    "kind": "buzz",
-   "t": 39.704,
+   "t": 30.492,
    "regel": 6
   },
   {
    "kind": "buzz",
-   "t": 52.88,
+   "t": 48.41,
    "regel": 7
   },
   {
    "kind": "endkarte",
-   "t": 64.551
+   "t": 62.031
   }
  ],
- "total": 68.551,
+ "total": 66.031,
  "sr": 24000
 }

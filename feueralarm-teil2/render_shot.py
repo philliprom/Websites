@@ -26,7 +26,7 @@ FPS = AN.FPS
 TL = json.load(open(os.path.join(HERE, "timeline.json")))
 LINE = {l["id"]: l for l in TL["lines"]}
 SETLOOK = {
-    "hof": dict(bg="#8e98a5", light=(0.2, -0.3, 0.9), shadow=0.25),
+    "hof": dict(bg="#7f8996", light=(0.2, -0.3, 0.9), shadow=0.25),
     "auto": dict(bg="#b9c4cf", light=(0.3, -0.4, 0.85), shadow=0.3),
     "klasse": dict(bg="#bcd9ee", light=(-0.75, -0.25, 0.62), shadow=0.32),
     "flur": dict(bg="#d8d4cc", light=(0.35, -0.2, 0.9), shadow=0.3),
@@ -40,6 +40,15 @@ class Times:
 
     def E(self, i):
         return LINE[i]["end"]
+
+    def W(self, i, k):
+        """Beginn des k-ten Worts (0-basiert) einer Zeile; ohne Wortzeiten anteilig geschätzt."""
+        l = LINE[i]
+        ws = l.get("words") or []
+        if k < len(ws):
+            return l["start"] + ws[k][0]
+        n = max(1, len(l["sub"].split()))
+        return l["start"] + l["dur"] * k / n
 
 
 def shot_times():
@@ -85,9 +94,9 @@ AMPEL_AUS = {"rot": (0.14, 0.02, 0.02), "gelb": (0.1, 0.08, 0.01), "gruen": (0.0
 
 def car_y_fn(allt):
     """y-Position des blauen Autos über die Zeit: anfahren, Stadttempo, Bremsen bis zur Haltelinie der roten Ampel."""
-    starts = {s["id"]: a for s, a, b in allt}
-    t_go = starts["10_anschnallen"] + 0.9
-    t_stop = starts["16_finger_weg"] - 0.4
+    starts = {s["id"].split("_", 1)[1]: a for s, a, b in allt}   # ohne Nummer, damit Umnummerieren nichts bricht
+    t_go = starts["anschnallen"] + 0.9
+    t_stop = starts["finger_weg"] - 0.4
     y0, y1 = 0.0, HOF.STOP_Y
     ta, td = 2.5, 4.5
     dur = t_stop - t_go
@@ -176,6 +185,11 @@ def run(shot, t0, t1, allt, base_dir, out_dir, test=False, only=None, out_path=N
             if "_glas_" in o.name and o.name.startswith("blaues_auto"):
                 o.hide_render = True
     ampel_plan = sorted(getattr(c, "ampel", [(0.0, "rot")])) if "Ampel_rot" in bpy.data.materials else None
+    flares = [o for o in O if o.name.startswith("blaues_auto_flare_") and o.type == "EMPTY"]
+    hupe = getattr(c, "lichthupe", [])
+    fenster = O.get("blaues_auto_fenster_hr")
+    fenster_plan = getattr(c, "fenster", None)     # (t_start, t_ende): Scheibe hinten rechts fährt herunter
+    fenster_z0 = fenster.location.z if fenster is not None else 0.0
     if getattr(c, "fahrerhandy", None) and "Fahrerhandy_bild" in bpy.data.materials:
         m = bpy.data.materials["Fahrerhandy_bild"]
         for n in m.node_tree.nodes:
@@ -216,6 +230,21 @@ def run(shot, t0, t1, allt, base_dir, out_dir, test=False, only=None, out_path=N
         if follow is not None:
             car.location = follow(t)
             car.keyframe_insert("location", frame=f)
+        if flares:
+            an = any(a <= t < b for a, b in hupe)
+            for fl in flares:
+                k = 1.0 if an else 0.001
+                fl.scale = (k, k, k)
+                fl.keyframe_insert("scale", frame=f)
+            m = bpy.data.materials.get("Scheinwerfer")
+            if m is not None:
+                m.diffuse_color = (1.0, 0.98, 0.85, 1) if an else (0.55, 0.53, 0.45, 1)
+                m.keyframe_insert("diffuse_color", frame=f)
+        if fenster is not None and fenster_plan:
+            a, b = fenster_plan
+            w = min(1.0, max(0.0, (t - a) / max(b - a, 1e-3)))
+            fenster.location.z = fenster_z0 - 0.62 * w
+            fenster.keyframe_insert("location", frame=f)
         if ampel_plan:
             zustand = [z for tz, z in ampel_plan if tz <= t + 1e-6]
             an = AMPEL[zustand[-1] if zustand else ampel_plan[0][1]]

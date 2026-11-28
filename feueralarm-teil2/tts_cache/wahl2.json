@@ -552,65 +552,85 @@
  "k14": [
   {
    "datei": "k14_c0.wav",
-   "score": 1.731,
+   "score": 1.779,
    "wer": 0.0,
-   "mean": 0.97,
-   "min": 0.93,
-   "sim": 0.968,
-   "dur": 0.86,
-   "hyp": "Falsches Auto?"
+   "mean": 0.99,
+   "min": 0.95,
+   "sim": 0.982,
+   "dur": 2.84,
+   "hyp": "Falsches Auto? Die Tür geht nicht auf."
   },
   {
    "datei": "k14_c2.wav",
-   "score": 1.703,
+   "score": 1.774,
    "wer": 0.0,
-   "mean": 0.95,
-   "min": 0.91,
-   "sim": 0.972,
-   "dur": 0.96,
-   "hyp": "Falsches Auto?"
+   "mean": 0.99,
+   "min": 0.94,
+   "sim": 0.982,
+   "dur": 2.51,
+   "hyp": "Falsches Auto? Die Tür geht nicht auf."
+  },
+  {
+   "datei": "k14_c3.wav",
+   "score": 1.77,
+   "wer": 0.0,
+   "mean": 0.99,
+   "min": 0.94,
+   "sim": 0.981,
+   "dur": 2.65,
+   "hyp": "Falsches Auto? Die Tür geht nicht auf."
   },
   {
    "datei": "k14_c1.wav",
-   "score": 1.694,
+   "score": 1.764,
    "wer": 0.0,
-   "mean": 0.95,
-   "min": 0.91,
-   "sim": 0.969,
-   "dur": 0.82,
-   "hyp": "Falsches Auto?"
+   "mean": 0.99,
+   "min": 0.93,
+   "sim": 0.982,
+   "dur": 2.38,
+   "hyp": "Falsches Auto, die Tür geht nicht auf."
   }
  ],
  "k15": [
   {
-   "datei": "k15_c0.wav",
-   "score": 1.633,
+   "datei": "k15_c3.wav",
+   "score": 1.581,
    "wer": 0.0,
-   "mean": 0.95,
-   "min": 0.81,
-   "sim": 0.986,
-   "dur": 2.08,
-   "hyp": "Noah, auf seinem Handy steht Sander."
+   "mean": 0.92,
+   "min": 0.79,
+   "sim": 0.98,
+   "dur": 1.84,
+   "hyp": "Noah, der arbeitet für Sander."
   },
   {
    "datei": "k15_c1.wav",
-   "score": 1.626,
+   "score": 1.565,
    "wer": 0.0,
-   "mean": 0.95,
-   "min": 0.82,
-   "sim": 0.977,
-   "dur": 1.84,
-   "hyp": "Noah, auf seinem Handy steht Sander!"
+   "mean": 0.91,
+   "min": 0.79,
+   "sim": 0.97,
+   "dur": 1.73,
+   "hyp": "Noah, der arbeitet für Sander."
+  },
+  {
+   "datei": "k15_c0.wav",
+   "score": 1.462,
+   "wer": 0.0,
+   "mean": 0.9,
+   "min": 0.67,
+   "sim": 0.984,
+   "dur": 1.92,
+   "hyp": "Noah, der arbeitet für Sander!"
   },
   {
    "datei": "k15_c2.wav",
-   "score": 1.53,
+   "score": 1.461,
    "wer": 0.0,
-   "mean": 0.93,
-   "min": 0.71,
-   "sim": 0.985,
-   "dur": 2.32,
-   "hyp": "Noah, auf seinem Handy steht Sander."
+   "mean": 0.9,
+   "min": 0.66,
+   "sim": 0.984,
+   "dur": 1.76,
+   "hyp": "Noah, der arbeitet für Sander!"
   }
  ],
  "k16": [
@@ -821,6 +841,48 @@
    "sim": 0.969,
    "dur": 1.28,
    "hyp": "Noah, was machen wir?"
+  }
+ ],
+ "k15a": [
+  {
+   "datei": "k15a_c0.wav",
+   "score": 1.583,
+   "wer": 0.0,
+   "mean": 0.95,
+   "min": 0.75,
+   "sim": 0.982,
+   "dur": 3.46,
+   "hyp": "Ja, ich hab beide. Wir sind gleich da."
+  },
+  {
+   "datei": "k15a_c2.wav",
+   "score": 1.481,
+   "wer": 0.0,
+   "mean": 0.94,
+   "min": 0.64,
+   "sim": 0.981,
+   "dur": 2.9,
+   "hyp": "Ja, ich hab beide. Wir sind gleich da."
+  },
+  {
+   "datei": "k15a_c3.wav",
+   "score": 1.451,
+   "wer": 0.0,
+   "mean": 0.91,
+   "min": 0.63,
+   "sim": 0.987,
+   "dur": 3.79,
+   "hyp": "Ja, ich hab beide. Wir sind gleich da."
+  },
+  {
+   "datei": "k15a_c1.wav",
+   "score": 1.428,
+   "wer": 0.0,
+   "mean": 0.93,
+   "min": 0.58,
+   "sim": 0.982,
+   "dur": 2.61,
+   "hyp": "Ja, ich hab beide. Wir sind gleich da."
   }
  ]
 }

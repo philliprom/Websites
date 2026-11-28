@@ -12,8 +12,8 @@ from figur import _hash
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 A = os.path.join(HERE, "assets")
-AUTO_HOF = (3.2, 13.0, 0.0)      # Auto im Hof, Front zeigt zum Tor (-X)
-AUTO_HOF_ROT = 90.0
+AUTO_HOF = (3.4, 8.8, 0.0)       # Auto im Hof: nah an der Kellertür, Front schräg zum Betrachter
+AUTO_HOF_ROT = 120.0
 AMPEL_Y = 250.0                  # Fahrt ca. 35 s mit Stadttempo bis zur roten Ampel
 SPUR_X = 1.6
 FAHRER_SITZ = (-0.40, 0.30)      # relativ zum Auto
@@ -31,8 +31,18 @@ def tex(n):
     return os.path.join(A, n)
 
 
-def auto(name, farbe="#2a5db0", loc=(0, 0, 0), rot=0.0, innen=True, glas=True, line=0.009):
-    """Toon-Auto (Kombi-Limousine), Front nach +Y. Gibt (wurzel, glas_objekte, handyhalter-empty) zurück."""
+def hof_welt(lx, ly, z=0.0):
+    """Weltpunkt zu einem Punkt relativ zum Hof-Auto (x rechts, y nach vorn)."""
+    a = math.radians(AUTO_HOF_ROT)
+    return (AUTO_HOF[0] + lx * math.cos(a) - ly * math.sin(a), AUTO_HOF[1] + lx * math.sin(a) + ly * math.cos(a), z)
+
+
+def auto(name, farbe="#2a5db0", loc=(0, 0, 0), rot=0.0, innen=True, glas=True, line=0.009, tuer_hl_offen=False,
+         lichter=False, fenster_hr=False):
+    """Toon-Auto (Kombi-Limousine), Front nach +Y. Gibt (wurzel, glas_objekte, handyhalter-empty) zurück.
+    tuer_hl_offen: Tür hinten links steht offen (Hof). lichter: Scheinwerfer-Blitze für die Lichthupe (Empties
+    {name}_flare_±1, Größe wird animiert). fenster_hr: Scheibe hinten rechts als eigene Gruppe {name}_fenster_hr
+    (kann herunterfahren)."""
     root = T.empty(name, loc)
     root.rotation_euler[2] = math.radians(rot)
     lack = T.mat(f"{name}_lack", farbe)
@@ -43,12 +53,31 @@ def auto(name, farbe="#2a5db0", loc=(0, 0, 0), rot=0.0, innen=True, glas=True, l
     glasm = T.mat("AutoGlas", "#243447")
     # Unterboden, Seiten (Türen), Motorhaube, Kofferraum, Stoßstangen
     T.box(f"{name}_boden", (1.7, 4.3, 0.16), dunkel, loc=(0, 0, 0.36), parent=root, line=line)
+    scharnier = None
     for sx in (-1, 1):
-        T.box(f"{name}_tuer_{sx}", (0.09, 2.1, 0.62), lack, loc=(sx * 0.87, -0.05, 0.66), parent=root, line=line,
-              bevel=0.03)
-        T.box(f"{name}_tuerlinie_{sx}", (0.1, 0.02, 0.5), dunkel, loc=(sx * 0.875, -0.05, 0.68), parent=root, line=0)
+        if sx == -1 and tuer_hl_offen:
+            T.box(f"{name}_tuer_{sx}", (0.09, 1.1, 0.62), lack, loc=(sx * 0.87, 0.45, 0.66), parent=root, line=line,
+                  bevel=0.03)
+            # Hintertür links offen: Scharnier an ihrer Vorderkante, nach außen gedreht
+            scharnier = T.empty(f"{name}_tuer_hl", (sx * 0.87, -0.10, 0.0), root, rot=(0, 0, -70))
+            T.box(f"{name}_tuer_hl_blech", (0.09, 1.0, 0.62), lack, loc=(0, -0.5, 0.66), parent=scharnier, line=line,
+                  bevel=0.03)
+            T.box(f"{name}_tuer_hl_innen", (0.05, 0.95, 0.45), innenm, loc=(0.06, -0.5, 0.75), parent=scharnier,
+                  line=0.004)
+            T.box(f"{name}_tuer_hl_griff", (0.1, 0.14, 0.03), chrom, loc=(-0.05, -0.38, 0.86), parent=scharnier,
+                  line=0.003)
+            T.box(f"{name}_tuer_hl_rahmen", (0.07, 0.95, 0.06), lack, loc=(0, -0.48, 1.70), parent=scharnier,
+                  line=0.005)
+            T.box(f"{name}_tuer_hl_rahmen_h", (0.07, 0.06, 0.73), lack, loc=(0, -0.97, 1.33), parent=scharnier,
+                  line=0.005)
+        else:
+            T.box(f"{name}_tuer_{sx}", (0.09, 2.1, 0.62), lack, loc=(sx * 0.87, -0.05, 0.66), parent=root, line=line,
+                  bevel=0.03)
+            T.box(f"{name}_tuerlinie_{sx}", (0.1, 0.02, 0.5), dunkel, loc=(sx * 0.875, -0.05, 0.68), parent=root,
+                  line=0)
+            T.box(f"{name}_griff_{sx}_h", (0.1, 0.14, 0.03), chrom, loc=(sx * 0.92, -0.45, 0.86), parent=root,
+                  line=0.003)
         T.box(f"{name}_griff_{sx}_v", (0.1, 0.14, 0.03), chrom, loc=(sx * 0.92, 0.35, 0.86), parent=root, line=0.003)
-        T.box(f"{name}_griff_{sx}_h", (0.1, 0.14, 0.03), chrom, loc=(sx * 0.92, -0.45, 0.86), parent=root, line=0.003)
         T.box(f"{name}_spiegel_{sx}", (0.16, 0.07, 0.1), lack, loc=(sx * 0.98, 0.98, 1.0), parent=root, line=0.004,
               bevel=0.02)
     T.box(f"{name}_haube", (1.8, 1.2, 0.36), lack, loc=(0, 1.62, 0.72), parent=root, line=line, bevel=0.1)
@@ -80,12 +109,23 @@ def auto(name, farbe="#2a5db0", loc=(0, 0, 0), rot=0.0, innen=True, glas=True, l
                        parent=root, axis="X", line=line, segs=28)
             T.cylinder(f"{name}_felge_{sx}_{sy}", 0.2, 0.26, chrom, loc=(sx * 0.82, sy * 1.36, 0.34), parent=root,
                        axis="X", line=0.003, segs=20)
+    # Scheibe hinten rechts als eigene Gruppe (fährt in Teil 2 am Ende von selbst herunter)
+    fenster = T.empty(f"{name}_fenster_hr", (0.83, -0.57, 0.0), root) if fenster_hr else None
+
+    def scheibe_eltern(sx, k, x, y):
+        """(Eltern, lokale x, lokale y) für Teile einer Seitenscheibe: Wurzel, offene Tür oder Fenstergruppe."""
+        if sx == -1 and k == 1 and scharnier is not None:
+            return scharnier, x + 0.87, y + 0.10
+        if sx == 1 and k == 1 and fenster is not None:
+            return fenster, x - 0.83, y + 0.57
+        return root, x, y
+
     glasobj = []
     if glas:
         for sx in (-1, 1):
             for k, (y, w) in enumerate(((0.45, 0.95), (-0.57, 0.86))):
-                o = T.box(f"{name}_glas_seite_{sx}_{k}", (0.02, w, 0.7), glasm, loc=(sx * 0.83, y, 1.33), parent=root,
-                          line=0)
+                par, lx, ly = scheibe_eltern(sx, k, sx * 0.83, y)
+                o = T.box(f"{name}_glas_seite_{sx}_{k}", (0.02, w, 0.7), glasm, loc=(lx, ly, 1.33), parent=par, line=0)
                 glasobj.append(o)
         # Comic-Glanzstreifen auf den Seitenscheiben (innen und außen): zeigt, dass die Fenster zu sind
         glanz = T.mat("Glanz", "#e9f3ff")
@@ -93,9 +133,13 @@ def auto(name, farbe="#2a5db0", loc=(0, 0, 0), rot=0.0, innen=True, glas=True, l
             for k, y in enumerate((0.45, -0.57)):
                 for seite, xx in (("i", 0.812), ("a", 0.848)):
                     for j, (dy, b, h) in enumerate(((-0.12, 0.034, 0.52), (0.06, 0.016, 0.4))):
+                        par, lx, ly = scheibe_eltern(sx, k, sx * xx, y + dy)
                         o = T.box(f"{name}_glanz_{sx}_{k}_{seite}_{j}", (0.006, b, h), glanz,
-                                  loc=(sx * xx, y + dy, 1.34), parent=root, line=0)
+                                  loc=(lx, ly, 1.34), parent=par, line=0)
                         o.rotation_euler[0] = math.radians(-35)
+        if fenster is not None:   # sichtbare Oberkante der Scheibe (wandert beim Öffnen mit nach unten)
+            T.box(f"{name}_fenster_hr_kante", (0.03, 0.84, 0.022), T.mat("Glaskante", "#cfe0ee"), loc=(0, 0, 1.675),
+                  parent=fenster, line=0)
         o = T.box(f"{name}_glas_front", (1.58, 0.02, 0.88), glasm, loc=(0, 0.9, 1.32), parent=root, line=0)
         o.rotation_euler[0] = math.radians(26.6)
         glasobj.append(o)
@@ -128,15 +172,31 @@ def auto(name, farbe="#2a5db0", loc=(0, 0, 0), rot=0.0, innen=True, glas=True, l
         T.box(f"{name}_innenspiegel", (0.24, 0.03, 0.07), dunkel, loc=(0, 0.66, 1.58), parent=root, line=0.003,
               bevel=0.01)
         for sx in (-1, 1):
+            if sx == -1 and scharnier is not None:   # hinterer Teil der Verkleidung sitzt an der offenen Tür
+                T.box(f"{name}_innentuer_{sx}", (0.06, 1.05, 0.45), innenm, loc=(sx * 0.8, 0.42, 0.75), parent=root,
+                      line=0.004)
+                continue
             T.box(f"{name}_innentuer_{sx}", (0.06, 2.0, 0.45), innenm, loc=(sx * 0.8, -0.05, 0.75), parent=root,
                   line=0.004)
             T.box(f"{name}_fensterheber_{sx}", (0.04, 0.08, 0.04), chrom, loc=(sx * 0.77, -0.55, 0.92), parent=root,
                   line=0.002)
+            T.box(f"{name}_griffmulde_{sx}", (0.02, 0.24, 0.1), dunkel, loc=(sx * 0.772, -0.3, 0.95), parent=root,
+                  line=0.002, bevel=0.01)
+            T.box(f"{name}_innengriff_{sx}", (0.045, 0.18, 0.045), chrom, loc=(sx * 0.752, -0.3, 0.95), parent=root,
+                  line=0.003, bevel=0.01)
         # Handyhalter mit Fahrer-Handy (Bildschirm wird je Einstellung gesetzt)
         halter = T.empty(f"{name}_handyhalter", HANDYHALTER, root, rot=(70, 0, 0))
         T.box(f"{name}_fahrerhandy", (0.075, 0.15, 0.01), dunkel, parent=halter, line=0.003, bevel=0.005)
         T.plane(f"{name}_fahrerhandy_bild", (0.068, 0.142), T.mat("Fahrerhandy_bild", "#06080c", tex=tex("anruf_aus.png")),
                 loc=(0, 0, 0.0055), rot=(0, 0, 0), parent=halter)
+    if lichter:   # Lichthupe: vierstrahlige Blitze vor den Scheinwerfern, Größe 0 = aus
+        flare = T.mat("Flare", "#fffbe0")
+        for sx in (-1, 1):
+            fl = T.empty(f"{name}_flare_{sx}", (sx * 0.6, 2.34, 0.78), root)
+            for j, (w, ang) in enumerate(((1.1, 0), (1.1, 90), (0.5, 45), (0.5, -45))):
+                o = T.box(f"{name}_flare_{sx}_{j}", (w, 0.012, 0.06 if w > 1 else 0.04), flare, parent=fl, line=0)
+                o.rotation_euler[1] = math.radians(ang)
+            fl.scale = (0.001, 0.001, 0.001)
     return root, glasobj, halter
 
 
@@ -222,7 +282,8 @@ def hof():
              ("#e3cfae", "#c9d6e3", "#e6b8a2", "#d8d0c4")[k % 4], ("#7a4a3a", "#5a5f6b")[k % 2], seite=-1)
     for k in range(5):
         baum(f"hofbaum_{k}", -15 + k * 6.5 + 2 * _hash("hb", k), 21.0, 0.9 + 0.2 * _hash("hb", k + 9))
-    r, g, h = auto("blaues_auto", loc=AUTO_HOF, rot=AUTO_HOF_ROT, innen=True, glas=True)
+    r, g, h = auto("blaues_auto", loc=AUTO_HOF, rot=AUTO_HOF_ROT, innen=True, glas=True, tuer_hl_offen=True,
+                   lichter=True)
     return r, g, h
 
 

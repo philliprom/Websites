@@ -19,6 +19,7 @@ SR = 44100
 TL = json.load(open(os.path.join(HERE, "timeline.json"), encoding="utf-8"))
 SHOTS = json.load(open(os.path.join(BUILD, "shots.json"), encoding="utf-8"))
 SHOT = {s["id"]: s for s in SHOTS}
+SH = {s["id"].split("_", 1)[1]: s for s in SHOTS}   # Einstellungen ohne Nummer (Umnummerieren bricht nichts)
 LN = {l["id"]: l for l in TL["lines"]}
 EMO = {l["id"]: l["emo"] for l in LINES}
 D = TL["total"]
@@ -82,8 +83,8 @@ def put(buf, sig, at, gain=1.0, pan=0.0):
 
 
 def where(time):
-    """Ort (keller/hof/auto) zur Zeit."""
-    loc = "keller"
+    """Ort (hof/auto) zur Zeit."""
+    loc = "hof"
     for s in SHOTS:
         if s["t0"] <= time:
             loc = s["set"]
@@ -107,11 +108,16 @@ for l in TL["lines"]:
         target = -19.0
     if l["kind"] == "regel":
         target = -21.5
+    if l["id"] == "k19":   # letzte Zeile vor der Entscheidung: geflüstert, aber deutlich
+        target = -20.0
     w = w * 10 ** ((target - rms_db(w)) / 20)
     loc = where(l["start"] + 0.05)
     if l["who"] == "papa":  # Nachricht in der Stimme des Vaters: warm, etwas Hall, wie eine Erinnerung
         w = reverb(bp(w, 90, 8000), "hall", 0.1)
         w *= 10 ** ((-21.0 - rms_db(w)) / 20)
+    elif l["id"] == "k01":  # Pohl brüllt aus der Kellertür hinter Noah her (ca. 3 m)
+        w = reverb(bp(w, 120, 7000), "hof", 0.2)
+        w *= 10 ** ((-19.0 - rms_db(w)) / 20)
     elif l["id"] == "k09":  # Sander ruft von der Tür (ca. 6 m entfernt, Hall vom Hof, trotzdem verständlich)
         w = reverb(bp(w, 140, 6000), "hof", 0.28)
         w *= 10 ** ((-19.5 - rms_db(w)) / 20)
@@ -138,10 +144,10 @@ def smoothstep(a, b, x):
     return k * k * (3 - 2 * k)
 
 
-t_hof = SHOT["03_raus"]["t0"]
-t_auto = SHOT["10_anschnallen"]["t0"]
+t_hof = SH["raus"]["t0"]
+t_auto = SH["anschnallen"]["t0"]
 t_go = t_auto + 0.9                      # wie render_shot.car_y_fn
-t_stop = SHOT["16_finger_weg"]["t0"] - 0.4
+t_stop = SH["finger_weg"]["t0"] - 0.4
 TA, TD = 2.5, 4.5
 
 
@@ -154,21 +160,17 @@ def speed(tt):
 
 
 alarm = bell(D + 0.6)[:n]
-# Keller: Alarm gedämpft durch die Decke
-put(bed, bp(alarm, None, 500) * 0.16 * mask(0, t_hof + 0.3, 0.2), 0)
 # Hof: Alarm aus dem Gebäude (durch Wände, Hall vom Hof), leiser, je weiter wir vom Gebäude weg sind
-dist = np.interp(t, [t_hof, t_hof + 3, SHOT["05_fahrer"]["t0"], t_auto], [1.0, 0.7, 0.5, 0.45])
+dist = np.interp(t, [t_hof, t_hof + 3, SH["fahrer"]["t0"], t_auto], [1.0, 0.75, 0.55, 0.5])
 put(bed, reverb(bp(alarm, 300, 2500), "hof", 0.5) * 0.11 * dist * mask(t_hof, t_auto, 0.12), 0)
 # im Auto: nur noch von fern, verschwindet beim Wegfahren
 put(bed, bp(alarm, 400, 1500) * 0.025 * mask(t_auto, t_go + 5, 0.15) * (1 - smoothstep(t_go, t_go + 5, t)), 0)
-hum = (np.sin(2 * np.pi * 50 * t) * 0.6 + np.sin(2 * np.pi * 100 * t) * 0.3 + bp(rs.randn(n), 30, 160) * 2.5) * 0.02
-put(bed, hum * mask(0, t_hof, 0.2), 0)
 # Regen: draußen voll, im Auto gedämpft auf dem Dach, zieht beim Fahren langsam ab
 tropfen = np.zeros(n)
 idx = rs.randint(0, n, int(D * 140))
 tropfen[idx] = rs.randn(len(idx)) * 3
 regen = bp(rs.randn(n), 400, 9000) * 0.035 + bp(rs.randn(n), 80, 400) * 0.012 + bp(tropfen, 1500, 8000) * 0.03
-r_out = np.interp(t, [0, t_hof - 0.05, t_hof + 0.3, t_auto - 0.05, t_auto + 0.05], [0.0, 0.0, 1.0, 1.0, 0.0])
+r_out = np.interp(t, [0, 0.05, t_auto - 0.05, t_auto + 0.05], [0.6, 1.0, 1.0, 0.0])
 r_in = np.interp(t, [t_auto - 0.05, t_auto + 0.05, t_go + 2, t_go + 12], [0.0, 0.45, 0.4, 0.0])
 put(bed, regen * r_out + bp(regen, None, 2200) * r_in * 1.6, 0)
 # Motor des blauen Autos: im Hof Leerlauf (lauter, je näher), im Auto Drehzahl nach Tempo
@@ -179,8 +181,7 @@ rpm = np.where(t >= t_stop, 800.0, rpm) + 25 * np.sin(2 * np.pi * 0.7 * t)
 ph = 2 * np.pi * np.cumsum(rpm / 60 * 2) / SR
 motor = sum(a_ * np.sin(k * ph + p_) for k, a_, p_ in ((1, 1.0, 0), (2, 0.5, 1), (3, 0.28, 2), (4, 0.14, 0.5)))
 motor = bp(motor + bp(rs.randn(n), 40, 300) * 0.6, 25, 1400)
-m_hof = np.interp(t, [t_hof, t_hof + 4, SHOT["05_fahrer"]["t0"], t_auto], [0.15, 0.35, 0.6, 0.8]) * mask(t_hof, t_auto,
-                                                                                                         0.1)
+m_hof = np.interp(t, [t_hof, SH["fahrer"]["t0"], t_auto], [0.4, 0.65, 0.8]) * mask(t_hof, t_auto, 0.1)
 m_auto = (0.5 + 0.5 * np.clip((rpm - 800) / 1500, 0, 1)) * mask(t_auto, D + 1, 0.05)
 put(bed, motor * 0.05 * m_hof + bp(motor, None, 600) * 0.07 * m_auto, 0)
 # Fahrgeräusche (Reifen, Wind) nach Tempo
@@ -307,6 +308,13 @@ def lay(m, sig, at):
     return y
 
 
+def mask_at(m, fade):
+    """Ein-/Ausblende für ein Stück der Länge m (Samples)."""
+    k = np.arange(m) / SR
+    d = m / SR
+    return np.clip(k / fade, 0, 1) * np.clip((d - k) / fade, 0, 1)
+
+
 def autotuer(zu=True, g=1.0):
     m = int(0.6 * SR)
     k = np.arange(m) / SR
@@ -358,44 +366,59 @@ for ev in TL["events"]:
         put(fx, buzz(), ev["t"], 0.9 if ev.get("regel") != 5 else 0.6)
         if ev.get("regel") != 5:   # Rückblick: Papas Stimme setzt sofort ein, kein Ton darüber
             put(fx, ping(), ev["t"] + 0.35, 0.8)
-# Keller: Pohls schwere Schritte, Noah rennt los
-s02 = SHOT["02_pohl_ruft"]
-steps(s02["t0"] + 0.4, s02["t1"] + 0.3, 2.0, False, 0.6, "keller", 0.1)
-steps(s02["t1"] - 0.6, t_hof, 3.4, False, 0.8, "keller", -0.05)
-# Tür zum Hof fliegt auf: Schlag, Regen schwillt an
+# Noah stürmt aus der Kellertür: Tür knallt hinter ihm gegen die Wand
 put(fx, reverb(thump(48, 0.5, 1.0) + bp(rs.randn(int(0.5 * SR)), 60, 900) * env(int(0.5 * SR), 0.004, 0.1) * 0.6,
-               "hof", 0.35), t_hof - 0.02, 0.9)
-rennen(t_hof + 0.1, SHOT["03_raus"]["t1"] + 0.2)
-rennen(t_hof + 0.25, SHOT["03_raus"]["t1"], 3.0, 0.45)          # Ben hinterher
-# Fahrer steigt aus: Tür auf, Stiefel
-s05 = SHOT["05_fahrer"]
-put(fx, reverb(autotuer(False), "hof", 0.12), s05["t0"] + 0.15, 0.8, 0.3)
-steps(s05["t0"] + 0.9, s05["t0"] + 2.2, 1.8, True, 0.45, "hof", 0.25)
-# Sander stößt die Tür auf
-s08 = SHOT["08_sander_tuer"]
+               "hof", 0.35), 0.0, 0.9, -0.2)
+s01 = SH["raus"]
+rennen(0.45, S("k01") - 0.15)
+rennen(E("k01") + 0.05, s01["t1"] + 0.1)
+rennen(S("k01") + 0.1, E("k01") + 1.3, 3.1, 0.45)          # Ben hinterher
+# Sander stößt die Tür auf und rennt los
+s05 = SH["sander_tuer"]
 put(fx, reverb(thump(44, 0.6, 1.2) + bp(rs.randn(int(0.6 * SR)), 50, 1200) * env(int(0.6 * SR), 0.003, 0.15) * 0.8,
-               "hof", 0.45), s08["t0"] - 0.05, 0.75, 0.15)
-steps(E("k09") + 0.05, s08["t1"] + 0.6, 2.3, True, 0.3, "hof", 0.15)
-# Rennen zum Auto, Türen, Zentralverriegelung
-rennen(S("k10") + 0.35, t_auto - 0.1, 3.4, 0.85)
-put(fx, reverb(autotuer(False), "hof", 0.1), t_auto - 0.55, 0.7, -0.2)
+               "hof", 0.45), s05["t0"] - 0.05, 0.75, -0.15)
+steps(E("k09") - 0.15, SH["rein"]["t1"], 3.0, True, 0.32, "hof", -0.15)
+# Rennen zum Auto, rein, Türen, Zentralverriegelung, Durchstarten
+rennen(S("k10") + 0.6, t_auto, 3.6, 0.85)
+put(fx, reverb(autotuer(False), "hof", 0.1), t_auto - 0.7, 0.5, 0.35)      # Ben reißt die andere Tür auf
 put(fx, reverb(autotuer(True), "auto", 0.1), t_auto + 0.02, 1.0, 0.3)
 put(fx, reverb(autotuer(True), "auto", 0.1), t_auto + 0.3, 0.8, -0.35)
 put(fx, zv(), t_auto + 0.62, 1.0, 0.0)
+m = int(1.6 * SR)
+kk = np.arange(m) / SR
+quiet = (np.sin(2 * np.pi * (1650 + 300 * np.sin(2 * np.pi * 3.1 * kk)) * kk) * 0.5 + bp(rs.randn(m), 1200, 5000) * 0.6)
+put(fx, quiet * env(m, 0.08, 0.6) * 0.16, t_go - 0.05, 1, 0.1)               # Reifen quietschen auf nassem Asphalt
 # Gurt (kurzes Ratschen + Klick)
 put(fx, bp(rs.randn(int(0.25 * SR)), 1500, 7000) * env(int(0.25 * SR), 0.02, 0.1) * 0.25, E("k11") + 0.3, 1, 0.3)
 put(fx, click(0.04, 1500, 8000, 120) * 0.8, E("k11") + 0.62, 1, 0.3)
-# Handy des Fahrers klingelt bis er wegdrückt
-s13 = SHOT["13_anruf"]
-t_weg = S("k15") + 0.45
-put(fx, bp(klingelton(t_weg - s13["t0"]), 400, 5000), s13["t0"], 0.9, -0.1)
-put(fx, click(0.03, 1500, 6000, 150) * 0.6, t_weg, 1, -0.1)
+# Noah zieht am Türgriff: verriegelt
+w14 = LN["k14"].get("words") or []
+t_griff = (S("k14") + w14[2][0]) if len(w14) > 2 else S("k14") + 1.0
+for dt in (0.05, 0.3, 0.55):
+    put(fx, reverb(click(0.05, 500, 4000, 70) + lay(int(0.05 * SR), thump(160, 0.05, 0.4), 0.0), "auto", 0.1),
+        t_griff + dt, 1.0, 0.45)
+# Handy des Fahrers klingelt, er nimmt ab
+s11 = SH["anruf"]
+t_ab = S("k15a") - 0.35
+put(fx, bp(klingelton(t_ab - s11["t0"]), 400, 5000), s11["t0"], 0.9, -0.1)
+put(fx, click(0.03, 1500, 6000, 150) * 0.6, t_ab, 1, -0.1)
 # Bremsen an der Ampel
 put(fx, bp(rs.randn(int(1.2 * SR)), 2500, 6000) * env(int(1.2 * SR), 0.3, 0.5) * 0.03, t_stop - 1.2, 1, 0)
 # Noah drückt den Fensterheber: nichts passiert (Kindersicherung)
-s16 = SHOT["16_finger_weg"]
+s14 = SH["finger_weg"]
 for dt in (0.18, 0.42):
-    put(fx, click(0.025, 1200, 6000, 160) * 0.9, s16["t0"] + dt, 1, 0.4)
+    put(fx, click(0.025, 1200, 6000, 160) * 0.9, s14["t0"] + dt, 1, 0.4)
+# Die Scheibe fährt von selbst herunter: Fenstermotor, dann Regen und Straße laut von draußen
+s15 = SH["fenster"]
+f0, f1 = s15["t0"] + 0.2, s15["t0"] + 1.35
+m = int((f1 - f0) * SR)
+kk = np.arange(m) / SR
+motor_f = 2 * np.pi * np.cumsum(115 + 8 * np.sin(2 * np.pi * 2 * kk)) / SR
+whirr = bp(np.sign(np.sin(motor_f)) * 0.4 + np.sin(2 * motor_f) * 0.5 + bp(rs.randn(m), 800, 3000) * 0.3, 90, 3500)
+put(fx, whirr * env(m, 0.05, 10) * mask_at(m, 0.05) * 0.22, f0, 1, 0.45)
+put(fx, click(0.05, 600, 3000, 60) * 0.8, f1, 1, 0.45)
+draussen = (regen * 1.3 + bp(rs.randn(n), 60, 700) * 0.035) * np.clip((t - f0) / (f1 - f0), 0, 1)
+put(bed, draussen * mask(f0, D + 1, 0.05), 0, 0.6, 0.35)
 
 
 # ---------------------------------------------------------------- Musik: Spannungsfläche + Schläge
@@ -412,25 +435,30 @@ def pad(freqs, dur, g=1.0):
 
 
 drone = pad([55.0, 82.4, 110.0], D + 0.6, 1.0)[:n]
-s18 = SHOT["18_ampel_gelb"]
 endk = [e["t"] for e in TL["events"] if e["kind"] == "endkarte"][0]
-lvl = (0.06 + 0.04 * mask(SHOT["08_sander_tuer"]["t0"], t_auto + 1, 0.8) + 0.05 * mask(S("r6"), D + 1, 1.5)
-       + 0.04 * mask(S("r7"), D + 1, 1.5))
+t_sander = SH["sander_tuer"]["t0"]
+lvl = (0.07 + 0.04 * mask(t_sander, t_auto + 1, 0.8) + 0.05 * mask(S("r6"), D + 1, 1.5) + 0.04 * mask(S("r7"), D + 1, 1.5))
 put(mus, drone * lvl, 0)
 high = pad([440.0, 466.2], D + 0.6, 1.0)[:n]
-put(mus, bp(high, 300, 3000) * 0.02 * (mask(SHOT["08_sander_tuer"]["t0"], t_auto + 1, 0.6) + mask(S("r6"), D + 1, 1.5)),
+put(mus, bp(high, 300, 3000) * 0.02 * (mask(0, 2.6, 0.4) + mask(t_sander, t_auto + 1, 0.6) + mask(S("r6"), D + 1, 1.5)),
     0)
 # Akzente
-put(mus, hit(0.3, 1.5), 0.0)
-put(mus, riser(0.7, 0.3), SHOT["08_sander_tuer"]["t0"] - 0.7)
-put(mus, hit(0.65), SHOT["08_sander_tuer"]["t0"] + 0.05)
+put(mus, hit(0.55, 1.6), 0.0)                       # Start: Tür auf, mitten in der Flucht
+put(mus, riser(0.7, 0.3), t_sander - 0.7)
+put(mus, hit(0.65), t_sander + 0.05)
+put(mus, hit(0.6), t_go)                             # Durchstarten
 put(mus, hit(0.55), S("r6") + 0.05)
-put(mus, riser(0.8, 0.28), s13["t0"] - 0.6)
-put(mus, hit(0.7), s13["t0"] + 0.1)
+put(mus, hit(0.45), t_griff + 0.05)                  # Tür verriegelt
+put(mus, riser(0.8, 0.28), s11["t0"] - 0.6)
+put(mus, hit(0.7), s11["t0"] + 0.1)
+put(mus, hit(0.6), S("k15a") + (LN["k15a"]["words"][1][0] if LN["k15a"].get("words") and len(LN["k15a"]["words"]) > 1
+                                else 0.5))            # „Ich hab beide“
 put(mus, riser(0.6, 0.25), S("k18") - 0.9)
 put(mus, hit(0.55), S("k18") - 0.3)
+put(mus, riser(1.0, 0.3), f0 - 0.2)
+put(mus, hit(0.75), s15["t0"] + 1.0)                 # Fahrer fährt herum
 put(mus, riser(1.4, 0.35), endk - 1.4)
-heart(S("r7"), endk, 84, 122, pause=[])
+heart(S("r7"), endk, 84, 124, pause=[])
 put(mus, hit(1.1, 3.5), endk)
 
 
@@ -445,7 +473,7 @@ back = bed + mus + fx
 v_db = short_db(voice)
 b_db = short_db(back)
 active = v_db > -45
-need = np.where(active, np.minimum(0.0, (v_db - 12.0) - b_db), 0.0)
+need = np.where(active, np.minimum(0.0, (v_db - 13.5) - b_db), 0.0)   # 1,5 dB Reserve über dem Ziel von 12 dB
 # glätten: schnell absenken, langsam zurück
 g = np.zeros(n)
 cur = 0.0

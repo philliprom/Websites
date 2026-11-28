@@ -1,7 +1,9 @@
 """DER FEUERALARM · Teil 2 (Zuschauer haben AUTO gewählt).
 
-Noah rennt vor Pohl weg in den Hinterhof, steigt mit Ben in das blaue Auto. Regel 6 (Papas Stimme): falsches Auto.
-Auf dem Handy des Fahrers steht „SANDER“. Regel 7: an der Ampel durchs Fenster. Entscheidung: FENSTER oder SITZEN BLEIBEN.
+Start mitten in der Flucht: Noah rennt in den Hinterhof, Pohl brüllt hinterher, der Fahrer wartet an der offenen Tür.
+Im Auto: Regel 6 (Papas Stimme) „Falsches Auto“, die Tür ist verriegelt, der Fahrer telefoniert mit SANDER („Ich hab
+beide“). Regel 7: an der Ampel durchs Fenster. Das Fenster fährt von selbst runter, die Ampel springt auf Rot-Gelb.
+Entscheidung: FENSTER oder SITZEN BLEIBEN.
 
 Lehren aus Teil 1 (9.000 Aufrufe, Ø 51 s geschaut, 17,5 % bis zum Ende): kürzer (~90 s), Rückblick ≤ 2,5 s,
 Bedrohung ab der ersten Sekunde, alle 5–8 s etwas Neues.
@@ -32,13 +34,7 @@ LINES = [
     # Keller: Noah rennt los
     dict(id="k01", who="pohl", sub="Noah! Bleib hier! Das ist eine Falle!", rot=["Falle"],
          emo="He shouts after him, desperate and worried."),
-    dict(id="k02", who="ben", sub="Noah, warte! Wo willst du hin?", rot=[],
-         emo="He calls out, out of breath, running after him."),
-    dict(id="k03", who="noah", sub="Zum Auto. Wenn das wirklich Papa ist…", rot=["Papa"],
-         emo="He answers determined but shaky, out of breath."),
     # Hinterhof, Regen, blaues Auto mit laufendem Motor
-    dict(id="k04", who="ben", sub="Da! Ein blaues Auto. Der Motor läuft.", rot=["blaues Auto"],
-         emo="He whispers tensely."),
     dict(id="k05", who="fahrer", sub="Noah? Dein Vater schickt mich. Steig ein. Schnell.", rot=["Dein Vater"],
          emo="He speaks calmly and friendly, but in a hurry."),
     dict(id="k06", who="ben", sub="Woher kennt der Typ deinen Namen?", rot=["deinen Namen"],
@@ -62,9 +58,11 @@ LINES = [
          sub="Falsches Auto. Ich warte hinter der Turnhalle. Steig AUS.",
          say="Falsches Auto. Ich warte hinter der Turnhalle. Steig aus.", rot=["Falsches Auto"],
          emo="He speaks quietly, alarmed and urgent."),
-    dict(id="k14", who="noah", sub="Falsches Auto…?", rot=["Falsches Auto"],
-         emo="He whispers in shock."),
-    dict(id="k15", who="ben", sub="Noah… auf seinem Handy steht Sander!", rot=["Sander"],
+    dict(id="k14", who="noah", sub="Falsches Auto…? Die Tür geht nicht auf!", rot=["Falsches Auto", "nicht auf"],
+         emo="He whispers in shock, then panics because the door is locked."),
+    dict(id="k15a", who="fahrer", sub="Ja. Ich hab beide. Wir sind gleich da.", rot=["Ich hab beide"],
+         emo="He answers the phone quietly and coldly, like reporting to his boss."),
+    dict(id="k15", who="ben", sub="Noah… der arbeitet für Sander!", rot=["Sander"],
          emo="He whispers in panic."),
     dict(id="k16", who="fahrer", sub="Gibt's ein Problem da hinten?", rot=[],
          emo="He asks coldly and suspiciously."),

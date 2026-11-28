@@ -61,7 +61,10 @@ def _auto_getrennt(baue):
         g.parent = root
         g.matrix_world = mw
     schilder = [o for o in root.children_recursive if "_kennzeichen_" in o.name]   # UV-Flächen nicht verbinden
+    beweglich = [o for o in root.children if o.name.endswith(("_fenster_hr", "_flare_-1", "_flare_1"))]
     keep = set(glas) | set(halter) | set(halter[0].children_recursive if halter else []) | set(schilder)
+    for b in beweglich:   # animierte Gruppen (Fenster, Lichthupe) bleiben einzeln
+        keep |= {b} | set(b.children_recursive)
     for o in list(root.children):
         if o not in keep and o.type == "EMPTY":
             T.merge_children(o, recursive=True)
@@ -115,14 +118,16 @@ def main():
             rigs[nm] = rig_names(R)
     elif which == "hof":
         _auto_getrennt(HOF.hof)
-        for nm, key, pose in (("Ben", "ben", "stehen"), ("Fahrer", "fahrer", "stehen"), ("Sander", "sander", "stehen")):
+        for nm, key, pose in (("Ben", "ben", "stehen"), ("Fahrer", "fahrer", "stehen"), ("Sander", "sander", "stehen"),
+                              ("Pohl", "pohl", "stehen")):
             R = C.baue(nm, key, pose=pose)
             T.merge_rig(R)
             rigs[nm] = rig_names(R)
     elif which == "auto":
         HOF.strasse()
         T.flatten_static()
-        _auto_getrennt(lambda: HOF.auto("blaues_auto", loc=(HOF.SPUR_X, 0, 0), rot=0, innen=True, glas=True))
+        _auto_getrennt(lambda: HOF.auto("blaues_auto", loc=(HOF.SPUR_X, 0, 0), rot=0, innen=True, glas=True,
+                                        fenster_hr=True))
         for nm, key, pose in (("Ben", "ben", "sitzen"), ("Fahrer", "fahrer", "sitzen")):
             R = C.baue(nm, key, pose=pose)
             T.merge_rig(R)

@@ -3,18 +3,25 @@
 Folge im Format „Unbekannte Nummer“ (Skill `unbekannte-nummer`). Fortsetzung von `feueralarm-teil1/`.
 Die Zuschauer haben in den Kommentaren **AUTO** gewählt (der Nummer glauben).
 
-## Geschichte (68,6 s inkl. 4 s Endkarte)
+## Geschichte (66 s inkl. 4 s Endkarte), Fassung 2
 
-1. **Rückblick (≤ 2,5 s):** Handy mit Regel 5 in Papas Stimme: „Hinterhof. Blaues Auto.“ Darunter „TEIL 2 · Ihr habt gewählt: AUTO“.
-2. **Keller:** Pohl ruft „Das ist eine Falle!“, Noah rennt los, Ben hinterher.
-3. **Hinterhof im Regen:** blaues Auto mit laufendem Motor. Ein Mann mit Sonnenbrille steigt aus: „Dein Vater schickt mich.“
-   Ben: „Woher kennt der Typ deinen Namen?“ Frau Sander reißt die Tür auf: „Bleib stehen!“ – rein ins Auto.
-4. **Im Auto:** Türen zu, Zentralverriegelung klackt. „Anschnallen. Und Kopf runter.“
-5. **Regel 6 (Papa):** „Falsches Auto. Ich warte hinter der Turnhalle. Steig AUS.“
-6. **Wendung:** Das Handy des Fahrers klingelt – auf dem Bildschirm steht **SANDER**.
+1. **Start mitten in der Flucht:** Noah stürmt aus der Kellertür in den Regen. Das blaue Auto steht da, gibt Lichthupe,
+   der Fahrer (Sonnenbrille, Bart) wartet an der offenen Hintertür. Regel 5 in Papas Stimme: „Hinterhof. Blaues Auto.“
+   Darunter „TEIL 2 · Ihr habt gewählt: AUTO“.
+2. Noah dreht sich um: Pohl brüllt aus der Tür „Das ist eine Falle!“, Ben stürmt hinterher.
+3. **Am Auto (ab Sekunde 6):** „Dein Vater schickt mich. Steig ein.“ – Ben: „Woher kennt der Typ deinen Namen?“ –
+   Sander reißt die Tür auf: „Bleib stehen!“ – „Los, rein da!“
+4. **Im Auto:** Türen knallen, Zentralverriegelung, Reifen quietschen. „Anschnallen. Und Kopf runter.“
+5. **Regel 6 (Papa):** „Falsches Auto. Ich warte hinter der Turnhalle. Steig AUS.“ – Noah: „Die Tür geht nicht auf!“
+6. **Wendung:** Das Handy des Fahrers klingelt: **SANDER**. Er nimmt ab: „Ja. Ich hab beide. Wir sind gleich da.“ –
+   Ben: „Der arbeitet für Sander!“
 7. **Regel 7 (Papa):** „An der Ampel. Fenster hinten rechts geht auf. Raus, wenn es grün wird.“
-8. Rote Ampel, Noah tastet nach dem Fensterheber: „Finger weg vom Fenster, Noah.“ Ben: „Was machen wir?“
-9. **Cliffhanger:** Die Ampel springt auf Rot-Gelb. Endkarte: **FENSTER** (Regel 7 folgen) oder **SITZEN BLEIBEN**.
+8. Rote Ampel. „Finger weg vom Fenster, Noah.“ – dann fährt die Scheibe **von selbst** herunter, der Fahrer fährt herum.
+   Ben: „Noah… was machen wir?“ – die Ampel springt auf Rot-Gelb. Endkarte: **FENSTER** oder **SITZEN BLEIBEN**.
+
+Fassung 2 nach Rückmeldung: Anfang war zu ruhig (Handy im Keller), der Weg zum Auto zog sich (ca. 15 s), der Fahrer
+stand im Auto (Figur innerhalb der Karosserie). Jetzt: Start in Bewegung, Auto 8 m statt 13 m entfernt, Fahrer steht
+außerhalb neben der offenen Tür, drei Zeilen gestrichen, drei spannendere neu (verriegelte Tür, Telefonat, Fenster).
 
 Lehren aus Teil 1 (9.000 Aufrufe, Ø 51 s geschaut, 17,5 % bis zum Ende, 101 neue Follower) umgesetzt:
 kürzer, Rückblick nur 2 Sekunden, Bedrohung ab der ersten Sekunde, alle paar Sekunden etwas Neues.
@@ -36,10 +43,10 @@ Siehe `.claude/skills/unbekannte-nummer/references/produktion.md`. Sets: `keller
 
 ## Prüfung (fertiges Video)
 
-- 1080×1920, 68,6 s, −14,6 LUFS, Spitze −1,3 dBFS
-- Aussprache im Endmix (`aussprache_endmix.py`): 21 von 22 Zeilen exakt; die eine Abweichung ist nur die Schreibweise
+- 1080×1920, 66,0 s, −14,7 LUFS, Spitze −0,7 dBTP (Limiter nach loudnorm, sonst Übersteuerung am Anfang)
+- Aussprache im Endmix (`aussprache_endmix.py`): 19 von 20 Zeilen exakt; die eine Abweichung ist nur die Schreibweise
   („dahinten“ statt „da hinten“), gesprochen identisch
-- Stimme überall ≥ 12 dB über Hintergrund (knappste Zeile: Rückblick r5 mit 12,7 dB)
+- Stimme überall ≥ 12 dB über Hintergrund (knappste Zeilen: r5 12,4 dB, k18/k19 12,5 dB)
 - Kontaktbogen alle 3 s geprüft: Banner, Hinweis „Ihr habt gewählt“, Untertitel, Regen nur im Hof, Endkarte
 
 ## Ausgabe

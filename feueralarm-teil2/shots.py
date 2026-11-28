@@ -25,165 +25,137 @@ def heading(frm, to):
     return math.degrees(math.atan2(d.x, -d.y))
 
 
-# ============================================================ KELLER (wie Ende Teil 1)
-K_NOAH = Vector((-2.35, -0.25, 1.52))
-K_POHL = (-1.75, 0.95, 0)
-K_BEN = (-2.9, 0.5, 0)
-
-
-@shot("01_rueckblick", "keller", lambda c: 0.0)
-def s01(c):
-    pohl, ben = c.a["Pohl"], c.a["Ben"]
-    pohl.place(K_POHL, heading(K_POHL, (-2.35, -0.25, 0)))
-    pohl.look(c.t0, (-2.3, 0.3, 1.0), 0.01)
-    pohl.brow(c.t0, "sorge", 0.01)
-    ben.place(K_BEN, 40)
-    ben.look(c.t0, (-2.3, 0.3, 1.0), 0.01)
-    c.pov.at(c.t0, pos=K_NOAH, target=(-2.3, 0.55, 0.62), dur=0.01, lens=22)
-    c.pov.at(c.t0 + 0.3, target=(-2.31, 0.5, 0.66), dur=c.t1 - c.t0, lens=26)
-    c.phone("r5", raise_at=None, lower_at=c.t1 - 0.25)
-
-
-@shot("02_pohl_ruft", "keller", lambda c: c.S("k01") - 0.15)
-def s02(c):
-    pohl, ben = c.a["Pohl"], c.a["Ben"]
-    pohl.place(K_POHL, heading(K_POHL, (-2.35, -0.25, 0)))
-    pohl.look(c.t0, "cam", 0.2)
-    pohl.brow(c.t0, "schreck", 0.2)
-    pohl.arm(c.t0 + 0.1, "r", "zeigen", 0.3)
-    pohl.move(c.t0 + 0.4, c.t1 + 0.4, (-2.05, 0.1, 0), walk=True, rot=heading((-2.05, 0.1, 0), (-2.4, -1.0, 0)))
-    pohl.say(c.S("k01"), c.env("k01"))
-    ben.place(K_BEN, 40)
-    ben.look(c.t0, (-2.6, -1.0, 1.3), 0.3)
-    ben.move(c.t0 + 0.3, c.t1, (-2.7, -0.35, 0), walk=True, rot=heading((-2.9, 0.5, 0), (-2.6, -1.2, 0)))
-    # Noah ist schon an der Tür und schaut zurück
-    c.pov.at(c.t0, pos=(-2.55, -0.75, 1.55), target=(-1.75, 0.95, 1.7), dur=0.01, lens=20)
-    c.pov.shake = 1.4
-
-
-# ============================================================ HINTERHOF
+# ============================================================ HINTERHOF (Start mitten in der Flucht)
 TUER = Vector((0.0, 0.6, 1.55))
-AUTO_TUER_HINTEN = Vector((3.72, 12.05, 0))
-FAHRER_START = (2.6, 11.5, 0)
-FAHRER_WINK = (3.2, 11.35, 0)
+P0 = Vector((0.15, 0.75, 1.55))              # gerade aus der Kellertür gestürmt
+P1 = Vector((0.95, 3.0, 1.55))               # hier dreht sich Noah zu Pohl um
+STOP = Vector((2.0, 5.2, 1.55))              # hier bleibt Noah vor dem Fahrer stehen
+FAHRER_HOF = H.hof_welt(-1.3, 0.3)           # neben der offenen Hintertür, außerhalb des Autos
+FAHRER_HOF_KOPF = Vector((FAHRER_HOF[0], FAHRER_HOF[1], 1.95))
+AUTO_BLICK = Vector(H.hof_welt(-0.6, 0.6, 1.0))
+TUER_OFFEN = Vector(H.hof_welt(-1.35, -0.75, 1.1))   # Einstieg hinter der offenen Tür
+BEN_HOF = (1.2, 5.3, 0)
+POHL_TUER = (0.1, 0.8, 0)
 
 
-def hof_basis(c, fahrer_bei=FAHRER_START):
+def hof_basis(c):
     c.glas_aus = False
     f = c.a["Fahrer"]
-    f.place(fahrer_bei, heading(fahrer_bei, (0.4, 3.0, 0)))
+    f.place(FAHRER_HOF, heading(FAHRER_HOF, (STOP.x, STOP.y, 0)))
     f.look(c.t0, "cam", 0.01)
+    f.arm(c.t0, "l", "greifen", 0.01)        # Hand an der offenen Tür
+    for nm in ("Pohl", "Sander"):
+        c.a[nm].place((0, -60, -30), 0)
     return f
 
 
-@shot("03_raus", "hof", lambda c: c.S("k02") - 0.25)
-def s03(c):
-    ben = c.a["Ben"]
+@shot("01_raus", "hof", lambda c: 0.0)
+def s01(c):
     f = hof_basis(c)
-    f.place((2.6, 12.3, 0), 0)            # noch im Auto (sitzend unsichtbar hinter der Tür)
-    f.look(c.t0, (0.3, 2.0, 1.5), 0.01)
-    ben.place((-0.4, 0.4, 0), 180)
-    ben.move(c.t0 + 0.2, c.t1, (-0.6, 3.2, 0), walk=True, rot=200)
+    c.lichthupe = [(0.12, 0.3), (0.48, 0.66), (c.E("k01") + 0.05, c.E("k01") + 0.22)]
+    pohl, ben = c.a["Pohl"], c.a["Ben"]
+    # Pohl kommt erst aus der Tür, wenn Noah schon losgerannt ist (am Anfang steht die Kamera in der Tür)
+    drinnen = (POHL_TUER[0], -1.3, 0)
+    pohl.place(drinnen, heading(POHL_TUER, (P1.x, P1.y, 0)))
+    pohl.move(c.S("k01") - 1.1, c.S("k01") - 0.45, POHL_TUER, walk=True, rot=heading(POHL_TUER, (P1.x, P1.y, 0)))
+    pohl.look(c.t0, "cam", 0.01)
+    pohl.brow(c.t0, "schreck", 0.01)
+    pohl.arm(c.S("k01") - 0.2, "r", "zeigen", 0.3)
+    pohl.say(c.S("k01"), c.env("k01"))
+    # Ben stürmt hinter Pohl aus der Tür und rennt links an Noah vorbei
+    b0, b1 = (-0.55, 0.75, 0), (-0.35, 3.3, 0)
+    ben.place((-0.55, -1.3, 0), heading(b0, b1))
+    ben.move(c.S("k01") - 0.6, c.S("k01") + 0.1, b0, walk=True, rot=heading(b0, b1))
+    ben.move(c.S("k01") + 0.1, c.E("k01") + 0.25, b1, walk=True, rot=heading(b0, b1))
+    ben.move(c.E("k01") + 0.25, c.E("k01") + 1.3, BEN_HOF, walk=True, rot=heading(b1, BEN_HOF))
     ben.look(c.t0, "cam", 0.3)
-    ben.brow(c.t0, "sorge", 0.2)
-    ben.say(c.S("k02"), c.env("k02"))
-    c.a["Sander"].place((0, -60, -30), 0)
-    c.pov.linear = True
-    c.pov.at(c.t0 - 0.01, pos=(0.2, 0.3, 1.55), target=(0.8, 6.0, 1.3), dur=0.01, lens=16)
-    c.pov.at(c.t0, pos=(0.5, 3.6, 1.55), target=(2.6, 12.0, 1.1), dur=c.t1 - c.t0)
-    c.pov.run.append((c.t0, c.t1 + 0.3))
-
-
-@shot("04_blaues_auto", "hof", lambda c: c.S("k04") - 0.15)
-def s04(c):
-    ben = c.a["Ben"]
-    f = hof_basis(c)
-    f.place((2.55, 12.25, 0), 0)
-    f.look(c.t0, (0.3, 4.0, 1.5), 0.01)
-    ben.place((-0.6, 3.2, 0), 200)
-    ben.look(c.t0, (3.2, 13.0, 1.0), 0.2)
-    ben.arm(c.t0 + 0.1, "r", "zeigen", 0.3)
     ben.brow(c.t0, "schreck", 0.2)
-    ben.say(c.S("k04"), c.env("k04"))
-    c.a["Sander"].place((0, -60, -30), 0)
-    c.pov.at(c.t0, pos=(0.5, 3.6, 1.55), target=(3.0, 12.8, 1.0), dur=0.01, lens=24)
-    c.pov.at(c.t0 + 0.2, target=(3.1, 12.9, 1.05), dur=c.t1 - c.t0, lens=30)
+    # Kamera: losrennen → umdrehen (Pohl brüllt) → weiter zum Auto
+    c.pov.linear = True
+    c.pov.at(c.t0, pos=P0, target=AUTO_BLICK + Vector((0, 0, 0.3)), dur=0.01, lens=30)
+    c.pov.at(c.t0 + 0.45, pos=P1, dur=c.S("k01") - 0.25 - (c.t0 + 0.45))
+    c.pov.at(c.t0 + 0.45, target=FAHRER_HOF_KOPF + Vector((0, 0, -0.3)), dur=1.8, lens=26)
+    c.pov.at(c.S("k01") - 0.25, target=Vector((0.1, 0.8, 1.75)), dur=0.28, lens=24)        # Blick zurück
+    c.pov.at(c.E("k01") - 0.05, target=FAHRER_HOF_KOPF + Vector((0, 0, -0.2)), dur=0.28, lens=26)
+    c.pov.at(c.E("k01") + 0.1, pos=STOP, dur=c.t1 - c.E("k01") - 0.15)
+    c.pov.run.append((c.t0 + 0.4, c.S("k01") - 0.1))
+    c.pov.run.append((c.E("k01") + 0.05, c.t1))
+    c.pov.shake = 1.5
 
 
-@shot("05_fahrer", "hof", lambda c: c.S("k05") - 0.6)
-def s05(c):
-    ben = c.a["Ben"]
+@shot("02_fahrer", "hof", lambda c: c.S("k05") - 0.45)
+def s02(c):
     f = hof_basis(c)
-    f.place(FAHRER_START, 0)
-    f.move(c.t0, c.t0 + 0.9, FAHRER_START, walk=False, rot=heading(FAHRER_START, (1.0, 6.4, 0)))
-    f.move(c.t0 + 0.9, c.t0 + 2.2, FAHRER_WINK, walk=True, rot=heading(FAHRER_WINK, (1.0, 6.4, 0)))
-    f.look(c.t0 + 0.3, "cam", 0.4)
-    f.arm(c.S("k05") + 1.4, "l", "zeigen", 0.4)
     f.say(c.S("k05"), c.env("k05"))
-    ben.place((-0.3, 5.6, 0), 200)
-    ben.look(c.t0, (2.6, 11.5, 1.8), 0.3)
-    c.a["Sander"].place((0, -60, -30), 0)
-    c.pov.at(c.t0, pos=(0.9, 6.0, 1.55), target=(2.6, 11.4, 1.6), dur=0.01, lens=22)
-    c.pov.at(c.t0 + 0.4, pos=(1.0, 6.4, 1.55), target=(3.1, 11.3, 1.75), dur=1.5, lens=28)
+    f.arm(c.S("k05") + 1.5, "r", "zeigen", 0.35)          # „Steig ein“: zeigt auf die offene Tür
+    f.look(c.S("k05") + 1.45, TUER_OFFEN, 0.25)
+    f.look(c.S("k05") + 2.1, "cam", 0.3)
+    c.a["Ben"].place(BEN_HOF, heading(BEN_HOF, FAHRER_HOF))
+    c.a["Ben"].look(c.t0, FAHRER_HOF_KOPF, 0.2)
+    c.pov.at(c.t0, pos=STOP, target=FAHRER_HOF_KOPF + Vector((0.0, 0.0, -0.45)), dur=0.01, lens=28)
+    c.pov.at(c.t0 + 0.2, target=FAHRER_HOF_KOPF + Vector((0.0, 0.0, -0.35)), dur=c.t1 - c.t0 - 0.2, lens=36)
+    c.pov.shake = 1.1
 
 
-@shot("06_namen", "hof", lambda c: c.S("k06") - 0.1)
-def s06(c):
+@shot("03_namen", "hof", lambda c: c.S("k06") - 0.1)
+def s03(c):
+    hof_basis(c)
     ben = c.a["Ben"]
-    f = hof_basis(c, FAHRER_WINK)
-    ben.place((0.35, 6.2, 0), heading((0.35, 6.2, 0), (1.0, 6.4, 0)) + 40)
+    ben.place(BEN_HOF, heading(BEN_HOF, (STOP.x, STOP.y, 0)) + 25)
     ben.look(c.t0, "cam", 0.2)
     ben.brow(c.t0, "skeptisch", 0.2)
     ben.bend(c.t0, (6, -18), 0.3)
     ben.say(c.S("k06"), c.env("k06"))
-    c.a["Sander"].place((0, -60, -30), 0)
-    c.pov.at(c.t0, pos=(1.0, 6.4, 1.55), target=(0.35, 6.25, 1.6), dur=0.01, lens=18)
+    c.pov.at(c.t0, pos=STOP, target=Vector((BEN_HOF[0] + 0.05, BEN_HOF[1] + 0.05, 1.62)), dur=0.01, lens=19)
 
 
-@shot("07_vater", "hof", lambda c: c.S("k07") - 0.1)
-def s07(c):
-    ben = c.a["Ben"]
-    f = hof_basis(c, FAHRER_WINK)
-    f.look(c.t0, "cam", 0.01)
+@shot("04_vater", "hof", lambda c: c.S("k07") - 0.1)
+def s04(c):
+    f = hof_basis(c)
     f.say(c.S("k08"), c.env("k08"))
     f.arm(c.S("k08") + 0.3, "r", "abwehr", 0.4)
-    ben.place((0.35, 6.2, 0), heading((0.35, 6.2, 0), FAHRER_WINK))
-    ben.look(c.t0, (3.2, 11.35, 1.9), 0.01)
-    c.a["Sander"].place((0, -60, -30), 0)
-    c.pov.at(c.t0, pos=(1.0, 6.4, 1.55), target=(3.15, 11.3, 1.85), dur=0.01, lens=32)
-    c.pov.at(c.S("k08"), target=(3.18, 11.32, 1.88), dur=c.t1 - c.S("k08"), lens=40)
+    f.brow(c.S("k08"), "skeptisch", 0.3)
+    c.a["Ben"].place(BEN_HOF, heading(BEN_HOF, FAHRER_HOF))
+    c.a["Ben"].look(c.t0, FAHRER_HOF_KOPF, 0.01)
+    c.pov.at(c.t0, pos=STOP, target=FAHRER_HOF_KOPF + Vector((0, 0, -0.25)), dur=0.01, lens=40)
+    c.pov.at(c.S("k08"), target=FAHRER_HOF_KOPF + Vector((0, 0, -0.18)), dur=c.t1 - c.S("k08"), lens=50)
 
 
-@shot("08_sander_tuer", "hof", lambda c: c.S("k09") - 0.35)
-def s08(c):
+@shot("05_sander_tuer", "hof", lambda c: c.S("k09") - 0.35)
+def s05(c):
+    hof_basis(c)
     sander = c.a["Sander"]
-    hof_basis(c, FAHRER_WINK)
-    sander.place((0.0, 0.7, 0), 180)
+    sander.place((0.0, 0.7, 0), heading((0.0, 0.7, 0), (STOP.x, STOP.y, 0)))
     sander.look(c.t0, "cam", 0.01)
     sander.brow(c.t0, "boese", 0.01)
     sander.arm(c.t0 + 0.15, "r", "zeigen", 0.3)
     sander.say(c.S("k09"), c.env("k09"))
-    sander.move(c.E("k09"), c.t1 + 0.5, (0.2, 2.0, 0), walk=True, rot=180)
-    c.a["Ben"].place((0.35, 6.2, 0), 160)
-    c.pov.at(c.t0, pos=(1.0, 6.4, 1.55), target=(2.0, 10.0, 1.4), dur=0.01, lens=20)
-    c.pov.at(c.t0 + 0.05, target=(0.0, 0.7, 1.7), dur=0.35, lens=46)
-    c.pov.shake = 1.3
+    ziel = (0.9, 2.9, 0)
+    sander.move(c.E("k09") - 0.2, c.t1 + 0.8, ziel, walk=True, rot=heading((0.0, 0.7, 0), ziel))
+    c.a["Ben"].place(BEN_HOF, 160)
+    c.pov.at(c.t0, pos=STOP, target=FAHRER_HOF_KOPF + Vector((0, 0, -0.25)), dur=0.01, lens=30)
+    c.pov.at(c.t0 + 0.04, target=Vector((0.0, 0.7, 1.72)), dur=0.3, lens=42)
+    c.pov.shake = 1.4
 
 
-@shot("09_rein", "hof", lambda c: c.S("k10") - 0.1)
-def s09(c):
+@shot("06_rein", "hof", lambda c: c.S("k10") - 0.1)
+def s06(c):
+    hof_basis(c)
     ben = c.a["Ben"]
-    hof_basis(c, (4.4, 11.2, 0))
-    ben.place((0.35, 6.2, 0), 180)
+    ben.place(BEN_HOF, heading(BEN_HOF, (STOP.x, STOP.y, 0)))
     ben.look(c.t0, "cam", 0.01)
     ben.brow(c.t0, "schreck", 0.01)
     ben.say(c.S("k10"), c.env("k10"))
-    ben.move(c.S("k10") + 0.4, c.t1, (3.4, 11.2, 0), walk=True, rot=heading((0.35, 6.2, 0), (3.4, 11.2, 0)))
-    c.a["Sander"].place((0.2, 2.0, 0), 180)
+    # Ben rennt hinten ums Auto zur anderen Tür
+    um = H.hof_welt(-1.2, -2.9)
+    ben.move(c.S("k10") + 0.5, c.t1 + 0.4, um, walk=True, rot=heading(BEN_HOF, um))
+    c.a["Sander"].place((0.9, 2.9, 0), heading((0.9, 2.9, 0), (STOP.x, STOP.y, 0)))
     c.pov.linear = True
-    c.pov.at(c.t0 - 0.01, pos=(1.0, 6.4, 1.55), target=(0.4, 6.3, 1.5), dur=0.01, lens=18)
-    c.pov.at(c.S("k10") + 0.35, pos=(2.9, 10.2, 1.5), target=(3.72, 12.4, 1.1), dur=c.t1 - c.S("k10") - 0.35, lens=18)
-    c.pov.run.append((c.S("k10") + 0.3, c.t1 + 0.2))
+    c.pov.at(c.t0 - 0.01, pos=STOP, target=Vector((BEN_HOF[0], BEN_HOF[1] + 0.05, 1.6)), dur=0.01, lens=19)
+    c.pov.at(c.S("k10") + 0.6, target=TUER_OFFEN, dur=0.3, lens=20)
+    c.pov.at(c.S("k10") + 0.75, pos=Vector((4.2, 6.55, 1.3)), dur=c.t1 - c.S("k10") - 0.75)   # rechts am Fahrer vorbei
+    c.pov.run.append((c.S("k10") + 0.6, c.t1 + 0.2))
+    c.pov.shake = 1.5
 
 
 # ============================================================ IM AUTO
@@ -196,6 +168,8 @@ BEN_KOPF = Vector((H.BEN_SITZ[0], H.BEN_SITZ[1], 1.32))
 HANDYHALTER = Vector(H.HANDYHALTER)
 STRASSE = (H.FAHRER_SITZ[0], 14.0, 1.35)          # Fahrer schaut auf die Straße
 FENSTERKNOPF = Vector((0.77, -0.55, 0.92))
+INNENGRIFF = Vector((0.765, -0.3, 0.95))
+FENSTER_HR = Vector((0.83, -0.57, 1.3))
 # rote Ampel relativ zum haltenden Auto
 AMPEL_REL = Vector((4.4 - H.SPUR_X, H.AMPEL_Y - 0.36 - H.STOP_Y, 3.6))
 
@@ -222,20 +196,22 @@ def umdrehen(f, t, dur=0.45, zurueck=None):
         f.bend(zurueck, (0, 0), 0.5)
 
 
-@shot("10_anschnallen", "auto", lambda c: c.S("k11") - 1.1)
-def s10(c):
+@shot("07_anschnallen", "auto", lambda c: c.S("k11") - 1.6)
+def s07(c):
     f, ben = auto_basis(c)
-    umdrehen(f, c.S("k11") - 0.35, 0.4, zurueck=c.E("k11") + 0.25)
+    umdrehen(f, c.S("k11") - 0.3, 0.35, zurueck=c.E("k11") + 0.25)
     f.brow(c.t0, "skeptisch", 0.3)
     f.say(c.S("k11"), c.env("k11"))
-    ben.brow(c.t0, "sorge", 0.3)
+    ben.brow(c.t0, "schreck", 0.3)
     c.pov.at(c.t0, pos=CAM, target=(-0.05, 3.0, 1.2), dur=0.01, lens=16)
-    c.pov.at(c.S("k11") - 0.35, target=FAHRER_KOPF + Vector((0.12, -0.05, -0.04)), dur=0.4, lens=22)
-    c.pov.shake = 0.5
+    c.pov.at(c.t0 + 0.9, target=(-0.05, 3.0, 1.55), dur=0.18)          # Ruck beim Losrasen
+    c.pov.at(c.t0 + 1.08, target=(-0.05, 3.0, 1.22), dur=0.25)
+    c.pov.at(c.S("k11") - 0.3, target=FAHRER_KOPF + Vector((0.12, -0.05, -0.04)), dur=0.35, lens=22)
+    c.pov.shake = 1.0
 
 
-@shot("11_lina", "auto", lambda c: c.S("k12") - 0.15)
-def s11(c):
+@shot("08_lina", "auto", lambda c: c.S("k12") - 0.15)
+def s08(c):
     f, ben = auto_basis(c)
     ben.look(c.t0, "cam", 0.2)
     ben.bend(c.t0, (8, -20), 0.3)
@@ -246,8 +222,8 @@ def s11(c):
     c.pov.shake = 0.4
 
 
-@shot("12_regel6", "auto", lambda c: c.S("r6") - 0.7)
-def s12(c):
+@shot("09_regel6", "auto", lambda c: c.S("r6") - 0.7)
+def s09(c):
     f, ben = auto_basis(c)
     ben.look(c.t0, CAM + Vector((0.0, 0.35, -0.5)), 0.3)
     ben.bend(c.t0, (10, -22), 0.4)
@@ -257,25 +233,50 @@ def s12(c):
     c.phone("r6", raise_at=c.t0, lower_at=None)
 
 
-@shot("13_anruf", "auto", lambda c: c.S("k15") - 1.0)
-def s13(c):
+@shot("10_tuer_zu", "auto", lambda c: c.S("k14") - 0.15)
+def s10(c):
+    f, ben = auto_basis(c)
+    ben.look(c.t0, "cam", 0.3)
+    ben.brow(c.t0, "schreck", 0.2)
+    t_tuer = c.W("k14", 2) - 0.25          # „Die Tür geht nicht auf!“
+    c.pov.at(c.t0, pos=CAM + Vector((0, 0.02, -0.04)), target=CAM + Vector((-0.02, 0.6, -0.9)), dur=0.01, lens=22)
+    c.pov.at(t_tuer, pos=CAM + Vector((0.08, 0.0, -0.05)), target=INNENGRIFF, dur=0.25, lens=24)
+    c.pov.shake = 0.7
+    c.pov.tilt(c.t0, 0, 0.01)              # Rütteln am Türgriff
+    c.pov.tilt(t_tuer + 0.3, 4, 0.12)
+    c.pov.tilt(t_tuer + 0.45, -3, 0.12)
+    c.pov.tilt(t_tuer + 0.62, 3, 0.12)
+    c.pov.tilt(t_tuer + 0.8, 0, 0.2)
+    c.phone("r6", raise_at=None, lower_at=t_tuer - 0.1)
+
+
+@shot("11_anruf", "auto", lambda c: c.S("k15a") - 1.15)
+def s11(c):
     f, ben = auto_basis(c)
     c.fahrerhandy = "anruf_sander.png"
-    f.arm(c.t0 + 0.5, "r", "greifen", 0.35)
-    f.arm(c.S("k15") + 0.4, "r", "tisch", 0.35)
+    f.look(c.t0 + 0.3, HANDYHALTER, 0.3)
+    f.arm(c.S("k15a") - 0.55, "r", "greifen", 0.3)       # nimmt ab
+    f.arm(c.S("k15a") + 0.3, "r", "tisch", 0.4)
+    f.say(c.S("k15a"), c.env("k15a"))
+    f.look(c.S("k15a") + 0.4, STRASSE, 0.4)
+    f.look(c.E("k15a") - 0.9, "cam", 0.4)                 # „Wir sind gleich da.“ – Blick nach hinten
+    f.bend(c.E("k15a") - 0.9, (0, -20), 0.4)
+    f.brow(c.S("k15a"), "boese", 0.4)
     ben.look(c.t0, HANDYHALTER, 0.2)
-    ben.look(c.S("k15"), "cam", 0.25)
+    ben.look(c.S("k15") - 0.25, "cam", 0.25)
     ben.brow(c.t0, "schreck", 0.2)
-    ben.bend(c.S("k15"), (8, -22), 0.3)
+    ben.bend(c.S("k15") - 0.2, (8, -22), 0.3)
     ben.say(c.S("k15"), c.env("k15"))
-    # Großaufnahme: Handy des Fahrers im Halter, eingehender Anruf „SANDER“
+    # Großaufnahme: Anruf „SANDER“ → Fahrer nimmt ab → Schnitt auf Ben
     c.pov.at(c.t0, pos=CAM, target=HANDYHALTER + Vector((0, 0, 0.005)), dur=0.01, lens=95)
-    c.pov.at(c.t0 + 0.05, target=HANDYHALTER + Vector((0, 0, 0.0)), dur=c.S("k15") - c.t0 - 0.2, lens=105)
+    c.pov.at(c.t0 + 0.05, target=HANDYHALTER, dur=0.9, lens=105)
+    c.pov.at(c.S("k15a") - 0.3, target=FAHRER_KOPF + Vector((0.12, -0.05, -0.04)), dur=0.35, lens=24)
+    c.pov.at(c.E("k15a") - 0.9, target=FAHRER_KOPF + Vector((0.12, -0.05, -0.03)), dur=0.9, lens=30)
     c.pov.at(c.S("k15") - 0.12, target=BEN_KOPF + Vector((0.25, 0.22, -0.08)), dur=0.01, lens=17)
 
 
-@shot("14_problem", "auto", lambda c: c.S("k16") - 0.2)
-def s14(c):
+@shot("12_problem", "auto", lambda c: c.S("k16") - 0.2)
+def s12(c):
     f, ben = auto_basis(c)
     umdrehen(f, c.t0, 0.45, zurueck=c.E("k17") - 0.1)
     f.brow(c.t0, "skeptisch", 0.2)
@@ -285,10 +286,9 @@ def s14(c):
     c.pov.at(c.t0 + 0.4, target=FAHRER_KOPF + Vector((0.12, -0.05, -0.03)), dur=c.t1 - c.t0 - 0.4, lens=28)
 
 
-@shot("15_regel7", "auto", lambda c: c.S("r7") - 0.7)
-def s15(c):
+@shot("13_regel7", "auto", lambda c: c.S("r7") - 0.7)
+def s13(c):
     f, ben = auto_basis(c)
-    f.look(c.t0, STRASSE, 0.01)
     ben.look(c.t0, CAM + Vector((0.0, 0.35, -0.5)), 0.3)
     c.pov.at(c.t0, pos=CAM + Vector((0, 0.02, -0.04)), target=CAM + Vector((0.0, 0.55, -0.95)), dur=0.01, lens=22)
     # Noah duckt sich und schaut zwischen den Sitzen nach vorn: rote Ampel
@@ -297,8 +297,8 @@ def s15(c):
     c.phone("r7", raise_at=c.t0, lower_at=c.E("r7") - 1.0)
 
 
-@shot("16_finger_weg", "auto", lambda c: c.S("k18") - 0.75)
-def s16(c):
+@shot("14_finger_weg", "auto", lambda c: c.S("k18") - 0.75)
+def s14(c):
     f, ben = auto_basis(c)
     umdrehen(f, c.S("k18") - 0.3, 0.35)
     f.brow(c.S("k18") - 0.3, "boese", 0.3)
@@ -310,22 +310,39 @@ def s16(c):
     c.pov.at(c.S("k18") + 0.1, target=FAHRER_KOPF + Vector((0.12, -0.05, -0.03)), dur=c.t1 - c.S("k18"), lens=32)
 
 
-@shot("17_was_machen_wir", "auto", lambda c: c.S("k19") - 0.15)
-def s17(c):
+@shot("15_fenster", "auto", lambda c: c.E("k18") + 0.15)
+def s15(c):
     f, ben = auto_basis(c)
-    umdrehen(f, c.t0, 0.01, zurueck=c.t0 + 0.3)
+    umdrehen(f, c.t0, 0.01, zurueck=c.t0 + 0.15)            # schaut wieder nach vorn …
+    c.fenster = (c.t0 + 0.2, c.t0 + 1.35)                   # … da fährt die Scheibe von selbst herunter
+    umdrehen(f, c.t0 + 1.0, 0.3)                            # … und er fährt herum
+    f.brow(c.t0 + 1.0, "boese", 0.2)
+    ben.look(c.t0 + 0.2, FENSTER_HR, 0.3)
+    ben.brow(c.t0 + 0.2, "schreck", 0.2)
+    c.pov.at(c.t0, pos=CAM, target=FENSTER_HR + Vector((0, 0.05, -0.05)), dur=0.01, lens=22)
+    c.pov.at(c.t0 + 1.35, target=FAHRER_KOPF + Vector((0.12, -0.05, -0.04)), dur=0.22, lens=26)
+    c.pov.shake = 1.2
+
+
+@shot("16_was_machen_wir", "auto", lambda c: c.S("k19") - 0.15)
+def s16(c):
+    f, ben = auto_basis(c)
+    c.fenster = (-2.0, -1.0)
+    umdrehen(f, c.t0, 0.01)
+    f.brow(c.t0, "boese", 0.01)
     ben.look(c.t0, "cam", 0.2)
     ben.bend(c.t0, (6, -24), 0.3)
-    ben.brow(c.t0, "sorge", 0.2)
+    ben.brow(c.t0, "schreck", 0.2)
     ben.say(c.S("k19"), c.env("k19"))
     c.pov.at(c.t0, pos=CAM, target=BEN_KOPF + Vector((0.15, 0.1, -0.08)), dur=0.01, lens=17)
     c.pov.at(c.t0 + 0.3, target=BEN_KOPF + Vector((0.13, 0.1, -0.06)), dur=2.0, lens=20)
-    c.pov.shake = 0.5
+    c.pov.shake = 0.8
 
 
-@shot("18_ampel_gelb", "auto", lambda c: c.E("k19") + 0.2)
-def s18(c):
+@shot("17_ampel_gelb", "auto", lambda c: c.E("k19") + 0.2)
+def s17(c):
     f, ben = auto_basis(c)
+    c.fenster = (-2.0, -1.0)
     ben.look(c.t0, AMPEL_REL, 0.3)
     c.ampel = [(c.t0, "rot"), (c.t0 + 0.45, "rotgelb")]
     c.pov.at(c.t0, pos=CAM_MITTE, target=AMPEL_REL + Vector((0, 0, -0.25)), dur=0.01, lens=34)

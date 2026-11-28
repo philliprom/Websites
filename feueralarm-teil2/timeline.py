@@ -17,22 +17,22 @@ TRIM = os.path.join(CACHE, "trim")
 
 # Pause VOR der Zeile (Sekunden); Standard 0.2
 GAP = {
-    "r5": 0.3,           # Rückblick: Regel 5 steht schon auf dem Handy, kurze Vibration
-    "k01": 0.35, "k02": 0.55, "k03": 0.2,
-    "k04": 0.6,          # Rennen in den Regen
-    "k05": 0.8,          # Fahrer steigt aus
+    "r5": 0.3,           # Start mitten in der Flucht: Lichthupe, Papas Stimme sofort
+    "k01": 0.35,         # Pohl brüllt aus der Tür
+    "k05": 1.1,          # weiter zum Auto rennen
     "k06": 0.25, "k07": 0.2, "k08": 0.15,
-    "k09": 0.55,         # Tür knallt, Sander
+    "k09": 0.5,          # Tür knallt, Sander
     "k10": 0.2,
-    "k11": 1.9,          # zum Auto rennen, einsteigen, Tür zu, Motor
-    "k12": 0.5, "k13": 0.2,
-    "r6": 0.9,           # Vibration
+    "k11": 2.1,          # rein ins Auto, Tür zu, Zentralverriegelung, losrasen
+    "k12": 0.45, "k13": 0.2,
+    "r6": 0.85,          # Vibration
     "k14": 0.35,
-    "k15": 1.1,          # Handy des Fahrers klingelt
+    "k15a": 1.15,        # Handy des Fahrers klingelt, er nimmt ab
+    "k15": 0.3,
     "k16": 0.35, "k17": 0.2,
-    "r7": 0.9,           # Vibration
+    "r7": 0.85,          # Vibration
     "k18": 0.75,         # Noah tastet nach dem Fensterknopf
-    "k19": 0.35,
+    "k19": 2.35,         # Scheibe fährt von selbst herunter, Fahrer fährt herum
 }
 END_PAUSE = 1.9         # Platz für die Ampel-Einstellung (rot-gelb) vor der Endkarte
 END_CARD = 4.0

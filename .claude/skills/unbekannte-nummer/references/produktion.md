@@ -145,3 +145,21 @@ Verdeckt jemand die Sicht? Ist der Täter groß genug?
 - Während die Stimmen laufen, mit einer **vorläufigen Zeitleiste** (geschätzte Zeilenlängen, Platzhalter-Hüllkurven)
   Testbilder aller Einstellungen rendern; die echte `timeline.py` überschreibt später alles.
 - Cliffhanger-Einstellung nach der letzten Zeile (z. B. Ampel springt auf Rot-Gelb): `END_PAUSE` entsprechend verlängern.
+
+### Rückmeldung zu Teil 2, Fassung 1 (umgesetzt in Fassung 2)
+
+- **Anfang zu ruhig:** Ein statischer Blick aufs Handy im Keller ist kein Hook. Fortsetzungen **mitten in der Bewegung**
+  beginnen (rennen, Tür knallt, Musik-Schlag), die Bedrohung im ersten Bild zeigen (Fahrer am Auto, Lichthupe),
+  Regel-Banner und „Ihr habt gewählt“ liegen darüber. Keine Aufblende aus Schwarz: Das erste Bild muss knallen.
+- **Wege ziehen sich:** Mehr als ~3 s Laufen über leeren Platz wirkt lang. Ziele nah ran (Auto 8 m statt 13 m),
+  Figuren warten schon am Ziel statt hinzulaufen, Einsteigen per hartem Schnitt.
+- **Figur „im“ Auto:** Stehende Figuren nie innerhalb einer Karosserie platzieren. Positionen relativ zum Fahrzeug
+  rechnen (`hof_welt(lx, ly)`) und gegen die Fahrzeugmaße prüfen (Auto ±0,87 m breit, ±2,25 m lang).
+- **Schwarzes Bild:** Steht die Kamera in einer Figur (z. B. Pohl in der Tür, Kamera auch dort), sieht man nur die
+  schwarze Kontur von innen. Figuren erst auftreten lassen, wenn die Kamera weg ist (`place` hinter der Wand, dann `move`).
+- **Kamera-Schlüssel überschreiben sich:** Später gesetzte `pov.at`-Ziele gewinnen. Ruck beim Anfahren und Schwenk auf
+  eine Figur zeitlich trennen.
+- **Übersteuerung am Anfang:** `loudnorm` (dynamisch) übersteuerte bei lautem Start (+1,5 dBTP). Lösung im Schnitt:
+  `loudnorm=I=-14:TP=-1.5:LRA=11,alimiter=limit=0.75:level=0`.
+- Spannung ohne Mehrlänge: jede Szene braucht eine neue Information oder Eskalation (Tür verriegelt, Telefonat
+  „Ich hab beide“, Fenster fährt von selbst herunter). Zeilen ohne neue Info streichen.

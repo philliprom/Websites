@@ -429,7 +429,7 @@ def main():
     enc.wait()
     out = os.path.join(OUT, name)
     subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", tmp, "-i", os.path.join(BUILD, "mix.wav"),
-                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=11,alimiter=limit=0.75:level=0", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
                     "-shortest", "-movflags", "+faststart", out], check=True)
     print("fertig:", out)
 
